@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "group": "crucible",
+  "ingredient": {
+    "item": "medievalism:unfired_crucible"
+  },
+  "result": {
+    "count": 1,
+    "id": "medievalism:crucible"
+  }
+}

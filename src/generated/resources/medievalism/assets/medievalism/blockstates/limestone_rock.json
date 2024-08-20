@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "medievalism:block/limestone_rock"
+      },
+      {
+        "model": "medievalism:block/limestone_rock",
+        "y": 90
+      },
+      {
+        "model": "medievalism:block/limestone_rock",
+        "y": 180
+      },
+      {
+        "model": "medievalism:block/limestone_rock",
+        "y": 270
+      },
+      {
+        "model": "medievalism:block/limestone_rock"
+      },
+      {
+        "model": "medievalism:block/limestone_rock",
+        "y": 90
+      },
+      {
+        "model": "medievalism:block/limestone_rock",
+        "y": 180
+      },
+      {
+        "model": "medievalism:block/limestone_rock",
+        "y": 270
+      }
+    ]
+  }
+}

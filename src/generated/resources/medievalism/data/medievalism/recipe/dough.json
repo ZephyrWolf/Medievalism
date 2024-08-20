@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "dough",
+  "ingredients": [
+    {
+      "item": "medievalism:flour"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalism:dough"
+  }
+}

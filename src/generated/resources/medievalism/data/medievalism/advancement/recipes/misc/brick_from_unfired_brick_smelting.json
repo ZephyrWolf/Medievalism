@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "medievalism:brick_from_unfired_brick_smelting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_unfired_brick": {
+      "conditions": {
+        "items": [
+          {
+            "items": "medievalism:unfired_brick"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_unfired_brick"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "medievalism:brick_from_unfired_brick_smelting"
+    ]
+  }
+}

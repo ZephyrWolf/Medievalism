@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_branch_lunate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "medievalism:branch"
+          },
+          {
+            "items": "medievalism:lunate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "medievalism:digging_stick"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_branch_lunate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "medievalism:digging_stick"
+    ]
+  }
+}

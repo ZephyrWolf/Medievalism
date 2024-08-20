@@ -1,0 +1,47 @@
+{
+  "parent": "medievalism:main/root",
+  "criteria": {
+    "red_clay_balls": {
+      "conditions": {
+        "items": [
+          {
+            "items": "medievalism:red_clay_ball"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "red_clay_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "medievalism:red_clay"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "minecraft:textures/block/bricks.png",
+    "description": {
+      "translate": "medievalism.advancement.get_red_clay.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "medievalism:red_clay_ball"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "medievalism.advancement.get_red_clay"
+    }
+  },
+  "requirements": [
+    [
+      "red_clay_balls",
+      "red_clay_block"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,21 @@
+// 1.21	2024-08-18T10:45:54.0663793	Loot Tables
+ec7243c9386b097fe18c8ed193de9ecba1cc42a6 data/minecraft/loot_table/entities/bat.json
+7a37829a8a76976f4f1c70b133251523c5034878 data/minecraft/loot_table/entities/camel.json
+003eb8a2a80aaac32fb8c1d514a56c8377582467 data/minecraft/loot_table/entities/cat.json
+78346e701ddc18e0374d8fdc130445ec20bef845 data/minecraft/loot_table/entities/cow.json
+4b55855df3ee32443b97e749cd133e56b92ebc31 data/minecraft/loot_table/entities/donkey.json
+cd66a1c7ae11e948cbfed65126ef0e962b0f6ea3 data/minecraft/loot_table/entities/fox.json
+239ab6e5302d32db9fc1de8b473537ae98de95f9 data/minecraft/loot_table/entities/goat.json
+63f4ec7101af8efe9203b24ebfbd13f49c6a168f data/minecraft/loot_table/entities/hoglin.json
+545fd4f451f351c787354c8a2a41ef3b80019017 data/minecraft/loot_table/entities/horse.json
+df92d4d78e42d19ac146545a2815dab1ad789866 data/minecraft/loot_table/entities/llama.json
+6fbe9730e852daa08f07d501ce370fe420b12d91 data/minecraft/loot_table/entities/mooshroom.json
+db8e5df66e5dd96f479103ea51959cafe677b3f0 data/minecraft/loot_table/entities/mule.json
+2d26b09b43de39fddbfb9aef5ce259a2b7aa1592 data/minecraft/loot_table/entities/ocelot.json
+8054b724d0727f713ed509ff426f8fd1d3921444 data/minecraft/loot_table/entities/panda.json
+71806d1d700a26df30252304c5b0132b10f2dbe0 data/minecraft/loot_table/entities/pig.json
+42b65ae893d18b8e225a75c35800c9ab0409f21f data/minecraft/loot_table/entities/polar_bear.json
+8d9edb5ea9530d72a9f33f5c7a80ecd07c9dbb83 data/minecraft/loot_table/entities/ravager.json
+adbcc7ad0833de510510d61ebab29b76eb949d8d data/minecraft/loot_table/entities/sheep.json
+328c85581aeedc8baaf903e5e21d251b09f8747b data/minecraft/loot_table/entities/sniffer.json
+8a5e09dcb3d499752e878f2b442ca7f7c6a3e5cb data/minecraft/loot_table/entities/wolf.json

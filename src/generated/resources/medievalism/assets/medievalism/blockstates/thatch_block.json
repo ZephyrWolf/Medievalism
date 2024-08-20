@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "medievalism:block/thatch_block_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "medievalism:block/thatch_block"
+    },
+    "axis=z": {
+      "model": "medievalism:block/thatch_block_horizontal",
+      "x": 90
+    }
+  }
+}

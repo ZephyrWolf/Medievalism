@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "medievalism:block/rock"
+      },
+      {
+        "model": "medievalism:block/rock",
+        "y": 90
+      },
+      {
+        "model": "medievalism:block/rock",
+        "y": 180
+      },
+      {
+        "model": "medievalism:block/rock",
+        "y": 270
+      },
+      {
+        "model": "medievalism:block/rock"
+      },
+      {
+        "model": "medievalism:block/rock",
+        "y": 90
+      },
+      {
+        "model": "medievalism:block/rock",
+        "y": 180
+      },
+      {
+        "model": "medievalism:block/rock",
+        "y": 270
+      }
+    ]
+  }
+}

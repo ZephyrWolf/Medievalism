@@ -1,0 +1,33 @@
+{
+  "type": "medievalism:in_world",
+  "ingredients": [
+    {
+      "item": "medievalism:branch"
+    },
+    {
+      "item": "medievalism:branch"
+    },
+    {
+      "item": "medievalism:branch"
+    },
+    {
+      "item": "medievalism:branch"
+    },
+    {
+      "tag": "medievalism:tinder"
+    }
+  ],
+  "result": {
+    "Name": "minecraft:campfire",
+    "Properties": {
+      "facing": "north",
+      "lit": "true",
+      "signal_fire": "false",
+      "waterlogged": "false"
+    }
+  },
+  "trigger": {
+    "count": 1,
+    "id": "medievalism:fire_starter"
+  }
+}

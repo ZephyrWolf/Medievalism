@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 1000,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "medievalism:limestone_rock"
+  },
+  "result": {
+    "count": 1,
+    "id": "medievalism:quicklime"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "large_limed_hide",
+  "ingredients": [
+    {
+      "item": "medievalism:large_limed_hide"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalism:large_raw_hide"
+  }
+}

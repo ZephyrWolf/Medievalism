@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_large_hide": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#medievalism:large_hide"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "medievalism:large_limed_hide"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_large_hide"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "medievalism:large_limed_hide"
+    ]
+  }
+}

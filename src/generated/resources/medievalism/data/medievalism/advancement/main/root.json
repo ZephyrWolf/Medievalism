@@ -1,0 +1,28 @@
+{
+  "criteria": {
+    "auto": {
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "minecraft:textures/block/bricks.png",
+    "description": {
+      "translate": "medievalism.advancement.root.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "medievalism:red_clay_ball"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "medievalism.advancement.root"
+    }
+  },
+  "requirements": [
+    [
+      "auto"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

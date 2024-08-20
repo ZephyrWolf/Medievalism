@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "unfired_brick",
+  "ingredients": [
+    {
+      "tag": "medievalism:clay_ball"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalism:unfired_brick"
+  }
+}

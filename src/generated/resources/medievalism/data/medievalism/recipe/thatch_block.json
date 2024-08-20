@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "t": {
+      "item": "medievalism:thatch"
+    }
+  },
+  "pattern": [
+    "tt",
+    "tt"
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalism:thatch_block"
+  }
+}

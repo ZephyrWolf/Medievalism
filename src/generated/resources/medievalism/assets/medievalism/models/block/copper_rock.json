@@ -1,0 +1,6 @@
+{
+  "parent": "medievalism:block/flat_mirrored",
+  "textures": {
+    "top": "medievalism:block/copper_rock"
+  }
+}
