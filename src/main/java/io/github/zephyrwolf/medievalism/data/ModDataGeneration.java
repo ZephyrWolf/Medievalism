@@ -39,11 +39,13 @@ public final class ModDataGeneration
         //addProvidersForOverhaul(event.getGenerator(), event.getGenerator().getPackOutput(MedievalismMod.OVERHAUL_MOD_ID), event.getLookupProvider(), event.getExistingFileHelper(), event.includeServer(), event.includeClient());
     }
 
+    //region Providers
     private static void addProvidersForBase(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient)
     {
         BaseBlockTags blockTags = new BaseBlockTags(packOutput, lookupProvider, existingFileHelper);
         generator.addProvider(includeServer, blockTags);
         generator.addProvider(includeServer, new BaseItemTags(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
+        generator.addProvider(includeServer, new BaseBiomeTags(packOutput, lookupProvider, existingFileHelper));
         //generator.addProvider(event.includeServer(), new MedievalismEntityTags(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(includeServer, new BaseRecipes(packOutput, lookupProvider));
         generator.addProvider(includeServer, new AdvancementProvider(packOutput, lookupProvider, existingFileHelper, List.of(new BaseAdvancements())));
@@ -55,6 +57,7 @@ public final class ModDataGeneration
         BaseBlockStates blockStates = new BaseBlockStates(packOutput, existingFileHelper);
         generator.addProvider(includeClient, blockStates);
         generator.addProvider(includeClient, new BaseItemModels(packOutput, blockStates.models().existingFileHelper));
+        generator.addProvider(includeServer, new ModWorldGenProvider(packOutput, lookupProvider));
     }
 
     private static void addProvidersForAssetOverhaul(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient)
@@ -82,7 +85,9 @@ public final class ModDataGeneration
                         .description("Medievalism will overhaul the progression of Minecraft."));
         // TODO I wonder if I can translate this ^^^^
     }
+    //endregion
 
+    //region Inject
     private static void injectDataForBase(GatherDataEvent event)
     {
         DataGenerator generator = event.getGenerator();
@@ -187,4 +192,5 @@ public final class ModDataGeneration
 
         dataGeneratorConfig.runAll();
     }
+    //endregion
 }

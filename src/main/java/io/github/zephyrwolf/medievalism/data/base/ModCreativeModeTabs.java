@@ -1,8 +1,8 @@
-package io.github.zephyrwolf.medievalism.common.item;
+package io.github.zephyrwolf.medievalism.data.base;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.MedievalismMod;
-import io.github.zephyrwolf.medievalism.Registration;
+import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
+import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -10,7 +10,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModCreativeModeTabs
@@ -20,14 +19,14 @@ public class ModCreativeModeTabs
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MEDIEVALISM_TAB = CREATIVE_MODE_TABS.register("medievalism_tab",
             () -> CreativeModeTab.builder()
-                    .icon(() -> new ItemStack(Registration.RED_CLAY_BLOCK.asItem()))
+                    .icon(() -> new ItemStack(BlockRegistration.RED_CLAY_BLOCK.asItem()))
                     .title(Component.translatable("creative_tab.medievalism.name"))
                     .displayItems(ModCreativeModeTabs::itemsForMedievalismTab)
                     .build());
 
     private static void itemsForMedievalismTab(CreativeModeTab.ItemDisplayParameters pParameters, CreativeModeTab.Output pOutput)
     {
-        for (DeferredHolder<Item, ? extends Item> item : Registration.ITEMS.getEntries())
+        for (DeferredHolder<Item, ? extends Item> item : ItemRegistration.ITEMS.getEntries())
         {
             pOutput.accept(item.get());
         }

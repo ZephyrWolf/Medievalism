@@ -4,6 +4,8 @@
     "medievalism:large_rock",
     "medievalism:rock",
     "medievalism:limestone_rock",
-    "medievalism:copper_rock"
+    "medievalism:copper_rock",
+    "medievalism:tin_ore_block",
+    "medievalism:deepslate_tin_ore_block"
   ]
 }

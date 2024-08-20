@@ -29,11 +29,11 @@ base {
 // Mojang ships Java 21 to end users starting in 1.20.5, so mods should target Java 21.
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
-//minecraft {
-//    accessTransformers {
-//        file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
-//    }
-//}
+minecraft {
+    accessTransformers {
+        file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
+    }
+}
 //minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
 //minecraft.accessTransformers.entry public net.minecraft.client.Minecraft textureManager # textureManager
 
@@ -187,6 +187,12 @@ idea {
 }
 
 // -- Medievalism
+
+tasks.register('deleteOldGeneratedPacks', Delete) {
+    files "src/main/resources"
+    include "overhaul_client/**"
+    include "overhaul_server/**"
+}
 
 // TODO Delete target directory too before copying
 // TODO This should probably run after runData and not before build

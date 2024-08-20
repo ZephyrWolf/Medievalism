@@ -1,7 +1,6 @@
 package io.github.zephyrwolf.medievalism.data.overhaul;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.Registration;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.data.LanguageProvider;
@@ -17,5 +16,6 @@ public class OverhaulLanguageProvider extends LanguageProvider
     protected void addTranslations()
     {
         add(Items.LEATHER, "Large Leather");
+        // Limonite, etc.
     }
 }

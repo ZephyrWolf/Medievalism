@@ -1,20 +1,17 @@
-package io.github.zephyrwolf.medievalism.resource;
+package io.github.zephyrwolf.medievalism.common.resource;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.MedievalismMod;
-import io.github.zephyrwolf.medievalism.service.ServiceManager;
 import io.github.zephyrwolf.medievalism.tools.LangTools;
 import net.minecraft.ChatFormatting;
 import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.*;
 import net.minecraft.server.packs.repository.*;
-import net.neoforged.fml.util.thread.SidedThreadGroups;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;

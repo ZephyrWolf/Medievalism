@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism.data.base;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.Registration;
+import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -26,14 +26,17 @@ public final class BaseBlockStates extends BlockStateProvider
         //this.simpleBlock(ModBlocks.SAFETY_NET.get(), existingModel(ModBlocks.SAFETY_NET.get()));
         //this.axisBlock((RotatedPillarBlock) ModBlocks.STRAW_BALE.get());
         //simpleBlock(Registration.RED_CLAY_BLOCK.get(), existingModel(Registration.RED_CLAY_BLOCK.get()));
-        simpleBlock(Registration.RED_CLAY_BLOCK.get());
-        simpleBlock(Registration.LIMESTONE_BLOCK.get());
-        flatBlock(Registration.BRANCH_BLOCK.get());
-        flatBlock(Registration.LARGE_ROCK_BLOCK.get());
-        flatBlock(Registration.ROCK_BLOCK.get());
-        flatBlock(Registration.LIMESTONE_ROCK_BLOCK.get());
-        flatBlock(Registration.COPPER_ROCK_BLOCK.get());
-        axisBlock(Registration.THATCH_BLOCK.get());
+        simpleBlock(BlockRegistration.RED_CLAY_BLOCK.get());
+        simpleBlock(BlockRegistration.TIN_ORE_BLOCK.get());
+        simpleBlock(BlockRegistration.DEEPSLATE_TIN_ORE_BLOCK.get());
+        simpleBlock(BlockRegistration.LIMESTONE_BLOCK.get());
+        flatBlock(BlockRegistration.BRANCH_BLOCK.get());
+        flatBlock(BlockRegistration.LARGE_ROCK_BLOCK.get());
+        flatBlock(BlockRegistration.ROCK_BLOCK.get());
+        flatBlock(BlockRegistration.LIMESTONE_ROCK_BLOCK.get());
+        flatBlock(BlockRegistration.COPPER_ROCK_BLOCK.get());
+
+        axisBlock(BlockRegistration.THATCH_BLOCK.get());
     }
 
     private String blockName(Block block) { return BuiltInRegistries.BLOCK.getKey(block).getPath(); }

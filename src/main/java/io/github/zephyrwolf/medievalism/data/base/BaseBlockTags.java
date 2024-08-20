@@ -1,8 +1,7 @@
 package io.github.zephyrwolf.medievalism.data.base;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.Registration;
-import io.github.zephyrwolf.medievalism.common.block.ModBlockTags;
+import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -41,27 +40,32 @@ public class BaseBlockTags extends BlockTagsProvider
     {
         // TOOL
         tag(BlockTags.MINEABLE_WITH_AXE).add(
-                Registration.BRANCH_BLOCK.get()
+                BlockRegistration.BRANCH_BLOCK.get()
         );
         tag(BlockTags.MINEABLE_WITH_HOE).add(
-                Registration.THATCH_BLOCK.get()
+                BlockRegistration.THATCH_BLOCK.get()
         );
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
-                Registration.LIMESTONE_BLOCK.get(),
-                Registration.LARGE_ROCK_BLOCK.get(),
-                Registration.ROCK_BLOCK.get(),
-                Registration.LIMESTONE_ROCK_BLOCK.get(),
-                Registration.COPPER_ROCK_BLOCK.get()
+                BlockRegistration.LIMESTONE_BLOCK.get(),
+                BlockRegistration.LARGE_ROCK_BLOCK.get(),
+                BlockRegistration.ROCK_BLOCK.get(),
+                BlockRegistration.LIMESTONE_ROCK_BLOCK.get(),
+                BlockRegistration.COPPER_ROCK_BLOCK.get(),
+                BlockRegistration.TIN_ORE_BLOCK.get(),
+                BlockRegistration.DEEPSLATE_TIN_ORE_BLOCK.get()
         );
         tag(BlockTags.MINEABLE_WITH_SHOVEL).add(
-                Registration.RED_CLAY_BLOCK.get()
+                BlockRegistration.RED_CLAY_BLOCK.get()
         );
 
         // Material
         tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).add( // Vs NEEDS_STONE_TOOL
-                Registration.LIMESTONE_BLOCK.get()
+                BlockRegistration.LIMESTONE_BLOCK.get()
         );
-        //tag(BlockTags.NEEDS_STONE_TOOL)
+        tag(BlockTags.NEEDS_STONE_TOOL).add(
+                BlockRegistration.TIN_ORE_BLOCK.get(),
+                BlockRegistration.DEEPSLATE_TIN_ORE_BLOCK.get()
+        );
         //tag(BlockTags.NEEDS_IRON_TOOL)
         //tag(BlockTags.NEEDS_DIAMOND_TOOL)
     }

@@ -1,4 +1,4 @@
-// 1.21	2024-08-17T18:15:50.4706735	Item Models: medievalism
+// 1.21	2024-08-20T13:22:04.4421277	Item Models: medievalism
 325b0ac54248b9337348f38c0ccfca01251dd7e7 assets/medievalism/models/item/baked_beetroot.json
 04d4f0865d1c4e145d4581bf572d2f36d940357c assets/medievalism/models/item/baked_carrot.json
 0da1ec77eabaed2a3bacd798010530475f05f2c7 assets/medievalism/models/item/baked_yam.json
@@ -17,6 +17,7 @@ b0badaee2d43cd84c56e2f43ea9b8485af024d65 assets/medievalism/models/item/copper_r
 4ee68079192d069b951b6b0ae272a670461b3f01 assets/medievalism/models/item/cracked_barley.json
 5cbfba82456e537c9a0cf70ea35c1f53924c8078 assets/medievalism/models/item/cracked_wheat.json
 eef344b71fb3bd846eb553255aeac809326e12f4 assets/medievalism/models/item/crucible.json
+69a107b76ccd3ed49179459184268703d7921844 assets/medievalism/models/item/deepslate_tin_ore_block.json
 070c5c24d081a86b5a2b19d2da7ae5a49e49cff6 assets/medievalism/models/item/digging_stick.json
 305ef5f94689b66d7dbf44b2b1794ddc3f8ca599 assets/medievalism/models/item/dog_bane.json
 33826e337a271898942544cfccadfcac3f87280e assets/medievalism/models/item/donkey_hide.json
@@ -55,6 +56,7 @@ a94c6bc89a7382570a88fe45dcf66a10565e5c31 assets/medievalism/models/item/polar_be
 ea640bc4755c4cd79251abac39ab7de9d65da17f assets/medievalism/models/item/quicklime.json
 5c04660ea65f2d8c1a4d8b1bfc1d9b7146d808f1 assets/medievalism/models/item/raspberries.json
 ab066d702840009cf8b52a4ebd7dfe201db5cc65 assets/medievalism/models/item/ravager_hide.json
+f6baf942b096d73149749e4dd4b6daca1068ed18 assets/medievalism/models/item/raw_tin.json
 18216c8534048651ddc78d21aa9c2be21b9b3b7a assets/medievalism/models/item/red_clay.json
 a845c4e86ffd5bf3f06496efc6f81c3e40dfccb0 assets/medievalism/models/item/red_clay_ball.json
 274a5b8b37001b9d6145fec9c245339a08b4ba7f assets/medievalism/models/item/rock.json
@@ -71,6 +73,7 @@ fa59dc16b50685359799bdd8139c680901627940 assets/medievalism/models/item/strawber
 8543c23a6652e06248d82a6bc27b74064fa84048 assets/medievalism/models/item/tannin_bucket.json
 9e950aabc9992d349543aaf325d59e761e8f556e assets/medievalism/models/item/thatch.json
 0dfbf72944a5c567aea01148c6afb28845ed2d05 assets/medievalism/models/item/thatch_block.json
+78e6ebd81000b35bf6fce02e792b535c2f8b694c assets/medievalism/models/item/tin_ore_block.json
 d0ce5a120f6e1c3cb51196dc3854b70d576277f4 assets/medievalism/models/item/unfired_brick.json
 58eed6d6cc457fbafd4313ad29f4314b78a09e4e assets/medievalism/models/item/unfired_crucible.json
 c7ec042b2c46384ab1241742dab366dbb95af68f assets/medievalism/models/item/unfired_jug.json

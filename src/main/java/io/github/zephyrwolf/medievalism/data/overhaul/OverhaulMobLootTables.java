@@ -1,12 +1,10 @@
 package io.github.zephyrwolf.medievalism.data.overhaul;
 
-import io.github.zephyrwolf.medievalism.Registration;
+import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
 import net.minecraft.advancements.critereon.*;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -14,20 +12,17 @@ import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 import net.minecraft.world.level.storage.loot.functions.EnchantedCountIncreaseFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.functions.SmeltItemFunction;
 import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -44,7 +39,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
         this.lookupProvider = lookupProvider;
     }
 
-    private final AnyOfCondition.Builder shouldSmeltLoot(HolderLookup.Provider lookupProvider)
+    private AnyOfCondition.Builder shouldSmeltLoot(HolderLookup.Provider lookupProvider)
     {
         HolderLookup.RegistryLookup<Enchantment> registrylookup = lookupProvider.lookupOrThrow(Registries.ENCHANTMENT);
         return AnyOfCondition.anyOf(
@@ -84,7 +79,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(0.75f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.BAT_HIDE)
+                                                LootItem.lootTableItem(ItemRegistration.BAT_HIDE)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.0f, 1.0f)))
                                         )
@@ -97,7 +92,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.CAMEL_HIDE)
+                                                LootItem.lootTableItem(ItemRegistration.CAMEL_HIDE)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.125f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.125f, 1.0f)))
                                         )
@@ -118,7 +113,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(0.75f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.CAT_HIDE)
+                                                LootItem.lootTableItem(ItemRegistration.CAT_HIDE)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.0f, 1.0f)))
                                         )
@@ -131,7 +126,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                         LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0f))
                                 .add(
-                                        LootItem.lootTableItem(Registration.COW_HIDE)
+                                        LootItem.lootTableItem(ItemRegistration.COW_HIDE)
                                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.4f, 1.0f)))
                                 )
@@ -154,7 +149,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.DONKEY_HIDE)
+                                                LootItem.lootTableItem(ItemRegistration.DONKEY_HIDE)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.125f, 1.0f)))
                                         )
@@ -167,7 +162,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.FOX_HIDE)
+                                                LootItem.lootTableItem(ItemRegistration.FOX_HIDE)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.25f, 1.0f)))
                                         )
@@ -180,7 +175,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.GOAT_HIDE)
+                                                LootItem.lootTableItem(ItemRegistration.GOAT_HIDE)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.125f, 1.0f)))
                                         )
@@ -189,7 +184,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.BROKEN_GOAT_HORN)
+                                                LootItem.lootTableItem(ItemRegistration.BROKEN_GOAT_HORN)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.0f, 1.0f)))
                                         )
@@ -202,7 +197,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.HOGLIN_HIDE)
+                                                LootItem.lootTableItem(ItemRegistration.HOGLIN_HIDE)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.125f, 1.0f)))
                                         )
@@ -225,7 +220,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.HORSE_HIDE)
+                                                LootItem.lootTableItem(ItemRegistration.HORSE_HIDE)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.25f, 1.0f)))
                                         )
@@ -238,7 +233,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.LLAMA_HIDE)
+                                                LootItem.lootTableItem(ItemRegistration.LLAMA_HIDE)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.25f, 1.0f)))
                                         )
@@ -251,7 +246,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.MOOSHROOM_HIDE)
+                                                LootItem.lootTableItem(ItemRegistration.MOOSHROOM_HIDE)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.4f, 1.0f)))
                                         )
@@ -274,7 +269,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.MULE_HIDE)
+                                                LootItem.lootTableItem(ItemRegistration.MULE_HIDE)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.25f, 1.0f)))
                                         )
@@ -287,7 +282,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(0.75f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.OCELOT_HIDE)
+                                                LootItem.lootTableItem(ItemRegistration.OCELOT_HIDE)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.0f, 1.0f)))
                                         )
@@ -300,7 +295,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.PANDA_HIDE)
+                                                LootItem.lootTableItem(ItemRegistration.PANDA_HIDE)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.4f, 1.0f)))
                                         )
@@ -321,7 +316,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.PIG_HIDE)
+                                                LootItem.lootTableItem(ItemRegistration.PIG_HIDE)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.125f, 1.0f)))
                                         )
@@ -344,7 +339,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.POLAR_BEAR_HIDE)
+                                                LootItem.lootTableItem(ItemRegistration.POLAR_BEAR_HIDE)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.4f, 1.0f)))
                                         )
@@ -373,7 +368,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.RAVAGER_HIDE)
+                                                LootItem.lootTableItem(ItemRegistration.RAVAGER_HIDE)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.4f, 1.0f)))
                                         )
@@ -395,7 +390,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.SHEEP_HIDE)
+                                                LootItem.lootTableItem(ItemRegistration.SHEEP_HIDE)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.25f, 1.0f)))
                                         )
@@ -433,7 +428,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.SNIFFER_HIDE)
+                                                LootItem.lootTableItem(ItemRegistration.SNIFFER_HIDE)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.4f, 1.0f)))
                                         )
@@ -446,7 +441,7 @@ public final class OverhaulMobLootTables implements LootTableSubProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0f))
                                         .add(
-                                                LootItem.lootTableItem(Registration.WOLF_HIDE)
+                                                LootItem.lootTableItem(ItemRegistration.WOLF_HIDE)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.4f, 1.0f)))
                                         )

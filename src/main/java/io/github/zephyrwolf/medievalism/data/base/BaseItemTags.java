@@ -1,8 +1,8 @@
 package io.github.zephyrwolf.medievalism.data.base;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.Registration;
-import io.github.zephyrwolf.medievalism.common.item.ModItemTags;
+import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -43,48 +43,48 @@ public class BaseItemTags extends ItemTagsProvider
     private void registerModTags()
     {
         tag(ModItemTags.LARGE_HIDE)
-                .add(Registration.COW_HIDE.get())
-                .add(Registration.HORSE_HIDE.get())
-                .add(Registration.MOOSHROOM_HIDE.get())
-                .add(Registration.RAVAGER_HIDE.get())
-                .add(Registration.PANDA_HIDE.get())
-                .add(Registration.SNIFFER_HIDE.get())
-                .add(Registration.POLAR_BEAR_HIDE.get())
-                .add(Registration.HOGLIN_HIDE.get());
+                .add(ItemRegistration.COW_HIDE.get())
+                .add(ItemRegistration.HORSE_HIDE.get())
+                .add(ItemRegistration.MOOSHROOM_HIDE.get())
+                .add(ItemRegistration.RAVAGER_HIDE.get())
+                .add(ItemRegistration.PANDA_HIDE.get())
+                .add(ItemRegistration.SNIFFER_HIDE.get())
+                .add(ItemRegistration.POLAR_BEAR_HIDE.get())
+                .add(ItemRegistration.HOGLIN_HIDE.get());
         tag(ModItemTags.MEDIUM_HIDE)
-                .add(Registration.DONKEY_HIDE.get())
-                .add(Registration.MULE_HIDE.get())
-                .add(Registration.WOLF_HIDE.get())
-                .add(Registration.PIG_HIDE.get())
-                .add(Registration.GOAT_HIDE.get())
-                .add(Registration.LLAMA_HIDE.get())
-                .add(Registration.SHEEP_HIDE.get());
+                .add(ItemRegistration.DONKEY_HIDE.get())
+                .add(ItemRegistration.MULE_HIDE.get())
+                .add(ItemRegistration.WOLF_HIDE.get())
+                .add(ItemRegistration.PIG_HIDE.get())
+                .add(ItemRegistration.GOAT_HIDE.get())
+                .add(ItemRegistration.LLAMA_HIDE.get())
+                .add(ItemRegistration.SHEEP_HIDE.get());
         tag(ModItemTags.SMALL_HIDE)
                 .add(Items.RABBIT_HIDE)
-                .add(Registration.FOX_HIDE.get())
-                .add(Registration.SNOW_FOX_HIDE.get())
-                .add(Registration.OCELOT_HIDE.get())
-                .add(Registration.CAT_HIDE.get())
-                .add(Registration.OCELOT_HIDE.get())
-                .add(Registration.BAT_HIDE.get());
+                .add(ItemRegistration.FOX_HIDE.get())
+                .add(ItemRegistration.SNOW_FOX_HIDE.get())
+                .add(ItemRegistration.OCELOT_HIDE.get())
+                .add(ItemRegistration.CAT_HIDE.get())
+                .add(ItemRegistration.OCELOT_HIDE.get())
+                .add(ItemRegistration.BAT_HIDE.get());
 
         tag(ModItemTags.CAN_CRAFT_FLOUR)
-                .add(Registration.CRACKED_WHEAT.get())
-                .add(Registration.CRACKED_BARLEY.get())
-                .add(Registration.ROLLED_OATS.get());
+                .add(ItemRegistration.CRACKED_WHEAT.get())
+                .add(ItemRegistration.CRACKED_BARLEY.get())
+                .add(ItemRegistration.ROLLED_OATS.get());
         tag(ModItemTags.CLAY_BALL)
                 .add(Items.CLAY_BALL)
-                .add(Registration.RED_CLAY_BALL.get());
+                .add(ItemRegistration.RED_CLAY_BALL.get());
 
         tag(ModItemTags.ROCK)
-                .add(Registration.ROCK_ITEM.get())
-                .add(Registration.COPPER_ROCK_ITEM.get())
-                .add(Registration.LIMESTONE_ITEM.get());
+                .add(BlockRegistration.ROCK_ITEM.get())
+                .add(BlockRegistration.COPPER_ROCK_ITEM.get())
+                .add(BlockRegistration.LIMESTONE_ITEM.get());
         tag(ModItemTags.LARGE_ROCK)
-                .add(Registration.LARGE_ROCK_ITEM.get());
+                .add(BlockRegistration.LARGE_ROCK_ITEM.get());
 
         tag(ModItemTags.TINDER)
-                .add(Registration.THATCH.get());
+                .add(ItemRegistration.THATCH.get());
                 // Candlenut leaves?
     }
 

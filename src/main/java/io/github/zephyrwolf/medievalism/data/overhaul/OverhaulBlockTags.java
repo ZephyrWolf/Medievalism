@@ -1,8 +1,7 @@
 package io.github.zephyrwolf.medievalism.data.overhaul;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.Registration;
-import io.github.zephyrwolf.medievalism.common.block.ModBlockTags;
+import io.github.zephyrwolf.medievalism.data.base.ModBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;

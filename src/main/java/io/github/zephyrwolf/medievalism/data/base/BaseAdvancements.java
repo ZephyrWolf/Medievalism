@@ -1,7 +1,8 @@
 package io.github.zephyrwolf.medievalism.data.base;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.Registration;
+import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
+import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
 import io.github.zephyrwolf.medievalism.tools.TextTools;
 import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.*;
@@ -22,7 +23,7 @@ public class BaseAdvancements implements AdvancementProvider.AdvancementGenerato
     {
 
         AdvancementHolder medievalism = Advancement.Builder.advancement()
-                .display(Registration.RED_CLAY_BALL.get(),
+                .display(ItemRegistration.RED_CLAY_BALL.get(),
                         TextTools.getTranslation("advancement.root"),
                         TextTools.getTranslation("advancement.root.desc"),
                         ResourceLocation.fromNamespaceAndPath("minecraft", "textures/block/bricks.png"),
@@ -32,13 +33,13 @@ public class BaseAdvancements implements AdvancementProvider.AdvancementGenerato
 
         AdvancementHolder red_clay_pun = Advancement.Builder.advancement()
                 .parent(medievalism)
-                .display(Registration.RED_CLAY_BALL.get(),
+                .display(ItemRegistration.RED_CLAY_BALL.get(),
                         TextTools.getTranslation("advancement.get_red_clay"),
                         TextTools.getTranslation("advancement.get_red_clay.desc"),
                         ResourceLocation.fromNamespaceAndPath("minecraft", "textures/block/bricks.png"),
                         AdvancementType.TASK, false, false, false)
-                .addCriterion("red_clay_balls", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.RED_CLAY_BALL.get()))
-                .addCriterion("red_clay_block", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.RED_CLAY_BLOCK.get()))
+                .addCriterion("red_clay_balls", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistration.RED_CLAY_BALL.get()))
+                .addCriterion("red_clay_block", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistration.RED_CLAY_BLOCK.get()))
                 .requirements(AdvancementRequirements.Strategy.OR)
                 .save(saver, getNameId("main/get_red_clay"));
 /*

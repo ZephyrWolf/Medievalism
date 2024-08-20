@@ -1,7 +1,8 @@
 package io.github.zephyrwolf.medievalism.data.base;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.Registration;
+import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
@@ -15,105 +16,108 @@ public class BaseLanguageProvider extends LanguageProvider
     @Override
     protected void addTranslations()
     {
-        add(Registration.LIMESTONE_ITEM.get(), "Limestone");
-        add(Registration.BRANCH_ITEM.get(), "Branch");
-        add(Registration.LARGE_ROCK_ITEM.get(), "Large Rock");
-        add(Registration.ROCK_ITEM.get(), "Rock");
-        add(Registration.LIMESTONE_ROCK_ITEM.get(), "Limestone Rock");
-        add(Registration.COPPER_ROCK_ITEM.get(), "Copper Rock"); // -----------
-        add(Registration.THATCH_BLOCK_ITEM.get(), "Thatch Block");
-        add(Registration.BROKEN_GOAT_HORN.get(), "Broken Goat Horn");
+        add(BlockRegistration.LIMESTONE_ITEM.get(), "Limestone");
+        add(BlockRegistration.BRANCH_ITEM.get(), "Branch");
+        add(BlockRegistration.LARGE_ROCK_ITEM.get(), "Large Rock");
+        add(BlockRegistration.ROCK_ITEM.get(), "Rock");
+        add(BlockRegistration.LIMESTONE_ROCK_ITEM.get(), "Limestone Rock");
+        add(BlockRegistration.COPPER_ROCK_ITEM.get(), "Copper Rock"); // -----------
+        add(BlockRegistration.THATCH_BLOCK_ITEM.get(), "Thatch Block");
+        add(ItemRegistration.BROKEN_GOAT_HORN.get(), "Broken Goat Horn");
 
         { // World
-            add(Registration.RED_CLAY_BALL.get(), "Red Clay Ball");
-            add(Registration.RED_CLAY_BLOCK_ITEM.get(), "Red Clay");
-            add(Registration.DOG_BANE.get(), "Dog Bane");
-            add(Registration.FLAX.get(), "Flax");
-            add(Registration.FLAX_SEEDS.get(), "Flax Seeds");
-            add(Registration.FLAX_FIBER.get(), "Flax Fiber");
+            add(ItemRegistration.RED_CLAY_BALL.get(), "Red Clay Ball");
+            add(BlockRegistration.RED_CLAY_BLOCK_ITEM.get(), "Red Clay");
+            add(ItemRegistration.RAW_TIN.get(), "Tin Ore");
+            add(BlockRegistration.TIN_ORE_BLOCK.get(), "Tin Ore Block");
+            add(BlockRegistration.DEEPSLATE_TIN_ORE_BLOCK.get(), "Deepslate Tin Ore Block");
+            add(ItemRegistration.DOG_BANE.get(), "Dog Bane");
+            add(ItemRegistration.FLAX.get(), "Flax");
+            add(ItemRegistration.FLAX_SEEDS.get(), "Flax Seeds");
+            add(ItemRegistration.FLAX_FIBER.get(), "Flax Fiber");
             // Wild Potato
             // Wild Carrot
             // Wild Beetroot
             // Wild Yam
         }
         { // Farming
-            add(Registration.BLUEBERRIES.get(), "Blueberries");
-            add(Registration.RASPBERRIES.get(), "Raspberries");
-            add(Registration.STRAWBERRIES.get(), "Strawberries");
-            add(Registration.BARLEY_SEEDS.get(), "Barley Seeds");
-            add(Registration.BARLEY.get(), "Barley");
-            add(Registration.OAT_SEEDS.get(), "Oat Seeds");
-            add(Registration.OATS.get(), "Oats");
-            add(Registration.YAM.get(), "Yam");
-            add(Registration.BAKED_YAM.get(), "Baked Yam");
-            add(Registration.BAKED_BEETROOT.get(), "Baked Beetroot");
-            add(Registration.BAKED_CARROT.get(), "Baked Carrot");
-            add(Registration.CRACKED_BARLEY.get(), "Cracked Barley");
-            add(Registration.CRACKED_WHEAT.get(), "Cracked Wheat");
-            add(Registration.ROLLED_OATS.get(), "Rolled Oats");
-            add(Registration.FLOUR.get(), "Flour");
-            add(Registration.DOUGH.get(), "Dough");
+            add(ItemRegistration.BLUEBERRIES.get(), "Blueberries");
+            add(ItemRegistration.RASPBERRIES.get(), "Raspberries");
+            add(ItemRegistration.STRAWBERRIES.get(), "Strawberries");
+            add(ItemRegistration.BARLEY_SEEDS.get(), "Barley Seeds");
+            add(ItemRegistration.BARLEY.get(), "Barley");
+            add(ItemRegistration.OAT_SEEDS.get(), "Oat Seeds");
+            add(ItemRegistration.OATS.get(), "Oats");
+            add(ItemRegistration.YAM.get(), "Yam");
+            add(ItemRegistration.BAKED_YAM.get(), "Baked Yam");
+            add(ItemRegistration.BAKED_BEETROOT.get(), "Baked Beetroot");
+            add(ItemRegistration.BAKED_CARROT.get(), "Baked Carrot");
+            add(ItemRegistration.CRACKED_BARLEY.get(), "Cracked Barley");
+            add(ItemRegistration.CRACKED_WHEAT.get(), "Cracked Wheat");
+            add(ItemRegistration.ROLLED_OATS.get(), "Rolled Oats");
+            add(ItemRegistration.FLOUR.get(), "Flour");
+            add(ItemRegistration.DOUGH.get(), "Dough");
         }
         { // Knapping
-            add(Registration.LUNATE.get(), "Lunate");
-            add(Registration.BIFACE.get(), "Biface");
-            add(Registration.HAMMERSTONE.get(), "hammerstone");
+            add(ItemRegistration.LUNATE.get(), "Lunate");
+            add(ItemRegistration.BIFACE.get(), "Biface");
+            add(ItemRegistration.HAMMERSTONE.get(), "hammerstone");
         }
         { // Pottery
-            add(Registration.UNFIRED_BRICK.get(), "Unfired Brick");
-            add(Registration.UNFIRED_JUG.get(), "Unfired Jug");
-            add(Registration.JUG.get(), "Jug");
-            add(Registration.UNFIRED_CRUCIBLE.get(), "Unfired Crucible");
-            add(Registration.CRUCIBLE.get(), "Crucible");
+            add(ItemRegistration.UNFIRED_BRICK.get(), "Unfired Brick");
+            add(ItemRegistration.UNFIRED_JUG.get(), "Unfired Jug");
+            add(ItemRegistration.JUG.get(), "Jug");
+            add(ItemRegistration.UNFIRED_CRUCIBLE.get(), "Unfired Crucible");
+            add(ItemRegistration.CRUCIBLE.get(), "Crucible");
         }
         { // Leather Working
             // Hide
-            add(Registration.CAMEL_HIDE.get(), "Camel Hide");
-            add(Registration.COW_HIDE.get(), "Cow Hide");
-            add(Registration.DONKEY_HIDE.get(), "Donkey Hide");
-            add(Registration.HOGLIN_HIDE.get(), "Hoglin Hide");
-            add(Registration.HORSE_HIDE.get(), "Horse Hide");
-            add(Registration.MOOSHROOM_HIDE.get(), "Mooshroom Hide");
-            add(Registration.MULE_HIDE.get(), "Mule Hide");
-            //add(Registration.RABBIT_HIDE.get(), "Rabbit Hide");
-            add(Registration.RAVAGER_HIDE.get(), "Raveger Hide"); // Should this be extra large?
-            add(Registration.SHEEP_HIDE.get(), "Sheep Hide");
-            add(Registration.FOX_HIDE.get(), "Fox Hide");
-            add(Registration.SNOW_FOX_HIDE.get(), "Snow Fox Hide");
-            add(Registration.WOLF_HIDE.get(), "Wolf Hide"); // Only one variable
-            add(Registration.OCELOT_HIDE.get(), "Ocelot Hide");
-            add(Registration.CAT_HIDE.get(), "Cat Hide"); // Only one variable
-            add(Registration.BAT_HIDE.get(), "Bat Hide");
-            add(Registration.GOAT_HIDE.get(), "Goat Hide");
-            add(Registration.LLAMA_HIDE.get(), "Llama Hide");
-            add(Registration.PANDA_HIDE.get(), "Panda Hide");
-            add(Registration.PIG_HIDE.get(), "Pig Hide");
-            add(Registration.POLAR_BEAR_HIDE.get(), "Polar Bear Hide");
-            add(Registration.SNIFFER_HIDE.get(), "Sniffer Hide");
+            add(ItemRegistration.CAMEL_HIDE.get(), "Camel Hide");
+            add(ItemRegistration.COW_HIDE.get(), "Cow Hide");
+            add(ItemRegistration.DONKEY_HIDE.get(), "Donkey Hide");
+            add(ItemRegistration.HOGLIN_HIDE.get(), "Hoglin Hide");
+            add(ItemRegistration.HORSE_HIDE.get(), "Horse Hide");
+            add(ItemRegistration.MOOSHROOM_HIDE.get(), "Mooshroom Hide");
+            add(ItemRegistration.MULE_HIDE.get(), "Mule Hide");
+            // Rabbit Hide -> minecraft:rabbit_hide
+            add(ItemRegistration.RAVAGER_HIDE.get(), "Raveger Hide"); // Should this be extra large?
+            add(ItemRegistration.SHEEP_HIDE.get(), "Sheep Hide");
+            add(ItemRegistration.FOX_HIDE.get(), "Fox Hide");
+            add(ItemRegistration.SNOW_FOX_HIDE.get(), "Snow Fox Hide");
+            add(ItemRegistration.WOLF_HIDE.get(), "Wolf Hide"); // Only one variable
+            add(ItemRegistration.OCELOT_HIDE.get(), "Ocelot Hide");
+            add(ItemRegistration.CAT_HIDE.get(), "Cat Hide"); // Only one variable
+            add(ItemRegistration.BAT_HIDE.get(), "Bat Hide");
+            add(ItemRegistration.GOAT_HIDE.get(), "Goat Hide");
+            add(ItemRegistration.LLAMA_HIDE.get(), "Llama Hide");
+            add(ItemRegistration.PANDA_HIDE.get(), "Panda Hide");
+            add(ItemRegistration.PIG_HIDE.get(), "Pig Hide");
+            add(ItemRegistration.POLAR_BEAR_HIDE.get(), "Polar Bear Hide");
+            add(ItemRegistration.SNIFFER_HIDE.get(), "Sniffer Hide");
 
             // Leather
-            add(Registration.LARGE_LIMED_HIDE.get(), "Large Limed Hide");
-            add(Registration.MEDIUM_LIMED_HIDE.get(), "Medium Limed Hide");
-            add(Registration.SMALL_LIMED_HIDE.get(), "Small Limed Hide");
-            add(Registration.LARGE_RAW_HIDE.get(), "Large Raw Hide");
-            add(Registration.MEDIUM_RAW_HIDE.get(), "Medium Raw Hide");
-            add(Registration.SMALL_RAW_HIDE.get(), "Small Raw Hide");
-            add(Registration.LARGE_WET_LEATHER.get(), "Large Wet Leather");
-            add(Registration.MEDIUM_WET_LEATHER.get(), "Medium Wet Leather");
-            add(Registration.SMALL_WET_LEATHER.get(), "Small Wet Leather");
+            add(ItemRegistration.LARGE_LIMED_HIDE.get(), "Large Limed Hide");
+            add(ItemRegistration.MEDIUM_LIMED_HIDE.get(), "Medium Limed Hide");
+            add(ItemRegistration.SMALL_LIMED_HIDE.get(), "Small Limed Hide");
+            add(ItemRegistration.LARGE_RAW_HIDE.get(), "Large Raw Hide");
+            add(ItemRegistration.MEDIUM_RAW_HIDE.get(), "Medium Raw Hide");
+            add(ItemRegistration.SMALL_RAW_HIDE.get(), "Small Raw Hide");
+            add(ItemRegistration.LARGE_WET_LEATHER.get(), "Large Wet Leather");
+            add(ItemRegistration.MEDIUM_WET_LEATHER.get(), "Medium Wet Leather");
+            add(ItemRegistration.SMALL_WET_LEATHER.get(), "Small Wet Leather");
             // Large Leather -> minecraft:leather
-            add(Registration.MEDIUM_LEATHER.get(), "Medium Leather");
-            add(Registration.SMALL_LEATHER.get(), "Small Leather");
+            add(ItemRegistration.MEDIUM_LEATHER.get(), "Medium Leather");
+            add(ItemRegistration.SMALL_LEATHER.get(), "Small Leather");
         }
 
         { // Misc
-            add(Registration.QUICK_LIME.get(), "Quicklime");
-            add(Registration.THATCH.get(), "Thatch");
-            add(Registration.CHOPPED_WOOD.get(), "Chopped Wood");
-            add(Registration.SLACKED_LIME_BUCKET.get(), "Slacked Lime Bucket");
-            add(Registration.TANNIN_BUCKET.get(), "Tannin Bucket");
-            add(Registration.DIGGING_STICK.get(), "Digging Stick");
-            add(Registration.FIRE_STARTER.get(), "Fire Starter");
+            add(ItemRegistration.QUICK_LIME.get(), "Quicklime");
+            add(ItemRegistration.THATCH.get(), "Thatch");
+            add(ItemRegistration.CHOPPED_WOOD.get(), "Chopped Wood");
+            add(ItemRegistration.SLACKED_LIME_BUCKET.get(), "Slacked Lime Bucket");
+            add(ItemRegistration.TANNIN_BUCKET.get(), "Tannin Bucket");
+            add(ItemRegistration.DIGGING_STICK.get(), "Digging Stick");
+            add(ItemRegistration.FIRE_STARTER.get(), "Fire Starter");
         }
 
         add("creative_tab.medievalism.name", "Medievalism");

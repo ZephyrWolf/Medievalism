@@ -1,20 +1,16 @@
 package io.github.zephyrwolf.medievalism.common.item;
 
-import io.github.zephyrwolf.medievalism.Registration;
-import io.github.zephyrwolf.medievalism.common.block.ModBlockTags;
-import net.minecraft.client.gui.screens.social.PlayerEntry;
+import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
+import io.github.zephyrwolf.medievalism.data.base.ModBlockTags;
 import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -39,7 +35,7 @@ public class BifaceItem extends Item
     }
 
     @Override
-    public boolean mineBlock(ItemStack pStack, Level pLevel, BlockState pState, BlockPos pPos, LivingEntity pMiningEntity)
+    public boolean mineBlock(@NotNull ItemStack pStack, @NotNull Level pLevel, @NotNull BlockState pState, @NotNull BlockPos pPos, @NotNull LivingEntity pMiningEntity)
     {
         boolean val = super.mineBlock(pStack, pLevel, pState, pPos, pMiningEntity);
         if (val && !pLevel.isClientSide)
@@ -58,7 +54,7 @@ public class BifaceItem extends Item
 //                }
                 if (pLevel.getRandom().nextFloat() < 0.5f)
                 {
-                    pLevel.addFreshEntity(new ItemEntity(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), new ItemStack(Registration.THATCH.get())));
+                    pLevel.addFreshEntity(new ItemEntity(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), ItemRegistration.getThatchedItem(pState)));
                 }
             }
         }

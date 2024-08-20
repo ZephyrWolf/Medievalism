@@ -1,4 +1,5 @@
-// 1.21	2024-08-18T10:45:54.0663793	Loot Tables
+// 1.21	2024-08-20T12:04:58.2887702	Loot Tables
+2b18863ab116b6bd5d15b33031f6fa4ab8d5c1bf data/minecraft/loot_table/blocks/campfire.json
 ec7243c9386b097fe18c8ed193de9ecba1cc42a6 data/minecraft/loot_table/entities/bat.json
 7a37829a8a76976f4f1c70b133251523c5034878 data/minecraft/loot_table/entities/camel.json
 003eb8a2a80aaac32fb8c1d514a56c8377582467 data/minecraft/loot_table/entities/cat.json

@@ -1,15 +1,14 @@
 package io.github.zephyrwolf.medievalism;
 
 import io.github.zephyrwolf.medievalism.common.block.ModBlockEvents;
-import io.github.zephyrwolf.medievalism.common.item.ModCreativeModeTabs;
+import io.github.zephyrwolf.medievalism.data.base.ModCreativeModeTabs;
 import io.github.zephyrwolf.medievalism.data.ModDataGeneration;
 //import io.github.zephyrwolf.medievalism.resource.ClientModPackSource;
-import io.github.zephyrwolf.medievalism.resource.BuiltinRepositorySource;
-import net.minecraft.core.registries.BuiltInRegistries;
+import io.github.zephyrwolf.medievalism.common.resource.BuiltinRepositorySource;
+import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
+import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registry.Registration;
 import net.minecraft.server.packs.*;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeManager;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.fml.ModList;
@@ -36,12 +35,16 @@ public class MedievalismMod
     public MedievalismMod(IEventBus modEventBus, ModContainer modContainer)
     {
         modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(Registration::addCreativeModeTabContents);
+
         modEventBus.addListener(ModDataGeneration::gatherData);
 
         modEventBus.addListener(EventPriority.HIGH, false, AddPackFindersEvent.class, MedievalismMod::injectResources);
 
+        ItemRegistration.register(modEventBus);
+        BlockRegistration.register(modEventBus);
         Registration.register(modEventBus);
+
+        //modEventBus.addListener(Registration::addCreativeModeTabContents);
         ModCreativeModeTabs.register(modEventBus);
 
         //NeoForge.EVENT_BUS.register(new NeoForgeEventHandlers());
@@ -78,10 +81,6 @@ public class MedievalismMod
                 Path root = modInfo.getOwningFile().getFile().getFilePath();
                 Path overhaulClientPath = root.resolve("overhaul_server");
                 event.addRepositorySource(BuiltinRepositorySource.of(event.getPackType(), overhaulClientPath));
-            }
-            else if (FMLEnvironment.dist == Dist.DEDICATED_SERVER)
-            {
-
             }
         }
     }

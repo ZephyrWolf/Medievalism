@@ -1,6 +1,7 @@
 package io.github.zephyrwolf.medievalism.data.base;
 
-import io.github.zephyrwolf.medievalism.Registration;
+import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
@@ -38,19 +39,29 @@ public class BaseBlockLootTables extends BlockLootSubProvider
         );
         */
 
-        add(Registration.RED_CLAY_BLOCK.get(), (block) -> createSingleItemTableWithSilkTouch(
+        add(BlockRegistration.RED_CLAY_BLOCK.get(), (block) -> createSingleItemTableWithSilkTouch(
                 block,
-                Registration.RED_CLAY_BALL.get(),
+                ItemRegistration.RED_CLAY_BALL.get(),
                 ConstantValue.exactly(4)
         ));
 
-        dropSelf(Registration.BRANCH_BLOCK.get());
-        dropSelf(Registration.LIMESTONE_BLOCK.get());
-        dropSelf(Registration.LARGE_ROCK_BLOCK.get());
-        dropSelf(Registration.ROCK_BLOCK.get());
-        dropSelf(Registration.LIMESTONE_ROCK_BLOCK.get());
-        dropSelf(Registration.COPPER_ROCK_BLOCK.get());
-        dropSelf(Registration.THATCH_BLOCK.get());
+        add(BlockRegistration.TIN_ORE_BLOCK.get(), (block) -> createOreDrop(
+                BlockRegistration.TIN_ORE_BLOCK.get(),
+                ItemRegistration.RAW_TIN.get()
+        ));
+        add(BlockRegistration.DEEPSLATE_TIN_ORE_BLOCK.get(), (block) -> createOreDrop(
+                BlockRegistration.DEEPSLATE_TIN_ORE_BLOCK.get(),
+                ItemRegistration.RAW_TIN.get()
+        ));
+
+        dropSelf(BlockRegistration.BRANCH_BLOCK.get());
+        dropSelf(BlockRegistration.LIMESTONE_BLOCK.get());
+        dropSelf(BlockRegistration.LARGE_ROCK_BLOCK.get());
+        dropSelf(BlockRegistration.ROCK_BLOCK.get());
+        dropSelf(BlockRegistration.LIMESTONE_ROCK_BLOCK.get());
+        dropSelf(BlockRegistration.COPPER_ROCK_BLOCK.get());
+
+        dropSelf(BlockRegistration.THATCH_BLOCK.get());
     }
 
     protected void dropNamedContainer(Block block)
@@ -61,6 +72,6 @@ public class BaseBlockLootTables extends BlockLootSubProvider
     @Override
     protected @NotNull Iterable<Block> getKnownBlocks()
     {
-        return Registration.BLOCKS.getEntries().stream().map(DeferredHolder::get).map(b -> (Block) b)::iterator;
+        return BlockRegistration.BLOCKS.getEntries().stream().map(DeferredHolder::get).map(b -> (Block) b)::iterator;
     }
 }

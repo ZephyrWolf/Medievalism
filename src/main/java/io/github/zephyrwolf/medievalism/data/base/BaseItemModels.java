@@ -1,7 +1,8 @@
 package io.github.zephyrwolf.medievalism.data.base;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.Registration;
+import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -23,24 +24,27 @@ public class BaseItemModels extends ItemModelProvider
     protected void registerModels()
     {
         {
-            blockBasedModel(Registration.RED_CLAY_BLOCK_ITEM.get(), "");
-            blockBasedModel(Registration.LIMESTONE_ITEM.get(), "");
-            blockIconGeneratedModel(Registration.BRANCH_ITEM.get());
-            blockIconGeneratedModel(Registration.LARGE_ROCK_ITEM.get());
-            blockIconGeneratedModel(Registration.ROCK_ITEM.get());
-            blockIconGeneratedModel(Registration.LIMESTONE_ROCK_ITEM.get());
-            blockIconGeneratedModel(Registration.COPPER_ROCK_ITEM.get());
-            blockBasedModel(Registration.THATCH_BLOCK_ITEM.get(), "");
+            blockBasedModel(BlockRegistration.RED_CLAY_BLOCK_ITEM.get(), "");
+            blockBasedModel(BlockRegistration.LIMESTONE_ITEM.get(), "");
+            blockIconGeneratedModel(BlockRegistration.BRANCH_ITEM.get());
+            blockIconGeneratedModel(BlockRegistration.LARGE_ROCK_ITEM.get());
+            blockIconGeneratedModel(BlockRegistration.ROCK_ITEM.get());
+            blockIconGeneratedModel(BlockRegistration.LIMESTONE_ROCK_ITEM.get());
+            blockIconGeneratedModel(BlockRegistration.COPPER_ROCK_ITEM.get());
+            blockBasedModel(BlockRegistration.THATCH_BLOCK_ITEM.get(), "");
         }
 
 
 
         { // World
-            itemGeneratedModel(Registration.RED_CLAY_BALL.get());
-            itemGeneratedModel(Registration.DOG_BANE.get());
-            itemGeneratedModel(Registration.FLAX.get());
-            itemGeneratedModel(Registration.FLAX_SEEDS.get());
-            itemGeneratedModel(Registration.FLAX_FIBER.get());
+            itemGeneratedModel(ItemRegistration.RED_CLAY_BALL.get());
+            itemGeneratedModel(ItemRegistration.RAW_TIN.get());
+            blockBasedModel(BlockRegistration.TIN_ORE_BLOCK_ITEM.get(), "");
+            blockBasedModel(BlockRegistration.DEEPSLATE_TIN_ORE_BLOCK_ITEM.get(), "");
+            itemGeneratedModel(ItemRegistration.DOG_BANE.get());
+            itemGeneratedModel(ItemRegistration.FLAX.get());
+            itemGeneratedModel(ItemRegistration.FLAX_SEEDS.get());
+            itemGeneratedModel(ItemRegistration.FLAX_FIBER.get());
             // Wild Potato
             // Wild Carrot
             // Wild Beetroot
@@ -50,85 +54,85 @@ public class BaseItemModels extends ItemModelProvider
         }
         { // Farming
 
-            itemGeneratedModel(Registration.BLUEBERRIES.get());
-            itemGeneratedModel(Registration.RASPBERRIES.get());
-            itemGeneratedModel(Registration.STRAWBERRIES.get());
-            itemGeneratedModel(Registration.BARLEY_SEEDS.get());
-            itemGeneratedModel(Registration.BARLEY.get());
-            itemGeneratedModel(Registration.OAT_SEEDS.get());
-            itemGeneratedModel(Registration.OATS.get());
-            itemGeneratedModel(Registration.YAM.get());
-            itemGeneratedModel(Registration.BAKED_YAM.get());
-            itemGeneratedModel(Registration.BAKED_BEETROOT.get());
-            itemGeneratedModel(Registration.BAKED_CARROT.get());
-            itemGeneratedModel(Registration.CRACKED_BARLEY.get());
-            itemGeneratedModel(Registration.CRACKED_WHEAT.get());
-            itemGeneratedModel(Registration.ROLLED_OATS.get());
-            itemGeneratedModel(Registration.FLOUR.get());
-            itemGeneratedModel(Registration.DOUGH.get());
+            itemGeneratedModel(ItemRegistration.BLUEBERRIES.get());
+            itemGeneratedModel(ItemRegistration.RASPBERRIES.get());
+            itemGeneratedModel(ItemRegistration.STRAWBERRIES.get());
+            itemGeneratedModel(ItemRegistration.BARLEY_SEEDS.get());
+            itemGeneratedModel(ItemRegistration.BARLEY.get());
+            itemGeneratedModel(ItemRegistration.OAT_SEEDS.get());
+            itemGeneratedModel(ItemRegistration.OATS.get());
+            itemGeneratedModel(ItemRegistration.YAM.get());
+            itemGeneratedModel(ItemRegistration.BAKED_YAM.get());
+            itemGeneratedModel(ItemRegistration.BAKED_BEETROOT.get());
+            itemGeneratedModel(ItemRegistration.BAKED_CARROT.get());
+            itemGeneratedModel(ItemRegistration.CRACKED_BARLEY.get());
+            itemGeneratedModel(ItemRegistration.CRACKED_WHEAT.get());
+            itemGeneratedModel(ItemRegistration.ROLLED_OATS.get());
+            itemGeneratedModel(ItemRegistration.FLOUR.get());
+            itemGeneratedModel(ItemRegistration.DOUGH.get());
         }
         { // Knapping
-            itemGeneratedModel(Registration.HAMMERSTONE.asItem());
-            itemGeneratedModel(Registration.LUNATE.get());
-            itemGeneratedModel(Registration.BIFACE.get());
+            itemGeneratedModel(ItemRegistration.HAMMERSTONE.asItem());
+            itemGeneratedModel(ItemRegistration.LUNATE.get());
+            itemGeneratedModel(ItemRegistration.BIFACE.get());
         }
         { // Pottery
-            itemGeneratedModel(Registration.UNFIRED_BRICK.get());
-            itemGeneratedModel(Registration.UNFIRED_JUG.get());
-            itemGeneratedModel(Registration.JUG.get());
-            itemGeneratedModel(Registration.UNFIRED_CRUCIBLE.get());
-            itemGeneratedModel(Registration.CRUCIBLE.get());
+            itemGeneratedModel(ItemRegistration.UNFIRED_BRICK.get());
+            itemGeneratedModel(ItemRegistration.UNFIRED_JUG.get());
+            itemGeneratedModel(ItemRegistration.JUG.get());
+            itemGeneratedModel(ItemRegistration.UNFIRED_CRUCIBLE.get());
+            itemGeneratedModel(ItemRegistration.CRUCIBLE.get());
         }
-        itemGeneratedModel(Registration.BROKEN_GOAT_HORN.get());
+        itemGeneratedModel(ItemRegistration.BROKEN_GOAT_HORN.get());
         { // Leather Working
             // Hide
-            itemGeneratedModel(Registration.COW_HIDE.get());
-            itemGeneratedModel(Registration.CAMEL_HIDE.get());
-            itemGeneratedModel(Registration.DONKEY_HIDE.get());
-            itemGeneratedModel(Registration.HOGLIN_HIDE.get());
-            itemGeneratedModel(Registration.HORSE_HIDE.get());
-            itemGeneratedModel(Registration.MOOSHROOM_HIDE.get());
-            itemGeneratedModel(Registration.MULE_HIDE.get());
-            //itemGeneratedModel(Registration.RABBIT_HIDE.get());
-            itemGeneratedModel(Registration.RAVAGER_HIDE.get()); // Should this be extra large?
-            itemGeneratedModel(Registration.SHEEP_HIDE.get());
-            itemGeneratedModel(Registration.FOX_HIDE.get());
-            itemGeneratedModel(Registration.SNOW_FOX_HIDE.get()); // Unobtainable
-            itemGeneratedModel(Registration.WOLF_HIDE.get()); // Only one variable
-            itemGeneratedModel(Registration.OCELOT_HIDE.get());
-            itemGeneratedModel(Registration.CAT_HIDE.get()); // Only one variable
-            itemGeneratedModel(Registration.BAT_HIDE.get());
-            itemGeneratedModel(Registration.CAT_HIDE.get()); // Only one variable
-            itemGeneratedModel(Registration.GOAT_HIDE.get());
-            itemGeneratedModel(Registration.LLAMA_HIDE.get());
-            itemGeneratedModel(Registration.PANDA_HIDE.get());
-            itemGeneratedModel(Registration.PIG_HIDE.get());
-            itemGeneratedModel(Registration.POLAR_BEAR_HIDE.get());
-            itemGeneratedModel(Registration.SNIFFER_HIDE.get());
+            itemGeneratedModel(ItemRegistration.COW_HIDE.get());
+            itemGeneratedModel(ItemRegistration.CAMEL_HIDE.get());
+            itemGeneratedModel(ItemRegistration.DONKEY_HIDE.get());
+            itemGeneratedModel(ItemRegistration.HOGLIN_HIDE.get());
+            itemGeneratedModel(ItemRegistration.HORSE_HIDE.get());
+            itemGeneratedModel(ItemRegistration.MOOSHROOM_HIDE.get());
+            itemGeneratedModel(ItemRegistration.MULE_HIDE.get());
+            // Rabbit Hide -> minecraft:rabbit_hide
+            itemGeneratedModel(ItemRegistration.RAVAGER_HIDE.get()); // Should this be extra large?
+            itemGeneratedModel(ItemRegistration.SHEEP_HIDE.get());
+            itemGeneratedModel(ItemRegistration.FOX_HIDE.get());
+            itemGeneratedModel(ItemRegistration.SNOW_FOX_HIDE.get()); // Unobtainable
+            itemGeneratedModel(ItemRegistration.WOLF_HIDE.get()); // Only one variable
+            itemGeneratedModel(ItemRegistration.OCELOT_HIDE.get());
+            itemGeneratedModel(ItemRegistration.CAT_HIDE.get()); // Only one variable
+            itemGeneratedModel(ItemRegistration.BAT_HIDE.get());
+            itemGeneratedModel(ItemRegistration.CAT_HIDE.get()); // Only one variable
+            itemGeneratedModel(ItemRegistration.GOAT_HIDE.get());
+            itemGeneratedModel(ItemRegistration.LLAMA_HIDE.get());
+            itemGeneratedModel(ItemRegistration.PANDA_HIDE.get());
+            itemGeneratedModel(ItemRegistration.PIG_HIDE.get());
+            itemGeneratedModel(ItemRegistration.POLAR_BEAR_HIDE.get());
+            itemGeneratedModel(ItemRegistration.SNIFFER_HIDE.get());
 
             // Leather
-            itemGeneratedModel(Registration.LARGE_LIMED_HIDE.get());
-            itemGeneratedModel(Registration.MEDIUM_LIMED_HIDE.get());
-            itemGeneratedModel(Registration.SMALL_LIMED_HIDE.get());
-            itemGeneratedModel(Registration.LARGE_RAW_HIDE.get());
-            itemGeneratedModel(Registration.MEDIUM_RAW_HIDE.get());
-            itemGeneratedModel(Registration.SMALL_RAW_HIDE.get());
-            itemGeneratedModel(Registration.LARGE_WET_LEATHER.get());
-            itemGeneratedModel(Registration.MEDIUM_WET_LEATHER.get());
-            itemGeneratedModel(Registration.SMALL_WET_LEATHER.get());
+            itemGeneratedModel(ItemRegistration.LARGE_LIMED_HIDE.get());
+            itemGeneratedModel(ItemRegistration.MEDIUM_LIMED_HIDE.get());
+            itemGeneratedModel(ItemRegistration.SMALL_LIMED_HIDE.get());
+            itemGeneratedModel(ItemRegistration.LARGE_RAW_HIDE.get());
+            itemGeneratedModel(ItemRegistration.MEDIUM_RAW_HIDE.get());
+            itemGeneratedModel(ItemRegistration.SMALL_RAW_HIDE.get());
+            itemGeneratedModel(ItemRegistration.LARGE_WET_LEATHER.get());
+            itemGeneratedModel(ItemRegistration.MEDIUM_WET_LEATHER.get());
+            itemGeneratedModel(ItemRegistration.SMALL_WET_LEATHER.get());
             // Large Leather -> minecraft:leather
-            itemGeneratedModel(Registration.MEDIUM_LEATHER.get());
-            itemGeneratedModel(Registration.SMALL_LEATHER.get());
+            itemGeneratedModel(ItemRegistration.MEDIUM_LEATHER.get());
+            itemGeneratedModel(ItemRegistration.SMALL_LEATHER.get());
         }
 
         { // Misc
-            itemGeneratedModel(Registration.QUICK_LIME.get());
-            itemGeneratedModel(Registration.THATCH.get());
-            itemGeneratedModel(Registration.CHOPPED_WOOD.get());
-            itemGeneratedModel(Registration.SLACKED_LIME_BUCKET.get());
-            itemGeneratedModel(Registration.TANNIN_BUCKET.get());
-            itemGeneratedModel(Registration.DIGGING_STICK.get());
-            itemGeneratedModel(Registration.FIRE_STARTER.get());
+            itemGeneratedModel(ItemRegistration.QUICK_LIME.get());
+            itemGeneratedModel(ItemRegistration.THATCH.get());
+            itemGeneratedModel(ItemRegistration.CHOPPED_WOOD.get());
+            itemGeneratedModel(ItemRegistration.SLACKED_LIME_BUCKET.get());
+            itemGeneratedModel(ItemRegistration.TANNIN_BUCKET.get());
+            itemGeneratedModel(ItemRegistration.DIGGING_STICK.get());
+            itemGeneratedModel(ItemRegistration.FIRE_STARTER.get());
         }
     }
 

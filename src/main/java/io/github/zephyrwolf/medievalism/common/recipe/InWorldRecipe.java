@@ -1,17 +1,14 @@
 package io.github.zephyrwolf.medievalism.common.recipe;
 
-import io.github.zephyrwolf.medievalism.Registration;
+import io.github.zephyrwolf.medievalism.registry.Registration;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -68,19 +65,18 @@ public class InWorldRecipe implements Recipe<InWorldRecipeInput>
         }
 
         // Optional.of(Permutation)???
-        boolean match = HeapsAlgorithm(ingredients.size(), (permutation) -> {
+
+
+        return HeapsAlgorithm(ingredients.size(), (permutation) -> {
             for (int j = 0; j < ingredients.size(); j++)
             {
                 int test = tests[permutation.at(j)];
                 int mask = 1 << j;
-                int result = test & mask;
-                if (result == 0) return false;
+                int result1 = test & mask;
+                if (result1 == 0) return false;
             }
             return true;
         });
-
-
-        return match;
     }
 
     public static class Permutation

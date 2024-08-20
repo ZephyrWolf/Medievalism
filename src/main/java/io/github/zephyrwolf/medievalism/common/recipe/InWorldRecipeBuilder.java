@@ -1,6 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.recipe;
 
-import io.github.zephyrwolf.medievalism.Registration;
+import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;
@@ -34,7 +34,7 @@ public class InWorldRecipeBuilder implements RecipeBuilder
 
     public static InWorldRecipeBuilder fireStarter(BlockState result)
     {
-        return new InWorldRecipeBuilder(new ItemStack(Registration.FIRE_STARTER.get()), result);
+        return new InWorldRecipeBuilder(new ItemStack(ItemRegistration.FIRE_STARTER.get()), result);
     }
 
     public static InWorldRecipeBuilder of(Item trigger, BlockState result)
@@ -65,6 +65,7 @@ public class InWorldRecipeBuilder implements RecipeBuilder
     @Override
     public @NotNull RecipeBuilder unlockedBy(@NotNull String pName, @NotNull Criterion<?> pCriterion)
     {
+        assert this.criteria != null;
         this.criteria.put(pName, pCriterion);
         return this;
     }
@@ -90,6 +91,7 @@ public class InWorldRecipeBuilder implements RecipeBuilder
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pId))
                 .rewards(AdvancementRewards.Builder.recipe(pId))
                 .requirements(AdvancementRequirements.Strategy.OR);
+        assert this.criteria != null;
         this.criteria.forEach(advancement$builder::addCriterion);
         InWorldRecipe inworldrecipe = new InWorldRecipe(
                 //Objects.requireNonNullElse(this.group, ""),
@@ -103,6 +105,7 @@ public class InWorldRecipeBuilder implements RecipeBuilder
 
     private void ensureValid(ResourceLocation pId)
     {
+        assert this.criteria != null;
         if (this.criteria.isEmpty())
         {
             throw new IllegalStateException("No way of obtaining recipe " + pId);
