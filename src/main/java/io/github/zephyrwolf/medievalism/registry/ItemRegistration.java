@@ -18,12 +18,11 @@ public final class ItemRegistration
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MedievalismConstants.MOD_ID);
 
     //region World
-    public static final DeferredItem<Item> RED_CLAY_BALL = ITEMS.registerSimpleItem("red_clay_ball", new Item.Properties());
-    public static final DeferredItem<Item> RAW_TIN = ITEMS.registerSimpleItem("raw_tin", new Item.Properties());
+    public static final DeferredItem<Item> RED_CLAY_BALL = ITEMS.registerSimpleItem("red_clay_ball");
+    public static final DeferredItem<Item> RAW_TIN = ITEMS.registerSimpleItem("raw_tin");
     //endregion
 
     //region Farming
-    public static final DeferredItem<Item> DOG_BANE = ITEMS.registerSimpleItem("dog_bane", new Item.Properties());
     public static final DeferredItem<Item> FLAX = ITEMS.registerSimpleItem("flax", new Item.Properties());
     public static final DeferredItem<Item> FLAX_FIBER = ITEMS.registerSimpleItem("flax_fiber", new Item.Properties());
     public static final DeferredItem<Item> FLAX_SEEDS = ITEMS.registerSimpleItem("flax_seeds", new Item.Properties());
@@ -58,15 +57,22 @@ public final class ItemRegistration
     public static final DeferredItem<Item> CHOPPED_WOOD = ITEMS.registerSimpleItem("chopped_wood", new Item.Properties());
     public static final DeferredItem<Item> SLACKED_LIME_BUCKET = ITEMS.registerSimpleItem("slacked_lime_bucket", new Item.Properties());
     public static final DeferredItem<Item> TANNIN_BUCKET = ITEMS.registerSimpleItem("tannin_bucket", new Item.Properties());
+    public static final DeferredItem<Item> WOOD_ASH = ITEMS.registerSimpleItem("wood_ash"); // Order of concentraiton Potash(Potassiam Carbonate), CaCO3, CaO, MgCO3, Posphates and Silicates
     //endregion
 
     //region Pottery
-    public static final DeferredItem<Item> UNFIRED_BRICK = ITEMS.registerSimpleItem("unfired_brick", new Item.Properties());
-    //public static final DeferredItem<Item> UNFIRED_POTTERY_BRICK = ITEMS.registerSimpleItem("unfired_pottery_brick", new Item.Properties());
-    public static final DeferredItem<Item> UNFIRED_JUG = ITEMS.registerSimpleItem("unfired_jug", new Item.Properties());
-    public static final DeferredItem<Item> JUG = ITEMS.registerSimpleItem("jug", new Item.Properties());
-    public static final DeferredItem<Item> UNFIRED_CRUCIBLE = ITEMS.registerSimpleItem("unfired_crucible", new Item.Properties());
-    public static final DeferredItem<Item> CRUCIBLE = ITEMS.registerSimpleItem("crucible", new Item.Properties());
+    //public static final DeferredItem<Item> GROG = ITEMS.registerSimpleItem("grog"); // Not sure about this
+    //public static final DeferredItem<Item> POTTERS_CLAY = ITEMS.registerSimpleItem("potters_clay"); // Clay, grog, wood ash?
+    public static final DeferredItem<Item> UNFIRED_BRICK = ITEMS.registerSimpleItem("unfired_brick");
+    //public static final DeferredItem<Item> UNFIRED_POTTERY_BRICK = ITEMS.registerSimpleItem("unfired_pottery_brick");
+    public static final DeferredItem<Item> UNFIRED_JUG = ITEMS.registerSimpleItem("unfired_jug");
+    public static final DeferredItem<Item> JUG = ITEMS.registerSimpleItem("jug");
+    public static final DeferredItem<Item> UNFIRED_PLANT_POT = ITEMS.registerSimpleItem("unfired_plant_pot");
+    public static final DeferredItem<Item> UNFIRED_BIRCH_POT = ITEMS.registerSimpleItem("unfired_birch_pot");
+    public static final DeferredItem<Item> UNFIRED_POT = ITEMS.registerSimpleItem("unfired_pot");
+    public static final DeferredItem<Item> POT = ITEMS.registerSimpleItem("pot");
+    public static final DeferredItem<Item> UNFIRED_LARGE_POT = ITEMS.registerSimpleItem("unfired_large_pot");
+    public static final DeferredItem<Item> LARGE_POT = ITEMS.registerSimpleItem("large_pot");
     //endregion
 
     //region MobDrops
@@ -96,6 +102,14 @@ public final class ItemRegistration
     public static final DeferredItem<Item> WOLF_HIDE = ITEMS.registerSimpleItem("wolf_hide", new Item.Properties()); // White
     //endregion
 
+    //region Bark
+    public static final DeferredItem<Item> WHITE_BARK = ITEMS.registerSimpleItem("white_bark"); // Birch, mangrove
+    public static final DeferredItem<Item> BROWN_BARK = ITEMS.registerSimpleItem("brown_bark"); //cherry, spruce, jungle
+    public static final DeferredItem<Item> GREY_BARK = ITEMS.registerSimpleItem("grey_bark"); // Acacia
+    public static final DeferredItem<Item> DARK_BROWN_BARK = ITEMS.registerSimpleItem("dark_brown_bark"); // Oak
+    public static final DeferredItem<Item> BLACK_BARK = ITEMS.registerSimpleItem("black_bark"); // Dark Oak
+    //endregion
+
     //region LeatherWorking
     public static final DeferredItem<Item> LARGE_LIMED_HIDE = ITEMS.registerSimpleItem("large_limed_hide", new Item.Properties());
     public static final DeferredItem<Item> MEDIUM_LIMED_HIDE = ITEMS.registerSimpleItem("medium_limed_hide", new Item.Properties());
@@ -109,6 +123,25 @@ public final class ItemRegistration
     //public static final DeferredItem<Item> LARGE_LEATHER = ITEMS.registerSimpleItem("large_leather", new Item.Properties());
     public static final DeferredItem<Item> MEDIUM_LEATHER = ITEMS.registerSimpleItem("medium_leather", new Item.Properties());
     public static final DeferredItem<Item> SMALL_LEATHER = ITEMS.registerSimpleItem("small_leather", new Item.Properties());
+    //endregion
+
+    //region Metallurgy
+    public static final DeferredItem<Item> CHARCOAL_POWDER = ITEMS.registerSimpleItem("charcoal_powder");
+    public static final DeferredItem<Item> FIRECLAY = ITEMS.registerSimpleItem("fireclay"); // clay, wood ash, charcoal powder, sand
+    public static final DeferredItem<Item> POTASH = ITEMS.registerSimpleItem("potash"); // (Leaching) soluable part of wood ash, evaporated/boiled + NaCO3 (Soda Ash), CaCO3, MgCO3, Potassium Sulfate, CaSO4
+    public static final DeferredItem<Item> REFRACTORY_CLAY = ITEMS.registerSimpleItem("refractory_clay"); // benotite, potash, charcoal powder, sand, iron oxide (not alumina)
+    public static final DeferredItem<Item> UNFIRED_CLAY_CRUCIBLE = ITEMS.registerSimpleItem("unfired_clay_crucible", new Item.Properties());
+    public static final DeferredItem<Item> CLAY_CRUCIBLE = ITEMS.registerSimpleItem("clay_crucible", new Item.Properties());
+    public static final DeferredItem<Item> UNFIRED_FIRECLAY_CRUCIBLE = ITEMS.registerSimpleItem("unfired_fireclay_crucible", new Item.Properties());
+    public static final DeferredItem<Item> FIRECLAY_CRUCIBLE = ITEMS.registerSimpleItem("fireclay_crucible", new Item.Properties());
+    public static final DeferredItem<Item> UNFIRED_REFRACTORY_CRUCIBLE = ITEMS.registerSimpleItem("unfired_refractory_crucible", new Item.Properties());
+    public static final DeferredItem<Item> REFRACTORY_CRUCIBLE = ITEMS.registerSimpleItem("refractory_crucible", new Item.Properties());
+
+    public static final DeferredItem<Item> COPPER_ORE_DUST = ITEMS.registerSimpleItem("copper_ore_dust"); // malachite > azurite
+    public static final DeferredItem<Item> TIN_ORE_DUST = ITEMS.registerSimpleItem("tin_ore_dust"); // Cassiterite
+    public static final DeferredItem<Item> IRON_ORE_DUST = ITEMS.registerSimpleItem("iron_ore_dust"); // hematite > magnetite
+    // Sphalerite, zinc
+
     //endregion
 
     // InWorldRecipeBuilder.fireStarter

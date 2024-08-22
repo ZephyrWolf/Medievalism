@@ -62,6 +62,11 @@ public class BaseBlockLootTables extends BlockLootSubProvider
         dropSelf(BlockRegistration.COPPER_ROCK_BLOCK.get());
 
         dropSelf(BlockRegistration.THATCH_BLOCK.get());
+        dropSelf(BlockRegistration.DOGBANE_BLOCK.get());
+
+        dropSelf(BlockRegistration.STONE_BENCH.get());
+        dropSelf(BlockRegistration.CHOPPING_BLOCK.get());
+        dropSelf(BlockRegistration.BIRCH_POT.get());
     }
 
     protected void dropNamedContainer(Block block)

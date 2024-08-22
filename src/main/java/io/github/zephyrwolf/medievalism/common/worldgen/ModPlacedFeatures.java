@@ -7,6 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -21,10 +22,14 @@ public final class ModPlacedFeatures
 
     public static final ResourceKey<PlacedFeature> BRANCH_FOREST_PLACED_KEY = registerKey(MedievalismConstants.resource("branch_forest_placed"));
     public static final ResourceKey<PlacedFeature> BRANCH_PLACED_KEY = registerKey(MedievalismConstants.resource("branch_placed"));
+
     public static final ResourceKey<PlacedFeature> ROCK_PLACED_KEY = registerKey(MedievalismConstants.resource("rock_placed"));
     public static final ResourceKey<PlacedFeature> LARGE_ROCK_PLACED_KEY = registerKey(MedievalismConstants.resource("large_rock_placed"));
     public static final ResourceKey<PlacedFeature> LIMESTONE_ROCK_PLACED_KEY = registerKey(MedievalismConstants.resource("limestone_rock_placed"));
     public static final ResourceKey<PlacedFeature> COPPER_ROCK_PLACED_KEY = registerKey(MedievalismConstants.resource("copper_rock_placed"));
+
+    public static final ResourceKey<PlacedFeature> RED_CLAY_PLACED_KEY = registerKey(MedievalismConstants.resource("red_clay_placed"));
+    public static final ResourceKey<PlacedFeature> RED_CLAY_WITH_DOGBANE_PLACED_KEY = registerKey(MedievalismConstants.resource("red_clay_with_dogbane_placed"));
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context)
     {
@@ -59,6 +64,9 @@ public final class ModPlacedFeatures
         register(context, LIMESTONE_ROCK_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.LIMESTONE_ROCK_CONFIGURED_KEY), branchPlacement(4) );
         // Sandstone rock
         register(context, COPPER_ROCK_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.COPPER_ROCK_CONFIGURED_KEY), branchPlacement(4) );
+
+        register(context, RED_CLAY_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.RED_CLAY_CONFIGURED_KEY), surfacePlacement(10, -5, 0));
+        register(context, RED_CLAY_WITH_DOGBANE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.RED_CLAY_WITH_DOGBANE_CONFIGURED_KEY), surfacePlacement(8, 0, 0));
     }
 
     public static ResourceKey<PlacedFeature> registerKey(ResourceLocation resource)
@@ -87,5 +95,15 @@ public final class ModPlacedFeatures
     private static List<PlacementModifier> branchPlacement(int chance)
     {
         return List.of(RarityFilter.onAverageOnceEvery(chance), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG), BiomeFilter.biome());
+    }
+
+    private static List<PlacementModifier> surfacePlacement(int chance)
+    {
+        return surfacePlacement(chance, 0, 0);
+    }
+
+    private static List<PlacementModifier> surfacePlacement(int chance, int minYOffset, int maxYOffset)
+    {
+        return List.of(RarityFilter.onAverageOnceEvery(chance), InSquarePlacement.spread(), RandomOffsetPlacement.vertical(UniformInt.of(minYOffset, maxYOffset)), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG), BiomeFilter.biome());
     }
 }

@@ -188,12 +188,6 @@ idea {
 
 // -- Medievalism
 
-tasks.register('deleteOldGeneratedPacks', Delete) {
-    files "src/main/resources"
-    include "overhaul_client/**"
-    include "overhaul_server/**"
-}
-
 // TODO Delete target directory too before copying
 // TODO This should probably run after runData and not before build
 tasks.register('copyGeneratedPacks', Copy) {
@@ -201,7 +195,6 @@ tasks.register('copyGeneratedPacks', Copy) {
     into "src/main/resources"
     include "overhaul_client/**"
     include "overhaul_server/**"
-    //dependsOn("processResources")
 }
 
 configure('copyGeneratedPacks') {
@@ -209,11 +202,12 @@ configure('copyGeneratedPacks') {
     description = "Will copy the generated resource packs into the build directory."
 }
 
+/*
 tasks.named("processResources") {
     dependsOn("copyGeneratedPacks")
 }
+ */
 
-tasks.named("build") {
-    dependsOn("copyGeneratedPacks")
+tasks.named("copyGeneratedPacks") {
+    dependsOn("build")
 }
-

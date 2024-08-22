@@ -1,10 +1,11 @@
 package io.github.zephyrwolf.medievalism.registry;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.common.recipe.AdditionalDropToolUseRecipe;
+import io.github.zephyrwolf.medievalism.common.recipe.AdditionalDropToolUseRecipeSerializer;
 import io.github.zephyrwolf.medievalism.common.recipe.InWorldRecipe;
 import io.github.zephyrwolf.medievalism.common.recipe.InWorldRecipeSerializer;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.bus.api.IEventBus;
@@ -12,7 +13,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class Registration
+public class RecipeRegistration
 {
     //public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPES, Tutorial2Block.MODID);
     //public static final DeferredRegister<MenuType<?>> MENU_TYPES = DeferredRegister.create(Registries.MENU_TYPES, Tutorial2Block.MODID);
@@ -21,13 +22,14 @@ public class Registration
             Registries.RECIPE_TYPE, MedievalismConstants.MOD_ID);
     public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(
             Registries.RECIPE_SERIALIZER, MedievalismConstants.MOD_ID);
+
     public static final Supplier<RecipeSerializer<InWorldRecipe>> IN_WORLD_RECIPE_SERIALIZER = RECIPE_SERIALIZERS.register("in_world", InWorldRecipeSerializer::new);
-    //public static final Supplier<RecipeSerializer<InWorldRecipe>> PLEASE = BuiltInRegistries.RECIPE_SERIALIZER.add
+    public static final Supplier<RecipeSerializer<AdditionalDropToolUseRecipe>> ADDITIONAL_DROP_TOOL_USE_RECIPE_SERIALIZER = RECIPE_SERIALIZERS.register("additional_drop_tool_use", AdditionalDropToolUseRecipeSerializer::new);
 
     public static final Supplier<RecipeType<InWorldRecipe>> IN_WORLD_RECIPE_TYPE = RECIPE_TYPES.register("in_world", () ->
-            RecipeType.simple(ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "in_world")));
-
-    // --
+            RecipeType.simple(MedievalismConstants.resource("in_world")));
+    public static final Supplier<RecipeType<AdditionalDropToolUseRecipe>> ADDITIONAL_DROP_TOOL_USE_RECIPE_TYPE = RECIPE_TYPES.register("additional_drop_tool_use", () ->
+            RecipeType.simple(MedievalismConstants.resource("additional_drop_tool_use")));
 
 
 

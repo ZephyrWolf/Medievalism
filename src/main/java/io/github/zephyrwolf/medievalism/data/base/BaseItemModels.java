@@ -32,19 +32,20 @@ public class BaseItemModels extends ItemModelProvider
             blockIconGeneratedModel(BlockRegistration.LIMESTONE_ROCK_ITEM.get());
             blockIconGeneratedModel(BlockRegistration.COPPER_ROCK_ITEM.get());
             blockBasedModel(BlockRegistration.THATCH_BLOCK_ITEM.get(), "");
+            itemGeneratedModel(BlockRegistration.DOGBANE_BLOCK_ITEM.get()); // TODO This is wrong
+            blockBasedModel(BlockRegistration.STONE_BENCH_ITEM.get(), "");
+            blockBasedModel(BlockRegistration.CHOPPING_BLOCK_ITEM.get(), "");
+            blockIconGeneratedModel(BlockRegistration.BIRCH_POT_ITEM.get());
         }
-
-
-
         { // World
             itemGeneratedModel(ItemRegistration.RED_CLAY_BALL.get());
             itemGeneratedModel(ItemRegistration.RAW_TIN.get());
             blockBasedModel(BlockRegistration.TIN_ORE_BLOCK_ITEM.get(), "");
             blockBasedModel(BlockRegistration.DEEPSLATE_TIN_ORE_BLOCK_ITEM.get(), "");
-            itemGeneratedModel(ItemRegistration.DOG_BANE.get());
             itemGeneratedModel(ItemRegistration.FLAX.get());
             itemGeneratedModel(ItemRegistration.FLAX_SEEDS.get());
             itemGeneratedModel(ItemRegistration.FLAX_FIBER.get());
+
             // Wild Potato
             // Wild Carrot
             // Wild Beetroot
@@ -80,10 +81,21 @@ public class BaseItemModels extends ItemModelProvider
             itemGeneratedModel(ItemRegistration.UNFIRED_BRICK.get());
             itemGeneratedModel(ItemRegistration.UNFIRED_JUG.get());
             itemGeneratedModel(ItemRegistration.JUG.get());
-            itemGeneratedModel(ItemRegistration.UNFIRED_CRUCIBLE.get());
-            itemGeneratedModel(ItemRegistration.CRUCIBLE.get());
+            itemGeneratedModel(ItemRegistration.UNFIRED_PLANT_POT.get());
+            itemGeneratedModel(ItemRegistration.UNFIRED_BIRCH_POT.get());
+            itemGeneratedModel(ItemRegistration.UNFIRED_POT.get());
+            itemGeneratedModel(ItemRegistration.POT.get());
+            itemGeneratedModel(ItemRegistration.UNFIRED_LARGE_POT.get());
+            itemGeneratedModel(ItemRegistration.LARGE_POT.get());
         }
         itemGeneratedModel(ItemRegistration.BROKEN_GOAT_HORN.get());
+        { // Bark
+            itemGeneratedModel(ItemRegistration.WHITE_BARK.get());
+            itemGeneratedModel(ItemRegistration.BROWN_BARK.get());
+            itemGeneratedModel(ItemRegistration.GREY_BARK.get());
+            itemGeneratedModel(ItemRegistration.DARK_BROWN_BARK.get());
+            itemGeneratedModel(ItemRegistration.BLACK_BARK.get());
+        }
         { // Leather Working
             // Hide
             itemGeneratedModel(ItemRegistration.COW_HIDE.get());
@@ -124,7 +136,21 @@ public class BaseItemModels extends ItemModelProvider
             itemGeneratedModel(ItemRegistration.MEDIUM_LEATHER.get());
             itemGeneratedModel(ItemRegistration.SMALL_LEATHER.get());
         }
-
+        { // Metallurgy
+            itemGeneratedModel(ItemRegistration.CHARCOAL_POWDER.get());
+            itemGeneratedModel(ItemRegistration.FIRECLAY.get());
+            itemGeneratedModel(ItemRegistration.POTASH.get());
+            itemGeneratedModel(ItemRegistration.REFRACTORY_CLAY.get());
+            itemGeneratedModel(ItemRegistration.UNFIRED_CLAY_CRUCIBLE.get());
+            itemGeneratedModel(ItemRegistration.CLAY_CRUCIBLE.get());
+            itemGeneratedModel(ItemRegistration.UNFIRED_FIRECLAY_CRUCIBLE.get());
+            itemGeneratedModel(ItemRegistration.FIRECLAY_CRUCIBLE.get());
+            itemGeneratedModel(ItemRegistration.UNFIRED_REFRACTORY_CRUCIBLE.get());
+            itemGeneratedModel(ItemRegistration.REFRACTORY_CRUCIBLE.get());
+            itemGeneratedModel(ItemRegistration.COPPER_ORE_DUST.get());
+            itemGeneratedModel(ItemRegistration.TIN_ORE_DUST.get());
+            itemGeneratedModel(ItemRegistration.IRON_ORE_DUST.get());
+        }
         { // Misc
             itemGeneratedModel(ItemRegistration.QUICK_LIME.get());
             itemGeneratedModel(ItemRegistration.THATCH.get());
@@ -133,6 +159,7 @@ public class BaseItemModels extends ItemModelProvider
             itemGeneratedModel(ItemRegistration.TANNIN_BUCKET.get());
             itemGeneratedModel(ItemRegistration.DIGGING_STICK.get());
             itemGeneratedModel(ItemRegistration.FIRE_STARTER.get());
+            itemGeneratedModel(ItemRegistration.WOOD_ASH.get());
         }
     }
 

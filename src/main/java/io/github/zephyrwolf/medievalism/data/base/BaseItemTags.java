@@ -86,6 +86,19 @@ public class BaseItemTags extends ItemTagsProvider
         tag(ModItemTags.TINDER)
                 .add(ItemRegistration.THATCH.get());
                 // Candlenut leaves?
+
+        tag(ModItemTags.BARK).add(
+                ItemRegistration.WHITE_BARK.get(),
+                ItemRegistration.BROWN_BARK.get(),
+                ItemRegistration.GREY_BARK.get(),
+                ItemRegistration.DARK_BROWN_BARK.get(),
+                ItemRegistration.BLACK_BARK.get()
+        );
+
+        tag(ModItemTags.CLAY_FLUX).add(
+                ItemRegistration.WOOD_ASH.get(),
+                ItemRegistration.POTASH.get()
+        );
     }
 
     public void registerCommonModTags()

@@ -20,6 +20,9 @@ public final class ModItemTags
 
     public static final TagKey<Item> TINDER = tag("tinder");
 
+    public static final TagKey<Item> BARK = tag("bark");
+    public static final TagKey<Item> CLAY_FLUX = tag("clay_flux"); // wood_ash & potash // TODO Is this the right name
+
     private static TagKey<Item> tag(String name)
     {
         return tag(MedievalismConstants.MOD_ID, name);

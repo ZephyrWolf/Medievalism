@@ -1,13 +1,14 @@
 package io.github.zephyrwolf.medievalism;
 
 import io.github.zephyrwolf.medievalism.common.block.ModBlockEvents;
+import io.github.zephyrwolf.medievalism.registry.FeatureRegistration;
 import io.github.zephyrwolf.medievalism.data.base.ModCreativeModeTabs;
 import io.github.zephyrwolf.medievalism.data.ModDataGeneration;
 //import io.github.zephyrwolf.medievalism.resource.ClientModPackSource;
 import io.github.zephyrwolf.medievalism.common.resource.BuiltinRepositorySource;
 import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
-import io.github.zephyrwolf.medievalism.registry.Registration;
+import io.github.zephyrwolf.medievalism.registry.RecipeRegistration;
 import net.minecraft.server.packs.*;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
@@ -42,12 +43,14 @@ public class MedievalismMod
 
         ItemRegistration.register(modEventBus);
         BlockRegistration.register(modEventBus);
-        Registration.register(modEventBus);
+        FeatureRegistration.register(modEventBus);
+        RecipeRegistration.register(modEventBus);
 
         //modEventBus.addListener(Registration::addCreativeModeTabContents);
         ModCreativeModeTabs.register(modEventBus);
 
         //NeoForge.EVENT_BUS.register(new NeoForgeEventHandlers());
+        NeoForge.EVENT_BUS.addListener(EventPriority.LOWEST, ModBlockEvents::onToolUse);
         NeoForge.EVENT_BUS.addListener(ModBlockEvents::blockDrops);
         NeoForge.EVENT_BUS.addListener(ModBlockEvents::breakSpeed);
     }

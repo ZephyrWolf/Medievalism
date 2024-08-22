@@ -1,20 +1,34 @@
 package io.github.zephyrwolf.medievalism.common.worldgen;
 
+import com.mojang.blaze3d.shaders.Uniform;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.common.worldgen.feature.CompositeFeature;
+import io.github.zephyrwolf.medievalism.common.worldgen.feature.configuration.CompositeFeatureConfiguration;
+import io.github.zephyrwolf.medievalism.data.base.ModBlockTags;
 import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
+import io.github.zephyrwolf.medievalism.registry.FeatureRegistration;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.valueproviders.BiasedToBottomInt;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
+import net.minecraft.world.level.levelgen.placement.HeightmapPlacement;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
@@ -23,15 +37,22 @@ import java.util.List;
 public final class ModConfiguredFeatures
 {
     public static final ResourceKey<ConfiguredFeature<?,?>> OVERWORLD_TIN_ORE_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("tin_ore"));
+
     public static final ResourceKey<ConfiguredFeature<?,?>> BRANCH_FOREST_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("branch_forest_configured"));
     public static final ResourceKey<ConfiguredFeature<?,?>> BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("branch_configured"));
+
     public static final ResourceKey<ConfiguredFeature<?,?>> ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("rock_configured"));
     public static final ResourceKey<ConfiguredFeature<?,?>> LARGE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("large_rock_configured"));
     public static final ResourceKey<ConfiguredFeature<?,?>> LIMESTONE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("limestone_rock_configured"));
     public static final ResourceKey<ConfiguredFeature<?,?>> COPPER_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("copper_rock_configured"));
 
+    public static final ResourceKey<ConfiguredFeature<?,?>> RED_CLAY_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("red_clay_configured"));
+    public static final ResourceKey<ConfiguredFeature<?,?>> RED_CLAY_WITH_DOGBANE_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("red_clay_with_dogbane_configured"));
+
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?,?>> context)
     {
+        var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
+
         RuleTest stoneReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
         List<OreConfiguration.TargetBlockState> overworldTinOres = List.of(
@@ -65,6 +86,34 @@ public final class ModConfiguredFeatures
                 new RandomPatchConfiguration(1, 0, 0,
                         PlacementUtils.onlyWhenEmpty( Feature.SIMPLE_BLOCK,
                                 new SimpleBlockConfiguration( BlockStateProvider.simple(BlockRegistration.COPPER_ROCK_BLOCK.get())))));
+
+        RuleTest redClayReplaceables = new TagMatchTest(ModBlockTags.RED_CLAY_CAN_REPLACE);
+        List<OreConfiguration.TargetBlockState> redClayTargetBlockStates = List.of(
+                OreConfiguration.target(redClayReplaceables, BlockRegistration.RED_CLAY_BLOCK.get().defaultBlockState())
+        );
+
+        register(context, RED_CLAY_CONFIGURED_KEY, Feature.ORE, new OreConfiguration(redClayTargetBlockStates,32));
+        register(context, RED_CLAY_WITH_DOGBANE_CONFIGURED_KEY, FeatureRegistration.COMPOSITE_FEATURE.get(), new CompositeFeatureConfiguration(List.of(
+                PlacementUtils.inlinePlaced(Feature.ORE, new OreConfiguration(
+                        redClayTargetBlockStates, 48
+                ), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG), RandomOffsetPlacement.vertical(UniformInt.of(-5, 0))),
+                PlacementUtils.inlinePlaced(Feature.RANDOM_PATCH, new RandomPatchConfiguration(
+                        15,
+                        4,
+                        0,
+                        PlacementUtils.inlinePlaced(
+                                Feature.BLOCK_COLUMN,
+                                BlockColumnConfiguration.simple(BiasedToBottomInt.of(2, 5), BlockStateProvider.simple(BlockRegistration.DOGBANE_BLOCK.get())),
+                                BlockPredicateFilter.forPredicate(
+                                        BlockPredicate.allOf(
+                                                BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                                                BlockPredicate.wouldSurvive(BlockRegistration.DOGBANE_BLOCK.get().defaultBlockState(), BlockPos.ZERO)
+                                        )
+                                ),
+                                HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG)
+                        )
+                ))
+        )));
     }
 
     public static ResourceKey<ConfiguredFeature<?,?>> registerKey(ResourceLocation resource)

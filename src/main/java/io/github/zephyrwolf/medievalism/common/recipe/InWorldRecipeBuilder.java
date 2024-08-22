@@ -28,8 +28,6 @@ public class InWorldRecipeBuilder implements RecipeBuilder
     ItemStack trigger;
     NonNullList<Ingredient> ingredients = NonNullList.create();
     BlockState result;
-    @Nullable
-    //private String group;
     private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
 
     public static InWorldRecipeBuilder fireStarter(BlockState result)
@@ -65,7 +63,6 @@ public class InWorldRecipeBuilder implements RecipeBuilder
     @Override
     public @NotNull RecipeBuilder unlockedBy(@NotNull String pName, @NotNull Criterion<?> pCriterion)
     {
-        assert this.criteria != null;
         this.criteria.put(pName, pCriterion);
         return this;
     }
@@ -91,7 +88,6 @@ public class InWorldRecipeBuilder implements RecipeBuilder
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pId))
                 .rewards(AdvancementRewards.Builder.recipe(pId))
                 .requirements(AdvancementRequirements.Strategy.OR);
-        assert this.criteria != null;
         this.criteria.forEach(advancement$builder::addCriterion);
         InWorldRecipe inworldrecipe = new InWorldRecipe(
                 //Objects.requireNonNullElse(this.group, ""),

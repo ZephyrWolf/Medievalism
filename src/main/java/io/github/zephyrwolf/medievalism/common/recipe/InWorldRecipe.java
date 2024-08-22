@@ -1,6 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.recipe;
 
-import io.github.zephyrwolf.medievalism.registry.Registration;
+import io.github.zephyrwolf.medievalism.registry.RecipeRegistration;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
@@ -161,14 +161,11 @@ public class InWorldRecipe implements Recipe<InWorldRecipeInput>
     public @NotNull ItemStack getResultItem(HolderLookup.@NotNull Provider pRegistries) { return ItemStack.EMPTY; }
 
     @Override
-    public @NotNull RecipeSerializer<?> getSerializer()
-    {
-        return Registration.IN_WORLD_RECIPE_SERIALIZER.get(); // Why is it not being registered?!
-    }
+    public @NotNull RecipeSerializer<?> getSerializer() { return RecipeRegistration.IN_WORLD_RECIPE_SERIALIZER.get(); }
 
     @Override
     public @NotNull RecipeType<?> getType()
     {
-        return Registration.IN_WORLD_RECIPE_TYPE.get();
+        return RecipeRegistration.IN_WORLD_RECIPE_TYPE.get();
     }
 }

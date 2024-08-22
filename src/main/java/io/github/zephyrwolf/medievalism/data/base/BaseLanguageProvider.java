@@ -4,6 +4,7 @@ import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
 public class BaseLanguageProvider extends LanguageProvider
@@ -24,6 +25,7 @@ public class BaseLanguageProvider extends LanguageProvider
         add(BlockRegistration.COPPER_ROCK_ITEM.get(), "Copper Rock"); // -----------
         add(BlockRegistration.THATCH_BLOCK_ITEM.get(), "Thatch Block");
         add(ItemRegistration.BROKEN_GOAT_HORN.get(), "Broken Goat Horn");
+        add(BlockRegistration.DOGBANE_BLOCK_ITEM.get(), "Dogbane");
 
         { // World
             add(ItemRegistration.RED_CLAY_BALL.get(), "Red Clay Ball");
@@ -31,7 +33,6 @@ public class BaseLanguageProvider extends LanguageProvider
             add(ItemRegistration.RAW_TIN.get(), "Tin Ore");
             add(BlockRegistration.TIN_ORE_BLOCK.get(), "Tin Ore Block");
             add(BlockRegistration.DEEPSLATE_TIN_ORE_BLOCK.get(), "Deepslate Tin Ore Block");
-            add(ItemRegistration.DOG_BANE.get(), "Dog Bane");
             add(ItemRegistration.FLAX.get(), "Flax");
             add(ItemRegistration.FLAX_SEEDS.get(), "Flax Seeds");
             add(ItemRegistration.FLAX_FIBER.get(), "Flax Fiber");
@@ -67,8 +68,24 @@ public class BaseLanguageProvider extends LanguageProvider
             add(ItemRegistration.UNFIRED_BRICK.get(), "Unfired Brick");
             add(ItemRegistration.UNFIRED_JUG.get(), "Unfired Jug");
             add(ItemRegistration.JUG.get(), "Jug");
-            add(ItemRegistration.UNFIRED_CRUCIBLE.get(), "Unfired Crucible");
-            add(ItemRegistration.CRUCIBLE.get(), "Crucible");
+            add(ItemRegistration.UNFIRED_PLANT_POT.get(), "Unfired Plant Pot");
+            add(ItemRegistration.UNFIRED_BIRCH_POT.get(), "Unfired Birch Pot");
+            add(ItemRegistration.UNFIRED_POT.get(), "Unfired Pot");
+            add(ItemRegistration.POT.get(), "Pot");
+            add(ItemRegistration.UNFIRED_LARGE_POT.get(), "Unfired Large Pot");
+            add(ItemRegistration.LARGE_POT.get(), "Large Pot");
+        }
+        { // Bark
+            add(ItemRegistration.WHITE_BARK.get(), "White Bark");
+            add(ItemRegistration.BROWN_BARK.get(), "Brown Bark");
+            add(ItemRegistration.GREY_BARK.get(), "Grey Bark");
+            add(ItemRegistration.DARK_BROWN_BARK.get(), "Dark Brown Bark");
+            add(ItemRegistration.BLACK_BARK.get(), "Black Bark");
+        }
+        { // Primitive
+            add(BlockRegistration.STONE_BENCH_ITEM.get(), "Stone Bench");
+            add(BlockRegistration.CHOPPING_BLOCK_ITEM.get(), "Chopping Block");
+            add(BlockRegistration.BIRCH_POT_ITEM.get(), "Birch Pot");
         }
         { // Leather Working
             // Hide
@@ -109,7 +126,21 @@ public class BaseLanguageProvider extends LanguageProvider
             add(ItemRegistration.MEDIUM_LEATHER.get(), "Medium Leather");
             add(ItemRegistration.SMALL_LEATHER.get(), "Small Leather");
         }
-
+        { // Metallurgy
+            add(ItemRegistration.CHARCOAL_POWDER.get(), "Charcoal Powder");
+            add(ItemRegistration.FIRECLAY.get(), "Fireclay");
+            add(ItemRegistration.POTASH.get(), "Potash");
+            add(ItemRegistration.REFRACTORY_CLAY.get(), "Refractory Clay");
+            add(ItemRegistration.UNFIRED_CLAY_CRUCIBLE.get(), "Unfired Clay Crucible");
+            add(ItemRegistration.CLAY_CRUCIBLE.get(), "Clay Crucible");
+            add(ItemRegistration.UNFIRED_FIRECLAY_CRUCIBLE.get(), "Unfired Fireclay Crucible");
+            add(ItemRegistration.FIRECLAY_CRUCIBLE.get(), "Fireclay Crucible");
+            add(ItemRegistration.UNFIRED_REFRACTORY_CRUCIBLE.get(), "Unfired Refractory Crucible");
+            add(ItemRegistration.REFRACTORY_CRUCIBLE.get(), "Refractory Crucible");
+            add(ItemRegistration.COPPER_ORE_DUST.get(), "Copper Ore Dust");
+            add(ItemRegistration.TIN_ORE_DUST.get(), "Tin Ore Dust");
+            add(ItemRegistration.IRON_ORE_DUST.get(), "Iron Ore Dust");
+        }
         { // Misc
             add(ItemRegistration.QUICK_LIME.get(), "Quicklime");
             add(ItemRegistration.THATCH.get(), "Thatch");
@@ -118,6 +149,7 @@ public class BaseLanguageProvider extends LanguageProvider
             add(ItemRegistration.TANNIN_BUCKET.get(), "Tannin Bucket");
             add(ItemRegistration.DIGGING_STICK.get(), "Digging Stick");
             add(ItemRegistration.FIRE_STARTER.get(), "Fire Starter");
+            add(ItemRegistration.WOOD_ASH.get(), "Wood Ash");
         }
 
         add("creative_tab.medievalism.name", "Medievalism");

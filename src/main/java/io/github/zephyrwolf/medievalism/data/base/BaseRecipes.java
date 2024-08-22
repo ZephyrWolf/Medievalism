@@ -1,15 +1,20 @@
 package io.github.zephyrwolf.medievalism.data.base;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.common.recipe.AdditionalDropToolUseRecipeBuilder;
 import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
 import io.github.zephyrwolf.medievalism.common.recipe.InWorldRecipeBuilder;
 import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
+import net.minecraft.advancements.critereon.BlockPredicate;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
@@ -90,7 +95,7 @@ public class BaseRecipes extends RecipeProvider
                 .unlockedBy("has_unfired_jug", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistration.UNFIRED_JUG.get()))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "jug"));
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistration.UNFIRED_CRUCIBLE.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistration.UNFIRED_CLAY_CRUCIBLE.get())
                 .pattern("c c")
                 .pattern(" c ")
                 .define('c', ModItemTags.CLAY_BALL)
@@ -98,12 +103,12 @@ public class BaseRecipes extends RecipeProvider
                         ItemPredicate.Builder.item().of(ModItemTags.CLAY_BALL)))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "unfired_crucible"));
         SimpleCookingRecipeBuilder.campfireCooking(
-                        Ingredient.of(ItemRegistration.UNFIRED_CRUCIBLE),
+                        Ingredient.of(ItemRegistration.UNFIRED_CLAY_CRUCIBLE),
                         RecipeCategory.MISC,
-                        ItemRegistration.CRUCIBLE,
+                        ItemRegistration.CLAY_CRUCIBLE,
                         0.0f,
                         100)
-                .unlockedBy("has_unfired_crucible", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistration.UNFIRED_CRUCIBLE.get()))
+                .unlockedBy("has_unfired_crucible", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistration.UNFIRED_CLAY_CRUCIBLE.get()))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "crucible"));
 
         // Pot
@@ -435,13 +440,13 @@ public class BaseRecipes extends RecipeProvider
                 .unlockedBy("has_unfired_brick", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistration.UNFIRED_BRICK.get()))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "brick_from_unfired_brick_smelting"));
         SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(ItemRegistration.UNFIRED_CRUCIBLE),
+                        Ingredient.of(ItemRegistration.UNFIRED_CLAY_CRUCIBLE),
                         RecipeCategory.MISC,
-                        ItemRegistration.CRUCIBLE,
+                        ItemRegistration.CLAY_CRUCIBLE,
                         0.0f,
                         100)
                 .group("crucible")
-                .unlockedBy("has_furnace", InventoryChangeTrigger.TriggerInstance.hasItems(Items.FURNACE, ItemRegistration.UNFIRED_CRUCIBLE.get()))
+                .unlockedBy("has_furnace", InventoryChangeTrigger.TriggerInstance.hasItems(Items.FURNACE, ItemRegistration.UNFIRED_CLAY_CRUCIBLE.get()))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "crucible_smelting"));
         SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(ItemRegistration.UNFIRED_JUG),
@@ -452,5 +457,51 @@ public class BaseRecipes extends RecipeProvider
                 .group("jug")
                 .unlockedBy("has_furnace", InventoryChangeTrigger.TriggerInstance.hasItems(Items.FURNACE, ItemRegistration.UNFIRED_JUG.get()))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "jug_smelting"));
+
+        AdditionalDropToolUseRecipeBuilder
+                .axeStrip(
+                        new ItemStack(ItemRegistration.WHITE_BARK.get()),
+                        BlockPredicate.Builder.block().of(ModBlockTags.WHITE_BARK).build()
+                )
+                .chance(3)
+                .unlockedBy("has_axe" , InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ItemTags.AXES).build()))
+                .save(recipeOutput, MedievalismConstants.resource("strip_white_bark"));
+        AdditionalDropToolUseRecipeBuilder
+                .axeStrip(
+                        new ItemStack(ItemRegistration.BROWN_BARK.get()),
+                        BlockPredicate.Builder.block().of(ModBlockTags.BROWN_BARK).build()
+                )
+                .chance(3)
+                .unlockedBy("has_axe" , InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ItemTags.AXES).build()))
+                .save(recipeOutput, MedievalismConstants.resource("strip_brown_bark"));
+        AdditionalDropToolUseRecipeBuilder
+                .axeStrip(
+                        new ItemStack(ItemRegistration.GREY_BARK.get()),
+                        BlockPredicate.Builder.block().of(ModBlockTags.GREY_BARK).build()
+                )
+                .chance(3)
+                .unlockedBy("has_axe" , InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ItemTags.AXES).build()))
+                .save(recipeOutput, MedievalismConstants.resource("strip_grey_bark"));
+        AdditionalDropToolUseRecipeBuilder
+                .axeStrip(
+                        new ItemStack(ItemRegistration.DARK_BROWN_BARK.get()),
+                        BlockPredicate.Builder.block().of(ModBlockTags.DARK_BROWN_BARK).build()
+                )
+                .chance(3)
+                .unlockedBy("has_axe" , InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ItemTags.AXES).build()))
+                .save(recipeOutput, MedievalismConstants.resource("strip_dark_brown_bark"));
+        AdditionalDropToolUseRecipeBuilder
+                .axeStrip(
+                        new ItemStack(ItemRegistration.BLACK_BARK.get()),
+                        BlockPredicate.Builder.block().of(ModBlockTags.BLACK_BARK).build()
+                )
+                .chance(3)
+                .unlockedBy("has_axe" , InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ItemTags.AXES).build()))
+                .save(recipeOutput, MedievalismConstants.resource("strip_black_bark"));
     }
 }

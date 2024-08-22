@@ -1,6 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.item;
 
-import io.github.zephyrwolf.medievalism.registry.Registration;
+import io.github.zephyrwolf.medievalism.registry.RecipeRegistration;
 import io.github.zephyrwolf.medievalism.common.recipe.InWorldRecipe;
 import io.github.zephyrwolf.medievalism.common.recipe.InWorldRecipeInput;
 import net.minecraft.core.BlockPos;
@@ -45,7 +45,7 @@ public class FireStarterItem extends Item
             //List<ItemStack> stacks = entities.stream().map(ItemEntity::getItem).toList();
             InWorldRecipeInput input = new InWorldRecipeInput(context.getItemInHand(), entities, pos);
             // Investigate how AbstractFurnaceBlockEntity uses this, I assume they refresh it on inventory change
-            var recipes = RecipeManager.createCheck(Registration.IN_WORLD_RECIPE_TYPE.get());
+            var recipes = RecipeManager.createCheck(RecipeRegistration.IN_WORLD_RECIPE_TYPE.get());
             Optional<RecipeHolder<InWorldRecipe>> optional = recipes.getRecipeFor(
                     input,
                     level

@@ -58,5 +58,21 @@ public final class BaseBiomeTags extends BiomeTagsProvider
                         Biomes.JUNGLE,
                         Biomes.CHERRY_GROVE
                 );
+        tag(ModBiomeTags.GENERATE_RED_CLAY)
+                .addTag(BiomeTags.IS_FOREST)
+                .add(
+                        Biomes.SWAMP,
+                        Biomes.MANGROVE_SWAMP,
+                        Biomes.RIVER,
+                        Biomes.FROZEN_RIVER,
+                        Biomes.TAIGA,
+                        Biomes.SNOWY_TAIGA,
+                        Biomes.OLD_GROWTH_PINE_TAIGA,
+                        Biomes.OLD_GROWTH_SPRUCE_TAIGA,
+                        Biomes.JUNGLE,
+                        Biomes.SPARSE_JUNGLE,
+                        Biomes.BAMBOO_JUNGLE,
+                        Biomes.SNOWY_PLAINS
+                );
     }
 }

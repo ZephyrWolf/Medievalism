@@ -37,9 +37,16 @@ public final class BaseBlockStates extends BlockStateProvider
         flatBlock(BlockRegistration.COPPER_ROCK_BLOCK.get());
 
         axisBlock(BlockRegistration.THATCH_BLOCK.get());
+        crossBlock(BlockRegistration.DOGBANE_BLOCK.get());
+
+        shortBlock(BlockRegistration.STONE_BENCH.get());
+        shortBlock(BlockRegistration.CHOPPING_BLOCK.get());
+        simpleBlock(BlockRegistration.BIRCH_POT.get());
     }
 
     private String blockName(Block block) { return BuiltInRegistries.BLOCK.getKey(block).getPath(); }
+
+    // --
 
     private void flatBlock(Block block)
     {
@@ -53,8 +60,33 @@ public final class BaseBlockStates extends BlockStateProvider
         ConfiguredModel model5 = new ConfiguredModel(rawModelMirrored, 0, 90, false);
         ConfiguredModel model6 = new ConfiguredModel(rawModelMirrored, 0, 180, false);
         ConfiguredModel model7 = new ConfiguredModel(rawModelMirrored, 0, 270, false);
-        getVariantBuilder(block)
-                .partialState().setModels(model0, model1, model2, model3, model4, model5, model6, model7);
+        getVariantBuilder(block).partialState().setModels(
+                model0, model1, model2, model3, model4, model5, model6, model7
+        );
+    }
+
+    private void crossBlock(Block block)
+    {
+        ModelFile rawModel = crossModel(block);
+        ConfiguredModel model = new ConfiguredModel(rawModel, 0, 0, false);
+        getVariantBuilder(block).partialState().setModels(model);
+    }
+
+    private void shortBlock(Block block)
+    {
+        ModelFile rawModel = shortModel(block);
+        ConfiguredModel model = new ConfiguredModel(rawModel, 0, 0, false);
+        getVariantBuilder(block).partialState().setModels(model);
+    }
+
+    private ModelFile shortModel(Block block)
+    {
+        return shortModel(
+                blockName(block),
+                blockTexture(block).withPath(prefix -> prefix + "_top"),
+                blockTexture(block).withPath(prefix -> prefix + "_bottom"),
+                blockTexture(block).withPath(prefix -> prefix + "_side")
+        );
     }
 
     private ModelFile flatModel(Block block, boolean mirrored)
@@ -67,6 +99,28 @@ public final class BaseBlockStates extends BlockStateProvider
         return models() // BlockModelProvider extends ModelProvider<BlockModelBuilder>
                 .withExistingParent(name, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, mirrored ? "block/flat_mirrored" : "block/flat"))
                 .texture("top", top);
+    }
+
+    private ModelFile crossModel(Block block)
+    {
+        return crossModel(blockName(block), blockTexture(block));
+    }
+
+    private ModelFile crossModel(String name, ResourceLocation crossTexture)
+    {
+        return models() // BlockModelProvider extends ModelProvider<BlockModelBuilder>
+                .withExistingParent(name, ResourceLocation.withDefaultNamespace("block/cross"))
+                .texture("cross", crossTexture)
+                .renderType("cutout");
+    }
+
+    private ModelFile shortModel(String name, ResourceLocation top, ResourceLocation bottom, ResourceLocation side)
+    {
+        return models() // BlockModelProvider extends ModelProvider<BlockModelBuilder>
+                .withExistingParent(name, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID,"block/short"))
+                .texture("top", top)
+                .texture("bottom", bottom)
+                .texture("side", side);
     }
 
 }

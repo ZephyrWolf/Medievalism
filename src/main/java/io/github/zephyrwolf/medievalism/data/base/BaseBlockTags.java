@@ -77,6 +77,36 @@ public class BaseBlockTags extends BlockTagsProvider
                 Blocks.TALL_GRASS,
                 Blocks.FERN
         );
+        tag(ModBlockTags.RED_CLAY_CAN_REPLACE)
+                .addTag(BlockTags.STONE_ORE_REPLACEABLES)
+                .add(Blocks.DIRT);
+
+        tag(ModBlockTags.WHITE_BARK).add(
+                Blocks.BIRCH_LOG,
+                Blocks.BIRCH_WOOD,
+                Blocks.MANGROVE_LOG,
+                Blocks.MANGROVE_WOOD
+        );
+        tag(ModBlockTags.BROWN_BARK).add(
+                Blocks.JUNGLE_LOG,
+                Blocks.JUNGLE_WOOD,
+                Blocks.CHERRY_LOG,
+                Blocks.CHERRY_WOOD,
+                Blocks.SPRUCE_LOG,
+                Blocks.SPRUCE_WOOD
+        );
+        tag(ModBlockTags.GREY_BARK).add(
+                Blocks.ACACIA_LOG,
+                Blocks.ACACIA_WOOD
+        );
+        tag(ModBlockTags.DARK_BROWN_BARK).add(
+                Blocks.OAK_LOG,
+                Blocks.OAK_WOOD
+        );
+        tag(ModBlockTags.BLACK_BARK).add(
+                Blocks.DARK_OAK_LOG,
+                Blocks.DARK_OAK_WOOD
+        );
     }
 
     private void registerCommonModTags()
