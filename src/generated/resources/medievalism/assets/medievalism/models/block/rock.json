@@ -1,6 +1,0 @@
-{
-  "parent": "medievalism:block/flat_mirrored",
-  "textures": {
-    "top": "medievalism:block/rock"
-  }
-}

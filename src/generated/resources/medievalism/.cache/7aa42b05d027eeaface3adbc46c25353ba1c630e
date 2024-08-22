@@ -1,9 +1,0 @@
-// 1.21	2024-08-20T13:16:46.2907713	Tags for minecraft:block mod id medievalism
-f8ede0553cc042539de3ebfa1aae9ebc6213cc50 data/medievalism/tags/block/can_drop_thatch.json
-b147fcff5c0b4d72df1cb7809b063b2562180832 data/medievalism/tags/block/requires_axe_for_drop.json
-332ed214f7d7ee311fedb9d9d8a92edd6c5265d5 data/minecraft/tags/block/incorrect_for_wooden_tool.json
-a261358ad3e4a2d896d6f7b747e8eca73c66a39a data/minecraft/tags/block/mineable/axe.json
-6a51dddf10c38723feeef72f1458f16ca56af073 data/minecraft/tags/block/mineable/hoe.json
-8b77530b13b1f09160d808bfa308184027b2d5d3 data/minecraft/tags/block/mineable/pickaxe.json
-8e0291423ca8fe0d4676a94856e3467df91decfc data/minecraft/tags/block/mineable/shovel.json
-98dcbc6e369d108ebc83dd8101ff3d650e8effb0 data/minecraft/tags/block/needs_stone_tool.json

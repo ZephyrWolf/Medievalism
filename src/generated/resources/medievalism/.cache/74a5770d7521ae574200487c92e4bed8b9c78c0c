@@ -1,9 +1,0 @@
-// 1.21	2024-08-18T12:02:33.3026652	Tags for minecraft:item mod id medievalism
-b6123ed654122c1fffbf55cc674a2d4695dcfa6a data/medievalism/tags/item/can_craft_flour.json
-45e66bea4cc8db39bf8311fd77df7322b26dd50b data/medievalism/tags/item/clay_ball.json
-bd1d8abaf7834cc57f9f6d38e7534cb9294db2ac data/medievalism/tags/item/large_hide.json
-7d42d0fae51fe53144036773519e0d019a061e03 data/medievalism/tags/item/large_rock.json
-e32adb229284de24b691c4bf9424ee1c3d255bc9 data/medievalism/tags/item/medium_hide.json
-cdbe2019a304d39b6f7002f2a21e06b27f598f59 data/medievalism/tags/item/rock.json
-6c808e75c0caa13179f87fc41ef01baa38817549 data/medievalism/tags/item/small_hide.json
-dcbd651af4c0a22ed8353f84b02d55c4a9566b43 data/medievalism/tags/item/tinder.json
