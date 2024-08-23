@@ -1,7 +1,7 @@
-package io.github.zephyrwolf.medievalism.data.base;
+package io.github.zephyrwolf.medievalism.data;
 
-import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
-import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.ItemRegistration;
+import io.github.zephyrwolf.medievalism.content.BlockRegistration;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
@@ -12,11 +12,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
-public class BaseBlockLootTables extends BlockLootSubProvider
+public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
 {
     //private final Set<Block> generatedLootTables = new HashSet<>();
 
-    public BaseBlockLootTables(HolderLookup.Provider lookupProvider)
+    public BaseBlockLootTablesSubProvider(HolderLookup.Provider lookupProvider)
     {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags(), lookupProvider);
     }

@@ -1,14 +1,11 @@
 package io.github.zephyrwolf.medievalism.common.worldgen;
 
-import com.mojang.blaze3d.shaders.Uniform;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.common.worldgen.feature.CompositeFeature;
 import io.github.zephyrwolf.medievalism.common.worldgen.feature.configuration.CompositeFeatureConfiguration;
-import io.github.zephyrwolf.medievalism.data.base.ModBlockTags;
-import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
-import io.github.zephyrwolf.medievalism.registry.FeatureRegistration;
+import io.github.zephyrwolf.medievalism.content.BlockTagCatalog;
+import io.github.zephyrwolf.medievalism.content.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.FeatureRegistration;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -17,8 +14,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.BiasedToBottomInt;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -27,7 +22,6 @@ import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.HeightmapPlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
@@ -87,7 +81,7 @@ public final class ModConfiguredFeatures
                         PlacementUtils.onlyWhenEmpty( Feature.SIMPLE_BLOCK,
                                 new SimpleBlockConfiguration( BlockStateProvider.simple(BlockRegistration.COPPER_ROCK_BLOCK.get())))));
 
-        RuleTest redClayReplaceables = new TagMatchTest(ModBlockTags.RED_CLAY_CAN_REPLACE);
+        RuleTest redClayReplaceables = new TagMatchTest(BlockTagCatalog.RED_CLAY_CAN_REPLACE);
         List<OreConfiguration.TargetBlockState> redClayTargetBlockStates = List.of(
                 OreConfiguration.target(redClayReplaceables, BlockRegistration.RED_CLAY_BLOCK.get().defaultBlockState())
         );

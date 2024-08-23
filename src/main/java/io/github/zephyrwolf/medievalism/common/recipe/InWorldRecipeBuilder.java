@@ -1,6 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.recipe;
 
-import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
+import io.github.zephyrwolf.medievalism.content.ItemRegistration;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;

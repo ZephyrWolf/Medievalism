@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.data.base;
+package io.github.zephyrwolf.medievalism.content;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import net.minecraft.core.registries.Registries;
@@ -6,7 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 
-public final class ModBiomeTags
+public final class BiomeTagCatalog
 {
     public static final TagKey<Biome> HAS_TREES = tag("has_trees");
     public static final TagKey<Biome> HAS_DENSE_TRESS = tag("has_dense_trees");

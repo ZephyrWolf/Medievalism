@@ -1,8 +1,8 @@
-package io.github.zephyrwolf.medievalism.data.base;
+package io.github.zephyrwolf.medievalism.data;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
-import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
+import io.github.zephyrwolf.medievalism.content.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.ItemRegistration;
 import io.github.zephyrwolf.medievalism.tools.TextTools;
 import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.*;
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
-public class BaseAdvancements implements AdvancementProvider.AdvancementGenerator
+public class BaseAdvancementsProvider implements AdvancementProvider.AdvancementGenerator
 { // https://github.com/vectorwing/FarmersDelight/blob/1.20/src/main/java/vectorwing/farmersdelight/data/advancement/FDAdvancementGenerator.java
 
     @Override

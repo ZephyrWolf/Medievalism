@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.registry;
+package io.github.zephyrwolf.medievalism.content;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.block.DogbaneBlock;
@@ -17,7 +17,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import static io.github.zephyrwolf.medievalism.registry.ItemRegistration.ITEMS;
+import static io.github.zephyrwolf.medievalism.content.ItemRegistration.ITEMS;
 
 public final class BlockRegistration
 {

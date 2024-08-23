@@ -1,8 +1,8 @@
-package io.github.zephyrwolf.medievalism.data.base;
+package io.github.zephyrwolf.medievalism.data;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
-import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.ItemRegistration;
+import io.github.zephyrwolf.medievalism.content.BlockRegistration;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -10,12 +10,12 @@ import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-public class BaseItemModels extends ItemModelProvider
+public class BaseItemModelsProvider extends ItemModelProvider
 {
     public static final String GENERATED = "item/generated";
     public static final String HANDHELD = "item/handheld";
 
-    public BaseItemModels(PackOutput output, ExistingFileHelper existingFileHelper)
+    public BaseItemModelsProvider(PackOutput output, ExistingFileHelper existingFileHelper)
     {
         super(output, MedievalismConstants.MOD_ID, existingFileHelper);
     }

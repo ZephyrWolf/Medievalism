@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.registry;
+package io.github.zephyrwolf.medievalism.content;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.worldgen.feature.CompositeFeature;

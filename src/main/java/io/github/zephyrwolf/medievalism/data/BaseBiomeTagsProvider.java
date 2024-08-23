@@ -1,6 +1,7 @@
-package io.github.zephyrwolf.medievalism.data.base;
+package io.github.zephyrwolf.medievalism.data;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.content.BiomeTagCatalog;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
@@ -12,9 +13,9 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
-public final class BaseBiomeTags extends BiomeTagsProvider
+public final class BaseBiomeTagsProvider extends BiomeTagsProvider
 {
-    public BaseBiomeTags(
+    public BaseBiomeTagsProvider(
             PackOutput output,
             CompletableFuture<HolderLookup.Provider> provider,
             @Nullable ExistingFileHelper existingFileHelper)
@@ -25,7 +26,7 @@ public final class BaseBiomeTags extends BiomeTagsProvider
     @Override
     protected void addTags(HolderLookup.@NotNull Provider pProvider)
     {
-        tag(ModBiomeTags.HAS_TREES)
+        tag(BiomeTagCatalog.HAS_TREES)
                 .add(
                         Biomes.SWAMP,
                         Biomes.MANGROVE_SWAMP,
@@ -47,7 +48,7 @@ public final class BaseBiomeTags extends BiomeTagsProvider
                         Biomes.CHERRY_GROVE,
                         Biomes.GROVE
                 );
-        tag(ModBiomeTags.HAS_DENSE_TRESS)
+        tag(BiomeTagCatalog.HAS_DENSE_TRESS)
                 .addTag(BiomeTags.IS_FOREST)
                 .add(
                         Biomes.MANGROVE_SWAMP,
@@ -58,7 +59,7 @@ public final class BaseBiomeTags extends BiomeTagsProvider
                         Biomes.JUNGLE,
                         Biomes.CHERRY_GROVE
                 );
-        tag(ModBiomeTags.GENERATE_RED_CLAY)
+        tag(BiomeTagCatalog.GENERATE_RED_CLAY)
                 .addTag(BiomeTags.IS_FOREST)
                 .add(
                         Biomes.SWAMP,

@@ -1,6 +1,6 @@
-package io.github.zephyrwolf.medievalism.data.overhaul;
+package io.github.zephyrwolf.medievalism.data;
 
-import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
+import io.github.zephyrwolf.medievalism.content.ItemRegistration;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -28,13 +28,13 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 import java.util.function.BiConsumer;
 
-public final class OverhaulMobLootTables implements LootTableSubProvider
+public final class OverhaulMobLootTablesSubProvider implements LootTableSubProvider
 {
     private final Map<ResourceLocation, LootTable.Builder> map = new HashMap<>();
 
     private final HolderLookup.Provider lookupProvider;
 
-    public OverhaulMobLootTables(HolderLookup.Provider lookupProvider)
+    public OverhaulMobLootTablesSubProvider(HolderLookup.Provider lookupProvider)
     {
         this.lookupProvider = lookupProvider;
     }

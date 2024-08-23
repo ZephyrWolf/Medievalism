@@ -1,7 +1,7 @@
-package io.github.zephyrwolf.medievalism.data.overhaul;
+package io.github.zephyrwolf.medievalism.data;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.data.base.ModBlockTags;
+import io.github.zephyrwolf.medievalism.content.BlockTagCatalog;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -12,9 +12,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-public class OverhaulBlockTags extends BlockTagsProvider
+public class OverhaulBlockTagsProvider extends BlockTagsProvider
 {
-    public OverhaulBlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
+    public OverhaulBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, MedievalismConstants.MOD_ID, existingFileHelper);
     }
 
@@ -30,7 +30,7 @@ public class OverhaulBlockTags extends BlockTagsProvider
     protected void registerVanillaTags()
     { // BlockTags
         // TODO Change to REQUIRES_TOOL_FOR_DROPS
-        tag(ModBlockTags.REQUIRES_AXE_FOR_DROPS) // Add on Overhaul
+        tag(BlockTagCatalog.REQUIRES_AXE_FOR_DROPS) // Add on Overhaul
                 .addTag(BlockTags.LOGS);
     }
 

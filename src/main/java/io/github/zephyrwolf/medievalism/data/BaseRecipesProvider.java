@@ -1,10 +1,12 @@
-package io.github.zephyrwolf.medievalism.data.base;
+package io.github.zephyrwolf.medievalism.data;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.recipe.AdditionalDropToolUseRecipeBuilder;
-import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
+import io.github.zephyrwolf.medievalism.content.ItemRegistration;
 import io.github.zephyrwolf.medievalism.common.recipe.InWorldRecipeBuilder;
-import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.BlockTagCatalog;
+import io.github.zephyrwolf.medievalism.content.ItemTagCatalog;
 import net.minecraft.advancements.critereon.BlockPredicate;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -13,7 +15,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -22,10 +23,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
-public class BaseRecipes extends RecipeProvider
+public class BaseRecipesProvider extends RecipeProvider
 {
 
-    public BaseRecipes(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider)
+    public BaseRecipesProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider)
     {
         super(packOutput, lookupProvider);
     }
@@ -33,26 +34,26 @@ public class BaseRecipes extends RecipeProvider
     public void tempRecipes(@NotNull RecipeOutput recipeOutput)
     {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.HAMMERSTONE.get())
-                .requires(ModItemTags.ROCK)
+                .requires(ItemTagCatalog.ROCK)
                 .unlockedBy("has_rock",
                         InventoryChangeTrigger.TriggerInstance.hasItems(
-                                ItemPredicate.Builder.item().of(ModItemTags.ROCK).build()
+                                ItemPredicate.Builder.item().of(ItemTagCatalog.ROCK).build()
                         ))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "hammerstone"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.LUNATE.get())
-                .requires(ModItemTags.ROCK)
+                .requires(ItemTagCatalog.ROCK)
                 .requires(ItemRegistration.HAMMERSTONE)
                 .unlockedBy("has_rock",
                         InventoryChangeTrigger.TriggerInstance.hasItems(
-                                ItemPredicate.Builder.item().of(ModItemTags.ROCK).build()
+                                ItemPredicate.Builder.item().of(ItemTagCatalog.ROCK).build()
                         ))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "lunate"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.BIFACE.get())
-                .requires(ModItemTags.LARGE_ROCK)
+                .requires(ItemTagCatalog.LARGE_ROCK)
                 .requires(ItemRegistration.HAMMERSTONE)
                 .unlockedBy("has_large_rock",
                         InventoryChangeTrigger.TriggerInstance.hasItems(
-                                ItemPredicate.Builder.item().of(ModItemTags.LARGE_ROCK).build()
+                                ItemPredicate.Builder.item().of(ItemTagCatalog.LARGE_ROCK).build()
                         ))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "biface"));
         // The idea is you work with hammerstone in inv for a bit and then move to a stone anvil to knap some better things
@@ -82,9 +83,9 @@ public class BaseRecipes extends RecipeProvider
                 .pattern("c c")
                 .pattern("c c")
                 .pattern(" c ")
-                .define('c', ModItemTags.CLAY_BALL)
+                .define('c', ItemTagCatalog.CLAY_BALL)
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ModItemTags.CLAY_BALL)))
+                        ItemPredicate.Builder.item().of(ItemTagCatalog.CLAY_BALL)))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "unfired_jug"));
         SimpleCookingRecipeBuilder.campfireCooking(
                         Ingredient.of(ItemRegistration.UNFIRED_JUG),
@@ -98,9 +99,9 @@ public class BaseRecipes extends RecipeProvider
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistration.UNFIRED_CLAY_CRUCIBLE.get())
                 .pattern("c c")
                 .pattern(" c ")
-                .define('c', ModItemTags.CLAY_BALL)
+                .define('c', ItemTagCatalog.CLAY_BALL)
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ModItemTags.CLAY_BALL)))
+                        ItemPredicate.Builder.item().of(ItemTagCatalog.CLAY_BALL)))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "unfired_crucible"));
         SimpleCookingRecipeBuilder.campfireCooking(
                         Ingredient.of(ItemRegistration.UNFIRED_CLAY_CRUCIBLE),
@@ -123,27 +124,27 @@ public class BaseRecipes extends RecipeProvider
         // -- Leather
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.LARGE_LIMED_HIDE.get())
-                .requires(ModItemTags.LARGE_HIDE)
+                .requires(ItemTagCatalog.LARGE_HIDE)
                 .group("large_hide")
                 .unlockedBy("has_large_hide",
                         InventoryChangeTrigger.TriggerInstance.hasItems(
-                                ItemPredicate.Builder.item().of(ModItemTags.LARGE_HIDE)
+                                ItemPredicate.Builder.item().of(ItemTagCatalog.LARGE_HIDE)
                         ))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "large_limed_hide"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.MEDIUM_LIMED_HIDE.get())
-                .requires(ModItemTags.MEDIUM_HIDE)
+                .requires(ItemTagCatalog.MEDIUM_HIDE)
                 .group("medium_hide")
                 .unlockedBy("has_medium_hide",
                         InventoryChangeTrigger.TriggerInstance.hasItems(
-                                ItemPredicate.Builder.item().of(ModItemTags.MEDIUM_HIDE)
+                                ItemPredicate.Builder.item().of(ItemTagCatalog.MEDIUM_HIDE)
                         ))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "medium_limed_hide"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.SMALL_LIMED_HIDE.get())
-                .requires(ModItemTags.SMALL_HIDE)
+                .requires(ItemTagCatalog.SMALL_HIDE)
                 .group("small_hide")
                 .unlockedBy("has_small_hide",
                         InventoryChangeTrigger.TriggerInstance.hasItems(
-                                ItemPredicate.Builder.item().of(ModItemTags.SMALL_HIDE)
+                                ItemPredicate.Builder.item().of(ItemTagCatalog.SMALL_HIDE)
                         ))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "small_limed_hide"));
 
@@ -203,7 +204,7 @@ public class BaseRecipes extends RecipeProvider
 
         InWorldRecipeBuilder.fireStarter(Blocks.CAMPFIRE.defaultBlockState())
                 .requires(BlockRegistration.BRANCH_ITEM, 4)
-                .requires(ModItemTags.TINDER)
+                .requires(ItemTagCatalog.TINDER)
                 .unlockedBy("has_branch", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistration.BRANCH_ITEM.get()))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "campfire"));
 
@@ -228,11 +229,11 @@ public class BaseRecipes extends RecipeProvider
 
         // -- Shapeless
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistration.UNFIRED_BRICK.get())
-                .requires(ModItemTags.CLAY_BALL)
+                .requires(ItemTagCatalog.CLAY_BALL)
                 .group("unfired_brick")
                 .unlockedBy("has_clay_ball",
                         InventoryChangeTrigger.TriggerInstance.hasItems(
-                                ItemPredicate.Builder.item().of(ModItemTags.CLAY_BALL).build()
+                                ItemPredicate.Builder.item().of(ItemTagCatalog.CLAY_BALL).build()
                         ))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "unfired_brick"));
 
@@ -353,13 +354,13 @@ public class BaseRecipes extends RecipeProvider
 
         // Bread
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistration.FLOUR.get())
-                .requires(ModItemTags.CAN_CRAFT_FLOUR)
+                .requires(ItemTagCatalog.CAN_CRAFT_FLOUR)
                 .requires(ItemRegistration.HAMMERSTONE.get())
                 .group("flour")
                 .unlockedBy(
                         "can_make_flour",
                         InventoryChangeTrigger.TriggerInstance.hasItems(
-                                ItemPredicate.Builder.item().of(ModItemTags.CAN_CRAFT_FLOUR).build()))
+                                ItemPredicate.Builder.item().of(ItemTagCatalog.CAN_CRAFT_FLOUR).build()))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "flour"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistration.DOUGH.get())
                 .requires(ItemRegistration.FLOUR.get())
@@ -422,7 +423,7 @@ public class BaseRecipes extends RecipeProvider
 
 
         SimpleCookingRecipeBuilder.smelting( // remove in overhaul
-                        Ingredient.of(ModItemTags.CLAY_BALL),
+                        Ingredient.of(ItemTagCatalog.CLAY_BALL),
                         RecipeCategory.MISC,
                         Items.BRICK,
                         0.0f,
@@ -461,7 +462,7 @@ public class BaseRecipes extends RecipeProvider
         AdditionalDropToolUseRecipeBuilder
                 .axeStrip(
                         new ItemStack(ItemRegistration.WHITE_BARK.get()),
-                        BlockPredicate.Builder.block().of(ModBlockTags.WHITE_BARK).build()
+                        BlockPredicate.Builder.block().of(BlockTagCatalog.WHITE_BARK).build()
                 )
                 .chance(3)
                 .unlockedBy("has_axe" , InventoryChangeTrigger.TriggerInstance.hasItems(
@@ -470,7 +471,7 @@ public class BaseRecipes extends RecipeProvider
         AdditionalDropToolUseRecipeBuilder
                 .axeStrip(
                         new ItemStack(ItemRegistration.BROWN_BARK.get()),
-                        BlockPredicate.Builder.block().of(ModBlockTags.BROWN_BARK).build()
+                        BlockPredicate.Builder.block().of(BlockTagCatalog.BROWN_BARK).build()
                 )
                 .chance(3)
                 .unlockedBy("has_axe" , InventoryChangeTrigger.TriggerInstance.hasItems(
@@ -479,7 +480,7 @@ public class BaseRecipes extends RecipeProvider
         AdditionalDropToolUseRecipeBuilder
                 .axeStrip(
                         new ItemStack(ItemRegistration.GREY_BARK.get()),
-                        BlockPredicate.Builder.block().of(ModBlockTags.GREY_BARK).build()
+                        BlockPredicate.Builder.block().of(BlockTagCatalog.GREY_BARK).build()
                 )
                 .chance(3)
                 .unlockedBy("has_axe" , InventoryChangeTrigger.TriggerInstance.hasItems(
@@ -488,7 +489,7 @@ public class BaseRecipes extends RecipeProvider
         AdditionalDropToolUseRecipeBuilder
                 .axeStrip(
                         new ItemStack(ItemRegistration.DARK_BROWN_BARK.get()),
-                        BlockPredicate.Builder.block().of(ModBlockTags.DARK_BROWN_BARK).build()
+                        BlockPredicate.Builder.block().of(BlockTagCatalog.DARK_BROWN_BARK).build()
                 )
                 .chance(3)
                 .unlockedBy("has_axe" , InventoryChangeTrigger.TriggerInstance.hasItems(
@@ -497,7 +498,7 @@ public class BaseRecipes extends RecipeProvider
         AdditionalDropToolUseRecipeBuilder
                 .axeStrip(
                         new ItemStack(ItemRegistration.BLACK_BARK.get()),
-                        BlockPredicate.Builder.block().of(ModBlockTags.BLACK_BARK).build()
+                        BlockPredicate.Builder.block().of(BlockTagCatalog.BLACK_BARK).build()
                 )
                 .chance(3)
                 .unlockedBy("has_axe" , InventoryChangeTrigger.TriggerInstance.hasItems(

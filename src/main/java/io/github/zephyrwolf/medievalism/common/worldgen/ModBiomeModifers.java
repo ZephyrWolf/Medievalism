@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism.common.worldgen;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.data.base.ModBiomeTags;
+import io.github.zephyrwolf.medievalism.content.BiomeTagCatalog;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -47,12 +47,12 @@ public final class ModBiomeModifers
         ));
 
         context.register(ADD_BRANCH_FOREST, new BiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(ModBiomeTags.HAS_DENSE_TRESS),
+                biomes.getOrThrow(BiomeTagCatalog.HAS_DENSE_TRESS),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.BRANCH_FOREST_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
         context.register(ADD_BRANCH, new BiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(ModBiomeTags.HAS_TREES),
+                biomes.getOrThrow(BiomeTagCatalog.HAS_TREES),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.BRANCH_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
@@ -79,12 +79,12 @@ public final class ModBiomeModifers
         ));
 
         context.register(ADD_RED_CLAY, new BiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(ModBiomeTags.GENERATE_RED_CLAY),
+                biomes.getOrThrow(BiomeTagCatalog.GENERATE_RED_CLAY),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.RED_CLAY_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
         context.register(ADD_RED_CLAY_WITH_DOGBANE, new BiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(ModBiomeTags.GENERATE_RED_CLAY),
+                biomes.getOrThrow(BiomeTagCatalog.GENERATE_RED_CLAY),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.RED_CLAY_WITH_DOGBANE_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));

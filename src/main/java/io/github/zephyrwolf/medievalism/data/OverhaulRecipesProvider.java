@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.data.overhaul;
+package io.github.zephyrwolf.medievalism.data;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -7,10 +7,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
-public class OverhaulRecipes extends RecipeProvider
+public class OverhaulRecipesProvider extends RecipeProvider
 {
 
-    public OverhaulRecipes(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider)
+    public OverhaulRecipesProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider)
     {
         super(packOutput, lookupProvider);
     }

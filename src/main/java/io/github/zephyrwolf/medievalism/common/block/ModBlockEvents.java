@@ -2,23 +2,18 @@ package io.github.zephyrwolf.medievalism.common.block;
 
 import io.github.zephyrwolf.medievalism.common.recipe.AdditionalDropToolUseRecipe;
 import io.github.zephyrwolf.medievalism.common.recipe.AdditionalDropToolUseRecipeInput;
-import io.github.zephyrwolf.medievalism.data.base.ModBlockTags;
-import io.github.zephyrwolf.medievalism.registry.RecipeRegistration;
+import io.github.zephyrwolf.medievalism.content.BlockTagCatalog;
+import io.github.zephyrwolf.medievalism.content.RecipeRegistration;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.common.ItemAbilities;
-import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -73,7 +68,7 @@ public class ModBlockEvents
         Entity entity = event.getBreaker();
         if (entity instanceof Player player)
         {
-            if (!player.isCreative() && state.is(ModBlockTags.REQUIRES_AXE_FOR_DROPS))
+            if (!player.isCreative() && state.is(BlockTagCatalog.REQUIRES_AXE_FOR_DROPS))
             {
                 ItemStack mainHand = player.getMainHandItem();
                 if (!mainHand.is(ItemTags.AXES))
@@ -90,7 +85,7 @@ public class ModBlockEvents
         // return tool != null ? tool.getMiningSpeed(pState) : 1.0F;
         BlockState state = event.getState();
         Player player = event.getEntity();
-        if (!player.isCreative() && state.is(ModBlockTags.REQUIRES_AXE_FOR_DROPS))
+        if (!player.isCreative() && state.is(BlockTagCatalog.REQUIRES_AXE_FOR_DROPS))
         {
             ItemStack mainHand = player.getMainHandItem();
             if (!mainHand.is(ItemTags.AXES))

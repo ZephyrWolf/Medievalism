@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.data.base;
+package io.github.zephyrwolf.medievalism.content;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import net.minecraft.resources.ResourceLocation;
@@ -6,7 +6,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
-public final class ModItemTags
+public final class ItemTagCatalog
 {
     public static final TagKey<Item> LARGE_HIDE = tag("large_hide");
     public static final TagKey<Item> MEDIUM_HIDE = tag("medium_hide");

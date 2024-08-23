@@ -1,7 +1,8 @@
-package io.github.zephyrwolf.medievalism.data.base;
+package io.github.zephyrwolf.medievalism.data;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.BlockTagCatalog;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -13,9 +14,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-public class BaseBlockTags extends BlockTagsProvider
+public class BaseBlockTagsProvider extends BlockTagsProvider
 {
-    public BaseBlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
+    public BaseBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, MedievalismConstants.MOD_ID, existingFileHelper);
     }
 
@@ -32,7 +33,7 @@ public class BaseBlockTags extends BlockTagsProvider
     protected void registerVanillaTags()
     { // BlockTags
         // TODO Change to REQUIRES_TOOL_FOR_DROPS
-        tag(ModBlockTags.REQUIRES_AXE_FOR_DROPS) // Add on Overhaul
+        tag(BlockTagCatalog.REQUIRES_AXE_FOR_DROPS) // Add on Overhaul
                 .addTag(BlockTags.LOGS);
     }
 
@@ -72,22 +73,22 @@ public class BaseBlockTags extends BlockTagsProvider
 
     protected void registerModTags()
     {
-        tag(ModBlockTags.CAN_DROP_THATCH).add(
+        tag(BlockTagCatalog.CAN_DROP_THATCH).add(
                 Blocks.SHORT_GRASS,
                 Blocks.TALL_GRASS,
                 Blocks.FERN
         );
-        tag(ModBlockTags.RED_CLAY_CAN_REPLACE)
+        tag(BlockTagCatalog.RED_CLAY_CAN_REPLACE)
                 .addTag(BlockTags.STONE_ORE_REPLACEABLES)
                 .add(Blocks.DIRT);
 
-        tag(ModBlockTags.WHITE_BARK).add(
+        tag(BlockTagCatalog.WHITE_BARK).add(
                 Blocks.BIRCH_LOG,
                 Blocks.BIRCH_WOOD,
                 Blocks.MANGROVE_LOG,
                 Blocks.MANGROVE_WOOD
         );
-        tag(ModBlockTags.BROWN_BARK).add(
+        tag(BlockTagCatalog.BROWN_BARK).add(
                 Blocks.JUNGLE_LOG,
                 Blocks.JUNGLE_WOOD,
                 Blocks.CHERRY_LOG,
@@ -95,15 +96,15 @@ public class BaseBlockTags extends BlockTagsProvider
                 Blocks.SPRUCE_LOG,
                 Blocks.SPRUCE_WOOD
         );
-        tag(ModBlockTags.GREY_BARK).add(
+        tag(BlockTagCatalog.GREY_BARK).add(
                 Blocks.ACACIA_LOG,
                 Blocks.ACACIA_WOOD
         );
-        tag(ModBlockTags.DARK_BROWN_BARK).add(
+        tag(BlockTagCatalog.DARK_BROWN_BARK).add(
                 Blocks.OAK_LOG,
                 Blocks.OAK_WOOD
         );
-        tag(ModBlockTags.BLACK_BARK).add(
+        tag(BlockTagCatalog.BLACK_BARK).add(
                 Blocks.DARK_OAK_LOG,
                 Blocks.DARK_OAK_WOOD
         );

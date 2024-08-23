@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.data.overhaul;
+package io.github.zephyrwolf.medievalism.data;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import net.minecraft.core.HolderLookup;
@@ -11,9 +11,9 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
-public class OverhaulItemTags extends ItemTagsProvider
+public class OverhaulItemTagsProvider extends ItemTagsProvider
 { // https://github.com/vectorwing/FarmersDelight/blob/1.20/src/main/java/vectorwing/farmersdelight/data/ItemTags.java
-    public OverhaulItemTags(
+    public OverhaulItemTagsProvider(
             PackOutput output,
             CompletableFuture<HolderLookup.Provider> provider,
             CompletableFuture<TagLookup<Block>> blockTagProvider,

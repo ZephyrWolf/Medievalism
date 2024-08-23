@@ -1,9 +1,8 @@
-package io.github.zephyrwolf.medievalism.data;
+package io.github.zephyrwolf.medievalism.content;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.MedievalismMod;
-import io.github.zephyrwolf.medievalism.data.base.*;
-import io.github.zephyrwolf.medievalism.data.overhaul.*;
+import io.github.zephyrwolf.medievalism.data.*;
 import io.github.zephyrwolf.medievalism.data.provider.PackMetaProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
@@ -11,6 +10,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -22,44 +22,44 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-public final class ModDataGeneration
-{
-    // TODO I can move the assets into sub folders with generator.getPackOutput(). If I can allow the system to handle more than one of a 'single provider' (maybe fake it), eg base and overhaul recipes then I wont have to use any reflection
+public final class DataGenRegistration
+{ // https://github.com/vectorwing/FarmersDelight/blob/1.20/src/main/java/vectorwing/farmersdelight/data/DataGenerators.java
+
+    public static void register(IEventBus eventBus)
+    {
+        eventBus.addListener(DataGenRegistration::gatherData);
+    }
 
     public static void gatherData(GatherDataEvent event)
-    { // https://github.com/vectorwing/FarmersDelight/blob/1.20/src/main/java/vectorwing/farmersdelight/data/DataGenerators.java
+    {
         injectDataForBase(event);
         injectDataForAssetOverhaul(event);
         injectDataForDataOverhaul(event);
-
-        // This would be soo easy, however, this cannot be done due to overlapping generator type. Only thing I can think to
-        // do is to modify each class to take both packoutputs however this too will not work as the super classes use the
-        // PathOutput to generate other files.
-        //addProvidersForBase(event.getGenerator(), event.getGenerator().getPackOutput(MedievalismMod.MOD_ID), event.getLookupProvider(), event.getExistingFileHelper(), event.includeServer(), event.includeClient());
-        //addProvidersForOverhaul(event.getGenerator(), event.getGenerator().getPackOutput(MedievalismMod.OVERHAUL_MOD_ID), event.getLookupProvider(), event.getExistingFileHelper(), event.includeServer(), event.includeClient());
     }
 
     //region Providers
+    //region Base
     private static void addProvidersForBase(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient)
     {
-        BaseBlockTags blockTags = new BaseBlockTags(packOutput, lookupProvider, existingFileHelper);
+        BaseBlockTagsProvider blockTags = new BaseBlockTagsProvider(packOutput, lookupProvider, existingFileHelper);
         generator.addProvider(includeServer, blockTags);
-        generator.addProvider(includeServer, new BaseItemTags(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
-        generator.addProvider(includeServer, new BaseBiomeTags(packOutput, lookupProvider, existingFileHelper));
+        generator.addProvider(includeServer, new BaseItemTagsProvider(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
+        generator.addProvider(includeServer, new BaseBiomeTagsProvider(packOutput, lookupProvider, existingFileHelper));
         //generator.addProvider(event.includeServer(), new MedievalismEntityTags(packOutput, lookupProvider, existingFileHelper));
-        generator.addProvider(includeServer, new BaseRecipes(packOutput, lookupProvider));
-        generator.addProvider(includeServer, new AdvancementProvider(packOutput, lookupProvider, existingFileHelper, List.of(new BaseAdvancements())));
+        generator.addProvider(includeServer, new BaseRecipesProvider(packOutput, lookupProvider));
+        generator.addProvider(includeServer, new AdvancementProvider(packOutput, lookupProvider, existingFileHelper, List.of(new BaseAdvancementsProvider())));
         generator.addProvider(includeClient, new BaseLanguageProvider(packOutput, "en_us"));
         generator.addProvider(includeServer, new LootTableProvider(packOutput, Collections.emptySet(), List.of(
-                new LootTableProvider.SubProviderEntry(BaseBlockLootTables::new, LootContextParamSets.BLOCK)
+                new LootTableProvider.SubProviderEntry(BaseBlockLootTablesSubProvider::new, LootContextParamSets.BLOCK)
         ), lookupProvider));
         //generator.addProvider(event.includeServer(), new StructureUpdater("structures/village/houses", FarmersDelight.MODID, existingFileHelper, packOutput));
-        BaseBlockStates blockStates = new BaseBlockStates(packOutput, existingFileHelper);
+        BaseBlockStatesProvider blockStates = new BaseBlockStatesProvider(packOutput, existingFileHelper);
         generator.addProvider(includeClient, blockStates);
-        generator.addProvider(includeClient, new BaseItemModels(packOutput, blockStates.models().existingFileHelper));
-        generator.addProvider(includeServer, new ModWorldGenProvider(packOutput, lookupProvider));
+        generator.addProvider(includeClient, new BaseItemModelsProvider(packOutput, blockStates.models().existingFileHelper));
+        generator.addProvider(includeServer, new BaseWorldGenProvider(packOutput, lookupProvider));
     }
-
+    //endregion
+    //region Overhaul Assets
     private static void addProvidersForAssetOverhaul(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient)
     {
         //generator.addProvider(includeClient, ...);
@@ -69,15 +69,16 @@ public final class ModDataGeneration
                 PackMetaProvider.of(packOutput, PackType.CLIENT_RESOURCES)
                         .description("Medievalism will overhaul the look and feel of Minecraft."));
     }
-
+    //endregion
+    //region Overhaul Data
     private static void addProvidersForDataOverhaul(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient)
     {
-        generator.addProvider(includeServer, new OverhaulBlankRecipes(packOutput));
-        generator.addProvider(includeServer, new OverhaulRecipes(packOutput, lookupProvider));
-        generator.addProvider(includeServer, new OverhaulBlockTags(packOutput, lookupProvider, existingFileHelper));
+        generator.addProvider(includeServer, new OverhaulBlankRecipesProvider(packOutput));
+        generator.addProvider(includeServer, new OverhaulRecipesProvider(packOutput, lookupProvider));
+        generator.addProvider(includeServer, new OverhaulBlockTagsProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(includeServer, new LootTableProvider(packOutput, Collections.emptySet(), List.of(
-                new LootTableProvider.SubProviderEntry(OverhaulMobLootTables::new, LootContextParamSets.ENTITY),
-                new LootTableProvider.SubProviderEntry(OverhaulBlockLootTables::new, LootContextParamSets.BLOCK)
+                new LootTableProvider.SubProviderEntry(OverhaulMobLootTablesSubProvider::new, LootContextParamSets.ENTITY),
+                new LootTableProvider.SubProviderEntry(OverhaulBlockLootTablesSubProvider::new, LootContextParamSets.BLOCK)
         ), lookupProvider));
         generator.addProvider(
                 includeServer,
@@ -85,6 +86,7 @@ public final class ModDataGeneration
                         .description("Medievalism will overhaul the progression of Minecraft."));
         // TODO I wonder if I can translate this ^^^^
     }
+    //endregion
     //endregion
 
     //region Inject

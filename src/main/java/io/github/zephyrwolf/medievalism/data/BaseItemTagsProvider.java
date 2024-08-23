@@ -1,8 +1,9 @@
-package io.github.zephyrwolf.medievalism.data.base;
+package io.github.zephyrwolf.medievalism.data;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
-import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.ItemRegistration;
+import io.github.zephyrwolf.medievalism.content.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.ItemTagCatalog;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -15,9 +16,9 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
-public class BaseItemTags extends ItemTagsProvider
+public class BaseItemTagsProvider extends ItemTagsProvider
 { // https://github.com/vectorwing/FarmersDelight/blob/1.20/src/main/java/vectorwing/farmersdelight/data/ItemTags.java
-    public BaseItemTags(
+    public BaseItemTagsProvider(
             PackOutput output,
             CompletableFuture<HolderLookup.Provider> provider,
             CompletableFuture<TagsProvider.TagLookup<Block>> blockTagProvider,
@@ -42,7 +43,7 @@ public class BaseItemTags extends ItemTagsProvider
 
     private void registerModTags()
     {
-        tag(ModItemTags.LARGE_HIDE)
+        tag(ItemTagCatalog.LARGE_HIDE)
                 .add(ItemRegistration.COW_HIDE.get())
                 .add(ItemRegistration.HORSE_HIDE.get())
                 .add(ItemRegistration.MOOSHROOM_HIDE.get())
@@ -51,7 +52,7 @@ public class BaseItemTags extends ItemTagsProvider
                 .add(ItemRegistration.SNIFFER_HIDE.get())
                 .add(ItemRegistration.POLAR_BEAR_HIDE.get())
                 .add(ItemRegistration.HOGLIN_HIDE.get());
-        tag(ModItemTags.MEDIUM_HIDE)
+        tag(ItemTagCatalog.MEDIUM_HIDE)
                 .add(ItemRegistration.DONKEY_HIDE.get())
                 .add(ItemRegistration.MULE_HIDE.get())
                 .add(ItemRegistration.WOLF_HIDE.get())
@@ -59,7 +60,7 @@ public class BaseItemTags extends ItemTagsProvider
                 .add(ItemRegistration.GOAT_HIDE.get())
                 .add(ItemRegistration.LLAMA_HIDE.get())
                 .add(ItemRegistration.SHEEP_HIDE.get());
-        tag(ModItemTags.SMALL_HIDE)
+        tag(ItemTagCatalog.SMALL_HIDE)
                 .add(Items.RABBIT_HIDE)
                 .add(ItemRegistration.FOX_HIDE.get())
                 .add(ItemRegistration.SNOW_FOX_HIDE.get())
@@ -68,26 +69,26 @@ public class BaseItemTags extends ItemTagsProvider
                 .add(ItemRegistration.OCELOT_HIDE.get())
                 .add(ItemRegistration.BAT_HIDE.get());
 
-        tag(ModItemTags.CAN_CRAFT_FLOUR)
+        tag(ItemTagCatalog.CAN_CRAFT_FLOUR)
                 .add(ItemRegistration.CRACKED_WHEAT.get())
                 .add(ItemRegistration.CRACKED_BARLEY.get())
                 .add(ItemRegistration.ROLLED_OATS.get());
-        tag(ModItemTags.CLAY_BALL)
+        tag(ItemTagCatalog.CLAY_BALL)
                 .add(Items.CLAY_BALL)
                 .add(ItemRegistration.RED_CLAY_BALL.get());
 
-        tag(ModItemTags.ROCK)
+        tag(ItemTagCatalog.ROCK)
                 .add(BlockRegistration.ROCK_ITEM.get())
                 .add(BlockRegistration.COPPER_ROCK_ITEM.get())
                 .add(BlockRegistration.LIMESTONE_ITEM.get());
-        tag(ModItemTags.LARGE_ROCK)
+        tag(ItemTagCatalog.LARGE_ROCK)
                 .add(BlockRegistration.LARGE_ROCK_ITEM.get());
 
-        tag(ModItemTags.TINDER)
+        tag(ItemTagCatalog.TINDER)
                 .add(ItemRegistration.THATCH.get());
                 // Candlenut leaves?
 
-        tag(ModItemTags.BARK).add(
+        tag(ItemTagCatalog.BARK).add(
                 ItemRegistration.WHITE_BARK.get(),
                 ItemRegistration.BROWN_BARK.get(),
                 ItemRegistration.GREY_BARK.get(),
@@ -95,7 +96,7 @@ public class BaseItemTags extends ItemTagsProvider
                 ItemRegistration.BLACK_BARK.get()
         );
 
-        tag(ModItemTags.CLAY_FLUX).add(
+        tag(ItemTagCatalog.CLAY_FLUX).add(
                 ItemRegistration.WOOD_ASH.get(),
                 ItemRegistration.POTASH.get()
         );

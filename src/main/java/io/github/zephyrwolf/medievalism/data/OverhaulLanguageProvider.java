@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.data.overhaul;
+package io.github.zephyrwolf.medievalism.data;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import net.minecraft.data.PackOutput;

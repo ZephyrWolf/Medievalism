@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.data.base;
+package io.github.zephyrwolf.medievalism.content;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import net.minecraft.resources.ResourceLocation;
@@ -6,7 +6,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 
-public class ModBlockTags
+public class BlockTagCatalog
 {
     public static final TagKey<Block> REQUIRES_AXE_FOR_DROPS = tag( "requires_axe_for_drop");
     public static final TagKey<Block> CAN_DROP_THATCH = tag( "can_drop_thatch");

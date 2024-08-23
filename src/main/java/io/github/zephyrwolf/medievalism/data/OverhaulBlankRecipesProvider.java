@@ -1,13 +1,13 @@
-package io.github.zephyrwolf.medievalism.data.overhaul;
+package io.github.zephyrwolf.medievalism.data;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.data.provider.BlankRecipeProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 
-public class OverhaulBlankRecipes extends BlankRecipeProvider
+public class OverhaulBlankRecipesProvider extends BlankRecipeProvider
 {
-    public OverhaulBlankRecipes(PackOutput output)
+    public OverhaulBlankRecipesProvider(PackOutput output)
     {
         super(output);
     }

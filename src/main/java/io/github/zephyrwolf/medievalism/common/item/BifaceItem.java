@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism.common.item;
 
-import io.github.zephyrwolf.medievalism.registry.ItemRegistration;
-import io.github.zephyrwolf.medievalism.data.base.ModBlockTags;
+import io.github.zephyrwolf.medievalism.content.ItemRegistration;
+import io.github.zephyrwolf.medievalism.content.BlockTagCatalog;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -40,7 +40,7 @@ public class BifaceItem extends Item
         boolean val = super.mineBlock(pStack, pLevel, pState, pPos, pMiningEntity);
         if (val && !pLevel.isClientSide)
         {
-            if (pState.is(ModBlockTags.CAN_DROP_THATCH))
+            if (pState.is(BlockTagCatalog.CAN_DROP_THATCH))
             {
 //                if (pMiningEntity instanceof Player player)
 //                {

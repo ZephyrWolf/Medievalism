@@ -1,7 +1,7 @@
-package io.github.zephyrwolf.medievalism.data.base;
+package io.github.zephyrwolf.medievalism.data;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.registry.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.BlockRegistration;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -11,10 +11,10 @@ import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-public final class BaseBlockStates extends BlockStateProvider
+public final class BaseBlockStatesProvider extends BlockStateProvider
 { // https://github.com/vectorwing/FarmersDelight/blob/1.20/src/main/java/vectorwing/farmersdelight/data/BlockStates.java
 
-    public BaseBlockStates(PackOutput output, ExistingFileHelper existingFileHelper)
+    public BaseBlockStatesProvider(PackOutput output, ExistingFileHelper existingFileHelper)
     {
         super(output, MedievalismConstants.MOD_ID, existingFileHelper);
     }
