@@ -1,9 +1,8 @@
 package io.github.zephyrwolf.medievalism.client;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.content.MenuRegistration;
 import io.github.zephyrwolf.medievalism.client.screen.StoneBenchScreen;
-import net.minecraft.client.gui.screens.MenuScreens;
+import io.github.zephyrwolf.medievalism.content.MenuRegistration;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -11,8 +10,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 
-import static net.minecraft.client.gui.screens.MenuScreens.*;
-
+@SuppressWarnings("unused")
 @EventBusSubscriber(modid = MedievalismConstants.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientSetup {
 

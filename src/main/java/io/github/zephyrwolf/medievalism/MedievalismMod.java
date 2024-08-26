@@ -1,22 +1,18 @@
 package io.github.zephyrwolf.medievalism;
 
-import io.github.zephyrwolf.medievalism.content.*;
-import org.slf4j.Logger;
-
 import com.mojang.logging.LogUtils;
-
+import io.github.zephyrwolf.medievalism.content.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import org.slf4j.Logger;
 
 @Mod(MedievalismConstants.MOD_ID)
-public class MedievalismMod
-{
+public class MedievalismMod {
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public MedievalismMod(IEventBus bus, ModContainer ignoredModContainer)
-    {
+    public MedievalismMod(IEventBus bus, ModContainer ignoredModContainer) {
         bus.addListener(this::commonSetup);
 
         PackRegistration.register(bus);
@@ -34,7 +30,6 @@ public class MedievalismMod
         MalleableMaterialRegistration.register(bus);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event)
-    {
+    private void commonSetup(final FMLCommonSetupEvent event) {
     }
 }

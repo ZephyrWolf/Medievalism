@@ -2,10 +2,8 @@ package io.github.zephyrwolf.medievalism.common.block;
 
 import com.mojang.serialization.MapCodec;
 import io.github.zephyrwolf.medievalism.common.blockentity.StoneBenchBlockEntity;
-import io.github.zephyrwolf.medievalism.content.BlockEntityRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
@@ -13,8 +11,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -74,7 +70,7 @@ public class StoneBenchBlock extends BaseEntityBlock
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
             if (blockEntity instanceof StoneBenchBlockEntity entity)
             {
-                ((ServerPlayer) pPlayer).openMenu(entity, pPos);
+                pPlayer.openMenu(entity, pPos);
             }
             else
             {

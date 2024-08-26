@@ -2,10 +2,7 @@ package io.github.zephyrwolf.medievalism.content;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.blockentity.StoneBenchBlockEntity;
-import io.github.zephyrwolf.medievalism.common.recipe.InWorldRecipeSerializer;
-import net.minecraft.Util;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.util.datafix.fixes.References;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;

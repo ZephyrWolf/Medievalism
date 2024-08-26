@@ -55,5 +55,6 @@ public class MalleableMaterialType
     public int getPositiveColour() { return positiveColour; }
     public int getNegativeColour() { return negativeColour; }
 
+    @Deprecated // Having gameplay issues, not sure how to handle yet
     public boolean canToggle() { return true; }
 }

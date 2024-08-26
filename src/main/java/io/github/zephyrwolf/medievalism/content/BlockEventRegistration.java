@@ -30,14 +30,9 @@ public class BlockEventRegistration
         NeoForge.EVENT_BUS.addListener(EventPriority.LOWEST, BlockEventRegistration::onToolUse);
     }
 
-    //public static void blockBreak(BlockEvent.BreakEvent event)
-    //{
-    //}
-
     public static void onToolUse(BlockEvent.BlockToolModificationEvent event)
     {
         if (event.isCanceled()) return;
-        //if (event.getLevel().isClientSide() || event.isCanceled()) return;
 
         Level level = event.getContext().getLevel();
         AdditionalDropToolUseRecipeInput input = new AdditionalDropToolUseRecipeInput(event.getPos(), event.getItemAbility());

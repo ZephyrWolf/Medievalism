@@ -57,7 +57,7 @@ public class StoneBenchScreen extends AbstractContainerScreen<StoneBenchMenu>
             {
                 int mouseCol = (int) (pMouseX - x) / squarePxSize;
                 int mouseRow = (int) (pMouseY - y) / squarePxSize;
-                //menu.blockEntity.material.get().pattern().set(mouseRow * numCols + mouseCol, false);
+                //menu.blockEntity.materialType.get().pattern().set(mouseRow * numCols + mouseCol, false);
                 PacketDistributor.sendToServer(new MalleableMaterialCellClicked(mouseRow * numCols + mouseCol));
             }
         }
@@ -100,7 +100,7 @@ public class StoneBenchScreen extends AbstractContainerScreen<StoneBenchMenu>
                 for (int col = 0; col < numCols; col++)
                 {
                     boolean positive = material.pattern().get(row * numCols + col);
-                    int colour = positive ? material.material().getPositiveColour() : material.material().getNegativeColour();
+                    int colour = positive ? material.materialType().getPositiveColour() : material.materialType().getNegativeColour();
                     int dx = col * squarePxSize; // 0xFFAFB9D6 positive
                     int dy = row * squarePxSize; // 0xFF373944 negative
                     pGuiGraphics.fill(x + dx, y + dy, x + dx + squarePxSize, y + dy + squarePxSize, colour); // ARGB
