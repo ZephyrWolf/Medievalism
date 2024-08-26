@@ -27,7 +27,9 @@ public class MedievalismMod
         BlockEventRegistration.register();
         FeatureRegistration.register(bus);
         DataGenRegistration.register(bus);
+        RegistryRegistration.register(bus);
         CreativeTabRegistration.register(bus);
+        MalleableMaterialRegistration.register(bus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
