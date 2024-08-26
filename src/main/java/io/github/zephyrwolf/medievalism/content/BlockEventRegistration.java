@@ -1,9 +1,7 @@
-package io.github.zephyrwolf.medievalism.common.block;
+package io.github.zephyrwolf.medievalism.content;
 
 import io.github.zephyrwolf.medievalism.common.recipe.AdditionalDropToolUseRecipe;
 import io.github.zephyrwolf.medievalism.common.recipe.AdditionalDropToolUseRecipeInput;
-import io.github.zephyrwolf.medievalism.content.BlockTagCatalog;
-import io.github.zephyrwolf.medievalism.content.RecipeRegistration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.Entity;
@@ -14,6 +12,8 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.bus.api.EventPriority;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -21,8 +21,14 @@ import org.joml.Vector3f;
 
 import java.util.Optional;
 
-public class ModBlockEvents
+public class BlockEventRegistration
 {
+    public static void register()
+    {
+        NeoForge.EVENT_BUS.addListener(BlockEventRegistration::blockDrops);
+        NeoForge.EVENT_BUS.addListener(BlockEventRegistration::breakSpeed);
+        NeoForge.EVENT_BUS.addListener(EventPriority.LOWEST, BlockEventRegistration::onToolUse);
+    }
 
     //public static void blockBreak(BlockEvent.BreakEvent event)
     //{
