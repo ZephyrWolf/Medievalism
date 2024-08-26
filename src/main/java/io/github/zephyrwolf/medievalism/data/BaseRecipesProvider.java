@@ -3,6 +3,7 @@ package io.github.zephyrwolf.medievalism.data;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.recipe.AdditionalDropToolUseRecipeBuilder;
 import io.github.zephyrwolf.medievalism.common.recipe.MalleableMaterialRecipeBuilder;
+import io.github.zephyrwolf.medievalism.common.recipe.MalleableRecipeBuilder;
 import io.github.zephyrwolf.medievalism.content.*;
 import io.github.zephyrwolf.medievalism.common.recipe.InWorldRecipeBuilder;
 import net.minecraft.advancements.critereon.BlockPredicate;
@@ -38,22 +39,6 @@ public class BaseRecipesProvider extends RecipeProvider
                                 ItemPredicate.Builder.item().of(ItemTagCatalog.ROCK).build()
                         ))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "hammerstone"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.LUNATE.get())
-                .requires(ItemTagCatalog.ROCK)
-                .requires(ItemRegistration.HAMMERSTONE)
-                .unlockedBy("has_rock",
-                        InventoryChangeTrigger.TriggerInstance.hasItems(
-                                ItemPredicate.Builder.item().of(ItemTagCatalog.ROCK).build()
-                        ))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "lunate"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.BIFACE.get())
-                .requires(ItemTagCatalog.LARGE_ROCK)
-                .requires(ItemRegistration.HAMMERSTONE)
-                .unlockedBy("has_large_rock",
-                        InventoryChangeTrigger.TriggerInstance.hasItems(
-                                ItemPredicate.Builder.item().of(ItemTagCatalog.LARGE_ROCK).build()
-                        ))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "biface"));
         // The idea is you work with hammerstone in inv for a bit and then move to a stone anvil to knap some better things
         //ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Registration.STONE_ANVIL.get())
 
@@ -77,14 +62,6 @@ public class BaseRecipesProvider extends RecipeProvider
                         ))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "fire_starter"));
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistration.UNFIRED_JUG.get())
-                .pattern("c c")
-                .pattern("c c")
-                .pattern(" c ")
-                .define('c', ItemTagCatalog.CLAY_BALL)
-                .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemTagCatalog.CLAY_BALL)))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "unfired_jug"));
         SimpleCookingRecipeBuilder.campfireCooking(
                         Ingredient.of(ItemRegistration.UNFIRED_JUG),
                         RecipeCategory.MISC,
@@ -92,7 +69,7 @@ public class BaseRecipesProvider extends RecipeProvider
                         0.0f,
                         100)
                 .unlockedBy("has_unfired_jug", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistration.UNFIRED_JUG.get()))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "jug"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "jug_campfire"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistration.UNFIRED_CLAY_CRUCIBLE.get())
                 .pattern("c c")
@@ -100,7 +77,7 @@ public class BaseRecipesProvider extends RecipeProvider
                 .define('c', ItemTagCatalog.CLAY_BALL)
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems(
                         ItemPredicate.Builder.item().of(ItemTagCatalog.CLAY_BALL)))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "unfired_crucible"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "unfired_crucible_campfire"));
         SimpleCookingRecipeBuilder.campfireCooking(
                         Ingredient.of(ItemRegistration.UNFIRED_CLAY_CRUCIBLE),
                         RecipeCategory.MISC,
@@ -108,10 +85,56 @@ public class BaseRecipesProvider extends RecipeProvider
                         0.0f,
                         100)
                 .unlockedBy("has_unfired_crucible", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistration.UNFIRED_CLAY_CRUCIBLE.get()))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "crucible"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "clay_crucible_campfire"));
 
-        // Pot
-        // Large Pot
+        SimpleCookingRecipeBuilder.campfireCooking(
+                        Ingredient.of(ItemRegistration.UNFIRED_POT),
+                        RecipeCategory.MISC,
+                        ItemRegistration.POT,
+                        0.0f,
+                        100)
+                .unlockedBy("has_unfired_crucible", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistration.UNFIRED_CLAY_CRUCIBLE.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "pot_campfire"));
+        SimpleCookingRecipeBuilder.campfireCooking(
+                        Ingredient.of(ItemRegistration.UNFIRED_LARGE_POT),
+                        RecipeCategory.MISC,
+                        ItemRegistration.LARGE_POT,
+                        0.0f,
+                        100)
+                .unlockedBy("has_unfired_crucible", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistration.UNFIRED_CLAY_CRUCIBLE.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "large_pot_campfire"));
+        SimpleCookingRecipeBuilder.campfireCooking(
+                        Ingredient.of(ItemRegistration.UNFIRED_FLOWER_POT),
+                        RecipeCategory.MISC,
+                        Items.FLOWER_POT,
+                        0.0f,
+                        100)
+                .unlockedBy("has_unfired_crucible", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistration.UNFIRED_CLAY_CRUCIBLE.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "flower_pot_campfire"));
+        // TODO Decorated Pots
+        SimpleCookingRecipeBuilder.campfireCooking(
+                        Ingredient.of(ItemRegistration.UNFIRED_BIRCH_POT),
+                        RecipeCategory.MISC,
+                        BlockRegistration.BIRCH_POT,
+                        0.0f,
+                        100)
+                .unlockedBy("has_unfired_crucible", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistration.UNFIRED_CLAY_CRUCIBLE.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "birch_pot_campfire"));
+        SimpleCookingRecipeBuilder.campfireCooking(
+                        Ingredient.of(ItemRegistration.UNFIRED_BRICK),
+                        RecipeCategory.MISC,
+                        Items.BRICK,
+                        0.0f,
+                        100)
+                .unlockedBy("has_unfired_brick", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistration.UNFIRED_BRICK.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "brick_campfire"));
+
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.UNFIRED_BIRCH_POT.get())
+                .requires(ItemRegistration.UNFIRED_FLOWER_POT.get())
+                .requires(Items.STICK)
+                .unlockedBy("has_unfired_flower_pot", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistration.UNFIRED_FLOWER_POT.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "unfired_birch_pot"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.FLAX_FIBER.get())
                 .requires(ItemRegistration.FLAX.get())
@@ -540,5 +563,79 @@ public class BaseRecipesProvider extends RecipeProvider
                         BlockRegistration.STONE_BENCH_ITEM
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("large_rock_material"));
+
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(ItemRegistration.UNFIRED_FLOWER_POT.get()))
+                .pattern("x x")
+                .pattern(" x ")
+                .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        BlockRegistration.STONE_BENCH_ITEM
+                ))
+                .save(recipeOutput, MedievalismConstants.resource("unfired_plant_pot"));
+
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(ItemRegistration.UNFIRED_CLAY_CRUCIBLE.get()))
+                .pattern("x x")
+                .pattern("xxx")
+                .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        BlockRegistration.STONE_BENCH_ITEM
+                ))
+                .save(recipeOutput, MedievalismConstants.resource("unfired_clay_crucible"));
+
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(ItemRegistration.UNFIRED_POT.get()))
+                .pattern("x  x")
+                .pattern("x  x")
+                .pattern(" xx ")
+                .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        BlockRegistration.STONE_BENCH_ITEM
+                ))
+                .save(recipeOutput, MedievalismConstants.resource("unfired_pot"));
+
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(ItemRegistration.UNFIRED_LARGE_POT.get()))
+                .pattern("x   x")
+                .pattern("x   x")
+                .pattern("x   x")
+                .pattern("x   x")
+                .pattern("xxxxx")
+                .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        BlockRegistration.STONE_BENCH_ITEM
+                ))
+                .save(recipeOutput, MedievalismConstants.resource("unfired_large_pot"));
+
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(ItemRegistration.UNFIRED_JUG.get()))
+                .pattern(" x x ")
+                .pattern(" x x ")
+                .pattern("x   x")
+                .pattern("x   x")
+                .pattern(" xxx ")
+                .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        BlockRegistration.STONE_BENCH_ITEM
+                ))
+                .save(recipeOutput, MedievalismConstants.resource("unfired_jug"));
+
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.STONE.get(), new ItemStack(ItemRegistration.BIFACE.get()))
+                .allowMirror()
+                .pattern("xx ")
+                .pattern("xxx")
+                .pattern("xx ")
+                .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        BlockRegistration.STONE_BENCH_ITEM
+                ))
+                .save(recipeOutput, MedievalismConstants.resource("biface"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, new ItemStack(ItemRegistration.LUNATE.get()))
+                .requires(ItemTagCatalog.HAMMER)
+                .requires(BlockRegistration.ROCK_ITEM)
+                .unlockedBy("has_rock", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        BlockRegistration.ROCK_ITEM.get(),
+                        ItemRegistration.HAMMERSTONE
+                ))
+                .save(recipeOutput, MedievalismConstants.resource("lunate"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, new ItemStack(BlockRegistration.STONE_BENCH_ITEM.get()))
+                .pattern("xx")
+                .define('x', BlockRegistration.LARGE_ROCK_ITEM.get())
+                .unlockedBy("has_large_rock", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        BlockRegistration.LARGE_ROCK_ITEM.get()
+                ))
+                .save(recipeOutput, MedievalismConstants.resource("stone_bench"));
     }
 }
