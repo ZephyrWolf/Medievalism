@@ -66,7 +66,7 @@ public final class ItemRegistration
     //public static final DeferredItem<Item> UNFIRED_POTTERY_BRICK = ITEMS.registerSimpleItem("unfired_pottery_brick");
     public static final DeferredItem<Item> UNFIRED_JUG = ITEMS.registerSimpleItem("unfired_jug");
     public static final DeferredItem<Item> JUG = ITEMS.registerSimpleItem("jug");
-    public static final DeferredItem<Item> UNFIRED_PLANT_POT = ITEMS.registerSimpleItem("unfired_plant_pot");
+    public static final DeferredItem<Item> UNFIRED_FLOWER_POT = ITEMS.registerSimpleItem("unfired_flower_pot");
     public static final DeferredItem<Item> UNFIRED_BIRCH_POT = ITEMS.registerSimpleItem("unfired_birch_pot");
     public static final DeferredItem<Item> UNFIRED_POT = ITEMS.registerSimpleItem("unfired_pot");
     public static final DeferredItem<Item> POT = ITEMS.registerSimpleItem("pot");

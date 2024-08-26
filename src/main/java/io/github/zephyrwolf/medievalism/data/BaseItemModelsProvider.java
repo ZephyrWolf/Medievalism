@@ -81,7 +81,7 @@ public class BaseItemModelsProvider extends ItemModelProvider
             itemGeneratedModel(ItemRegistration.UNFIRED_BRICK.get());
             itemGeneratedModel(ItemRegistration.UNFIRED_JUG.get());
             itemGeneratedModel(ItemRegistration.JUG.get());
-            itemGeneratedModel(ItemRegistration.UNFIRED_PLANT_POT.get());
+            itemGeneratedModel(ItemRegistration.UNFIRED_FLOWER_POT.get());
             itemGeneratedModel(ItemRegistration.UNFIRED_BIRCH_POT.get());
             itemGeneratedModel(ItemRegistration.UNFIRED_POT.get());
             itemGeneratedModel(ItemRegistration.POT.get());
