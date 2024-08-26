@@ -1,6 +1,5 @@
 package io.github.zephyrwolf.medievalism;
 
-import io.github.zephyrwolf.medievalism.content.BlockEventRegistration;
 import io.github.zephyrwolf.medievalism.content.*;
 import org.slf4j.Logger;
 
@@ -28,6 +27,7 @@ public class MedievalismMod
         FeatureRegistration.register(bus);
         DataGenRegistration.register(bus);
         RegistryRegistration.register(bus);
+        BlockEntityRegistration.register(bus);
         CreativeTabRegistration.register(bus);
         MalleableMaterialRegistration.register(bus);
     }
