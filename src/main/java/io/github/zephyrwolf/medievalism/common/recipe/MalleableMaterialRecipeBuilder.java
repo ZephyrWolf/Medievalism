@@ -73,11 +73,11 @@ public final class MalleableMaterialRecipeBuilder implements RecipeBuilder
                 .rewards(AdvancementRewards.Builder.recipe(pId))
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement$builder::addCriterion);
-        MalleableMaterialRecipe stonebenchmaterialrecipe = getStoneBenchMaterialRecipe();
-        pRecipeOutput.accept(pId, stonebenchmaterialrecipe, advancement$builder.build(pId.withPrefix("recipes/" + "stone_bench_recipe" + "/")));
+        MalleableMaterialRecipe recipe = buildRecipe();
+        pRecipeOutput.accept(pId, recipe, advancement$builder.build(pId.withPrefix("recipes/" + "malleable_material" + "/")));
     }
 
-    private @NotNull MalleableMaterialRecipe getStoneBenchMaterialRecipe()
+    private @NotNull MalleableMaterialRecipe buildRecipe()
     {
         int numRows = rows.size();
         int numCols = rows.getFirst().length();

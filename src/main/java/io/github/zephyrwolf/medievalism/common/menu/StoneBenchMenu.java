@@ -1,22 +1,32 @@
 package io.github.zephyrwolf.medievalism.common.menu;
 
 import io.github.zephyrwolf.medievalism.common.blockentity.StoneBenchBlockEntity;
+import io.github.zephyrwolf.medievalism.common.malleablematerial.MalleableMaterial;
+import io.github.zephyrwolf.medievalism.common.recipe.MalleableMaterialRecipe;
+import io.github.zephyrwolf.medievalism.common.recipe.MalleableMaterialRecipeInput;
+import io.github.zephyrwolf.medievalism.common.recipe.MalleableRecipe;
+import io.github.zephyrwolf.medievalism.common.recipe.MalleableRecipeInput;
 import io.github.zephyrwolf.medievalism.content.BlockRegistration;
 import io.github.zephyrwolf.medievalism.content.MenuRegistration;
+import io.github.zephyrwolf.medievalism.content.RecipeRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.SlotItemHandler;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Objects;
+import java.util.Optional;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
@@ -68,7 +78,31 @@ public class StoneBenchMenu extends AbstractContainerMenu
             }
         });
         this.addSlot(new SlotItemHandler(blockEntityInv, StoneBenchBlockEntity.RESULT_SLOT, 140, 86));
+    }
 
+    @Override
+    public void slotsChanged(Container pContainer)
+    {
+        updateResult();
+        super.slotsChanged(pContainer);
+    }
+
+    public void updateResult()
+    {
+        Optional<MalleableMaterial> opMaterial = blockEntity.getMaterial();
+        if (opMaterial.isEmpty())
+        {
+            blockEntity.getInventory().setStackInSlot(StoneBenchBlockEntity.RESULT_SLOT, ItemStack.EMPTY);
+            return;
+        }
+        var recipes = RecipeManager.createCheck(RecipeRegistration.MALLEABLE_RECIPE_TYPE.get());
+        MalleableRecipeInput input = new MalleableRecipeInput(opMaterial.get().trim());
+        assert level != null;
+        Optional<RecipeHolder<MalleableRecipe>> opRecipe = recipes.getRecipeFor(input, level);
+        Optional<ItemStack> opResult = opRecipe
+                .map(RecipeHolder::value)
+                .map(e -> e.assemble(input, level.registryAccess()));
+        blockEntity.getInventory().setStackInSlot(StoneBenchBlockEntity.RESULT_SLOT, opResult.orElse(ItemStack.EMPTY));
     }
 
     @Override

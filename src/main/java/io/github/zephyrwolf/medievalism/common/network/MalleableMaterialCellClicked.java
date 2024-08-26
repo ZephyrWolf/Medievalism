@@ -35,6 +35,7 @@ public record MalleableMaterialCellClicked(int index) implements CustomPacketPay
             {
                 context.enqueueWork(() -> { // Main Thread
                             menu.blockEntity.cellClicked(data.index);
+                            menu.updateResult();
                         })
                         .exceptionally(e -> {
                             context.disconnect(Component.translatable("medievalism.networking.failed", e.getMessage()));
