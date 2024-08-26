@@ -76,6 +76,9 @@ public class BaseItemTagsProvider extends ItemTagsProvider
         tag(ItemTagCatalog.CLAY_BALL)
                 .add(Items.CLAY_BALL)
                 .add(ItemRegistration.RED_CLAY_BALL.get());
+        tag(ItemTagCatalog.CLAY_BLOCK)
+                .add(Items.CLAY)
+                .add(BlockRegistration.RED_CLAY_BLOCK_ITEM.get());
 
         tag(ItemTagCatalog.ROCK)
                 .add(BlockRegistration.ROCK_ITEM.get())
@@ -99,6 +102,10 @@ public class BaseItemTagsProvider extends ItemTagsProvider
         tag(ItemTagCatalog.CLAY_FLUX).add(
                 ItemRegistration.WOOD_ASH.get(),
                 ItemRegistration.POTASH.get()
+        );
+
+        tag(ItemTagCatalog.HAMMER).add(
+                ItemRegistration.HAMMERSTONE.get()
         );
     }
 

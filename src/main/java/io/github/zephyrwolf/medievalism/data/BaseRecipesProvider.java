@@ -2,11 +2,9 @@ package io.github.zephyrwolf.medievalism.data;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.recipe.AdditionalDropToolUseRecipeBuilder;
-import io.github.zephyrwolf.medievalism.content.ItemRegistration;
+import io.github.zephyrwolf.medievalism.common.recipe.MalleableMaterialRecipeBuilder;
+import io.github.zephyrwolf.medievalism.content.*;
 import io.github.zephyrwolf.medievalism.common.recipe.InWorldRecipeBuilder;
-import io.github.zephyrwolf.medievalism.content.BlockRegistration;
-import io.github.zephyrwolf.medievalism.content.BlockTagCatalog;
-import io.github.zephyrwolf.medievalism.content.ItemTagCatalog;
 import net.minecraft.advancements.critereon.BlockPredicate;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -504,5 +502,43 @@ public class BaseRecipesProvider extends RecipeProvider
                 .unlockedBy("has_axe" , InventoryChangeTrigger.TriggerInstance.hasItems(
                         ItemPredicate.Builder.item().of(ItemTags.AXES).build()))
                 .save(recipeOutput, MedievalismConstants.resource("strip_black_bark"));
+
+        MalleableMaterialRecipeBuilder.builder(Ingredient.of(ItemTagCatalog.CLAY_BALL), MalleableMaterialRegistration.CLAY.get())
+                .pattern("xxx")
+                .pattern("xxx")
+                .pattern("xxx")
+                .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            BlockRegistration.STONE_BENCH_ITEM
+                        ))
+                .save(recipeOutput, MedievalismConstants.resource("clay_ball_material"));
+        MalleableMaterialRecipeBuilder.builder(Ingredient.of(ItemTagCatalog.CLAY_BLOCK), MalleableMaterialRegistration.CLAY.get())
+                .pattern("xxxxx")
+                .pattern("xxxxx")
+                .pattern("xxxxx")
+                .pattern("xxxxx")
+                .pattern("xxxxx")
+                .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        BlockRegistration.STONE_BENCH_ITEM
+                ))
+                .save(recipeOutput, MedievalismConstants.resource("clay_block_material"));
+
+        MalleableMaterialRecipeBuilder.builder(Ingredient.of(ItemTagCatalog.ROCK), MalleableMaterialRegistration.STONE.get())
+                .pattern("xxx")
+                .pattern("xxx")
+                .pattern("xxx")
+                .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        BlockRegistration.STONE_BENCH_ITEM
+                ))
+                .save(recipeOutput, MedievalismConstants.resource("rock_material"));
+        MalleableMaterialRecipeBuilder.builder(Ingredient.of(ItemTagCatalog.LARGE_ROCK), MalleableMaterialRegistration.STONE.get())
+                .pattern("xxxxx")
+                .pattern("xxxxx")
+                .pattern("xxxxx")
+                .pattern("xxxxx")
+                .pattern("xxxxx")
+                .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        BlockRegistration.STONE_BENCH_ITEM
+                ))
+                .save(recipeOutput, MedievalismConstants.resource("large_rock_material"));
     }
 }
