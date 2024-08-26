@@ -187,14 +187,13 @@ public class StoneBenchBlockEntity extends BlockEntity implements MenuProvider {
         if (index >= material.pattern().size()) return;
 
         boolean cellActive = material.pattern().get(index);
-        if (!cellActive) return;
-        //if (!cellActive && !opMaterial.get().materialType().canToggle()) return; // Gameplay issues with clay
+        if (!cellActive && !opMaterial.get().materialType().canToggle()) return; // Gameplay issues with clay
         if (!processTool(material)) return;
         if (ghost) { // Will move a single item from input slot to materialType slot
             consumeMaterial();
         }
         assert storedMaterial != null; // At this point, materialType should never be null
-        storedMaterial.pattern().set(index, false);
+        storedMaterial.pattern().set(index, !cellActive);
         if (storedMaterial.is(false)) {
             storedMaterial = null;
         }
