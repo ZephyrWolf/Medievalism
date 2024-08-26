@@ -161,5 +161,6 @@ public class BaseLanguageProvider extends LanguageProvider
         add("medievalism.pack.title.overhaul.client_resources", "Medievalism Overhaul - Looks");
         add("medievalism.pack.title.overhaul.server_data", "Medievalism Overhaul - Progression");
         add("medievalism.pack.source.overhaul", "Medievalism Overhaul Source");
+        add("medievalism.networking.failed", "Medievalism crashed you :(");
     }
 }

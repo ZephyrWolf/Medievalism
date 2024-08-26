@@ -36,6 +36,33 @@ public class StoneBenchScreen extends AbstractContainerScreen<StoneBenchMenu>
         inventoryLabelY = imageHeight - 94;
     }
 
+    @Override
+    public boolean mouseClicked(double pMouseX, double pMouseY, int pButton)
+    {
+        if (menu.blockEntity.getMaterial().isPresent())
+        {
+            var material = menu.blockEntity.getMaterial().get();
+            int x = (width - imageWidth) / 2+48;
+            int y = (height - imageHeight) / 2+20;
+            int numRows = material.rows();
+            int numCols = material.cols();
+            int numDiv = Math.max(Math.max(numRows, numCols), 5);
+            int matrixPxSize = 80;
+            int squarePxSize = matrixPxSize / numDiv;
+
+            x += (matrixPxSize - squarePxSize * numCols) / 2;
+            y += (matrixPxSize - squarePxSize * numRows) / 2;
+
+            if (pMouseX >= x && pMouseX < x + numCols * squarePxSize && pMouseY >= y && pMouseY < y + numRows * squarePxSize)
+            {
+                int mouseCol = (int) (pMouseX - x) / squarePxSize;
+                int mouseRow = (int) (pMouseY - y) / squarePxSize;
+                //menu.blockEntity.material.get().pattern().set(mouseRow * numCols + mouseCol, false);
+                PacketDistributor.sendToServer(new MalleableMaterialCellClicked(mouseRow * numCols + mouseCol));
+            }
+        }
+        return super.mouseClicked(pMouseX, pMouseY, pButton);
+    }
 
     @Override
     protected void renderBg(GuiGraphics pGuiGraphics, float pPartialTick, int pMouseX, int pMouseY)

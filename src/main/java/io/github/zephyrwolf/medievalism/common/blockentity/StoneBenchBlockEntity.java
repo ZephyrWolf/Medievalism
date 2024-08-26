@@ -77,6 +77,10 @@ public class StoneBenchBlockEntity extends BlockEntity implements MenuProvider {
             return super.isItemValid(slot, stack);
         }
 
+        @Override
+        protected void onContentsChanged(int slot) {
+            StoneBenchBlockEntity.this.setChanged();
+        }
 
 
     };
@@ -130,6 +134,51 @@ public class StoneBenchBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     // Called only on the server
+    public void cellClicked(int index) {
+        boolean ghost = material == null;
+        Optional<MalleableMaterial> opMaterial = getMaterial();
+
+        if (opMaterial.isPresent() && index < opMaterial.get().pattern().size()) {
+
+            boolean val = opMaterial.get().pattern().get(index);
+            if (!val) return;
+            //if (!val && !opMaterial.get().material().canToggle()) return; // Play issues with clay
+            if (opMaterial.get().material().requiresTool()) {
+                ItemStack tool = items.getStackInSlot(TOOL_SLOT);
+                if (!opMaterial.get().material().validTool(tool)) return;
+                if (tool.isDamageableItem()) {
+                    int amt = tool.getItem().damageItem(tool, 1, null, item -> {
+                    });
+                    if (amt > 0) {
+                        amt = EnchantmentHelper.processDurabilityChange((ServerLevel) level, tool, amt);
+                        if (amt <= 0) {
+                            return;
+                        }
+                    }
+                    int i = tool.getDamageValue() + amt;
+                    tool.setDamageValue(i);
+                    if (i >= tool.getMaxDamage()) {
+                        Item item = tool.getItem();
+                        tool.shrink(1);
+                    }
+                } else {
+                    tool.shrink(1);
+                }
+            }
+            if (ghost) { // Will move a single item from input slot to material slot
+                ItemStack materialStack = items.extractItem(INPUT_SLOT, 1, false);
+                setMaterial(getMalleableMaterialForStack(materialStack).orElse(null));
+            }
+            assert material != null; // At this point, material should never be null
+            material.pattern().set(index, !val);
+            if (material.pattern().stream().filter(v -> v).findAny().isEmpty()) {
+                material = null;
+            }
+            setChanged();
+            assert level != null;
+            level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+        }
+    }
 
     public void setMaterial(@Nullable MalleableMaterial material) {
         this.material = material;
@@ -169,6 +218,7 @@ public class StoneBenchBlockEntity extends BlockEntity implements MenuProvider {
 
     @Override
     public @Nullable AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
+        return new StoneBenchMenu(pContainerId, pPlayerInventory, this, this.data);
         return null;
     }
 

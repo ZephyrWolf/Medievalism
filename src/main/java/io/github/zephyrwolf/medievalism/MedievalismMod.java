@@ -27,6 +27,7 @@ public class MedievalismMod
         BlockEventRegistration.register();
         FeatureRegistration.register(bus);
         DataGenRegistration.register(bus);
+        NetworkRegistration.register(bus);
         RegistryRegistration.register(bus);
         BlockEntityRegistration.register(bus);
         CreativeTabRegistration.register(bus);

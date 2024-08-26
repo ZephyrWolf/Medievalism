@@ -51,6 +51,7 @@ public class StoneBenchBlock extends BaseEntityBlock
     {
         return new StoneBenchBlockEntity(pPos, pState);
     }
+
     @Override
     protected void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pMovedByPiston)
     {
