@@ -3,9 +3,14 @@ package io.github.zephyrwolf.medievalism.client.screen;
 import com.mojang.blaze3d.systems.RenderSystem;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.menu.StoneBenchMenu;
+import io.github.zephyrwolf.medievalism.common.network.DiscardMalleableMaterial;
 import io.github.zephyrwolf.medievalism.common.network.MalleableMaterialCellClicked;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.AbstractWidget;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.ImageButton;
+import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
@@ -22,10 +27,19 @@ public class StoneBenchScreen extends AbstractContainerScreen<StoneBenchMenu>
     private static final ResourceLocation TEXTURE =
             MedievalismConstants.resource("textures/gui/stone_bench.png");
 
+    protected Button scrapMaterialButton;
+
     public StoneBenchScreen(StoneBenchMenu pMenu, Inventory pPlayerInventory, Component pTitle)
     {
         super(pMenu, pPlayerInventory, pTitle);
+
     }
+
+    public static final WidgetSprites DISCARD_BUTTON_SPRITES = new WidgetSprites(
+            MedievalismConstants.resource("stone_bench/discard_button"),
+            MedievalismConstants.resource("stone_bench/discard_button_disabled"),
+            MedievalismConstants.resource("stone_bench/discard_button_highlighted")
+    );
 
     @Override
     protected void init()
@@ -34,6 +48,22 @@ public class StoneBenchScreen extends AbstractContainerScreen<StoneBenchMenu>
         imageHeight = 200;
         super.init();
         inventoryLabelY = imageHeight - 94;
+
+        this.scrapMaterialButton = this.addRenderableWidget(
+                new ImageButton(this.leftPos + 20, this.topPos + 86, 16, 16, DISCARD_BUTTON_SPRITES, btn -> {
+                    PacketDistributor.sendToServer(new DiscardMalleableMaterial());
+                }) {
+                    @Override
+                    public void setFocused(boolean pFocused) {
+                        super.setFocused(false);
+                    }
+
+                    @Override
+                    public boolean isActive() {
+                        return menu.blockEntity.getNonGhostMaterial().isPresent();
+                    }
+                }
+        );
     }
 
     @Override

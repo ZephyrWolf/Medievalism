@@ -61,8 +61,14 @@ public class StoneBenchBlockEntity extends BlockEntity implements MenuProvider {
         }
 
         @Override
-        public ItemStack extractItem(int slot, int amount, boolean simulate) {
-            return super.extractItem(slot, amount, simulate);
+        public ItemStack extractItem(int slot, int amount, boolean simulate)
+        {
+            ItemStack takeStack = super.extractItem(slot, amount, simulate);
+            if (slot == RESULT_SLOT && !takeStack.isEmpty())
+            {
+                storedMaterial = null;
+            }
+            return takeStack;
         }
 
         @Override
@@ -103,6 +109,11 @@ public class StoneBenchBlockEntity extends BlockEntity implements MenuProvider {
     //endregion
 
     //region Material
+    public Optional<MalleableMaterial> getNonGhostMaterial()
+    {
+        return Optional.ofNullable(storedMaterial);
+    }
+
     public Optional<MalleableMaterial> getMaterial() {
         if (storedMaterial != null) {
             return Optional.of(storedMaterial);
@@ -200,7 +211,7 @@ public class StoneBenchBlockEntity extends BlockEntity implements MenuProvider {
         setChangedAndSendUpdates();
     }
 
-    private void setChangedAndSendUpdates() {
+    public void setChangedAndSendUpdates() {
         setChanged();
         assert level != null;
         level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
