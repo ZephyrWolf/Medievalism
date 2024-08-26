@@ -46,10 +46,7 @@ public class FireStarterItem extends Item
             InWorldRecipeInput input = new InWorldRecipeInput(context.getItemInHand(), entities, pos);
             // Investigate how AbstractFurnaceBlockEntity uses this, I assume they refresh it on inventory change
             var recipes = RecipeManager.createCheck(RecipeRegistration.IN_WORLD_RECIPE_TYPE.get());
-            Optional<RecipeHolder<InWorldRecipe>> optional = recipes.getRecipeFor(
-                    input,
-                    level
-            );
+            Optional<RecipeHolder<InWorldRecipe>> optional = recipes.getRecipeFor(input, level);
             Optional<BlockState> state = optional
                     .map(RecipeHolder::value)
                     .map(e -> e.assembleState(input, level.registryAccess()));

@@ -101,7 +101,6 @@ public class InWorldRecipeBuilder implements RecipeBuilder
 
     private void ensureValid(ResourceLocation pId)
     {
-        assert this.criteria != null;
         if (this.criteria.isEmpty())
         {
             throw new IllegalStateException("No way of obtaining recipe " + pId);
