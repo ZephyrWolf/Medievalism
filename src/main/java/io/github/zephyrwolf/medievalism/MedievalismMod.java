@@ -21,6 +21,7 @@ public class MedievalismMod
 
         PackRegistration.register(bus);
         ItemRegistration.register(bus);
+        MenuRegistration.register(bus);
         BlockRegistration.register(bus);
         RecipeRegistration.register(bus);
         BlockEventRegistration.register();
