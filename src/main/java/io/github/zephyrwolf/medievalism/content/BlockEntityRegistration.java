@@ -19,6 +19,14 @@ public final class BlockEntityRegistration
 
     // Block Entities
 
+    @SuppressWarnings("DataFlowIssue")
+    public static final Supplier<BlockEntityType<StoneBenchBlockEntity>> STONE_BENCH_BLOCK_ENTITY_TYPE =
+            BLOCK_ENTITY_TYPES.register(
+                    "stone_bench_block_entity",
+                    () -> BlockEntityType.Builder
+                            .of(StoneBenchBlockEntity::new, BlockRegistration.STONE_BENCH.get())
+                            .build(null) // null because we don't need to use any data-fixers
+            );
 
 
 

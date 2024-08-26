@@ -4,6 +4,7 @@ import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.block.DogbaneBlock;
 import io.github.zephyrwolf.medievalism.common.block.FlatBlock;
 import io.github.zephyrwolf.medievalism.common.block.ShortBlock;
+import io.github.zephyrwolf.medievalism.common.block.StoneBenchBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
@@ -84,7 +85,7 @@ public final class BlockRegistration
             "thatch_block", RotatedPillarBlock::new, BlockBehaviour.Properties.of()
                     .mapColor(MapColor.WARPED_STEM).strength(0.5f).sound(SoundType.GRASS));
     public static final DeferredItem<BlockItem> THATCH_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("thatch_block", THATCH_BLOCK);
-    public static final DeferredBlock<ShortBlock> STONE_BENCH = BLOCKS.registerBlock("stone_bench", ShortBlock::new, BlockBehaviour.Properties.of()
+    public static final DeferredBlock<StoneBenchBlock> STONE_BENCH = BLOCKS.registerBlock("stone_bench", StoneBenchBlock::new, BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE).strength(1.0f).sound(SoundType.STONE));
     public static final DeferredItem<BlockItem> STONE_BENCH_ITEM = ITEMS.registerSimpleBlockItem("stone_bench", STONE_BENCH);
     public static final DeferredBlock<ShortBlock> CHOPPING_BLOCK = BLOCKS.registerBlock("chopping_block", ShortBlock::new, BlockBehaviour.Properties.of()
