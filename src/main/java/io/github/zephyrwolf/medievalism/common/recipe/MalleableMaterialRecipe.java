@@ -30,7 +30,7 @@ public record MalleableMaterialRecipe(Ingredient ingredient, MalleableMaterial s
         return ItemStack.EMPTY;
     }
 
-    public MalleableMaterial assembleMaterial(MalleableMaterialRecipeInput pInput, HolderLookup.Provider pRegistries)
+    public MalleableMaterial assembleMaterial(MalleableMaterialRecipeInput ignoredPInput, HolderLookup.Provider ignoredPRegistries)
     {
         return shape.copy();
     }

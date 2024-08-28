@@ -1,7 +1,6 @@
 package io.github.zephyrwolf.medievalism.content.item;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -30,11 +29,6 @@ public final class ItemTagCatalog
 
     private static TagKey<Item> tag(String name)
     {
-        return tag(MedievalismConstants.MOD_ID, name);
-    }
-
-    private static TagKey<Item> tag(String namespace, String name)
-    {
-        return ItemTags.create(ResourceLocation.fromNamespaceAndPath(namespace, name));
+        return ItemTags.create(MedievalismConstants.resource(name));
     }
 }

@@ -48,8 +48,10 @@ public class InWorldRecipeBuilder implements RecipeBuilder
 
     public InWorldRecipeBuilder requires(TagKey<Item> tag) { return requires(Ingredient.of(tag), 1); }
     public InWorldRecipeBuilder requires(TagKey<Item> tag, int quantity) { return requires(Ingredient.of(tag), quantity); }
+    @SuppressWarnings("unused")
     public InWorldRecipeBuilder requires(ItemLike item) { return requires(item, 1); }
     public InWorldRecipeBuilder requires(ItemLike item, int quantity) { return requires(Ingredient.of(item), quantity); }
+    @SuppressWarnings("unused")
     public InWorldRecipeBuilder requires(Ingredient ingredient) { return requires(ingredient, 1); }
     public InWorldRecipeBuilder requires(Ingredient ingredient, int quantity)
     {
@@ -78,6 +80,7 @@ public class InWorldRecipeBuilder implements RecipeBuilder
     @Deprecated
     @Override
     public @NotNull Item getResult() { return Items.AIR; }
+    @SuppressWarnings("unused")
     public BlockState getResultState() { return result; }
 
     @Override

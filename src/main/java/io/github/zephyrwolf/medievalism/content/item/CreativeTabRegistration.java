@@ -5,7 +5,6 @@ import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
@@ -18,6 +17,7 @@ public class CreativeTabRegistration
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MedievalismConstants.MOD_ID);
 
+    @SuppressWarnings("unused")
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MEDIEVALISM_TAB = CREATIVE_MODE_TABS.register("medievalism_tab",
             () -> CreativeModeTab.builder()
                     .icon(() -> new ItemStack(BlockRegistration.RED_CLAY_BLOCK.asItem()))
@@ -41,13 +41,5 @@ public class CreativeTabRegistration
 
     public static void InjectItemsIntoCreativeTabs(BuildCreativeModeTabContentsEvent event)
     { // Existing Tabs
-        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS)
-        {
-           //event.accept(RED_CLAY_BALL);
-        }
-        else if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
-        {
-            //event.accept(RED_CLAY_BLOCK_ITEM);
-        }
     }
 }

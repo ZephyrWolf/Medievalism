@@ -80,6 +80,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
         dropSelf(BlockRegistration.BIRCH_POT.get());
     }
 
+    @SuppressWarnings("unused")
     protected void dropNamedContainer(Block block)
     {
         add(block, this::createNameableBlockEntityTable);
@@ -91,6 +92,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
         return BlockRegistration.BLOCKS.getEntries().stream().map(DeferredHolder::get).map(b -> (Block) b)::iterator;
     }
 
+    @SuppressWarnings("unused")
     protected void dropOther(Block pBlock, ItemLike pItem, int count) {
         this.add(pBlock, this.createItemTable(pItem, count));
     }

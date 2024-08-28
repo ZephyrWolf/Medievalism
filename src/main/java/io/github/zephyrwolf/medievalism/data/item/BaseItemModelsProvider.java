@@ -190,6 +190,7 @@ public class BaseItemModelsProvider extends ItemModelProvider
         withExistingParent(itemName(item), GENERATED).texture("layer0", texture);
     }
 
+    @SuppressWarnings("unused")
     public void itemHandheldModel(Item item, ResourceLocation texture)
     {
         withExistingParent(itemName(item), HANDHELD).texture("layer0", texture);

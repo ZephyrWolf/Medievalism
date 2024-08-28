@@ -146,7 +146,7 @@ public class InWorldRecipe implements Recipe<InWorldRecipeInput>
     @Override
     public @NotNull ItemStack assemble(@NotNull InWorldRecipeInput pInput, HolderLookup.@NotNull Provider pRegistries) { return ItemStack.EMPTY; }
 
-    public @NotNull BlockState assembleState(@NotNull InWorldRecipeInput pInput, HolderLookup.@NotNull Provider pRegistries)
+    public @NotNull BlockState assembleState(@NotNull InWorldRecipeInput ignoredPInput, HolderLookup.@NotNull Provider ignoredPRegistries)
     {
         return result;
     }

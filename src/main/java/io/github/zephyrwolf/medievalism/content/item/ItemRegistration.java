@@ -239,8 +239,8 @@ public final class ItemRegistration
     //endregion
 
     // InWorldRecipeBuilder.fireStarter
-    public static ItemStack getThatchedItem(BlockState state)
-    {
+    public static ItemStack getThatchedItem(BlockState ignoredState)
+    { // TODO STUB
         return new ItemStack(THATCH.get());
     }
 

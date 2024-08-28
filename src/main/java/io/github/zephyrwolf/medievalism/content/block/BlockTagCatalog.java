@@ -1,7 +1,6 @@
 package io.github.zephyrwolf.medievalism.content.block;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
@@ -20,11 +19,6 @@ public class BlockTagCatalog
 
     private static TagKey<Block> tag(String name)
     {
-        return tag(MedievalismConstants.MOD_ID, name);
-    }
-
-    private static TagKey<Block> tag(String namespace, String name)
-    {
-        return BlockTags.create(ResourceLocation.fromNamespaceAndPath(namespace, name));
+        return BlockTags.create(MedievalismConstants.resource(name));
     }
 }

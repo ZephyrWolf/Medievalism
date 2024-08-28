@@ -18,6 +18,7 @@ import java.util.function.Consumer;
 public class BaseAdvancementsProvider implements AdvancementProvider.AdvancementGenerator
 { // https://github.com/vectorwing/FarmersDelight/blob/1.20/src/main/java/vectorwing/farmersdelight/data/advancement/FDAdvancementGenerator.java
 
+    @SuppressWarnings("unused")
     @Override
     public void generate(HolderLookup.@NotNull Provider registries, @NotNull Consumer<AdvancementHolder> saver, @NotNull ExistingFileHelper existingFileHelper)
     {

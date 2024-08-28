@@ -45,7 +45,7 @@ public final class ModConfiguredFeatures
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?,?>> context)
     {
-        var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
+        //var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
 
         RuleTest stoneReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
