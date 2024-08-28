@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.content;
+package io.github.zephyrwolf.medievalism.content.item;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.item.BifaceItem;

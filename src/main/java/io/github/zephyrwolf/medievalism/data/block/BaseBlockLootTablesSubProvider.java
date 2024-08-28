@@ -1,11 +1,10 @@
 package io.github.zephyrwolf.medievalism.data.block;
 
-import io.github.zephyrwolf.medievalism.content.ItemRegistration;
-import io.github.zephyrwolf.medievalism.content.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootPool;

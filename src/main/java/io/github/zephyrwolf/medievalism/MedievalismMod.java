@@ -2,6 +2,15 @@ package io.github.zephyrwolf.medievalism;
 
 import com.mojang.logging.LogUtils;
 import io.github.zephyrwolf.medievalism.content.*;
+import io.github.zephyrwolf.medievalism.content.block.BlockEntityRegistration;
+import io.github.zephyrwolf.medievalism.content.block.BlockEventRegistration;
+import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.item.CreativeTabRegistration;
+import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.content.menu.MenuRegistration;
+import io.github.zephyrwolf.medievalism.content.recipe.MalleableMaterialRegistration;
+import io.github.zephyrwolf.medievalism.content.recipe.RecipeRegistration;
+import io.github.zephyrwolf.medievalism.content.worldgen.FeatureRegistration;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;

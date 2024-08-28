@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism.common.item;
 
-import io.github.zephyrwolf.medievalism.content.ItemRegistration;
-import io.github.zephyrwolf.medievalism.content.BlockTagCatalog;
+import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.content.block.BlockTagCatalog;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;

@@ -1,7 +1,8 @@
-package io.github.zephyrwolf.medievalism.content;
+package io.github.zephyrwolf.medievalism.content.block;
 
 import io.github.zephyrwolf.medievalism.common.recipe.AdditionalDropToolUseRecipe;
 import io.github.zephyrwolf.medievalism.common.recipe.AdditionalDropToolUseRecipeInput;
+import io.github.zephyrwolf.medievalism.content.recipe.RecipeRegistration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.Entity;

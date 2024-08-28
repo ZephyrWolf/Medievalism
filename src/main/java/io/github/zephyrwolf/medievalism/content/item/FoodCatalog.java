@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.content;
+package io.github.zephyrwolf.medievalism.content.item;
 
 import net.minecraft.world.food.FoodProperties;
 

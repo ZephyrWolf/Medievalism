@@ -1,6 +1,7 @@
-package io.github.zephyrwolf.medievalism.content;
+package io.github.zephyrwolf.medievalism.content.item;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;

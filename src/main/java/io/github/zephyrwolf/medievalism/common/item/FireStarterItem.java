@@ -1,6 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.item;
 
-import io.github.zephyrwolf.medievalism.content.RecipeRegistration;
+import io.github.zephyrwolf.medievalism.content.recipe.RecipeRegistration;
 import io.github.zephyrwolf.medievalism.common.recipe.InWorldRecipe;
 import io.github.zephyrwolf.medievalism.common.recipe.InWorldRecipeInput;
 import net.minecraft.core.BlockPos;

@@ -2,7 +2,7 @@ package io.github.zephyrwolf.medievalism.client;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.client.screen.StoneBenchScreen;
-import io.github.zephyrwolf.medievalism.content.MenuRegistration;
+import io.github.zephyrwolf.medievalism.content.menu.MenuRegistration;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;

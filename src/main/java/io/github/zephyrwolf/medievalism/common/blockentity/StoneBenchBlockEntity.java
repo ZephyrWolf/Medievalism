@@ -4,8 +4,8 @@ import io.github.zephyrwolf.medievalism.common.malleablematerial.MalleableMateri
 import io.github.zephyrwolf.medievalism.common.menu.StoneBenchMenu;
 import io.github.zephyrwolf.medievalism.common.recipe.MalleableMaterialRecipe;
 import io.github.zephyrwolf.medievalism.common.recipe.MalleableMaterialRecipeInput;
-import io.github.zephyrwolf.medievalism.content.BlockEntityRegistration;
-import io.github.zephyrwolf.medievalism.content.RecipeRegistration;
+import io.github.zephyrwolf.medievalism.content.block.BlockEntityRegistration;
+import io.github.zephyrwolf.medievalism.content.recipe.RecipeRegistration;
 import io.github.zephyrwolf.medievalism.tools.ItemTools;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;

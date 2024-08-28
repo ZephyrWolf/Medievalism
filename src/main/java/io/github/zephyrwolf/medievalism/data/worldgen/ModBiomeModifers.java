@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism.data.worldgen;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.content.BiomeTagCatalog;
+import io.github.zephyrwolf.medievalism.content.worldgen.BiomeTagCatalog;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;

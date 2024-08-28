@@ -2,9 +2,9 @@ package io.github.zephyrwolf.medievalism.data.worldgen;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.worldgen.feature.configuration.CompositeFeatureConfiguration;
-import io.github.zephyrwolf.medievalism.content.BlockTagCatalog;
-import io.github.zephyrwolf.medievalism.content.BlockRegistration;
-import io.github.zephyrwolf.medievalism.content.FeatureRegistration;
+import io.github.zephyrwolf.medievalism.content.block.BlockTagCatalog;
+import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.worldgen.FeatureRegistration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;

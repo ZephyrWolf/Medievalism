@@ -3,7 +3,7 @@ package io.github.zephyrwolf.medievalism.common.malleablematerial;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.content.MalleableMaterialRegistration;
+import io.github.zephyrwolf.medievalism.content.recipe.MalleableMaterialRegistration;
 import io.github.zephyrwolf.medievalism.content.RegistryRegistration;
 import net.minecraft.core.Holder;
 import net.minecraft.network.RegistryFriendlyByteBuf;

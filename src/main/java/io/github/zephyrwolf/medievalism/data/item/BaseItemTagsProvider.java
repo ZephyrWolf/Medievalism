@@ -1,9 +1,9 @@
 package io.github.zephyrwolf.medievalism.data.item;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.content.ItemRegistration;
-import io.github.zephyrwolf.medievalism.content.BlockRegistration;
-import io.github.zephyrwolf.medievalism.content.ItemTagCatalog;
+import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.item.ItemTagCatalog;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;

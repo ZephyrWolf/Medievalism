@@ -1,14 +1,11 @@
-package io.github.zephyrwolf.medievalism.content;
+package io.github.zephyrwolf.medievalism.content.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.malleablematerial.MalleableMaterialType;
 import io.github.zephyrwolf.medievalism.common.malleablematerial.StoneMalleableMaterial;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceKey;
+import io.github.zephyrwolf.medievalism.content.RegistryRegistration;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.RegistryBuilder;
 
 import java.util.function.Supplier;
 

@@ -1,6 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.malleablematerial;
 
-import io.github.zephyrwolf.medievalism.content.ItemTagCatalog;
+import io.github.zephyrwolf.medievalism.content.item.ItemTagCatalog;
 import net.minecraft.world.item.ItemStack;
 
 public class StoneMalleableMaterial extends MalleableMaterialType

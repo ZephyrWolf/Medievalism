@@ -1,6 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.recipe;
 
-import io.github.zephyrwolf.medievalism.content.RecipeRegistration;
+import io.github.zephyrwolf.medievalism.content.recipe.RecipeRegistration;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
