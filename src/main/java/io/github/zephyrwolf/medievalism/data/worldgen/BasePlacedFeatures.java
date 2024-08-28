@@ -15,7 +15,7 @@ import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
 
-public final class ModPlacedFeatures
+public final class BasePlacedFeatures
 {
     public static final ResourceKey<PlacedFeature> TIN_ORE_PLACED_KEY = registerKey(MedievalismConstants.resource("tin_ore_placed"));
     public static final ResourceKey<PlacedFeature> TIN_ORE_UNIFORM_PLACED_KEY = registerKey(MedievalismConstants.resource("tin_ore_uniform_placed"));
@@ -35,7 +35,7 @@ public final class ModPlacedFeatures
     {
         HolderGetter<ConfiguredFeature<?,?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
-        register(context, TIN_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_TIN_ORE_CONFIGURED_KEY),
+        register(context, TIN_ORE_PLACED_KEY, configuredFeatures.getOrThrow(BaseConfiguredFeatures.OVERWORLD_TIN_ORE_CONFIGURED_KEY),
                 commonOrePlacement(
                         1,
                         HeightRangePlacement.triangle(
@@ -45,7 +45,7 @@ public final class ModPlacedFeatures
                         )
                 )
         );
-        register(context, TIN_ORE_UNIFORM_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_TIN_ORE_CONFIGURED_KEY),
+        register(context, TIN_ORE_UNIFORM_PLACED_KEY, configuredFeatures.getOrThrow(BaseConfiguredFeatures.OVERWORLD_TIN_ORE_CONFIGURED_KEY),
                 commonOrePlacement(
                         10,
                         HeightRangePlacement.uniform(
@@ -55,18 +55,18 @@ public final class ModPlacedFeatures
                 )
         );
 
-        register(context, BRANCH_FOREST_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.BRANCH_FOREST_CONFIGURED_KEY), branchPlacement(2) );
-        register(context, BRANCH_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.BRANCH_CONFIGURED_KEY), branchPlacement(3) );
+        register(context, BRANCH_FOREST_PLACED_KEY, configuredFeatures.getOrThrow(BaseConfiguredFeatures.BRANCH_FOREST_CONFIGURED_KEY), branchPlacement(2) );
+        register(context, BRANCH_PLACED_KEY, configuredFeatures.getOrThrow(BaseConfiguredFeatures.BRANCH_CONFIGURED_KEY), branchPlacement(3) );
 
-        register(context, ROCK_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.ROCK_CONFIGURED_KEY), branchPlacement(2) );
-        register(context, LARGE_ROCK_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.LARGE_ROCK_CONFIGURED_KEY), branchPlacement(4) );
+        register(context, ROCK_PLACED_KEY, configuredFeatures.getOrThrow(BaseConfiguredFeatures.ROCK_CONFIGURED_KEY), branchPlacement(2) );
+        register(context, LARGE_ROCK_PLACED_KEY, configuredFeatures.getOrThrow(BaseConfiguredFeatures.LARGE_ROCK_CONFIGURED_KEY), branchPlacement(4) );
         // VV Doesnt generate everywhere, can I make rock place different types depending on biome?
-        register(context, LIMESTONE_ROCK_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.LIMESTONE_ROCK_CONFIGURED_KEY), branchPlacement(4) );
+        register(context, LIMESTONE_ROCK_PLACED_KEY, configuredFeatures.getOrThrow(BaseConfiguredFeatures.LIMESTONE_ROCK_CONFIGURED_KEY), branchPlacement(4) );
         // Sandstone rock
-        register(context, COPPER_ROCK_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.COPPER_ROCK_CONFIGURED_KEY), branchPlacement(4) );
+        register(context, COPPER_ROCK_PLACED_KEY, configuredFeatures.getOrThrow(BaseConfiguredFeatures.COPPER_ROCK_CONFIGURED_KEY), branchPlacement(4) );
 
-        register(context, RED_CLAY_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.RED_CLAY_CONFIGURED_KEY), surfacePlacement(10, -5, 0));
-        register(context, RED_CLAY_WITH_DOGBANE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.RED_CLAY_WITH_DOGBANE_CONFIGURED_KEY), surfacePlacement(8, 0, 0));
+        register(context, RED_CLAY_PLACED_KEY, configuredFeatures.getOrThrow(BaseConfiguredFeatures.RED_CLAY_CONFIGURED_KEY), surfacePlacement(10, -5, 0));
+        register(context, RED_CLAY_WITH_DOGBANE_PLACED_KEY, configuredFeatures.getOrThrow(BaseConfiguredFeatures.RED_CLAY_WITH_DOGBANE_CONFIGURED_KEY), surfacePlacement(8, 0, 0));
     }
 
     public static ResourceKey<PlacedFeature> registerKey(ResourceLocation resource)

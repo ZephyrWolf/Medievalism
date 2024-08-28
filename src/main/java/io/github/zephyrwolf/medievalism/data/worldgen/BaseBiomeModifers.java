@@ -13,7 +13,7 @@ import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
-public final class ModBiomeModifers
+public final class BaseBiomeModifers
 {
     public static final ResourceKey<BiomeModifier> ADD_TIN_ORE = registerKey(MedievalismConstants.resource("add_tin_ore"));
     public static final ResourceKey<BiomeModifier> ADD_TIN_ORE_UNIFORM = registerKey(MedievalismConstants.resource("add_tin_ore_uniform"));
@@ -36,56 +36,56 @@ public final class ModBiomeModifers
 
         context.register(ADD_TIN_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD), // Biomes.BEACH
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.TIN_ORE_PLACED_KEY)),
+                HolderSet.direct(placedFeatures.getOrThrow(BasePlacedFeatures.TIN_ORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES
         ));
 
         context.register(ADD_TIN_ORE_UNIFORM, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD), // Biomes.BEACH
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.TIN_ORE_UNIFORM_PLACED_KEY)),
+                HolderSet.direct(placedFeatures.getOrThrow(BasePlacedFeatures.TIN_ORE_UNIFORM_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES
         ));
 
         context.register(ADD_BRANCH_FOREST, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTagCatalog.HAS_DENSE_TRESS),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.BRANCH_FOREST_PLACED_KEY)),
+                HolderSet.direct(placedFeatures.getOrThrow(BasePlacedFeatures.BRANCH_FOREST_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
         context.register(ADD_BRANCH, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTagCatalog.HAS_TREES),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.BRANCH_PLACED_KEY)),
+                HolderSet.direct(placedFeatures.getOrThrow(BasePlacedFeatures.BRANCH_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
 
         context.register(ADD_ROCK, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.ROCK_PLACED_KEY)),
+                HolderSet.direct(placedFeatures.getOrThrow(BasePlacedFeatures.ROCK_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
         context.register(ADD_LARGE_ROCK, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.LARGE_ROCK_PLACED_KEY)),
+                HolderSet.direct(placedFeatures.getOrThrow(BasePlacedFeatures.LARGE_ROCK_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
         context.register(ADD_LIMESTONE_ROCK, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.LIMESTONE_ROCK_PLACED_KEY)),
+                HolderSet.direct(placedFeatures.getOrThrow(BasePlacedFeatures.LIMESTONE_ROCK_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
         context.register(ADD_COPPER_ROCK, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.COPPER_ROCK_PLACED_KEY)),
+                HolderSet.direct(placedFeatures.getOrThrow(BasePlacedFeatures.COPPER_ROCK_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
 
         context.register(ADD_RED_CLAY, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTagCatalog.GENERATE_RED_CLAY),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.RED_CLAY_PLACED_KEY)),
+                HolderSet.direct(placedFeatures.getOrThrow(BasePlacedFeatures.RED_CLAY_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
         context.register(ADD_RED_CLAY_WITH_DOGBANE, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTagCatalog.GENERATE_RED_CLAY),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.RED_CLAY_WITH_DOGBANE_PLACED_KEY)),
+                HolderSet.direct(placedFeatures.getOrThrow(BasePlacedFeatures.RED_CLAY_WITH_DOGBANE_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
     }

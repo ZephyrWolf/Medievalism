@@ -28,7 +28,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
 import java.util.List;
 
-public final class ModConfiguredFeatures
+public final class BaseConfiguredFeatures
 {
     public static final ResourceKey<ConfiguredFeature<?,?>> OVERWORLD_TIN_ORE_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("tin_ore"));
 
