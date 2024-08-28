@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.data;
+package io.github.zephyrwolf.medievalism.data.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.data.provider.BlankRecipeProvider;

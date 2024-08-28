@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.common.worldgen;
+package io.github.zephyrwolf.medievalism.data.worldgen;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import net.minecraft.core.Holder;

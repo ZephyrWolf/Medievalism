@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.data;
+package io.github.zephyrwolf.medievalism.data.lang;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.content.ItemRegistration;
@@ -17,11 +17,18 @@ public class BaseLanguageProvider extends LanguageProvider
     protected void addTranslations()
     {
         add(BlockRegistration.LIMESTONE_ITEM.get(), "Limestone");
-        add(BlockRegistration.BRANCH_ITEM.get(), "Branch");
+        add(BlockRegistration.OAK_BRANCH_ITEM.get(), "Oak Branch");
+        add(BlockRegistration.BIRCH_BRANCH_ITEM.get(), "Birch Branch");
+        add(BlockRegistration.SPRUCE_BRANCH_ITEM.get(), "Spruce Branch");
+        add(BlockRegistration.JUNGLE_BRANCH_ITEM.get(), "Jungle Branch");
+        add(BlockRegistration.DARK_OAK_BRANCH_ITEM.get(), "Dark Oak Branch");
+        add(BlockRegistration.ACACIA_BRANCH_ITEM.get(), "Acacia Branch");
+        add(BlockRegistration.MANGROVE_BRANCH_ITEM.get(), "Mangrove Branch");
+        add(BlockRegistration.CHERRY_BRANCH_ITEM.get(), "Cherry Branch");
         add(BlockRegistration.LARGE_ROCK_ITEM.get(), "Large Rock");
         add(BlockRegistration.ROCK_ITEM.get(), "Rock");
         add(BlockRegistration.LIMESTONE_ROCK_ITEM.get(), "Limestone Rock");
-        add(BlockRegistration.COPPER_ROCK_ITEM.get(), "Copper Rock"); // -----------
+        add(BlockRegistration.COPPER_ROCK_ITEM.get(), "Copper Rock");
         add(BlockRegistration.THATCH_BLOCK_ITEM.get(), "Thatch Block");
         add(ItemRegistration.BROKEN_GOAT_HORN.get(), "Broken Goat Horn");
         add(BlockRegistration.DOGBANE_BLOCK_ITEM.get(), "Dogbane");

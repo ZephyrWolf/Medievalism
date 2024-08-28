@@ -1,0 +1,11 @@
+{
+  "parent": "medievalism:block/twigs_obj",
+  "transform-disabled": {
+    "translation": [
+      0.5,
+      0,
+      0.5
+    ]
+  },
+  "ambientocclusion": false
+}

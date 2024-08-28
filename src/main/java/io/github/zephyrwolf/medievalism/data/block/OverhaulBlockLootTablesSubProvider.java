@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.data;
+package io.github.zephyrwolf.medievalism.data.block;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;

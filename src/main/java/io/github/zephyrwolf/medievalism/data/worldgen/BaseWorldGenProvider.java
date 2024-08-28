@@ -1,9 +1,6 @@
-package io.github.zephyrwolf.medievalism.data;
+package io.github.zephyrwolf.medievalism.data.worldgen;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.common.worldgen.ModBiomeModifers;
-import io.github.zephyrwolf.medievalism.common.worldgen.ModConfiguredFeatures;
-import io.github.zephyrwolf.medievalism.common.worldgen.ModPlacedFeatures;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;

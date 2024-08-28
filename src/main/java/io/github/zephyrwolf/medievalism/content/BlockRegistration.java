@@ -1,10 +1,7 @@
 package io.github.zephyrwolf.medievalism.content;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.common.block.DogbaneBlock;
-import io.github.zephyrwolf.medievalism.common.block.FlatBlock;
-import io.github.zephyrwolf.medievalism.common.block.ShortBlock;
-import io.github.zephyrwolf.medievalism.common.block.StoneBenchBlock;
+import io.github.zephyrwolf.medievalism.common.block.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
@@ -44,36 +41,89 @@ public final class BlockRegistration
     public static final DeferredItem<BlockItem> DEEPSLATE_TIN_ORE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("deepslate_tin_ore_block", DEEPSLATE_TIN_ORE_BLOCK);
     //endregion
     //region Rocks
-    public static final DeferredBlock<FlatBlock> LARGE_ROCK_BLOCK = BLOCKS.registerBlock(
-            "large_rock", FlatBlock::new, BlockBehaviour.Properties.of().noCollission().instabreak()
+    public static final DeferredBlock<WorldLitterBlock> LARGE_ROCK_BLOCK = BLOCKS.registerBlock(
+            "large_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.FLAT), BlockBehaviour.Properties.of().noCollission().instabreak()
                     .offsetType(BlockBehaviour.OffsetType.XZ).isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY)
                     .mapColor(MapColor.STONE).strength(0.1f).sound(SoundType.STONE));
     public static final DeferredItem<BlockItem> LARGE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("large_rock", LARGE_ROCK_BLOCK);
 
-    public static final DeferredBlock<FlatBlock> ROCK_BLOCK = BLOCKS.registerBlock(
-            "rock", FlatBlock::new, BlockBehaviour.Properties.of().noCollission().instabreak().offsetType(BlockBehaviour.OffsetType.XZ)
+    public static final DeferredBlock<WorldLitterBlock> ROCK_BLOCK = BLOCKS.registerBlock(
+            "rock", props -> new WorldLitterBlock(props, WorldLitterBlock.FLAT), BlockBehaviour.Properties.of().noCollission().instabreak().offsetType(BlockBehaviour.OffsetType.XZ)
                     .isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY).mapColor(MapColor.STONE)
                     .strength(0.1f).sound(SoundType.STONE));
     public static final DeferredItem<BlockItem> ROCK_ITEM = ITEMS.registerSimpleBlockItem("rock", ROCK_BLOCK);
 
-    public static final DeferredBlock<FlatBlock> LIMESTONE_ROCK_BLOCK = BLOCKS.registerBlock(
-            "limestone_rock", FlatBlock::new, BlockBehaviour.Properties.of().noCollission().instabreak().offsetType(BlockBehaviour.OffsetType.XZ)
+    public static final DeferredBlock<WorldLitterBlock> LIMESTONE_ROCK_BLOCK = BLOCKS.registerBlock(
+            "limestone_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.FLAT), BlockBehaviour.Properties.of().noCollission().instabreak().offsetType(BlockBehaviour.OffsetType.XZ)
                     .isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY).mapColor(MapColor.STONE)
                     .strength(0.1f).sound(SoundType.DRIPSTONE_BLOCK));
     public static final DeferredItem<BlockItem> LIMESTONE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("limestone_rock", LIMESTONE_ROCK_BLOCK);
 
-    public static final DeferredBlock<FlatBlock> COPPER_ROCK_BLOCK = BLOCKS.registerBlock(
-            "copper_rock", FlatBlock::new, BlockBehaviour.Properties.of().noCollission().instabreak().offsetType(BlockBehaviour.OffsetType.XZ)
+    public static final DeferredBlock<WorldLitterBlock> COPPER_ROCK_BLOCK = BLOCKS.registerBlock(
+            "copper_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.FLAT), BlockBehaviour.Properties.of().noCollission().instabreak().offsetType(BlockBehaviour.OffsetType.XZ)
                     .isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY).mapColor(MapColor.STONE)
                     .strength(0.1f).sound(SoundType.DRIPSTONE_BLOCK));
     public static final DeferredItem<BlockItem> COPPER_ROCK_ITEM = ITEMS.registerSimpleBlockItem("copper_rock", COPPER_ROCK_BLOCK);
     //endregion
-    //region Organic
-    public static final DeferredBlock<FlatBlock> BRANCH_BLOCK = BLOCKS.registerBlock(
-            "branch", FlatBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak()
+    //region World Litter
+    //region Branches
+    public static final DeferredBlock<WorldLitterBlock> BIRCH_BRANCH_BLOCK = BLOCKS.registerBlock(
+            "birch_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak()
                     .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
                     .pushReaction(PushReaction.DESTROY).strength(0.1f).sound(SoundType.WOOD));
-    public static final DeferredItem<BlockItem> BRANCH_ITEM = ITEMS.registerSimpleBlockItem("branch", BRANCH_BLOCK);
+    public static final DeferredItem<BlockItem> BIRCH_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("birch_branch", BIRCH_BRANCH_BLOCK);
+
+    public static final DeferredBlock<WorldLitterBlock> OAK_BRANCH_BLOCK = BLOCKS.registerBlock(
+            "oak_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak()
+                    .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
+                    .pushReaction(PushReaction.DESTROY).strength(0.1f).sound(SoundType.WOOD));
+    public static final DeferredItem<BlockItem> OAK_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("oak_branch", OAK_BRANCH_BLOCK);
+
+    public static final DeferredBlock<WorldLitterBlock> SPRUCE_BRANCH_BLOCK = BLOCKS.registerBlock(
+            "spruce_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak()
+                    .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
+                    .pushReaction(PushReaction.DESTROY).strength(0.1f).sound(SoundType.WOOD));
+    public static final DeferredItem<BlockItem> SPRUCE_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("spruce_branch", SPRUCE_BRANCH_BLOCK);
+
+    public static final DeferredBlock<WorldLitterBlock> JUNGLE_BRANCH_BLOCK = BLOCKS.registerBlock(
+            "jungle_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak()
+                    .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
+                    .pushReaction(PushReaction.DESTROY).strength(0.1f).sound(SoundType.WOOD));
+    public static final DeferredItem<BlockItem> JUNGLE_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("jungle_branch", JUNGLE_BRANCH_BLOCK);
+
+    public static final DeferredBlock<WorldLitterBlock> DARK_OAK_BRANCH_BLOCK = BLOCKS.registerBlock(
+            "dark_oak_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak()
+                    .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
+                    .pushReaction(PushReaction.DESTROY).strength(0.1f).sound(SoundType.WOOD));
+    public static final DeferredItem<BlockItem> DARK_OAK_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("dark_oak_branch", DARK_OAK_BRANCH_BLOCK);
+
+    public static final DeferredBlock<WorldLitterBlock> ACACIA_BRANCH_BLOCK = BLOCKS.registerBlock(
+            "acacia_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak()
+                    .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
+                    .pushReaction(PushReaction.DESTROY).strength(0.1f).sound(SoundType.WOOD));
+    public static final DeferredItem<BlockItem> ACACIA_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("acacia_branch", ACACIA_BRANCH_BLOCK);
+
+    public static final DeferredBlock<WorldLitterBlock> CHERRY_BRANCH_BLOCK = BLOCKS.registerBlock(
+            "cherry_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak()
+                    .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
+                    .pushReaction(PushReaction.DESTROY).strength(0.1f).sound(SoundType.WOOD));
+    public static final DeferredItem<BlockItem> CHERRY_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("cherry_branch", CHERRY_BRANCH_BLOCK);
+
+    public static final DeferredBlock<WorldLitterBlock> MANGROVE_BRANCH_BLOCK = BLOCKS.registerBlock(
+            "mangrove_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak()
+                    .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
+                    .pushReaction(PushReaction.DESTROY).strength(0.1f).sound(SoundType.WOOD));
+    public static final DeferredItem<BlockItem> MANGROVE_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("mangrove_branch", MANGROVE_BRANCH_BLOCK);
+    //endregion
+    /*
+    public static final DeferredBlock<WorldLitterBlock> TWIGS_BLOCK = BLOCKS.registerBlock(
+            "twigs", props -> new WorldLitterBlock(props, WorldLitterBlock.TWIGS), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak()
+                    .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
+                    .pushReaction(PushReaction.DESTROY).strength(0.1f).sound(SoundType.WOOD));
+    public static final DeferredItem<BlockItem> TWIGS_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("twigs", TWIGS_BLOCK);
+    */
+    //endregion
+    //region Organic
     public static final DeferredBlock<Block> DOGBANE_BLOCK = BLOCKS.registerBlock(
             "dogbane", DogbaneBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN)
                     .strength(0.3f).sound(SoundType.GRASS));

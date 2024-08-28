@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.data;
+package io.github.zephyrwolf.medievalism.data.block;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.content.BlockRegistration;
@@ -41,7 +41,14 @@ public class BaseBlockTagsProvider extends BlockTagsProvider
     {
         // TOOL
         tag(BlockTags.MINEABLE_WITH_AXE).add(
-                BlockRegistration.BRANCH_BLOCK.get()
+                BlockRegistration.OAK_BRANCH_BLOCK.get(),
+                BlockRegistration.SPRUCE_BRANCH_BLOCK.get(),
+                BlockRegistration.BIRCH_BRANCH_BLOCK.get(),
+                BlockRegistration.JUNGLE_BRANCH_BLOCK.get(),
+                BlockRegistration.DARK_OAK_BRANCH_BLOCK.get(),
+                BlockRegistration.ACACIA_BRANCH_BLOCK.get(),
+                BlockRegistration.CHERRY_BRANCH_BLOCK.get(),
+                BlockRegistration.MANGROVE_BRANCH_BLOCK.get()
         );
         tag(BlockTags.MINEABLE_WITH_HOE).add(
                 BlockRegistration.THATCH_BLOCK.get()

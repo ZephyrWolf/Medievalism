@@ -19,6 +19,8 @@ public final class ItemTagCatalog
     public static final TagKey<Item> ROCK = tag("rock");
     public static final TagKey<Item> LARGE_ROCK = tag("large_rock");
 
+    public static final TagKey<Item> BRANCH = tag("branch");
+
     public static final TagKey<Item> TINDER = tag("tinder");
 
     public static final TagKey<Item> BARK = tag("bark");

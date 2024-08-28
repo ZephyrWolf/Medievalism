@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.data;
+package io.github.zephyrwolf.medievalism.data.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.recipe.AdditionalDropToolUseRecipeBuilder;
@@ -43,13 +43,14 @@ public class BaseRecipesProvider extends RecipeProvider
         //ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Registration.STONE_ANVIL.get())
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.DIGGING_STICK.get())
-                .requires(BlockRegistration.BRANCH_ITEM)
+                .requires(ItemTagCatalog.BRANCH)
                 .requires(ItemRegistration.LUNATE)
                 .unlockedBy("has_branch_lunate",
                         InventoryChangeTrigger.TriggerInstance.hasItems(
-                                BlockRegistration.BRANCH_ITEM.get(),
-                                ItemRegistration.LUNATE.get()
-                        ))
+                                ItemPredicate.Builder.item().of(ItemTagCatalog.BRANCH),
+                                ItemPredicate.Builder.item().of(ItemRegistration.LUNATE.get())
+                        )
+                )
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "digging_stick"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.FIRE_STARTER.get())
                 .requires(Items.STICK)
@@ -224,9 +225,10 @@ public class BaseRecipesProvider extends RecipeProvider
         tempRecipes(recipeOutput);
 
         InWorldRecipeBuilder.fireStarter(Blocks.CAMPFIRE.defaultBlockState())
-                .requires(BlockRegistration.BRANCH_ITEM, 4)
+                .requires(ItemTagCatalog.BRANCH, 4)
                 .requires(ItemTagCatalog.TINDER)
-                .unlockedBy("has_branch", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistration.BRANCH_ITEM.get()))
+                .unlockedBy("has_branch", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ItemTagCatalog.BRANCH)))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "campfire"));
 
         // Shaped
@@ -283,10 +285,12 @@ public class BaseRecipesProvider extends RecipeProvider
         // Add Wheat/Oat/Barley Block?
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.STICK, 2)
-                .requires(BlockRegistration.BRANCH_ITEM)
+                .requires(ItemTagCatalog.BRANCH)
                 .unlockedBy("has_branch",
                         InventoryChangeTrigger.TriggerInstance.hasItems(
-                                ItemPredicate.Builder.item().of(BlockRegistration.BRANCH_ITEM).build()
+                                ItemPredicate.Builder.item().of(
+                                        ItemTagCatalog.BRANCH
+                                ).build()
                         ))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "stick_branch"));
 

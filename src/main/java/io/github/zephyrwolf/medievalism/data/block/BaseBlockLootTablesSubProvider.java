@@ -1,11 +1,16 @@
-package io.github.zephyrwolf.medievalism.data;
+package io.github.zephyrwolf.medievalism.data.block;
 
 import io.github.zephyrwolf.medievalism.content.ItemRegistration;
 import io.github.zephyrwolf.medievalism.content.BlockRegistration;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
@@ -54,7 +59,14 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
                 ItemRegistration.RAW_TIN.get()
         ));
 
-        dropSelf(BlockRegistration.BRANCH_BLOCK.get());
+        dropSelf(BlockRegistration.OAK_BRANCH_BLOCK.get());
+        dropSelf(BlockRegistration.BIRCH_BRANCH_BLOCK.get());
+        dropSelf(BlockRegistration.SPRUCE_BRANCH_BLOCK.get());
+        dropSelf(BlockRegistration.JUNGLE_BRANCH_BLOCK.get());
+        dropSelf(BlockRegistration.DARK_OAK_BRANCH_BLOCK.get());
+        dropSelf(BlockRegistration.ACACIA_BRANCH_BLOCK.get());
+        dropSelf(BlockRegistration.CHERRY_BRANCH_BLOCK.get());
+        dropSelf(BlockRegistration.MANGROVE_BRANCH_BLOCK.get());
         dropSelf(BlockRegistration.LIMESTONE_BLOCK.get());
         dropSelf(BlockRegistration.LARGE_ROCK_BLOCK.get());
         dropSelf(BlockRegistration.ROCK_BLOCK.get());
@@ -78,5 +90,21 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
     protected @NotNull Iterable<Block> getKnownBlocks()
     {
         return BlockRegistration.BLOCKS.getEntries().stream().map(DeferredHolder::get).map(b -> (Block) b)::iterator;
+    }
+
+    protected void dropOther(Block pBlock, ItemLike pItem, int count) {
+        this.add(pBlock, this.createItemTable(pItem, count));
+    }
+
+    public LootTable.Builder createItemTable(ItemLike pItem, int count) {
+        return LootTable.lootTable()
+                .withPool(this.applyExplosionCondition(pItem, LootPool
+                        .lootPool()
+                        .setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem
+                                .lootTableItem(pItem)
+                                .setQuality(count)
+                        )
+                ));
     }
 }

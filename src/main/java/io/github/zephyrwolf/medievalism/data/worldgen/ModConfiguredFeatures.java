@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.common.worldgen;
+package io.github.zephyrwolf.medievalism.data.worldgen;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.worldgen.feature.configuration.CompositeFeatureConfiguration;
@@ -55,14 +55,23 @@ public final class ModConfiguredFeatures
         );
         register(context, OVERWORLD_TIN_ORE_CONFIGURED_KEY, Feature.ORE, new OreConfiguration(overworldTinOres, 9));
 
+
+
+
+
         register(context, BRANCH_FOREST_CONFIGURED_KEY, Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(3, 4, 0,
                         PlacementUtils.onlyWhenEmpty( Feature.SIMPLE_BLOCK,
-                                new SimpleBlockConfiguration( BlockStateProvider.simple(BlockRegistration.BRANCH_BLOCK.get())))));
+                                new SimpleBlockConfiguration( BlockStateProvider.simple(BlockRegistration.OAK_BRANCH_BLOCK.get())))));
         register(context, BRANCH_CONFIGURED_KEY, Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(2, 3, 0,
                         PlacementUtils.onlyWhenEmpty( Feature.SIMPLE_BLOCK,
-                                new SimpleBlockConfiguration( BlockStateProvider.simple(BlockRegistration.BRANCH_BLOCK.get())))));
+                                new SimpleBlockConfiguration( BlockStateProvider.simple(BlockRegistration.OAK_BRANCH_BLOCK.get())))));
+
+
+
+
+
 
         register(context, ROCK_CONFIGURED_KEY, Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(2, 3, 0,

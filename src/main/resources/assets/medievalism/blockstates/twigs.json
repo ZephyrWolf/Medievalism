@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "medievalism:block/twigs"
+      },
+      {
+        "model": "medievalism:block/twigs",
+        "y": 90
+      },
+      {
+        "model": "medievalism:block/twigs",
+        "y": 180
+      },
+      {
+        "model": "medievalism:block/twigs",
+        "y": 270
+      }
+    ]
+  }
+}

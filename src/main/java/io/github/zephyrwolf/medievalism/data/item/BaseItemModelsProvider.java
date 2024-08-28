@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.data;
+package io.github.zephyrwolf.medievalism.data.item;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.content.ItemRegistration;
@@ -26,7 +26,14 @@ public class BaseItemModelsProvider extends ItemModelProvider
         {
             blockBasedModel(BlockRegistration.RED_CLAY_BLOCK_ITEM.get(), "");
             blockBasedModel(BlockRegistration.LIMESTONE_ITEM.get(), "");
-            blockIconGeneratedModel(BlockRegistration.BRANCH_ITEM.get());
+            blockBasedModel(BlockRegistration.BIRCH_BRANCH_ITEM.get(), "");
+            blockBasedModel(BlockRegistration.OAK_BRANCH_ITEM.get(), "");
+            blockBasedModel(BlockRegistration.SPRUCE_BRANCH_ITEM.get(), "");
+            blockBasedModel(BlockRegistration.JUNGLE_BRANCH_ITEM.get(), "");
+            blockBasedModel(BlockRegistration.ACACIA_BRANCH_ITEM.get(), "");
+            blockBasedModel(BlockRegistration.DARK_OAK_BRANCH_ITEM.get(), "");
+            blockBasedModel(BlockRegistration.CHERRY_BRANCH_ITEM.get(), "");
+            blockBasedModel(BlockRegistration.MANGROVE_BRANCH_ITEM.get(), "");
             blockIconGeneratedModel(BlockRegistration.LARGE_ROCK_ITEM.get());
             blockIconGeneratedModel(BlockRegistration.ROCK_ITEM.get());
             blockIconGeneratedModel(BlockRegistration.LIMESTONE_ROCK_ITEM.get());

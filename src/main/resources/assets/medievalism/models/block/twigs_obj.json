@@ -1,0 +1,6 @@
+{
+  "loader": "neoforge:obj",
+  "model": "medievalism:models/block/twigs.obj",
+  "shade_quads": false,
+  "emissive_ambient": false
+}

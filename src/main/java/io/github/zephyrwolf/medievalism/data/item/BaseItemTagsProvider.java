@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.data;
+package io.github.zephyrwolf.medievalism.data.item;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.content.ItemRegistration;
@@ -86,6 +86,16 @@ public class BaseItemTagsProvider extends ItemTagsProvider
                 .add(BlockRegistration.LIMESTONE_ITEM.get());
         tag(ItemTagCatalog.LARGE_ROCK)
                 .add(BlockRegistration.LARGE_ROCK_ITEM.get());
+        tag(ItemTagCatalog.BRANCH).add(
+                BlockRegistration.OAK_BRANCH_ITEM.get(),
+                BlockRegistration.BIRCH_BRANCH_ITEM.get(),
+                BlockRegistration.SPRUCE_BRANCH_ITEM.get(),
+                BlockRegistration.JUNGLE_BRANCH_ITEM.get(),
+                BlockRegistration.ACACIA_BRANCH_ITEM.get(),
+                BlockRegistration.DARK_OAK_BRANCH_ITEM.get(),
+                BlockRegistration.CHERRY_BRANCH_ITEM.get(),
+                BlockRegistration.MANGROVE_BRANCH_ITEM.get()
+        );
 
         tag(ItemTagCatalog.TINDER)
                 .add(ItemRegistration.THATCH.get());
