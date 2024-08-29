@@ -17,6 +17,9 @@ public class BlockTagCatalog
     public static final TagKey<Block> DARK_BROWN_BARK = tag("dark_brown_bark");
     public static final TagKey<Block> BLACK_BARK = tag("black_bark");
 
+    public static final TagKey<Block> ROCK = tag("rock");
+    public static final TagKey<Block> LARGE_ROCK = tag("large_rock");
+
     private static TagKey<Block> tag(String name)
     {
         return BlockTags.create(MedievalismConstants.resource(name));

@@ -16,7 +16,7 @@ public final class BaseWorldGenProvider extends DatapackBuiltinEntriesProvider
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder() // TODO Should I separate different categories?
             .add(Registries.CONFIGURED_FEATURE, BaseConfiguredFeatures::bootstrap)
             .add(Registries.PLACED_FEATURE, BasePlacedFeatures::bootstrap)
-            .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, BaseBiomeModifers::bootstrap);
+            .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, BaseBiomeModifiers::bootstrap);
 
     public BaseWorldGenProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries)
     {

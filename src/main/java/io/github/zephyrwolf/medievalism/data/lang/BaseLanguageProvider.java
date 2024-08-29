@@ -25,8 +25,23 @@ public class BaseLanguageProvider extends LanguageProvider
         add(BlockRegistration.ACACIA_BRANCH_ITEM.get(), "Acacia Branch");
         add(BlockRegistration.MANGROVE_BRANCH_ITEM.get(), "Mangrove Branch");
         add(BlockRegistration.CHERRY_BRANCH_ITEM.get(), "Cherry Branch");
-        add(BlockRegistration.LARGE_ROCK_ITEM.get(), "Large Rock");
+
         add(BlockRegistration.ROCK_ITEM.get(), "Rock");
+        add(BlockRegistration.SANDSTONE_ROCK_ITEM.get(), "Sandstone Rock");
+        add(BlockRegistration.RED_SANDSTONE_ROCK_ITEM.get(), "Red Sandstone Rock");
+        add(BlockRegistration.MOSSY_ROCK_ITEM.get(), "Mossy Rock");
+        add(BlockRegistration.LIGHTER_ROCK_ITEM.get(), "Lighter Rock");
+        add(BlockRegistration.SNOWY_ROCK_ITEM.get(), "Snowy Rock");
+        add(BlockRegistration.ICE_ROCK_ITEM.get(), "Ice Rock");
+
+        add(BlockRegistration.LARGE_ROCK_ITEM.get(), "Large Rock");
+        add(BlockRegistration.SANDSTONE_LARGE_ROCK_ITEM.get(), "Sandstone Large Rock");
+        add(BlockRegistration.RED_SANDSTONE_LARGE_ROCK_ITEM.get(), "Red Sandstone Large Rock");
+        add(BlockRegistration.MOSSY_LARGE_ROCK_ITEM.get(), "Mossy Large Rock");
+        add(BlockRegistration.LIGHTER_LARGE_ROCK_ITEM.get(), "Lighter Large Rock");
+        add(BlockRegistration.SNOWY_LARGE_ROCK_ITEM.get(), "Snowy Large Rock");
+        add(BlockRegistration.ICE_LARGE_ROCK_ITEM.get(), "Ice Large Rock");
+
         add(BlockRegistration.LIMESTONE_ROCK_ITEM.get(), "Limestone Rock");
         add(BlockRegistration.COPPER_ROCK_ITEM.get(), "Copper Rock");
         add(BlockRegistration.THATCH_BLOCK_ITEM.get(), "Thatch Block");

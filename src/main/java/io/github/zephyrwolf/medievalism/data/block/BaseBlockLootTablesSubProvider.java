@@ -66,9 +66,24 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
         dropSelf(BlockRegistration.ACACIA_BRANCH_BLOCK.get());
         dropSelf(BlockRegistration.CHERRY_BRANCH_BLOCK.get());
         dropSelf(BlockRegistration.MANGROVE_BRANCH_BLOCK.get());
-        dropSelf(BlockRegistration.LIMESTONE_BLOCK.get());
-        dropSelf(BlockRegistration.LARGE_ROCK_BLOCK.get());
+
         dropSelf(BlockRegistration.ROCK_BLOCK.get());
+        dropSelf(BlockRegistration.SANDSTONE_ROCK_BLOCK.get());
+        dropSelf(BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get());
+        dropSelf(BlockRegistration.MOSSY_ROCK_BLOCK.get()); // TODO Make these drop regular without silk touch!?!?!?!?!?!
+        dropSelf(BlockRegistration.LIGHTER_ROCK_BLOCK.get());
+        dropSelf(BlockRegistration.SNOWY_ROCK_BLOCK.get());
+        dropSelf(BlockRegistration.ICE_ROCK_BLOCK.get());
+
+        dropSelf(BlockRegistration.LARGE_ROCK_BLOCK.get());
+        dropSelf(BlockRegistration.SANDSTONE_LARGE_ROCK_BLOCK.get());
+        dropSelf(BlockRegistration.RED_SANDSTONE_LARGE_ROCK_BLOCK.get());
+        dropSelf(BlockRegistration.MOSSY_LARGE_ROCK_BLOCK.get()); // TODO Make these drop regular without silk touch!?!?!?!?!?!
+        dropSelf(BlockRegistration.LIGHTER_LARGE_ROCK_BLOCK.get());
+        dropSelf(BlockRegistration.SNOWY_LARGE_ROCK_BLOCK.get());
+        dropSelf(BlockRegistration.ICE_LARGE_ROCK_BLOCK.get());
+
+        dropSelf(BlockRegistration.LIMESTONE_BLOCK.get());
         dropSelf(BlockRegistration.LIMESTONE_ROCK_BLOCK.get());
         dropSelf(BlockRegistration.COPPER_ROCK_BLOCK.get());
 

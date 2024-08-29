@@ -6,6 +6,7 @@ import io.github.zephyrwolf.medievalism.content.block.BlockTagCatalog;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -80,6 +81,24 @@ public class BaseBlockTagsProvider extends BlockTagsProvider
 
     protected void registerModTags()
     {
+        tag(BlockTagCatalog.ROCK).add(
+                BlockRegistration.ROCK_BLOCK.get(),
+                BlockRegistration.SANDSTONE_ROCK_BLOCK.get(),
+                BlockRegistration.RED_SANDSTONE_LARGE_ROCK_BLOCK.get(),
+                BlockRegistration.MOSSY_LARGE_ROCK_BLOCK.get(),
+                BlockRegistration.LIGHTER_LARGE_ROCK_BLOCK.get(),
+                BlockRegistration.SNOWY_LARGE_ROCK_BLOCK.get(),
+                BlockRegistration.ICE_LARGE_ROCK_BLOCK.get()
+        );
+        tag(BlockTagCatalog.LARGE_ROCK).add(
+                BlockRegistration.LARGE_ROCK_BLOCK.get(),
+                BlockRegistration.SANDSTONE_ROCK_BLOCK.get(),
+                BlockRegistration.RED_SANDSTONE_LARGE_ROCK_BLOCK.get(),
+                BlockRegistration.MOSSY_LARGE_ROCK_BLOCK.get(),
+                BlockRegistration.LIGHTER_LARGE_ROCK_BLOCK.get(),
+                BlockRegistration.SNOWY_LARGE_ROCK_BLOCK.get(),
+                BlockRegistration.ICE_LARGE_ROCK_BLOCK.get()
+        );
         tag(BlockTagCatalog.CAN_DROP_THATCH).add(
                 Blocks.SHORT_GRASS,
                 Blocks.TALL_GRASS,
@@ -87,8 +106,7 @@ public class BaseBlockTagsProvider extends BlockTagsProvider
         );
         tag(BlockTagCatalog.RED_CLAY_CAN_REPLACE)
                 .addTag(BlockTags.STONE_ORE_REPLACEABLES)
-                .add(Blocks.DIRT);
-
+                .add( Blocks.DIRT );
         tag(BlockTagCatalog.WHITE_BARK).add(
                 Blocks.BIRCH_LOG,
                 Blocks.BIRCH_WOOD,

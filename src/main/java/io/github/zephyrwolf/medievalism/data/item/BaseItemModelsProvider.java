@@ -24,8 +24,6 @@ public class BaseItemModelsProvider extends ItemModelProvider
     protected void registerModels()
     {
         {
-            blockBasedModel(BlockRegistration.RED_CLAY_BLOCK_ITEM.get(), "");
-            blockBasedModel(BlockRegistration.LIMESTONE_ITEM.get(), "");
             blockBasedModel(BlockRegistration.BIRCH_BRANCH_ITEM.get(), "");
             blockBasedModel(BlockRegistration.OAK_BRANCH_ITEM.get(), "");
             blockBasedModel(BlockRegistration.SPRUCE_BRANCH_ITEM.get(), "");
@@ -34,8 +32,25 @@ public class BaseItemModelsProvider extends ItemModelProvider
             blockBasedModel(BlockRegistration.DARK_OAK_BRANCH_ITEM.get(), "");
             blockBasedModel(BlockRegistration.CHERRY_BRANCH_ITEM.get(), "");
             blockBasedModel(BlockRegistration.MANGROVE_BRANCH_ITEM.get(), "");
-            blockIconGeneratedModel(BlockRegistration.LARGE_ROCK_ITEM.get());
-            blockIconGeneratedModel(BlockRegistration.ROCK_ITEM.get());
+
+            blockBasedModel(BlockRegistration.ROCK_ITEM.get(), "1");
+            blockBasedModel(BlockRegistration.SANDSTONE_ROCK_ITEM.get(), "1");
+            blockBasedModel(BlockRegistration.RED_SANDSTONE_ROCK_ITEM.get(), "1");
+            blockBasedModel(BlockRegistration.MOSSY_ROCK_ITEM.get(), "1");
+            blockBasedModel(BlockRegistration.LIGHTER_ROCK_ITEM.get(), "1");
+            blockBasedModel(BlockRegistration.SNOWY_ROCK_ITEM.get(), "1");
+            blockBasedModel(BlockRegistration.ICE_ROCK_ITEM.get(), "1");
+
+            blockBasedModel(BlockRegistration.LARGE_ROCK_ITEM.get(), "1");
+            blockBasedModel(BlockRegistration.SANDSTONE_LARGE_ROCK_ITEM.get(), "1");
+            blockBasedModel(BlockRegistration.RED_SANDSTONE_LARGE_ROCK_ITEM.get(), "1");
+            blockBasedModel(BlockRegistration.MOSSY_LARGE_ROCK_ITEM.get(), "1");
+            blockBasedModel(BlockRegistration.LIGHTER_LARGE_ROCK_ITEM.get(), "1");
+            blockBasedModel(BlockRegistration.SNOWY_LARGE_ROCK_ITEM.get(), "1");
+            blockBasedModel(BlockRegistration.ICE_LARGE_ROCK_ITEM.get(), "1");
+
+            blockBasedModel(BlockRegistration.RED_CLAY_BLOCK_ITEM.get(), "");
+            blockBasedModel(BlockRegistration.LIMESTONE_ITEM.get(), "");
             blockIconGeneratedModel(BlockRegistration.LIMESTONE_ROCK_ITEM.get());
             blockIconGeneratedModel(BlockRegistration.COPPER_ROCK_ITEM.get());
             blockBasedModel(BlockRegistration.THATCH_BLOCK_ITEM.get(), "");
