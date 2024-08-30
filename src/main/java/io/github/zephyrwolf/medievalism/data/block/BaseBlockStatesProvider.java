@@ -45,6 +45,8 @@ public final class BaseBlockStatesProvider extends BlockStateProvider
         ResourceLocation sandstone_top = ResourceLocation.withDefaultNamespace(ModelProvider.BLOCK_FOLDER + "/" + "sandstone_top");
         ResourceLocation red_sandstone_top = ResourceLocation.withDefaultNamespace(ModelProvider.BLOCK_FOLDER + "/" + "red_sandstone_top");
         ResourceLocation dirt_path_top = ResourceLocation.withDefaultNamespace(ModelProvider.BLOCK_FOLDER + "/" + "dirt_path_top");
+        ResourceLocation stone = ResourceLocation.withDefaultNamespace(ModelProvider.BLOCK_FOLDER + "/" + "stone");
+        ResourceLocation mossy_rock = MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "mossy_rock");
 
         randomYRotationBlock(
                 BlockRegistration.ROCK_BLOCK.get(),
@@ -70,13 +72,14 @@ public final class BaseBlockStatesProvider extends BlockStateProvider
                 existingParent(blockName(BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get()), "block/base_rock","4", red_sandstone_top, red_sandstone_top),
                 existingParent(blockName(BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get()), "block/base_rock","5", red_sandstone_top, red_sandstone_top)
         );
+
         randomYRotationBlock(
                 BlockRegistration.MOSSY_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.MOSSY_ROCK_BLOCK.get(), "block/base_rock", "1", Blocks.MOSS_BLOCK),
-                existingParent(BlockRegistration.MOSSY_ROCK_BLOCK.get(), "block/base_rock", "2", Blocks.MOSS_BLOCK),
-                existingParent(BlockRegistration.MOSSY_ROCK_BLOCK.get(), "block/base_rock","3", Blocks.MOSS_BLOCK),
-                existingParent(BlockRegistration.MOSSY_ROCK_BLOCK.get(), "block/base_rock","4", Blocks.MOSS_BLOCK),
-                existingParent(BlockRegistration.MOSSY_ROCK_BLOCK.get(), "block/base_rock","5", Blocks.MOSS_BLOCK)
+                existingParent(blockName(BlockRegistration.MOSSY_ROCK_BLOCK.get()), "block/base_rock", "1", stone, mossy_rock.withSuffix("1")),
+                existingParent(blockName(BlockRegistration.MOSSY_ROCK_BLOCK.get()), "block/base_rock", "2", stone, mossy_rock.withSuffix("2")),
+                existingParent(blockName(BlockRegistration.MOSSY_ROCK_BLOCK.get()), "block/base_rock","3", stone, mossy_rock.withSuffix("3")),
+                existingParent(blockName(BlockRegistration.MOSSY_ROCK_BLOCK.get()), "block/base_rock","4", stone, mossy_rock.withSuffix("4")),
+                existingParent(blockName(BlockRegistration.MOSSY_ROCK_BLOCK.get()), "block/base_rock","5", stone, mossy_rock.withSuffix("5"))
         );
         randomYRotationBlock(
                 BlockRegistration.LIGHTER_ROCK_BLOCK.get(),
