@@ -80,12 +80,42 @@ public class BaseItemTagsProvider extends ItemTagsProvider
                 .add(Items.CLAY)
                 .add(BlockRegistration.RED_CLAY_BLOCK_ITEM.get());
 
-        tag(ItemTagCatalog.ROCK)
-                .add(BlockRegistration.ROCK_ITEM.get())
-                .add(BlockRegistration.COPPER_ROCK_ITEM.get())
-                .add(BlockRegistration.LIMESTONE_ITEM.get());
-        tag(ItemTagCatalog.LARGE_ROCK)
-                .add(BlockRegistration.LARGE_ROCK_ITEM.get());
+        tag(ItemTagCatalog.ROCK).add(
+                BlockRegistration.ROCK_ITEM.get(),
+                BlockRegistration.SANDSTONE_ROCK_ITEM.get(),
+                BlockRegistration.RED_SANDSTONE_ROCK_ITEM.get(),
+                BlockRegistration.MOSSY_ROCK_ITEM.get(),
+                BlockRegistration.LIGHTER_ROCK_ITEM.get(),
+                BlockRegistration.SNOWY_ROCK_ITEM.get(),
+                BlockRegistration.ICE_ROCK_ITEM.get(),
+                BlockRegistration.COPPER_ROCK_ITEM.get(),
+                BlockRegistration.LIMESTONE_ITEM.get()
+        );
+        tag(ItemTagCatalog.HARD_ROCK).add(
+                BlockRegistration.ROCK_ITEM.get(),
+                BlockRegistration.MOSSY_ROCK_ITEM.get(),
+                BlockRegistration.LIGHTER_ROCK_ITEM.get(),
+                BlockRegistration.SNOWY_ROCK_ITEM.get(),
+                BlockRegistration.ICE_ROCK_ITEM.get(),
+                BlockRegistration.COPPER_ROCK_ITEM.get(),
+                BlockRegistration.LIMESTONE_ITEM.get()
+        );
+        tag(ItemTagCatalog.LARGE_ROCK).add(
+                BlockRegistration.LARGE_ROCK_ITEM.get(),
+                BlockRegistration.SANDSTONE_LARGE_ROCK_ITEM.get(),
+                BlockRegistration.RED_SANDSTONE_LARGE_ROCK_ITEM.get(),
+                BlockRegistration.MOSSY_LARGE_ROCK_ITEM.get(),
+                BlockRegistration.LIGHTER_LARGE_ROCK_ITEM.get(),
+                BlockRegistration.SNOWY_LARGE_ROCK_ITEM.get(),
+                BlockRegistration.ICE_LARGE_ROCK_ITEM.get()
+        );
+        tag(ItemTagCatalog.LARGE_HARD_ROCK).add(
+                BlockRegistration.LARGE_ROCK_ITEM.get(),
+                BlockRegistration.MOSSY_LARGE_ROCK_ITEM.get(),
+                BlockRegistration.LIGHTER_LARGE_ROCK_ITEM.get(),
+                BlockRegistration.SNOWY_LARGE_ROCK_ITEM.get(),
+                BlockRegistration.ICE_LARGE_ROCK_ITEM.get()
+        );
         tag(ItemTagCatalog.BRANCH).add(
                 BlockRegistration.OAK_BRANCH_ITEM.get(),
                 BlockRegistration.BIRCH_BRANCH_ITEM.get(),
@@ -116,6 +146,10 @@ public class BaseItemTagsProvider extends ItemTagsProvider
 
         tag(ItemTagCatalog.HAMMER).add(
                 ItemRegistration.HAMMERSTONE.get()
+        );
+
+        tag(ItemTagCatalog.KNIFE).add(
+                ItemRegistration.LUNATE.get()
         );
     }
 

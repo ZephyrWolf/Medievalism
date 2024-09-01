@@ -8,9 +8,9 @@ import io.github.zephyrwolf.medievalism.data.item.BaseItemModelsProvider;
 import io.github.zephyrwolf.medievalism.data.item.BaseItemTagsProvider;
 import io.github.zephyrwolf.medievalism.data.lang.BaseLanguageProvider;
 import io.github.zephyrwolf.medievalism.data.lang.OverhaulLanguageProvider;
-import io.github.zephyrwolf.medievalism.data.recipe.BaseRecipesProvider;
-import io.github.zephyrwolf.medievalism.data.recipe.OverhaulBlankRecipesProvider;
-import io.github.zephyrwolf.medievalism.data.recipe.OverhaulRecipesProvider;
+import io.github.zephyrwolf.medievalism.data.recipe.BaseRecipeProvider;
+import io.github.zephyrwolf.medievalism.data.recipe.OverhaulBlankRecipeProvider;
+import io.github.zephyrwolf.medievalism.data.recipe.OverhaulRecipeProvider;
 import io.github.zephyrwolf.medievalism.data.worldgen.BaseBiomeTagsProvider;
 import io.github.zephyrwolf.medievalism.data.worldgen.BaseWorldGenProvider;
 import io.github.zephyrwolf.medievalism.data.provider.PackMetaProvider;
@@ -56,7 +56,7 @@ public final class DataGenRegistration
         generator.addProvider(includeServer, new BaseItemTagsProvider(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
         generator.addProvider(includeServer, new BaseBiomeTagsProvider(packOutput, lookupProvider, existingFileHelper));
         //generator.addProvider(event.includeServer(), new MedievalismEntityTags(packOutput, lookupProvider, existingFileHelper));
-        generator.addProvider(includeServer, new BaseRecipesProvider(packOutput, lookupProvider));
+        generator.addProvider(includeServer, new BaseRecipeProvider(packOutput, lookupProvider));
         generator.addProvider(includeServer, new AdvancementProvider(packOutput, lookupProvider, existingFileHelper, List.of(new BaseAdvancementsProvider())));
         generator.addProvider(includeClient, new BaseLanguageProvider(packOutput, "en_us"));
         generator.addProvider(includeServer, new LootTableProvider(packOutput, Collections.emptySet(), List.of(
@@ -83,8 +83,8 @@ public final class DataGenRegistration
     //region Overhaul Data
     private static void addProvidersForDataOverhaul(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient)
     {
-        generator.addProvider(includeServer, new OverhaulBlankRecipesProvider(packOutput));
-        generator.addProvider(includeServer, new OverhaulRecipesProvider(packOutput, lookupProvider));
+        generator.addProvider(includeServer, new OverhaulBlankRecipeProvider(packOutput));
+        generator.addProvider(includeServer, new OverhaulRecipeProvider(packOutput, lookupProvider));
         generator.addProvider(includeServer, new OverhaulBlockTagsProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(includeServer, new LootTableProvider(packOutput, Collections.emptySet(), List.of(
                 new LootTableProvider.SubProviderEntry(OverhaulMobLootTablesSubProvider::new, LootContextParamSets.ENTITY),

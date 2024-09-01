@@ -7,10 +7,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
-public class OverhaulRecipesProvider extends RecipeProvider
+public class OverhaulRecipeProvider extends RecipeProvider
 {
 
-    public OverhaulRecipesProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider)
+    public OverhaulRecipeProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider)
     {
         super(packOutput, lookupProvider);
     }

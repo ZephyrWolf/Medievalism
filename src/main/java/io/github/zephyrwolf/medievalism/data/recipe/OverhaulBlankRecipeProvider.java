@@ -5,9 +5,9 @@ import io.github.zephyrwolf.medievalism.data.provider.BlankRecipeProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 
-public class OverhaulBlankRecipesProvider extends BlankRecipeProvider
+public class OverhaulBlankRecipeProvider extends BlankRecipeProvider
 {
-    public OverhaulBlankRecipesProvider(PackOutput output)
+    public OverhaulBlankRecipeProvider(PackOutput output)
     {
         super(output);
     }
@@ -39,6 +39,6 @@ public class OverhaulBlankRecipesProvider extends BlankRecipeProvider
         addBlank(ResourceLocation.withDefaultNamespace("rabbit_stew_from_brown_mushrooms"));
 
         addBlank(ResourceLocation.withDefaultNamespace("brick"));
-        addBlank(ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "brick_from_clay_ball_tag"));
+        addBlank(MedievalismConstants.resource("brick_from_clay_ball_tag"));
     }
 }

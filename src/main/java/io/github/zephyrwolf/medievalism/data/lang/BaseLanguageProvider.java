@@ -90,6 +90,7 @@ public class BaseLanguageProvider extends LanguageProvider
             add(ItemRegistration.UNFIRED_JUG.get(), "Unfired Jug");
             add(ItemRegistration.JUG.get(), "Jug");
             add(ItemRegistration.UNFIRED_FLOWER_POT.get(), "Unfired Flower Pot");
+            add(ItemRegistration.UNFIRED_DECORATED_POT.get(), "Unfired Decorated Pot");
             add(ItemRegistration.UNFIRED_BIRCH_POT.get(), "Unfired Birch Pot");
             add(ItemRegistration.UNFIRED_POT.get(), "Unfired Pot");
             add(ItemRegistration.POT.get(), "Pot");
