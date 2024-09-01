@@ -48,6 +48,10 @@ public class BaseLanguageProvider extends LanguageProvider
         add(ItemRegistration.BROKEN_GOAT_HORN.get(), "Broken Goat Horn");
         add(BlockRegistration.DOGBANE_BLOCK_ITEM.get(), "Dogbane");
 
+        add(ItemRegistration.MUD_BALL.get(), "Mud Ball");
+        add(BlockRegistration.WET_MUD_STONE_BRICK_ITEM.get(), "Wet Mud Stone Brick");
+        add(ItemRegistration.MUD_STONE_BRICK.get(), "Mud Stone Brick");
+
         { // World
             add(ItemRegistration.RED_CLAY_BALL.get(), "Red Clay Ball");
             add(BlockRegistration.RED_CLAY_BLOCK_ITEM.get(), "Red Clay");

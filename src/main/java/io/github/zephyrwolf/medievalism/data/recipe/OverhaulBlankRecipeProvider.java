@@ -40,5 +40,7 @@ public class OverhaulBlankRecipeProvider extends BlankRecipeProvider
 
         addBlank(ResourceLocation.withDefaultNamespace("brick"));
         addBlank(MedievalismConstants.resource("brick_from_clay_ball_tag"));
+
+        addBlank(ResourceLocation.withDefaultNamespace("packed_mud"));
     }
 }

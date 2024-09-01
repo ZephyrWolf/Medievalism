@@ -10,6 +10,8 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -35,6 +37,24 @@ public final class BaseShapelessRecipeProvider {
                 .requires(BlockRegistration.THATCH_BLOCK_ITEM)
                 .unlockedBy("has_thatch_block", RecipeTools.itemPredicateOf(BlockRegistration.THATCH_BLOCK_ITEM))
                 .save(recipeOutput, MedievalismConstants.resource("thatch_from_block"));
+        // Mud Ball // TODO Temp
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.MUD_BALL, 4)
+                .requires(Blocks.DIRT)
+                .group("mud_ball")
+                .unlockedBy("has_dirt", RecipeTools.itemPredicateOf(Blocks.DIRT))
+                .save(recipeOutput, MedievalismConstants.resource("temp_mud_balls_from_dirt"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.MUD_BALL, 4)
+                .requires(Blocks.MUD)
+                .group("mud_ball")
+                .unlockedBy("has_mud", RecipeTools.itemPredicateOf(Blocks.MUD))
+                .save(recipeOutput, MedievalismConstants.resource("mud_balls_from_mud"));
+        // Wet Mud Stone Brick
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BlockRegistration.WET_MUD_STONE_BRICK, 2)
+                .requires(ItemRegistration.MUD_BALL)
+                .requires(ItemRegistration.MUD_BALL)
+                .requires(ItemRegistration.THATCH)
+                .unlockedBy("has_mud_thatch", RecipeTools.itemPredicateOf(ItemRegistration.MUD_BALL, ItemRegistration.THATCH))
+                .save(recipeOutput, MedievalismConstants.resource("wet_mud_stone_brick"));
         // Hammerstone, does this belong here?
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.HAMMERSTONE)
                 .requires(ItemTagCatalog.HARD_ROCK)

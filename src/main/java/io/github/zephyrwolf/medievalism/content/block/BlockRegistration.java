@@ -2,7 +2,9 @@ package io.github.zephyrwolf.medievalism.content.block;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.block.*;
+import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
@@ -194,7 +196,7 @@ public final class BlockRegistration
     //region Organic
     public static final DeferredBlock<Block> DOGBANE_BLOCK = BLOCKS.registerBlock(
             "dogbane", DogbaneBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN)
-                    .strength(0.3f).sound(SoundType.GRASS));
+                    .strength(0.3f).sound(SoundType.GRASS).randomTicks());
     public static final DeferredItem<BlockItem> DOGBANE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("dogbane", DOGBANE_BLOCK);
     //endregion
     //endregion
@@ -203,6 +205,12 @@ public final class BlockRegistration
             "thatch_block", RotatedPillarBlock::new, BlockBehaviour.Properties.of()
                     .mapColor(MapColor.WARPED_STEM).strength(0.5f).sound(SoundType.GRASS));
     public static final DeferredItem<BlockItem> THATCH_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("thatch_block", THATCH_BLOCK);
+
+    public static final DeferredBlock<WetMudStoneBrick> WET_MUD_STONE_BRICK = BLOCKS.registerBlock(
+            "wet_mud_stone_brick", props -> new WetMudStoneBrick(props, () -> new ItemStack(ItemRegistration.MUD_BALL.get())), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.STONE).randomTicks());
+    public static final DeferredItem<BlockItem> WET_MUD_STONE_BRICK_ITEM = ITEMS.registerSimpleBlockItem("wet_mud_stone_brick", WET_MUD_STONE_BRICK);
+
     public static final DeferredBlock<StoneBenchBlock> STONE_BENCH = BLOCKS.registerBlock("stone_bench", StoneBenchBlock::new, BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE).strength(1.0f).sound(SoundType.STONE));
     public static final DeferredItem<BlockItem> STONE_BENCH_ITEM = ITEMS.registerSimpleBlockItem("stone_bench", STONE_BENCH);

@@ -58,6 +58,8 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
                 ItemRegistration.RAW_TIN.get()
         ));
 
+        add(BlockRegistration.WET_MUD_STONE_BRICK.get(), emptyItemTable());
+
         dropSelf(BlockRegistration.OAK_BRANCH_BLOCK.get());
         dropSelf(BlockRegistration.BIRCH_BRANCH_BLOCK.get());
         dropSelf(BlockRegistration.SPRUCE_BRANCH_BLOCK.get());
@@ -122,5 +124,9 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
                                 .setQuality(count)
                         )
                 ));
+    }
+
+    public LootTable.Builder emptyItemTable() {
+        return LootTable.lootTable();
     }
 }

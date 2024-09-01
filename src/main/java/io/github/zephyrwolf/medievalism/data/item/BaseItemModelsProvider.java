@@ -58,6 +58,10 @@ public class BaseItemModelsProvider extends ItemModelProvider
             blockBasedModel(BlockRegistration.STONE_BENCH_ITEM.get(), "");
             blockBasedModel(BlockRegistration.CHOPPING_BLOCK_ITEM.get(), "");
             blockIconGeneratedModel(BlockRegistration.BIRCH_POT_ITEM.get());
+
+            itemGeneratedModel(ItemRegistration.MUD_BALL.get());
+            itemGeneratedModel(BlockRegistration.WET_MUD_STONE_BRICK_ITEM.get());
+            itemGeneratedModel(ItemRegistration.MUD_STONE_BRICK.get());
         }
         { // World
             itemGeneratedModel(ItemRegistration.RED_CLAY_BALL.get());
