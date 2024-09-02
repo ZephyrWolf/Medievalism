@@ -1,14 +1,16 @@
 package io.github.zephyrwolf.medievalism.data.block;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.common.block.WetMudStoneBrick;
+import io.github.zephyrwolf.medievalism.common.block.WetPackedMudBrick;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.neoforged.neoforge.client.model.generators.*;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -108,6 +110,11 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 existingParent(BlockRegistration.ICE_ROCK_BLOCK.get(), "block/base_rock", "5", Blocks.PACKED_ICE)
         );
 
+        simpleBlock(BlockRegistration.GATHERERS_JAR.get(), existingModel(BlockRegistration.GATHERERS_JAR.get(), ""));
+        horizontalAxisBlock(BlockRegistration.KEEPERS_CROCK.get(), existingModel(BlockRegistration.KEEPERS_CROCK.get(), ""), existingModel(BlockRegistration.KEEPERS_CROCK.get(), "_rotated"));
+        horizontalAxisBlock(BlockRegistration.SETTLERS_POT.get(), existingModel(BlockRegistration.SETTLERS_POT.get(), ""), existingModel(BlockRegistration.SETTLERS_POT.get(), "_rotated"));
+        horizontalAxisBlock(BlockRegistration.CLAY_CAULDRON.get(), existingModel(BlockRegistration.CLAY_CAULDRON.get(), ""), existingModel(BlockRegistration.CLAY_CAULDRON.get(), "_rotated"));
+
 //        randomYRotationBlock(
 //                BlockRegistration.LARGE_ROCK_BLOCK.get(),
 //                existingModel(BlockRegistration.LARGE_ROCK_BLOCK.get(), "1") // 2 and 3
@@ -160,7 +167,7 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         shortBlock(BlockRegistration.CHOPPING_BLOCK.get());
         simpleBlock(BlockRegistration.BIRCH_POT.get());
 
-        wetMudStoneBrickBlock(BlockRegistration.WET_MUD_STONE_BRICK.get());
+        wetPackedMudBrickBlock(BlockRegistration.WET_PACKED_MUD_BRICK.get());
     }
 
     private String blockName(Block block) {
@@ -168,6 +175,19 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
     }
 
     //region Blocks
+    private void horizontalAxisBlock(Block block, ModelFile model) {
+        horizontalAxisBlock(block, model, model);
+    }
+
+    private void horizontalAxisBlock(Block block, ModelFile zAxisModel, ModelFile xAxisModel)
+    {
+        getVariantBuilder(block)
+                .partialState().with(BlockStateProperties.HORIZONTAL_AXIS, Direction.Axis.Z)
+                .modelForState().modelFile(zAxisModel).rotationY(0).addModel()
+                .partialState().with(BlockStateProperties.HORIZONTAL_AXIS, Direction.Axis.X)
+                .modelForState().modelFile(xAxisModel).rotationY(180).addModel();
+    }
+
     private void randomYRotationBlock(Block block, ModelFile... rawModels) {
         ConfiguredModel[] models = new ConfiguredModel[rawModels.length * 4];
         for (int i = 0; i < rawModels.length; i++) {
@@ -191,14 +211,14 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         getVariantBuilder(block).partialState().setModels(model);
     }
 
-    private void wetMudStoneBrickBlock(Block block) {
+    private void wetPackedMudBrickBlock(Block block) {
         var builder = getMultipartBuilder(block);
-        for (EnumProperty<?> aProp : WetMudStoneBrick.BRICK_PROPERTIES) {
+        for (EnumProperty<?> aProp : WetPackedMudBrick.BRICK_PROPERTIES) {
             @SuppressWarnings("unchecked")
-            EnumProperty<WetMudStoneBrick.BrickState> prop = (EnumProperty<WetMudStoneBrick.BrickState>) aProp;
-            for (WetMudStoneBrick.BrickState brick : WetMudStoneBrick.BrickState.values()) {
+            EnumProperty<WetPackedMudBrick.PackedMudBrickState> prop = (EnumProperty<WetPackedMudBrick.PackedMudBrickState>) aProp;
+            for (WetPackedMudBrick.PackedMudBrickState brick : WetPackedMudBrick.PackedMudBrickState.values()) {
                 if (brick.isEmpty()) continue;
-                ModelFile model = brickModel(brick == WetMudStoneBrick.BrickState.WET ? "wet_mud_stone_brick" : "dry_mud_stone_brick", prop, brick);
+                ModelFile model = wetPackedMudBrickModel(brick == WetPackedMudBrick.PackedMudBrickState.WET ? "wet_packed_mud_brick" : "packed_mud_brick", prop, brick, brick == WetPackedMudBrick.PackedMudBrickState.WET ? "minecraft:block/mud" : "minecraft:block/packed_mud");
                 builder.part().modelFile(model).addModel()
                         .condition(prop, brick)
                         .end();
@@ -208,18 +228,18 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
     //endregion
 
     //region Models
-    private ModelFile brickModel(String name, EnumProperty<WetMudStoneBrick.BrickState> property, WetMudStoneBrick.BrickState brick) {
-        if (brick.isEmpty()) throw new IllegalStateException("Cannot obtain model for an empty BrickState.");
+    private ModelFile wetPackedMudBrickModel(String name, EnumProperty<WetPackedMudBrick.PackedMudBrickState> property, WetPackedMudBrick.PackedMudBrickState brick, String texture) {
+        if (brick.isEmpty()) throw new IllegalStateException("Cannot obtain model for an empty PackedMudBrickState.");
         String suffix = "";
-        if (property.equals(WetMudStoneBrick.BACK_LEFT)) suffix = "_back_left";
-        if (property.equals(WetMudStoneBrick.BACK_RIGHT)) suffix = "_back_right";
-        if (property.equals(WetMudStoneBrick.FRONT_LEFT)) suffix = "_front_left";
-        if (property.equals(WetMudStoneBrick.FRONT_RIGHT)) suffix = "_front_right";
+        if (property.equals(WetPackedMudBrick.BACK_LEFT)) suffix = "_back_left";
+        if (property.equals(WetPackedMudBrick.BACK_RIGHT)) suffix = "_back_right";
+        if (property.equals(WetPackedMudBrick.FRONT_LEFT)) suffix = "_front_left";
+        if (property.equals(WetPackedMudBrick.FRONT_RIGHT)) suffix = "_front_right";
         if (suffix.isEmpty()) throw new IllegalStateException("Unrecognised BlockState Property.");
         return models() // BlockModelProvider extends ModelProvider<BlockModelBuilder>
                 .withExistingParent(name + suffix, MedievalismConstants.resource("block/base_inworld_brick" + suffix))
-                .texture("0", "block/" + name)
-                .texture("particle", "block/" + name);
+                .texture("0", texture) // block/...
+                .texture("particle", texture);
     }
 
     private ModelFile shortModel(Block block) {
@@ -239,6 +259,7 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 .texture("side", side);
     }
 
+    @SuppressWarnings("SameParameterValue")
     private ModelFile existingModel(Block block, String suffix) {
         return existingModel(blockName(block), suffix);
     }

@@ -58,7 +58,12 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
                 ItemRegistration.RAW_TIN.get()
         ));
 
-        add(BlockRegistration.WET_MUD_STONE_BRICK.get(), emptyItemTable());
+        add(BlockRegistration.WET_PACKED_MUD_BRICK.get(), emptyItemTable());
+
+        dropSelf(BlockRegistration.GATHERERS_JAR.get());
+        dropSelf(BlockRegistration.KEEPERS_CROCK.get());
+        dropSelf(BlockRegistration.SETTLERS_POT.get());
+        dropSelf(BlockRegistration.CLAY_CAULDRON.get());
 
         dropSelf(BlockRegistration.OAK_BRANCH_BLOCK.get());
         dropSelf(BlockRegistration.BIRCH_BRANCH_BLOCK.get());

@@ -23,7 +23,6 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -37,7 +36,7 @@ import java.util.function.Supplier;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class WetMudStoneBrick extends Block {
+public class WetPackedMudBrick extends Block {
     protected static final VoxelShape BRICK_SHAPE_1000 = Block.box(2, 0, 1, 6, 3, 7);
     protected static final VoxelShape BRICK_SHAPE_0100 = Block.box(10, 0, 1, 14, 3, 7);
     protected static final VoxelShape BRICK_SHAPE_0010 = Block.box(2, 0, 9, 6, 3, 15);
@@ -46,7 +45,7 @@ public class WetMudStoneBrick extends Block {
     protected final VoxelShape[] BRICK_SHAPES = new VoxelShape[16];
 
     @MethodsReturnNonnullByDefault
-    public enum BrickState implements StringRepresentable {
+    public enum PackedMudBrickState implements StringRepresentable {
         EMPTY,
         WET,
         DRY;
@@ -65,21 +64,21 @@ public class WetMudStoneBrick extends Block {
         }
     }
 
-    public static final EnumProperty<BrickState> BACK_LEFT = EnumProperty.create("back_left", BrickState.class);
-    public static final EnumProperty<BrickState> BACK_RIGHT = EnumProperty.create("back_right", BrickState.class);
-    public static final EnumProperty<BrickState> FRONT_LEFT = EnumProperty.create("front_left", BrickState.class);
-    public static final EnumProperty<BrickState> FRONT_RIGHT = EnumProperty.create("front_right", BrickState.class);
+    public static final EnumProperty<PackedMudBrickState> BACK_LEFT = EnumProperty.create("back_left", PackedMudBrickState.class);
+    public static final EnumProperty<PackedMudBrickState> BACK_RIGHT = EnumProperty.create("back_right", PackedMudBrickState.class);
+    public static final EnumProperty<PackedMudBrickState> FRONT_LEFT = EnumProperty.create("front_left", PackedMudBrickState.class);
+    public static final EnumProperty<PackedMudBrickState> FRONT_RIGHT = EnumProperty.create("front_right", PackedMudBrickState.class);
     public static final EnumProperty<?>[] BRICK_PROPERTIES = new EnumProperty[]{BACK_LEFT, BACK_RIGHT, FRONT_LEFT, FRONT_RIGHT};
 
     protected final Supplier<ItemStack> ITEM_HOLDER;
 
-    public WetMudStoneBrick(Properties props, Supplier<ItemStack> itemHolder) {
+    public WetPackedMudBrick(Properties props, Supplier<ItemStack> itemHolder) {
         super(props);
         registerDefaultState(getStateDefinition().any()
-                .setValue(BACK_LEFT, BrickState.EMPTY)
-                .setValue(BACK_LEFT, BrickState.EMPTY)
-                .setValue(BACK_LEFT, BrickState.EMPTY)
-                .setValue(BACK_LEFT, BrickState.EMPTY)
+                .setValue(BACK_LEFT, PackedMudBrickState.EMPTY)
+                .setValue(BACK_LEFT, PackedMudBrickState.EMPTY)
+                .setValue(BACK_LEFT, PackedMudBrickState.EMPTY)
+                .setValue(BACK_LEFT, PackedMudBrickState.EMPTY)
         );
         for (int i = 0; i < 16; i++) {
             VoxelShape shape1000 = (i & 0b1000) != 0 ? BRICK_SHAPE_1000 : Shapes.empty();
@@ -105,15 +104,15 @@ public class WetMudStoneBrick extends Block {
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
-        if (pStack.getItem() == BlockRegistration.WET_MUD_STONE_BRICK_ITEM.get()) {
-            EnumProperty<BrickState> prop = null;
+        if (pStack.getItem() == BlockRegistration.WET_PACKED_MUD_BRICK_ITEM.get()) {
+            EnumProperty<PackedMudBrickState> prop = null;
             if (pState.getValue(BACK_LEFT).isEmpty()) prop = BACK_LEFT;
             else if (pState.getValue(BACK_RIGHT).isEmpty()) prop = BACK_RIGHT;
             else if (pState.getValue(FRONT_LEFT).isEmpty()) prop = FRONT_LEFT;
             else if (pState.getValue(FRONT_RIGHT).isEmpty()) prop = FRONT_RIGHT;
             if (prop != null)
             {
-                pLevel.setBlockAndUpdate(pPos, pState.setValue(prop, BrickState.WET));
+                pLevel.setBlockAndUpdate(pPos, pState.setValue(prop, PackedMudBrickState.WET));
                 if (!pPlayer.isCreative()) {
                     pStack.shrink(1);
                 }
@@ -130,9 +129,9 @@ public class WetMudStoneBrick extends Block {
         List<ItemStack> items = super.getDrops(pState, pParams);
         for (EnumProperty<?> property : BRICK_PROPERTIES) {
             @SuppressWarnings("unchecked")
-            BrickState state = pState.getValue((EnumProperty<BrickState>) property);
-            if (state == BrickState.WET) items.add(new ItemStack(BlockRegistration.WET_MUD_STONE_BRICK_ITEM.get()));
-            else if (state == BrickState.DRY) items.add(new ItemStack(ItemRegistration.MUD_STONE_BRICK.get()));
+            PackedMudBrickState state = pState.getValue((EnumProperty<PackedMudBrickState>) property);
+            if (state == PackedMudBrickState.WET) items.add(new ItemStack(BlockRegistration.WET_PACKED_MUD_BRICK_ITEM.get()));
+            else if (state == PackedMudBrickState.DRY) items.add(new ItemStack(ItemRegistration.PACKED_MUD_BRICK.get()));
         }
         return items;
     }
@@ -140,7 +139,7 @@ public class WetMudStoneBrick extends Block {
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext pContext) {
         return defaultBlockState()
-                .setValue(BACK_LEFT, BrickState.WET);
+                .setValue(BACK_LEFT, PackedMudBrickState.WET);
     }
 
     @Override
@@ -199,20 +198,20 @@ public class WetMudStoneBrick extends Block {
             //long timeOfDay = pLevel.dayTime();
             int index = pRandom.nextInt(4);
             @SuppressWarnings("unchecked")
-            EnumProperty<BrickState> property = (EnumProperty<BrickState>) BRICK_PROPERTIES[index];
-            BrickState state = pState.getValue(property);
-            if (state == BrickState.WET) {
-                pLevel.setBlockAndUpdate(pPos, pState.setValue(property, BrickState.DRY));
+            EnumProperty<PackedMudBrickState> property = (EnumProperty<PackedMudBrickState>) BRICK_PROPERTIES[index];
+            PackedMudBrickState state = pState.getValue(property);
+            if (state == PackedMudBrickState.WET) {
+                pLevel.setBlockAndUpdate(pPos, pState.setValue(property, PackedMudBrickState.DRY));
             }
         } else if (isRaining && pLevel.canSeeSky(pPos)) {
             int index = pRandom.nextInt(4);
             @SuppressWarnings("unchecked")
-            EnumProperty<BrickState> property = (EnumProperty<BrickState>) BRICK_PROPERTIES[index];
-            BrickState state = pState.getValue(property);
-            if (state == BrickState.DRY) {
-                pLevel.setBlockAndUpdate(pPos, pState.setValue(property, BrickState.WET));
-            } else if (state == BrickState.WET && pRandom.nextInt(3) == 0) {
-                pLevel.setBlockAndUpdate(pPos, pState.setValue(property, BrickState.EMPTY));
+            EnumProperty<PackedMudBrickState> property = (EnumProperty<PackedMudBrickState>) BRICK_PROPERTIES[index];
+            PackedMudBrickState state = pState.getValue(property);
+            if (state == PackedMudBrickState.DRY) {
+                pLevel.setBlockAndUpdate(pPos, pState.setValue(property, PackedMudBrickState.WET));
+            } else if (state == PackedMudBrickState.WET && pRandom.nextInt(3) == 0) {
+                pLevel.setBlockAndUpdate(pPos, pState.setValue(property, PackedMudBrickState.EMPTY));
                 pLevel.addFreshEntity(new ItemEntity(
                         pLevel,
                         pPos.getX() + 0.5f,

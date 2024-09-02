@@ -51,7 +51,7 @@ public final class ItemRegistration
     public static final DeferredItem<Item> LUNATE = ITEMS.registerSimpleItem("lunate", new Item.Properties());
     public static final DeferredItem<Item> BIFACE = ITEMS.registerItem("biface", BifaceItem::new, new Item.Properties().component(DataComponents.TOOL, BifaceItem.createToolProperties()));
     public static final DeferredItem<Item> MUD_BALL = ITEMS.registerSimpleItem("mud_ball", new Item.Properties());
-    public static final DeferredItem<Item> MUD_STONE_BRICK = ITEMS.registerSimpleItem("mud_stone_brick", new Item.Properties());
+    public static final DeferredItem<Item> PACKED_MUD_BRICK = ITEMS.registerSimpleItem("packed_mud_brick", new Item.Properties());
     public static final DeferredItem<Item> QUICK_LIME = ITEMS.registerSimpleItem("quicklime", new Item.Properties());
     public static final DeferredItem<Item> THATCH = ITEMS.registerSimpleItem("thatch", new Item.Properties());
     public static final DeferredItem<Item> CHOPPED_WOOD = ITEMS.registerSimpleItem("chopped_wood", new Item.Properties());

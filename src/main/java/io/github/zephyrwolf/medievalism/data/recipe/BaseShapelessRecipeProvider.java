@@ -10,7 +10,6 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -49,7 +48,7 @@ public final class BaseShapelessRecipeProvider {
                 .unlockedBy("has_mud", RecipeTools.itemPredicateOf(Blocks.MUD))
                 .save(recipeOutput, MedievalismConstants.resource("mud_balls_from_mud"));
         // Wet Mud Stone Brick
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BlockRegistration.WET_MUD_STONE_BRICK, 2)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BlockRegistration.WET_PACKED_MUD_BRICK, 2)
                 .requires(ItemRegistration.MUD_BALL)
                 .requires(ItemRegistration.MUD_BALL)
                 .requires(ItemRegistration.THATCH)

@@ -60,9 +60,13 @@ public class BaseItemModelsProvider extends ItemModelProvider
             blockIconGeneratedModel(BlockRegistration.BIRCH_POT_ITEM.get());
 
             itemGeneratedModel(ItemRegistration.MUD_BALL.get());
-            itemGeneratedModel(BlockRegistration.WET_MUD_STONE_BRICK_ITEM.get());
-            itemGeneratedModel(ItemRegistration.MUD_STONE_BRICK.get());
+            itemGeneratedModel(BlockRegistration.WET_PACKED_MUD_BRICK_ITEM.get());
+            itemGeneratedModel(ItemRegistration.PACKED_MUD_BRICK.get());
         }
+        blockBasedModel(BlockRegistration.GATHERERS_JAR_ITEM.get(), "");
+        blockBasedModel(BlockRegistration.KEEPERS_CROCK_ITEM.get(), "");
+        blockBasedModel(BlockRegistration.SETTLERS_POT_ITEM.get(), "");
+        blockBasedModel(BlockRegistration.CLAY_CAULDRON_ITEM.get(), "");
         { // World
             itemGeneratedModel(ItemRegistration.RED_CLAY_BALL.get());
             itemGeneratedModel(ItemRegistration.RAW_TIN.get());

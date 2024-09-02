@@ -5,12 +5,9 @@ import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.tools.RecipeTools;
-import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 
@@ -46,8 +43,8 @@ public final class BaseShapedRecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Blocks.MUD_BRICKS, 1)
                 .pattern("mm")
                 .pattern("mm")
-                .define('m', ItemRegistration.MUD_STONE_BRICK)
-                .unlockedBy("has_mud_stone_brick", RecipeTools.itemPredicateOf(ItemRegistration.MUD_STONE_BRICK))
+                .define('m', ItemRegistration.PACKED_MUD_BRICK)
+                .unlockedBy("has_mud_stone_brick", RecipeTools.itemPredicateOf(ItemRegistration.PACKED_MUD_BRICK))
                 .save(recipeOutput, MedievalismConstants.resource("mud_brick_from_bricks"));
         // TODO Different types based on stone type?
         // Stone Bench

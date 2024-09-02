@@ -6,18 +6,27 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.SupportType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
@@ -25,43 +34,60 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
-@MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-public class WorldLitterBlock extends Block implements SimpleWaterloggedBlock
-{ // Waterlogged from SlabBlock
-    public static final VoxelShape FLAT_SHAPE = Block.box(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
-    public static final VoxelShape BRANCH_SHAPE = Block.box(1, 0, 1, 15, 2, 15);
-    public static final VoxelShape TWIGS_SHAPE = Block.box(1, 0, 1, 15, 1, 15);
-    public static final VoxelShape ROCK_SHAPE = Block.box(1, 0.0, 1, 15, 3.0, 15);
-    public static final VoxelShape LARGE_ROCK_SHAPE = Block.box(1, 0.0, 1, 15.0, 6, 15);
-
-    protected VoxelShape SHAPE;
+@MethodsReturnNonnullByDefault
+public class ClayCauldronBlock extends Block implements SimpleWaterloggedBlock {
+    protected static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 9, 14);
 
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+    public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
 
-    public WorldLitterBlock(Properties properties, VoxelShape shape)
-    {
+    public ClayCauldronBlock(BlockBehaviour.Properties properties) {
         super(properties);
-        this.SHAPE = shape;
         registerDefaultState(getStateDefinition().any()
-                .setValue(WATERLOGGED, false));
+                .setValue(WATERLOGGED, false)
+                .setValue(AXIS, Direction.Axis.X)
+        );
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
+        if (pState.getFluidState().is(Fluids.WATER)) {
+            return InteractionResult.PASS;
+        }
+        return super.useWithoutItem(pState, pLevel, pPos, pPlayer, pHitResult);
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(WATERLOGGED);
+        pBuilder
+                .add(WATERLOGGED)
+                .add(AXIS);
     }
 
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext pContext) {
         FluidState fluidstate = pContext.getLevel().getFluidState(pContext.getClickedPos());
         return defaultBlockState()
-                .setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
+                .setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER)
+                .setValue(AXIS, pContext.getHorizontalDirection().getAxis());
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    protected BlockState rotate(BlockState pState, Rotation pRotation) {
+        return switch (pRotation) {
+            case COUNTERCLOCKWISE_90, CLOCKWISE_90 -> switch (pState.getValue(AXIS)) {
+                case Z -> pState.setValue(AXIS, Direction.Axis.X);
+                case X -> pState.setValue(AXIS, Direction.Axis.Z);
+                default -> pState;
+            };
+            default -> pState;
+        };
     }
 
     @Override
-    protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext)
-    {
+    protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         return SHAPE;
     }
 
@@ -76,16 +102,18 @@ public class WorldLitterBlock extends Block implements SimpleWaterloggedBlock
     }
 
     @Override
-    protected float getShadeBrightness(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos) { return 1.0f; }
+    protected float getShadeBrightness(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos) {
+        return 1.0f;
+    }
 
     @Override
-    protected boolean propagatesSkylightDown(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos) { return true; }
+    protected boolean propagatesSkylightDown(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos) {
+        return true;
+    }
 
     @Override // Scheduled Tick from Block Update
-    protected void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom)
-    {
-        if (!pState.canSurvive(pLevel, pPos))
-        {
+    protected void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+        if (!pState.canSurvive(pLevel, pPos)) {
             pLevel.destroyBlock(pPos, true);
         }
     }
@@ -102,8 +130,7 @@ public class WorldLitterBlock extends Block implements SimpleWaterloggedBlock
             pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
         }
 
-        if (!pState.canSurvive(pLevel, pCurrentPos))
-        {
+        if (!pState.canSurvive(pLevel, pCurrentPos)) {
             pLevel.scheduleTick(pCurrentPos, this, 1);
         }
 
@@ -111,8 +138,7 @@ public class WorldLitterBlock extends Block implements SimpleWaterloggedBlock
     }
 
     @Override
-    protected boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos)
-    {
+    protected boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
         BlockPos belowPos = pPos.below();
         BlockState belowState = pLevel.getBlockState(belowPos);
         return belowState.isFaceSturdy(pLevel, belowPos, Direction.UP, SupportType.FULL);

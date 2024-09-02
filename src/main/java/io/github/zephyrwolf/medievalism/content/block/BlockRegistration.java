@@ -6,6 +6,7 @@ import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -19,8 +20,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import static io.github.zephyrwolf.medievalism.content.item.ItemRegistration.ITEMS;
 
-public final class BlockRegistration
-{
+public final class BlockRegistration {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MedievalismConstants.MOD_ID);
 
     //region World
@@ -49,31 +49,31 @@ public final class BlockRegistration
             .pushReaction(PushReaction.DESTROY).strength(0.05f)
             .sound(SoundType.STONE).mapColor(MapColor.STONE);
     public static final DeferredBlock<WorldLitterBlock> ROCK_BLOCK = BLOCKS.registerBlock(
-            "rock", props -> new WorldLitterBlock(props, WorldLitterBlock.ROCK), rockProps);
+            "rock", props -> new WorldLitterBlock(props, WorldLitterBlock.ROCK_SHAPE), rockProps);
     public static final DeferredItem<BlockItem> ROCK_ITEM = ITEMS.registerSimpleBlockItem("rock", ROCK_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> SANDSTONE_ROCK_BLOCK = BLOCKS.registerBlock(
-            "sandstone_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.ROCK), rockProps);
+            "sandstone_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.ROCK_SHAPE), rockProps);
     public static final DeferredItem<BlockItem> SANDSTONE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("sandstone_rock", SANDSTONE_ROCK_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> RED_SANDSTONE_ROCK_BLOCK = BLOCKS.registerBlock(
-            "red_sandstone_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.ROCK), rockProps);
+            "red_sandstone_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.ROCK_SHAPE), rockProps);
     public static final DeferredItem<BlockItem> RED_SANDSTONE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("red_sandstone_rock", RED_SANDSTONE_ROCK_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> MOSSY_ROCK_BLOCK = BLOCKS.registerBlock(
-            "mossy_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.ROCK), rockProps);
+            "mossy_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.ROCK_SHAPE), rockProps);
     public static final DeferredItem<BlockItem> MOSSY_ROCK_ITEM = ITEMS.registerSimpleBlockItem("mossy_rock", MOSSY_ROCK_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> LIGHTER_ROCK_BLOCK = BLOCKS.registerBlock(
-            "lighter_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.ROCK), rockProps);
+            "lighter_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.ROCK_SHAPE), rockProps);
     public static final DeferredItem<BlockItem> LIGHTER_ROCK_ITEM = ITEMS.registerSimpleBlockItem("lighter_rock", LIGHTER_ROCK_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> SNOWY_ROCK_BLOCK = BLOCKS.registerBlock(
-            "snowy_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.ROCK), rockProps);
+            "snowy_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.ROCK_SHAPE), rockProps);
     public static final DeferredItem<BlockItem> SNOWY_ROCK_ITEM = ITEMS.registerSimpleBlockItem("snowy_rock", SNOWY_ROCK_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> ICE_ROCK_BLOCK = BLOCKS.registerBlock(
-            "ice_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.ROCK), rockProps);
+            "ice_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.ROCK_SHAPE), rockProps);
     public static final DeferredItem<BlockItem> ICE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("ice_rock", ICE_ROCK_BLOCK);
 
     //endregion
@@ -84,43 +84,43 @@ public final class BlockRegistration
             .sound(SoundType.STONE).mapColor(MapColor.STONE);
 
     public static final DeferredBlock<WorldLitterBlock> LARGE_ROCK_BLOCK = BLOCKS.registerBlock(
-            "large_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.LARGE_ROCK), largeRock);
+            "large_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.LARGE_ROCK_SHAPE), largeRock);
     public static final DeferredItem<BlockItem> LARGE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("large_rock", LARGE_ROCK_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> SANDSTONE_LARGE_ROCK_BLOCK = BLOCKS.registerBlock(
-            "sandstone_large_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.LARGE_ROCK), largeRock);
+            "sandstone_large_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.LARGE_ROCK_SHAPE), largeRock);
     public static final DeferredItem<BlockItem> SANDSTONE_LARGE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("sandstone_large_rock", SANDSTONE_LARGE_ROCK_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> RED_SANDSTONE_LARGE_ROCK_BLOCK = BLOCKS.registerBlock(
-            "red_sandstone_large_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.LARGE_ROCK), largeRock);
+            "red_sandstone_large_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.LARGE_ROCK_SHAPE), largeRock);
     public static final DeferredItem<BlockItem> RED_SANDSTONE_LARGE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("red_sandstone_large_rock", RED_SANDSTONE_LARGE_ROCK_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> MOSSY_LARGE_ROCK_BLOCK = BLOCKS.registerBlock(
-            "mossy_large_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.LARGE_ROCK), largeRock);
+            "mossy_large_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.LARGE_ROCK_SHAPE), largeRock);
     public static final DeferredItem<BlockItem> MOSSY_LARGE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("mossy_large_rock", MOSSY_LARGE_ROCK_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> LIGHTER_LARGE_ROCK_BLOCK = BLOCKS.registerBlock(
-            "lighter_large_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.LARGE_ROCK), largeRock);
+            "lighter_large_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.LARGE_ROCK_SHAPE), largeRock);
     public static final DeferredItem<BlockItem> LIGHTER_LARGE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("lighter_large_rock", LIGHTER_LARGE_ROCK_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> SNOWY_LARGE_ROCK_BLOCK = BLOCKS.registerBlock(
-            "snowy_large_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.LARGE_ROCK), largeRock);
+            "snowy_large_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.LARGE_ROCK_SHAPE), largeRock);
     public static final DeferredItem<BlockItem> SNOWY_LARGE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("snowy_large_rock", SNOWY_LARGE_ROCK_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> ICE_LARGE_ROCK_BLOCK = BLOCKS.registerBlock(
-            "ice_large_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.LARGE_ROCK), largeRock);
+            "ice_large_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.LARGE_ROCK_SHAPE), largeRock);
     public static final DeferredItem<BlockItem> ICE_LARGE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("ice_large_rock", ICE_LARGE_ROCK_BLOCK);
     //endregion
 
     public static final DeferredBlock<WorldLitterBlock> LIMESTONE_ROCK_BLOCK = BLOCKS.registerBlock(
-            "limestone_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.FLAT), BlockBehaviour.Properties.of()
+            "limestone_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.FLAT_SHAPE), BlockBehaviour.Properties.of()
                     .noCollission().offsetType(BlockBehaviour.OffsetType.XZ)
                     .isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY).mapColor(MapColor.STONE)
                     .strength(0.05f).sound(SoundType.DRIPSTONE_BLOCK));
     public static final DeferredItem<BlockItem> LIMESTONE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("limestone_rock", LIMESTONE_ROCK_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> COPPER_ROCK_BLOCK = BLOCKS.registerBlock(
-            "copper_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.FLAT), BlockBehaviour.Properties.of().noCollission()
+            "copper_rock", props -> new WorldLitterBlock(props, WorldLitterBlock.FLAT_SHAPE), BlockBehaviour.Properties.of().noCollission()
                     .offsetType(BlockBehaviour.OffsetType.XZ)
                     .isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY).mapColor(MapColor.STONE)
                     .strength(0.05f).sound(SoundType.DRIPSTONE_BLOCK));
@@ -128,56 +128,56 @@ public final class BlockRegistration
 
     //region Branches
     public static final DeferredBlock<WorldLitterBlock> BIRCH_BRANCH_BLOCK = BLOCKS.registerBlock(
-            "birch_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH), BlockBehaviour.Properties.of()
+            "birch_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH_SHAPE), BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_BROWN).dynamicShape()
                     .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
                     .pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.WOOD));
     public static final DeferredItem<BlockItem> BIRCH_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("birch_branch", BIRCH_BRANCH_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> OAK_BRANCH_BLOCK = BLOCKS.registerBlock(
-            "oak_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH), BlockBehaviour.Properties.of()
+            "oak_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH_SHAPE), BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_BROWN).dynamicShape()
                     .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
                     .pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.WOOD));
     public static final DeferredItem<BlockItem> OAK_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("oak_branch", OAK_BRANCH_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> SPRUCE_BRANCH_BLOCK = BLOCKS.registerBlock(
-            "spruce_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH), BlockBehaviour.Properties.of()
+            "spruce_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH_SHAPE), BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_BROWN).dynamicShape()
                     .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
                     .pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.WOOD));
     public static final DeferredItem<BlockItem> SPRUCE_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("spruce_branch", SPRUCE_BRANCH_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> JUNGLE_BRANCH_BLOCK = BLOCKS.registerBlock(
-            "jungle_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH), BlockBehaviour.Properties.of()
+            "jungle_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH_SHAPE), BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_BROWN).dynamicShape()
                     .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
                     .pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.WOOD));
     public static final DeferredItem<BlockItem> JUNGLE_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("jungle_branch", JUNGLE_BRANCH_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> DARK_OAK_BRANCH_BLOCK = BLOCKS.registerBlock(
-            "dark_oak_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH), BlockBehaviour.Properties.of()
+            "dark_oak_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH_SHAPE), BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_BROWN).dynamicShape()
                     .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
                     .pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.WOOD));
     public static final DeferredItem<BlockItem> DARK_OAK_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("dark_oak_branch", DARK_OAK_BRANCH_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> ACACIA_BRANCH_BLOCK = BLOCKS.registerBlock(
-            "acacia_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH), BlockBehaviour.Properties.of()
+            "acacia_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH_SHAPE), BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_BROWN).dynamicShape()
                     .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
                     .pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.WOOD));
     public static final DeferredItem<BlockItem> ACACIA_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("acacia_branch", ACACIA_BRANCH_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> CHERRY_BRANCH_BLOCK = BLOCKS.registerBlock(
-            "cherry_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH), BlockBehaviour.Properties.of()
+            "cherry_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH_SHAPE), BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_BROWN).dynamicShape()
                     .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
                     .pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.WOOD));
     public static final DeferredItem<BlockItem> CHERRY_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("cherry_branch", CHERRY_BRANCH_BLOCK);
 
     public static final DeferredBlock<WorldLitterBlock> MANGROVE_BRANCH_BLOCK = BLOCKS.registerBlock(
-            "mangrove_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH), BlockBehaviour.Properties.of()
+            "mangrove_branch", props -> new WorldLitterBlock(props, WorldLitterBlock.BRANCH_SHAPE), BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_BROWN).dynamicShape()
                     .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
                     .pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.WOOD));
@@ -206,10 +206,10 @@ public final class BlockRegistration
                     .mapColor(MapColor.WARPED_STEM).strength(0.5f).sound(SoundType.GRASS));
     public static final DeferredItem<BlockItem> THATCH_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("thatch_block", THATCH_BLOCK);
 
-    public static final DeferredBlock<WetMudStoneBrick> WET_MUD_STONE_BRICK = BLOCKS.registerBlock(
-            "wet_mud_stone_brick", props -> new WetMudStoneBrick(props, () -> new ItemStack(ItemRegistration.MUD_BALL.get())), BlockBehaviour.Properties.of()
+    public static final DeferredBlock<WetPackedMudBrick> WET_PACKED_MUD_BRICK = BLOCKS.registerBlock(
+            "wet_packed_mud_brick", props -> new WetPackedMudBrick(props, () -> new ItemStack(ItemRegistration.MUD_BALL.get())), BlockBehaviour.Properties.of()
                     .mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.STONE).randomTicks());
-    public static final DeferredItem<BlockItem> WET_MUD_STONE_BRICK_ITEM = ITEMS.registerSimpleBlockItem("wet_mud_stone_brick", WET_MUD_STONE_BRICK);
+    public static final DeferredItem<BlockItem> WET_PACKED_MUD_BRICK_ITEM = ITEMS.registerSimpleBlockItem("wet_packed_mud_brick", WET_PACKED_MUD_BRICK);
 
     public static final DeferredBlock<StoneBenchBlock> STONE_BENCH = BLOCKS.registerBlock("stone_bench", StoneBenchBlock::new, BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE).strength(1.0f).sound(SoundType.STONE));
@@ -217,13 +217,33 @@ public final class BlockRegistration
     public static final DeferredBlock<ShortBlock> CHOPPING_BLOCK = BLOCKS.registerBlock("chopping_block", ShortBlock::new, BlockBehaviour.Properties.of()
             .mapColor(MapColor.WOOD).strength(1.0f).sound(SoundType.WOOD));
     public static final DeferredItem<BlockItem> CHOPPING_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("chopping_block", CHOPPING_BLOCK);
+
+    public static final DeferredBlock<ClayContainerBlock> GATHERERS_JAR = BLOCKS.registerBlock("gatherers_jar", props -> new ClayContainerBlock(props, ClayContainerBlock.GATHERERS_POT_SHAPE), BlockBehaviour.Properties.of()
+            .isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.BLOCK) // TODO Drop with contents
+            .mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.DECORATED_POT));
+    public static final DeferredItem<BlockItem> GATHERERS_JAR_ITEM = ITEMS.registerSimpleBlockItem("gatherers_jar", GATHERERS_JAR);
+
+    public static final DeferredBlock<ClayContainerBlock> KEEPERS_CROCK = BLOCKS.registerBlock("keepers_crock", props -> new ClayContainerBlock(props, ClayContainerBlock.KEEPERS_CROCK_SHAPE), BlockBehaviour.Properties.of()
+            .isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.BLOCK) // TODO Drop with contents
+            .mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.DECORATED_POT));
+    public static final DeferredItem<BlockItem> KEEPERS_CROCK_ITEM = ITEMS.registerSimpleBlockItem("keepers_crock", KEEPERS_CROCK);
+
+    public static final DeferredBlock<ClayContainerBlock> SETTLERS_POT = BLOCKS.registerBlock("settlers_pot", props -> new ClayContainerBlock(props, ClayContainerBlock.SETTLERS_POT_SHAPE), BlockBehaviour.Properties.of()
+            .isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.BLOCK) // TODO Drop with contents
+            .mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.DECORATED_POT));
+    public static final DeferredItem<BlockItem> SETTLERS_POT_ITEM = ITEMS.registerSimpleBlockItem("settlers_pot", SETTLERS_POT);
+
+    public static final DeferredBlock<ClayCauldronBlock> CLAY_CAULDRON = BLOCKS.registerBlock("clay_cauldron", ClayCauldronBlock::new, BlockBehaviour.Properties.of()
+            .isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.BLOCK)
+            .mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.DECORATED_POT));
+    public static final DeferredItem<BlockItem> CLAY_CAULDRON_ITEM = ITEMS.registerSimpleBlockItem("clay_cauldron", CLAY_CAULDRON);
+
     public static final DeferredBlock<Block> BIRCH_POT = BLOCKS.registerBlock("birch_pot", Block::new, BlockBehaviour.Properties.of()
             .mapColor(MapColor.TERRACOTTA_RED).strength(1.0f).sound(SoundType.STONE));
     public static final DeferredItem<BlockItem> BIRCH_POT_ITEM = ITEMS.registerSimpleBlockItem("birch_pot", BIRCH_POT);
     //endregion
 
-    public static void register(IEventBus modEventBus)
-    {
+    public static void register(IEventBus modEventBus) {
         BLOCKS.register(modEventBus);
     }
 }
