@@ -1,6 +1,7 @@
 package io.github.zephyrwolf.medievalism.data.block;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.common.block.DryingBlock;
 import io.github.zephyrwolf.medievalism.common.block.WetPackedMudBrick;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -87,11 +88,11 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         );
         randomYRotationBlock(
                 BlockRegistration.LIGHTER_ROCK_BLOCK.get(),
-                existingParent(blockName(BlockRegistration.LIGHTER_ROCK_BLOCK.get()), "block/base_rock", "1", dirt_path_top, dirt_path_top),
-                existingParent(blockName(BlockRegistration.LIGHTER_ROCK_BLOCK.get()), "block/base_rock", "2", dirt_path_top, dirt_path_top),
-                existingParent(blockName(BlockRegistration.LIGHTER_ROCK_BLOCK.get()), "block/base_rock", "3", dirt_path_top, dirt_path_top),
-                existingParent(blockName(BlockRegistration.LIGHTER_ROCK_BLOCK.get()), "block/base_rock", "4", dirt_path_top, dirt_path_top),
-                existingParent(blockName(BlockRegistration.LIGHTER_ROCK_BLOCK.get()), "block/base_rock", "5", dirt_path_top, dirt_path_top)
+                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock", "1", dirt_path_top),
+                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock", "2", dirt_path_top),
+                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock", "3", dirt_path_top),
+                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock", "4", dirt_path_top),
+                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock", "5", dirt_path_top)
         );
         randomYRotationBlock(
                 BlockRegistration.SNOWY_ROCK_BLOCK.get(),
@@ -110,9 +111,15 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 existingParent(BlockRegistration.ICE_ROCK_BLOCK.get(), "block/base_rock", "5", Blocks.PACKED_ICE)
         );
 
+        dryingBlock(BlockRegistration.DRYING_GATHERERS_JAR.get(),
+                existingParent("wet_" + blockName(BlockRegistration.GATHERERS_JAR.get()), "block/gatherers_jar", "",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_gatherers_jar")),
+                existingParent("dry_" + blockName(BlockRegistration.GATHERERS_JAR.get()), "block/gatherers_jar", "",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_gatherers_jar")));
         simpleBlock(BlockRegistration.GATHERERS_JAR.get(), existingModel(BlockRegistration.GATHERERS_JAR.get(), ""));
         horizontalAxisBlock(BlockRegistration.KEEPERS_CROCK.get(), existingModel(BlockRegistration.KEEPERS_CROCK.get(), ""), existingModel(BlockRegistration.KEEPERS_CROCK.get(), "_rotated"));
         horizontalAxisBlock(BlockRegistration.SETTLERS_POT.get(), existingModel(BlockRegistration.SETTLERS_POT.get(), ""), existingModel(BlockRegistration.SETTLERS_POT.get(), "_rotated"));
+        horizontalAxisBlock(BlockRegistration.CLAY_COOKING_POT.get(), existingModel(BlockRegistration.CLAY_COOKING_POT.get(), ""), existingModel(BlockRegistration.CLAY_COOKING_POT.get(), "_rotated"));
         horizontalAxisBlock(BlockRegistration.CLAY_CAULDRON.get(), existingModel(BlockRegistration.CLAY_CAULDRON.get(), ""), existingModel(BlockRegistration.CLAY_CAULDRON.get(), "_rotated"));
 
 //        randomYRotationBlock(
@@ -175,6 +182,21 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
     }
 
     //region Blocks
+    private void dryingBlock(DryingBlock block, ModelFile wetModel, ModelFile dryModel)
+    {
+        var builder = getVariantBuilder(block);
+        for (int i = DryingBlock.MIN_DRYNESS; i < DryingBlock.MAX_DRYNESS; i++)
+        {
+            builder.partialState()
+                    .with(DryingBlock.DRYNESS, i)
+                    .modelForState().modelFile(wetModel).addModel();
+        }
+        builder.partialState()
+                .with(DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS)
+                .modelForState().modelFile(dryModel).addModel();
+    }
+
+    @SuppressWarnings("unused")
     private void horizontalAxisBlock(Block block, ModelFile model) {
         horizontalAxisBlock(block, model, model);
     }
@@ -282,10 +304,15 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         return existingParent(blockName(block), parent, suffix, blockTexture(particle), blockTexture(texture));
     }
 
-    private ModelFile existingParent(String name, String parent, String suffix, ResourceLocation particle, ResourceLocation... textures) {
+    @SuppressWarnings("SameParameterValue")
+    private ModelFile existingParent(Block block, String parent, String suffix, ResourceLocation... textures) {
+        return existingParent(blockName(block), parent, suffix, textures);
+    }
+
+    private ModelFile existingParent(String name, String parent, String suffix, ResourceLocation... textures) {
         BlockModelBuilder model = models() // BlockModelProvider extends ModelProvider<BlockModelBuilder>
                 .withExistingParent(name + suffix, MedievalismConstants.resource(parent + suffix))
-                .texture("particle", particle);
+                .texture("particle", textures[0]);
         for (int i = 0; i < textures.length; i++) {
             model.texture(Integer.toString(i), textures[i]);
         }

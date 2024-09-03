@@ -1,15 +1,20 @@
 package io.github.zephyrwolf.medievalism.data.block;
 
+import io.github.zephyrwolf.medievalism.common.block.DryingBlock;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.predicates.InvertedLootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
@@ -28,21 +33,6 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
     @Override
     protected void generate()
     {
-        //dropSelf(ModBlocks.STOVE.get());
-        //dropNamedContainer(ModBlocks.BASKET.get());
-        //add(Registration.COOKING_POT.get(), (block) -> LootTable.lootTable().withPool(this.applyExplosionCondition(block,
-        // LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(block)
-        //       .apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY)).apply(CopyMealFunction.builder())))));
-        /*
-        add(Registration.RED_CLAY_BLOCK.get(), (block) -> LootTable.lootTable()
-                .withPool(LootPool.lootPool()
-                        .name("red_clay_ball")
-                        .setRolls(ConstantValue.exactly(4))
-                        .add(LootItem.lootTableItem(Registration.RED_CLAY_BALL.get()))
-                )
-        );
-        */
-
         add(BlockRegistration.RED_CLAY_BLOCK.get(), (block) -> createSingleItemTableWithSilkTouch(
                 block,
                 ItemRegistration.RED_CLAY_BALL.get(),
@@ -60,9 +50,11 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
 
         add(BlockRegistration.WET_PACKED_MUD_BRICK.get(), emptyItemTable());
 
+        add(BlockRegistration.DRYING_GATHERERS_JAR.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, BlockRegistration.WET_GATHERERS_JAR_ITEM, BlockRegistration.DRY_GATHERERS_JAR_ITEM));
         dropSelf(BlockRegistration.GATHERERS_JAR.get());
         dropSelf(BlockRegistration.KEEPERS_CROCK.get());
         dropSelf(BlockRegistration.SETTLERS_POT.get());
+        dropSelf(BlockRegistration.CLAY_COOKING_POT.get());
         dropSelf(BlockRegistration.CLAY_CAULDRON.get());
 
         dropSelf(BlockRegistration.OAK_BRANCH_BLOCK.get());
@@ -129,6 +121,37 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
                                 .setQuality(count)
                         )
                 ));
+    }
+
+    public LootTable.Builder createSpecialDropOnStateTable(Block block, Property<Integer> property, int value, ItemLike wet, ItemLike dry)
+    {
+        return LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1))
+                        .add(LootItem
+                                .lootTableItem(dry)
+                                .setQuality(1)
+                                .when(new LootItemBlockStatePropertyCondition.Builder(block)
+                                        .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                .hasProperty(property, value)
+                                        )
+                                )
+                        )
+                )
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1))
+                        .add(LootItem
+                                .lootTableItem(wet)
+                                .setQuality(1)
+                                .when(InvertedLootItemCondition.invert(
+                                        new LootItemBlockStatePropertyCondition.Builder(block)
+                                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                        .hasProperty(property, value)
+                                                )
+                                        )
+                                )
+                        )
+                );
     }
 
     public LootTable.Builder emptyItemTable() {

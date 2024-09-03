@@ -1,19 +1,19 @@
-package io.github.zephyrwolf.medievalism.content;
+package io.github.zephyrwolf.medievalism.data;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.MedievalismMod;
-import io.github.zephyrwolf.medievalism.data.*;
+import io.github.zephyrwolf.medievalism.content.loot.LootContextParamSetRegistration;
 import io.github.zephyrwolf.medievalism.data.block.*;
 import io.github.zephyrwolf.medievalism.data.item.BaseItemModelsProvider;
 import io.github.zephyrwolf.medievalism.data.item.BaseItemTagsProvider;
 import io.github.zephyrwolf.medievalism.data.lang.BaseLanguageProvider;
 import io.github.zephyrwolf.medievalism.data.lang.OverhaulLanguageProvider;
+import io.github.zephyrwolf.medievalism.data.provider.PackMetaProvider;
 import io.github.zephyrwolf.medievalism.data.recipe.BaseRecipeProvider;
 import io.github.zephyrwolf.medievalism.data.recipe.OverhaulBlankRecipeProvider;
 import io.github.zephyrwolf.medievalism.data.recipe.OverhaulRecipeProvider;
 import io.github.zephyrwolf.medievalism.data.worldgen.BaseBiomeTagsProvider;
 import io.github.zephyrwolf.medievalism.data.worldgen.BaseWorldGenProvider;
-import io.github.zephyrwolf.medievalism.data.provider.PackMetaProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -32,16 +32,13 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-public final class DataGenRegistration
-{ // https://github.com/vectorwing/FarmersDelight/blob/1.20/src/main/java/vectorwing/farmersdelight/data/DataGenerators.java
+public final class DataGenRegistration { // https://github.com/vectorwing/FarmersDelight/blob/1.20/src/main/java/vectorwing/farmersdelight/data/DataGenerators.java
 
-    public static void register(IEventBus eventBus)
-    {
+    public static void register(IEventBus eventBus) {
         eventBus.addListener(DataGenRegistration::gatherData);
     }
 
-    public static void gatherData(GatherDataEvent event)
-    {
+    public static void gatherData(GatherDataEvent event) {
         injectDataForBase(event);
         injectDataForAssetOverhaul(event);
         injectDataForDataOverhaul(event);
@@ -49,29 +46,28 @@ public final class DataGenRegistration
 
     //region Providers
     //region Base
-    private static void addProvidersForBase(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient)
-    {
+    private static void addProvidersForBase(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient) {
         BaseBlockTagsProvider blockTags = new BaseBlockTagsProvider(packOutput, lookupProvider, existingFileHelper);
         generator.addProvider(includeServer, blockTags);
         generator.addProvider(includeServer, new BaseItemTagsProvider(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
         generator.addProvider(includeServer, new BaseBiomeTagsProvider(packOutput, lookupProvider, existingFileHelper));
-        //generator.addProvider(event.includeServer(), new MedievalismEntityTags(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(includeServer, new BaseRecipeProvider(packOutput, lookupProvider));
         generator.addProvider(includeServer, new AdvancementProvider(packOutput, lookupProvider, existingFileHelper, List.of(new BaseAdvancementsProvider())));
         generator.addProvider(includeClient, new BaseLanguageProvider(packOutput, "en_us"));
         generator.addProvider(includeServer, new LootTableProvider(packOutput, Collections.emptySet(), List.of(
-                new LootTableProvider.SubProviderEntry(BaseBlockLootTablesSubProvider::new, LootContextParamSets.BLOCK)
+                new LootTableProvider.SubProviderEntry(BaseBlockLootTablesSubProvider::new, LootContextParamSets.BLOCK),
+                new LootTableProvider.SubProviderEntry(BaseAdditionalDropsTablesSubProvider::new, LootContextParamSetRegistration.ADDITIONAL_DROPS)
         ), lookupProvider));
-        //generator.addProvider(event.includeServer(), new StructureUpdater("structures/village/houses", FarmersDelight.MODID, existingFileHelper, packOutput));
         BaseBlockStatesProvider blockStates = new BaseBlockStatesProvider(packOutput, existingFileHelper);
         generator.addProvider(includeClient, blockStates);
         generator.addProvider(includeClient, new BaseItemModelsProvider(packOutput, blockStates.models().existingFileHelper));
         generator.addProvider(includeServer, new BaseWorldGenProvider(packOutput, lookupProvider));
     }
+
     //endregion
     //region Overhaul Assets
-    private static void addProvidersForAssetOverhaul(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient)
-    {
+    @SuppressWarnings("unused")
+    private static void addProvidersForAssetOverhaul(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient) {
         //generator.addProvider(includeClient, ...);
         generator.addProvider(includeClient, new OverhaulLanguageProvider(packOutput, "en_us"));
         generator.addProvider(
@@ -79,10 +75,11 @@ public final class DataGenRegistration
                 PackMetaProvider.of(packOutput, PackType.CLIENT_RESOURCES)
                         .description("Medievalism will overhaul the look and feel of Minecraft."));
     }
+
     //endregion
     //region Overhaul Data
-    private static void addProvidersForDataOverhaul(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient)
-    {
+    @SuppressWarnings("unused")
+    private static void addProvidersForDataOverhaul(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient) {
         generator.addProvider(includeServer, new OverhaulBlankRecipeProvider(packOutput));
         generator.addProvider(includeServer, new OverhaulRecipeProvider(packOutput, lookupProvider));
         generator.addProvider(includeServer, new OverhaulBlockTagsProvider(packOutput, lookupProvider, existingFileHelper));
@@ -100,8 +97,7 @@ public final class DataGenRegistration
     //endregion
 
     //region Inject
-    private static void injectDataForBase(GatherDataEvent event)
-    {
+    private static void injectDataForBase(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         try // Will move the cache
         {
@@ -110,38 +106,27 @@ public final class DataGenRegistration
             Path path = (Path) generatorRootOutputFolderField.get(generator);
             Path newPath = path.resolve(MedievalismConstants.MOD_ID);
             generatorRootOutputFolderField.set(generator, newPath);
-        }
-        catch (NoSuchFieldException | IllegalAccessException ignored)
-        {
+        } catch (NoSuchFieldException | IllegalAccessException ignored) {
             MedievalismMod.LOGGER.error("Unable to access restricted field 'path'. Skipping base data gen.");
             return;
         }
-        // The method which takes a string will recreate the packOutput where as the other without a param returns the pre-generated from the old path.
-        // Defaults to generated/resources
-        //PackOutput packOutput = generator.getPackOutput();
-        // Since I moved the cache, sets to generated/resource/medievalism/medievalism
-        //PackOutput packOutput = generator.getPackOutput(MedievalismMod.MOD_ID); // This doesn't move the cache but will move the assets generated.
-        // Goes to generated/resources/medievalism
+        // The method which takes a string will recreate the packOutput whereas the other without a param returns the pre-generated from the old path.
         PackOutput packOutput = generator.getPackOutput("");
 
         addProvidersForBase(generator, packOutput, event.getLookupProvider(), event.getExistingFileHelper(), event.includeServer(), event.includeClient());
     }
 
-    private static void injectDataForAssetOverhaul(GatherDataEvent event)
-    {
+    private static void injectDataForAssetOverhaul(GatherDataEvent event) {
         Path path;
-        try
-        {
+        try {
             Field configField = event.getClass().getDeclaredField("config");
             configField.setAccessible(true);
             GatherDataEvent.DataGeneratorConfig config = (GatherDataEvent.DataGeneratorConfig) configField.get(event);
             Field pathField = config.getClass().getDeclaredField("path");
             pathField.setAccessible(true);
             path = (Path) pathField.get(config);
-        }
-        catch (NoSuchFieldException | IllegalAccessException ignored)
-        {
-            MedievalismMod.LOGGER.error("Unable to access restricted field 'path'. Skipping overhaul data gen.");
+        } catch (NoSuchFieldException | IllegalAccessException ignored) {
+            MedievalismMod.LOGGER.error("Unable to access restricted field 'path'. Skipping overhaul data gen for asset overhaul.");
             return;
         }
 
@@ -166,21 +151,17 @@ public final class DataGenRegistration
         dataGeneratorConfig.runAll();
     }
 
-    private static void injectDataForDataOverhaul(GatherDataEvent event)
-    {
+    private static void injectDataForDataOverhaul(GatherDataEvent event) {
         Path path;
-        try
-        {
+        try {
             Field configField = event.getClass().getDeclaredField("config");
             configField.setAccessible(true);
             GatherDataEvent.DataGeneratorConfig config = (GatherDataEvent.DataGeneratorConfig) configField.get(event);
             Field pathField = config.getClass().getDeclaredField("path");
             pathField.setAccessible(true);
             path = (Path) pathField.get(config);
-        }
-        catch (NoSuchFieldException | IllegalAccessException ignored)
-        {
-            MedievalismMod.LOGGER.error("Unable to access restricted field 'path'. Skipping overhaul data gen.");
+        } catch (NoSuchFieldException | IllegalAccessException ignored) {
+            MedievalismMod.LOGGER.error("Unable to access restricted field 'path'. Skipping overhaul data gen for data overhaul.");
             return;
         }
 

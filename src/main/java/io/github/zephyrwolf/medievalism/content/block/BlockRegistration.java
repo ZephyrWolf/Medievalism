@@ -2,11 +2,11 @@ package io.github.zephyrwolf.medievalism.content.block;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.block.*;
+import io.github.zephyrwolf.medievalism.common.blockitem.DryingBlockItem;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -218,24 +218,39 @@ public final class BlockRegistration {
             .mapColor(MapColor.WOOD).strength(1.0f).sound(SoundType.WOOD));
     public static final DeferredItem<BlockItem> CHOPPING_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("chopping_block", CHOPPING_BLOCK);
 
-    public static final DeferredBlock<ClayContainerBlock> GATHERERS_JAR = BLOCKS.registerBlock("gatherers_jar", props -> new ClayContainerBlock(props, ClayContainerBlock.GATHERERS_POT_SHAPE), BlockBehaviour.Properties.of()
-            .isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.BLOCK) // TODO Drop with contents
-            .mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.DECORATED_POT));
+
+    public static final BlockBehaviour.Properties WetClayProps = BlockBehaviour.Properties.of()
+            .isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY)
+            .mapColor(MapColor.CLAY).strength(0.4f).sound(SoundType.MUD).randomTicks();
+    public static final BlockBehaviour.Properties FiredClayProps = BlockBehaviour.Properties.of()
+            .isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.BLOCK)
+            .mapColor(MapColor.TERRACOTTA_BROWN).strength(0.4f).sound(SoundType.DECORATED_POT);
+
+    public static final DeferredBlock<DryingBlock> DRYING_GATHERERS_JAR = BLOCKS.registerBlock("drying_gatherers_jar",
+            props -> new DryingBlock(props, ClayContainerBlock.GATHERERS_POT_SHAPE), WetClayProps);
+    public static final DeferredItem<BlockItem> WET_GATHERERS_JAR_ITEM = ITEMS.registerItem("wet_gatherers_jar",
+            props -> new DryingBlockItem(DRYING_GATHERERS_JAR, props, false));
+    public static final DeferredItem<BlockItem> DRY_GATHERERS_JAR_ITEM = ITEMS.registerItem("dry_gatherers_jar",
+            props -> new DryingBlockItem(DRYING_GATHERERS_JAR, props, true));
+
+    public static final DeferredBlock<ClayContainerBlock> GATHERERS_JAR = BLOCKS.registerBlock("gatherers_jar",
+            props -> new ClayContainerBlock(props, ClayContainerBlock.GATHERERS_POT_SHAPE), FiredClayProps);
     public static final DeferredItem<BlockItem> GATHERERS_JAR_ITEM = ITEMS.registerSimpleBlockItem("gatherers_jar", GATHERERS_JAR);
 
-    public static final DeferredBlock<ClayContainerBlock> KEEPERS_CROCK = BLOCKS.registerBlock("keepers_crock", props -> new ClayContainerBlock(props, ClayContainerBlock.KEEPERS_CROCK_SHAPE), BlockBehaviour.Properties.of()
-            .isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.BLOCK) // TODO Drop with contents
-            .mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.DECORATED_POT));
+    public static final DeferredBlock<ClayContainerBlock> KEEPERS_CROCK = BLOCKS.registerBlock("keepers_crock",
+            props -> new ClayContainerBlock(props, ClayContainerBlock.KEEPERS_CROCK_SHAPE), FiredClayProps);
     public static final DeferredItem<BlockItem> KEEPERS_CROCK_ITEM = ITEMS.registerSimpleBlockItem("keepers_crock", KEEPERS_CROCK);
 
-    public static final DeferredBlock<ClayContainerBlock> SETTLERS_POT = BLOCKS.registerBlock("settlers_pot", props -> new ClayContainerBlock(props, ClayContainerBlock.SETTLERS_POT_SHAPE), BlockBehaviour.Properties.of()
-            .isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.BLOCK) // TODO Drop with contents
-            .mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.DECORATED_POT));
+    public static final DeferredBlock<ClayContainerBlock> SETTLERS_POT = BLOCKS.registerBlock("settlers_pot",
+            props -> new ClayContainerBlock(props, ClayContainerBlock.SETTLERS_POT_SHAPE), FiredClayProps);
     public static final DeferredItem<BlockItem> SETTLERS_POT_ITEM = ITEMS.registerSimpleBlockItem("settlers_pot", SETTLERS_POT);
 
-    public static final DeferredBlock<ClayCauldronBlock> CLAY_CAULDRON = BLOCKS.registerBlock("clay_cauldron", ClayCauldronBlock::new, BlockBehaviour.Properties.of()
-            .isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.BLOCK)
-            .mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.DECORATED_POT));
+    public static final DeferredBlock<ClayCookingPotBlock> CLAY_COOKING_POT = BLOCKS.registerBlock("clay_cooking_pot",
+            ClayCookingPotBlock::new, FiredClayProps);
+    public static final DeferredItem<BlockItem> CLAY_COOKING_POT_ITEM = ITEMS.registerSimpleBlockItem("clay_cooking_pot", CLAY_COOKING_POT);
+
+    public static final DeferredBlock<ClayCauldronBlock> CLAY_CAULDRON = BLOCKS.registerBlock("clay_cauldron",
+            ClayCauldronBlock::new, FiredClayProps);
     public static final DeferredItem<BlockItem> CLAY_CAULDRON_ITEM = ITEMS.registerSimpleBlockItem("clay_cauldron", CLAY_CAULDRON);
 
     public static final DeferredBlock<Block> BIRCH_POT = BLOCKS.registerBlock("birch_pot", Block::new, BlockBehaviour.Properties.of()

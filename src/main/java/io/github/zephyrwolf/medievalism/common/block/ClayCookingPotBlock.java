@@ -17,7 +17,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.SupportType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -36,13 +35,13 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class ClayCauldronBlock extends Block implements SimpleWaterloggedBlock {
-    protected static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 16, 15);
+public class ClayCookingPotBlock extends Block implements SimpleWaterloggedBlock {
+    protected static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 9, 14);
 
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
 
-    public ClayCauldronBlock(BlockBehaviour.Properties properties) {
+    public ClayCookingPotBlock(Properties properties) {
         super(properties);
         registerDefaultState(getStateDefinition().any()
                 .setValue(WATERLOGGED, false)

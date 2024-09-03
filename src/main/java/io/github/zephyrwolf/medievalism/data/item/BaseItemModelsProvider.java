@@ -63,10 +63,18 @@ public class BaseItemModelsProvider extends ItemModelProvider
             itemGeneratedModel(BlockRegistration.WET_PACKED_MUD_BRICK_ITEM.get());
             itemGeneratedModel(ItemRegistration.PACKED_MUD_BRICK.get());
         }
+
+        blockBasedModel(BlockRegistration.WET_GATHERERS_JAR_ITEM.get(), "");
+        blockBasedModel(BlockRegistration.DRY_GATHERERS_JAR_ITEM.get(), "");
+
+        //withExistingParent(itemName(BlockRegistration.WET_GATHERERS_JAR_ITEM.get()), resourceBlock(blockName(BlockRegistration.DRYING_GATHERERS_JAR) + "_wet"));
+
         blockBasedModel(BlockRegistration.GATHERERS_JAR_ITEM.get(), "");
         blockBasedModel(BlockRegistration.KEEPERS_CROCK_ITEM.get(), "");
         blockBasedModel(BlockRegistration.SETTLERS_POT_ITEM.get(), "");
+        blockBasedModel(BlockRegistration.CLAY_COOKING_POT_ITEM.get(), "");
         blockBasedModel(BlockRegistration.CLAY_CAULDRON_ITEM.get(), "");
+
         { // World
             itemGeneratedModel(ItemRegistration.RED_CLAY_BALL.get());
             itemGeneratedModel(ItemRegistration.RAW_TIN.get());

@@ -52,9 +52,13 @@ public class BaseLanguageProvider extends LanguageProvider
         add(BlockRegistration.WET_PACKED_MUD_BRICK_ITEM.get(), "Wet Packed Mud Brick");
         add(ItemRegistration.PACKED_MUD_BRICK.get(), "Packed Mud Brick");
 
+        add(BlockRegistration.WET_GATHERERS_JAR_ITEM.get(), "Wet Gatherer's Jar");
+        add(BlockRegistration.DRY_GATHERERS_JAR_ITEM.get(), "Unfired Gatherer's Jar");
+        add(BlockRegistration.DRYING_GATHERERS_JAR.get(), "Medievalism");
         add(BlockRegistration.GATHERERS_JAR_ITEM.get(), "Gatherer's Jar");
         add(BlockRegistration.KEEPERS_CROCK_ITEM.get(), "Keeper's Crock");
         add(BlockRegistration.SETTLERS_POT_ITEM.get(), "Settler's Pot");
+        add(BlockRegistration.CLAY_COOKING_POT_ITEM.get(), "Clay Cooking Pot");
         add(BlockRegistration.CLAY_CAULDRON_ITEM.get(), "Clay Cauldron");
 
         { // World
