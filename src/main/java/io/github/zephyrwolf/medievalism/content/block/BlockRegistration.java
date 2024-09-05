@@ -2,8 +2,9 @@ package io.github.zephyrwolf.medievalism.content.block;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.block.*;
-import io.github.zephyrwolf.medievalism.common.item.blockitem.DryingBlockItem;
 import io.github.zephyrwolf.medievalism.common.item.blockitem.ContainerItemBlockItem;
+import io.github.zephyrwolf.medievalism.common.item.blockitem.DryingBlockItem;
+import io.github.zephyrwolf.medievalism.common.item.blockitem.GatherersJarBlockItem;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.BlockItem;
@@ -12,7 +13,6 @@ import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.entity.ShulkerBoxBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -233,17 +233,15 @@ public final class BlockRegistration {
 
     // Gatherer's Jar
     public static final DeferredBlock<DryingBlock> DRYING_GATHERERS_JAR = BLOCKS.registerBlock("drying_gatherers_jar",
-            props -> new DryingBlock(props, ClayContainerBlock.GATHERERS_POT_SHAPE), WetClayProps);
+            props -> new DryingBlock(props, GatherersJarBlock.GATHERERS_POT_SHAPE), WetClayProps);
     public static final DeferredItem<BlockItem> WET_GATHERERS_JAR_ITEM = ITEMS.registerItem("wet_gatherers_jar",
             props -> new DryingBlockItem(DRYING_GATHERERS_JAR, props.stacksTo(1), false));
     public static final DeferredItem<BlockItem> DRY_GATHERERS_JAR_ITEM = ITEMS.registerItem("dry_gatherers_jar",
             props -> new DryingBlockItem(DRYING_GATHERERS_JAR, props.stacksTo(1), true));
-    public static final DeferredBlock<ClayContainerBlock> GATHERERS_JAR = BLOCKS.registerBlock("gatherers_jar",
-            props -> new ClayContainerBlock(props, ClayContainerBlock.GATHERERS_POT_SHAPE), FiredClayProps);
-    public static final DeferredItem<ContainerItemBlockItem> GATHERERS_JAR_ITEM = ITEMS.registerItem("gatherers_jar",
-            props -> new ContainerItemBlockItem(GATHERERS_JAR, props
-                    .stacksTo(1)
-                    .component(DataComponents.CONTAINER, ItemContainerContents.EMPTY)));
+    public static final DeferredBlock<GatherersJarBlock> GATHERERS_JAR = BLOCKS.registerBlock("gatherers_jar",
+            GatherersJarBlock::new, FiredClayProps);
+    public static final DeferredItem<GatherersJarBlockItem> GATHERERS_JAR_ITEM = ITEMS.registerItem("gatherers_jar",
+            props -> new GatherersJarBlockItem(GATHERERS_JAR, props.stacksTo(1)));
 
     // Keeper's Crock
     public static final DeferredBlock<DryingBlock> DRYING_KEEPERS_CROCK = BLOCKS.registerBlock("drying_keepers_crock",
@@ -260,13 +258,13 @@ public final class BlockRegistration {
 
     // Settler's Pot
     public static final DeferredBlock<DryingBlock> DRYING_SETTLERS_POT = BLOCKS.registerBlock("drying_settlers_pot",
-            props -> new DryingBlock(props, ClayContainerBlock.SETTLERS_POT_SHAPE), WetClayProps);
+            props -> new DryingBlock(props, SettlersPotBlock.SETTLERS_POT_SHAPE), WetClayProps);
     public static final DeferredItem<BlockItem> WET_SETTLERS_POT_ITEM = ITEMS.registerItem("wet_settlers_pot",
             props -> new DryingBlockItem(DRYING_SETTLERS_POT, props, false));
     public static final DeferredItem<BlockItem> DRY_SETTLERS_POT_ITEM = ITEMS.registerItem("dry_settlers_pot",
             props -> new DryingBlockItem(DRYING_SETTLERS_POT, props, true));
-    public static final DeferredBlock<ClayContainerBlock> SETTLERS_POT = BLOCKS.registerBlock("settlers_pot",
-            props -> new ClayContainerBlock(props, ClayContainerBlock.SETTLERS_POT_SHAPE), FiredClayProps);
+    public static final DeferredBlock<SettlersPotBlock> SETTLERS_POT = BLOCKS.registerBlock("settlers_pot",
+            SettlersPotBlock::new, FiredClayProps);
     public static final DeferredItem<BlockItem> SETTLERS_POT_ITEM = ITEMS.registerSimpleBlockItem("settlers_pot", SETTLERS_POT);
 
     // Cooking Pot

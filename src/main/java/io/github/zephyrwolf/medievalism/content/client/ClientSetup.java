@@ -1,7 +1,9 @@
-package io.github.zephyrwolf.medievalism.client;
+package io.github.zephyrwolf.medievalism.content.client;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.client.screen.GatherersJarScreen;
 import io.github.zephyrwolf.medievalism.client.screen.KeepersCrockScreen;
+import io.github.zephyrwolf.medievalism.client.screen.SettlersPotScreen;
 import io.github.zephyrwolf.medievalism.client.screen.StoneBenchScreen;
 import io.github.zephyrwolf.medievalism.content.menu.MenuRegistration;
 import net.neoforged.api.distmarker.Dist;
@@ -25,7 +27,9 @@ public class ClientSetup {
     public static void registerMenuSceens(RegisterMenuScreensEvent event)
     {
         event.register(MenuRegistration.STONE_BENCH_MENU.get(), StoneBenchScreen::new);
+        event.register(MenuRegistration.GATHERERS_JAR_MENU.get(), GatherersJarScreen::new);
         event.register(MenuRegistration.KEEPERS_CROCK_MENU.get(), KeepersCrockScreen::new);
+        event.register(MenuRegistration.SETTLERS_POT_MENU.get(), SettlersPotScreen::new);
     }
 
     @SubscribeEvent

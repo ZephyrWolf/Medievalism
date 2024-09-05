@@ -30,9 +30,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 public class ClayContainerBlock extends Block implements SimpleWaterloggedBlock {
     // net.minecraft.world.level.block.ShulkerBoxBlock
 
-    public static final VoxelShape GATHERERS_POT_SHAPE = Block.box(6, 0.0, 6, 10, 6, 10);
-    public static final VoxelShape SETTLERS_POT_SHAPE = Block.box(1, 0, 1, 15, 16, 15);
-
     protected VoxelShape SHAPE;
 
     public ClayContainerBlock(BlockBehaviour.Properties properties, VoxelShape shape) {

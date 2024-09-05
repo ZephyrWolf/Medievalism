@@ -2,26 +2,19 @@ package io.github.zephyrwolf.medievalism.common.block;
 
 import com.mojang.serialization.MapCodec;
 import io.github.zephyrwolf.medievalism.common.block.blockentity.HasInventory;
-import io.github.zephyrwolf.medievalism.common.block.blockentity.KeepersCrockBlockEntity;
+import io.github.zephyrwolf.medievalism.common.block.blockentity.SettlersPotBlockEntity;
 import io.github.zephyrwolf.medievalism.content.block.BlockEntityRegistration;
-import net.minecraft.ChatFormatting;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.monster.piglin.PiglinAi;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -40,7 +33,6 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -50,21 +42,19 @@ import java.util.List;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 // net.minecraft.world.level.block.ShulkerBoxBlock
-public class KeepersCrockBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
+public class SettlersPotBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
     //region Constants
-    public static final MapCodec<KeepersCrockBlock> CODEC = simpleCodec(KeepersCrockBlock::new);
+    public static final MapCodec<SettlersPotBlock> CODEC = simpleCodec(SettlersPotBlock::new);
 
-    public static final VoxelShape KEEPERS_CROCK_SHAPE = Block.box(2, 0, 2, 14, 12, 14);
+    public static final VoxelShape SETTLERS_POT_SHAPE = Block.box(1, 0, 1, 15, 16, 15);
 
-    public static final String LANG_DEFAULT_NAME = "medievalism.container.keepers_crock";
-    public static final String LANG_ITEM_COUNT = "medievalism.container.keepers_crock.item_count";
-    public static final String LANG_MORE = "medievalism.container.keepers_crock.more";
+    public static final String LANG_DEFAULT_NAME = "medievalism.container.settlers_pot";
 
     public static final ResourceLocation CONTENTS = ResourceLocation.withDefaultNamespace("contents");
     //endregion
 
     //region Boilerplate
-    public KeepersCrockBlock(Properties properties) {
+    public SettlersPotBlock(Properties properties) {
         super(properties);
         registerDefaultState(getStateDefinition().any()
                 .setValue(BlockStateProperties.WATERLOGGED, false)
@@ -86,7 +76,7 @@ public class KeepersCrockBlock extends BaseEntityBlock implements SimpleWaterlog
 
     @Override
     protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return KEEPERS_CROCK_SHAPE;
+        return SETTLERS_POT_SHAPE;
     }
     //endregion
 
@@ -186,7 +176,7 @@ public class KeepersCrockBlock extends BaseEntityBlock implements SimpleWaterlog
             return InteractionResult.SUCCESS;
         } else if (pPlayer.isSpectator()) {
             return InteractionResult.CONSUME;
-        } else if (pLevel.getBlockEntity(pPos) instanceof KeepersCrockBlockEntity blockEntity) {
+        } else if (pLevel.getBlockEntity(pPos) instanceof SettlersPotBlockEntity blockEntity) {
             pPlayer.openMenu(blockEntity, pPos);
             //pPlayer.awardStat(Stats.OPEN_SHULKER_BOX);
             PiglinAi.angerNearbyPiglins(pPlayer, true);
@@ -200,23 +190,19 @@ public class KeepersCrockBlock extends BaseEntityBlock implements SimpleWaterlog
 
     @Override
     protected List<ItemStack> getDrops(BlockState pState, LootParams.Builder pParams) {
+        var items = super.getDrops(pState, pParams);
         BlockEntity be = pParams.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
         if (be instanceof HasInventory invProvider) {
-            pParams = pParams.withDynamicDrop(CONTENTS, consumer -> {
-                for (int i = 0; i < invProvider.getInventory().getSlots(); i++) {
-                    var stack = invProvider.getInventory().getStackInSlot(i);
-                    consumer.accept(stack);
-                }
-            });
+            items.addAll(invProvider.getInventoryAsList());
         }
-        return super.getDrops(pState, pParams);
+        return items;
     }
 
     @Override
     protected void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pMovedByPiston) {
         if (!pState.is(pNewState.getBlock())) {
             BlockEntity blockentity = pLevel.getBlockEntity(pPos);
-            if (blockentity instanceof KeepersCrockBlockEntity) {
+            if (blockentity instanceof SettlersPotBlockEntity) {
                 //entity.dropInventory();
                 pLevel.updateNeighbourForOutputSignal(pPos, pState.getBlock());
             }
@@ -230,29 +216,9 @@ public class KeepersCrockBlock extends BaseEntityBlock implements SimpleWaterlog
     @Override
     public ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         ItemStack itemstack = super.getCloneItemStack(pLevel, pPos, pState);
-        pLevel.getBlockEntity(pPos, BlockEntityRegistration.KEEPERS_CROCK_BLOCK_ENTITY_TYPE.get())
+        pLevel.getBlockEntity(pPos, BlockEntityRegistration.SETTLERS_POT_BLOCK_ENTITY_TYPE.get())
                 .ifPresent(blockEntity -> blockEntity.saveToItem(itemstack, pLevel.registryAccess()));
         return itemstack;
-    }
-
-    @Override
-    public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-        super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
-
-        int i = 0;
-        int j = 0;
-
-        for (ItemStack itemstack : pStack.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY).nonEmptyItems()) {
-            j++;
-            if (i <= 4) {
-                i++;
-                pTooltipComponents.add(Component.translatable(LANG_ITEM_COUNT, itemstack.getHoverName(), itemstack.getCount()));
-            }
-        }
-
-        if (j - i > 0) {
-            pTooltipComponents.add(Component.translatable(LANG_MORE, j - i).withStyle(ChatFormatting.ITALIC));
-        }
     }
     //endregion
 
@@ -266,18 +232,8 @@ public class KeepersCrockBlock extends BaseEntityBlock implements SimpleWaterlog
     @SuppressWarnings("deprecation")
     @Override
     protected int getAnalogOutputSignal(BlockState pState, Level pLevel, BlockPos pPos) {
-        if (pLevel.getBlockEntity(pPos) instanceof KeepersCrockBlockEntity blockEntity) {
-            float f = 0.0F;
-            ItemStackHandler inventory = blockEntity.getInventory();
-            int inventorySize = inventory.getSlots();
-            for (int slot = 0; slot < inventorySize; slot++) {
-                ItemStack itemstack = inventory.getStackInSlot(slot);
-                if (!itemstack.isEmpty()) {
-                    f += (float) itemstack.getCount() / Math.min(itemstack.getMaxStackSize(), inventory.getSlotLimit(slot));
-                }
-            }
-            f /= (float) inventorySize;
-            return Mth.lerpDiscrete(f, 0, 15);
+        if (pLevel.getBlockEntity(pPos) instanceof HasInventory invProvider) {
+            return invProvider.getAnalogueSignal(pLevel, pPos);
         }
         return 0;
     }
@@ -286,7 +242,7 @@ public class KeepersCrockBlock extends BaseEntityBlock implements SimpleWaterlog
     //region Entity
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new KeepersCrockBlockEntity(pPos, pState);
+        return new SettlersPotBlockEntity(pPos, pState);
     }
     //endregion
 }

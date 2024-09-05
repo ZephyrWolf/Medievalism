@@ -1,6 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.menu;
 
-import io.github.zephyrwolf.medievalism.common.block.blockentity.KeepersCrockBlockEntity;
+import io.github.zephyrwolf.medievalism.common.block.blockentity.SettlersPotBlockEntity;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.content.menu.MenuRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -21,8 +21,8 @@ import java.util.Objects;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class KeepersCrockMenu extends AbstractContainerMenu {
-    public static final int COLUMNS = 3;
+public class SettlersPotMenu extends AbstractContainerMenu {
+    public static final int COLUMNS = 5;
     public static final int ROWS = 3;
 
     // private final Container container;
@@ -38,17 +38,17 @@ public class KeepersCrockMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
     private static final int TE_INVENTORY_SLOT_COUNT = COLUMNS * ROWS;
 
-    public final KeepersCrockBlockEntity blockEntity;
+    public final SettlersPotBlockEntity blockEntity;
     private final Level level;
 
-    public KeepersCrockMenu(int pContainerId, Inventory playerInv, FriendlyByteBuf extraData) {
+    public SettlersPotMenu(int pContainerId, Inventory playerInv, FriendlyByteBuf extraData) {
         this(pContainerId, playerInv, Objects.requireNonNull(playerInv.player.level().getBlockEntity(extraData.readBlockPos())));
     }
 
-    public KeepersCrockMenu(int pContainerId, Inventory playerInv, BlockEntity entity) {
-        super(MenuRegistration.KEEPERS_CROCK_MENU.get(), pContainerId);
+    public SettlersPotMenu(int pContainerId, Inventory playerInv, BlockEntity entity) {
+        super(MenuRegistration.SETTLERS_POT_MENU.get(), pContainerId);
         checkContainerSize(playerInv, 2);
-        blockEntity = ((KeepersCrockBlockEntity) entity);
+        blockEntity = ((SettlersPotBlockEntity) entity);
         level = playerInv.player.level();
 
         addPlayerInventory(playerInv);
@@ -92,7 +92,7 @@ public class KeepersCrockMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player pPlayer) {
-        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), pPlayer, BlockRegistration.KEEPERS_CROCK.get());
+        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), pPlayer, BlockRegistration.SETTLERS_POT.get());
     }
 
     //region Add Player Slots
@@ -115,7 +115,7 @@ public class KeepersCrockMenu extends AbstractContainerMenu {
     private void addContainerInventory(ItemStackHandler inventory) {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
-                this.addSlot(new SlotItemHandler(inventory, i * COLUMNS + j, 62 + j * 18, 18 + i * 18));
+                this.addSlot(new SlotItemHandler(inventory, i * COLUMNS + j, 44 + j * 18, 18 + i * 18));
             }
         }
     }

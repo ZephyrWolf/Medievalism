@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism.common.block.blockentity;
 
-import io.github.zephyrwolf.medievalism.common.block.KeepersCrockBlock;
-import io.github.zephyrwolf.medievalism.common.menu.KeepersCrockMenu;
+import io.github.zephyrwolf.medievalism.common.block.GatherersJarBlock;
+import io.github.zephyrwolf.medievalism.common.menu.GatherersJarMenu;
 import io.github.zephyrwolf.medievalism.content.block.BlockEntityRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
@@ -31,19 +31,19 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-public class KeepersCrockBlockEntity extends BlockEntity implements MenuProvider, Nameable, HasInventory {
+public class GatherersJarBlockEntity extends BlockEntity implements MenuProvider, Nameable, HasInventory {
     //region Constants
     private static final String INVENTORY_TAG = "inventory";
-    public static final int COLUMNS = 3;
-    public static final int ROWS = 3;
+    public static final int COLUMNS = 2;
+    public static final int ROWS = 2;
     public static final int CONTAINER_SIZE = COLUMNS * ROWS;
     //endregion
 
     //private int openCount;
 
     //region Boilerplate
-    public KeepersCrockBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(BlockEntityRegistration.KEEPERS_CROCK_BLOCK_ENTITY_TYPE.get(), pPos, pBlockState);
+    public GatherersJarBlockEntity(BlockPos pPos, BlockState pBlockState) {
+        super(BlockEntityRegistration.GATHERERS_JAR_BLOCK_ENTITY_TYPE.get(), pPos, pBlockState);
     }
     //endregion
 
@@ -51,7 +51,7 @@ public class KeepersCrockBlockEntity extends BlockEntity implements MenuProvider
     private Component customName;
 
     public Component getDefaultName() {
-        return Component.translatable(KeepersCrockBlock.LANG_DEFAULT_NAME);
+        return Component.translatable(GatherersJarBlock.LANG_DEFAULT_NAME);
     }
 
     @Override
@@ -73,7 +73,7 @@ public class KeepersCrockBlockEntity extends BlockEntity implements MenuProvider
     //region Menu
     @Override
     public @Nullable AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
-        return new KeepersCrockMenu(pContainerId, pPlayerInventory, this);
+        return new GatherersJarMenu(pContainerId, pPlayerInventory, this);
     }
     //endregion
 
@@ -87,12 +87,13 @@ public class KeepersCrockBlockEntity extends BlockEntity implements MenuProvider
 
         @Override
         public boolean isItemValid(int slot, ItemStack stack) {
+            //var block = GatherersJarBlock.byItem(stack.getItem());
             return stack.getItem().canFitInsideContainerItems();
         }
 
         @Override // required for serialization to work properly
         protected void onContentsChanged(int slot) {
-            KeepersCrockBlockEntity.this.setChanged();
+            GatherersJarBlockEntity.this.setChanged();
         }
     };
 
@@ -115,7 +116,7 @@ public class KeepersCrockBlockEntity extends BlockEntity implements MenuProvider
 
     //region Components
     @Override // Block place
-    protected void applyImplicitComponents(BlockEntity.DataComponentInput pComponentInput) {
+    protected void applyImplicitComponents(DataComponentInput pComponentInput) {
         super.applyImplicitComponents(pComponentInput);
         this.customName = pComponentInput.get(DataComponents.CUSTOM_NAME);
         var container = pComponentInput.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY); //.copyInto(this.getItems());
@@ -170,34 +171,4 @@ public class KeepersCrockBlockEntity extends BlockEntity implements MenuProvider
         return ClientboundBlockEntityDataPacket.create(this);
     }
     //endregion
-
-    /*
-    @Override
-    public void startOpen(Player pPlayer) {
-        if (!remove && !pPlayer.isSpectator()) {
-            openCount = Math.max(0, openCount); // Ensure openCount remains bounded to a min of 0
-
-            openCount++;
-            assert level != null; // Should never be an issue
-            level.blockEvent(worldPosition, getBlockState().getBlock(), EVENT_SET_OPEN_COUNT, openCount);
-            if (openCount == 1) {
-                level.gameEvent(pPlayer, GameEvent.CONTAINER_OPEN, worldPosition);
-                level.playSound(null, worldPosition, SoundEvents.SHULKER_BOX_OPEN, SoundSource.BLOCKS, 0.5f, level.random.nextFloat() * 0.1f + 0.9f);
-            }
-        }
-    }
-
-    @Override
-    public void stopOpen(Player pPlayer) {
-        if (!remove && !pPlayer.isSpectator()) {
-            openCount--;
-            assert level != null;
-            level.blockEvent(worldPosition, getBlockState().getBlock(), EVENT_SET_OPEN_COUNT, this.openCount);
-            if (openCount <= 0) {
-                level.gameEvent(pPlayer, GameEvent.CONTAINER_CLOSE, worldPosition);
-                level.playSound(null, worldPosition, SoundEvents.SHULKER_BOX_CLOSE, SoundSource.BLOCKS, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
-            }
-        }
-    }
-     */
 }

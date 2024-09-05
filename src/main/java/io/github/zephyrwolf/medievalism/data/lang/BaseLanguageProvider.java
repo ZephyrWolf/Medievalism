@@ -1,7 +1,9 @@
 package io.github.zephyrwolf.medievalism.data.lang;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.common.block.GatherersJarBlock;
 import io.github.zephyrwolf.medievalism.common.block.KeepersCrockBlock;
+import io.github.zephyrwolf.medievalism.common.block.SettlersPotBlock;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import net.minecraft.data.PackOutput;
@@ -198,9 +200,15 @@ public class BaseLanguageProvider extends LanguageProvider
 
         add("creative_tab.medievalism.name", "Medievalism");
 
+        add(GatherersJarBlock.LANG_DEFAULT_NAME, "Gatherer's Jar");
+        add(GatherersJarBlock.LANG_ITEM_COUNT, "%s x%s");
+        add(GatherersJarBlock.LANG_MORE, "and %s more...");
+
         add(KeepersCrockBlock.LANG_DEFAULT_NAME, "Keeper's Crock");
         add(KeepersCrockBlock.LANG_ITEM_COUNT, "%s x%s");
         add(KeepersCrockBlock.LANG_MORE, "and %s more...");
+
+        add(SettlersPotBlock.LANG_DEFAULT_NAME, "Settler's Pot");
 
         add("medievalism.advancement.root", "Medievalism");
         add("medievalism.advancement.root.desc", "The heart and story of history");
