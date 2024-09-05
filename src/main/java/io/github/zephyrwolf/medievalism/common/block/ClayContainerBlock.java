@@ -6,16 +6,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
-import net.minecraft.world.level.block.SupportType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -23,7 +18,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
@@ -34,8 +28,9 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public class ClayContainerBlock extends Block implements SimpleWaterloggedBlock {
+    // net.minecraft.world.level.block.ShulkerBoxBlock
+
     public static final VoxelShape GATHERERS_POT_SHAPE = Block.box(6, 0.0, 6, 10, 6, 10);
-    public static final VoxelShape KEEPERS_CROCK_SHAPE = Block.box(2, 0, 2, 14, 12, 14);
     public static final VoxelShape SETTLERS_POT_SHAPE = Block.box(1, 0, 1, 15, 16, 15);
 
     protected VoxelShape SHAPE;
@@ -54,14 +49,6 @@ public class ClayContainerBlock extends Block implements SimpleWaterloggedBlock 
                 .add(BlockStateProperties.WATERLOGGED)
                 .add(BlockStateProperties.HORIZONTAL_AXIS)
         ;
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
-        if (pState.getFluidState().is(Fluids.WATER)) {
-            return InteractionResult.PASS;
-        }
-        return super.useWithoutItem(pState, pLevel, pPos, pPlayer, pHitResult);
     }
 
     @Override
@@ -128,5 +115,17 @@ public class ClayContainerBlock extends Block implements SimpleWaterloggedBlock 
         BlockPos belowPos = pPos.below();
         BlockState belowState = pLevel.getBlockState(belowPos);
         return belowState.isFaceSturdy(pLevel, belowPos, Direction.UP, SupportType.FULL);
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    protected BlockState rotate(BlockState pState, Rotation pRotation) {
+        Direction.Axis axis = pState.getValue(BlockStateProperties.HORIZONTAL_AXIS);
+        axis = switch (axis) {
+            case Direction.Axis.X -> Direction.Axis.Z;
+            case Direction.Axis.Z -> Direction.Axis.X;
+            default -> axis;
+        };
+        return pState.setValue(BlockStateProperties.HORIZONTAL_AXIS, axis);
     }
 }

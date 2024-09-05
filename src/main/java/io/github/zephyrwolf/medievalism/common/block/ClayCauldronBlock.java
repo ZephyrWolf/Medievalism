@@ -37,7 +37,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public class ClayCauldronBlock extends Block implements SimpleWaterloggedBlock {
-    protected static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 16, 15);
+    public static final VoxelShape CLAY_CAULDRON_SHAPE = Block.box(1, 0, 1, 15, 16, 15);
 
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
@@ -88,7 +88,7 @@ public class ClayCauldronBlock extends Block implements SimpleWaterloggedBlock {
 
     @Override
     protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return SHAPE;
+        return CLAY_CAULDRON_SHAPE;
     }
 
     @Override

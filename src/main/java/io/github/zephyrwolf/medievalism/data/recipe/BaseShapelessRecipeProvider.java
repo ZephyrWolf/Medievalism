@@ -87,6 +87,7 @@ public final class BaseShapelessRecipeProvider {
                 .unlockedBy("has_clay_ball", RecipeTools.itemPredicateOf(ItemTagCatalog.CLAY_BALL))
                 .save(recipeOutput, MedievalismConstants.resource("unfired_brick"));
         // Birch Pot
+        /*
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.UNFIRED_BIRCH_POT)
                 .requires(ItemRegistration.UNFIRED_FLOWER_POT)
                 .requires(Items.STICK)
@@ -99,6 +100,7 @@ public final class BaseShapelessRecipeProvider {
                 .group("unfired_birch_pot")
                 .unlockedBy("has_unfired_flower_pot", RecipeTools.itemPredicateOf(ItemRegistration.UNFIRED_FLOWER_POT))
                 .save(recipeOutput, MedievalismConstants.resource("unfired_birch_pot_awl"));
+         */
     }
 
     private static void foodRecipes(RecipeOutput recipeOutput) {

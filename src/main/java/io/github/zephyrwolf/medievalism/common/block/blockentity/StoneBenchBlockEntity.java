@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.common.blockentity;
+package io.github.zephyrwolf.medievalism.common.block.blockentity;
 
 import io.github.zephyrwolf.medievalism.common.malleablematerial.MalleableMaterial;
 import io.github.zephyrwolf.medievalism.common.menu.StoneBenchMenu;
@@ -35,10 +35,10 @@ import java.util.Optional;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class StoneBenchBlockEntity extends BlockEntity implements MenuProvider {
+public class StoneBenchBlockEntity extends BlockEntity implements MenuProvider { // TODO Should this; implements Container / WorldlyContainer???
     public static final String INVENTORY_TAG = "inventory";
     public static final String SHAPE_TAG = "shape";
-    public static final String DISPLAY_NAME_LANG_KEY = "block.medievalism.stone_bench";
+    private static final String DISPLAY_NAME_LANG_KEY = "medievalism.container.stone_bench";
 
     public static final int TOOL_SLOT = 0;
     public static final int INPUT_SLOT = 1;

@@ -1,22 +1,28 @@
-package io.github.zephyrwolf.medievalism.data.block;
+package io.github.zephyrwolf.medievalism.data.loot;
 
 import io.github.zephyrwolf.medievalism.common.block.DryingBlock;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.ShulkerBoxBlockEntity;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.CopyComponentsFunction;
+import net.minecraft.world.level.storage.loot.functions.LootItemFunctions;
 import net.minecraft.world.level.storage.loot.predicates.InvertedLootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
@@ -52,9 +58,16 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
 
         add(BlockRegistration.DRYING_GATHERERS_JAR.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, BlockRegistration.WET_GATHERERS_JAR_ITEM, BlockRegistration.DRY_GATHERERS_JAR_ITEM));
         dropSelf(BlockRegistration.GATHERERS_JAR.get());
-        dropSelf(BlockRegistration.KEEPERS_CROCK.get());
+        add(BlockRegistration.DRYING_KEEPERS_CROCK.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, BlockRegistration.WET_KEEPERS_CROCK_ITEM, BlockRegistration.DRY_KEEPERS_CROCK_ITEM));
+
+        //dropSelf(BlockRegistration.KEEPERS_CROCK.get());
+        add(BlockRegistration.KEEPERS_CROCK.get(), block -> createKeepersCrock(block));
+
+        add(BlockRegistration.DRYING_SETTLERS_POT.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, BlockRegistration.WET_SETTLERS_POT_ITEM, BlockRegistration.DRY_SETTLERS_POT_ITEM));
         dropSelf(BlockRegistration.SETTLERS_POT.get());
+        add(BlockRegistration.DRYING_CLAY_COOKING_POT.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, BlockRegistration.WET_CLAY_COOKING_POT_ITEM, BlockRegistration.DRY_CLAY_COOKING_POT_ITEM));
         dropSelf(BlockRegistration.CLAY_COOKING_POT.get());
+        add(BlockRegistration.DRYING_CLAY_CAULDRON.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, BlockRegistration.WET_CLAY_CAULDRON_ITEM, BlockRegistration.DRY_CLAY_CAULDRON_ITEM));
         dropSelf(BlockRegistration.CLAY_CAULDRON.get());
 
         dropSelf(BlockRegistration.OAK_BRANCH_BLOCK.get());
@@ -91,7 +104,6 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
 
         dropSelf(BlockRegistration.STONE_BENCH.get());
         dropSelf(BlockRegistration.CHOPPING_BLOCK.get());
-        dropSelf(BlockRegistration.BIRCH_POT.get());
     }
 
     @SuppressWarnings("unused")
@@ -121,6 +133,25 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
                                 .setQuality(count)
                         )
                 ));
+    }
+
+    public LootTable.Builder createKeepersCrock(Block block)
+    {
+        //LootItemFunctions
+        return LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1))
+                        .add(LootItem
+                                .lootTableItem(block)
+                                .setQuality(1)
+                                .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY)
+                                        //.include(DataComponents.CUSTOM_NAME)
+                                        .include(DataComponents.CONTAINER)
+                                        //.include(DataComponents.LOCK)
+                                        //.include(DataComponents.CONTAINER_LOOT)
+                                )
+                        )
+                );
     }
 
     public LootTable.Builder createSpecialDropOnStateTable(Block block, Property<Integer> property, int value, ItemLike wet, ItemLike dry)

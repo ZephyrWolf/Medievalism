@@ -1,6 +1,7 @@
 package io.github.zephyrwolf.medievalism.data.lang;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.common.block.KeepersCrockBlock;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import net.minecraft.data.PackOutput;
@@ -54,12 +55,29 @@ public class BaseLanguageProvider extends LanguageProvider
 
         add(BlockRegistration.WET_GATHERERS_JAR_ITEM.get(), "Wet Gatherer's Jar");
         add(BlockRegistration.DRY_GATHERERS_JAR_ITEM.get(), "Unfired Gatherer's Jar");
-        add(BlockRegistration.DRYING_GATHERERS_JAR.get(), "Medievalism");
+        add(BlockRegistration.DRYING_GATHERERS_JAR.get(), "Drying Gatherer's Jar");
         add(BlockRegistration.GATHERERS_JAR_ITEM.get(), "Gatherer's Jar");
+
+        add(BlockRegistration.WET_KEEPERS_CROCK_ITEM.get(), "Wet Keeper's Crock");
+        add(BlockRegistration.DRY_KEEPERS_CROCK_ITEM.get(), "Unfired Keeper's Crock");
+        add(BlockRegistration.DRYING_KEEPERS_CROCK.get(), "Drying Keeper's Crock");
         add(BlockRegistration.KEEPERS_CROCK_ITEM.get(), "Keeper's Crock");
+
+        add(BlockRegistration.WET_SETTLERS_POT_ITEM.get(), "Wet Settler's Pot");
+        add(BlockRegistration.DRY_SETTLERS_POT_ITEM.get(), "Unfired Settler's Pot");
+        add(BlockRegistration.DRYING_SETTLERS_POT.get(), "Drying Settler's Pot");
         add(BlockRegistration.SETTLERS_POT_ITEM.get(), "Settler's Pot");
+
+        add(BlockRegistration.WET_CLAY_COOKING_POT_ITEM.get(), "Wet Clay Cooking Pot");
+        add(BlockRegistration.DRY_CLAY_COOKING_POT_ITEM.get(), "Unfired Clay Cooking Pot");
+        add(BlockRegistration.DRYING_CLAY_COOKING_POT.get(), "Drying Clay Cooking Pot");
         add(BlockRegistration.CLAY_COOKING_POT_ITEM.get(), "Clay Cooking Pot");
+
+        add(BlockRegistration.WET_CLAY_CAULDRON_ITEM.get(), "Wet Clay Cauldron");
+        add(BlockRegistration.DRY_CLAY_CAULDRON_ITEM.get(), "Unfired Clay Cauldron");
+        add(BlockRegistration.DRYING_CLAY_CAULDRON.get(), "Drying Clay Cauldron");
         add(BlockRegistration.CLAY_CAULDRON_ITEM.get(), "Clay Cauldron");
+
 
         { // World
             add(ItemRegistration.RED_CLAY_BALL.get(), "Red Clay Ball");
@@ -100,15 +118,7 @@ public class BaseLanguageProvider extends LanguageProvider
         }
         { // Pottery
             add(ItemRegistration.UNFIRED_BRICK.get(), "Unfired Brick");
-            add(ItemRegistration.UNFIRED_JUG.get(), "Unfired Jug");
             add(ItemRegistration.JUG.get(), "Jug");
-            add(ItemRegistration.UNFIRED_FLOWER_POT.get(), "Unfired Flower Pot");
-            add(ItemRegistration.UNFIRED_DECORATED_POT.get(), "Unfired Decorated Pot");
-            add(ItemRegistration.UNFIRED_BIRCH_POT.get(), "Unfired Birch Pot");
-            add(ItemRegistration.UNFIRED_POT.get(), "Unfired Pot");
-            add(ItemRegistration.POT.get(), "Pot");
-            add(ItemRegistration.UNFIRED_LARGE_POT.get(), "Unfired Large Pot");
-            add(ItemRegistration.LARGE_POT.get(), "Large Pot");
         }
         { // Bark
             add(ItemRegistration.WHITE_BARK.get(), "White Bark");
@@ -120,7 +130,6 @@ public class BaseLanguageProvider extends LanguageProvider
         { // Primitive
             add(BlockRegistration.STONE_BENCH_ITEM.get(), "Stone Bench");
             add(BlockRegistration.CHOPPING_BLOCK_ITEM.get(), "Chopping Block");
-            add(BlockRegistration.BIRCH_POT_ITEM.get(), "Birch Pot");
         }
         { // Leather Working
             // Hide
@@ -188,6 +197,10 @@ public class BaseLanguageProvider extends LanguageProvider
         }
 
         add("creative_tab.medievalism.name", "Medievalism");
+
+        add(KeepersCrockBlock.LANG_DEFAULT_NAME, "Keeper's Crock");
+        add(KeepersCrockBlock.LANG_ITEM_COUNT, "%s x%s");
+        add(KeepersCrockBlock.LANG_MORE, "and %s more...");
 
         add("medievalism.advancement.root", "Medievalism");
         add("medievalism.advancement.root.desc", "The heart and story of history");

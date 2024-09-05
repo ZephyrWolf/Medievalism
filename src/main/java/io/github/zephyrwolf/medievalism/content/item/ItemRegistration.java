@@ -65,15 +65,15 @@ public final class ItemRegistration
     //public static final DeferredItem<Item> POTTERS_CLAY = ITEMS.registerSimpleItem("potters_clay"); // Clay, grog, wood ash?
     public static final DeferredItem<Item> UNFIRED_BRICK = ITEMS.registerSimpleItem("unfired_brick");
     //public static final DeferredItem<Item> UNFIRED_POTTERY_BRICK = ITEMS.registerSimpleItem("unfired_pottery_brick");
-    public static final DeferredItem<Item> UNFIRED_JUG = ITEMS.registerSimpleItem("unfired_jug");
+    //public static final DeferredItem<Item> UNFIRED_JUG = ITEMS.registerSimpleItem("unfired_jug");
     public static final DeferredItem<Item> JUG = ITEMS.registerSimpleItem("jug");
-    public static final DeferredItem<Item> UNFIRED_FLOWER_POT = ITEMS.registerSimpleItem("unfired_flower_pot");
-    public static final DeferredItem<Item> UNFIRED_DECORATED_POT = ITEMS.registerSimpleItem("unfired_decorated_pot");
-    public static final DeferredItem<Item> UNFIRED_BIRCH_POT = ITEMS.registerSimpleItem("unfired_birch_pot");
-    public static final DeferredItem<Item> UNFIRED_POT = ITEMS.registerSimpleItem("unfired_pot");
-    public static final DeferredItem<Item> POT = ITEMS.registerSimpleItem("pot");
-    public static final DeferredItem<Item> UNFIRED_LARGE_POT = ITEMS.registerSimpleItem("unfired_large_pot");
-    public static final DeferredItem<Item> LARGE_POT = ITEMS.registerSimpleItem("large_pot");
+    //public static final DeferredItem<Item> UNFIRED_FLOWER_POT = ITEMS.registerSimpleItem("unfired_flower_pot");
+    //public static final DeferredItem<Item> UNFIRED_DECORATED_POT = ITEMS.registerSimpleItem("unfired_decorated_pot");
+    //public static final DeferredItem<Item> UNFIRED_BIRCH_POT = ITEMS.registerSimpleItem("unfired_birch_pot");
+    //public static final DeferredItem<Item> UNFIRED_POT = ITEMS.registerSimpleItem("unfired_pot");
+    //public static final DeferredItem<Item> POT = ITEMS.registerSimpleItem("pot");
+    //public static final DeferredItem<Item> UNFIRED_LARGE_POT = ITEMS.registerSimpleItem("unfired_large_pot");
+    //public static final DeferredItem<Item> LARGE_POT = ITEMS.registerSimpleItem("large_pot");
     //endregion
 
     //region MobDrops

@@ -1,17 +1,22 @@
-package io.github.zephyrwolf.medievalism.data;
+package io.github.zephyrwolf.medievalism.data.loot;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -30,21 +35,36 @@ public final class BaseAdditionalDropsTablesSubProvider implements LootTableSubP
         this.lookupProvider = lookupProvider;
     }
 
-    // THIS IS WHERE YOU CAN ADD YOU ADDITIONAL DROPS FOR BLOCKS
     private void getLootTables(HolderLookup.Provider ignoredLookupProvider)
     {
-        add(MedievalismConstants.resource("ruined_gatherers_pot"),
+        ruinedDrop(BlockRegistration.DRYING_GATHERERS_JAR.get(), ItemRegistration.RED_CLAY_BALL, 1, 1);
+        ruinedDrop(BlockRegistration.DRYING_KEEPERS_CROCK.get(), ItemRegistration.RED_CLAY_BALL, 2, 4);
+        ruinedDrop(BlockRegistration.DRYING_SETTLERS_POT.get(), ItemRegistration.RED_CLAY_BALL, 2, 4);
+        ruinedDrop(BlockRegistration.DRYING_CLAY_COOKING_POT.get(), ItemRegistration.RED_CLAY_BALL, 2, 4);
+        ruinedDrop(BlockRegistration.DRYING_CLAY_CAULDRON.get(), ItemRegistration.RED_CLAY_BALL, 2, 4);
+    }
+
+    // --
+
+    @SuppressWarnings("SameParameterValue")
+    private void ruinedDrop(Block block, ItemLike itemLike, float min, float max)
+    {
+        ResourceLocation key = BuiltInRegistries.BLOCK.getKey(block);
+        ResourceLocation rl = MedievalismConstants.resource("ruined_" + key.getPath());
+        add(rl,
                 LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0f))
                                         .add(
-                                                LootItem.lootTableItem(ItemRegistration.RED_CLAY_BALL)
-                                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0f)))
+                                                LootItem.lootTableItem(itemLike)
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))
                                         )
                         )
         );
     }
+
+    // --
 
     private void add(ResourceLocation location, LootTable.Builder builder)
     {

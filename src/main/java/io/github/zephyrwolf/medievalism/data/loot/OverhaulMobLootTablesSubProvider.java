@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.data;
+package io.github.zephyrwolf.medievalism.data.loot;
 
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import net.minecraft.advancements.critereon.*;

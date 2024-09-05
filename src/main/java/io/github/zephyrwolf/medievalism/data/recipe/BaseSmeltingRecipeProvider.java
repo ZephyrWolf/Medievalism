@@ -59,6 +59,7 @@ public final class BaseSmeltingRecipeProvider {
 
     private static void tempPotteryRecipes(RecipeOutput recipeOutput) {
         // Jug
+        /*
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistration.UNFIRED_JUG),
                         RecipeCategory.MISC, ItemRegistration.JUG,
                         0.0f, 100)
@@ -106,6 +107,8 @@ public final class BaseSmeltingRecipeProvider {
                         0.0f, 100)
                 .unlockedBy("has_unfired_brick", RecipeTools.itemPredicateOf(ItemRegistration.UNFIRED_BRICK))
                 .save(recipeOutput, MedievalismConstants.resource("brick_smelting"));
+
+         */
     }
 
     private static void potteryRecipes(RecipeOutput recipeOutput)

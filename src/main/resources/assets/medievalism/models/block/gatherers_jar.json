@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "medievalism:block/gatherers_pot",
-		"particle": "medievalism:block/gatherers_pot"
+		"0": "medievalism:block/gatherers_jar",
+		"particle": "medievalism:block/gatherers_jar"
 	},
 	"elements": [
 		{
@@ -71,6 +71,34 @@
 			}
 		}
 	],
+	"gui_light": "front",
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 6, 0],
+			"scale": [1.1, 1.1, 1.1]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 6, 0],
+			"scale": [1.1, 1.1, 1.1]
+		},
+		"firstperson_righthand": {
+			"translation": [0, 6.5, 0]
+		},
+		"firstperson_lefthand": {
+			"translation": [0, 6.5, 0]
+		},
+		"ground": {
+			"translation": [0, 4.1, 0]
+		},
+		"gui": {
+			"rotation": [10, -10, 0],
+			"translation": [0, 7.5, 0],
+			"scale": [1.5, 1.5, 1.5]
+		},
+		"fixed": {
+			"translation": [0, 5.5, -0.5]
+		}
+	},
 	"groups": [
 		{
 			"name": "main",

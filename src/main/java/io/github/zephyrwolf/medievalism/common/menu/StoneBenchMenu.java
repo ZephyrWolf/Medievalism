@@ -1,6 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.menu;
 
-import io.github.zephyrwolf.medievalism.common.blockentity.StoneBenchBlockEntity;
+import io.github.zephyrwolf.medievalism.common.block.blockentity.StoneBenchBlockEntity;
 import io.github.zephyrwolf.medievalism.common.malleablematerial.MalleableMaterial;
 import io.github.zephyrwolf.medievalism.common.recipe.MalleableRecipe;
 import io.github.zephyrwolf.medievalism.common.recipe.MalleableRecipeInput;
@@ -20,6 +20,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -67,7 +68,7 @@ public class StoneBenchMenu extends AbstractContainerMenu
         addPlayerInventory(playerInv);
         addPlayerHotbar(playerInv);
 
-        var blockEntityInv = blockEntity.getInventory();
+        ItemStackHandler blockEntityInv = blockEntity.getInventory();
         this.addSlot(new SlotItemHandler(blockEntityInv, StoneBenchBlockEntity.TOOL_SLOT, 20, 18));
         this.addSlot(new SlotItemHandler(blockEntityInv, StoneBenchBlockEntity.INPUT_SLOT, 140, 18) {
             @Override

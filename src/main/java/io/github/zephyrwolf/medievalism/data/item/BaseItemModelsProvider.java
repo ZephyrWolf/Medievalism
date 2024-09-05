@@ -57,7 +57,6 @@ public class BaseItemModelsProvider extends ItemModelProvider
             itemGeneratedModel(BlockRegistration.DOGBANE_BLOCK_ITEM.get()); // TODO This is wrong
             blockBasedModel(BlockRegistration.STONE_BENCH_ITEM.get(), "");
             blockBasedModel(BlockRegistration.CHOPPING_BLOCK_ITEM.get(), "");
-            blockIconGeneratedModel(BlockRegistration.BIRCH_POT_ITEM.get());
 
             itemGeneratedModel(ItemRegistration.MUD_BALL.get());
             itemGeneratedModel(BlockRegistration.WET_PACKED_MUD_BRICK_ITEM.get());
@@ -66,14 +65,25 @@ public class BaseItemModelsProvider extends ItemModelProvider
 
         blockBasedModel(BlockRegistration.WET_GATHERERS_JAR_ITEM.get(), "");
         blockBasedModel(BlockRegistration.DRY_GATHERERS_JAR_ITEM.get(), "");
+        blockBasedModel(BlockRegistration.GATHERERS_JAR_ITEM.get(), "");
+
+        blockBasedModel(BlockRegistration.WET_KEEPERS_CROCK_ITEM.get(), "");
+        blockBasedModel(BlockRegistration.DRY_KEEPERS_CROCK_ITEM.get(), "");
+        blockBasedModel(BlockRegistration.KEEPERS_CROCK_ITEM.get(), "");
+
+        blockBasedModel(BlockRegistration.WET_SETTLERS_POT_ITEM.get(), "");
+        blockBasedModel(BlockRegistration.DRY_SETTLERS_POT_ITEM.get(), "");
+        blockBasedModel(BlockRegistration.SETTLERS_POT_ITEM.get(), "");
+
+        blockBasedModel(BlockRegistration.WET_CLAY_COOKING_POT_ITEM.get(), "");
+        blockBasedModel(BlockRegistration.DRY_CLAY_COOKING_POT_ITEM.get(), "");
+        blockBasedModel(BlockRegistration.CLAY_COOKING_POT_ITEM.get(), "");
+
+        blockBasedModel(BlockRegistration.WET_CLAY_CAULDRON_ITEM.get(), "");
+        blockBasedModel(BlockRegistration.DRY_CLAY_CAULDRON_ITEM.get(), "");
+        blockBasedModel(BlockRegistration.CLAY_CAULDRON_ITEM.get(), "");
 
         //withExistingParent(itemName(BlockRegistration.WET_GATHERERS_JAR_ITEM.get()), resourceBlock(blockName(BlockRegistration.DRYING_GATHERERS_JAR) + "_wet"));
-
-        blockBasedModel(BlockRegistration.GATHERERS_JAR_ITEM.get(), "");
-        blockBasedModel(BlockRegistration.KEEPERS_CROCK_ITEM.get(), "");
-        blockBasedModel(BlockRegistration.SETTLERS_POT_ITEM.get(), "");
-        blockBasedModel(BlockRegistration.CLAY_COOKING_POT_ITEM.get(), "");
-        blockBasedModel(BlockRegistration.CLAY_CAULDRON_ITEM.get(), "");
 
         { // World
             itemGeneratedModel(ItemRegistration.RED_CLAY_BALL.get());
@@ -117,15 +127,15 @@ public class BaseItemModelsProvider extends ItemModelProvider
         }
         { // Pottery
             itemGeneratedModel(ItemRegistration.UNFIRED_BRICK.get());
-            itemGeneratedModel(ItemRegistration.UNFIRED_JUG.get());
+            //itemGeneratedModel(ItemRegistration.UNFIRED_JUG.get());
             itemGeneratedModel(ItemRegistration.JUG.get());
-            itemGeneratedModel(ItemRegistration.UNFIRED_FLOWER_POT.get());
-            itemGeneratedModel(ItemRegistration.UNFIRED_DECORATED_POT.get());
-            itemGeneratedModel(ItemRegistration.UNFIRED_BIRCH_POT.get());
-            itemGeneratedModel(ItemRegistration.UNFIRED_POT.get());
-            itemGeneratedModel(ItemRegistration.POT.get());
-            itemGeneratedModel(ItemRegistration.UNFIRED_LARGE_POT.get());
-            itemGeneratedModel(ItemRegistration.LARGE_POT.get());
+            //itemGeneratedModel(ItemRegistration.UNFIRED_FLOWER_POT.get());
+            //itemGeneratedModel(ItemRegistration.UNFIRED_DECORATED_POT.get());
+            //itemGeneratedModel(ItemRegistration.UNFIRED_BIRCH_POT.get());
+            //itemGeneratedModel(ItemRegistration.UNFIRED_POT.get());
+            //itemGeneratedModel(ItemRegistration.POT.get());
+            //itemGeneratedModel(ItemRegistration.UNFIRED_LARGE_POT.get());
+            //itemGeneratedModel(ItemRegistration.LARGE_POT.get());
         }
         itemGeneratedModel(ItemRegistration.BROKEN_GOAT_HORN.get());
         { // Bark

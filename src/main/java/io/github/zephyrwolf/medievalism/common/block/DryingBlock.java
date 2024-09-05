@@ -1,13 +1,15 @@
 package io.github.zephyrwolf.medievalism.common.block;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.common.blockitem.DryingBlockItem;
+import io.github.zephyrwolf.medievalism.common.item.blockitem.DryingBlockItem;
 import io.github.zephyrwolf.medievalism.content.loot.LootContextParamSetRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
@@ -24,6 +26,8 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.SupportType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.level.storage.loot.LootParams;
@@ -47,6 +51,7 @@ public class DryingBlock extends Block {
     public static final int MIN_DRYNESS = 0;
 
     public static final IntegerProperty DRYNESS = IntegerProperty.create("dryness", MIN_DRYNESS, MAX_DRYNESS);
+    public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
 
     protected final VoxelShape shape;
 
@@ -54,6 +59,7 @@ public class DryingBlock extends Block {
         super(props);
         registerDefaultState(getStateDefinition().any()
                 .setValue(DRYNESS, DEFAULT_DRYNESS)
+                .setValue(AXIS, Direction.Axis.Z)
         );
         this.shape = shape;
     }
@@ -69,7 +75,8 @@ public class DryingBlock extends Block {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder
-                .add(DRYNESS);
+                .add(DRYNESS)
+                .add(AXIS);
     }
 
     @Override
@@ -104,10 +111,13 @@ public class DryingBlock extends Block {
         ItemStack held = pContext.getItemInHand();
         if (held.getItem() instanceof DryingBlockItem dryingItem) {
             if (dryingItem.isDry()) {
-                return defaultBlockState().setValue(DRYNESS, MAX_DRYNESS);
+                return defaultBlockState()
+                        .setValue(DRYNESS, MAX_DRYNESS)
+                        .setValue(AXIS, pContext.getHorizontalDirection().getAxis());
             }
         }
-        return super.getStateForPlacement(pContext);
+        return defaultBlockState()
+                .setValue(AXIS, pContext.getHorizontalDirection().getAxis());
     }
 
     @Override
@@ -124,6 +134,18 @@ public class DryingBlock extends Block {
         BlockPos belowPos = pPos.below();
         BlockState belowState = pLevel.getBlockState(belowPos);
         return isCollisionShapeFullBlock(pState, pLevel, pPos) || belowState.isFaceSturdy(pLevel, belowPos, Direction.UP, SupportType.FULL);
+    }
+
+    private ResourceKey<LootTable> _ruinedLootTableKeyCache = null;
+    public ResourceKey<LootTable> getOrCreateRuinedLootTable()
+    {
+        if (_ruinedLootTableKeyCache == null) {
+            var key = BuiltInRegistries.BLOCK.getKey(this);
+            ResourceLocation rl = MedievalismConstants.resource("ruined_" + key.getPath())
+                    .withPrefix("additional_drops/");
+            _ruinedLootTableKeyCache = ResourceKey.create(Registries.LOOT_TABLE, rl);
+        }
+        return _ruinedLootTableKeyCache;
     }
 
     @Override // Random Tick
@@ -145,10 +167,7 @@ public class DryingBlock extends Block {
                         .withParameter(LootContextParams.BLOCK_STATE, pState)
                         .withParameter(LootContextParams.ORIGIN, new Vec3(pPos.getX() + 0.5f, pPos.getY() + 0.5f, pPos.getZ() + 0.5f))
                         .create(LootContextParamSetRegistration.ADDITIONAL_DROPS);
-                ResourceKey<LootTable> resourceKey = ResourceKey.create(
-                        Registries.LOOT_TABLE,
-                        MedievalismConstants.resource("ruined_gatherers_pot")
-                                .withPrefix("additional_drops/"));
+                ResourceKey<LootTable> resourceKey = getOrCreateRuinedLootTable();
                 LootTable loottable = pLevel.getServer().reloadableRegistries().getLootTable(resourceKey);
                 var items = loottable.getRandomItems(lootParams);
 

@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "medievalism:block/mossy_rock1",
-		"particle": "medievalism:block/mossy_rock1"
+		"0": "block/stone",
+		"particle": "block/stone"
 	},
 	"elements": [
 		{
@@ -76,7 +76,6 @@
 			}
 		}
 	],
-	"gui_light": "front",
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [70, -30, 0],
@@ -95,17 +94,17 @@
 			"translation": [0, 6, 0]
 		},
 		"ground": {
-			"translation": [0, 4, 0],
+			"translation": [0, 3.25, 0],
 			"scale": [0.9, 0.9, 0.9]
 		},
 		"gui": {
-			"rotation": [0, -112.5, 0],
-			"translation": [0, 9, 0],
-			"scale": [1.5, 1.5, 1.5]
+			"rotation": [22.5, 45, 0],
+			"translation": [0, 7.5, 0],
+			"scale": [1.25, 1.25, 1.25]
 		},
 		"fixed": {
 			"rotation": [-90, -22.5, 0],
-			"translation": [0, 0, -7]
+			"translation": [0, 0, -6.75]
 		}
 	},
 	"groups": [

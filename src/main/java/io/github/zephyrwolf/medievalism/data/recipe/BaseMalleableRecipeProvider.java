@@ -101,6 +101,7 @@ public final class BaseMalleableRecipeProvider {
     }
 
     private static void potteryRecipes(RecipeOutput recipeOutput) {
+        /*
         MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(ItemRegistration.UNFIRED_FLOWER_POT.get()))
                 .pattern("x x")
                 .pattern(" x ")
@@ -108,6 +109,7 @@ public final class BaseMalleableRecipeProvider {
                         BlockRegistration.STONE_BENCH_ITEM
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("unfired_plant_pot"));
+         */
 
         MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(ItemRegistration.UNFIRED_CLAY_CRUCIBLE.get()))
                 .pattern("x x")
@@ -117,6 +119,57 @@ public final class BaseMalleableRecipeProvider {
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("unfired_clay_crucible"));
 
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(BlockRegistration.WET_GATHERERS_JAR_ITEM.get()))
+                .pattern("x x")
+                .pattern("x x")
+                .pattern(" x ")
+                .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        BlockRegistration.STONE_BENCH_ITEM
+                ))
+                .save(recipeOutput, MedievalismConstants.resource("wet_gatherers_jar"));
+
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(BlockRegistration.WET_KEEPERS_CROCK_ITEM.get()))
+                .pattern("x  x")
+                .pattern("x  x")
+                .pattern("x  x")
+                .pattern(" xx ")
+                .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        BlockRegistration.STONE_BENCH_ITEM
+                ))
+                .save(recipeOutput, MedievalismConstants.resource("wet_keepers_crock"));
+
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(BlockRegistration.WET_SETTLERS_POT_ITEM.get()))
+                .pattern("x   x")
+                .pattern("x   x")
+                .pattern("x   x")
+                .pattern("x   x")
+                .pattern(" xxx ")
+                .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        BlockRegistration.STONE_BENCH_ITEM
+                ))
+                .save(recipeOutput, MedievalismConstants.resource("wet_settlers_pot"));
+
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(BlockRegistration.WET_CLAY_COOKING_POT_ITEM.get()))
+                .pattern("x   x")
+                .pattern("x   x")
+                .pattern(" xxx ")
+                .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        BlockRegistration.STONE_BENCH_ITEM
+                ))
+                .save(recipeOutput, MedievalismConstants.resource("wet_clay_cooking_pot"));
+
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(BlockRegistration.WET_CLAY_CAULDRON_ITEM.get()))
+                .pattern("x   x")
+                .pattern("x   x")
+                .pattern("x   x")
+                .pattern("x   x")
+                .pattern("xxxxx")
+                .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        BlockRegistration.STONE_BENCH_ITEM
+                ))
+                .save(recipeOutput, MedievalismConstants.resource("wet_clay_cauldron"));
+
+        /*
         MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(ItemRegistration.UNFIRED_POT.get()))
                 .pattern("x  x")
                 .pattern("x  x")
@@ -147,5 +200,6 @@ public final class BaseMalleableRecipeProvider {
                         BlockRegistration.STONE_BENCH_ITEM
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("unfired_jug"));
+        */
     }
 }

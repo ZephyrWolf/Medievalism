@@ -1,7 +1,8 @@
 package io.github.zephyrwolf.medievalism.content.block;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.common.blockentity.StoneBenchBlockEntity;
+import io.github.zephyrwolf.medievalism.common.block.blockentity.KeepersCrockBlockEntity;
+import io.github.zephyrwolf.medievalism.common.block.blockentity.StoneBenchBlockEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
@@ -25,8 +26,13 @@ public final class BlockEntityRegistration
                             .build(null) // null because we don't need to use any data-fixers
             );
 
-
-
+    public static final Supplier<BlockEntityType<KeepersCrockBlockEntity>> KEEPERS_CROCK_BLOCK_ENTITY_TYPE =
+            BLOCK_ENTITY_TYPES.register(
+                    "keepers_crock_block_entity",
+                    () -> BlockEntityType.Builder
+                            .of(KeepersCrockBlockEntity::new, BlockRegistration.KEEPERS_CROCK.get())
+                            .build(null) // null because we don't need to use any data-fixers
+            );
 
     public static void register(IEventBus bus)
     {
