@@ -34,7 +34,8 @@ public final class ItemRegistration
     public static final DeferredItem<Item> BARLEY = ITEMS.registerSimpleItem("barley", new Item.Properties());
     public static final DeferredItem<Item> OAT_SEEDS = ITEMS.registerSimpleItem("oat_seeds", new Item.Properties());
     public static final DeferredItem<Item> OATS = ITEMS.registerSimpleItem("oats", new Item.Properties());
-    public static final DeferredItem<Item> YAM = ITEMS.registerSimpleItem("yam", new Item.Properties().food(FoodCatalog.YAM));
+    public static final DeferredItem<Item> YAM = ITEMS.registerItem("yam",
+            props -> new ItemNameBlockItem(BlockRegistration.YAMS.get(), new Item.Properties().food(FoodCatalog.YAM)));
     public static final DeferredItem<Item> BAKED_YAM = ITEMS.registerSimpleItem("baked_yam", new Item.Properties().food(FoodCatalog.BAKED_YAM));
     public static final DeferredItem<Item> BAKED_BEETROOT = ITEMS.registerSimpleItem("baked_beetroot", new Item.Properties().food(FoodCatalog.BAKED_BEETROOT));
     public static final DeferredItem<Item> BAKED_CARROT = ITEMS.registerSimpleItem("baked_carrot", new Item.Properties().food(FoodCatalog.BAKED_CARROT));

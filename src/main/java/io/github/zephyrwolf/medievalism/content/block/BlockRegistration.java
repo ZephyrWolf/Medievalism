@@ -203,6 +203,17 @@ public final class BlockRegistration {
                     .strength(0.3f).sound(SoundType.GRASS).randomTicks());
     public static final DeferredItem<BlockItem> DOGBANE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("dogbane", DOGBANE_BLOCK);
     //endregion
+
+    //region Crops
+    public static final DeferredBlock<YamBlock> YAMS = BLOCKS.registerBlock(
+            "yams", YamBlock::new, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.PLANT)
+                            .noCollission()
+                            .randomTicks()
+                            .instabreak()
+                            .sound(SoundType.CROP)
+                            .pushReaction(PushReaction.DESTROY)
+    );
     //endregion
 
     //region Primitive

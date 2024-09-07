@@ -226,6 +226,10 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         );
         //endregion
 
+        //region Crops
+        cropBlock4(BlockRegistration.YAMS.get());
+        //endregion
+
         axisBlock(BlockRegistration.THATCH_BLOCK.get());
         crossBlock(BlockRegistration.DOGBANE_BLOCK.get());
 
@@ -240,11 +244,51 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
     }
 
     //region Blocks
-    private void dryingBlock(DryingBlock block, ModelFile wetModel, ModelFile dryModel)
-    {
+    private void cropBlock4(CropBlock block) {
+        var model0 = models() // BlockModelProvider extends ModelProvider<BlockModelBuilder>
+                .withExistingParent(blockName(block) + "_stage0", MedievalismConstants.resource("minecraft:block/crop"))
+                .texture("particle", blockTexture(block).withSuffix("_stage0"))
+                .texture("crop", blockTexture(block).withSuffix("_stage0"))
+                .renderType("cutout");
+        var model1 = models() // BlockModelProvider extends ModelProvider<BlockModelBuilder>
+                .withExistingParent(blockName(block) + "_stage1", MedievalismConstants.resource("minecraft:block/crop"))
+                .texture("particle", blockTexture(block).withSuffix("_stage1"))
+                .texture("crop", blockTexture(block).withSuffix("_stage1"))
+                .renderType("cutout");
+        var model2 = models() // BlockModelProvider extends ModelProvider<BlockModelBuilder>
+                .withExistingParent(blockName(block) + "_stage2", MedievalismConstants.resource("minecraft:block/crop"))
+                .texture("particle", blockTexture(block).withSuffix("_stage2"))
+                .texture("crop", blockTexture(block).withSuffix("_stage2"))
+                .renderType("cutout");
+        var model3 = models() // BlockModelProvider extends ModelProvider<BlockModelBuilder>
+                .withExistingParent(blockName(block) + "_stage3", MedievalismConstants.resource("minecraft:block/crop"))
+                .texture("particle", blockTexture(block).withSuffix("_stage3"))
+                .texture("crop", blockTexture(block).withSuffix("_stage3"))
+                .renderType("cutout");
+
         var builder = getVariantBuilder(block);
-        for (int i = DryingBlock.MIN_DRYNESS; i < DryingBlock.MAX_DRYNESS; i++)
-        {
+        builder
+                .partialState().with(CropBlock.AGE, 0)
+                .modelForState().modelFile(model0).addModel()
+                .partialState().with(CropBlock.AGE, 1)
+                .modelForState().modelFile(model0).addModel()
+                .partialState().with(CropBlock.AGE, 2)
+                .modelForState().modelFile(model1).addModel()
+                .partialState().with(CropBlock.AGE, 3)
+                .modelForState().modelFile(model1).addModel()
+                .partialState().with(CropBlock.AGE, 4)
+                .modelForState().modelFile(model2).addModel()
+                .partialState().with(CropBlock.AGE, 5)
+                .modelForState().modelFile(model2).addModel()
+                .partialState().with(CropBlock.AGE, 6)
+                .modelForState().modelFile(model2).addModel()
+                .partialState().with(CropBlock.AGE, 7)
+                .modelForState().modelFile(model3).addModel();
+    }
+
+    private void dryingBlock(DryingBlock block, ModelFile wetModel, ModelFile dryModel) {
+        var builder = getVariantBuilder(block);
+        for (int i = DryingBlock.MIN_DRYNESS; i < DryingBlock.MAX_DRYNESS; i++) {
             builder.partialState()
                     .with(DryingBlock.DRYNESS, i)
                     .modelForState().modelFile(wetModel).addModel();

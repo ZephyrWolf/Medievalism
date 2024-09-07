@@ -103,6 +103,7 @@ public class BaseLanguageProvider extends LanguageProvider
             add(ItemRegistration.BARLEY.get(), "Barley");
             add(ItemRegistration.OAT_SEEDS.get(), "Oat Seeds");
             add(ItemRegistration.OATS.get(), "Oats");
+            add(BlockRegistration.YAMS.get(), "Yams");
             add(ItemRegistration.YAM.get(), "Yam");
             add(ItemRegistration.BAKED_YAM.get(), "Baked Yam");
             add(ItemRegistration.BAKED_BEETROOT.get(), "Baked Beetroot");
