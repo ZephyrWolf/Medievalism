@@ -49,10 +49,12 @@ import java.util.List;
 @MethodsReturnNonnullByDefault
 // net.minecraft.world.level.block.ShulkerBoxBlock
 public class GatherersJarBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
-    //region Constants
-    public static final int BLOCK_ENTITY_MENU = 0;
-    public static final int IN_HAND_MENU = 1;
+    public enum MenuTriggerSource {
+        BLOCK_ENTITY_MENU,
+        IN_HAND_MENU
+    }
 
+    //region Constants
     public static final MapCodec<GatherersJarBlock> CODEC = simpleCodec(GatherersJarBlock::new);
 
     public static final VoxelShape GATHERERS_POT_SHAPE = Block.box(6, 0.0, 6, 10, 6, 10);
@@ -188,7 +190,10 @@ public class GatherersJarBlock extends BaseEntityBlock implements SimpleWaterlog
         } else if (pPlayer.isSpectator()) {
             return InteractionResult.CONSUME;
         } else if (pLevel.getBlockEntity(pPos) instanceof GatherersJarBlockEntity blockEntity) {
-            pPlayer.openMenu(blockEntity,  buf -> { buf.writeInt(BLOCK_ENTITY_MENU); buf.writeBlockPos(pPos);});
+            pPlayer.openMenu(blockEntity, buf -> {
+                buf.writeInt(MenuTriggerSource.BLOCK_ENTITY_MENU.ordinal());
+                buf.writeBlockPos(pPos);
+            });
             //pPlayer.awardStat(Stats.OPEN_SHULKER_BOX);
             PiglinAi.angerNearbyPiglins(pPlayer, true);
 

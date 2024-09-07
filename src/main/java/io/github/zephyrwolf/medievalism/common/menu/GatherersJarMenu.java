@@ -5,14 +5,12 @@ import io.github.zephyrwolf.medievalism.common.block.blockentity.GatherersJarBlo
 import io.github.zephyrwolf.medievalism.common.block.blockentity.HasInventory;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.content.menu.MenuRegistration;
-import net.minecraft.ChatFormatting;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.Nameable;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -25,17 +23,15 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
-import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class GatherersJarMenu extends AbstractContainerMenu implements HasInventory, Nameable {
+public class GatherersJarMenu extends AbstractContainerMenu implements HasInventory {
+    //region Constants
     public static final int COLUMNS = 2;
     public static final int ROWS = 2;
-
-    // private final Container container;
 
     private static final int PLAYER_INVENTORY_ROW_COUNT = 3;
     private static final int PLAYER_INVENTORY_COLUMN_COUNT = 9;
@@ -47,23 +43,31 @@ public class GatherersJarMenu extends AbstractContainerMenu implements HasInvent
     // TE
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
     private static final int TE_INVENTORY_SLOT_COUNT = COLUMNS * ROWS;
+    //endregion
 
+    //region Variables
     private Level level = null;
-    private int source = 0;
-    private Inventory playerInv;
+    private GatherersJarBlock.MenuTriggerSource source = GatherersJarBlock.MenuTriggerSource.BLOCK_ENTITY_MENU;
 
+    public final MenuProvider menuProvider;
     public GatherersJarBlockEntity _blockEntity = null;
     private ItemStack _stack = null;
+    //endregion
 
+    //region Construction
     public GatherersJarMenu(int pContainerId, Inventory playerInv, FriendlyByteBuf extraData) {
         super(MenuRegistration.GATHERERS_JAR_MENU.get(), pContainerId);
-        int source = extraData.readInt();
-        if (source == GatherersJarBlock.BLOCK_ENTITY_MENU) {
-            _blockEntity = (GatherersJarBlockEntity) playerInv.player.level().getBlockEntity(extraData.readBlockPos());
-        } else if (source == GatherersJarBlock.IN_HAND_MENU) {
-            _stack = playerInv.getItem(extraData.readInt());
-        } else {
-            throw new IllegalStateException("Source cannot be " + source);
+        GatherersJarBlock.MenuTriggerSource source = GatherersJarBlock.MenuTriggerSource.values()[extraData.readInt()];
+        switch (source) {
+            case GatherersJarBlock.MenuTriggerSource.BLOCK_ENTITY_MENU -> {
+                _blockEntity = (GatherersJarBlockEntity) playerInv.player.level().getBlockEntity(extraData.readBlockPos());
+                menuProvider = _blockEntity;
+            }
+            case GatherersJarBlock.MenuTriggerSource.IN_HAND_MENU -> {
+                _stack = playerInv.getItem(extraData.readInt());
+                menuProvider = new ItemStackMenuProvider(_stack);
+            }
+            default -> throw new IllegalStateException("Source cannot be " + source);
         }
         init(source, playerInv);
     }
@@ -71,83 +75,74 @@ public class GatherersJarMenu extends AbstractContainerMenu implements HasInvent
     public GatherersJarMenu(int pContainerId, Inventory playerInv, BlockEntity entity) {
         super(MenuRegistration.GATHERERS_JAR_MENU.get(), pContainerId);
         _blockEntity = ((GatherersJarBlockEntity) entity);
-        init(GatherersJarBlock.BLOCK_ENTITY_MENU, playerInv);
+        menuProvider = _blockEntity;
+        init(GatherersJarBlock.MenuTriggerSource.BLOCK_ENTITY_MENU, playerInv);
     }
 
     public GatherersJarMenu(int pContainerId, Inventory playerInv, ItemStack stack) {
         super(MenuRegistration.GATHERERS_JAR_MENU.get(), pContainerId);
         _stack = stack;
-        init(GatherersJarBlock.IN_HAND_MENU, playerInv);
+        menuProvider = new ItemStackMenuProvider(_stack);
+        init(GatherersJarBlock.MenuTriggerSource.IN_HAND_MENU, playerInv);
     }
 
-    protected void init(int source, Inventory pPlayerInv) {
+    protected void init(GatherersJarBlock.MenuTriggerSource source, Inventory pPlayerInv) {
         this.source = source;
         checkContainerSize(pPlayerInv, 2);
-        playerInv = pPlayerInv;
-        level = playerInv.player.level();
-
-        /*
-        int selectedSlot = playerInv.selected;
-        ItemStack stack = playerInv.getItem(selectedSlot);
-        var items = stack.getCapability(Capabilities.ItemHandler.ITEM);
-        if (items != null) {
-            handler = items;
-        } else throw new IllegalStateException("No itemhandler");
-        */
-
-        addPlayerInventory(playerInv);
-        addPlayerHotbar(playerInv);
+        level = pPlayerInv.player.level();
+        addPlayerInventory(pPlayerInv);
+        addPlayerHotbar(pPlayerInv);
         addContainerInventory(getInventory());
     }
+    //endregion
 
-    // --
+    //region Boilerplate
+    @Override
+    public boolean stillValid(Player pPlayer) {
+        return source == GatherersJarBlock.MenuTriggerSource.IN_HAND_MENU || stillValid(ContainerLevelAccess.create(level, _blockEntity.getBlockPos()), pPlayer, BlockRegistration.GATHERERS_JAR.get());
+    }
+    //endregion
 
+    //region Inventory
     protected ItemStackHandler _stackItems = null;
 
     @Override
     public IItemHandler getInventory() {
-        if (source == GatherersJarBlock.BLOCK_ENTITY_MENU) {
-            return _blockEntity.getInventory();
-        } else {
-            if (_stackItems == null) {
-                var dataMap = _stack.getComponents();
-                var container = dataMap.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
-                NonNullList<ItemStack> stacks = NonNullList.createWithCapacity(4);
-                for (int slot = 0; slot < 4; slot++) {
-                    if (slot < container.getSlots()) {
-                        stacks.add(container.getStackInSlot(slot));
-                    } else {
-                        stacks.add(ItemStack.EMPTY);
-                    }
-                }
-                _stackItems = new ItemStackHandler(stacks) {
-                    @Override
-                    public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-                        if (!isItemValid(slot, stack)) return stack;
-                        return super.insertItem(slot, stack, simulate);
-                    }
-
-                    @Override
-                    public boolean isItemValid(int slot, ItemStack stack) {
-                        //var block = GatherersJarBlock.byItem(stack.getItem());
-                        return stack.getItem().canFitInsideContainerItems();
-                    }
-
-                    @Override
-                    protected void onContentsChanged(int slot) {
-                        // Should this be checked for only server? probs?
-                        //_stack.getComponents()
-                        //        .getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY)
-                        //        .copyInto(GatherersJarMenu.this.getInventoryAsList());
-
-                    }
-                };
+        switch (source) {
+            case GatherersJarBlock.MenuTriggerSource.BLOCK_ENTITY_MENU -> {
+                return _blockEntity.getInventory();
             }
-            return _stackItems;
+            case GatherersJarBlock.MenuTriggerSource.IN_HAND_MENU -> {
+                if (_stackItems == null) {
+                    var dataMap = _stack.getComponents();
+                    var container = dataMap.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
+                    NonNullList<ItemStack> stacks = NonNullList.createWithCapacity(4);
+                    for (int slot = 0; slot < 4; slot++) {
+                        if (slot < container.getSlots()) {
+                            stacks.add(container.getStackInSlot(slot));
+                        } else {
+                            stacks.add(ItemStack.EMPTY);
+                        }
+                    }
+                    _stackItems = new ItemStackHandler(stacks) { // Almost duplicate of the one in the block entity
+                        @Override
+                        public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+                            if (!isItemValid(slot, stack)) return stack;
+                            return super.insertItem(slot, stack, simulate);
+                        }
+
+                        @Override
+                        public boolean isItemValid(int slot, ItemStack stack) {
+                            //var block = GatherersJarBlock.byItem(stack.getItem());
+                            return stack.getItem().canFitInsideContainerItems();
+                        }
+                    };
+                }
+                return _stackItems;
+            }
+            default -> throw new IllegalStateException("Cannot get inventory from unknown menu source.");
         }
     }
-
-    // --
 
     @Override
     public ItemStack quickMoveStack(Player pPlayer, int pIndex) {
@@ -183,11 +178,7 @@ public class GatherersJarMenu extends AbstractContainerMenu implements HasInvent
         sourceSlot.onTake(pPlayer, sourceStack);
         return copyOfSourceStack;
     }
-
-    @Override
-    public boolean stillValid(Player pPlayer) {
-        return source == GatherersJarBlock.IN_HAND_MENU || stillValid(ContainerLevelAccess.create(level, _blockEntity.getBlockPos()), pPlayer, BlockRegistration.GATHERERS_JAR.get());
-    }
+    //endregion
 
     //region Add Player Slots
     private void addPlayerInventory(Inventory playerInventory) {
@@ -205,6 +196,7 @@ public class GatherersJarMenu extends AbstractContainerMenu implements HasInvent
     }
 
     //endregion
+
     //region Add Inventory Slots
     private void addContainerInventory(IItemHandler inventory) {
         for (int i = 0; i < ROWS; i++) {
@@ -220,20 +212,6 @@ public class GatherersJarMenu extends AbstractContainerMenu implements HasInvent
                     }
                 });
             }
-        }
-    }
-
-    @Override
-    public Component getName() {
-        return hasCustomName() ? getCustomName() : Component.translatable(GatherersJarBlock.LANG_DEFAULT_NAME);
-    }
-
-    @Override
-    public @Nullable Component getCustomName() {
-        if (source == GatherersJarBlock.IN_HAND_MENU) {
-            return _stack.has(DataComponents.CUSTOM_NAME) ? Component.literal(_stack.getComponents().get(DataComponents.CUSTOM_NAME).getString()) : null;
-        } else {
-            return _blockEntity.getCustomName();
         }
     }
     //endregion

@@ -42,12 +42,6 @@ public class GatherersJarScreen extends AbstractContainerScreen<GatherersJarMenu
     }
 
     @Override
-    protected void renderLabels(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY) {
-        pGuiGraphics.drawString(this.font, menu.getDisplayName(), this.titleLabelX, this.titleLabelY, 4210752, false);
-        pGuiGraphics.drawString(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, 4210752, false);
-    }
-
-    @Override
     public void render(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
         renderBackground(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
         super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
