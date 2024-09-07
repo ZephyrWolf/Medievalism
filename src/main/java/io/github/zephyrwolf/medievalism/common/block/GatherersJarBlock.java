@@ -285,4 +285,11 @@ public class GatherersJarBlock extends BaseEntityBlock implements SimpleWaterlog
         return new GatherersJarBlockEntity(pPos, pState);
     }
     //endregion
+
+    public static class DryingGatherersJarBlock extends DryingBlock
+    {
+        public DryingGatherersJarBlock(Properties props) {
+            super(props, GATHERERS_POT_SHAPE);
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -37,6 +38,8 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public class ClayCauldronBlock extends Block implements SimpleWaterloggedBlock {
+    public static final MapCodec<ClayCauldronBlock> CODEC = simpleCodec(ClayCauldronBlock::new);
+
     public static final VoxelShape CLAY_CAULDRON_SHAPE = Block.box(1, 0, 1, 15, 16, 15);
 
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -48,6 +51,11 @@ public class ClayCauldronBlock extends Block implements SimpleWaterloggedBlock {
                 .setValue(WATERLOGGED, false)
                 .setValue(AXIS, Direction.Axis.X)
         );
+    }
+
+    @Override
+    protected MapCodec<? extends Block> codec() {
+        return CODEC;
     }
 
     @Override
@@ -142,5 +150,14 @@ public class ClayCauldronBlock extends Block implements SimpleWaterloggedBlock {
         BlockPos belowPos = pPos.below();
         BlockState belowState = pLevel.getBlockState(belowPos);
         return belowState.isFaceSturdy(pLevel, belowPos, Direction.UP, SupportType.FULL);
+    }
+
+    // --
+
+    public static class DryingClayCauldronPotBlock extends DryingBlock
+    {
+        public DryingClayCauldronPotBlock(Properties props) {
+            super(props, CLAY_CAULDRON_SHAPE);
+        }
     }
 }

@@ -1,5 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.block;
 
+import com.mojang.serialization.MapCodec;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.item.blockitem.DryingBlockItem;
 import io.github.zephyrwolf.medievalism.content.loot.LootContextParamSetRegistration;
@@ -44,7 +45,8 @@ import java.util.List;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class DryingBlock extends Block {
+public abstract class DryingBlock extends Block {
+
     public static final int SKY_BRIGHTNESS_TO_DRY = 12;
     public static final int MAX_DRYNESS = 11;
     public static final int DEFAULT_DRYNESS = 4;

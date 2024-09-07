@@ -1,8 +1,8 @@
 package io.github.zephyrwolf.medievalism.data.loot;
 
 import io.github.zephyrwolf.medievalism.common.block.DryingBlock;
-import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
@@ -10,6 +10,7 @@ import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -23,18 +24,15 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
-public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
-{
+public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
     //private final Set<Block> generatedLootTables = new HashSet<>();
 
-    public BaseBlockLootTablesSubProvider(HolderLookup.Provider lookupProvider)
-    {
+    public BaseBlockLootTablesSubProvider(HolderLookup.Provider lookupProvider) {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags(), lookupProvider);
     }
 
     @Override
-    protected void generate()
-    {
+    protected void generate() {
         add(BlockRegistration.RED_CLAY_BLOCK.get(), (block) -> createSingleItemTableWithSilkTouch(
                 block,
                 ItemRegistration.RED_CLAY_BALL.get(),
@@ -88,6 +86,17 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
         dropSelf(BlockRegistration.SNOWY_LARGE_ROCK_BLOCK.get());
         dropSelf(BlockRegistration.ICE_LARGE_ROCK_BLOCK.get());
 
+        add(
+                BlockRegistration.YAMS.get(),
+                createCropDrops(
+                        BlockRegistration.YAMS.get(),
+                        ItemRegistration.YAM.get(),
+                        ItemRegistration.YAM.get(),
+                        LootItemBlockStatePropertyCondition.hasBlockStateProperties(BlockRegistration.YAMS.get())
+                                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 7))
+                )
+        );
+
         dropSelf(BlockRegistration.LIMESTONE_BLOCK.get());
         dropSelf(BlockRegistration.LIMESTONE_ROCK_BLOCK.get());
         dropSelf(BlockRegistration.COPPER_ROCK_BLOCK.get());
@@ -100,14 +109,12 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
     }
 
     @SuppressWarnings("unused")
-    protected void dropNamedContainer(Block block)
-    {
+    protected void dropNamedContainer(Block block) {
         add(block, this::createNameableBlockEntityTable);
     }
 
     @Override
-    protected @NotNull Iterable<Block> getKnownBlocks()
-    {
+    protected @NotNull Iterable<Block> getKnownBlocks() {
         return BlockRegistration.BLOCKS.getEntries().stream().map(DeferredHolder::get).map(b -> (Block) b)::iterator;
     }
 
@@ -128,8 +135,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
                 ));
     }
 
-    public LootTable.Builder createCeramicContainer(Block block)
-    {
+    public LootTable.Builder createCeramicContainer(Block block) {
         //LootItemFunctions
         return LootTable.lootTable()
                 .withPool(LootPool.lootPool()
@@ -138,8 +144,8 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
                                 .lootTableItem(block)
                                 .setQuality(1)
                                 .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY)
-                                        .include(DataComponents.CUSTOM_NAME)
-                                        .include(DataComponents.CONTAINER)
+                                                .include(DataComponents.CUSTOM_NAME)
+                                                .include(DataComponents.CONTAINER)
                                         //.include(DataComponents.LOCK)
                                         //.include(DataComponents.CONTAINER_LOOT)
                                 )
@@ -147,8 +153,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
                 );
     }
 
-    public LootTable.Builder createNameable(Block block)
-    {
+    public LootTable.Builder createNameable(Block block) {
         //LootItemFunctions
         return LootTable.lootTable()
                 .withPool(LootPool.lootPool()
@@ -165,8 +170,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
                 );
     }
 
-    public LootTable.Builder createSpecialDropOnStateTable(Block block, Property<Integer> property, int value, ItemLike wet, ItemLike dry)
-    {
+    public LootTable.Builder createSpecialDropOnStateTable(Block block, Property<Integer> property, int value, ItemLike wet, ItemLike dry) {
         return LootTable.lootTable()
                 .withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
@@ -186,10 +190,10 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider
                                 .lootTableItem(wet)
                                 .setQuality(1)
                                 .when(InvertedLootItemCondition.invert(
-                                        new LootItemBlockStatePropertyCondition.Builder(block)
-                                                .setProperties(StatePropertiesPredicate.Builder.properties()
-                                                        .hasProperty(property, value)
-                                                )
+                                                new LootItemBlockStatePropertyCondition.Builder(block)
+                                                        .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                                .hasProperty(property, value)
+                                                        )
                                         )
                                 )
                         )

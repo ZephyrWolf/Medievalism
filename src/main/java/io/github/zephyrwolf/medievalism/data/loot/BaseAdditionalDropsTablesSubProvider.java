@@ -37,6 +37,8 @@ public final class BaseAdditionalDropsTablesSubProvider implements LootTableSubP
 
     private void getLootTables(HolderLookup.Provider ignoredLookupProvider)
     {
+        ruinedDrop(BlockRegistration.WET_PACKED_MUD_BRICK.get(), ItemRegistration.MUD_BALL, 1, 1);
+
         ruinedDrop(BlockRegistration.DRYING_GATHERERS_JAR.get(), ItemRegistration.RED_CLAY_BALL, 1, 1);
         ruinedDrop(BlockRegistration.DRYING_KEEPERS_CROCK.get(), ItemRegistration.RED_CLAY_BALL, 2, 4);
         ruinedDrop(BlockRegistration.DRYING_SETTLERS_POT.get(), ItemRegistration.RED_CLAY_BALL, 2, 4);

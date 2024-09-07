@@ -9,5 +9,12 @@ public final class MedievalismConstants
     public static final String OVERHAUL_PACK_ID_ASSET = PARTIAL_OVERHAUL_PACK_ID + "_client";
     public static final String OVERHAUL_PACK_ID_DATA = PARTIAL_OVERHAUL_PACK_ID + "_server";
 
-    public static ResourceLocation resource(String path) { return ResourceLocation.fromNamespaceAndPath(MOD_ID, path); }
+    public static ResourceLocation resource(String path)
+    {
+        if (path.contains(":"))
+        {
+            return ResourceLocation.parse(path);
+        }
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+    }
 }

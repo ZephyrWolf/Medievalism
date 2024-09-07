@@ -289,4 +289,11 @@ public class KeepersCrockBlock extends BaseEntityBlock implements SimpleWaterlog
         return new KeepersCrockBlockEntity(pPos, pState);
     }
     //endregion
+
+    public static class DryingKeepersCrockBlock extends DryingBlock
+    {
+        public DryingKeepersCrockBlock(Properties props) {
+            super(props, KEEPERS_CROCK_SHAPE);
+        }
+    }
 }

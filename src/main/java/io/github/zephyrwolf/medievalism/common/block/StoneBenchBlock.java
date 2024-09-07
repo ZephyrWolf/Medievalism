@@ -11,6 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -29,6 +30,8 @@ import java.util.List;
 public class StoneBenchBlock extends BaseEntityBlock {
     public static final ResourceLocation CONTENTS = ResourceLocation.withDefaultNamespace("contents");
 
+    public static final VoxelShape STONE_BENCH_SHAPE = Block.box(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
+
     public static final MapCodec<StoneBenchBlock> CODEC = simpleCodec(StoneBenchBlock::new);
 
     public StoneBenchBlock(Properties properties) {
@@ -42,7 +45,7 @@ public class StoneBenchBlock extends BaseEntityBlock {
 
     @Override
     protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return ShortBlock.SHAPE;
+        return STONE_BENCH_SHAPE;
     }
 
     @SuppressWarnings("deprecation")

@@ -11,6 +11,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.neoforged.neoforge.client.model.generators.*;
@@ -47,6 +48,7 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         randomYRotationBlock(BlockRegistration.CHERRY_BRANCH_BLOCK.get(), existingParent(BlockRegistration.CHERRY_BRANCH_BLOCK.get(), "block/branch", "", BlockRegistration.CHERRY_BRANCH_BLOCK.get(), Blocks.CHERRY_LOG));
         randomYRotationBlock(BlockRegistration.MANGROVE_BRANCH_BLOCK.get(), existingParent(BlockRegistration.MANGROVE_BRANCH_BLOCK.get(), "block/branch", "", BlockRegistration.MANGROVE_BRANCH_BLOCK.get(), Blocks.MANGROVE_LOG));
         //endregion
+
         //region Rocks
         ResourceLocation sandstone_top = ResourceLocation.withDefaultNamespace(ModelProvider.BLOCK_FOLDER + "/" + "sandstone_top");
         ResourceLocation red_sandstone_top = ResourceLocation.withDefaultNamespace(ModelProvider.BLOCK_FOLDER + "/" + "red_sandstone_top");
@@ -56,68 +58,67 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
 
         randomYRotationBlock(
                 BlockRegistration.ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.ROCK_BLOCK.get(), "block/base_rock", "1", Blocks.STONE),
-                existingParent(BlockRegistration.ROCK_BLOCK.get(), "block/base_rock", "2", Blocks.STONE),
-                existingParent(BlockRegistration.ROCK_BLOCK.get(), "block/base_rock", "3", Blocks.STONE),
-                existingParent(BlockRegistration.ROCK_BLOCK.get(), "block/base_rock", "4", Blocks.STONE),
-                existingParent(BlockRegistration.ROCK_BLOCK.get(), "block/base_rock", "5", Blocks.STONE)
+                existingParent(BlockRegistration.ROCK_BLOCK.get(), "block/base_rock1", "1", Blocks.STONE),
+                existingParent(BlockRegistration.ROCK_BLOCK.get(), "block/base_rock2", "2", Blocks.STONE),
+                existingParent(BlockRegistration.ROCK_BLOCK.get(), "block/base_rock3", "3", Blocks.STONE),
+                existingParent(BlockRegistration.ROCK_BLOCK.get(), "block/base_rock4", "4", Blocks.STONE),
+                existingParent(BlockRegistration.ROCK_BLOCK.get(), "block/base_rock5", "5", Blocks.STONE)
         );
         randomYRotationBlock(
                 BlockRegistration.SANDSTONE_ROCK_BLOCK.get(),
-                existingParent(blockName(BlockRegistration.SANDSTONE_ROCK_BLOCK.get()), "block/base_rock", "1", sandstone_top, sandstone_top),
-                existingParent(blockName(BlockRegistration.SANDSTONE_ROCK_BLOCK.get()), "block/base_rock", "2", sandstone_top, sandstone_top),
-                existingParent(blockName(BlockRegistration.SANDSTONE_ROCK_BLOCK.get()), "block/base_rock", "3", sandstone_top, sandstone_top),
-                existingParent(blockName(BlockRegistration.SANDSTONE_ROCK_BLOCK.get()), "block/base_rock", "4", sandstone_top, sandstone_top),
-                existingParent(blockName(BlockRegistration.SANDSTONE_ROCK_BLOCK.get()), "block/base_rock", "5", sandstone_top, sandstone_top)
+                existingParent(BlockRegistration.SANDSTONE_ROCK_BLOCK.get(), "block/base_rock1", "1", sandstone_top, sandstone_top),
+                existingParent(BlockRegistration.SANDSTONE_ROCK_BLOCK.get(), "block/base_rock2", "2", sandstone_top, sandstone_top),
+                existingParent(BlockRegistration.SANDSTONE_ROCK_BLOCK.get(), "block/base_rock3", "3", sandstone_top, sandstone_top),
+                existingParent(BlockRegistration.SANDSTONE_ROCK_BLOCK.get(), "block/base_rock4", "4", sandstone_top, sandstone_top),
+                existingParent(BlockRegistration.SANDSTONE_ROCK_BLOCK.get(), "block/base_rock5", "5", sandstone_top, sandstone_top)
         );
         randomYRotationBlock(
                 BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get(),
-                existingParent(blockName(BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get()), "block/base_rock", "1", red_sandstone_top, red_sandstone_top),
-                existingParent(blockName(BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get()), "block/base_rock", "2", red_sandstone_top, red_sandstone_top),
-                existingParent(blockName(BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get()), "block/base_rock", "3", red_sandstone_top, red_sandstone_top),
-                existingParent(blockName(BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get()), "block/base_rock", "4", red_sandstone_top, red_sandstone_top),
-                existingParent(blockName(BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get()), "block/base_rock", "5", red_sandstone_top, red_sandstone_top)
+                existingParent(BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get(), "block/base_rock1", "1", red_sandstone_top, red_sandstone_top),
+                existingParent(BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get(), "block/base_rock2", "2", red_sandstone_top, red_sandstone_top),
+                existingParent(BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get(), "block/base_rock3", "3", red_sandstone_top, red_sandstone_top),
+                existingParent(BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get(), "block/base_rock4", "4", red_sandstone_top, red_sandstone_top),
+                existingParent(BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get(), "block/base_rock5", "5", red_sandstone_top, red_sandstone_top)
         );
         randomYRotationBlock(
                 BlockRegistration.MOSSY_ROCK_BLOCK.get(),
-                existingParent(blockName(BlockRegistration.MOSSY_ROCK_BLOCK.get()), "block/base_rock", "1", stone, mossy_rock.withSuffix("1")),
-                existingParent(blockName(BlockRegistration.MOSSY_ROCK_BLOCK.get()), "block/base_rock", "2", stone, mossy_rock.withSuffix("2")),
-                existingParent(blockName(BlockRegistration.MOSSY_ROCK_BLOCK.get()), "block/base_rock", "3", stone, mossy_rock.withSuffix("3")),
-                existingParent(blockName(BlockRegistration.MOSSY_ROCK_BLOCK.get()), "block/base_rock", "4", stone, mossy_rock.withSuffix("4")),
-                existingParent(blockName(BlockRegistration.MOSSY_ROCK_BLOCK.get()), "block/base_rock", "5", stone, mossy_rock.withSuffix("5"))
+                existingParent(BlockRegistration.MOSSY_ROCK_BLOCK.get(), "block/base_rock1", "1", stone, mossy_rock.withSuffix("1")),
+                existingParent(BlockRegistration.MOSSY_ROCK_BLOCK.get(), "block/base_rock2", "2", stone, mossy_rock.withSuffix("2")),
+                existingParent(BlockRegistration.MOSSY_ROCK_BLOCK.get(), "block/base_rock3", "3", stone, mossy_rock.withSuffix("3")),
+                existingParent(BlockRegistration.MOSSY_ROCK_BLOCK.get(), "block/base_rock4", "4", stone, mossy_rock.withSuffix("4")),
+                existingParent(BlockRegistration.MOSSY_ROCK_BLOCK.get(), "block/base_rock5", "5", stone, mossy_rock.withSuffix("5"))
         );
         randomYRotationBlock(
                 BlockRegistration.LIGHTER_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock", "1", dirt_path_top),
-                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock", "2", dirt_path_top),
-                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock", "3", dirt_path_top),
-                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock", "4", dirt_path_top),
-                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock", "5", dirt_path_top)
+                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock1", "1", dirt_path_top),
+                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock2", "2", dirt_path_top),
+                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock3", "3", dirt_path_top),
+                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock4", "4", dirt_path_top),
+                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock5", "5", dirt_path_top)
         );
         randomYRotationBlock(
                 BlockRegistration.SNOWY_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.SNOWY_ROCK_BLOCK.get(), "block/base_rock", "1", Blocks.SNOW),
-                existingParent(BlockRegistration.SNOWY_ROCK_BLOCK.get(), "block/base_rock", "2", Blocks.SNOW),
-                existingParent(BlockRegistration.SNOWY_ROCK_BLOCK.get(), "block/base_rock", "3", Blocks.SNOW),
-                existingParent(BlockRegistration.SNOWY_ROCK_BLOCK.get(), "block/base_rock", "4", Blocks.SNOW),
-                existingParent(BlockRegistration.SNOWY_ROCK_BLOCK.get(), "block/base_rock", "5", Blocks.SNOW)
+                existingParent(BlockRegistration.SNOWY_ROCK_BLOCK.get(), "block/base_rock1", "1", Blocks.SNOW),
+                existingParent(BlockRegistration.SNOWY_ROCK_BLOCK.get(), "block/base_rock2", "2", Blocks.SNOW),
+                existingParent(BlockRegistration.SNOWY_ROCK_BLOCK.get(), "block/base_rock3", "3", Blocks.SNOW),
+                existingParent(BlockRegistration.SNOWY_ROCK_BLOCK.get(), "block/base_rock4", "4", Blocks.SNOW),
+                existingParent(BlockRegistration.SNOWY_ROCK_BLOCK.get(), "block/base_rock5", "5", Blocks.SNOW)
         );
         randomYRotationBlock(
                 BlockRegistration.ICE_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.ICE_ROCK_BLOCK.get(), "block/base_rock", "1", Blocks.PACKED_ICE),
-                existingParent(BlockRegistration.ICE_ROCK_BLOCK.get(), "block/base_rock", "2", Blocks.PACKED_ICE),
-                existingParent(BlockRegistration.ICE_ROCK_BLOCK.get(), "block/base_rock", "3", Blocks.PACKED_ICE),
-                existingParent(BlockRegistration.ICE_ROCK_BLOCK.get(), "block/base_rock", "4", Blocks.PACKED_ICE),
-                existingParent(BlockRegistration.ICE_ROCK_BLOCK.get(), "block/base_rock", "5", Blocks.PACKED_ICE)
+                existingParent(BlockRegistration.ICE_ROCK_BLOCK.get(), "block/base_rock1", "1", Blocks.PACKED_ICE),
+                existingParent(BlockRegistration.ICE_ROCK_BLOCK.get(), "block/base_rock2", "2", Blocks.PACKED_ICE),
+                existingParent(BlockRegistration.ICE_ROCK_BLOCK.get(), "block/base_rock3", "3", Blocks.PACKED_ICE),
+                existingParent(BlockRegistration.ICE_ROCK_BLOCK.get(), "block/base_rock4", "4", Blocks.PACKED_ICE),
+                existingParent(BlockRegistration.ICE_ROCK_BLOCK.get(), "block/base_rock5", "5", Blocks.PACKED_ICE)
         );
-
 
 
         // Gatherer's Jar
         dryingBlock(BlockRegistration.DRYING_GATHERERS_JAR.get(),
-                existingParent("wet_" + blockName(BlockRegistration.GATHERERS_JAR.get()), "block/gatherers_jar", "",
+                existingParent("wet_" + blockName(BlockRegistration.GATHERERS_JAR.get()), "block/gatherers_jar",
                         MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_gatherers_jar")),
-                existingParent("dry_" + blockName(BlockRegistration.GATHERERS_JAR.get()), "block/gatherers_jar", "",
+                existingParent("dry_" + blockName(BlockRegistration.GATHERERS_JAR.get()), "block/gatherers_jar",
                         MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_gatherers_jar")));
         simpleBlock(
                 BlockRegistration.GATHERERS_JAR.get(),
@@ -125,13 +126,13 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
 
         // Keeper's Crock
         dryingBlock(BlockRegistration.DRYING_KEEPERS_CROCK.get(),
-                existingParent("wet_" + blockName(BlockRegistration.KEEPERS_CROCK.get()), "block/keepers_crock", "",
+                existingParent("wet_" + blockName(BlockRegistration.KEEPERS_CROCK.get()), "block/keepers_crock",
                         MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_keepers_crock")),
-                existingParent("wet_" + blockName(BlockRegistration.KEEPERS_CROCK.get()), "block/keepers_crock", "_rotated",
+                existingParent("wet_" + blockName(BlockRegistration.KEEPERS_CROCK.get()) + "_rotated", "block/keepers_crock_rotated",
                         MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_keepers_crock")),
-                existingParent("dry_" + blockName(BlockRegistration.KEEPERS_CROCK.get()), "block/keepers_crock", "",
+                existingParent("dry_" + blockName(BlockRegistration.KEEPERS_CROCK.get()), "block/keepers_crock",
                         MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_keepers_crock")),
-                existingParent("dry_" + blockName(BlockRegistration.KEEPERS_CROCK.get()), "block/keepers_crock", "_rotated",
+                existingParent("dry_" + blockName(BlockRegistration.KEEPERS_CROCK.get()) + "_rotated", "block/keepers_crock_rotated",
                         MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_keepers_crock")));
         horizontalAxisBlock(
                 BlockRegistration.KEEPERS_CROCK.get(),
@@ -140,13 +141,13 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
 
         // Settler's Pot
         dryingBlock(BlockRegistration.DRYING_SETTLERS_POT.get(),
-                existingParent("wet_" + blockName(BlockRegistration.SETTLERS_POT.get()), "block/settlers_pot", "",
+                existingParent("wet_" + blockName(BlockRegistration.SETTLERS_POT.get()), "block/settlers_pot",
                         MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_settlers_pot")),
-                existingParent("wet_" + blockName(BlockRegistration.SETTLERS_POT.get()), "block/settlers_pot", "_rotated",
+                existingParent("wet_" + blockName(BlockRegistration.SETTLERS_POT.get()) + "_rotated", "block/settlers_pot_rotated",
                         MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_settlers_pot")),
-                existingParent("dry_" + blockName(BlockRegistration.SETTLERS_POT.get()), "block/settlers_pot", "",
+                existingParent("dry_" + blockName(BlockRegistration.SETTLERS_POT.get()), "block/settlers_pot",
                         MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_settlers_pot")),
-                existingParent("dry_" + blockName(BlockRegistration.SETTLERS_POT.get()), "block/settlers_pot", "_rotated",
+                existingParent("dry_" + blockName(BlockRegistration.SETTLERS_POT.get()) + "_rotated", "block/settlers_pot_rotated",
                         MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_settlers_pot")));
         horizontalAxisBlock(
                 BlockRegistration.SETTLERS_POT.get(),
@@ -155,13 +156,13 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
 
         // Clay Cooking Pot
         dryingBlock(BlockRegistration.DRYING_CLAY_COOKING_POT.get(),
-                existingParent("wet_" + blockName(BlockRegistration.CLAY_COOKING_POT.get()), "block/clay_cooking_pot", "",
+                existingParent("wet_" + blockName(BlockRegistration.CLAY_COOKING_POT.get()), "block/clay_cooking_pot",
                         MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_clay_cooking_pot")),
-                existingParent("wet_" + blockName(BlockRegistration.CLAY_COOKING_POT.get()), "block/clay_cooking_pot", "_rotated",
+                existingParent("wet_" + blockName(BlockRegistration.CLAY_COOKING_POT.get()) + "_rotated", "block/clay_cooking_pot_rotated",
                         MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_clay_cooking_pot")),
-                existingParent("dry_" + blockName(BlockRegistration.CLAY_COOKING_POT.get()), "block/clay_cooking_pot", "",
+                existingParent("dry_" + blockName(BlockRegistration.CLAY_COOKING_POT.get()), "block/clay_cooking_pot",
                         MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_clay_cooking_pot")),
-                existingParent("dry_" + blockName(BlockRegistration.CLAY_COOKING_POT.get()), "block/clay_cooking_pot", "_rotated",
+                existingParent("dry_" + blockName(BlockRegistration.CLAY_COOKING_POT.get()) + "_rotated", "block/clay_cooking_pot_rotated",
                         MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_clay_cooking_pot")));
         horizontalAxisBlock(
                 BlockRegistration.CLAY_COOKING_POT.get(),
@@ -170,13 +171,13 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
 
         // Clay Cauldron
         dryingBlock(BlockRegistration.DRYING_CLAY_CAULDRON.get(),
-                existingParent("wet_" + blockName(BlockRegistration.CLAY_CAULDRON.get()), "block/clay_cauldron", "",
+                existingParent("wet_" + blockName(BlockRegistration.CLAY_CAULDRON.get()), "block/clay_cauldron",
                         MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_clay_cauldron")),
-                existingParent("wet_" + blockName(BlockRegistration.CLAY_CAULDRON.get()), "block/clay_cauldron", "_rotated",
+                existingParent("wet_" + blockName(BlockRegistration.CLAY_CAULDRON.get()) + "_rotated", "block/clay_cauldron_rotated",
                         MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_clay_cauldron")),
-                existingParent("dry_" + blockName(BlockRegistration.CLAY_CAULDRON.get()), "block/clay_cauldron", "",
+                existingParent("dry_" + blockName(BlockRegistration.CLAY_CAULDRON.get()), "block/clay_cauldron",
                         MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_clay_cauldron")),
-                existingParent("dry_" + blockName(BlockRegistration.CLAY_CAULDRON.get()), "block/clay_cauldron", "_rotated",
+                existingParent("dry_" + blockName(BlockRegistration.CLAY_CAULDRON.get()) + "_rotated", "block/clay_cauldron_rotated",
                         MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_clay_cauldron")));
         horizontalAxisBlock(
                 BlockRegistration.CLAY_CAULDRON.get(),
@@ -184,35 +185,33 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 existingModel(BlockRegistration.CLAY_CAULDRON.get(), "_rotated"));
 
 
-
-
         randomYRotationBlock(
                 BlockRegistration.LARGE_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.LARGE_ROCK_BLOCK.get(), "block/base_large_rock", "1", Blocks.STONE) // 2 and 3
+                existingParent(BlockRegistration.LARGE_ROCK_BLOCK.get(), "block/base_large_rock1", "1", Blocks.STONE) // 2 and 3
         );
         randomYRotationBlock(
                 BlockRegistration.SANDSTONE_LARGE_ROCK_BLOCK.get(),
-                existingParent(blockName(BlockRegistration.SANDSTONE_LARGE_ROCK_BLOCK.get()), "block/base_large_rock", "1", sandstone_top, sandstone_top)
+                existingParent(BlockRegistration.SANDSTONE_LARGE_ROCK_BLOCK.get(), "block/base_large_rock1", "1", sandstone_top, sandstone_top)
         );
         randomYRotationBlock(
                 BlockRegistration.RED_SANDSTONE_LARGE_ROCK_BLOCK.get(),
-                existingParent(blockName(BlockRegistration.RED_SANDSTONE_LARGE_ROCK_BLOCK.get()), "block/base_large_rock", "1", red_sandstone_top, red_sandstone_top)
+                existingParent(BlockRegistration.RED_SANDSTONE_LARGE_ROCK_BLOCK.get(), "block/base_large_rock1", "1", red_sandstone_top, red_sandstone_top)
         );
         randomYRotationBlock(
                 BlockRegistration.MOSSY_LARGE_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.MOSSY_LARGE_ROCK_BLOCK.get(), "block/base_large_rock", "1", Blocks.MOSS_BLOCK)
+                existingParent(BlockRegistration.MOSSY_LARGE_ROCK_BLOCK.get(), "block/base_large_rock1", "1", Blocks.MOSS_BLOCK)
         );
         randomYRotationBlock(
                 BlockRegistration.LIGHTER_LARGE_ROCK_BLOCK.get(),
-                existingParent(blockName(BlockRegistration.LIGHTER_LARGE_ROCK_BLOCK.get()), "block/base_large_rock", "1", dirt_path_top, dirt_path_top)
+                existingParent(BlockRegistration.LIGHTER_LARGE_ROCK_BLOCK.get(), "block/base_large_rock1", "1", dirt_path_top, dirt_path_top)
         );
         randomYRotationBlock(
                 BlockRegistration.SNOWY_LARGE_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.SNOWY_LARGE_ROCK_BLOCK.get(), "block/base_large_rock", "1", Blocks.SNOW)
+                existingParent(BlockRegistration.SNOWY_LARGE_ROCK_BLOCK.get(), "block/base_large_rock1", "1", Blocks.SNOW)
         );
         randomYRotationBlock(
                 BlockRegistration.ICE_LARGE_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.ICE_LARGE_ROCK_BLOCK.get(), "block/base_large_rock", "1", Blocks.PACKED_ICE)
+                existingParent(BlockRegistration.ICE_LARGE_ROCK_BLOCK.get(), "block/base_large_rock1", "1", Blocks.PACKED_ICE)
         );
 
         randomYRotationBlock(
@@ -255,11 +254,9 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 .modelForState().modelFile(dryModel).addModel();
     }
 
-    private void dryingBlock(DryingBlock block, ModelFile wetZModel, ModelFile wetXModel, ModelFile dryZModel, ModelFile dryXModel)
-    {
+    private void dryingBlock(DryingBlock block, ModelFile wetZModel, ModelFile wetXModel, ModelFile dryZModel, ModelFile dryXModel) {
         var builder = getVariantBuilder(block);
-        for (int i = DryingBlock.MIN_DRYNESS; i < DryingBlock.MAX_DRYNESS; i++)
-        {
+        for (int i = DryingBlock.MIN_DRYNESS; i < DryingBlock.MAX_DRYNESS; i++) {
             builder.partialState()
                     .with(DryingBlock.DRYNESS, i)
                     .with(DryingBlock.AXIS, Direction.Axis.Z)
@@ -269,8 +266,7 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 .with(DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS)
                 .with(DryingBlock.AXIS, Direction.Axis.Z)
                 .modelForState().modelFile(dryZModel).addModel();
-        for (int i = DryingBlock.MIN_DRYNESS; i < DryingBlock.MAX_DRYNESS; i++)
-        {
+        for (int i = DryingBlock.MIN_DRYNESS; i < DryingBlock.MAX_DRYNESS; i++) {
             builder.partialState()
                     .with(DryingBlock.DRYNESS, i)
                     .with(DryingBlock.AXIS, Direction.Axis.X)
@@ -287,8 +283,7 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         horizontalAxisBlock(block, model, model);
     }
 
-    private void horizontalAxisBlock(Block block, ModelFile zAxisModel, ModelFile xAxisModel)
-    {
+    private void horizontalAxisBlock(Block block, ModelFile zAxisModel, ModelFile xAxisModel) {
         getVariantBuilder(block)
                 .partialState().with(BlockStateProperties.HORIZONTAL_AXIS, Direction.Axis.Z)
                 .modelForState().modelFile(zAxisModel).rotationY(0).addModel()
@@ -377,7 +372,6 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 .getExistingFile(MedievalismConstants.resource(name + suffix));
     }
 
-    @SuppressWarnings("unused")
     private ModelFile existingParent(Block block, String parent, String suffix) {
         return existingParent(block, parent, suffix, block);
     }
@@ -386,18 +380,18 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         return existingParent(block, parent, suffix, texture, texture);
     }
 
-    private ModelFile existingParent(Block block, String parent, String suffix, Block texture, Block particle) {
-        return existingParent(blockName(block), parent, suffix, blockTexture(particle), blockTexture(texture));
+    private ModelFile existingParent(Block block, String parent, String suffix, Block particle, Block texture) {
+        return existingParent(blockName(block) + suffix, parent, blockTexture(particle), blockTexture(texture));
     }
 
     @SuppressWarnings("SameParameterValue")
     private ModelFile existingParent(Block block, String parent, String suffix, ResourceLocation... textures) {
-        return existingParent(blockName(block), parent, suffix, textures);
+        return existingParent(blockName(block) + suffix, parent, textures);
     }
 
-    private ModelFile existingParent(String name, String parent, String suffix, ResourceLocation... textures) {
+    private ModelFile existingParent(String name, String parent, ResourceLocation... textures) {
         BlockModelBuilder model = models() // BlockModelProvider extends ModelProvider<BlockModelBuilder>
-                .withExistingParent(name + suffix, MedievalismConstants.resource(parent + suffix))
+                .withExistingParent(name, MedievalismConstants.resource(parent))
                 .texture("particle", textures[0]);
         for (int i = 0; i < textures.length; i++) {
             model.texture(Integer.toString(i), textures[i]);

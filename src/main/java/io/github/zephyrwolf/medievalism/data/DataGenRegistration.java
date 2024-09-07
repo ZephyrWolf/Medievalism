@@ -10,6 +10,7 @@ import io.github.zephyrwolf.medievalism.data.lang.BaseLanguageProvider;
 import io.github.zephyrwolf.medievalism.data.lang.OverhaulLanguageProvider;
 import io.github.zephyrwolf.medievalism.data.loot.BaseAdditionalDropsTablesSubProvider;
 import io.github.zephyrwolf.medievalism.data.loot.BaseBlockLootTablesSubProvider;
+import io.github.zephyrwolf.medievalism.data.loot.OverhaulBlockLootTablesSubProvider;
 import io.github.zephyrwolf.medievalism.data.loot.OverhaulMobLootTablesSubProvider;
 import io.github.zephyrwolf.medievalism.data.provider.PackMetaProvider;
 import io.github.zephyrwolf.medievalism.data.recipe.BaseRecipeProvider;

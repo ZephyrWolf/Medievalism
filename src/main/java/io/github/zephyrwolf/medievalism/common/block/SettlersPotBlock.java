@@ -245,4 +245,11 @@ public class SettlersPotBlock extends BaseEntityBlock implements SimpleWaterlogg
         return new SettlersPotBlockEntity(pPos, pState);
     }
     //endregion
+
+    public static class DryingSettlersPotBlock extends DryingBlock
+    {
+        public DryingSettlersPotBlock(Properties props) {
+            super(props, SETTLERS_POT_SHAPE);
+        }
+    }
 }

@@ -1,10 +1,17 @@
 package io.github.zephyrwolf.medievalism.common.block;
 
+import com.mojang.serialization.MapCodec;
+import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.content.loot.LootContextParamSetRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
@@ -22,7 +29,10 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -32,11 +42,12 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
-import java.util.function.Supplier;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public class WetPackedMudBrick extends Block {
+    public static MapCodec<WetPackedMudBrick> CODEC = simpleCodec(WetPackedMudBrick::new);
+
     protected static final VoxelShape BRICK_SHAPE_1000 = Block.box(2, 0, 1, 6, 3, 7);
     protected static final VoxelShape BRICK_SHAPE_0100 = Block.box(10, 0, 1, 14, 3, 7);
     protected static final VoxelShape BRICK_SHAPE_0010 = Block.box(2, 0, 9, 6, 3, 15);
@@ -70,9 +81,7 @@ public class WetPackedMudBrick extends Block {
     public static final EnumProperty<PackedMudBrickState> FRONT_RIGHT = EnumProperty.create("front_right", PackedMudBrickState.class);
     public static final EnumProperty<?>[] BRICK_PROPERTIES = new EnumProperty[]{BACK_LEFT, BACK_RIGHT, FRONT_LEFT, FRONT_RIGHT};
 
-    protected final Supplier<ItemStack> ITEM_HOLDER;
-
-    public WetPackedMudBrick(Properties props, Supplier<ItemStack> itemHolder) {
+    public WetPackedMudBrick(Properties props) {
         super(props);
         registerDefaultState(getStateDefinition().any()
                 .setValue(BACK_LEFT, PackedMudBrickState.EMPTY)
@@ -90,7 +99,11 @@ public class WetPackedMudBrick extends Block {
             VoxelShape shape1111 = Shapes.join(shape1100, shape0011, BooleanOp.OR);
             BRICK_SHAPES[i] = shape1111;
         }
-        ITEM_HOLDER = itemHolder;
+    }
+
+    @Override
+    protected MapCodec<? extends Block> codec() {
+        return CODEC;
     }
 
     @Override
@@ -110,8 +123,7 @@ public class WetPackedMudBrick extends Block {
             else if (pState.getValue(BACK_RIGHT).isEmpty()) prop = BACK_RIGHT;
             else if (pState.getValue(FRONT_LEFT).isEmpty()) prop = FRONT_LEFT;
             else if (pState.getValue(FRONT_RIGHT).isEmpty()) prop = FRONT_RIGHT;
-            if (prop != null)
-            {
+            if (prop != null) {
                 pLevel.setBlockAndUpdate(pPos, pState.setValue(prop, PackedMudBrickState.WET));
                 if (!pPlayer.isCreative()) {
                     pStack.shrink(1);
@@ -130,8 +142,10 @@ public class WetPackedMudBrick extends Block {
         for (EnumProperty<?> property : BRICK_PROPERTIES) {
             @SuppressWarnings("unchecked")
             PackedMudBrickState state = pState.getValue((EnumProperty<PackedMudBrickState>) property);
-            if (state == PackedMudBrickState.WET) items.add(new ItemStack(BlockRegistration.WET_PACKED_MUD_BRICK_ITEM.get()));
-            else if (state == PackedMudBrickState.DRY) items.add(new ItemStack(ItemRegistration.PACKED_MUD_BRICK.get()));
+            if (state == PackedMudBrickState.WET)
+                items.add(new ItemStack(BlockRegistration.WET_PACKED_MUD_BRICK_ITEM.get()));
+            else if (state == PackedMudBrickState.DRY)
+                items.add(new ItemStack(ItemRegistration.PACKED_MUD_BRICK.get()));
         }
         return items;
     }
@@ -191,6 +205,18 @@ public class WetPackedMudBrick extends Block {
         return belowState.isFaceSturdy(pLevel, belowPos, Direction.UP, SupportType.FULL);
     }
 
+    private ResourceKey<LootTable> _ruinedLootTableKeyCache = null;
+
+    public ResourceKey<LootTable> getOrCreateRuinedLootTable() {
+        if (_ruinedLootTableKeyCache == null) {
+            var key = BuiltInRegistries.BLOCK.getKey(this);
+            ResourceLocation rl = MedievalismConstants.resource("ruined_" + key.getPath())
+                    .withPrefix("additional_drops/");
+            _ruinedLootTableKeyCache = ResourceKey.create(Registries.LOOT_TABLE, rl);
+        }
+        return _ruinedLootTableKeyCache;
+    }
+
     @Override // Random Tick
     protected void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         boolean isRaining = pLevel.isRaining();
@@ -212,13 +238,25 @@ public class WetPackedMudBrick extends Block {
                 pLevel.setBlockAndUpdate(pPos, pState.setValue(property, PackedMudBrickState.WET));
             } else if (state == PackedMudBrickState.WET && pRandom.nextInt(3) == 0) {
                 pLevel.setBlockAndUpdate(pPos, pState.setValue(property, PackedMudBrickState.EMPTY));
-                pLevel.addFreshEntity(new ItemEntity(
-                        pLevel,
-                        pPos.getX() + 0.5f,
-                        pPos.getY() + 0.5f,
-                        pPos.getZ() + 0.5f,
-                        ITEM_HOLDER.get()
-                ));
+
+                LootParams.Builder pParams = new LootParams.Builder(pLevel);
+                LootParams lootParams = pParams
+                        .withParameter(LootContextParams.BLOCK_STATE, pState)
+                        .withParameter(LootContextParams.ORIGIN, new Vec3(pPos.getX() + 0.5f, pPos.getY() + 0.5f, pPos.getZ() + 0.5f))
+                        .create(LootContextParamSetRegistration.ADDITIONAL_DROPS);
+                ResourceKey<LootTable> resourceKey = getOrCreateRuinedLootTable();
+                LootTable loottable = pLevel.getServer().reloadableRegistries().getLootTable(resourceKey);
+                var items = loottable.getRandomItems(lootParams);
+
+                for (ItemStack item : items) {
+                    pLevel.addFreshEntity(new ItemEntity(
+                            pLevel,
+                            pPos.getX() + 0.5f,
+                            pPos.getY() + 0.5f,
+                            pPos.getZ() + 0.5f,
+                            item
+                    ));
+                }
             }
         }
     }
