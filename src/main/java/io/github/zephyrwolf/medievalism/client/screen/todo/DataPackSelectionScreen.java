@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.client.screen;
+package io.github.zephyrwolf.medievalism.client.screen.todo;
 
 /*
 @OnlyIn(Dist.CLIENT)
