@@ -23,10 +23,7 @@ public class OverhaulRecipeProvider extends RecipeProvider
     @Override
     protected void buildRecipes(@NotNull RecipeOutput recipeOutput)
     {
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Blocks.PACKED_MUD) // TODO make this wet packed mud block or something that will dry
-                .requires(Blocks.MUD)
-                .requires(ItemRegistration.THATCH)
-                .unlockedBy("has_mud_thatch", RecipeTools.itemPredicateOf(Blocks.MUD, ItemRegistration.THATCH))
-                .save(recipeOutput, MedievalismConstants.resource("temp_packed_mud_from_balls"));
+        OverhaulBlankRecipeProvider.buildRecipes(recipeOutput);
+        OverhaulShapelessRecipeProvider.buildRecipes(recipeOutput);
     }
 }

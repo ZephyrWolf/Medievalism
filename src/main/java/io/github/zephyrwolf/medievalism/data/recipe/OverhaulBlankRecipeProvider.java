@@ -1,46 +1,50 @@
 package io.github.zephyrwolf.medievalism.data.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.data.provider.BlankRecipeProvider;
-import net.minecraft.data.PackOutput;
+import io.github.zephyrwolf.medievalism.common.recipe.BlankRecipeBuilder;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.advancements.Criterion;
+import net.minecraft.advancements.critereon.ImpossibleTrigger;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 
-public class OverhaulBlankRecipeProvider extends BlankRecipeProvider
-{
-    public OverhaulBlankRecipeProvider(PackOutput output)
-    {
-        super(output);
+public class OverhaulBlankRecipeProvider {
+    protected static void buildRecipes(@NotNull RecipeOutput recipeOutput) {
+        // Vanilla
+        addBlank(recipeOutput, ResourceLocation.withDefaultNamespace("oak_planks"));
+        addBlank(recipeOutput, ResourceLocation.withDefaultNamespace("birch_planks"));
+        addBlank(recipeOutput, ResourceLocation.withDefaultNamespace("jungle_planks"));
+        addBlank(recipeOutput, ResourceLocation.withDefaultNamespace("spruce_planks"));
+        addBlank(recipeOutput, ResourceLocation.withDefaultNamespace("acacia_planks"));
+        addBlank(recipeOutput, ResourceLocation.withDefaultNamespace("bamboo_planks"));
+        addBlank(recipeOutput, ResourceLocation.withDefaultNamespace("dark_oak_planks"));
+        addBlank(recipeOutput, ResourceLocation.withDefaultNamespace("mangrove_planks"));
+        addBlank(recipeOutput, ResourceLocation.withDefaultNamespace("crimson_planks"));
+        addBlank(recipeOutput, ResourceLocation.withDefaultNamespace("warped_planks"));
+
+        addBlank(recipeOutput, ResourceLocation.withDefaultNamespace("leather"));
+        addBlank(recipeOutput, ResourceLocation.withDefaultNamespace("bread"));
+        addBlank(recipeOutput, ResourceLocation.withDefaultNamespace("pumpkin_pie"));
+        addBlank(recipeOutput, ResourceLocation.withDefaultNamespace("mushroom_stew"));
+        addBlank(recipeOutput, ResourceLocation.withDefaultNamespace("rabbit_stew_from_red_mushroom"));
+        addBlank(recipeOutput, ResourceLocation.withDefaultNamespace("rabbit_stew_from_brown_mushrooms"));
+
+        addBlank(recipeOutput, ResourceLocation.withDefaultNamespace("brick"));
+        addBlank(recipeOutput, ResourceLocation.withDefaultNamespace("packed_mud"));
+
+        // Medievalism
+        addBlank(recipeOutput, MedievalismConstants.resource("brick_from_clay_ball_tag"));
     }
 
-    @Override
-    protected void addRecipes()
-    {
-        // Delete vanilla recipes
-        // TODO Doesn't actually remove the recipe, just causes an error, I hate this. Even if I make a blank recipe,
-        //  then its still another recipe, its not removing anything.
-        // I think I need to create a new recipe type, i.e. blank
-        // or mixin RecipeManager$apply to skip recipes which have an empty root tag
-        addBlank(ResourceLocation.withDefaultNamespace("oak_planks"));
-        addBlank(ResourceLocation.withDefaultNamespace("birch_planks"));
-        addBlank(ResourceLocation.withDefaultNamespace("jungle_planks"));
-        addBlank(ResourceLocation.withDefaultNamespace("spruce_planks"));
-        addBlank(ResourceLocation.withDefaultNamespace("acacia_planks"));
-        addBlank(ResourceLocation.withDefaultNamespace("bamboo_planks"));
-        addBlank(ResourceLocation.withDefaultNamespace("dark_oak_planks"));
-        addBlank(ResourceLocation.withDefaultNamespace("mangrove_planks"));
-        addBlank(ResourceLocation.withDefaultNamespace("crimson_planks"));
-        addBlank(ResourceLocation.withDefaultNamespace("warped_planks"));
+    private static void addBlank(@NonNull RecipeOutput recipeOutput, ResourceLocation location) {
+        BlankRecipeBuilder.of()
+                .unlockedBy("cant_unlock", never())
+                .save(recipeOutput, location);
+    }
 
-        addBlank(ResourceLocation.withDefaultNamespace("leather"));
-        addBlank(ResourceLocation.withDefaultNamespace("bread"));
-        addBlank(ResourceLocation.withDefaultNamespace("pumpkin_pie"));
-        addBlank(ResourceLocation.withDefaultNamespace("mushroom_stew"));
-        addBlank(ResourceLocation.withDefaultNamespace("rabbit_stew_from_red_mushroom"));
-        addBlank(ResourceLocation.withDefaultNamespace("rabbit_stew_from_brown_mushrooms"));
-
-        addBlank(ResourceLocation.withDefaultNamespace("brick"));
-        addBlank(MedievalismConstants.resource("brick_from_clay_ball_tag"));
-
-        addBlank(ResourceLocation.withDefaultNamespace("packed_mud"));
+    private static Criterion<ImpossibleTrigger.TriggerInstance> never() {
+        return CriteriaTriggers.IMPOSSIBLE.createCriterion(new ImpossibleTrigger.TriggerInstance());
     }
 }

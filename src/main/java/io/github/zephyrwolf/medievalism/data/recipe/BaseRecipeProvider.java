@@ -18,13 +18,13 @@ public class BaseRecipeProvider extends RecipeProvider
     @Override
     protected void buildRecipes(@NotNull RecipeOutput recipeOutput)
     {
-        BaseShapelessRecipeProvider.buildRecipes(recipeOutput);
         BaseShapedRecipeProvider.buildRecipes(recipeOutput);
-        BaseCampfireRecipeProvider.buildRecipes(recipeOutput);
         BaseSmokingRecipeProvider.buildRecipes(recipeOutput);
-        BaseSmeltingRecipeProvider.buildRecipes(recipeOutput); // TODO Review once mod is futher developed
         BaseInWorldRecipeProvider.buildRecipes(recipeOutput);
-        BaseAdditionalToolUseRecipeProvider.buildRecipes(recipeOutput);
+        BaseSmeltingRecipeProvider.buildRecipes(recipeOutput); // TODO Review once mod is futher developed
+        BaseCampfireRecipeProvider.buildRecipes(recipeOutput);
         BaseMalleableRecipeProvider.buildRecipes(recipeOutput);
+        BaseShapelessRecipeProvider.buildRecipes(recipeOutput);
+        BaseAdditionalToolUseRecipeProvider.buildRecipes(recipeOutput);
     }
 }

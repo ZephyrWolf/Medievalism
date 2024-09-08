@@ -84,7 +84,6 @@ public final class DataGenRegistration { // https://github.com/vectorwing/Farmer
     //region Overhaul Data
     @SuppressWarnings("unused")
     private static void addProvidersForDataOverhaul(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient) {
-        generator.addProvider(includeServer, new OverhaulBlankRecipeProvider(packOutput));
         generator.addProvider(includeServer, new OverhaulRecipeProvider(packOutput, lookupProvider));
         generator.addProvider(includeServer, new OverhaulBlockTagsProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(includeServer, new LootTableProvider(packOutput, Collections.emptySet(), List.of(
