@@ -4,8 +4,12 @@ import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.item.BifaceItem;
 import io.github.zephyrwolf.medievalism.common.item.FireStarterItem;
 import io.github.zephyrwolf.medievalism.common.item.HammerstoneItem;
+import io.github.zephyrwolf.medievalism.common.item.blockitem.ContainerItemBlockItem;
+import io.github.zephyrwolf.medievalism.common.item.blockitem.DryingBlockItem;
+import io.github.zephyrwolf.medievalism.common.item.blockitem.GatherersJarBlockItem;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -14,16 +18,50 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public final class ItemRegistration
-{
+public final class ItemRegistration {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MedievalismConstants.MOD_ID);
 
     //region World
     public static final DeferredItem<Item> RED_CLAY_BALL = ITEMS.registerSimpleItem("red_clay_ball");
     public static final DeferredItem<Item> RAW_TIN = ITEMS.registerSimpleItem("raw_tin");
+
+    public static final DeferredItem<BlockItem> RED_CLAY_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("red_clay", BlockRegistration.RED_CLAY_BLOCK);
+    public static final DeferredItem<BlockItem> LIMESTONE_ITEM = ITEMS.registerSimpleBlockItem("limestone", BlockRegistration.LIMESTONE_BLOCK);
+    public static final DeferredItem<BlockItem> TIN_ORE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("tin_ore_block", BlockRegistration.TIN_ORE_BLOCK);
+    public static final DeferredItem<BlockItem> DEEPSLATE_TIN_ORE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("deepslate_tin_ore_block", BlockRegistration.DEEPSLATE_TIN_ORE_BLOCK);
+
+    public static final DeferredItem<BlockItem> ROCK_ITEM = ITEMS.registerSimpleBlockItem("rock", BlockRegistration.ROCK_BLOCK);
+    public static final DeferredItem<BlockItem> SANDSTONE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("sandstone_rock", BlockRegistration.SANDSTONE_ROCK_BLOCK);
+    public static final DeferredItem<BlockItem> RED_SANDSTONE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("red_sandstone_rock", BlockRegistration.RED_SANDSTONE_ROCK_BLOCK);
+    public static final DeferredItem<BlockItem> MOSSY_ROCK_ITEM = ITEMS.registerSimpleBlockItem("mossy_rock", BlockRegistration.MOSSY_ROCK_BLOCK);
+    public static final DeferredItem<BlockItem> LIGHTER_ROCK_ITEM = ITEMS.registerSimpleBlockItem("lighter_rock", BlockRegistration.LIGHTER_ROCK_BLOCK);
+    public static final DeferredItem<BlockItem> SNOWY_ROCK_ITEM = ITEMS.registerSimpleBlockItem("snowy_rock", BlockRegistration.SNOWY_ROCK_BLOCK);
+    public static final DeferredItem<BlockItem> ICE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("ice_rock", BlockRegistration.ICE_ROCK_BLOCK);
+
+    public static final DeferredItem<BlockItem> LARGE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("large_rock", BlockRegistration.LARGE_ROCK_BLOCK);
+    public static final DeferredItem<BlockItem> SANDSTONE_LARGE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("sandstone_large_rock", BlockRegistration.SANDSTONE_LARGE_ROCK_BLOCK);
+    public static final DeferredItem<BlockItem> RED_SANDSTONE_LARGE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("red_sandstone_large_rock", BlockRegistration.RED_SANDSTONE_LARGE_ROCK_BLOCK);
+    public static final DeferredItem<BlockItem> MOSSY_LARGE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("mossy_large_rock", BlockRegistration.MOSSY_LARGE_ROCK_BLOCK);
+    public static final DeferredItem<BlockItem> LIGHTER_LARGE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("lighter_large_rock", BlockRegistration.LIGHTER_LARGE_ROCK_BLOCK);
+    public static final DeferredItem<BlockItem> SNOWY_LARGE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("snowy_large_rock", BlockRegistration.SNOWY_LARGE_ROCK_BLOCK);
+    public static final DeferredItem<BlockItem> ICE_LARGE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("ice_large_rock", BlockRegistration.ICE_LARGE_ROCK_BLOCK);
+
+    public static final DeferredItem<BlockItem> LIMESTONE_ROCK_ITEM = ITEMS.registerSimpleBlockItem("limestone_rock", BlockRegistration.LIMESTONE_ROCK_BLOCK);
+    public static final DeferredItem<BlockItem> COPPER_ROCK_ITEM = ITEMS.registerSimpleBlockItem("copper_rock", BlockRegistration.COPPER_ROCK_BLOCK);
+
+    public static final DeferredItem<BlockItem> BIRCH_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("birch_branch", BlockRegistration.BIRCH_BRANCH_BLOCK);
+    public static final DeferredItem<BlockItem> OAK_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("oak_branch", BlockRegistration.OAK_BRANCH_BLOCK);
+    public static final DeferredItem<BlockItem> SPRUCE_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("spruce_branch", BlockRegistration.SPRUCE_BRANCH_BLOCK);
+    public static final DeferredItem<BlockItem> JUNGLE_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("jungle_branch", BlockRegistration.JUNGLE_BRANCH_BLOCK);
+    public static final DeferredItem<BlockItem> DARK_OAK_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("dark_oak_branch", BlockRegistration.DARK_OAK_BRANCH_BLOCK);
+    public static final DeferredItem<BlockItem> ACACIA_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("acacia_branch", BlockRegistration.ACACIA_BRANCH_BLOCK);
+    public static final DeferredItem<BlockItem> CHERRY_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("cherry_branch", BlockRegistration.CHERRY_BRANCH_BLOCK);
+    public static final DeferredItem<BlockItem> MANGROVE_BRANCH_ITEM = ITEMS.registerSimpleBlockItem("mangrove_branch", BlockRegistration.MANGROVE_BRANCH_BLOCK);
     //endregion
 
     //region Farming
+    public static final DeferredItem<BlockItem> DOGBANE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("dogbane", BlockRegistration.DOGBANE_BLOCK);
+
     public static final DeferredItem<Item> FLAX = ITEMS.registerSimpleItem("flax", new Item.Properties());
     public static final DeferredItem<Item> FLAX_FIBER = ITEMS.registerSimpleItem("flax_fiber", new Item.Properties());
     public static final DeferredItem<Item> FLAX_SEEDS = ITEMS.registerSimpleItem("flax_seeds", new Item.Properties());
@@ -61,6 +99,44 @@ public final class ItemRegistration
     public static final DeferredItem<Item> SLACKED_LIME_BUCKET = ITEMS.registerSimpleItem("slacked_lime_bucket", new Item.Properties());
     public static final DeferredItem<Item> TANNIN_BUCKET = ITEMS.registerSimpleItem("tannin_bucket", new Item.Properties());
     public static final DeferredItem<Item> WOOD_ASH = ITEMS.registerSimpleItem("wood_ash"); // Order of concentraiton Potash(Potassiam Carbonate), CaCO3, CaO, MgCO3, Posphates and Silicates
+
+    public static final DeferredItem<BlockItem> THATCH_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("thatch_block", BlockRegistration.THATCH_BLOCK);
+    public static final DeferredItem<BlockItem> WET_PACKED_MUD_BRICK_ITEM = ITEMS.registerSimpleBlockItem("wet_packed_mud_brick", BlockRegistration.WET_PACKED_MUD_BRICK);
+    public static final DeferredItem<BlockItem> STONE_BENCH_ITEM = ITEMS.registerSimpleBlockItem("stone_bench", BlockRegistration.STONE_BENCH);
+    public static final DeferredItem<BlockItem> CHOPPING_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("chopping_block", BlockRegistration.CHOPPING_BLOCK);
+
+    public static final DeferredItem<BlockItem> WET_GATHERERS_JAR_ITEM = ITEMS.registerItem("wet_gatherers_jar",
+            props -> new DryingBlockItem(BlockRegistration.DRYING_GATHERERS_JAR, props.stacksTo(1), false));
+    public static final DeferredItem<BlockItem> DRY_GATHERERS_JAR_ITEM = ITEMS.registerItem("dry_gatherers_jar",
+            props -> new DryingBlockItem(BlockRegistration.DRYING_GATHERERS_JAR, props.stacksTo(1), true));
+    public static final DeferredItem<GatherersJarBlockItem> GATHERERS_JAR_ITEM = ITEMS.registerItem("gatherers_jar",
+            props -> new GatherersJarBlockItem(BlockRegistration.GATHERERS_JAR, props.stacksTo(1)));
+
+    public static final DeferredItem<BlockItem> WET_KEEPERS_CROCK_ITEM = ITEMS.registerItem("wet_keepers_crock",
+            props -> new DryingBlockItem(BlockRegistration.DRYING_KEEPERS_CROCK, props, false));
+    public static final DeferredItem<BlockItem> DRY_KEEPERS_CROCK_ITEM = ITEMS.registerItem("dry_keepers_crock",
+            props -> new DryingBlockItem(BlockRegistration.DRYING_KEEPERS_CROCK, props, true));
+    public static final DeferredItem<ContainerItemBlockItem> KEEPERS_CROCK_ITEM = ITEMS.registerItem("keepers_crock",
+            props -> new ContainerItemBlockItem(BlockRegistration.KEEPERS_CROCK, props.stacksTo(1)));
+
+    public static final DeferredItem<BlockItem> WET_SETTLERS_POT_ITEM = ITEMS.registerItem("wet_settlers_pot",
+            props -> new DryingBlockItem(BlockRegistration.DRYING_SETTLERS_POT, props, false));
+    public static final DeferredItem<BlockItem> DRY_SETTLERS_POT_ITEM = ITEMS.registerItem("dry_settlers_pot",
+            props -> new DryingBlockItem(BlockRegistration.DRYING_SETTLERS_POT, props, true));
+    public static final DeferredItem<BlockItem> SETTLERS_POT_ITEM = ITEMS.registerSimpleBlockItem("settlers_pot", BlockRegistration.SETTLERS_POT);
+
+    public static final DeferredItem<BlockItem> WET_CLAY_COOKING_POT_ITEM = ITEMS.registerItem("wet_clay_cooking_pot",
+            props -> new DryingBlockItem(BlockRegistration.DRYING_CLAY_COOKING_POT, props, false));
+    public static final DeferredItem<BlockItem> DRY_CLAY_COOKING_POT_ITEM = ITEMS.registerItem("dry_clay_cooking_pot",
+            props -> new DryingBlockItem(BlockRegistration.DRYING_CLAY_COOKING_POT, props, true));
+    public static final DeferredItem<BlockItem> CLAY_COOKING_POT_ITEM = ITEMS.registerSimpleBlockItem("clay_cooking_pot", BlockRegistration.CLAY_COOKING_POT);
+
+    public static final DeferredItem<BlockItem> WET_CLAY_CAULDRON_ITEM = ITEMS.registerItem("wet_clay_cauldron",
+            props -> new DryingBlockItem(BlockRegistration.DRYING_CLAY_CAULDRON, props, false));
+    public static final DeferredItem<BlockItem> DRY_CLAY_CAULDRON_ITEM = ITEMS.registerItem("dry_clay_cauldron",
+            props -> new DryingBlockItem(BlockRegistration.DRYING_CLAY_CAULDRON, props, true));
+    public static final DeferredItem<BlockItem> CLAY_CAULDRON_ITEM = ITEMS.registerSimpleBlockItem("clay_cauldron", BlockRegistration.CLAY_CAULDRON);
+
     //endregion
 
     //region Pottery
@@ -244,13 +320,11 @@ public final class ItemRegistration
     //endregion
 
     // InWorldRecipeBuilder.fireStarter
-    public static ItemStack getThatchedItem(BlockState ignoredState)
-    { // TODO STUB
+    public static ItemStack getThatchedItem(BlockState ignoredState) { // TODO STUB
         return new ItemStack(THATCH.get());
     }
 
-    public static void register(IEventBus modEventBus)
-    {
+    public static void register(IEventBus modEventBus) {
         ITEMS.register(modEventBus);
     }
 }

@@ -2,7 +2,6 @@ package io.github.zephyrwolf.medievalism.data.item;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
-import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemTagCatalog;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -16,33 +15,28 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
-public class BaseItemTagsProvider extends ItemTagsProvider
-{ // https://github.com/vectorwing/FarmersDelight/blob/1.20/src/main/java/vectorwing/farmersdelight/data/ItemTags.java
+public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.com/vectorwing/FarmersDelight/blob/1.20/src/main/java/vectorwing/farmersdelight/data/ItemTags.java
     public BaseItemTagsProvider(
             PackOutput output,
             CompletableFuture<HolderLookup.Provider> provider,
             CompletableFuture<TagsProvider.TagLookup<Block>> blockTagProvider,
-            @Nullable ExistingFileHelper existingFileHelper)
-    {
+            @Nullable ExistingFileHelper existingFileHelper) {
         super(output, provider, blockTagProvider, MedievalismConstants.MOD_ID, existingFileHelper);
     }
 
     @Override
-    protected void addTags(HolderLookup.@NotNull Provider provider)
-    {
+    protected void addTags(HolderLookup.@NotNull Provider provider) {
         this.registerVanillaTags();
         this.registerModTags();
         this.registerCommonModTags();
         this.registerCompatibilityTags();
     }
 
-    private void registerVanillaTags()
-    {
+    private void registerVanillaTags() {
 
     }
 
-    private void registerModTags()
-    {
+    private void registerModTags() {
         tag(ItemTagCatalog.LARGE_HIDE)
                 .add(ItemRegistration.COW_HIDE.get())
                 .add(ItemRegistration.HORSE_HIDE.get())
@@ -78,58 +72,58 @@ public class BaseItemTagsProvider extends ItemTagsProvider
                 .add(ItemRegistration.RED_CLAY_BALL.get());
         tag(ItemTagCatalog.CLAY_BLOCK)
                 .add(Items.CLAY)
-                .add(BlockRegistration.RED_CLAY_BLOCK_ITEM.get());
+                .add(ItemRegistration.RED_CLAY_BLOCK_ITEM.get());
 
         tag(ItemTagCatalog.ROCK).add(
-                BlockRegistration.ROCK_ITEM.get(),
-                BlockRegistration.SANDSTONE_ROCK_ITEM.get(),
-                BlockRegistration.RED_SANDSTONE_ROCK_ITEM.get(),
-                BlockRegistration.MOSSY_ROCK_ITEM.get(),
-                BlockRegistration.LIGHTER_ROCK_ITEM.get(),
-                BlockRegistration.SNOWY_ROCK_ITEM.get(),
-                BlockRegistration.ICE_ROCK_ITEM.get(),
-                BlockRegistration.COPPER_ROCK_ITEM.get(),
-                BlockRegistration.LIMESTONE_ITEM.get()
+                ItemRegistration.ROCK_ITEM.get(),
+                ItemRegistration.SANDSTONE_ROCK_ITEM.get(),
+                ItemRegistration.RED_SANDSTONE_ROCK_ITEM.get(),
+                ItemRegistration.MOSSY_ROCK_ITEM.get(),
+                ItemRegistration.LIGHTER_ROCK_ITEM.get(),
+                ItemRegistration.SNOWY_ROCK_ITEM.get(),
+                ItemRegistration.ICE_ROCK_ITEM.get(),
+                ItemRegistration.COPPER_ROCK_ITEM.get(),
+                ItemRegistration.LIMESTONE_ITEM.get()
         );
         tag(ItemTagCatalog.HARD_ROCK).add(
-                BlockRegistration.ROCK_ITEM.get(),
-                BlockRegistration.MOSSY_ROCK_ITEM.get(),
-                BlockRegistration.LIGHTER_ROCK_ITEM.get(),
-                BlockRegistration.SNOWY_ROCK_ITEM.get(),
-                BlockRegistration.ICE_ROCK_ITEM.get(),
-                BlockRegistration.COPPER_ROCK_ITEM.get(),
-                BlockRegistration.LIMESTONE_ITEM.get()
+                ItemRegistration.ROCK_ITEM.get(),
+                ItemRegistration.MOSSY_ROCK_ITEM.get(),
+                ItemRegistration.LIGHTER_ROCK_ITEM.get(),
+                ItemRegistration.SNOWY_ROCK_ITEM.get(),
+                ItemRegistration.ICE_ROCK_ITEM.get(),
+                ItemRegistration.COPPER_ROCK_ITEM.get(),
+                ItemRegistration.LIMESTONE_ITEM.get()
         );
         tag(ItemTagCatalog.LARGE_ROCK).add(
-                BlockRegistration.LARGE_ROCK_ITEM.get(),
-                BlockRegistration.SANDSTONE_LARGE_ROCK_ITEM.get(),
-                BlockRegistration.RED_SANDSTONE_LARGE_ROCK_ITEM.get(),
-                BlockRegistration.MOSSY_LARGE_ROCK_ITEM.get(),
-                BlockRegistration.LIGHTER_LARGE_ROCK_ITEM.get(),
-                BlockRegistration.SNOWY_LARGE_ROCK_ITEM.get(),
-                BlockRegistration.ICE_LARGE_ROCK_ITEM.get()
+                ItemRegistration.LARGE_ROCK_ITEM.get(),
+                ItemRegistration.SANDSTONE_LARGE_ROCK_ITEM.get(),
+                ItemRegistration.RED_SANDSTONE_LARGE_ROCK_ITEM.get(),
+                ItemRegistration.MOSSY_LARGE_ROCK_ITEM.get(),
+                ItemRegistration.LIGHTER_LARGE_ROCK_ITEM.get(),
+                ItemRegistration.SNOWY_LARGE_ROCK_ITEM.get(),
+                ItemRegistration.ICE_LARGE_ROCK_ITEM.get()
         );
         tag(ItemTagCatalog.LARGE_HARD_ROCK).add(
-                BlockRegistration.LARGE_ROCK_ITEM.get(),
-                BlockRegistration.MOSSY_LARGE_ROCK_ITEM.get(),
-                BlockRegistration.LIGHTER_LARGE_ROCK_ITEM.get(),
-                BlockRegistration.SNOWY_LARGE_ROCK_ITEM.get(),
-                BlockRegistration.ICE_LARGE_ROCK_ITEM.get()
+                ItemRegistration.LARGE_ROCK_ITEM.get(),
+                ItemRegistration.MOSSY_LARGE_ROCK_ITEM.get(),
+                ItemRegistration.LIGHTER_LARGE_ROCK_ITEM.get(),
+                ItemRegistration.SNOWY_LARGE_ROCK_ITEM.get(),
+                ItemRegistration.ICE_LARGE_ROCK_ITEM.get()
         );
         tag(ItemTagCatalog.BRANCH).add(
-                BlockRegistration.OAK_BRANCH_ITEM.get(),
-                BlockRegistration.BIRCH_BRANCH_ITEM.get(),
-                BlockRegistration.SPRUCE_BRANCH_ITEM.get(),
-                BlockRegistration.JUNGLE_BRANCH_ITEM.get(),
-                BlockRegistration.ACACIA_BRANCH_ITEM.get(),
-                BlockRegistration.DARK_OAK_BRANCH_ITEM.get(),
-                BlockRegistration.CHERRY_BRANCH_ITEM.get(),
-                BlockRegistration.MANGROVE_BRANCH_ITEM.get()
+                ItemRegistration.OAK_BRANCH_ITEM.get(),
+                ItemRegistration.BIRCH_BRANCH_ITEM.get(),
+                ItemRegistration.SPRUCE_BRANCH_ITEM.get(),
+                ItemRegistration.JUNGLE_BRANCH_ITEM.get(),
+                ItemRegistration.ACACIA_BRANCH_ITEM.get(),
+                ItemRegistration.DARK_OAK_BRANCH_ITEM.get(),
+                ItemRegistration.CHERRY_BRANCH_ITEM.get(),
+                ItemRegistration.MANGROVE_BRANCH_ITEM.get()
         );
 
         tag(ItemTagCatalog.TINDER)
                 .add(ItemRegistration.THATCH.get());
-                // Candlenut leaves?
+        // Candlenut leaves?
 
         tag(ItemTagCatalog.BARK).add(
                 ItemRegistration.WHITE_BARK.get(),
@@ -153,11 +147,9 @@ public class BaseItemTagsProvider extends ItemTagsProvider
         );
     }
 
-    public void registerCommonModTags()
-    {
+    public void registerCommonModTags() {
     }
 
-    public void registerCompatibilityTags()
-    {
+    public void registerCompatibilityTags() {
     }
 }

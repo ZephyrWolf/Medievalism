@@ -1,15 +1,12 @@
 package io.github.zephyrwolf.medievalism.data.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.tools.RecipeTools;
-import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 
@@ -50,10 +47,10 @@ public final class BaseSmeltingRecipeProvider {
 
     private static void limeRecipes(RecipeOutput recipeOutput) {
         // Quicklime
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistration.LIMESTONE_ROCK_ITEM),
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistration.LIMESTONE_ROCK_ITEM),
                         RecipeCategory.MISC, ItemRegistration.QUICK_LIME,
                         0.0f, 1000)
-                .unlockedBy("has_limestone_rock", RecipeTools.itemPredicateOf(BlockRegistration.LIMESTONE_ROCK_ITEM))
+                .unlockedBy("has_limestone_rock", RecipeTools.itemPredicateOf(ItemRegistration.LIMESTONE_ROCK_ITEM))
                 .save(recipeOutput, MedievalismConstants.resource("quicklime_smelting"));
     }
 
@@ -111,8 +108,7 @@ public final class BaseSmeltingRecipeProvider {
          */
     }
 
-    private static void potteryRecipes(RecipeOutput recipeOutput)
-    {
+    private static void potteryRecipes(RecipeOutput recipeOutput) {
         // Brick // NOTE Remove in Overhaul
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemTagCatalog.CLAY_BALL),
                         RecipeCategory.MISC, Items.BRICK,

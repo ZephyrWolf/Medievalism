@@ -3,7 +3,6 @@ package io.github.zephyrwolf.medievalism.data.recipe;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.recipe.MalleableMaterialRecipeBuilder;
 import io.github.zephyrwolf.medievalism.common.recipe.MalleableRecipeBuilder;
-import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.content.recipe.MalleableMaterialRegistration;
@@ -26,7 +25,7 @@ public final class BaseMalleableRecipeProvider {
                 .pattern("xxx")
                 .pattern("xxx")
                 .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        BlockRegistration.STONE_BENCH_ITEM
+                        ItemRegistration.STONE_BENCH_ITEM
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("clay_ball_material"));
         MalleableMaterialRecipeBuilder.builder(Ingredient.of(ItemTagCatalog.CLAY_BLOCK), MalleableMaterialRegistration.CLAY.get())
@@ -36,7 +35,7 @@ public final class BaseMalleableRecipeProvider {
                 .pattern("xxxxx")
                 .pattern("xxxxx")
                 .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        BlockRegistration.STONE_BENCH_ITEM
+                        ItemRegistration.STONE_BENCH_ITEM
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("clay_block_material"));
 
@@ -45,7 +44,7 @@ public final class BaseMalleableRecipeProvider {
                 .pattern("xxx")
                 .pattern("xxx")
                 .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        BlockRegistration.STONE_BENCH_ITEM
+                        ItemRegistration.STONE_BENCH_ITEM
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("rock_material"));
         MalleableMaterialRecipeBuilder.builder(Ingredient.of(ItemTagCatalog.LARGE_ROCK), MalleableMaterialRegistration.STONE.get())
@@ -55,7 +54,7 @@ public final class BaseMalleableRecipeProvider {
                 .pattern("xxxxx")
                 .pattern("xxxxx")
                 .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        BlockRegistration.STONE_BENCH_ITEM
+                        ItemRegistration.STONE_BENCH_ITEM
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("large_rock_material"));
     }
@@ -67,26 +66,26 @@ public final class BaseMalleableRecipeProvider {
                 .pattern("x ")
                 .pattern("xx")
                 .pattern("xx")
-                .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(BlockRegistration.STONE_BENCH_ITEM))
+                .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(ItemRegistration.STONE_BENCH_ITEM))
                 .save(recipeOutput, MedievalismConstants.resource("lunate_knapping1"));
         MalleableRecipeBuilder.builder(MalleableMaterialRegistration.STONE.get(), new ItemStack(ItemRegistration.LUNATE.get(), 2))
                 .allowMirror()
                 .pattern("x  x ")
                 .pattern("xx xx")
                 .pattern("xx xx")
-                .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(BlockRegistration.STONE_BENCH_ITEM))
+                .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(ItemRegistration.STONE_BENCH_ITEM))
                 .save(recipeOutput, MedievalismConstants.resource("lunate_knapping2"));
         MalleableRecipeBuilder.builder(MalleableMaterialRegistration.STONE.get(), new ItemStack(ItemRegistration.LUNATE.get(), 2))
                 .pattern(" x x ")
                 .pattern("xx xx")
                 .pattern("xx xx")
-                .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(BlockRegistration.STONE_BENCH_ITEM))
+                .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(ItemRegistration.STONE_BENCH_ITEM))
                 .save(recipeOutput, MedievalismConstants.resource("lunate_knapping3"));
         MalleableRecipeBuilder.builder(MalleableMaterialRegistration.STONE.get(), new ItemStack(ItemRegistration.LUNATE.get(), 2))
                 .pattern("x   x")
                 .pattern("xx xx")
                 .pattern("xx xx")
-                .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(BlockRegistration.STONE_BENCH_ITEM))
+                .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(ItemRegistration.STONE_BENCH_ITEM))
                 .save(recipeOutput, MedievalismConstants.resource("lunate_knapping4"));
         // Biface
         MalleableRecipeBuilder.builder(MalleableMaterialRegistration.STONE.get(), new ItemStack(ItemRegistration.BIFACE.get()))
@@ -95,7 +94,7 @@ public final class BaseMalleableRecipeProvider {
                 .pattern("xxx")
                 .pattern("xx ")
                 .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        BlockRegistration.STONE_BENCH_ITEM
+                        ItemRegistration.STONE_BENCH_ITEM
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("biface"));
     }
@@ -115,57 +114,57 @@ public final class BaseMalleableRecipeProvider {
                 .pattern("x x")
                 .pattern("xxx")
                 .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        BlockRegistration.STONE_BENCH_ITEM
+                        ItemRegistration.STONE_BENCH_ITEM
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("unfired_clay_crucible"));
 
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(BlockRegistration.WET_GATHERERS_JAR_ITEM.get()))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(ItemRegistration.WET_GATHERERS_JAR_ITEM.get()))
                 .pattern("x x")
                 .pattern("x x")
                 .pattern(" x ")
                 .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        BlockRegistration.STONE_BENCH_ITEM
+                        ItemRegistration.STONE_BENCH_ITEM
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("wet_gatherers_jar"));
 
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(BlockRegistration.WET_KEEPERS_CROCK_ITEM.get()))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(ItemRegistration.WET_KEEPERS_CROCK_ITEM.get()))
                 .pattern("x  x")
                 .pattern("x  x")
                 .pattern("x  x")
                 .pattern(" xx ")
                 .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        BlockRegistration.STONE_BENCH_ITEM
+                        ItemRegistration.STONE_BENCH_ITEM
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("wet_keepers_crock"));
 
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(BlockRegistration.WET_SETTLERS_POT_ITEM.get()))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(ItemRegistration.WET_SETTLERS_POT_ITEM.get()))
                 .pattern("x   x")
                 .pattern("x   x")
                 .pattern("x   x")
                 .pattern("x   x")
                 .pattern(" xxx ")
                 .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        BlockRegistration.STONE_BENCH_ITEM
+                        ItemRegistration.STONE_BENCH_ITEM
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("wet_settlers_pot"));
 
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(BlockRegistration.WET_CLAY_COOKING_POT_ITEM.get()))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(ItemRegistration.WET_CLAY_COOKING_POT_ITEM.get()))
                 .pattern("x   x")
                 .pattern("x   x")
                 .pattern(" xxx ")
                 .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        BlockRegistration.STONE_BENCH_ITEM
+                        ItemRegistration.STONE_BENCH_ITEM
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_cooking_pot"));
 
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(BlockRegistration.WET_CLAY_CAULDRON_ITEM.get()))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(ItemRegistration.WET_CLAY_CAULDRON_ITEM.get()))
                 .pattern("x   x")
                 .pattern("x   x")
                 .pattern("x   x")
                 .pattern("x   x")
                 .pattern("xxxxx")
                 .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        BlockRegistration.STONE_BENCH_ITEM
+                        ItemRegistration.STONE_BENCH_ITEM
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_cauldron"));
 

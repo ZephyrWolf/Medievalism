@@ -33,8 +33,8 @@ public final class BaseShapelessRecipeProvider {
                 .save(recipeOutput, MedievalismConstants.resource("sticks_from_branch"));
         // Thatch
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.THATCH, 4)
-                .requires(BlockRegistration.THATCH_BLOCK_ITEM)
-                .unlockedBy("has_thatch_block", RecipeTools.itemPredicateOf(BlockRegistration.THATCH_BLOCK_ITEM))
+                .requires(ItemRegistration.THATCH_BLOCK_ITEM)
+                .unlockedBy("has_thatch_block", RecipeTools.itemPredicateOf(ItemRegistration.THATCH_BLOCK_ITEM))
                 .save(recipeOutput, MedievalismConstants.resource("thatch_from_block"));
         // Mud Ball // TODO Temp
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.MUD_BALL, 4)

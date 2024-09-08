@@ -2,7 +2,6 @@ package io.github.zephyrwolf.medievalism.data.item;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
-import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -10,86 +9,83 @@ import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-public class BaseItemModelsProvider extends ItemModelProvider
-{
+public class BaseItemModelsProvider extends ItemModelProvider {
     public static final String GENERATED = "item/generated";
     public static final String HANDHELD = "item/handheld";
 
-    public BaseItemModelsProvider(PackOutput output, ExistingFileHelper existingFileHelper)
-    {
+    public BaseItemModelsProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output, MedievalismConstants.MOD_ID, existingFileHelper);
     }
 
     @Override
-    protected void registerModels()
-    {
+    protected void registerModels() {
         {
-            blockBasedModel(BlockRegistration.BIRCH_BRANCH_ITEM.get(), "");
-            blockBasedModel(BlockRegistration.OAK_BRANCH_ITEM.get(), "");
-            blockBasedModel(BlockRegistration.SPRUCE_BRANCH_ITEM.get(), "");
-            blockBasedModel(BlockRegistration.JUNGLE_BRANCH_ITEM.get(), "");
-            blockBasedModel(BlockRegistration.ACACIA_BRANCH_ITEM.get(), "");
-            blockBasedModel(BlockRegistration.DARK_OAK_BRANCH_ITEM.get(), "");
-            blockBasedModel(BlockRegistration.CHERRY_BRANCH_ITEM.get(), "");
-            blockBasedModel(BlockRegistration.MANGROVE_BRANCH_ITEM.get(), "");
+            blockBasedModel(ItemRegistration.BIRCH_BRANCH_ITEM.get(), "");
+            blockBasedModel(ItemRegistration.OAK_BRANCH_ITEM.get(), "");
+            blockBasedModel(ItemRegistration.SPRUCE_BRANCH_ITEM.get(), "");
+            blockBasedModel(ItemRegistration.JUNGLE_BRANCH_ITEM.get(), "");
+            blockBasedModel(ItemRegistration.ACACIA_BRANCH_ITEM.get(), "");
+            blockBasedModel(ItemRegistration.DARK_OAK_BRANCH_ITEM.get(), "");
+            blockBasedModel(ItemRegistration.CHERRY_BRANCH_ITEM.get(), "");
+            blockBasedModel(ItemRegistration.MANGROVE_BRANCH_ITEM.get(), "");
 
-            blockBasedModel(BlockRegistration.ROCK_ITEM.get(), "1");
-            blockBasedModel(BlockRegistration.SANDSTONE_ROCK_ITEM.get(), "1");
-            blockBasedModel(BlockRegistration.RED_SANDSTONE_ROCK_ITEM.get(), "1");
-            blockBasedModel(BlockRegistration.MOSSY_ROCK_ITEM.get(), "1");
-            blockBasedModel(BlockRegistration.LIGHTER_ROCK_ITEM.get(), "1");
-            blockBasedModel(BlockRegistration.SNOWY_ROCK_ITEM.get(), "1");
-            blockBasedModel(BlockRegistration.ICE_ROCK_ITEM.get(), "1");
+            blockBasedModel(ItemRegistration.ROCK_ITEM.get(), "1");
+            blockBasedModel(ItemRegistration.SANDSTONE_ROCK_ITEM.get(), "1");
+            blockBasedModel(ItemRegistration.RED_SANDSTONE_ROCK_ITEM.get(), "1");
+            blockBasedModel(ItemRegistration.MOSSY_ROCK_ITEM.get(), "1");
+            blockBasedModel(ItemRegistration.LIGHTER_ROCK_ITEM.get(), "1");
+            blockBasedModel(ItemRegistration.SNOWY_ROCK_ITEM.get(), "1");
+            blockBasedModel(ItemRegistration.ICE_ROCK_ITEM.get(), "1");
 
-            blockBasedModel(BlockRegistration.LARGE_ROCK_ITEM.get(), "1");
-            blockBasedModel(BlockRegistration.SANDSTONE_LARGE_ROCK_ITEM.get(), "1");
-            blockBasedModel(BlockRegistration.RED_SANDSTONE_LARGE_ROCK_ITEM.get(), "1");
-            blockBasedModel(BlockRegistration.MOSSY_LARGE_ROCK_ITEM.get(), "1");
-            blockBasedModel(BlockRegistration.LIGHTER_LARGE_ROCK_ITEM.get(), "1");
-            blockBasedModel(BlockRegistration.SNOWY_LARGE_ROCK_ITEM.get(), "1");
-            blockBasedModel(BlockRegistration.ICE_LARGE_ROCK_ITEM.get(), "1");
+            blockBasedModel(ItemRegistration.LARGE_ROCK_ITEM.get(), "1");
+            blockBasedModel(ItemRegistration.SANDSTONE_LARGE_ROCK_ITEM.get(), "1");
+            blockBasedModel(ItemRegistration.RED_SANDSTONE_LARGE_ROCK_ITEM.get(), "1");
+            blockBasedModel(ItemRegistration.MOSSY_LARGE_ROCK_ITEM.get(), "1");
+            blockBasedModel(ItemRegistration.LIGHTER_LARGE_ROCK_ITEM.get(), "1");
+            blockBasedModel(ItemRegistration.SNOWY_LARGE_ROCK_ITEM.get(), "1");
+            blockBasedModel(ItemRegistration.ICE_LARGE_ROCK_ITEM.get(), "1");
 
-            blockBasedModel(BlockRegistration.RED_CLAY_BLOCK_ITEM.get(), "");
-            blockBasedModel(BlockRegistration.LIMESTONE_ITEM.get(), "");
-            blockIconGeneratedModel(BlockRegistration.LIMESTONE_ROCK_ITEM.get());
-            blockIconGeneratedModel(BlockRegistration.COPPER_ROCK_ITEM.get());
-            blockBasedModel(BlockRegistration.THATCH_BLOCK_ITEM.get(), "");
-            itemGeneratedModel(BlockRegistration.DOGBANE_BLOCK_ITEM.get()); // TODO This is wrong
-            blockBasedModel(BlockRegistration.STONE_BENCH_ITEM.get(), "");
-            blockBasedModel(BlockRegistration.CHOPPING_BLOCK_ITEM.get(), "");
+            blockBasedModel(ItemRegistration.RED_CLAY_BLOCK_ITEM.get(), "");
+            blockBasedModel(ItemRegistration.LIMESTONE_ITEM.get(), "");
+            blockIconGeneratedModel(ItemRegistration.LIMESTONE_ROCK_ITEM.get());
+            blockIconGeneratedModel(ItemRegistration.COPPER_ROCK_ITEM.get());
+            blockBasedModel(ItemRegistration.THATCH_BLOCK_ITEM.get(), "");
+            itemGeneratedModel(ItemRegistration.DOGBANE_BLOCK_ITEM.get()); // TODO This is wrong
+            blockBasedModel(ItemRegistration.STONE_BENCH_ITEM.get(), "");
+            blockBasedModel(ItemRegistration.CHOPPING_BLOCK_ITEM.get(), "");
 
             itemGeneratedModel(ItemRegistration.MUD_BALL.get());
-            itemGeneratedModel(BlockRegistration.WET_PACKED_MUD_BRICK_ITEM.get());
+            itemGeneratedModel(ItemRegistration.WET_PACKED_MUD_BRICK_ITEM.get());
             itemGeneratedModel(ItemRegistration.PACKED_MUD_BRICK.get());
         }
 
-        blockBasedModel(BlockRegistration.WET_GATHERERS_JAR_ITEM.get(), "");
-        blockBasedModel(BlockRegistration.DRY_GATHERERS_JAR_ITEM.get(), "");
-        blockBasedModel(BlockRegistration.GATHERERS_JAR_ITEM.get(), "");
+        blockBasedModel(ItemRegistration.WET_GATHERERS_JAR_ITEM.get(), "");
+        blockBasedModel(ItemRegistration.DRY_GATHERERS_JAR_ITEM.get(), "");
+        blockBasedModel(ItemRegistration.GATHERERS_JAR_ITEM.get(), "");
 
-        blockBasedModel(BlockRegistration.WET_KEEPERS_CROCK_ITEM.get(), "");
-        blockBasedModel(BlockRegistration.DRY_KEEPERS_CROCK_ITEM.get(), "");
-        blockBasedModel(BlockRegistration.KEEPERS_CROCK_ITEM.get(), "");
+        blockBasedModel(ItemRegistration.WET_KEEPERS_CROCK_ITEM.get(), "");
+        blockBasedModel(ItemRegistration.DRY_KEEPERS_CROCK_ITEM.get(), "");
+        blockBasedModel(ItemRegistration.KEEPERS_CROCK_ITEM.get(), "");
 
-        blockBasedModel(BlockRegistration.WET_SETTLERS_POT_ITEM.get(), "");
-        blockBasedModel(BlockRegistration.DRY_SETTLERS_POT_ITEM.get(), "");
-        blockBasedModel(BlockRegistration.SETTLERS_POT_ITEM.get(), "");
+        blockBasedModel(ItemRegistration.WET_SETTLERS_POT_ITEM.get(), "");
+        blockBasedModel(ItemRegistration.DRY_SETTLERS_POT_ITEM.get(), "");
+        blockBasedModel(ItemRegistration.SETTLERS_POT_ITEM.get(), "");
 
-        blockBasedModel(BlockRegistration.WET_CLAY_COOKING_POT_ITEM.get(), "");
-        blockBasedModel(BlockRegistration.DRY_CLAY_COOKING_POT_ITEM.get(), "");
-        blockBasedModel(BlockRegistration.CLAY_COOKING_POT_ITEM.get(), "");
+        blockBasedModel(ItemRegistration.WET_CLAY_COOKING_POT_ITEM.get(), "");
+        blockBasedModel(ItemRegistration.DRY_CLAY_COOKING_POT_ITEM.get(), "");
+        blockBasedModel(ItemRegistration.CLAY_COOKING_POT_ITEM.get(), "");
 
-        blockBasedModel(BlockRegistration.WET_CLAY_CAULDRON_ITEM.get(), "");
-        blockBasedModel(BlockRegistration.DRY_CLAY_CAULDRON_ITEM.get(), "");
-        blockBasedModel(BlockRegistration.CLAY_CAULDRON_ITEM.get(), "");
+        blockBasedModel(ItemRegistration.WET_CLAY_CAULDRON_ITEM.get(), "");
+        blockBasedModel(ItemRegistration.DRY_CLAY_CAULDRON_ITEM.get(), "");
+        blockBasedModel(ItemRegistration.CLAY_CAULDRON_ITEM.get(), "");
 
         //withExistingParent(itemName(BlockRegistration.WET_GATHERERS_JAR_ITEM.get()), resourceBlock(blockName(BlockRegistration.DRYING_GATHERERS_JAR) + "_wet"));
 
         { // World
             itemGeneratedModel(ItemRegistration.RED_CLAY_BALL.get());
             itemGeneratedModel(ItemRegistration.RAW_TIN.get());
-            blockBasedModel(BlockRegistration.TIN_ORE_BLOCK_ITEM.get(), "");
-            blockBasedModel(BlockRegistration.DEEPSLATE_TIN_ORE_BLOCK_ITEM.get(), "");
+            blockBasedModel(ItemRegistration.TIN_ORE_BLOCK_ITEM.get(), "");
+            blockBasedModel(ItemRegistration.DEEPSLATE_TIN_ORE_BLOCK_ITEM.get(), "");
             itemGeneratedModel(ItemRegistration.FLAX.get());
             itemGeneratedModel(ItemRegistration.FLAX_SEEDS.get());
             itemGeneratedModel(ItemRegistration.FLAX_FIBER.get());
@@ -212,44 +208,36 @@ public class BaseItemModelsProvider extends ItemModelProvider
         }
     }
 
-    private String itemName(Item item)
-    {
+    private String itemName(Item item) {
         return BuiltInRegistries.ITEM.getKey(item).getPath();
     }
 
-    public void blockBasedModel(Item item, String suffix)
-    {
+    public void blockBasedModel(Item item, String suffix) {
         withExistingParent(itemName(item), resourceBlock(itemName(item) + suffix));
     }
 
-    public void blockIconGeneratedModel(Item item)
-    {
+    public void blockIconGeneratedModel(Item item) {
         blockIconGeneratedModel(item, resourceBlock(itemName(item)));
     }
 
-    public void blockIconGeneratedModel(Item item, ResourceLocation texture)
-    {
+    public void blockIconGeneratedModel(Item item, ResourceLocation texture) {
         withExistingParent(itemName(item), GENERATED).texture("layer0", texture);
     }
 
     @SuppressWarnings("unused")
-    public void itemHandheldModel(Item item, ResourceLocation texture)
-    {
+    public void itemHandheldModel(Item item, ResourceLocation texture) {
         withExistingParent(itemName(item), HANDHELD).texture("layer0", texture);
     }
 
-    public void itemGeneratedModel(Item item)
-    {
+    public void itemGeneratedModel(Item item) {
         itemGeneratedModel(item, resourceItem(itemName(item)));
     }
 
-    public void itemGeneratedModel(Item item, ResourceLocation texture)
-    {
+    public void itemGeneratedModel(Item item, ResourceLocation texture) {
         withExistingParent(itemName(item), GENERATED).texture("layer0", texture);
     }
 
-    public ResourceLocation resourceBlock(String path)
-    {
+    public ResourceLocation resourceBlock(String path) {
         return ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, "block/" + path);
     }
 
