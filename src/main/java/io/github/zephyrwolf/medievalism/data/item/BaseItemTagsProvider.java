@@ -72,53 +72,53 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
                 .add(ItemRegistration.RED_CLAY_BALL.get());
         tag(ItemTagCatalog.CLAY_BLOCK)
                 .add(Items.CLAY)
-                .add(ItemRegistration.RED_CLAY_BLOCK_ITEM.get());
+                .add(ItemRegistration.RED_CLAY_BLOCK.get());
 
         tag(ItemTagCatalog.ROCK).add(
-                ItemRegistration.ROCK_ITEM.get(),
-                ItemRegistration.SANDSTONE_ROCK_ITEM.get(),
-                ItemRegistration.RED_SANDSTONE_ROCK_ITEM.get(),
-                ItemRegistration.MOSSY_ROCK_ITEM.get(),
-                ItemRegistration.LIGHTER_ROCK_ITEM.get(),
-                ItemRegistration.SNOWY_ROCK_ITEM.get(),
-                ItemRegistration.ICE_ROCK_ITEM.get(),
-                ItemRegistration.COPPER_ROCK_ITEM.get(),
-                ItemRegistration.LIMESTONE_ITEM.get()
+                ItemRegistration.ROCK.get(),
+                ItemRegistration.SANDSTONE_ROCK.get(),
+                ItemRegistration.RED_SANDSTONE_ROCK.get(),
+                ItemRegistration.MOSSY_ROCK.get(),
+                ItemRegistration.LIGHTER_ROCK.get(),
+                ItemRegistration.SNOWY_ROCK.get(),
+                ItemRegistration.ICE_ROCK.get(),
+                ItemRegistration.COPPER_ROCK.get(),
+                ItemRegistration.LIMESTONE.get()
         );
         tag(ItemTagCatalog.HARD_ROCK).add(
-                ItemRegistration.ROCK_ITEM.get(),
-                ItemRegistration.MOSSY_ROCK_ITEM.get(),
-                ItemRegistration.LIGHTER_ROCK_ITEM.get(),
-                ItemRegistration.SNOWY_ROCK_ITEM.get(),
-                ItemRegistration.ICE_ROCK_ITEM.get(),
-                ItemRegistration.COPPER_ROCK_ITEM.get(),
-                ItemRegistration.LIMESTONE_ITEM.get()
+                ItemRegistration.ROCK.get(),
+                ItemRegistration.MOSSY_ROCK.get(),
+                ItemRegistration.LIGHTER_ROCK.get(),
+                ItemRegistration.SNOWY_ROCK.get(),
+                ItemRegistration.ICE_ROCK.get(),
+                ItemRegistration.COPPER_ROCK.get(),
+                ItemRegistration.LIMESTONE.get()
         );
         tag(ItemTagCatalog.LARGE_ROCK).add(
-                ItemRegistration.LARGE_ROCK_ITEM.get(),
-                ItemRegistration.SANDSTONE_LARGE_ROCK_ITEM.get(),
-                ItemRegistration.RED_SANDSTONE_LARGE_ROCK_ITEM.get(),
-                ItemRegistration.MOSSY_LARGE_ROCK_ITEM.get(),
-                ItemRegistration.LIGHTER_LARGE_ROCK_ITEM.get(),
-                ItemRegistration.SNOWY_LARGE_ROCK_ITEM.get(),
-                ItemRegistration.ICE_LARGE_ROCK_ITEM.get()
+                ItemRegistration.LARGE_ROCK.get(),
+                ItemRegistration.SANDSTONE_LARGE_ROCK.get(),
+                ItemRegistration.RED_SANDSTONE_LARGE_ROCK.get(),
+                ItemRegistration.MOSSY_LARGE_ROCK.get(),
+                ItemRegistration.LIGHTER_LARGE_ROCK.get(),
+                ItemRegistration.SNOWY_LARGE_ROCK.get(),
+                ItemRegistration.ICE_LARGE_ROCK.get()
         );
         tag(ItemTagCatalog.LARGE_HARD_ROCK).add(
-                ItemRegistration.LARGE_ROCK_ITEM.get(),
-                ItemRegistration.MOSSY_LARGE_ROCK_ITEM.get(),
-                ItemRegistration.LIGHTER_LARGE_ROCK_ITEM.get(),
-                ItemRegistration.SNOWY_LARGE_ROCK_ITEM.get(),
-                ItemRegistration.ICE_LARGE_ROCK_ITEM.get()
+                ItemRegistration.LARGE_ROCK.get(),
+                ItemRegistration.MOSSY_LARGE_ROCK.get(),
+                ItemRegistration.LIGHTER_LARGE_ROCK.get(),
+                ItemRegistration.SNOWY_LARGE_ROCK.get(),
+                ItemRegistration.ICE_LARGE_ROCK.get()
         );
         tag(ItemTagCatalog.BRANCH).add(
-                ItemRegistration.OAK_BRANCH_ITEM.get(),
-                ItemRegistration.BIRCH_BRANCH_ITEM.get(),
-                ItemRegistration.SPRUCE_BRANCH_ITEM.get(),
-                ItemRegistration.JUNGLE_BRANCH_ITEM.get(),
-                ItemRegistration.ACACIA_BRANCH_ITEM.get(),
-                ItemRegistration.DARK_OAK_BRANCH_ITEM.get(),
-                ItemRegistration.CHERRY_BRANCH_ITEM.get(),
-                ItemRegistration.MANGROVE_BRANCH_ITEM.get()
+                ItemRegistration.OAK_BRANCH.get(),
+                ItemRegistration.BIRCH_BRANCH.get(),
+                ItemRegistration.SPRUCE_BRANCH.get(),
+                ItemRegistration.JUNGLE_BRANCH.get(),
+                ItemRegistration.ACACIA_BRANCH.get(),
+                ItemRegistration.DARK_OAK_BRANCH.get(),
+                ItemRegistration.CHERRY_BRANCH.get(),
+                ItemRegistration.MANGROVE_BRANCH.get()
         );
 
         tag(ItemTagCatalog.TINDER)

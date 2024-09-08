@@ -6,7 +6,6 @@ import io.github.zephyrwolf.medievalism.content.block.BlockTagCatalog;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -42,38 +41,38 @@ public class BaseBlockTagsProvider extends BlockTagsProvider
     {
         // TOOL
         tag(BlockTags.MINEABLE_WITH_AXE).add(
-                BlockRegistration.OAK_BRANCH_BLOCK.get(),
-                BlockRegistration.SPRUCE_BRANCH_BLOCK.get(),
-                BlockRegistration.BIRCH_BRANCH_BLOCK.get(),
-                BlockRegistration.JUNGLE_BRANCH_BLOCK.get(),
-                BlockRegistration.DARK_OAK_BRANCH_BLOCK.get(),
-                BlockRegistration.ACACIA_BRANCH_BLOCK.get(),
-                BlockRegistration.CHERRY_BRANCH_BLOCK.get(),
-                BlockRegistration.MANGROVE_BRANCH_BLOCK.get()
+                BlockRegistration.OAK_BRANCH.get(),
+                BlockRegistration.SPRUCE_BRANCH.get(),
+                BlockRegistration.BIRCH_BRANCH.get(),
+                BlockRegistration.JUNGLE_BRANCH.get(),
+                BlockRegistration.DARK_OAK_BRANCH.get(),
+                BlockRegistration.ACACIA_BRANCH.get(),
+                BlockRegistration.CHERRY_BRANCH.get(),
+                BlockRegistration.MANGROVE_BRANCH.get()
         );
         tag(BlockTags.MINEABLE_WITH_HOE).add(
-                BlockRegistration.THATCH_BLOCK.get()
+                BlockRegistration.THATCH.get()
         );
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
-                BlockRegistration.LIMESTONE_BLOCK.get(),
-                BlockRegistration.LARGE_ROCK_BLOCK.get(),
-                BlockRegistration.ROCK_BLOCK.get(),
-                BlockRegistration.LIMESTONE_ROCK_BLOCK.get(),
-                BlockRegistration.COPPER_ROCK_BLOCK.get(),
-                BlockRegistration.TIN_ORE_BLOCK.get(),
-                BlockRegistration.DEEPSLATE_TIN_ORE_BLOCK.get()
+                BlockRegistration.LIMESTONE.get(),
+                BlockRegistration.LARGE_ROCK.get(),
+                BlockRegistration.ROCK.get(),
+                BlockRegistration.LIMESTONE_ROCK.get(),
+                BlockRegistration.COPPER_ROCK.get(),
+                BlockRegistration.TIN_ORE.get(),
+                BlockRegistration.DEEPSLATE_TIN_ORE.get()
         );
         tag(BlockTags.MINEABLE_WITH_SHOVEL).add(
-                BlockRegistration.RED_CLAY_BLOCK.get()
+                BlockRegistration.RED_CLAY.get()
         );
 
         // Material
         tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).add( // Vs NEEDS_STONE_TOOL
-                BlockRegistration.LIMESTONE_BLOCK.get()
+                BlockRegistration.LIMESTONE.get()
         );
         tag(BlockTags.NEEDS_STONE_TOOL).add(
-                BlockRegistration.TIN_ORE_BLOCK.get(),
-                BlockRegistration.DEEPSLATE_TIN_ORE_BLOCK.get()
+                BlockRegistration.TIN_ORE.get(),
+                BlockRegistration.DEEPSLATE_TIN_ORE.get()
         );
         //tag(BlockTags.NEEDS_IRON_TOOL)
         //tag(BlockTags.NEEDS_DIAMOND_TOOL)
@@ -82,22 +81,22 @@ public class BaseBlockTagsProvider extends BlockTagsProvider
     protected void registerModTags()
     {
         tag(BlockTagCatalog.ROCK).add(
-                BlockRegistration.ROCK_BLOCK.get(),
-                BlockRegistration.SANDSTONE_ROCK_BLOCK.get(),
-                BlockRegistration.RED_SANDSTONE_LARGE_ROCK_BLOCK.get(),
-                BlockRegistration.MOSSY_LARGE_ROCK_BLOCK.get(),
-                BlockRegistration.LIGHTER_LARGE_ROCK_BLOCK.get(),
-                BlockRegistration.SNOWY_LARGE_ROCK_BLOCK.get(),
-                BlockRegistration.ICE_LARGE_ROCK_BLOCK.get()
+                BlockRegistration.ROCK.get(),
+                BlockRegistration.SANDSTONE_ROCK.get(),
+                BlockRegistration.RED_SANDSTONE_LARGE_ROCK.get(),
+                BlockRegistration.MOSSY_LARGE_ROCK.get(),
+                BlockRegistration.LIGHTER_LARGE_ROCK.get(),
+                BlockRegistration.SNOWY_LARGE_ROCK.get(),
+                BlockRegistration.ICE_LARGE_ROCK.get()
         );
         tag(BlockTagCatalog.LARGE_ROCK).add(
-                BlockRegistration.LARGE_ROCK_BLOCK.get(),
-                BlockRegistration.SANDSTONE_ROCK_BLOCK.get(),
-                BlockRegistration.RED_SANDSTONE_LARGE_ROCK_BLOCK.get(),
-                BlockRegistration.MOSSY_LARGE_ROCK_BLOCK.get(),
-                BlockRegistration.LIGHTER_LARGE_ROCK_BLOCK.get(),
-                BlockRegistration.SNOWY_LARGE_ROCK_BLOCK.get(),
-                BlockRegistration.ICE_LARGE_ROCK_BLOCK.get()
+                BlockRegistration.LARGE_ROCK.get(),
+                BlockRegistration.SANDSTONE_ROCK.get(),
+                BlockRegistration.RED_SANDSTONE_LARGE_ROCK.get(),
+                BlockRegistration.MOSSY_LARGE_ROCK.get(),
+                BlockRegistration.LIGHTER_LARGE_ROCK.get(),
+                BlockRegistration.SNOWY_LARGE_ROCK.get(),
+                BlockRegistration.ICE_LARGE_ROCK.get()
         );
         tag(BlockTagCatalog.CAN_DROP_THATCH).add(
                 Blocks.SHORT_GRASS,

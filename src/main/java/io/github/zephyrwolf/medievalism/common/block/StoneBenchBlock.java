@@ -59,29 +59,6 @@ public class StoneBenchBlock extends BaseEntityBlock {
         return new StoneBenchBlockEntity(pPos, pState);
     }
 
-    /*
-    @Override
-    public BlockState playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
-        // TODO Not sure what is happening here
-        BlockEntity be = pLevel.getBlockEntity(pPos);
-        if (be instanceof StoneBenchBlockEntity sbbe) {
-            if (!pLevel.isClientSide && pPlayer.isCreative() && !sbbe.isEmpty()) {
-                ItemStack itemstack = new ItemStack(this);
-                itemstack.applyComponents(be.collectComponents());
-                ItemEntity itementity = new ItemEntity(
-                        pLevel, (double) pPos.getX() + 0.5, (double) pPos.getY() + 0.5, (double) pPos.getZ() + 0.5, itemstack
-                );
-                itementity.setDefaultPickUpDelay();
-                pLevel.addFreshEntity(itementity);
-            } else {
-                sbbe.unpackLootTable(pPlayer);
-            }
-        }
-
-        return super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
-    }
-    */
-
     @Override
     protected List<ItemStack> getDrops(BlockState pState, LootParams.Builder pParams) {
         BlockEntity be = pParams.getOptionalParameter(LootContextParams.BLOCK_ENTITY);

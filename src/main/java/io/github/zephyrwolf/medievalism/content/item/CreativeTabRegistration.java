@@ -20,7 +20,7 @@ public class CreativeTabRegistration
     @SuppressWarnings("unused")
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MEDIEVALISM_TAB = CREATIVE_MODE_TABS.register("medievalism_tab",
             () -> CreativeModeTab.builder()
-                    .icon(() -> new ItemStack(BlockRegistration.RED_CLAY_BLOCK.asItem()))
+                    .icon(() -> new ItemStack(BlockRegistration.RED_CLAY.asItem()))
                     .title(Component.translatable("creative_tab.medievalism.name"))
                     .displayItems(CreativeTabRegistration::itemsForMedievalismTab)
                     .build());

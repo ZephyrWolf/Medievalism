@@ -17,7 +17,7 @@ public final class BaseShapedRecipeProvider {
 
     private static void survivalRecipes(RecipeOutput recipeOutput) {
         // Red Clay Block
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistration.RED_CLAY_BLOCK_ITEM)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistration.RED_CLAY_BLOCK)
                 .pattern("cc")
                 .pattern("cc")
                 .define('c', ItemRegistration.RED_CLAY_BALL)
@@ -32,7 +32,7 @@ public final class BaseShapedRecipeProvider {
                 .unlockedBy("has_mud_balls", RecipeTools.itemPredicateOf(ItemRegistration.MUD_BALL))
                 .save(recipeOutput, MedievalismConstants.resource("mud_from_balls"));
         // Thatch Block
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistration.THATCH_BLOCK_ITEM)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistration.THATCH_BLOCK)
                 .pattern("tt")
                 .pattern("tt")
                 .define('t', ItemRegistration.THATCH)
@@ -45,9 +45,8 @@ public final class BaseShapedRecipeProvider {
                 .define('m', ItemRegistration.PACKED_MUD_BRICK)
                 .unlockedBy("has_mud_stone_brick", RecipeTools.itemPredicateOf(ItemRegistration.PACKED_MUD_BRICK))
                 .save(recipeOutput, MedievalismConstants.resource("mud_brick_from_bricks"));
-        // TODO Different types based on stone type?
         // Stone Bench
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, new ItemStack(ItemRegistration.STONE_BENCH_ITEM.get()))
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, new ItemStack(ItemRegistration.STONE_BENCH.get()))
                 .pattern("xx")
                 .define('x', ItemTagCatalog.LARGE_ROCK)
                 .unlockedBy("has_large_rock", RecipeTools.itemPredicateOf(ItemTagCatalog.LARGE_ROCK))

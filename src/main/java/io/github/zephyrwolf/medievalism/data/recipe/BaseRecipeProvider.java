@@ -21,7 +21,7 @@ public class BaseRecipeProvider extends RecipeProvider
         BaseShapedRecipeProvider.buildRecipes(recipeOutput);
         BaseSmokingRecipeProvider.buildRecipes(recipeOutput);
         BaseInWorldRecipeProvider.buildRecipes(recipeOutput);
-        BaseSmeltingRecipeProvider.buildRecipes(recipeOutput); // TODO Review once mod is futher developed
+        BaseSmeltingRecipeProvider.buildRecipes(recipeOutput); // TODO Review once mod is further developed
         BaseCampfireRecipeProvider.buildRecipes(recipeOutput);
         BaseMalleableRecipeProvider.buildRecipes(recipeOutput);
         BaseShapelessRecipeProvider.buildRecipes(recipeOutput);

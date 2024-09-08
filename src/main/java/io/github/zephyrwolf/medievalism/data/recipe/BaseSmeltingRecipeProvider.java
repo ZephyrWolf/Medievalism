@@ -47,10 +47,10 @@ public final class BaseSmeltingRecipeProvider {
 
     private static void limeRecipes(RecipeOutput recipeOutput) {
         // Quicklime
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistration.LIMESTONE_ROCK_ITEM),
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistration.LIMESTONE_ROCK),
                         RecipeCategory.MISC, ItemRegistration.QUICK_LIME,
                         0.0f, 1000)
-                .unlockedBy("has_limestone_rock", RecipeTools.itemPredicateOf(ItemRegistration.LIMESTONE_ROCK_ITEM))
+                .unlockedBy("has_limestone_rock", RecipeTools.itemPredicateOf(ItemRegistration.LIMESTONE_ROCK))
                 .save(recipeOutput, MedievalismConstants.resource("quicklime_smelting"));
     }
 

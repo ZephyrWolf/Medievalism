@@ -116,7 +116,7 @@ public class WetPackedMudBrick extends Block {
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
-        if (pStack.getItem() == ItemRegistration.WET_PACKED_MUD_BRICK_ITEM.get()) {
+        if (pStack.getItem() == ItemRegistration.WET_PACKED_MUD_BRICK.get()) {
             EnumProperty<PackedMudBrickState> prop = null;
             if (pState.getValue(BACK_LEFT).isEmpty()) prop = BACK_LEFT;
             else if (pState.getValue(BACK_RIGHT).isEmpty()) prop = BACK_RIGHT;
@@ -142,7 +142,7 @@ public class WetPackedMudBrick extends Block {
             @SuppressWarnings("unchecked")
             PackedMudBrickState state = pState.getValue((EnumProperty<PackedMudBrickState>) property);
             if (state == PackedMudBrickState.WET)
-                items.add(new ItemStack(ItemRegistration.WET_PACKED_MUD_BRICK_ITEM.get()));
+                items.add(new ItemStack(ItemRegistration.WET_PACKED_MUD_BRICK.get()));
             else if (state == PackedMudBrickState.DRY)
                 items.add(new ItemStack(ItemRegistration.PACKED_MUD_BRICK.get()));
         }

@@ -1,7 +1,6 @@
 package io.github.zephyrwolf.medievalism.data.worldgen;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.common.block.YamBlock;
 import io.github.zephyrwolf.medievalism.common.worldgen.feature.configuration.CompositeFeatureConfiguration;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.content.block.BlockTagCatalog;
@@ -22,7 +21,6 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.RandomizedIntStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.HeightmapPlacement;
@@ -85,59 +83,59 @@ public final class BaseConfiguredFeatures {
         RuleTest stoneReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
         List<OreConfiguration.TargetBlockState> overworldTinOres = List.of(
-                OreConfiguration.target(stoneReplaceables, BlockRegistration.TIN_ORE_BLOCK.get().defaultBlockState()),
-                OreConfiguration.target(deepslateReplaceables, BlockRegistration.DEEPSLATE_TIN_ORE_BLOCK.get().defaultBlockState())
+                OreConfiguration.target(stoneReplaceables, BlockRegistration.TIN_ORE.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceables, BlockRegistration.DEEPSLATE_TIN_ORE.get().defaultBlockState())
         );
         register(context, OVERWORLD_TIN_ORE_CONFIGURED_KEY, Feature.ORE, new OreConfiguration(overworldTinOres, 9));
 
-        simpleRandomPatch(context, DENSE_OAK_BRANCH_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.OAK_BRANCH_BLOCK.get());
-        simpleRandomPatch(context, DENSE_BIRCH_BRANCH_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.BIRCH_BRANCH_BLOCK.get());
-        simpleRandomPatch(context, DENSE_SPRUCE_BRANCH_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.SPRUCE_BRANCH_BLOCK.get());
-        simpleRandomPatch(context, DENSE_JUNGLE_BRANCH_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.JUNGLE_BRANCH_BLOCK.get());
-        simpleRandomPatch(context, DENSE_CHERRY_BRANCH_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.CHERRY_BRANCH_BLOCK.get());
-        simpleRandomPatch(context, DENSE_DARK_OAK_BRANCH_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.DARK_OAK_BRANCH_BLOCK.get());
-        simpleRandomPatch(context, DENSE_MANGROVE_BRANCH_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.MANGROVE_BRANCH_BLOCK.get());
+        simpleRandomPatch(context, DENSE_OAK_BRANCH_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.OAK_BRANCH.get());
+        simpleRandomPatch(context, DENSE_BIRCH_BRANCH_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.BIRCH_BRANCH.get());
+        simpleRandomPatch(context, DENSE_SPRUCE_BRANCH_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.SPRUCE_BRANCH.get());
+        simpleRandomPatch(context, DENSE_JUNGLE_BRANCH_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.JUNGLE_BRANCH.get());
+        simpleRandomPatch(context, DENSE_CHERRY_BRANCH_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.CHERRY_BRANCH.get());
+        simpleRandomPatch(context, DENSE_DARK_OAK_BRANCH_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.DARK_OAK_BRANCH.get());
+        simpleRandomPatch(context, DENSE_MANGROVE_BRANCH_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.MANGROVE_BRANCH.get());
 
-        simpleRandomPatch(context, SPARSE_OAK_BRANCH_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.OAK_BRANCH_BLOCK.get());
-        simpleRandomPatch(context, SPARSE_BIRCH_BRANCH_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.BIRCH_BRANCH_BLOCK.get());
-        simpleRandomPatch(context, SPARSE_SPRUCE_BRANCH_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.SPRUCE_BRANCH_BLOCK.get());
-        simpleRandomPatch(context, SPARSE_JUNGLE_BRANCH_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.JUNGLE_BRANCH_BLOCK.get());
-        simpleRandomPatch(context, SPARSE_ACACIA_BRANCH_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.ACACIA_BRANCH_BLOCK.get());
+        simpleRandomPatch(context, SPARSE_OAK_BRANCH_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.OAK_BRANCH.get());
+        simpleRandomPatch(context, SPARSE_BIRCH_BRANCH_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.BIRCH_BRANCH.get());
+        simpleRandomPatch(context, SPARSE_SPRUCE_BRANCH_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.SPRUCE_BRANCH.get());
+        simpleRandomPatch(context, SPARSE_JUNGLE_BRANCH_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.JUNGLE_BRANCH.get());
+        simpleRandomPatch(context, SPARSE_ACACIA_BRANCH_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.ACACIA_BRANCH.get());
 
-        simpleRandomPatch(context, RARE_OAK_BRANCH_CONFIGURED_KEY, 1, 0, 0, BlockRegistration.OAK_BRANCH_BLOCK.get());
-        simpleRandomPatch(context, RARE_BIRCH_BRANCH_CONFIGURED_KEY, 1, 0, 0, BlockRegistration.BIRCH_BRANCH_BLOCK.get());
+        simpleRandomPatch(context, RARE_OAK_BRANCH_CONFIGURED_KEY, 1, 0, 0, BlockRegistration.OAK_BRANCH.get());
+        simpleRandomPatch(context, RARE_BIRCH_BRANCH_CONFIGURED_KEY, 1, 0, 0, BlockRegistration.BIRCH_BRANCH.get());
 
-        simpleRandomPatch(context, ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.ROCK_BLOCK.get());
-        simpleRandomPatch(context, DENSE_ROCK_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.ROCK_BLOCK.get());
-        simpleRandomPatch(context, RIVER_ROCK_CONFIGURED_KEY, 2, 2, 0, BlockRegistration.ROCK_BLOCK.get());
-        simpleRandomPatch(context, SANDSTONE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.SANDSTONE_ROCK_BLOCK.get());
-        simpleRandomPatch(context, RED_SANDSTONE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get());
-        simpleRandomPatch(context, MOSSY_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.MOSSY_ROCK_BLOCK.get());
-        simpleRandomPatch(context, LIGHTER_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.LIGHTER_ROCK_BLOCK.get());
-        simpleRandomPatch(context, SNOWY_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.SNOWY_ROCK_BLOCK.get());
-        simpleRandomPatch(context, ICE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.ICE_ROCK_BLOCK.get());
+        simpleRandomPatch(context, ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.ROCK.get());
+        simpleRandomPatch(context, DENSE_ROCK_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.ROCK.get());
+        simpleRandomPatch(context, RIVER_ROCK_CONFIGURED_KEY, 2, 2, 0, BlockRegistration.ROCK.get());
+        simpleRandomPatch(context, SANDSTONE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.SANDSTONE_ROCK.get());
+        simpleRandomPatch(context, RED_SANDSTONE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.RED_SANDSTONE_ROCK.get());
+        simpleRandomPatch(context, MOSSY_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.MOSSY_ROCK.get());
+        simpleRandomPatch(context, LIGHTER_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.LIGHTER_ROCK.get());
+        simpleRandomPatch(context, SNOWY_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.SNOWY_ROCK.get());
+        simpleRandomPatch(context, ICE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.ICE_ROCK.get());
 
-        simpleRandomPatch(context, LARGE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.LARGE_ROCK_BLOCK.get());
-        simpleRandomPatch(context, DENSE_LARGE_ROCK_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.LARGE_ROCK_BLOCK.get());
-        simpleRandomPatch(context, SANDSTONE_LARGE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.SANDSTONE_LARGE_ROCK_BLOCK.get());
-        simpleRandomPatch(context, RED_SANDSTONE_LARGE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.RED_SANDSTONE_LARGE_ROCK_BLOCK.get());
-        simpleRandomPatch(context, MOSSY_LARGE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.MOSSY_LARGE_ROCK_BLOCK.get());
-        simpleRandomPatch(context, LIGHTER_LARGE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.LIGHTER_LARGE_ROCK_BLOCK.get());
-        simpleRandomPatch(context, SNOWY_LARGE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.SNOWY_LARGE_ROCK_BLOCK.get());
-        simpleRandomPatch(context, ICE_LARGE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.ICE_LARGE_ROCK_BLOCK.get());
+        simpleRandomPatch(context, LARGE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.LARGE_ROCK.get());
+        simpleRandomPatch(context, DENSE_LARGE_ROCK_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.LARGE_ROCK.get());
+        simpleRandomPatch(context, SANDSTONE_LARGE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.SANDSTONE_LARGE_ROCK.get());
+        simpleRandomPatch(context, RED_SANDSTONE_LARGE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.RED_SANDSTONE_LARGE_ROCK.get());
+        simpleRandomPatch(context, MOSSY_LARGE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.MOSSY_LARGE_ROCK.get());
+        simpleRandomPatch(context, LIGHTER_LARGE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.LIGHTER_LARGE_ROCK.get());
+        simpleRandomPatch(context, SNOWY_LARGE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.SNOWY_LARGE_ROCK.get());
+        simpleRandomPatch(context, ICE_LARGE_ROCK_CONFIGURED_KEY, 2, 3, 0, BlockRegistration.ICE_LARGE_ROCK.get());
 
         register(context, LIMESTONE_ROCK_CONFIGURED_KEY, Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(1, 0, 0,
                         PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
-                                new SimpleBlockConfiguration(BlockStateProvider.simple(BlockRegistration.LIMESTONE_ROCK_BLOCK.get())))));
+                                new SimpleBlockConfiguration(BlockStateProvider.simple(BlockRegistration.LIMESTONE_ROCK.get())))));
         register(context, COPPER_ROCK_CONFIGURED_KEY, Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(1, 0, 0,
                         PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
-                                new SimpleBlockConfiguration(BlockStateProvider.simple(BlockRegistration.COPPER_ROCK_BLOCK.get())))));
+                                new SimpleBlockConfiguration(BlockStateProvider.simple(BlockRegistration.COPPER_ROCK.get())))));
 
         RuleTest redClayReplaceables = new TagMatchTest(BlockTagCatalog.RED_CLAY_CAN_REPLACE);
         List<OreConfiguration.TargetBlockState> redClayTargetBlockStates = List.of(
-                OreConfiguration.target(redClayReplaceables, BlockRegistration.RED_CLAY_BLOCK.get().defaultBlockState())
+                OreConfiguration.target(redClayReplaceables, BlockRegistration.RED_CLAY.get().defaultBlockState())
         );
 
         register(context, RED_CLAY_CONFIGURED_KEY, Feature.ORE, new OreConfiguration(redClayTargetBlockStates, 32));
@@ -151,11 +149,11 @@ public final class BaseConfiguredFeatures {
                         0,
                         PlacementUtils.inlinePlaced(
                                 Feature.BLOCK_COLUMN,
-                                BlockColumnConfiguration.simple(BiasedToBottomInt.of(2, 5), BlockStateProvider.simple(BlockRegistration.DOGBANE_BLOCK.get())),
+                                BlockColumnConfiguration.simple(BiasedToBottomInt.of(2, 5), BlockStateProvider.simple(BlockRegistration.DOGBANE.get())),
                                 BlockPredicateFilter.forPredicate(
                                         BlockPredicate.allOf(
                                                 BlockPredicate.ONLY_IN_AIR_PREDICATE,
-                                                BlockPredicate.wouldSurvive(BlockRegistration.DOGBANE_BLOCK.get().defaultBlockState(), BlockPos.ZERO)
+                                                BlockPredicate.wouldSurvive(BlockRegistration.DOGBANE.get().defaultBlockState(), BlockPos.ZERO)
                                         )
                                 ),
                                 HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG)

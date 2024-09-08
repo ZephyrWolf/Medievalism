@@ -27,19 +27,9 @@ import java.util.function.Consumer;
 public final class BuiltinRepositorySource implements RepositorySource
 { // https://github.com/CraftTweaker/ContentTweaker/blob/1.20.1/core/src/main/java/com/blamejared/contenttweaker/core/resource/UserRepositorySource.java
     private static final Gson GSON = new GsonBuilder().disableHtmlEscaping().setLenient().create();
-    //private static final Path TARGET = ServiceManager.platform().gameDirectory().resolve("resources"); // TODO("Maybe move somewhere else?")
 
     private final PackType type;
     private final Path target;
-
-    /*
-    public static BuiltinRepositorySource of(final PackType type)
-    {
-        return new BuiltinRepositorySource(
-                Objects.requireNonNull(type),
-                ServiceManager.platform().gameDirectory().resolve("resources"));
-    }
-    */
 
     public static BuiltinRepositorySource of(final PackType type, Path target)
     {

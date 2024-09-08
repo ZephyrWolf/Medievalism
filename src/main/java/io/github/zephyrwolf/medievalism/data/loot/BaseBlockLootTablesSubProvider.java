@@ -37,58 +37,58 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        add(BlockRegistration.RED_CLAY_BLOCK.get(), (block) -> createSingleItemTableWithSilkTouch(
+        add(BlockRegistration.RED_CLAY.get(), (block) -> createSingleItemTableWithSilkTouch(
                 block,
                 ItemRegistration.RED_CLAY_BALL.get(),
                 ConstantValue.exactly(4)
         ));
 
-        add(BlockRegistration.TIN_ORE_BLOCK.get(), (block) -> createOreDrop(
-                BlockRegistration.TIN_ORE_BLOCK.get(),
+        add(BlockRegistration.TIN_ORE.get(), (block) -> createOreDrop(
+                BlockRegistration.TIN_ORE.get(),
                 ItemRegistration.RAW_TIN.get()
         ));
-        add(BlockRegistration.DEEPSLATE_TIN_ORE_BLOCK.get(), (block) -> createOreDrop(
-                BlockRegistration.DEEPSLATE_TIN_ORE_BLOCK.get(),
+        add(BlockRegistration.DEEPSLATE_TIN_ORE.get(), (block) -> createOreDrop(
+                BlockRegistration.DEEPSLATE_TIN_ORE.get(),
                 ItemRegistration.RAW_TIN.get()
         ));
 
         add(BlockRegistration.WET_PACKED_MUD_BRICK.get(), emptyItemTable());
 
-        add(BlockRegistration.DRYING_GATHERERS_JAR.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, ItemRegistration.WET_GATHERERS_JAR_ITEM, ItemRegistration.DRY_GATHERERS_JAR_ITEM));
+        add(BlockRegistration.DRYING_GATHERERS_JAR.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, ItemRegistration.WET_GATHERERS_JAR, ItemRegistration.DRY_GATHERERS_JAR));
         add(BlockRegistration.GATHERERS_JAR.get(), this::createCeramicContainer);
-        add(BlockRegistration.DRYING_KEEPERS_CROCK.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, ItemRegistration.WET_KEEPERS_CROCK_ITEM, ItemRegistration.DRY_KEEPERS_CROCK_ITEM));
+        add(BlockRegistration.DRYING_KEEPERS_CROCK.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, ItemRegistration.WET_KEEPERS_CROCK, ItemRegistration.DRY_KEEPERS_CROCK));
         add(BlockRegistration.KEEPERS_CROCK.get(), this::createCeramicContainer);
-        add(BlockRegistration.DRYING_SETTLERS_POT.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, ItemRegistration.WET_SETTLERS_POT_ITEM, ItemRegistration.DRY_SETTLERS_POT_ITEM));
+        add(BlockRegistration.DRYING_SETTLERS_POT.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, ItemRegistration.WET_SETTLERS_POT, ItemRegistration.DRY_SETTLERS_POT));
         add(BlockRegistration.SETTLERS_POT.get(), this::createNameable);
-        add(BlockRegistration.DRYING_CLAY_COOKING_POT.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, ItemRegistration.WET_CLAY_COOKING_POT_ITEM, ItemRegistration.DRY_CLAY_COOKING_POT_ITEM));
+        add(BlockRegistration.DRYING_CLAY_COOKING_POT.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, ItemRegistration.WET_CLAY_COOKING_POT, ItemRegistration.DRY_CLAY_COOKING_POT));
         dropSelf(BlockRegistration.CLAY_COOKING_POT.get());
-        add(BlockRegistration.DRYING_CLAY_CAULDRON.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, ItemRegistration.WET_CLAY_CAULDRON_ITEM, ItemRegistration.DRY_CLAY_CAULDRON_ITEM));
+        add(BlockRegistration.DRYING_CLAY_CAULDRON.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, ItemRegistration.WET_CLAY_CAULDRON, ItemRegistration.DRY_CLAY_CAULDRON));
         dropSelf(BlockRegistration.CLAY_CAULDRON.get());
 
-        dropSelf(BlockRegistration.OAK_BRANCH_BLOCK.get());
-        dropSelf(BlockRegistration.BIRCH_BRANCH_BLOCK.get());
-        dropSelf(BlockRegistration.SPRUCE_BRANCH_BLOCK.get());
-        dropSelf(BlockRegistration.JUNGLE_BRANCH_BLOCK.get());
-        dropSelf(BlockRegistration.DARK_OAK_BRANCH_BLOCK.get());
-        dropSelf(BlockRegistration.ACACIA_BRANCH_BLOCK.get());
-        dropSelf(BlockRegistration.CHERRY_BRANCH_BLOCK.get());
-        dropSelf(BlockRegistration.MANGROVE_BRANCH_BLOCK.get());
+        dropSelf(BlockRegistration.OAK_BRANCH.get());
+        dropSelf(BlockRegistration.BIRCH_BRANCH.get());
+        dropSelf(BlockRegistration.SPRUCE_BRANCH.get());
+        dropSelf(BlockRegistration.JUNGLE_BRANCH.get());
+        dropSelf(BlockRegistration.DARK_OAK_BRANCH.get());
+        dropSelf(BlockRegistration.ACACIA_BRANCH.get());
+        dropSelf(BlockRegistration.CHERRY_BRANCH.get());
+        dropSelf(BlockRegistration.MANGROVE_BRANCH.get());
 
-        dropSelf(BlockRegistration.ROCK_BLOCK.get());
-        dropSelf(BlockRegistration.SANDSTONE_ROCK_BLOCK.get());
-        dropSelf(BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get());
-        dropSelf(BlockRegistration.MOSSY_ROCK_BLOCK.get()); // TODO Make these drop regular without silk touch!?!?!?!?!?!
-        dropSelf(BlockRegistration.LIGHTER_ROCK_BLOCK.get());
-        dropSelf(BlockRegistration.SNOWY_ROCK_BLOCK.get());
-        dropSelf(BlockRegistration.ICE_ROCK_BLOCK.get());
+        dropSelf(BlockRegistration.ROCK.get());
+        dropSelf(BlockRegistration.SANDSTONE_ROCK.get());
+        dropSelf(BlockRegistration.RED_SANDSTONE_ROCK.get());
+        dropSelf(BlockRegistration.MOSSY_ROCK.get()); // TODO Make these drop regular without silk touch!?!?!?!?!?!
+        dropSelf(BlockRegistration.LIGHTER_ROCK.get());
+        dropSelf(BlockRegistration.SNOWY_ROCK.get());
+        dropSelf(BlockRegistration.ICE_ROCK.get());
 
-        dropSelf(BlockRegistration.LARGE_ROCK_BLOCK.get());
-        dropSelf(BlockRegistration.SANDSTONE_LARGE_ROCK_BLOCK.get());
-        dropSelf(BlockRegistration.RED_SANDSTONE_LARGE_ROCK_BLOCK.get());
-        dropSelf(BlockRegistration.MOSSY_LARGE_ROCK_BLOCK.get()); // TODO Make these drop regular without silk touch!?!?!?!?!?!
-        dropSelf(BlockRegistration.LIGHTER_LARGE_ROCK_BLOCK.get());
-        dropSelf(BlockRegistration.SNOWY_LARGE_ROCK_BLOCK.get());
-        dropSelf(BlockRegistration.ICE_LARGE_ROCK_BLOCK.get());
+        dropSelf(BlockRegistration.LARGE_ROCK.get());
+        dropSelf(BlockRegistration.SANDSTONE_LARGE_ROCK.get());
+        dropSelf(BlockRegistration.RED_SANDSTONE_LARGE_ROCK.get());
+        dropSelf(BlockRegistration.MOSSY_LARGE_ROCK.get()); // TODO Make these drop regular without silk touch!?!?!?!?!?!
+        dropSelf(BlockRegistration.LIGHTER_LARGE_ROCK.get());
+        dropSelf(BlockRegistration.SNOWY_LARGE_ROCK.get());
+        dropSelf(BlockRegistration.ICE_LARGE_ROCK.get());
 
         add(
                 BlockRegistration.YAMS.get(),
@@ -122,12 +122,12 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
                 )
         );
 
-        dropSelf(BlockRegistration.LIMESTONE_BLOCK.get());
-        dropSelf(BlockRegistration.LIMESTONE_ROCK_BLOCK.get());
-        dropSelf(BlockRegistration.COPPER_ROCK_BLOCK.get());
+        dropSelf(BlockRegistration.LIMESTONE.get());
+        dropSelf(BlockRegistration.LIMESTONE_ROCK.get());
+        dropSelf(BlockRegistration.COPPER_ROCK.get());
 
-        dropSelf(BlockRegistration.THATCH_BLOCK.get());
-        dropSelf(BlockRegistration.DOGBANE_BLOCK.get());
+        dropSelf(BlockRegistration.THATCH.get());
+        dropSelf(BlockRegistration.DOGBANE.get());
 
         dropSelf(BlockRegistration.STONE_BENCH.get());
         dropSelf(BlockRegistration.CHOPPING_BLOCK.get());

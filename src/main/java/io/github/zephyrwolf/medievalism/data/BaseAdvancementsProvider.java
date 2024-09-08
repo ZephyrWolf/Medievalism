@@ -40,7 +40,7 @@ public class BaseAdvancementsProvider implements AdvancementProvider.Advancement
                         ResourceLocation.fromNamespaceAndPath("minecraft", "textures/block/bricks.png"),
                         AdvancementType.TASK, false, false, false)
                 .addCriterion("red_clay_balls", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistration.RED_CLAY_BALL.get()))
-                .addCriterion("red_clay_block", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistration.RED_CLAY_BLOCK.get()))
+                .addCriterion("red_clay_block", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistration.RED_CLAY.get()))
                 .requirements(AdvancementRequirements.Strategy.OR)
                 .save(saver, getNameId("main/get_red_clay"));
 /*

@@ -33,20 +33,20 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
 
     @Override
     protected void registerStatesAndModels() {
-        simpleBlock(BlockRegistration.RED_CLAY_BLOCK.get());
-        simpleBlock(BlockRegistration.TIN_ORE_BLOCK.get());
-        simpleBlock(BlockRegistration.DEEPSLATE_TIN_ORE_BLOCK.get());
-        simpleBlock(BlockRegistration.LIMESTONE_BLOCK.get());
+        simpleBlock(BlockRegistration.RED_CLAY.get());
+        simpleBlock(BlockRegistration.TIN_ORE.get());
+        simpleBlock(BlockRegistration.DEEPSLATE_TIN_ORE.get());
+        simpleBlock(BlockRegistration.LIMESTONE.get());
 
         //region Branches
-        randomYRotationBlock(BlockRegistration.OAK_BRANCH_BLOCK.get(), existingParent(BlockRegistration.OAK_BRANCH_BLOCK.get(), "block/branch", "", BlockRegistration.OAK_BRANCH_BLOCK.get(), Blocks.OAK_LOG));
-        randomYRotationBlock(BlockRegistration.BIRCH_BRANCH_BLOCK.get(), existingParent(BlockRegistration.BIRCH_BRANCH_BLOCK.get(), "block/branch", "", BlockRegistration.BIRCH_BRANCH_BLOCK.get(), Blocks.BIRCH_LOG));
-        randomYRotationBlock(BlockRegistration.SPRUCE_BRANCH_BLOCK.get(), existingParent(BlockRegistration.SPRUCE_BRANCH_BLOCK.get(), "block/branch", "", BlockRegistration.SPRUCE_BRANCH_BLOCK.get(), Blocks.SPRUCE_LOG));
-        randomYRotationBlock(BlockRegistration.JUNGLE_BRANCH_BLOCK.get(), existingParent(BlockRegistration.JUNGLE_BRANCH_BLOCK.get(), "block/branch", "", BlockRegistration.JUNGLE_BRANCH_BLOCK.get(), Blocks.JUNGLE_LOG));
-        randomYRotationBlock(BlockRegistration.DARK_OAK_BRANCH_BLOCK.get(), existingParent(BlockRegistration.DARK_OAK_BRANCH_BLOCK.get(), "block/branch", "", BlockRegistration.DARK_OAK_BRANCH_BLOCK.get(), Blocks.DARK_OAK_LOG));
-        randomYRotationBlock(BlockRegistration.ACACIA_BRANCH_BLOCK.get(), existingParent(BlockRegistration.ACACIA_BRANCH_BLOCK.get(), "block/branch", "", BlockRegistration.ACACIA_BRANCH_BLOCK.get(), Blocks.ACACIA_LOG));
-        randomYRotationBlock(BlockRegistration.CHERRY_BRANCH_BLOCK.get(), existingParent(BlockRegistration.CHERRY_BRANCH_BLOCK.get(), "block/branch", "", BlockRegistration.CHERRY_BRANCH_BLOCK.get(), Blocks.CHERRY_LOG));
-        randomYRotationBlock(BlockRegistration.MANGROVE_BRANCH_BLOCK.get(), existingParent(BlockRegistration.MANGROVE_BRANCH_BLOCK.get(), "block/branch", "", BlockRegistration.MANGROVE_BRANCH_BLOCK.get(), Blocks.MANGROVE_LOG));
+        randomYRotationBlock(BlockRegistration.OAK_BRANCH.get(), existingParent(BlockRegistration.OAK_BRANCH.get(), "block/branch", "", BlockRegistration.OAK_BRANCH.get(), Blocks.OAK_LOG));
+        randomYRotationBlock(BlockRegistration.BIRCH_BRANCH.get(), existingParent(BlockRegistration.BIRCH_BRANCH.get(), "block/branch", "", BlockRegistration.BIRCH_BRANCH.get(), Blocks.BIRCH_LOG));
+        randomYRotationBlock(BlockRegistration.SPRUCE_BRANCH.get(), existingParent(BlockRegistration.SPRUCE_BRANCH.get(), "block/branch", "", BlockRegistration.SPRUCE_BRANCH.get(), Blocks.SPRUCE_LOG));
+        randomYRotationBlock(BlockRegistration.JUNGLE_BRANCH.get(), existingParent(BlockRegistration.JUNGLE_BRANCH.get(), "block/branch", "", BlockRegistration.JUNGLE_BRANCH.get(), Blocks.JUNGLE_LOG));
+        randomYRotationBlock(BlockRegistration.DARK_OAK_BRANCH.get(), existingParent(BlockRegistration.DARK_OAK_BRANCH.get(), "block/branch", "", BlockRegistration.DARK_OAK_BRANCH.get(), Blocks.DARK_OAK_LOG));
+        randomYRotationBlock(BlockRegistration.ACACIA_BRANCH.get(), existingParent(BlockRegistration.ACACIA_BRANCH.get(), "block/branch", "", BlockRegistration.ACACIA_BRANCH.get(), Blocks.ACACIA_LOG));
+        randomYRotationBlock(BlockRegistration.CHERRY_BRANCH.get(), existingParent(BlockRegistration.CHERRY_BRANCH.get(), "block/branch", "", BlockRegistration.CHERRY_BRANCH.get(), Blocks.CHERRY_LOG));
+        randomYRotationBlock(BlockRegistration.MANGROVE_BRANCH.get(), existingParent(BlockRegistration.MANGROVE_BRANCH.get(), "block/branch", "", BlockRegistration.MANGROVE_BRANCH.get(), Blocks.MANGROVE_LOG));
         //endregion
 
         //region Rocks
@@ -57,60 +57,60 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         ResourceLocation mossy_rock = MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "mossy_rock");
 
         randomYRotationBlock(
-                BlockRegistration.ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.ROCK_BLOCK.get(), "block/base_rock1", "1", Blocks.STONE),
-                existingParent(BlockRegistration.ROCK_BLOCK.get(), "block/base_rock2", "2", Blocks.STONE),
-                existingParent(BlockRegistration.ROCK_BLOCK.get(), "block/base_rock3", "3", Blocks.STONE),
-                existingParent(BlockRegistration.ROCK_BLOCK.get(), "block/base_rock4", "4", Blocks.STONE),
-                existingParent(BlockRegistration.ROCK_BLOCK.get(), "block/base_rock5", "5", Blocks.STONE)
+                BlockRegistration.ROCK.get(),
+                existingParent(BlockRegistration.ROCK.get(), "block/base_rock1", "1", Blocks.STONE),
+                existingParent(BlockRegistration.ROCK.get(), "block/base_rock2", "2", Blocks.STONE),
+                existingParent(BlockRegistration.ROCK.get(), "block/base_rock3", "3", Blocks.STONE),
+                existingParent(BlockRegistration.ROCK.get(), "block/base_rock4", "4", Blocks.STONE),
+                existingParent(BlockRegistration.ROCK.get(), "block/base_rock5", "5", Blocks.STONE)
         );
         randomYRotationBlock(
-                BlockRegistration.SANDSTONE_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.SANDSTONE_ROCK_BLOCK.get(), "block/base_rock1", "1", sandstone_top, sandstone_top),
-                existingParent(BlockRegistration.SANDSTONE_ROCK_BLOCK.get(), "block/base_rock2", "2", sandstone_top, sandstone_top),
-                existingParent(BlockRegistration.SANDSTONE_ROCK_BLOCK.get(), "block/base_rock3", "3", sandstone_top, sandstone_top),
-                existingParent(BlockRegistration.SANDSTONE_ROCK_BLOCK.get(), "block/base_rock4", "4", sandstone_top, sandstone_top),
-                existingParent(BlockRegistration.SANDSTONE_ROCK_BLOCK.get(), "block/base_rock5", "5", sandstone_top, sandstone_top)
+                BlockRegistration.SANDSTONE_ROCK.get(),
+                existingParent(BlockRegistration.SANDSTONE_ROCK.get(), "block/base_rock1", "1", sandstone_top, sandstone_top),
+                existingParent(BlockRegistration.SANDSTONE_ROCK.get(), "block/base_rock2", "2", sandstone_top, sandstone_top),
+                existingParent(BlockRegistration.SANDSTONE_ROCK.get(), "block/base_rock3", "3", sandstone_top, sandstone_top),
+                existingParent(BlockRegistration.SANDSTONE_ROCK.get(), "block/base_rock4", "4", sandstone_top, sandstone_top),
+                existingParent(BlockRegistration.SANDSTONE_ROCK.get(), "block/base_rock5", "5", sandstone_top, sandstone_top)
         );
         randomYRotationBlock(
-                BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get(), "block/base_rock1", "1", red_sandstone_top, red_sandstone_top),
-                existingParent(BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get(), "block/base_rock2", "2", red_sandstone_top, red_sandstone_top),
-                existingParent(BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get(), "block/base_rock3", "3", red_sandstone_top, red_sandstone_top),
-                existingParent(BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get(), "block/base_rock4", "4", red_sandstone_top, red_sandstone_top),
-                existingParent(BlockRegistration.RED_SANDSTONE_ROCK_BLOCK.get(), "block/base_rock5", "5", red_sandstone_top, red_sandstone_top)
+                BlockRegistration.RED_SANDSTONE_ROCK.get(),
+                existingParent(BlockRegistration.RED_SANDSTONE_ROCK.get(), "block/base_rock1", "1", red_sandstone_top, red_sandstone_top),
+                existingParent(BlockRegistration.RED_SANDSTONE_ROCK.get(), "block/base_rock2", "2", red_sandstone_top, red_sandstone_top),
+                existingParent(BlockRegistration.RED_SANDSTONE_ROCK.get(), "block/base_rock3", "3", red_sandstone_top, red_sandstone_top),
+                existingParent(BlockRegistration.RED_SANDSTONE_ROCK.get(), "block/base_rock4", "4", red_sandstone_top, red_sandstone_top),
+                existingParent(BlockRegistration.RED_SANDSTONE_ROCK.get(), "block/base_rock5", "5", red_sandstone_top, red_sandstone_top)
         );
         randomYRotationBlock(
-                BlockRegistration.MOSSY_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.MOSSY_ROCK_BLOCK.get(), "block/base_rock1", "1", stone, mossy_rock.withSuffix("1")),
-                existingParent(BlockRegistration.MOSSY_ROCK_BLOCK.get(), "block/base_rock2", "2", stone, mossy_rock.withSuffix("2")),
-                existingParent(BlockRegistration.MOSSY_ROCK_BLOCK.get(), "block/base_rock3", "3", stone, mossy_rock.withSuffix("3")),
-                existingParent(BlockRegistration.MOSSY_ROCK_BLOCK.get(), "block/base_rock4", "4", stone, mossy_rock.withSuffix("4")),
-                existingParent(BlockRegistration.MOSSY_ROCK_BLOCK.get(), "block/base_rock5", "5", stone, mossy_rock.withSuffix("5"))
+                BlockRegistration.MOSSY_ROCK.get(),
+                existingParent(BlockRegistration.MOSSY_ROCK.get(), "block/base_rock1", "1", stone, mossy_rock.withSuffix("1")),
+                existingParent(BlockRegistration.MOSSY_ROCK.get(), "block/base_rock2", "2", stone, mossy_rock.withSuffix("2")),
+                existingParent(BlockRegistration.MOSSY_ROCK.get(), "block/base_rock3", "3", stone, mossy_rock.withSuffix("3")),
+                existingParent(BlockRegistration.MOSSY_ROCK.get(), "block/base_rock4", "4", stone, mossy_rock.withSuffix("4")),
+                existingParent(BlockRegistration.MOSSY_ROCK.get(), "block/base_rock5", "5", stone, mossy_rock.withSuffix("5"))
         );
         randomYRotationBlock(
-                BlockRegistration.LIGHTER_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock1", "1", dirt_path_top),
-                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock2", "2", dirt_path_top),
-                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock3", "3", dirt_path_top),
-                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock4", "4", dirt_path_top),
-                existingParent(BlockRegistration.LIGHTER_ROCK_BLOCK.get(), "block/base_rock5", "5", dirt_path_top)
+                BlockRegistration.LIGHTER_ROCK.get(),
+                existingParent(BlockRegistration.LIGHTER_ROCK.get(), "block/base_rock1", "1", dirt_path_top),
+                existingParent(BlockRegistration.LIGHTER_ROCK.get(), "block/base_rock2", "2", dirt_path_top),
+                existingParent(BlockRegistration.LIGHTER_ROCK.get(), "block/base_rock3", "3", dirt_path_top),
+                existingParent(BlockRegistration.LIGHTER_ROCK.get(), "block/base_rock4", "4", dirt_path_top),
+                existingParent(BlockRegistration.LIGHTER_ROCK.get(), "block/base_rock5", "5", dirt_path_top)
         );
         randomYRotationBlock(
-                BlockRegistration.SNOWY_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.SNOWY_ROCK_BLOCK.get(), "block/base_rock1", "1", Blocks.SNOW),
-                existingParent(BlockRegistration.SNOWY_ROCK_BLOCK.get(), "block/base_rock2", "2", Blocks.SNOW),
-                existingParent(BlockRegistration.SNOWY_ROCK_BLOCK.get(), "block/base_rock3", "3", Blocks.SNOW),
-                existingParent(BlockRegistration.SNOWY_ROCK_BLOCK.get(), "block/base_rock4", "4", Blocks.SNOW),
-                existingParent(BlockRegistration.SNOWY_ROCK_BLOCK.get(), "block/base_rock5", "5", Blocks.SNOW)
+                BlockRegistration.SNOWY_ROCK.get(),
+                existingParent(BlockRegistration.SNOWY_ROCK.get(), "block/base_rock1", "1", Blocks.SNOW),
+                existingParent(BlockRegistration.SNOWY_ROCK.get(), "block/base_rock2", "2", Blocks.SNOW),
+                existingParent(BlockRegistration.SNOWY_ROCK.get(), "block/base_rock3", "3", Blocks.SNOW),
+                existingParent(BlockRegistration.SNOWY_ROCK.get(), "block/base_rock4", "4", Blocks.SNOW),
+                existingParent(BlockRegistration.SNOWY_ROCK.get(), "block/base_rock5", "5", Blocks.SNOW)
         );
         randomYRotationBlock(
-                BlockRegistration.ICE_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.ICE_ROCK_BLOCK.get(), "block/base_rock1", "1", Blocks.PACKED_ICE),
-                existingParent(BlockRegistration.ICE_ROCK_BLOCK.get(), "block/base_rock2", "2", Blocks.PACKED_ICE),
-                existingParent(BlockRegistration.ICE_ROCK_BLOCK.get(), "block/base_rock3", "3", Blocks.PACKED_ICE),
-                existingParent(BlockRegistration.ICE_ROCK_BLOCK.get(), "block/base_rock4", "4", Blocks.PACKED_ICE),
-                existingParent(BlockRegistration.ICE_ROCK_BLOCK.get(), "block/base_rock5", "5", Blocks.PACKED_ICE)
+                BlockRegistration.ICE_ROCK.get(),
+                existingParent(BlockRegistration.ICE_ROCK.get(), "block/base_rock1", "1", Blocks.PACKED_ICE),
+                existingParent(BlockRegistration.ICE_ROCK.get(), "block/base_rock2", "2", Blocks.PACKED_ICE),
+                existingParent(BlockRegistration.ICE_ROCK.get(), "block/base_rock3", "3", Blocks.PACKED_ICE),
+                existingParent(BlockRegistration.ICE_ROCK.get(), "block/base_rock4", "4", Blocks.PACKED_ICE),
+                existingParent(BlockRegistration.ICE_ROCK.get(), "block/base_rock5", "5", Blocks.PACKED_ICE)
         );
 
 
@@ -186,43 +186,43 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
 
 
         randomYRotationBlock(
-                BlockRegistration.LARGE_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.LARGE_ROCK_BLOCK.get(), "block/base_large_rock1", "1", Blocks.STONE) // 2 and 3
+                BlockRegistration.LARGE_ROCK.get(),
+                existingParent(BlockRegistration.LARGE_ROCK.get(), "block/base_large_rock1", "1", Blocks.STONE) // 2 and 3
         );
         randomYRotationBlock(
-                BlockRegistration.SANDSTONE_LARGE_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.SANDSTONE_LARGE_ROCK_BLOCK.get(), "block/base_large_rock1", "1", sandstone_top, sandstone_top)
+                BlockRegistration.SANDSTONE_LARGE_ROCK.get(),
+                existingParent(BlockRegistration.SANDSTONE_LARGE_ROCK.get(), "block/base_large_rock1", "1", sandstone_top, sandstone_top)
         );
         randomYRotationBlock(
-                BlockRegistration.RED_SANDSTONE_LARGE_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.RED_SANDSTONE_LARGE_ROCK_BLOCK.get(), "block/base_large_rock1", "1", red_sandstone_top, red_sandstone_top)
+                BlockRegistration.RED_SANDSTONE_LARGE_ROCK.get(),
+                existingParent(BlockRegistration.RED_SANDSTONE_LARGE_ROCK.get(), "block/base_large_rock1", "1", red_sandstone_top, red_sandstone_top)
         );
         randomYRotationBlock(
-                BlockRegistration.MOSSY_LARGE_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.MOSSY_LARGE_ROCK_BLOCK.get(), "block/base_large_rock1", "1", Blocks.MOSS_BLOCK)
+                BlockRegistration.MOSSY_LARGE_ROCK.get(),
+                existingParent(BlockRegistration.MOSSY_LARGE_ROCK.get(), "block/base_large_rock1", "1", Blocks.MOSS_BLOCK)
         );
         randomYRotationBlock(
-                BlockRegistration.LIGHTER_LARGE_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.LIGHTER_LARGE_ROCK_BLOCK.get(), "block/base_large_rock1", "1", dirt_path_top, dirt_path_top)
+                BlockRegistration.LIGHTER_LARGE_ROCK.get(),
+                existingParent(BlockRegistration.LIGHTER_LARGE_ROCK.get(), "block/base_large_rock1", "1", dirt_path_top, dirt_path_top)
         );
         randomYRotationBlock(
-                BlockRegistration.SNOWY_LARGE_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.SNOWY_LARGE_ROCK_BLOCK.get(), "block/base_large_rock1", "1", Blocks.SNOW)
+                BlockRegistration.SNOWY_LARGE_ROCK.get(),
+                existingParent(BlockRegistration.SNOWY_LARGE_ROCK.get(), "block/base_large_rock1", "1", Blocks.SNOW)
         );
         randomYRotationBlock(
-                BlockRegistration.ICE_LARGE_ROCK_BLOCK.get(),
-                existingParent(BlockRegistration.ICE_LARGE_ROCK_BLOCK.get(), "block/base_large_rock1", "1", Blocks.PACKED_ICE)
+                BlockRegistration.ICE_LARGE_ROCK.get(),
+                existingParent(BlockRegistration.ICE_LARGE_ROCK.get(), "block/base_large_rock1", "1", Blocks.PACKED_ICE)
         );
 
         randomYRotationBlock(
-                BlockRegistration.LIMESTONE_ROCK_BLOCK.get(),
-                flatModel(BlockRegistration.LIMESTONE_ROCK_BLOCK.get(), false),
-                flatModel(BlockRegistration.LIMESTONE_ROCK_BLOCK.get(), true)
+                BlockRegistration.LIMESTONE_ROCK.get(),
+                flatModel(BlockRegistration.LIMESTONE_ROCK.get(), false),
+                flatModel(BlockRegistration.LIMESTONE_ROCK.get(), true)
         );
         randomYRotationBlock(
-                BlockRegistration.COPPER_ROCK_BLOCK.get(),
-                flatModel(BlockRegistration.COPPER_ROCK_BLOCK.get(), false),
-                flatModel(BlockRegistration.COPPER_ROCK_BLOCK.get(), true)
+                BlockRegistration.COPPER_ROCK.get(),
+                flatModel(BlockRegistration.COPPER_ROCK.get(), false),
+                flatModel(BlockRegistration.COPPER_ROCK.get(), true)
         );
         //endregion
 
@@ -231,8 +231,8 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         crossBlock(BlockRegistration.WILD_YAMS.get());
         //endregion
 
-        axisBlock(BlockRegistration.THATCH_BLOCK.get());
-        crossBlock(BlockRegistration.DOGBANE_BLOCK.get());
+        axisBlock(BlockRegistration.THATCH.get());
+        crossBlock(BlockRegistration.DOGBANE.get());
 
         shortBlock(BlockRegistration.STONE_BENCH.get());
         shortBlock(BlockRegistration.CHOPPING_BLOCK.get());

@@ -13,7 +13,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class BaseWorldGenProvider extends DatapackBuiltinEntriesProvider
 {
-    public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder() // TODO Should I separate different categories?
+    public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
             .add(Registries.CONFIGURED_FEATURE, BaseConfiguredFeatures::bootstrap)
             .add(Registries.PLACED_FEATURE, BasePlacedFeatures::bootstrap)
             .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, BaseBiomeModifiers::bootstrap);

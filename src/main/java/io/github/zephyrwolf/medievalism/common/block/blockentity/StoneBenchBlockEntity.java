@@ -35,7 +35,7 @@ import java.util.Optional;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class StoneBenchBlockEntity extends BlockEntity implements MenuProvider { // TODO Should this; implements Container / WorldlyContainer???
+public class StoneBenchBlockEntity extends BlockEntity implements MenuProvider {
     public static final String INVENTORY_TAG = "inventory";
     public static final String SHAPE_TAG = "shape";
     private static final String DISPLAY_NAME_LANG_KEY = "medievalism.container.stone_bench";
@@ -61,11 +61,9 @@ public class StoneBenchBlockEntity extends BlockEntity implements MenuProvider {
         }
 
         @Override
-        public ItemStack extractItem(int slot, int amount, boolean simulate)
-        {
+        public ItemStack extractItem(int slot, int amount, boolean simulate) {
             ItemStack takeStack = super.extractItem(slot, amount, simulate);
-            if (slot == RESULT_SLOT && !takeStack.isEmpty())
-            {
+            if (slot == RESULT_SLOT && !takeStack.isEmpty()) {
                 storedMaterial = null;
             }
             return takeStack;
@@ -109,8 +107,7 @@ public class StoneBenchBlockEntity extends BlockEntity implements MenuProvider {
     //endregion
 
     //region Material
-    public Optional<MalleableMaterial> getNonGhostMaterial()
-    {
+    public Optional<MalleableMaterial> getNonGhostMaterial() {
         return Optional.ofNullable(storedMaterial);
     }
 
@@ -222,12 +219,11 @@ public class StoneBenchBlockEntity extends BlockEntity implements MenuProvider {
         setStoredMaterial(getMalleableMaterialForStack(materialStack).orElse(null));
     }
 
-    private boolean processTool(MalleableMaterial material)
-    {
+    private boolean processTool(MalleableMaterial material) {
         if (material.materialType().requiresTool()) {
             ItemStack tool = items.getStackInSlot(TOOL_SLOT);
             if (!material.materialType().validTool(tool)) return false; // Not Valid
-            return ItemTools.damageOrShrinkStack((ServerLevel)level, tool, 1) != 0; // Did Damage
+            return ItemTools.damageOrShrinkStack((ServerLevel) level, tool, 1) != 0; // Did Damage
         }
         return true; // No tool so always true
     }

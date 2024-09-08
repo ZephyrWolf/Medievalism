@@ -17,16 +17,16 @@ public final class BlockRegistration {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MedievalismConstants.MOD_ID);
 
     //region Stone&Ore
-    public static final DeferredBlock<Block> RED_CLAY_BLOCK = BLOCKS.registerSimpleBlock(
+    public static final DeferredBlock<Block> RED_CLAY = BLOCKS.registerSimpleBlock(
             "red_clay", BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).instrument(NoteBlockInstrument.FLUTE)
                     .strength(0.6f).sound(SoundType.GRAVEL));
-    public static final DeferredBlock<Block> LIMESTONE_BLOCK = BLOCKS.registerSimpleBlock(
+    public static final DeferredBlock<Block> LIMESTONE = BLOCKS.registerSimpleBlock(
             "limestone", BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE)
                     .requiresCorrectToolForDrops().strength(0.6f).sound(SoundType.STONE));
-    public static final DeferredBlock<Block> TIN_ORE_BLOCK = BLOCKS.registerSimpleBlock(
+    public static final DeferredBlock<Block> TIN_ORE = BLOCKS.registerSimpleBlock(
             "tin_ore_block", BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
                     .strength(1.3f).sound(SoundType.STONE).requiresCorrectToolForDrops());
-    public static final DeferredBlock<Block> DEEPSLATE_TIN_ORE_BLOCK = BLOCKS.registerSimpleBlock(
+    public static final DeferredBlock<Block> DEEPSLATE_TIN_ORE = BLOCKS.registerSimpleBlock(
             "deepslate_tin_ore_block", BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE)
                     .strength(1.7f).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops());
     //endregion
@@ -36,27 +36,21 @@ public final class BlockRegistration {
             .offsetType(BlockBehaviour.OffsetType.XZ).dynamicShape().isViewBlocking((pState, pLevel, pPos) -> false)
             .pushReaction(PushReaction.DESTROY).strength(0.05f)
             .sound(SoundType.STONE).mapColor(MapColor.STONE);
-    public static final DeferredBlock<WorldLitterBlock> ROCK_BLOCK = BLOCKS.registerBlock(
+
+    public static final DeferredBlock<WorldLitterBlock> ROCK = BLOCKS.registerBlock(
             "rock", RockBlock::new, rockProps);
-
-    public static final DeferredBlock<WorldLitterBlock> SANDSTONE_ROCK_BLOCK = BLOCKS.registerBlock(
+    public static final DeferredBlock<WorldLitterBlock> SANDSTONE_ROCK = BLOCKS.registerBlock(
             "sandstone_rock", RockBlock::new, rockProps);
-
-    public static final DeferredBlock<WorldLitterBlock> RED_SANDSTONE_ROCK_BLOCK = BLOCKS.registerBlock(
+    public static final DeferredBlock<WorldLitterBlock> RED_SANDSTONE_ROCK = BLOCKS.registerBlock(
             "red_sandstone_rock", RockBlock::new, rockProps);
-
-    public static final DeferredBlock<WorldLitterBlock> MOSSY_ROCK_BLOCK = BLOCKS.registerBlock(
+    public static final DeferredBlock<WorldLitterBlock> MOSSY_ROCK = BLOCKS.registerBlock(
             "mossy_rock", RockBlock::new, rockProps);
-
-    public static final DeferredBlock<WorldLitterBlock> LIGHTER_ROCK_BLOCK = BLOCKS.registerBlock(
+    public static final DeferredBlock<WorldLitterBlock> LIGHTER_ROCK = BLOCKS.registerBlock(
             "lighter_rock", RockBlock::new, rockProps);
-
-    public static final DeferredBlock<WorldLitterBlock> SNOWY_ROCK_BLOCK = BLOCKS.registerBlock(
+    public static final DeferredBlock<WorldLitterBlock> SNOWY_ROCK = BLOCKS.registerBlock(
             "snowy_rock", RockBlock::new, rockProps);
-
-    public static final DeferredBlock<WorldLitterBlock> ICE_ROCK_BLOCK = BLOCKS.registerBlock(
+    public static final DeferredBlock<WorldLitterBlock> ICE_ROCK = BLOCKS.registerBlock(
             "ice_rock", RockBlock::new, rockProps);
-
     //endregion
 
     //region Large Rock
@@ -65,36 +59,29 @@ public final class BlockRegistration {
             .pushReaction(PushReaction.DESTROY).strength(0.05f)
             .sound(SoundType.STONE).mapColor(MapColor.STONE);
 
-    public static final DeferredBlock<WorldLitterBlock> LARGE_ROCK_BLOCK = BLOCKS.registerBlock(
+    public static final DeferredBlock<WorldLitterBlock> LARGE_ROCK = BLOCKS.registerBlock(
             "large_rock", LargeRockBlock::new, largeRock);
-
-    public static final DeferredBlock<WorldLitterBlock> SANDSTONE_LARGE_ROCK_BLOCK = BLOCKS.registerBlock(
+    public static final DeferredBlock<WorldLitterBlock> SANDSTONE_LARGE_ROCK = BLOCKS.registerBlock(
             "sandstone_large_rock", LargeRockBlock::new, largeRock);
-
-    public static final DeferredBlock<WorldLitterBlock> RED_SANDSTONE_LARGE_ROCK_BLOCK = BLOCKS.registerBlock(
+    public static final DeferredBlock<WorldLitterBlock> RED_SANDSTONE_LARGE_ROCK = BLOCKS.registerBlock(
             "red_sandstone_large_rock", LargeRockBlock::new, largeRock);
-
-    public static final DeferredBlock<WorldLitterBlock> MOSSY_LARGE_ROCK_BLOCK = BLOCKS.registerBlock(
+    public static final DeferredBlock<WorldLitterBlock> MOSSY_LARGE_ROCK = BLOCKS.registerBlock(
             "mossy_large_rock", LargeRockBlock::new, largeRock);
-
-    public static final DeferredBlock<WorldLitterBlock> LIGHTER_LARGE_ROCK_BLOCK = BLOCKS.registerBlock(
+    public static final DeferredBlock<WorldLitterBlock> LIGHTER_LARGE_ROCK = BLOCKS.registerBlock(
             "lighter_large_rock", LargeRockBlock::new, largeRock);
-
-    public static final DeferredBlock<WorldLitterBlock> SNOWY_LARGE_ROCK_BLOCK = BLOCKS.registerBlock(
+    public static final DeferredBlock<WorldLitterBlock> SNOWY_LARGE_ROCK = BLOCKS.registerBlock(
             "snowy_large_rock", LargeRockBlock::new, largeRock);
-
-    public static final DeferredBlock<WorldLitterBlock> ICE_LARGE_ROCK_BLOCK = BLOCKS.registerBlock(
+    public static final DeferredBlock<WorldLitterBlock> ICE_LARGE_ROCK = BLOCKS.registerBlock(
             "ice_large_rock", LargeRockBlock::new, largeRock);
     //endregion
 
     //region Misc Rocks
-    public static final DeferredBlock<WorldLitterBlock> LIMESTONE_ROCK_BLOCK = BLOCKS.registerBlock(
+    public static final DeferredBlock<WorldLitterBlock> LIMESTONE_ROCK = BLOCKS.registerBlock(
             "limestone_rock", TEMPFlatBlock::new, BlockBehaviour.Properties.of()
                     .noCollission().offsetType(BlockBehaviour.OffsetType.XZ)
                     .isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY).mapColor(MapColor.STONE)
                     .strength(0.05f).sound(SoundType.DRIPSTONE_BLOCK));
-
-    public static final DeferredBlock<WorldLitterBlock> COPPER_ROCK_BLOCK = BLOCKS.registerBlock(
+    public static final DeferredBlock<WorldLitterBlock> COPPER_ROCK = BLOCKS.registerBlock(
             "copper_rock", TEMPFlatBlock::new, BlockBehaviour.Properties.of().noCollission()
                     .offsetType(BlockBehaviour.OffsetType.XZ)
                     .isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY).mapColor(MapColor.STONE)
@@ -102,53 +89,27 @@ public final class BlockRegistration {
     //endregion
 
     //region Branches
-    public static final DeferredBlock<WorldLitterBlock> BIRCH_BRANCH_BLOCK = BLOCKS.registerBlock(
-            "birch_branch", BranchBlock::new, BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_BROWN).dynamicShape()
-                    .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
-                    .pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.WOOD));
+    public static BlockBehaviour.Properties branch = BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_BROWN).dynamicShape()
+            .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
+            .pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.WOOD);
 
-    public static final DeferredBlock<WorldLitterBlock> OAK_BRANCH_BLOCK = BLOCKS.registerBlock(
-            "oak_branch", BranchBlock::new, BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_BROWN).dynamicShape()
-                    .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
-                    .pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.WOOD));
-
-    public static final DeferredBlock<WorldLitterBlock> SPRUCE_BRANCH_BLOCK = BLOCKS.registerBlock(
-            "spruce_branch", BranchBlock::new, BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_BROWN).dynamicShape()
-                    .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
-                    .pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.WOOD));
-
-    public static final DeferredBlock<WorldLitterBlock> JUNGLE_BRANCH_BLOCK = BLOCKS.registerBlock(
-            "jungle_branch", BranchBlock::new, BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_BROWN).dynamicShape()
-                    .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
-                    .pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.WOOD));
-
-    public static final DeferredBlock<WorldLitterBlock> DARK_OAK_BRANCH_BLOCK = BLOCKS.registerBlock(
-            "dark_oak_branch", BranchBlock::new, BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_BROWN).dynamicShape()
-                    .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
-                    .pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.WOOD));
-
-    public static final DeferredBlock<WorldLitterBlock> ACACIA_BRANCH_BLOCK = BLOCKS.registerBlock(
-            "acacia_branch", BranchBlock::new, BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_BROWN).dynamicShape()
-                    .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
-                    .pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.WOOD));
-
-    public static final DeferredBlock<WorldLitterBlock> CHERRY_BRANCH_BLOCK = BLOCKS.registerBlock(
-            "cherry_branch", BranchBlock::new, BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_BROWN).dynamicShape()
-                    .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
-                    .pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.WOOD));
-
-    public static final DeferredBlock<WorldLitterBlock> MANGROVE_BRANCH_BLOCK = BLOCKS.registerBlock(
-            "mangrove_branch", BranchBlock::new, BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_BROWN).dynamicShape()
-                    .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
-                    .pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.WOOD));
+    public static final DeferredBlock<WorldLitterBlock> BIRCH_BRANCH = BLOCKS.registerBlock(
+            "birch_branch", BranchBlock::new, branch);
+    public static final DeferredBlock<WorldLitterBlock> OAK_BRANCH = BLOCKS.registerBlock(
+            "oak_branch", BranchBlock::new, branch);
+    public static final DeferredBlock<WorldLitterBlock> SPRUCE_BRANCH = BLOCKS.registerBlock(
+            "spruce_branch", BranchBlock::new, branch);
+    public static final DeferredBlock<WorldLitterBlock> JUNGLE_BRANCH = BLOCKS.registerBlock(
+            "jungle_branch", BranchBlock::new, branch);
+    public static final DeferredBlock<WorldLitterBlock> DARK_OAK_BRANCH = BLOCKS.registerBlock(
+            "dark_oak_branch", BranchBlock::new, branch);
+    public static final DeferredBlock<WorldLitterBlock> ACACIA_BRANCH = BLOCKS.registerBlock(
+            "acacia_branch", BranchBlock::new, branch);
+    public static final DeferredBlock<WorldLitterBlock> CHERRY_BRANCH = BLOCKS.registerBlock(
+            "cherry_branch", BranchBlock::new, branch);
+    public static final DeferredBlock<WorldLitterBlock> MANGROVE_BRANCH = BLOCKS.registerBlock(
+            "mangrove_branch", BranchBlock::new, branch);
     //endregion
 
     //region Twigs
@@ -162,7 +123,7 @@ public final class BlockRegistration {
     //endregion
 
     //region Organic
-    public static final DeferredBlock<Block> DOGBANE_BLOCK = BLOCKS.registerBlock(
+    public static final DeferredBlock<Block> DOGBANE = BLOCKS.registerBlock(
             "dogbane", DogbaneBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN)
                     .strength(0.3f).sound(SoundType.GRASS).randomTicks());
     //endregion
@@ -189,7 +150,7 @@ public final class BlockRegistration {
     //endregion
 
     //region Primitive
-    public static final DeferredBlock<RotatedPillarBlock> THATCH_BLOCK = BLOCKS.registerBlock(
+    public static final DeferredBlock<RotatedPillarBlock> THATCH = BLOCKS.registerBlock(
             "thatch_block", RotatedPillarBlock::new, BlockBehaviour.Properties.of()
                     .mapColor(MapColor.WARPED_STEM).strength(0.5f).sound(SoundType.GRASS));
 
