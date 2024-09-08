@@ -6,8 +6,11 @@ import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
@@ -15,6 +18,7 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.CopyComponentsFunction;
 import net.minecraft.world.level.storage.loot.predicates.InvertedLootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
@@ -94,6 +98,27 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
                         ItemRegistration.YAM.get(),
                         LootItemBlockStatePropertyCondition.hasBlockStateProperties(BlockRegistration.YAMS.get())
                                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 7))
+                )
+        );
+        HolderLookup.RegistryLookup<Enchantment> enchantmentLookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        add(
+                BlockRegistration.WILD_YAMS.get(),
+                applyExplosionDecay(
+                        BlockRegistration.WILD_YAMS.get(),
+                        LootTable.lootTable()
+                                .withPool(
+                                        LootPool.lootPool()
+                                                .add(
+                                                        LootItem.lootTableItem(ItemRegistration.YAM.get())
+                                                )
+                                )
+                                .withPool(
+                                        LootPool.lootPool()
+                                                .add(
+                                                        LootItem.lootTableItem(ItemRegistration.YAM.get())
+                                                                .apply(ApplyBonusCount.addBonusBinomialDistributionCount(enchantmentLookup.getOrThrow(Enchantments.FORTUNE), 0.5714286f, 1))
+                                                )
+                                )
                 )
         );
 

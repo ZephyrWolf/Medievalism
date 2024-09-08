@@ -36,6 +36,8 @@ public final class BiomeTagCatalog
 
     public static final TagKey<Biome> GENERATE_RED_CLAY = tag("generate_red_clay");
 
+    public static final TagKey<Biome> GENERATE_WILD_YAMS = tag("generate_wild_yams");
+
     private static TagKey<Biome> tag(String name)
     {
         return TagKey.create(Registries.BIOME, MedievalismConstants.resource(name));

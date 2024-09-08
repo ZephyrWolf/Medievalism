@@ -1,9 +1,10 @@
 package io.github.zephyrwolf.medievalism.data.worldgen;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.common.block.YamBlock;
 import io.github.zephyrwolf.medievalism.common.worldgen.feature.configuration.CompositeFeatureConfiguration;
-import io.github.zephyrwolf.medievalism.content.block.BlockTagCatalog;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.block.BlockTagCatalog;
 import io.github.zephyrwolf.medievalism.content.worldgen.FeatureRegistration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
@@ -21,6 +22,8 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.RandomizedIntStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.HeightmapPlacement;
 import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
@@ -29,54 +32,54 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
 import java.util.List;
 
-public final class BaseConfiguredFeatures
-{
-    public static final ResourceKey<ConfiguredFeature<?,?>> DENSE_OAK_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_oak_branch_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> DENSE_BIRCH_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_birch_branch_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> DENSE_SPRUCE_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_spruce_branch_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> DENSE_JUNGLE_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_jungle_branch_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> DENSE_CHERRY_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_cherry_branch_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> DENSE_DARK_OAK_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_dark_oak_branch_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> DENSE_MANGROVE_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_mangrove_branch_configured"));
+public final class BaseConfiguredFeatures {
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_OAK_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_oak_branch_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_BIRCH_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_birch_branch_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_SPRUCE_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_spruce_branch_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_JUNGLE_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_jungle_branch_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_CHERRY_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_cherry_branch_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_DARK_OAK_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_dark_oak_branch_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_MANGROVE_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_mangrove_branch_configured"));
 
-    public static final ResourceKey<ConfiguredFeature<?,?>> SPARSE_OAK_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("sparse_oak_branch_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> SPARSE_BIRCH_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("sparse_birch_branch_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> SPARSE_SPRUCE_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("sparse_spruce_branch_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> SPARSE_JUNGLE_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("sparse_jungle_branch_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> SPARSE_ACACIA_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("spare_acacia_branch_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_OAK_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("sparse_oak_branch_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_BIRCH_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("sparse_birch_branch_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_SPRUCE_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("sparse_spruce_branch_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_JUNGLE_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("sparse_jungle_branch_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_ACACIA_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("spare_acacia_branch_configured"));
 
-    public static final ResourceKey<ConfiguredFeature<?,?>> RARE_OAK_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("rare_oak_branch_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> RARE_BIRCH_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("rare_birch_branch_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RARE_OAK_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("rare_oak_branch_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RARE_BIRCH_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("rare_birch_branch_configured"));
 
-    public static final ResourceKey<ConfiguredFeature<?,?>> OVERWORLD_TIN_ORE_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("tin_ore"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_TIN_ORE_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("tin_ore"));
 
-    public static final ResourceKey<ConfiguredFeature<?,?>> ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("rock_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> DENSE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_rock_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> RIVER_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("river_rock_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> SANDSTONE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("sandstone_rock_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> RED_SANDSTONE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("red_sandstone_rock_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> MOSSY_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("mossy_rock_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> LIGHTER_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("lighter_rock_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> SNOWY_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("snowy_rock_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> ICE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("ice_rock_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("rock_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_rock_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RIVER_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("river_rock_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SANDSTONE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("sandstone_rock_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RED_SANDSTONE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("red_sandstone_rock_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MOSSY_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("mossy_rock_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LIGHTER_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("lighter_rock_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SNOWY_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("snowy_rock_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ICE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("ice_rock_configured"));
 
-    public static final ResourceKey<ConfiguredFeature<?,?>> LARGE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("large_rock_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> DENSE_LARGE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_large_rock_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> SANDSTONE_LARGE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("sandstone_large_rock_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> RED_SANDSTONE_LARGE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("red_sandstone_large_rock_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> MOSSY_LARGE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("mossy_large_rock_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> LIGHTER_LARGE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("lighter_large_rock_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> SNOWY_LARGE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("snowy_large_rock_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> ICE_LARGE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("ice_large_rock_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("large_rock_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_LARGE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_large_rock_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SANDSTONE_LARGE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("sandstone_large_rock_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RED_SANDSTONE_LARGE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("red_sandstone_large_rock_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MOSSY_LARGE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("mossy_large_rock_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LIGHTER_LARGE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("lighter_large_rock_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SNOWY_LARGE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("snowy_large_rock_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ICE_LARGE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("ice_large_rock_configured"));
 
-    public static final ResourceKey<ConfiguredFeature<?,?>> LIMESTONE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("limestone_rock_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> COPPER_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("copper_rock_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LIMESTONE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("limestone_rock_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> COPPER_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("copper_rock_configured"));
 
-    public static final ResourceKey<ConfiguredFeature<?,?>> RED_CLAY_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("red_clay_configured"));
-    public static final ResourceKey<ConfiguredFeature<?,?>> RED_CLAY_WITH_DOGBANE_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("red_clay_with_dogbane_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RED_CLAY_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("red_clay_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RED_CLAY_WITH_DOGBANE_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("red_clay_with_dogbane_configured"));
 
-    public static void bootstrap(BootstrapContext<ConfiguredFeature<?,?>> context)
-    {
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_YAMS_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("wild_yams_configured"));
+
+    public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         //var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
 
         RuleTest stoneReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
@@ -125,19 +128,19 @@ public final class BaseConfiguredFeatures
 
         register(context, LIMESTONE_ROCK_CONFIGURED_KEY, Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(1, 0, 0,
-                        PlacementUtils.onlyWhenEmpty( Feature.SIMPLE_BLOCK,
-                                new SimpleBlockConfiguration( BlockStateProvider.simple(BlockRegistration.LIMESTONE_ROCK_BLOCK.get())))));
+                        PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(BlockStateProvider.simple(BlockRegistration.LIMESTONE_ROCK_BLOCK.get())))));
         register(context, COPPER_ROCK_CONFIGURED_KEY, Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(1, 0, 0,
-                        PlacementUtils.onlyWhenEmpty( Feature.SIMPLE_BLOCK,
-                                new SimpleBlockConfiguration( BlockStateProvider.simple(BlockRegistration.COPPER_ROCK_BLOCK.get())))));
+                        PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(BlockStateProvider.simple(BlockRegistration.COPPER_ROCK_BLOCK.get())))));
 
         RuleTest redClayReplaceables = new TagMatchTest(BlockTagCatalog.RED_CLAY_CAN_REPLACE);
         List<OreConfiguration.TargetBlockState> redClayTargetBlockStates = List.of(
                 OreConfiguration.target(redClayReplaceables, BlockRegistration.RED_CLAY_BLOCK.get().defaultBlockState())
         );
 
-        register(context, RED_CLAY_CONFIGURED_KEY, Feature.ORE, new OreConfiguration(redClayTargetBlockStates,32));
+        register(context, RED_CLAY_CONFIGURED_KEY, Feature.ORE, new OreConfiguration(redClayTargetBlockStates, 32));
         register(context, RED_CLAY_WITH_DOGBANE_CONFIGURED_KEY, FeatureRegistration.COMPOSITE_FEATURE.get(), new CompositeFeatureConfiguration(List.of(
                 PlacementUtils.inlinePlaced(Feature.ORE, new OreConfiguration(
                         redClayTargetBlockStates, 48
@@ -159,36 +162,45 @@ public final class BaseConfiguredFeatures
                         )
                 ))
         )));
-    }
 
-    public static void simpleRandomPatch(BootstrapContext<ConfiguredFeature<?,?>> context, ResourceKey<ConfiguredFeature<?,?>> featureKey,
-                                         int tries, int xzSpread, int ySpread, Block block)
-    {
-        simpleRandomPatch( context, featureKey, tries, xzSpread, ySpread, BlockStateProvider.simple( block ));
-    }
-
-    public static void simpleRandomPatch(BootstrapContext<ConfiguredFeature<?,?>> context, ResourceKey<ConfiguredFeature<?,?>> featureKey,
-                                         int tries, int xzSpread, int ySpread, BlockStateProvider blockStateProvider)
-    {
-        register(context, featureKey, Feature.RANDOM_PATCH,
-                new RandomPatchConfiguration(
-                        tries, xzSpread, ySpread,
+        register(context, WILD_YAMS_CONFIGURED_KEY, Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(7, 3, 0,
                         PlacementUtils.onlyWhenEmpty(
                                 Feature.SIMPLE_BLOCK,
-                                new SimpleBlockConfiguration( blockStateProvider )
+                                new SimpleBlockConfiguration(
+                                        SimpleStateProvider.simple(
+                                                BlockRegistration.WILD_YAMS.get()
+                                        )
+                                )
                         )
                 )
         );
     }
 
-    public static ResourceKey<ConfiguredFeature<?,?>> registerKey(ResourceLocation resource)
-    {
+    public static void simpleRandomPatch(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> featureKey,
+                                         int tries, int xzSpread, int ySpread, Block block) {
+        simpleRandomPatch(context, featureKey, tries, xzSpread, ySpread, BlockStateProvider.simple(block));
+    }
+
+    public static void simpleRandomPatch(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> featureKey,
+                                         int tries, int xzSpread, int ySpread, BlockStateProvider blockStateProvider) {
+        register(context, featureKey, Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(
+                        tries, xzSpread, ySpread,
+                        PlacementUtils.onlyWhenEmpty(
+                                Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(blockStateProvider)
+                        )
+                )
+        );
+    }
+
+    public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(ResourceLocation resource) {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, resource);
     }
 
     private static <FC extends FeatureConfiguration, F extends Feature<FC>>
-    void register(BootstrapContext<ConfiguredFeature<?,?>> context, ResourceKey<ConfiguredFeature<?,?>> key, F feature, FC configuration)
-    {
+    void register(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
         context.register(key, new ConfiguredFeature<>(feature, configuration));
     }
 }

@@ -64,6 +64,7 @@ public final class BaseBiomeModifiers
     public static final ResourceKey<BiomeModifier> ADD_RED_CLAY = registerKey(MedievalismConstants.resource("add_red_clay"));
     public static final ResourceKey<BiomeModifier> ADD_RED_CLAY_WITH_DOGBANE = registerKey(MedievalismConstants.resource("add_red_clay_with_dogbane"));
 
+    public static final ResourceKey<BiomeModifier> ADD_WILD_YAMS = registerKey(MedievalismConstants.resource("add_wild_yams"));
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context)
     {
@@ -136,6 +137,8 @@ public final class BaseBiomeModifiers
                 HolderSet.direct(placedFeatures.getOrThrow(BasePlacedFeatures.RED_CLAY_WITH_DOGBANE_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
+
+        addSimpleModifier(context, ADD_WILD_YAMS, BiomeTagCatalog.GENERATE_WILD_YAMS, BasePlacedFeatures.WILD_YAMS_PLACED_KEY, GenerationStep.Decoration.VEGETAL_DECORATION);
     }
 
     public static void addSimpleModifier(BootstrapContext<BiomeModifier> context, ResourceKey<BiomeModifier> biomeModifierKey,

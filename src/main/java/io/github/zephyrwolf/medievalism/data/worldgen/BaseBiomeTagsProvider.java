@@ -26,7 +26,7 @@ public final class BaseBiomeTagsProvider extends BiomeTagsProvider
     @Override
     protected void addTags(HolderLookup.@NotNull Provider pProvider)
     {
-        //region Biomes by Tree Type
+        // Branches
         //region Oak
         tag(BiomeTagCatalog.HAS_DENSE_OAK_TREES)
                 .add(
@@ -99,7 +99,6 @@ public final class BaseBiomeTagsProvider extends BiomeTagsProvider
                 .add(
                         Biomes.MANGROVE_SWAMP
                 );
-        //endregion
         //endregion
 
         //region Biomes by Rock type
@@ -194,6 +193,18 @@ public final class BaseBiomeTagsProvider extends BiomeTagsProvider
                         Biomes.SPARSE_JUNGLE,
                         Biomes.BAMBOO_JUNGLE,
                         Biomes.SNOWY_PLAINS
+                );
+
+        // Wild Crops
+        tag(BiomeTagCatalog.GENERATE_WILD_YAMS)
+                .add(
+                        Biomes.SWAMP,
+                        Biomes.JUNGLE,
+                        Biomes.BAMBOO_JUNGLE,
+                        Biomes.SPARSE_JUNGLE,
+                        Biomes.SAVANNA_PLATEAU,
+                        Biomes.SAVANNA,
+                        Biomes.WINDSWEPT_SAVANNA
                 );
     }
 }

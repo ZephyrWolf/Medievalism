@@ -7,7 +7,6 @@ import io.github.zephyrwolf.medievalism.common.item.blockitem.DryingBlockItem;
 import io.github.zephyrwolf.medievalism.common.item.blockitem.GatherersJarBlockItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -205,14 +204,23 @@ public final class BlockRegistration {
     //endregion
 
     //region Crops
+    public static final DeferredBlock<WildYamBlock> WILD_YAMS = BLOCKS.registerBlock(
+            "wild_yams", WildYamBlock::new, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.PLANT)
+                    .noCollission()
+                    //.randomTicks()
+                    .instabreak()
+                    .sound(SoundType.CROP)
+                    .pushReaction(PushReaction.DESTROY)
+    );
     public static final DeferredBlock<YamBlock> YAMS = BLOCKS.registerBlock(
             "yams", YamBlock::new, BlockBehaviour.Properties.of()
                     .mapColor(MapColor.PLANT)
-                            .noCollission()
-                            .randomTicks()
-                            .instabreak()
-                            .sound(SoundType.CROP)
-                            .pushReaction(PushReaction.DESTROY)
+                    .noCollission()
+                    .randomTicks()
+                    .instabreak()
+                    .sound(SoundType.CROP)
+                    .pushReaction(PushReaction.DESTROY)
     );
     //endregion
 

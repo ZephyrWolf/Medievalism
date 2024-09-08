@@ -228,6 +228,7 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
 
         //region Crops
         cropBlock4(BlockRegistration.YAMS.get());
+        crossBlock(BlockRegistration.WILD_YAMS.get());
         //endregion
 
         axisBlock(BlockRegistration.THATCH_BLOCK.get());
