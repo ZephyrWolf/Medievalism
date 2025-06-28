@@ -48,6 +48,7 @@ public class BaseItemModelsProvider extends ItemModelProvider {
 
             blockBasedModel(BlockItemRegistration.RED_CLAY_BLOCK.get(), "");
             blockBasedModel(BlockItemRegistration.LIMESTONE.get(), "");
+            blockBasedModel(BlockItemRegistration.WET_PACKED_MUD.get(), "");
             blockIconGeneratedModel(BlockItemRegistration.LIMESTONE_ROCK.get());
             blockIconGeneratedModel(BlockItemRegistration.COPPER_ROCK.get());
             blockBasedModel(BlockItemRegistration.THATCH_BLOCK.get(), "");

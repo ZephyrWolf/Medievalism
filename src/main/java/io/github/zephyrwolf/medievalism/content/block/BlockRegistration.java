@@ -2,9 +2,7 @@ package io.github.zephyrwolf.medievalism.content.block;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.block.*;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -143,9 +141,11 @@ public final class BlockRegistration {
     public static final DeferredBlock<RotatedPillarBlock> THATCH = BLOCKS.registerBlock(
             "thatch_block", RotatedPillarBlock::new, BlockBehaviour.Properties.of()
                     .mapColor(MapColor.WARPED_STEM).strength(0.5f).sound(SoundType.GRASS));
-    public static final DeferredBlock<WetPackedMudBrick> WET_PACKED_MUD_BRICK = BLOCKS.registerBlock(
+    public static final DeferredBlock<WetPackedMudBlock> WET_PACKED_MUD = BLOCKS.registerBlock("wet_packed_mud", WetPackedMudBlock::new, BlockBehaviour.Properties.of()
+            .mapColor(MapColor.DIRT).strength(1.0f).sound(SoundType.MUD));
+    public static final DeferredBlock<WetPackedMudBrick> WET_PACKED_MUD_BRICK = BLOCKS.registerBlock( // This is singulars drying
             "wet_packed_mud_brick", WetPackedMudBrick::new, BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.STONE).randomTicks());
+                    .mapColor(MapColor.DIRT).strength(1.0f).sound(SoundType.STONE).randomTicks());
 
     public static final DeferredBlock<StoneBenchBlock> STONE_BENCH = BLOCKS.registerBlock("stone_bench", StoneBenchBlock::new, BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE).strength(1.0f).sound(SoundType.STONE));

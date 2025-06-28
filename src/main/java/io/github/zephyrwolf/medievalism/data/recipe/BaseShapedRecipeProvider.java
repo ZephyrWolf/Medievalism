@@ -32,6 +32,14 @@ public final class BaseShapedRecipeProvider {
                 .define('c', ItemRegistration.MUD_BALL)
                 .unlockedBy("has_mud_balls", RecipeTools.itemPredicateOf(ItemRegistration.MUD_BALL))
                 .save(recipeOutput, MedievalismConstants.resource("mud_from_balls"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockItemRegistration.WET_PACKED_MUD, 2)
+                .pattern("mt")
+                .pattern("tm")
+                .define('m', Blocks.MUD.asItem())
+                .define('t', ItemRegistration.THATCH)
+                .group("wet_packed_mud")
+                .unlockedBy("has_mud", RecipeTools.itemPredicateOf(Blocks.MUD.asItem()))
+                .save(recipeOutput, MedievalismConstants.resource("wet_packed_mud"));
         // Thatch Block
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockItemRegistration.THATCH_BLOCK)
                 .pattern("tt")

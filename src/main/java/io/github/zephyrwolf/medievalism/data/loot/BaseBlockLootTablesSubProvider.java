@@ -128,6 +128,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
         );
 
         dropSelf(BlockRegistration.LIMESTONE.get());
+        dropSelf(BlockRegistration.WET_PACKED_MUD.get());
         dropSelf(BlockRegistration.LIMESTONE_ROCK.get());
         dropSelf(BlockRegistration.COPPER_ROCK.get());
 

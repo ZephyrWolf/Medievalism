@@ -57,6 +57,7 @@ public final class BlockItemRegistration {
     public static final DeferredItem<BlockItem> WET_PACKED_MUD_BRICK = BLOCKITEMS.registerSimpleBlockItem("wet_packed_mud_brick", BlockRegistration.WET_PACKED_MUD_BRICK);
     public static final DeferredItem<BlockItem> STONE_BENCH = BLOCKITEMS.registerSimpleBlockItem("stone_bench", BlockRegistration.STONE_BENCH);
     public static final DeferredItem<BlockItem> CHOPPING_BLOCK = BLOCKITEMS.registerSimpleBlockItem("chopping_block", BlockRegistration.CHOPPING_BLOCK);
+    public static final DeferredItem<BlockItem> WET_PACKED_MUD = BLOCKITEMS.registerSimpleBlockItem("wet_packed_mud", BlockRegistration.WET_PACKED_MUD);
     //endregion
 
     //region Pottery

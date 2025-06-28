@@ -10,12 +10,14 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 
 // TODO Balance experience and cooking times
 public final class BaseSmeltingRecipeProvider {
     public static void buildRecipes(RecipeOutput recipeOutput) {
         foodRecipes(recipeOutput);
         limeRecipes(recipeOutput);
+        tempRecipes(recipeOutput);
         potteryRecipes(recipeOutput);
     }
 
@@ -55,7 +57,13 @@ public final class BaseSmeltingRecipeProvider {
                 .save(recipeOutput, MedievalismConstants.resource("quicklime_smelting"));
     }
 
-    private static void tempPotteryRecipes(RecipeOutput recipeOutput) {
+    private static void tempRecipes(RecipeOutput recipeOutput) {
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockItemRegistration.WET_PACKED_MUD),
+                        RecipeCategory.FOOD, Blocks.PACKED_MUD.asItem(),
+                        0.0f, 100)
+                .unlockedBy("has_wet_packed_mud", RecipeTools.itemPredicateOf(BlockItemRegistration.WET_PACKED_MUD))
+                .save(recipeOutput, MedievalismConstants.resource("packed_mud_smelting"));
+
         // Jug
         /*
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistration.UNFIRED_JUG),

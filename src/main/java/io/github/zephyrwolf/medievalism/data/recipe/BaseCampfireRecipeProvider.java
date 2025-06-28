@@ -10,6 +10,7 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 
 // TODO Balance experience and cooking times
 public final class BaseCampfireRecipeProvider {
@@ -66,6 +67,13 @@ public final class BaseCampfireRecipeProvider {
     }
 
     private static void tempPotteryRecipes(RecipeOutput recipeOutput) {
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(BlockItemRegistration.WET_PACKED_MUD),
+                        RecipeCategory.MISC, Blocks.PACKED_MUD.asItem(),
+                        0.0f, 100)
+                .unlockedBy("has_wet_packed_mud", RecipeTools.itemPredicateOf(BlockItemRegistration.WET_PACKED_MUD))
+                .save(recipeOutput, MedievalismConstants.resource("packed_mud_campfire"));
+
+
         // Jug
         /*
         SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ItemRegistration.UNFIRED_JUG),

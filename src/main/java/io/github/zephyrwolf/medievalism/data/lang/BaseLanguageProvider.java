@@ -46,6 +46,8 @@ public class BaseLanguageProvider extends LanguageProvider {
         add(BlockItemRegistration.LIMESTONE_ROCK.get(), "Limestone Rock");
         add(BlockItemRegistration.COPPER_ROCK.get(), "Copper Rock");
         add(BlockItemRegistration.THATCH_BLOCK.get(), "Thatch Block");
+        add(BlockItemRegistration.WET_PACKED_MUD.get(), "Wet Packed Mud");
+
         add(ItemRegistration.BROKEN_GOAT_HORN.get(), "Broken Goat Horn");
         add(BlockItemRegistration.DOGBANE_BLOCK_ITEM.get(), "Dogbane");
 

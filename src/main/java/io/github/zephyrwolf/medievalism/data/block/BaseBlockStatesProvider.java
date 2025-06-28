@@ -39,6 +39,7 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         simpleBlock(BlockRegistration.TIN_ORE.get());
         simpleBlock(BlockRegistration.DEEPSLATE_TIN_ORE.get());
         simpleBlock(BlockRegistration.LIMESTONE.get());
+        simpleBlock(BlockRegistration.WET_PACKED_MUD.get());
 
         //region Branches
         randomYRotationBlock(BlockRegistration.OAK_BRANCH.get(), existingParent(BlockRegistration.OAK_BRANCH.get(), "block/branch", "", BlockRegistration.OAK_BRANCH.get(), Blocks.OAK_LOG));
