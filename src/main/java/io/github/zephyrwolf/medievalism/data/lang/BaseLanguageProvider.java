@@ -78,6 +78,18 @@ public class BaseLanguageProvider extends LanguageProvider {
         add(BlockRegistration.DRYING_CLAY_CAULDRON.get(), "Drying Clay Cauldron");
         add(BlockItemRegistration.CLAY_CAULDRON.get(), "Clay Cauldron");
 
+        add(BlockItemRegistration.WET_JUG.get(), "Wet Jug");
+        add(BlockItemRegistration.DRY_JUG.get(), "Unfired Jug");
+        add(BlockRegistration.DRYING_JUG.get(), "Drying Jug");
+        add(BlockItemRegistration.JUG.get(), "Jug");
+
+        add(BlockItemRegistration.WET_FLOWER_POT.get(), "Wet Flower Pot");
+        add(BlockItemRegistration.DRY_FLOWER_POT.get(), "Unfired Flower Pot");
+        add(BlockRegistration.DRYING_FLOWER_POT.get(), "Drying Flower Pot");
+
+        add(BlockItemRegistration.WET_DECORATED_POT.get(), "Wet Decorated Pot");
+        add(BlockItemRegistration.DRY_DECORATED_POT.get(), "Unfired Decorated Pot");
+        add(BlockRegistration.DRYING_DECORATED_POT.get(), "Drying Decorated Pot");
 
         { // World
             add(ItemRegistration.RED_CLAY_BALL.get(), "Red Clay Ball");
@@ -119,7 +131,6 @@ public class BaseLanguageProvider extends LanguageProvider {
         }
         { // Pottery
             add(ItemRegistration.UNFIRED_BRICK.get(), "Unfired Brick");
-            add(ItemRegistration.JUG.get(), "Jug");
         }
         { // Bark
             add(ItemRegistration.WHITE_BARK.get(), "White Bark");

@@ -44,7 +44,7 @@ import java.util.List;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public abstract class DryingBlock extends Block {
+public abstract class DryingBlockHorizontalAxis extends Block {
 
     public static final int SKY_BRIGHTNESS_TO_DRY = 12;
     public static final int MAX_DRYNESS = 11;
@@ -52,13 +52,15 @@ public abstract class DryingBlock extends Block {
     public static final int MIN_DRYNESS = 0;
 
     public static final IntegerProperty DRYNESS = IntegerProperty.create("dryness", MIN_DRYNESS, MAX_DRYNESS);
+    public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
 
     protected final VoxelShape shape;
 
-    public DryingBlock(Properties props, VoxelShape shape) {
+    public DryingBlockHorizontalAxis(Properties props, VoxelShape shape) {
         super(props);
         registerDefaultState(getStateDefinition().any()
                 .setValue(DRYNESS, DEFAULT_DRYNESS)
+                .setValue(AXIS, Direction.Axis.Z)
         );
         this.shape = shape;
     }
@@ -74,7 +76,8 @@ public abstract class DryingBlock extends Block {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder
-                .add(DRYNESS);
+                .add(DRYNESS)
+                .add(AXIS);
     }
 
     @Override
@@ -110,10 +113,12 @@ public abstract class DryingBlock extends Block {
         if (held.getItem() instanceof DryingBlockItem dryingItem) {
             if (dryingItem.isDry()) {
                 return defaultBlockState()
-                        .setValue(DRYNESS, MAX_DRYNESS);
+                        .setValue(DRYNESS, MAX_DRYNESS)
+                        .setValue(AXIS, pContext.getHorizontalDirection().getAxis());
             }
         }
-        return defaultBlockState();
+        return defaultBlockState()
+                .setValue(AXIS, pContext.getHorizontalDirection().getAxis());
     }
 
     @Override
@@ -185,10 +190,5 @@ public abstract class DryingBlock extends Block {
     @Override
     protected List<ItemStack> getDrops(BlockState pState, LootParams.Builder pParams) {
         return super.getDrops(pState, pParams);
-    }
-
-    public static class BasicDryingBlock extends DryingBlock
-    {
-        public BasicDryingBlock(Properties props) { super(props, Block.box(0,0,0, 16, 16, 16)); }
     }
 }

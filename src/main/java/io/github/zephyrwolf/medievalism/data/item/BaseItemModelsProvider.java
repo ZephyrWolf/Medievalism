@@ -80,6 +80,16 @@ public class BaseItemModelsProvider extends ItemModelProvider {
         blockBasedModel(BlockItemRegistration.DRY_CLAY_CAULDRON.get(), "");
         blockBasedModel(BlockItemRegistration.CLAY_CAULDRON.get(), "");
 
+        blockBasedModel(BlockItemRegistration.WET_JUG.get(), "");
+        blockBasedModel(BlockItemRegistration.DRY_JUG.get(), "");
+        blockBasedModel(BlockItemRegistration.JUG.get(), "");
+
+        blockBasedModel(BlockItemRegistration.WET_FLOWER_POT.get(), "");
+        blockBasedModel(BlockItemRegistration.DRY_FLOWER_POT.get(), "");
+
+        blockBasedModel(BlockItemRegistration.WET_DECORATED_POT.get(), "");
+        blockBasedModel(BlockItemRegistration.DRY_DECORATED_POT.get(), "");
+
         //withExistingParent(itemName(BlockRegistration.WET_GATHERERS_JAR_ITEM.get()), resourceBlock(blockName(BlockRegistration.DRYING_GATHERERS_JAR) + "_wet"));
 
         { // World
@@ -124,15 +134,7 @@ public class BaseItemModelsProvider extends ItemModelProvider {
         }
         { // Pottery
             itemGeneratedModel(ItemRegistration.UNFIRED_BRICK.get());
-            //itemGeneratedModel(ItemRegistration.UNFIRED_JUG.get());
-            itemGeneratedModel(ItemRegistration.JUG.get());
-            //itemGeneratedModel(ItemRegistration.UNFIRED_FLOWER_POT.get());
-            //itemGeneratedModel(ItemRegistration.UNFIRED_DECORATED_POT.get());
             //itemGeneratedModel(ItemRegistration.UNFIRED_BIRCH_POT.get());
-            //itemGeneratedModel(ItemRegistration.UNFIRED_POT.get());
-            //itemGeneratedModel(ItemRegistration.POT.get());
-            //itemGeneratedModel(ItemRegistration.UNFIRED_LARGE_POT.get());
-            //itemGeneratedModel(ItemRegistration.LARGE_POT.get());
         }
         itemGeneratedModel(ItemRegistration.BROKEN_GOAT_HORN.get());
         { // Bark

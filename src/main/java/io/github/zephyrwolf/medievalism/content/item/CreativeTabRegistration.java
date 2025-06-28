@@ -31,6 +31,10 @@ public class CreativeTabRegistration
         { // Add all items added by Medievalism.
             pOutput.accept(item.get());
         }
+        for (DeferredHolder<Item, ? extends Item> item : BlockItemRegistration.BLOCKITEMS.getEntries())
+        {
+            pOutput.accept(item.get());
+        }
     }
     
     public static void register(IEventBus eventBus)

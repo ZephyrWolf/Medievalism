@@ -112,16 +112,6 @@ public final class BlockRegistration {
             "mangrove_branch", BranchBlock::new, branch);
     //endregion
 
-    //region Twigs
-    /*
-    public static final DeferredBlock<WorldLitterBlock> TWIGS_BLOCK = BLOCKS.registerBlock(
-            "twigs", props -> new WorldLitterBlock(props, WorldLitterBlock.TWIGS), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak()
-                    .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
-                    .pushReaction(PushReaction.DESTROY).strength(0.1f).sound(SoundType.WOOD));
-    public static final DeferredItem<BlockItem> TWIGS_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("twigs", TWIGS_BLOCK);
-    */
-    //endregion
-
     //region Organic
     public static final DeferredBlock<Block> DOGBANE = BLOCKS.registerBlock(
             "dogbane", DogbaneBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN)
@@ -153,7 +143,6 @@ public final class BlockRegistration {
     public static final DeferredBlock<RotatedPillarBlock> THATCH = BLOCKS.registerBlock(
             "thatch_block", RotatedPillarBlock::new, BlockBehaviour.Properties.of()
                     .mapColor(MapColor.WARPED_STEM).strength(0.5f).sound(SoundType.GRASS));
-
     public static final DeferredBlock<WetPackedMudBrick> WET_PACKED_MUD_BRICK = BLOCKS.registerBlock(
             "wet_packed_mud_brick", WetPackedMudBrick::new, BlockBehaviour.Properties.of()
                     .mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.STONE).randomTicks());
@@ -162,6 +151,10 @@ public final class BlockRegistration {
             .mapColor(MapColor.STONE).strength(1.0f).sound(SoundType.STONE));
     public static final DeferredBlock<ChoppingBlockBlock> CHOPPING_BLOCK = BLOCKS.registerBlock("chopping_block", ChoppingBlockBlock::new, BlockBehaviour.Properties.of()
             .mapColor(MapColor.WOOD).strength(1.0f).sound(SoundType.WOOD));
+    //endregion
+
+    //region Pottery
+
 
     public static final BlockBehaviour.Properties WetClayProps = BlockBehaviour.Properties.of()
             .isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY)
@@ -177,36 +170,45 @@ public final class BlockRegistration {
             GatherersJarBlock::new, FiredClayProps);
 
     // Keeper's Crock
-    public static final DeferredBlock<DryingBlock> DRYING_KEEPERS_CROCK = BLOCKS.registerBlock("drying_keepers_crock",
-            KeepersCrockBlock.DryingKeepersCrockBlock::new, WetClayProps);
+    public static final DeferredBlock<DryingBlockHorizontalAxis> DRYING_KEEPERS_CROCK = BLOCKS.registerBlock("drying_keepers_crock",
+            KeepersCrockBlock.DryingKeepersCrockBlockHorizontalAxis::new, WetClayProps);
     public static final DeferredBlock<KeepersCrockBlock> KEEPERS_CROCK = BLOCKS.registerBlock("keepers_crock",
             KeepersCrockBlock::new, FiredClayProps);
 
     // Settler's Pot
-    public static final DeferredBlock<DryingBlock> DRYING_SETTLERS_POT = BLOCKS.registerBlock("drying_settlers_pot",
-            SettlersPotBlock.DryingSettlersPotBlock::new, WetClayProps);
+    public static final DeferredBlock<DryingBlockHorizontalAxis> DRYING_SETTLERS_POT = BLOCKS.registerBlock("drying_settlers_pot",
+            SettlersPotBlock.DryingSettlersPotBlockHorizontalAxis::new, WetClayProps);
     public static final DeferredBlock<SettlersPotBlock> SETTLERS_POT = BLOCKS.registerBlock("settlers_pot",
             SettlersPotBlock::new, FiredClayProps);
 
     // Cooking Pot
-    public static final DeferredBlock<DryingBlock> DRYING_CLAY_COOKING_POT = BLOCKS.registerBlock("drying_clay_cooking_pot",
+    public static final DeferredBlock<DryingBlockHorizontalAxis> DRYING_CLAY_COOKING_POT = BLOCKS.registerBlock("drying_clay_cooking_pot",
             ClayCookingPotBlock.DryingClayCookingPotBlock::new, WetClayProps);
     public static final DeferredBlock<ClayCookingPotBlock> CLAY_COOKING_POT = BLOCKS.registerBlock("clay_cooking_pot",
             ClayCookingPotBlock::new, FiredClayProps);
 
     // Clay Cauldron
-    public static final DeferredBlock<DryingBlock> DRYING_CLAY_CAULDRON = BLOCKS.registerBlock("drying_clay_cauldron",
-            ClayCauldronBlock.DryingClayCauldronPotBlock::new, WetClayProps);
+    public static final DeferredBlock<DryingBlockHorizontalAxis> DRYING_CLAY_CAULDRON = BLOCKS.registerBlock("drying_clay_cauldron",
+            ClayCauldronBlock.DryingClayCauldronBlock::new, WetClayProps);
     public static final DeferredBlock<ClayCauldronBlock> CLAY_CAULDRON = BLOCKS.registerBlock("clay_cauldron",
             ClayCauldronBlock::new, FiredClayProps);
 
     // Jug
+    public static final DeferredBlock<DryingBlockHorizontalFacing> DRYING_JUG = BLOCKS.registerBlock("drying_jug",
+            JugBlock.DryingJugBlock::new, WetClayProps);
+    public static final DeferredBlock<JugBlock> JUG = BLOCKS.registerBlock("jug",
+            JugBlock::new, FiredClayProps);
 
     // Birch Pot
 
     // Flower Pot
+    public static final DeferredBlock<DryingBlock> DRYING_FLOWER_POT = BLOCKS.registerBlock("drying_flower_pot",
+            DryingBlock.BasicDryingBlock::new, WetClayProps);
 
     // Decorated Pot
+    public static final DeferredBlock<DryingBlock> DRYING_DECORATED_POT = BLOCKS.registerBlock("drying_decorated_pot",
+            DryingBlock.BasicDryingBlock::new, WetClayProps); // TODO Support player right clicking face with SHERDS
+
     //endregion
 
     public static void register(IEventBus modEventBus) {

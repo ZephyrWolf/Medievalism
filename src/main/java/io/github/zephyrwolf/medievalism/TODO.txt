@@ -1,7 +1,3 @@
-Move all BlockItems either into ItemRegistration or a new class, BlockItemRegistration
-
-Tidy up BaseRecipeProvider
-
 Overhaul flower pot recipe
 
 

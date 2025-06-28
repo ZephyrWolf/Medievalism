@@ -246,9 +246,9 @@ public class SettlersPotBlock extends BaseEntityBlock implements SimpleWaterlogg
     }
     //endregion
 
-    public static class DryingSettlersPotBlock extends DryingBlock
+    public static class DryingSettlersPotBlockHorizontalAxis extends DryingBlockHorizontalAxis
     {
-        public DryingSettlersPotBlock(Properties props) {
+        public DryingSettlersPotBlockHorizontalAxis(Properties props) {
             super(props, SETTLERS_POT_SHAPE);
         }
     }

@@ -27,7 +27,7 @@ import net.minecraft.world.level.block.SupportType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.level.storage.loot.LootParams;
@@ -44,7 +44,7 @@ import java.util.List;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public abstract class DryingBlock extends Block {
+public abstract class DryingBlockHorizontalFacing extends Block {
 
     public static final int SKY_BRIGHTNESS_TO_DRY = 12;
     public static final int MAX_DRYNESS = 11;
@@ -52,13 +52,15 @@ public abstract class DryingBlock extends Block {
     public static final int MIN_DRYNESS = 0;
 
     public static final IntegerProperty DRYNESS = IntegerProperty.create("dryness", MIN_DRYNESS, MAX_DRYNESS);
+    public static final DirectionProperty DIRECTION = BlockStateProperties.HORIZONTAL_FACING;
 
     protected final VoxelShape shape;
 
-    public DryingBlock(Properties props, VoxelShape shape) {
+    public DryingBlockHorizontalFacing(Properties props, VoxelShape shape) {
         super(props);
         registerDefaultState(getStateDefinition().any()
                 .setValue(DRYNESS, DEFAULT_DRYNESS)
+                .setValue(DIRECTION, Direction.NORTH)
         );
         this.shape = shape;
     }
@@ -74,7 +76,8 @@ public abstract class DryingBlock extends Block {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder
-                .add(DRYNESS);
+                .add(DRYNESS)
+                .add(DIRECTION);
     }
 
     @Override
@@ -110,10 +113,12 @@ public abstract class DryingBlock extends Block {
         if (held.getItem() instanceof DryingBlockItem dryingItem) {
             if (dryingItem.isDry()) {
                 return defaultBlockState()
-                        .setValue(DRYNESS, MAX_DRYNESS);
+                        .setValue(DRYNESS, MAX_DRYNESS)
+                        .setValue(DIRECTION, pContext.getHorizontalDirection());
             }
         }
-        return defaultBlockState();
+        return defaultBlockState()
+                .setValue(DIRECTION, pContext.getHorizontalDirection());
     }
 
     @Override
@@ -185,10 +190,5 @@ public abstract class DryingBlock extends Block {
     @Override
     protected List<ItemStack> getDrops(BlockState pState, LootParams.Builder pParams) {
         return super.getDrops(pState, pParams);
-    }
-
-    public static class BasicDryingBlock extends DryingBlock
-    {
-        public BasicDryingBlock(Properties props) { super(props, Block.box(0,0,0, 16, 16, 16)); }
     }
 }

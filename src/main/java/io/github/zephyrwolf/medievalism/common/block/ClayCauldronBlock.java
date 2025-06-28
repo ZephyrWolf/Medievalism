@@ -154,9 +154,9 @@ public class ClayCauldronBlock extends Block implements SimpleWaterloggedBlock {
 
     // --
 
-    public static class DryingClayCauldronPotBlock extends DryingBlock
+    public static class DryingClayCauldronBlock extends DryingBlockHorizontalAxis
     {
-        public DryingClayCauldronPotBlock(Properties props) {
+        public DryingClayCauldronBlock(Properties props) {
             super(props, CLAY_CAULDRON_SHAPE);
         }
     }

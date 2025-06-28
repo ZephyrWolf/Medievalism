@@ -1,0 +1,9 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "top": "minecraft:stone",
+    "bottom": "minecraft:stone",
+    "side": "minecraft:stone",
+    "particle": "#top"
+  }
+}

@@ -57,11 +57,13 @@ public final class BlockItemRegistration {
     public static final DeferredItem<BlockItem> WET_PACKED_MUD_BRICK = BLOCKITEMS.registerSimpleBlockItem("wet_packed_mud_brick", BlockRegistration.WET_PACKED_MUD_BRICK);
     public static final DeferredItem<BlockItem> STONE_BENCH = BLOCKITEMS.registerSimpleBlockItem("stone_bench", BlockRegistration.STONE_BENCH);
     public static final DeferredItem<BlockItem> CHOPPING_BLOCK = BLOCKITEMS.registerSimpleBlockItem("chopping_block", BlockRegistration.CHOPPING_BLOCK);
+    //endregion
 
+    //region Pottery
     public static final DeferredItem<BlockItem> WET_GATHERERS_JAR = BLOCKITEMS.registerItem("wet_gatherers_jar",
-            props -> new DryingBlockItem(BlockRegistration.DRYING_GATHERERS_JAR, props.stacksTo(1), false));
+            props -> new DryingBlockItem(BlockRegistration.DRYING_GATHERERS_JAR, props, false));
     public static final DeferredItem<BlockItem> DRY_GATHERERS_JAR = BLOCKITEMS.registerItem("dry_gatherers_jar",
-            props -> new DryingBlockItem(BlockRegistration.DRYING_GATHERERS_JAR, props.stacksTo(1), true));
+            props -> new DryingBlockItem(BlockRegistration.DRYING_GATHERERS_JAR, props, true));
     public static final DeferredItem<GatherersJarBlockItem> GATHERERS_JAR = BLOCKITEMS.registerItem("gatherers_jar",
             props -> new GatherersJarBlockItem(BlockRegistration.GATHERERS_JAR, props.stacksTo(1)));
 
@@ -85,10 +87,27 @@ public final class BlockItemRegistration {
     public static final DeferredItem<BlockItem> CLAY_COOKING_POT = BLOCKITEMS.registerSimpleBlockItem("clay_cooking_pot", BlockRegistration.CLAY_COOKING_POT);
 
     public static final DeferredItem<BlockItem> WET_CLAY_CAULDRON = BLOCKITEMS.registerItem("wet_clay_cauldron",
-            props -> new DryingBlockItem(BlockRegistration.DRYING_CLAY_CAULDRON, props, false));
+            props -> new DryingBlockItem(BlockRegistration.DRYING_CLAY_CAULDRON, props.stacksTo(1), false));
     public static final DeferredItem<BlockItem> DRY_CLAY_CAULDRON = BLOCKITEMS.registerItem("dry_clay_cauldron",
-            props -> new DryingBlockItem(BlockRegistration.DRYING_CLAY_CAULDRON, props, true));
+            props -> new DryingBlockItem(BlockRegistration.DRYING_CLAY_CAULDRON, props.stacksTo(1), true));
     public static final DeferredItem<BlockItem> CLAY_CAULDRON = BLOCKITEMS.registerSimpleBlockItem("clay_cauldron", BlockRegistration.CLAY_CAULDRON);
+
+    public static final DeferredItem<BlockItem> WET_JUG = BLOCKITEMS.registerItem("wet_jug",
+            props -> new DryingBlockItem(BlockRegistration.DRYING_JUG, props, false));
+    public static final DeferredItem<BlockItem> DRY_JUG = BLOCKITEMS.registerItem("dry_jug",
+            props -> new DryingBlockItem(BlockRegistration.DRYING_JUG, props, true));
+    public static final DeferredItem<BlockItem> JUG = BLOCKITEMS.registerSimpleBlockItem("jug", BlockRegistration.JUG);
+
+    public static final DeferredItem<BlockItem> WET_FLOWER_POT = BLOCKITEMS.registerItem("wet_flower_pot",
+            props -> new DryingBlockItem(BlockRegistration.DRYING_FLOWER_POT, props, false));
+    public static final DeferredItem<BlockItem> DRY_FLOWER_POT = BLOCKITEMS.registerItem("dry_flower_pot",
+            props -> new DryingBlockItem(BlockRegistration.DRYING_FLOWER_POT, props, true));
+
+    public static final DeferredItem<BlockItem> WET_DECORATED_POT = BLOCKITEMS.registerItem("wet_decorated_pot",
+            props -> new DryingBlockItem(BlockRegistration.DRYING_DECORATED_POT, props, false));
+    public static final DeferredItem<BlockItem> DRY_DECORATED_POT = BLOCKITEMS.registerItem("dry_decorated_pot",
+            props -> new DryingBlockItem(BlockRegistration.DRYING_DECORATED_POT, props, true));
+
     //endregion
 
     public static void register(IEventBus modEventBus) {

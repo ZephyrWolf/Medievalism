@@ -1,31 +1,41 @@
 package io.github.zephyrwolf.medievalism.common.block;
 
 import com.mojang.serialization.MapCodec;
+import io.github.zephyrwolf.medievalism.common.block.blockentity.GatherersJarBlockEntity;
+import io.github.zephyrwolf.medievalism.common.block.blockentity.HasInventory;
+import io.github.zephyrwolf.medievalism.content.block.BlockEntityRegistration;
+import net.minecraft.ChatFormatting;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.monster.piglin.PiglinAi;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
-import net.minecraft.world.level.block.SupportType;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -33,71 +43,78 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class ClayCookingPotBlock extends Block implements SimpleWaterloggedBlock {
-    public static MapCodec<ClayCookingPotBlock> CODEC = simpleCodec(ClayCookingPotBlock::new);
+public class JugBlock extends Block implements SimpleWaterloggedBlock
+{
+    //region Constants
+    public static final MapCodec<GatherersJarBlock> CODEC = simpleCodec(GatherersJarBlock::new);
 
-    public static final VoxelShape CLAY_COOKING_POT_SHAPE = Block.box(2, 0, 2, 14, 9, 14);
+    public static final VoxelShape JUG_SHAPE = Block.box(6, 0.0, 6, 10, 6, 10);
+    //endregion
 
-    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
-
-    public ClayCookingPotBlock(Properties properties) {
+    //region Boilerplate
+    public JugBlock(Properties properties) {
         super(properties);
         registerDefaultState(getStateDefinition().any()
-                .setValue(WATERLOGGED, false)
-                .setValue(AXIS, Direction.Axis.X)
-        );
+                .setValue(BlockStateProperties.WATERLOGGED, false)
+                .setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH));
     }
 
     @Override
-    protected MapCodec<? extends Block> codec() {
+    protected MapCodec<? extends BaseEntityBlock> codec() {
         return CODEC;
     }
+    //endregion
 
+    //region Shape
+    @SuppressWarnings("deprecation")
     @Override
-    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
-        if (pState.getFluidState().is(Fluids.WATER)) {
-            return InteractionResult.PASS;
-        }
-        return super.useWithoutItem(pState, pLevel, pPos, pPlayer, pHitResult);
+    protected RenderShape getRenderShape(BlockState pState) {
+        return RenderShape.MODEL;
     }
 
+    @Override
+    protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+        return JUG_SHAPE;
+    }
+    //endregion
+
+    // region BlockStates
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder
-                .add(WATERLOGGED)
-                .add(AXIS);
+                .add(BlockStateProperties.WATERLOGGED)
+                .add(BlockStateProperties.HORIZONTAL_FACING)
+        ;
     }
 
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext pContext) {
         FluidState fluidstate = pContext.getLevel().getFluidState(pContext.getClickedPos());
         return defaultBlockState()
-                .setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER)
-                .setValue(AXIS, pContext.getHorizontalDirection().getAxis());
+                .setValue(BlockStateProperties.WATERLOGGED, fluidstate.getType() == Fluids.WATER)
+                .setValue(BlockStateProperties.HORIZONTAL_FACING, pContext.getHorizontalDirection());
     }
 
     @SuppressWarnings("deprecation")
     @Override
     protected BlockState rotate(BlockState pState, Rotation pRotation) {
-        return switch (pRotation) {
-            case COUNTERCLOCKWISE_90, CLOCKWISE_90 -> switch (pState.getValue(AXIS)) {
-                case Z -> pState.setValue(AXIS, Direction.Axis.X);
-                case X -> pState.setValue(AXIS, Direction.Axis.Z);
-                default -> pState;
-            };
-            default -> pState;
+        Direction facing = pState.getValue(BlockStateProperties.HORIZONTAL_FACING);
+        facing = switch (facing) {
+            case Direction.NORTH -> Direction.EAST;
+            case Direction.EAST -> Direction.SOUTH;
+            case Direction.SOUTH -> Direction.WEST;
+            case Direction.WEST -> Direction.NORTH;
+            default -> facing;
         };
+        return pState.setValue(BlockStateProperties.HORIZONTAL_FACING, facing);
     }
+    //endregion
 
-    @Override
-    protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return CLAY_COOKING_POT_SHAPE;
-    }
-
+    //region Block Properties
     @Override
     protected boolean isPathfindable(@NotNull BlockState pState, @NotNull PathComputationType pPathComputationType) {
         return hasCollision || pState.getFluidState().is(FluidTags.WATER); // SlabBlock
@@ -105,7 +122,7 @@ public class ClayCookingPotBlock extends Block implements SimpleWaterloggedBlock
 
     @Override
     protected FluidState getFluidState(BlockState pState) {
-        return pState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(pState);
+        return pState.getValue(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(pState);
     }
 
     @Override
@@ -117,7 +134,9 @@ public class ClayCookingPotBlock extends Block implements SimpleWaterloggedBlock
     protected boolean propagatesSkylightDown(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos) {
         return true;
     }
+    //endregion
 
+    //region Block Updates
     @Override // Scheduled Tick from Block Update
     protected void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         if (!pState.canSurvive(pLevel, pPos)) {
@@ -133,7 +152,7 @@ public class ClayCookingPotBlock extends Block implements SimpleWaterloggedBlock
     // Block Update
     @Override
     protected BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
-        if (pState.getValue(WATERLOGGED)) {
+        if (pState.getValue(BlockStateProperties.WATERLOGGED)) {
             pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
         }
 
@@ -150,13 +169,12 @@ public class ClayCookingPotBlock extends Block implements SimpleWaterloggedBlock
         BlockState belowState = pLevel.getBlockState(belowPos);
         return belowState.isFaceSturdy(pLevel, belowPos, Direction.UP, SupportType.FULL);
     }
+    //endregion
 
-    // --
-
-    public static class DryingClayCookingPotBlock extends DryingBlockHorizontalAxis
+    public static class DryingJugBlock extends DryingBlockHorizontalFacing
     {
-        public DryingClayCookingPotBlock(Properties props) {
-            super(props, CLAY_COOKING_POT_SHAPE);
+        public DryingJugBlock(Properties props) {
+            super(props, JUG_SHAPE);
         }
     }
 }

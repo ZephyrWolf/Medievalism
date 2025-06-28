@@ -2,6 +2,8 @@ package io.github.zephyrwolf.medievalism.data.block;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.block.DryingBlock;
+import io.github.zephyrwolf.medievalism.common.block.DryingBlockHorizontalAxis;
+import io.github.zephyrwolf.medievalism.common.block.DryingBlockHorizontalFacing;
 import io.github.zephyrwolf.medievalism.common.block.WetPackedMudBrick;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -113,78 +115,6 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 existingParent(BlockRegistration.ICE_ROCK.get(), "block/base_rock5", "5", Blocks.PACKED_ICE)
         );
 
-
-        // Gatherer's Jar
-        dryingBlock(BlockRegistration.DRYING_GATHERERS_JAR.get(),
-                existingParent("wet_" + blockName(BlockRegistration.GATHERERS_JAR.get()), "block/gatherers_jar",
-                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_gatherers_jar")),
-                existingParent("dry_" + blockName(BlockRegistration.GATHERERS_JAR.get()), "block/gatherers_jar",
-                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_gatherers_jar")));
-        simpleBlock(
-                BlockRegistration.GATHERERS_JAR.get(),
-                existingModel(BlockRegistration.GATHERERS_JAR.get(), ""));
-
-        // Keeper's Crock
-        dryingBlock(BlockRegistration.DRYING_KEEPERS_CROCK.get(),
-                existingParent("wet_" + blockName(BlockRegistration.KEEPERS_CROCK.get()), "block/keepers_crock",
-                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_keepers_crock")),
-                existingParent("wet_" + blockName(BlockRegistration.KEEPERS_CROCK.get()) + "_rotated", "block/keepers_crock_rotated",
-                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_keepers_crock")),
-                existingParent("dry_" + blockName(BlockRegistration.KEEPERS_CROCK.get()), "block/keepers_crock",
-                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_keepers_crock")),
-                existingParent("dry_" + blockName(BlockRegistration.KEEPERS_CROCK.get()) + "_rotated", "block/keepers_crock_rotated",
-                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_keepers_crock")));
-        horizontalAxisBlock(
-                BlockRegistration.KEEPERS_CROCK.get(),
-                existingModel(BlockRegistration.KEEPERS_CROCK.get(), ""),
-                existingModel(BlockRegistration.KEEPERS_CROCK.get(), "_rotated"));
-
-        // Settler's Pot
-        dryingBlock(BlockRegistration.DRYING_SETTLERS_POT.get(),
-                existingParent("wet_" + blockName(BlockRegistration.SETTLERS_POT.get()), "block/settlers_pot",
-                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_settlers_pot")),
-                existingParent("wet_" + blockName(BlockRegistration.SETTLERS_POT.get()) + "_rotated", "block/settlers_pot_rotated",
-                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_settlers_pot")),
-                existingParent("dry_" + blockName(BlockRegistration.SETTLERS_POT.get()), "block/settlers_pot",
-                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_settlers_pot")),
-                existingParent("dry_" + blockName(BlockRegistration.SETTLERS_POT.get()) + "_rotated", "block/settlers_pot_rotated",
-                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_settlers_pot")));
-        horizontalAxisBlock(
-                BlockRegistration.SETTLERS_POT.get(),
-                existingModel(BlockRegistration.SETTLERS_POT.get(), ""),
-                existingModel(BlockRegistration.SETTLERS_POT.get(), "_rotated"));
-
-        // Clay Cooking Pot
-        dryingBlock(BlockRegistration.DRYING_CLAY_COOKING_POT.get(),
-                existingParent("wet_" + blockName(BlockRegistration.CLAY_COOKING_POT.get()), "block/clay_cooking_pot",
-                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_clay_cooking_pot")),
-                existingParent("wet_" + blockName(BlockRegistration.CLAY_COOKING_POT.get()) + "_rotated", "block/clay_cooking_pot_rotated",
-                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_clay_cooking_pot")),
-                existingParent("dry_" + blockName(BlockRegistration.CLAY_COOKING_POT.get()), "block/clay_cooking_pot",
-                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_clay_cooking_pot")),
-                existingParent("dry_" + blockName(BlockRegistration.CLAY_COOKING_POT.get()) + "_rotated", "block/clay_cooking_pot_rotated",
-                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_clay_cooking_pot")));
-        horizontalAxisBlock(
-                BlockRegistration.CLAY_COOKING_POT.get(),
-                existingModel(BlockRegistration.CLAY_COOKING_POT.get(), ""),
-                existingModel(BlockRegistration.CLAY_COOKING_POT.get(), "_rotated"));
-
-        // Clay Cauldron
-        dryingBlock(BlockRegistration.DRYING_CLAY_CAULDRON.get(),
-                existingParent("wet_" + blockName(BlockRegistration.CLAY_CAULDRON.get()), "block/clay_cauldron",
-                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_clay_cauldron")),
-                existingParent("wet_" + blockName(BlockRegistration.CLAY_CAULDRON.get()) + "_rotated", "block/clay_cauldron_rotated",
-                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_clay_cauldron")),
-                existingParent("dry_" + blockName(BlockRegistration.CLAY_CAULDRON.get()), "block/clay_cauldron",
-                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_clay_cauldron")),
-                existingParent("dry_" + blockName(BlockRegistration.CLAY_CAULDRON.get()) + "_rotated", "block/clay_cauldron_rotated",
-                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_clay_cauldron")));
-        horizontalAxisBlock(
-                BlockRegistration.CLAY_CAULDRON.get(),
-                existingModel(BlockRegistration.CLAY_CAULDRON.get(), ""),
-                existingModel(BlockRegistration.CLAY_CAULDRON.get(), "_rotated"));
-
-
         randomYRotationBlock(
                 BlockRegistration.LARGE_ROCK.get(),
                 existingParent(BlockRegistration.LARGE_ROCK.get(), "block/base_large_rock1", "1", Blocks.STONE) // 2 and 3
@@ -224,6 +154,119 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 flatModel(BlockRegistration.COPPER_ROCK.get(), false),
                 flatModel(BlockRegistration.COPPER_ROCK.get(), true)
         );
+        //endregion
+
+        //region Pottery
+        // Gatherer's Jar
+        dryingBlock(BlockRegistration.DRYING_GATHERERS_JAR.get(),
+                existingParent("wet_" + blockName(BlockRegistration.GATHERERS_JAR.get()), "block/gatherers_jar",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_gatherers_jar")),
+                existingParent("dry_" + blockName(BlockRegistration.GATHERERS_JAR.get()), "block/gatherers_jar",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_gatherers_jar")));
+        simpleBlock(
+                BlockRegistration.GATHERERS_JAR.get(),
+                existingModel(BlockRegistration.GATHERERS_JAR.get(), ""));
+
+        // Keeper's Crock
+        dryingBlockHorizontalAxis(BlockRegistration.DRYING_KEEPERS_CROCK.get(),
+                existingParent("wet_" + blockName(BlockRegistration.KEEPERS_CROCK.get()), "block/keepers_crock",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_keepers_crock")),
+                existingParent("wet_" + blockName(BlockRegistration.KEEPERS_CROCK.get()) + "_rotated", "block/keepers_crock_rotated",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_keepers_crock")),
+                existingParent("dry_" + blockName(BlockRegistration.KEEPERS_CROCK.get()), "block/keepers_crock",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_keepers_crock")),
+                existingParent("dry_" + blockName(BlockRegistration.KEEPERS_CROCK.get()) + "_rotated", "block/keepers_crock_rotated",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_keepers_crock")));
+        horizontalAxisBlock(
+                BlockRegistration.KEEPERS_CROCK.get(),
+                existingModel(BlockRegistration.KEEPERS_CROCK.get(), ""),
+                existingModel(BlockRegistration.KEEPERS_CROCK.get(), "_rotated"));
+
+        // Settler's Pot
+        dryingBlockHorizontalAxis(BlockRegistration.DRYING_SETTLERS_POT.get(),
+                existingParent("wet_" + blockName(BlockRegistration.SETTLERS_POT.get()), "block/settlers_pot",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_settlers_pot")),
+                existingParent("wet_" + blockName(BlockRegistration.SETTLERS_POT.get()) + "_rotated", "block/settlers_pot_rotated",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_settlers_pot")),
+                existingParent("dry_" + blockName(BlockRegistration.SETTLERS_POT.get()), "block/settlers_pot",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_settlers_pot")),
+                existingParent("dry_" + blockName(BlockRegistration.SETTLERS_POT.get()) + "_rotated", "block/settlers_pot_rotated",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_settlers_pot")));
+        horizontalAxisBlock(
+                BlockRegistration.SETTLERS_POT.get(),
+                existingModel(BlockRegistration.SETTLERS_POT.get(), ""),
+                existingModel(BlockRegistration.SETTLERS_POT.get(), "_rotated"));
+
+        // Clay Cooking Pot
+        dryingBlockHorizontalAxis(BlockRegistration.DRYING_CLAY_COOKING_POT.get(),
+                existingParent("wet_" + blockName(BlockRegistration.CLAY_COOKING_POT.get()), "block/clay_cooking_pot",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_clay_cooking_pot")),
+                existingParent("wet_" + blockName(BlockRegistration.CLAY_COOKING_POT.get()) + "_rotated", "block/clay_cooking_pot_rotated",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_clay_cooking_pot")),
+                existingParent("dry_" + blockName(BlockRegistration.CLAY_COOKING_POT.get()), "block/clay_cooking_pot",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_clay_cooking_pot")),
+                existingParent("dry_" + blockName(BlockRegistration.CLAY_COOKING_POT.get()) + "_rotated", "block/clay_cooking_pot_rotated",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_clay_cooking_pot")));
+        horizontalAxisBlock(
+                BlockRegistration.CLAY_COOKING_POT.get(),
+                existingModel(BlockRegistration.CLAY_COOKING_POT.get(), ""),
+                existingModel(BlockRegistration.CLAY_COOKING_POT.get(), "_rotated"));
+
+        // Clay Cauldron
+        dryingBlockHorizontalAxis(BlockRegistration.DRYING_CLAY_CAULDRON.get(),
+                existingParent("wet_" + blockName(BlockRegistration.CLAY_CAULDRON.get()), "block/clay_cauldron",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_clay_cauldron")),
+                existingParent("wet_" + blockName(BlockRegistration.CLAY_CAULDRON.get()) + "_rotated", "block/clay_cauldron_rotated",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_clay_cauldron")),
+                existingParent("dry_" + blockName(BlockRegistration.CLAY_CAULDRON.get()), "block/clay_cauldron",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_clay_cauldron")),
+                existingParent("dry_" + blockName(BlockRegistration.CLAY_CAULDRON.get()) + "_rotated", "block/clay_cauldron_rotated",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_clay_cauldron")));
+        horizontalAxisBlock(
+                BlockRegistration.CLAY_CAULDRON.get(),
+                existingModel(BlockRegistration.CLAY_CAULDRON.get(), ""),
+                existingModel(BlockRegistration.CLAY_CAULDRON.get(), "_rotated"));
+
+        // Jug
+        dryingBlockHorizontalFacing(BlockRegistration.DRYING_JUG.get(),
+                existingParent("wet_" + blockName(BlockRegistration.JUG.get()), "block/jug",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_jug")),
+                existingParent("wet_" + blockName(BlockRegistration.JUG.get()) + "_east", "block/jug_east",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_jug")),
+                existingParent("wet_" + blockName(BlockRegistration.JUG.get()) + "_south", "block/jug_south",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_jug")),
+                existingParent("wet_" + blockName(BlockRegistration.JUG.get()) + "_west", "block/jug_west",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_jug")),
+
+                existingParent("dry_" + blockName(BlockRegistration.JUG.get()), "block/jug",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_jug")),
+                existingParent("dry_" + blockName(BlockRegistration.JUG.get()) + "_east", "block/jug_east",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_jug")),
+                existingParent("dry_" + blockName(BlockRegistration.JUG.get()) + "_south", "block/jug_south",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_jug")),
+                existingParent("dry_" + blockName(BlockRegistration.JUG.get()) + "_west", "block/jug_west",
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_jug")));
+        horizontalFacingBlock(
+                BlockRegistration.JUG.get(),
+                existingModel(BlockRegistration.JUG.get(), ""),
+                existingModel(BlockRegistration.JUG.get(), "_east"),
+                existingModel(BlockRegistration.JUG.get(), "_south"),
+                existingModel(BlockRegistration.JUG.get(), "_west"));
+
+        // Flower Pot
+        dryingBlock(BlockRegistration.DRYING_FLOWER_POT.get(),
+                existingParent("wet_" + blockName(Blocks.FLOWER_POT), ResourceLocation.withDefaultNamespace("block/flower_pot"), // Is this going to see namespace Minecraft?
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_flower_pot")),
+                existingParent("dry_" + blockName(Blocks.FLOWER_POT), ResourceLocation.withDefaultNamespace("block/flower_pot"),
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_flower_pot")));
+
+        // Decorated Pot
+        dryingBlock(BlockRegistration.DRYING_DECORATED_POT.get(),
+                existingParent("wet_" + blockName(Blocks.DECORATED_POT), ResourceLocation.withDefaultNamespace("block/decorated_pot"),
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "wet_decorated_pot")),
+                existingParent("dry_" + blockName(Blocks.DECORATED_POT), ResourceLocation.withDefaultNamespace("block/decorated_pot"),
+                        MedievalismConstants.resource(ModelProvider.BLOCK_FOLDER + "/" + "dry_decorated_pot")));
+
         //endregion
 
         //region Crops
@@ -299,28 +342,80 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 .modelForState().modelFile(dryModel).addModel();
     }
 
-    private void dryingBlock(DryingBlock block, ModelFile wetZModel, ModelFile wetXModel, ModelFile dryZModel, ModelFile dryXModel) {
+    private void dryingBlockHorizontalAxis(DryingBlockHorizontalAxis block, ModelFile wetZModel, ModelFile wetXModel, ModelFile dryZModel, ModelFile dryXModel) {
         var builder = getVariantBuilder(block);
-        for (int i = DryingBlock.MIN_DRYNESS; i < DryingBlock.MAX_DRYNESS; i++) {
+        for (int i = DryingBlockHorizontalAxis.MIN_DRYNESS; i < DryingBlockHorizontalAxis.MAX_DRYNESS; i++) {
             builder.partialState()
-                    .with(DryingBlock.DRYNESS, i)
-                    .with(DryingBlock.AXIS, Direction.Axis.Z)
+                    .with(DryingBlockHorizontalAxis.DRYNESS, i)
+                    .with(DryingBlockHorizontalAxis.AXIS, Direction.Axis.Z)
                     .modelForState().modelFile(wetZModel).addModel();
         }
         builder.partialState()
-                .with(DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS)
-                .with(DryingBlock.AXIS, Direction.Axis.Z)
+                .with(DryingBlockHorizontalAxis.DRYNESS, DryingBlockHorizontalAxis.MAX_DRYNESS)
+                .with(DryingBlockHorizontalAxis.AXIS, Direction.Axis.Z)
                 .modelForState().modelFile(dryZModel).addModel();
-        for (int i = DryingBlock.MIN_DRYNESS; i < DryingBlock.MAX_DRYNESS; i++) {
+        for (int i = DryingBlockHorizontalAxis.MIN_DRYNESS; i < DryingBlockHorizontalAxis.MAX_DRYNESS; i++) {
             builder.partialState()
-                    .with(DryingBlock.DRYNESS, i)
-                    .with(DryingBlock.AXIS, Direction.Axis.X)
+                    .with(DryingBlockHorizontalAxis.DRYNESS, i)
+                    .with(DryingBlockHorizontalAxis.AXIS, Direction.Axis.X)
                     .modelForState().modelFile(wetXModel).addModel();
         }
         builder.partialState()
-                .with(DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS)
-                .with(DryingBlock.AXIS, Direction.Axis.X)
+                .with(DryingBlockHorizontalAxis.DRYNESS, DryingBlockHorizontalAxis.MAX_DRYNESS)
+                .with(DryingBlockHorizontalAxis.AXIS, Direction.Axis.X)
                 .modelForState().modelFile(dryXModel).addModel();
+    }
+
+    private void dryingBlockHorizontalFacing(DryingBlockHorizontalFacing block, ModelFile wetModelNorth, ModelFile wetModelEast, ModelFile wetModelSouth, ModelFile wetModelWest, ModelFile dryModelNorth, ModelFile dryModelEast, ModelFile dryModelSouth, ModelFile dryModelWest)
+    {
+        // North
+        var builder = getVariantBuilder(block);
+        for (int i = DryingBlockHorizontalFacing.MIN_DRYNESS; i < DryingBlockHorizontalFacing.MAX_DRYNESS; i++) {
+            builder.partialState()
+                    .with(DryingBlockHorizontalFacing.DRYNESS, i)
+                    .with(DryingBlockHorizontalFacing.DIRECTION, Direction.NORTH)
+                    .modelForState().modelFile(wetModelNorth).addModel();
+        }
+        builder.partialState()
+                .with(DryingBlockHorizontalFacing.DRYNESS, DryingBlockHorizontalAxis.MAX_DRYNESS)
+                .with(DryingBlockHorizontalFacing.DIRECTION, Direction.NORTH)
+                .modelForState().modelFile(dryModelNorth).addModel();
+
+        // East
+        for (int i = DryingBlockHorizontalFacing.MIN_DRYNESS; i < DryingBlockHorizontalFacing.MAX_DRYNESS; i++) {
+            builder.partialState()
+                    .with(DryingBlockHorizontalFacing.DRYNESS, i)
+                    .with(DryingBlockHorizontalFacing.DIRECTION, Direction.EAST)
+                    .modelForState().modelFile(wetModelEast).addModel();
+        }
+        builder.partialState()
+                .with(DryingBlockHorizontalFacing.DRYNESS, DryingBlockHorizontalAxis.MAX_DRYNESS)
+                .with(DryingBlockHorizontalFacing.DIRECTION, Direction.EAST)
+                .modelForState().modelFile(dryModelEast).addModel();
+
+        // South
+        for (int i = DryingBlockHorizontalFacing.MIN_DRYNESS; i < DryingBlockHorizontalFacing.MAX_DRYNESS; i++) {
+            builder.partialState()
+                    .with(DryingBlockHorizontalFacing.DRYNESS, i)
+                    .with(DryingBlockHorizontalFacing.DIRECTION, Direction.SOUTH)
+                    .modelForState().modelFile(wetModelSouth).addModel();
+        }
+        builder.partialState()
+                .with(DryingBlockHorizontalFacing.DRYNESS, DryingBlockHorizontalAxis.MAX_DRYNESS)
+                .with(DryingBlockHorizontalFacing.DIRECTION, Direction.SOUTH)
+                .modelForState().modelFile(dryModelSouth).addModel();
+
+        // West
+        for (int i = DryingBlockHorizontalFacing.MIN_DRYNESS; i < DryingBlockHorizontalFacing.MAX_DRYNESS; i++) {
+            builder.partialState()
+                    .with(DryingBlockHorizontalFacing.DRYNESS, i)
+                    .with(DryingBlockHorizontalFacing.DIRECTION, Direction.WEST)
+                    .modelForState().modelFile(wetModelWest).addModel();
+        }
+        builder.partialState()
+                .with(DryingBlockHorizontalFacing.DRYNESS, DryingBlockHorizontalAxis.MAX_DRYNESS)
+                .with(DryingBlockHorizontalFacing.DIRECTION, Direction.WEST)
+                .modelForState().modelFile(dryModelWest).addModel();
     }
 
     @SuppressWarnings("unused")
@@ -334,6 +429,19 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 .modelForState().modelFile(zAxisModel).rotationY(0).addModel()
                 .partialState().with(BlockStateProperties.HORIZONTAL_AXIS, Direction.Axis.X)
                 .modelForState().modelFile(xAxisModel).rotationY(180).addModel();
+    }
+
+    private void horizontalFacingBlock(Block block, ModelFile northModel, ModelFile eastModel, ModelFile southModel, ModelFile westModel)
+    {
+        getVariantBuilder(block)
+                .partialState().with(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
+                .modelForState().modelFile(northModel).rotationY(0).addModel()
+                .partialState().with(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST)
+                .modelForState().modelFile(eastModel).rotationY(90).addModel()
+                .partialState().with(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH)
+                .modelForState().modelFile(southModel).rotationY(180).addModel()
+                .partialState().with(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST)
+                .modelForState().modelFile(westModel).rotationY(270).addModel();
     }
 
     private void randomYRotationBlock(Block block, ModelFile... rawModels) {
@@ -434,9 +542,13 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         return existingParent(blockName(block) + suffix, parent, textures);
     }
 
-    private ModelFile existingParent(String name, String parent, ResourceLocation... textures) {
+    private ModelFile existingParent(String name, String parentModel, ResourceLocation... textures) {
+        return existingParent(name, MedievalismConstants.resource(parentModel), textures);
+    }
+
+    private ModelFile existingParent(String name, ResourceLocation parentModel, ResourceLocation... textures) {
         BlockModelBuilder model = models() // BlockModelProvider extends ModelProvider<BlockModelBuilder>
-                .withExistingParent(name, MedievalismConstants.resource(parent))
+                .withExistingParent(name, parentModel)
                 .texture("particle", textures[0]);
         for (int i = 0; i < textures.length; i++) {
             model.texture(Integer.toString(i), textures[i]);

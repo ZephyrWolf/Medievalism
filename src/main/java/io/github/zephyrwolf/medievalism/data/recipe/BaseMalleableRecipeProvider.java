@@ -169,37 +169,31 @@ public final class BaseMalleableRecipeProvider {
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_cauldron"));
 
-        /*
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(ItemRegistration.UNFIRED_POT.get()))
-                .pattern("x  x")
-                .pattern("x  x")
-                .pattern(" xx ")
-                .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        BlockRegistration.STONE_BENCH_ITEM
-                ))
-                .save(recipeOutput, MedievalismConstants.resource("unfired_pot"));
-
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(ItemRegistration.UNFIRED_LARGE_POT.get()))
-                .pattern("x   x")
-                .pattern("x   x")
-                .pattern("x   x")
-                .pattern("x   x")
-                .pattern("xxxxx")
-                .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        BlockRegistration.STONE_BENCH_ITEM
-                ))
-                .save(recipeOutput, MedievalismConstants.resource("unfired_large_pot"));
-
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(ItemRegistration.UNFIRED_JUG.get()))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(BlockItemRegistration.WET_JUG.get()))
                 .pattern(" x x ")
                 .pattern(" x x ")
                 .pattern("x   x")
                 .pattern("x   x")
                 .pattern(" xxx ")
                 .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        BlockRegistration.STONE_BENCH_ITEM
+                        BlockItemRegistration.STONE_BENCH
                 ))
-                .save(recipeOutput, MedievalismConstants.resource("unfired_jug"));
-        */
+                .save(recipeOutput, MedievalismConstants.resource("wet_jug"));
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(BlockItemRegistration.WET_FLOWER_POT.get()))
+                .pattern("x x")
+                .pattern(" x ")
+                .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        BlockItemRegistration.STONE_BENCH
+                ))
+                .save(recipeOutput, MedievalismConstants.resource("wet_flower_pot"));
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.CLAY.get(), new ItemStack(BlockItemRegistration.WET_DECORATED_POT.get()))
+                .pattern(" xx ")
+                .pattern("x  x")
+                .pattern("x  x")
+                .pattern(" xx ")
+                .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        BlockItemRegistration.STONE_BENCH
+                ))
+                .save(recipeOutput, MedievalismConstants.resource("wet_decorated_pot"));
     }
 }
