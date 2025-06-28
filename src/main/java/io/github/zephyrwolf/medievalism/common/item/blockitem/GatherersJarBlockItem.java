@@ -36,4 +36,9 @@ public class GatherersJarBlockItem extends ContainerItemBlockItem {
         }
         return InteractionResultHolder.sidedSuccess(pPlayer.getItemInHand(pUsedHand), pLevel.isClientSide);
     }
+
+    @Override
+    public boolean canFitInsideContainerItems() {
+        return true; // super.canFitInsideContainerItems();
+    }
 }

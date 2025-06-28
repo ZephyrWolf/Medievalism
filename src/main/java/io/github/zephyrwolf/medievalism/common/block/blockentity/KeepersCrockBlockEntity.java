@@ -1,5 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.block.blockentity;
 
+import io.github.zephyrwolf.medievalism.common.block.GatherersJarBlock;
 import io.github.zephyrwolf.medievalism.common.block.KeepersCrockBlock;
 import io.github.zephyrwolf.medievalism.common.menu.KeepersCrockMenu;
 import io.github.zephyrwolf.medievalism.content.block.BlockEntityRegistration;
@@ -22,6 +23,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemContainerContents;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
@@ -86,8 +89,10 @@ public class KeepersCrockBlockEntity extends BlockEntity implements MenuProvider
         }
 
         @Override
-        public boolean isItemValid(int slot, ItemStack stack) {
-            return stack.getItem().canFitInsideContainerItems();
+        public boolean isItemValid(int slot, ItemStack stack)
+        {
+            Block block = GatherersJarBlock.byItem(stack.getItem());
+            return block == Blocks.AIR && stack.getItem().canFitInsideContainerItems();
         }
 
         @Override // required for serialization to work properly
