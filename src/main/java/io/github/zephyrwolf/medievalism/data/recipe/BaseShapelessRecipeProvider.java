@@ -2,6 +2,7 @@ package io.github.zephyrwolf.medievalism.data.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.item.BlockItemRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.tools.RecipeTools;
@@ -33,8 +34,8 @@ public final class BaseShapelessRecipeProvider {
                 .save(recipeOutput, MedievalismConstants.resource("sticks_from_branch"));
         // Thatch
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.THATCH, 4)
-                .requires(ItemRegistration.THATCH_BLOCK)
-                .unlockedBy("has_thatch_block", RecipeTools.itemPredicateOf(ItemRegistration.THATCH_BLOCK))
+                .requires(BlockItemRegistration.THATCH_BLOCK)
+                .unlockedBy("has_thatch_block", RecipeTools.itemPredicateOf(BlockItemRegistration.THATCH_BLOCK))
                 .save(recipeOutput, MedievalismConstants.resource("thatch_from_block"));
         // Mud Ball // TODO Temp
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.MUD_BALL, 4)

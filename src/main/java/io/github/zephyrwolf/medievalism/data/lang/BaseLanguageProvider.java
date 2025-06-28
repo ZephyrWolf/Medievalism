@@ -5,6 +5,7 @@ import io.github.zephyrwolf.medievalism.common.block.GatherersJarBlock;
 import io.github.zephyrwolf.medievalism.common.block.KeepersCrockBlock;
 import io.github.zephyrwolf.medievalism.common.block.SettlersPotBlock;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.item.BlockItemRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
@@ -16,71 +17,71 @@ public class BaseLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        add(ItemRegistration.LIMESTONE.get(), "Limestone");
-        add(ItemRegistration.OAK_BRANCH.get(), "Oak Branch");
-        add(ItemRegistration.BIRCH_BRANCH.get(), "Birch Branch");
-        add(ItemRegistration.SPRUCE_BRANCH.get(), "Spruce Branch");
-        add(ItemRegistration.JUNGLE_BRANCH.get(), "Jungle Branch");
-        add(ItemRegistration.DARK_OAK_BRANCH.get(), "Dark Oak Branch");
-        add(ItemRegistration.ACACIA_BRANCH.get(), "Acacia Branch");
-        add(ItemRegistration.MANGROVE_BRANCH.get(), "Mangrove Branch");
-        add(ItemRegistration.CHERRY_BRANCH.get(), "Cherry Branch");
+        add(BlockItemRegistration.LIMESTONE.get(), "Limestone");
+        add(BlockItemRegistration.OAK_BRANCH.get(), "Oak Branch");
+        add(BlockItemRegistration.BIRCH_BRANCH.get(), "Birch Branch");
+        add(BlockItemRegistration.SPRUCE_BRANCH.get(), "Spruce Branch");
+        add(BlockItemRegistration.JUNGLE_BRANCH.get(), "Jungle Branch");
+        add(BlockItemRegistration.DARK_OAK_BRANCH.get(), "Dark Oak Branch");
+        add(BlockItemRegistration.ACACIA_BRANCH.get(), "Acacia Branch");
+        add(BlockItemRegistration.MANGROVE_BRANCH.get(), "Mangrove Branch");
+        add(BlockItemRegistration.CHERRY_BRANCH.get(), "Cherry Branch");
 
-        add(ItemRegistration.ROCK.get(), "Rock");
-        add(ItemRegistration.SANDSTONE_ROCK.get(), "Sandstone Rock");
-        add(ItemRegistration.RED_SANDSTONE_ROCK.get(), "Red Sandstone Rock");
-        add(ItemRegistration.MOSSY_ROCK.get(), "Mossy Rock");
-        add(ItemRegistration.LIGHTER_ROCK.get(), "Lighter Rock");
-        add(ItemRegistration.SNOWY_ROCK.get(), "Snowy Rock");
-        add(ItemRegistration.ICE_ROCK.get(), "Ice Rock");
+        add(BlockItemRegistration.ROCK.get(), "Rock");
+        add(BlockItemRegistration.SANDSTONE_ROCK.get(), "Sandstone Rock");
+        add(BlockItemRegistration.RED_SANDSTONE_ROCK.get(), "Red Sandstone Rock");
+        add(BlockItemRegistration.MOSSY_ROCK.get(), "Mossy Rock");
+        add(BlockItemRegistration.LIGHTER_ROCK.get(), "Lighter Rock");
+        add(BlockItemRegistration.SNOWY_ROCK.get(), "Snowy Rock");
+        add(BlockItemRegistration.ICE_ROCK.get(), "Ice Rock");
 
-        add(ItemRegistration.LARGE_ROCK.get(), "Large Rock");
-        add(ItemRegistration.SANDSTONE_LARGE_ROCK.get(), "Sandstone Large Rock");
-        add(ItemRegistration.RED_SANDSTONE_LARGE_ROCK.get(), "Red Sandstone Large Rock");
-        add(ItemRegistration.MOSSY_LARGE_ROCK.get(), "Mossy Large Rock");
-        add(ItemRegistration.LIGHTER_LARGE_ROCK.get(), "Lighter Large Rock");
-        add(ItemRegistration.SNOWY_LARGE_ROCK.get(), "Snowy Large Rock");
-        add(ItemRegistration.ICE_LARGE_ROCK.get(), "Ice Large Rock");
+        add(BlockItemRegistration.LARGE_ROCK.get(), "Large Rock");
+        add(BlockItemRegistration.SANDSTONE_LARGE_ROCK.get(), "Sandstone Large Rock");
+        add(BlockItemRegistration.RED_SANDSTONE_LARGE_ROCK.get(), "Red Sandstone Large Rock");
+        add(BlockItemRegistration.MOSSY_LARGE_ROCK.get(), "Mossy Large Rock");
+        add(BlockItemRegistration.LIGHTER_LARGE_ROCK.get(), "Lighter Large Rock");
+        add(BlockItemRegistration.SNOWY_LARGE_ROCK.get(), "Snowy Large Rock");
+        add(BlockItemRegistration.ICE_LARGE_ROCK.get(), "Ice Large Rock");
 
-        add(ItemRegistration.LIMESTONE_ROCK.get(), "Limestone Rock");
-        add(ItemRegistration.COPPER_ROCK.get(), "Copper Rock");
-        add(ItemRegistration.THATCH_BLOCK.get(), "Thatch Block");
+        add(BlockItemRegistration.LIMESTONE_ROCK.get(), "Limestone Rock");
+        add(BlockItemRegistration.COPPER_ROCK.get(), "Copper Rock");
+        add(BlockItemRegistration.THATCH_BLOCK.get(), "Thatch Block");
         add(ItemRegistration.BROKEN_GOAT_HORN.get(), "Broken Goat Horn");
-        add(ItemRegistration.DOGBANE_BLOCK_ITEM.get(), "Dogbane");
+        add(BlockItemRegistration.DOGBANE_BLOCK_ITEM.get(), "Dogbane");
 
         add(ItemRegistration.MUD_BALL.get(), "Mud Ball");
-        add(ItemRegistration.WET_PACKED_MUD_BRICK.get(), "Wet Packed Mud Brick");
+        add(BlockItemRegistration.WET_PACKED_MUD_BRICK.get(), "Wet Packed Mud Brick");
         add(ItemRegistration.PACKED_MUD_BRICK.get(), "Packed Mud Brick");
 
-        add(ItemRegistration.WET_GATHERERS_JAR.get(), "Wet Gatherer's Jar");
-        add(ItemRegistration.DRY_GATHERERS_JAR.get(), "Unfired Gatherer's Jar");
+        add(BlockItemRegistration.WET_GATHERERS_JAR.get(), "Wet Gatherer's Jar");
+        add(BlockItemRegistration.DRY_GATHERERS_JAR.get(), "Unfired Gatherer's Jar");
         add(BlockRegistration.DRYING_GATHERERS_JAR.get(), "Drying Gatherer's Jar");
-        add(ItemRegistration.GATHERERS_JAR.get(), "Gatherer's Jar");
+        add(BlockItemRegistration.GATHERERS_JAR.get(), "Gatherer's Jar");
 
-        add(ItemRegistration.WET_KEEPERS_CROCK.get(), "Wet Keeper's Crock");
-        add(ItemRegistration.DRY_KEEPERS_CROCK.get(), "Unfired Keeper's Crock");
+        add(BlockItemRegistration.WET_KEEPERS_CROCK.get(), "Wet Keeper's Crock");
+        add(BlockItemRegistration.DRY_KEEPERS_CROCK.get(), "Unfired Keeper's Crock");
         add(BlockRegistration.DRYING_KEEPERS_CROCK.get(), "Drying Keeper's Crock");
-        add(ItemRegistration.KEEPERS_CROCK.get(), "Keeper's Crock");
+        add(BlockItemRegistration.KEEPERS_CROCK.get(), "Keeper's Crock");
 
-        add(ItemRegistration.WET_SETTLERS_POT.get(), "Wet Settler's Pot");
-        add(ItemRegistration.DRY_SETTLERS_POT.get(), "Unfired Settler's Pot");
+        add(BlockItemRegistration.WET_SETTLERS_POT.get(), "Wet Settler's Pot");
+        add(BlockItemRegistration.DRY_SETTLERS_POT.get(), "Unfired Settler's Pot");
         add(BlockRegistration.DRYING_SETTLERS_POT.get(), "Drying Settler's Pot");
-        add(ItemRegistration.SETTLERS_POT.get(), "Settler's Pot");
+        add(BlockItemRegistration.SETTLERS_POT.get(), "Settler's Pot");
 
-        add(ItemRegistration.WET_CLAY_COOKING_POT.get(), "Wet Clay Cooking Pot");
-        add(ItemRegistration.DRY_CLAY_COOKING_POT.get(), "Unfired Clay Cooking Pot");
+        add(BlockItemRegistration.WET_CLAY_COOKING_POT.get(), "Wet Clay Cooking Pot");
+        add(BlockItemRegistration.DRY_CLAY_COOKING_POT.get(), "Unfired Clay Cooking Pot");
         add(BlockRegistration.DRYING_CLAY_COOKING_POT.get(), "Drying Clay Cooking Pot");
-        add(ItemRegistration.CLAY_COOKING_POT.get(), "Clay Cooking Pot");
+        add(BlockItemRegistration.CLAY_COOKING_POT.get(), "Clay Cooking Pot");
 
-        add(ItemRegistration.WET_CLAY_CAULDRON.get(), "Wet Clay Cauldron");
-        add(ItemRegistration.DRY_CLAY_CAULDRON.get(), "Unfired Clay Cauldron");
+        add(BlockItemRegistration.WET_CLAY_CAULDRON.get(), "Wet Clay Cauldron");
+        add(BlockItemRegistration.DRY_CLAY_CAULDRON.get(), "Unfired Clay Cauldron");
         add(BlockRegistration.DRYING_CLAY_CAULDRON.get(), "Drying Clay Cauldron");
-        add(ItemRegistration.CLAY_CAULDRON.get(), "Clay Cauldron");
+        add(BlockItemRegistration.CLAY_CAULDRON.get(), "Clay Cauldron");
 
 
         { // World
             add(ItemRegistration.RED_CLAY_BALL.get(), "Red Clay Ball");
-            add(ItemRegistration.RED_CLAY_BLOCK.get(), "Red Clay");
+            add(BlockItemRegistration.RED_CLAY_BLOCK.get(), "Red Clay");
             add(ItemRegistration.RAW_TIN.get(), "Tin Ore");
             add(BlockRegistration.TIN_ORE.get(), "Tin Ore Block");
             add(BlockRegistration.DEEPSLATE_TIN_ORE.get(), "Deepslate Tin Ore Block");
@@ -128,8 +129,8 @@ public class BaseLanguageProvider extends LanguageProvider {
             add(ItemRegistration.BLACK_BARK.get(), "Black Bark");
         }
         { // Primitive
-            add(ItemRegistration.STONE_BENCH.get(), "Stone Bench");
-            add(ItemRegistration.CHOPPING_BLOCK.get(), "Chopping Block");
+            add(BlockItemRegistration.STONE_BENCH.get(), "Stone Bench");
+            add(BlockItemRegistration.CHOPPING_BLOCK.get(), "Chopping Block");
         }
         { // Leather Working
             // Hide

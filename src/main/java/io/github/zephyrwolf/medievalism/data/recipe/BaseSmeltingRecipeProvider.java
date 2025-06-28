@@ -1,6 +1,7 @@
 package io.github.zephyrwolf.medievalism.data.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.content.item.BlockItemRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.tools.RecipeTools;
@@ -47,10 +48,10 @@ public final class BaseSmeltingRecipeProvider {
 
     private static void limeRecipes(RecipeOutput recipeOutput) {
         // Quicklime
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistration.LIMESTONE_ROCK),
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockItemRegistration.LIMESTONE_ROCK),
                         RecipeCategory.MISC, ItemRegistration.QUICK_LIME,
                         0.0f, 1000)
-                .unlockedBy("has_limestone_rock", RecipeTools.itemPredicateOf(ItemRegistration.LIMESTONE_ROCK))
+                .unlockedBy("has_limestone_rock", RecipeTools.itemPredicateOf(BlockItemRegistration.LIMESTONE_ROCK))
                 .save(recipeOutput, MedievalismConstants.resource("quicklime_smelting"));
     }
 

@@ -2,6 +2,7 @@ package io.github.zephyrwolf.medievalism.data.loot;
 
 import io.github.zephyrwolf.medievalism.common.block.DryingBlock;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.item.BlockItemRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
@@ -54,15 +55,15 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
 
         add(BlockRegistration.WET_PACKED_MUD_BRICK.get(), emptyItemTable());
 
-        add(BlockRegistration.DRYING_GATHERERS_JAR.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, ItemRegistration.WET_GATHERERS_JAR, ItemRegistration.DRY_GATHERERS_JAR));
+        add(BlockRegistration.DRYING_GATHERERS_JAR.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, BlockItemRegistration.WET_GATHERERS_JAR, BlockItemRegistration.DRY_GATHERERS_JAR));
         add(BlockRegistration.GATHERERS_JAR.get(), this::createCeramicContainer);
-        add(BlockRegistration.DRYING_KEEPERS_CROCK.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, ItemRegistration.WET_KEEPERS_CROCK, ItemRegistration.DRY_KEEPERS_CROCK));
+        add(BlockRegistration.DRYING_KEEPERS_CROCK.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, BlockItemRegistration.WET_KEEPERS_CROCK, BlockItemRegistration.DRY_KEEPERS_CROCK));
         add(BlockRegistration.KEEPERS_CROCK.get(), this::createCeramicContainer);
-        add(BlockRegistration.DRYING_SETTLERS_POT.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, ItemRegistration.WET_SETTLERS_POT, ItemRegistration.DRY_SETTLERS_POT));
+        add(BlockRegistration.DRYING_SETTLERS_POT.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, BlockItemRegistration.WET_SETTLERS_POT, BlockItemRegistration.DRY_SETTLERS_POT));
         add(BlockRegistration.SETTLERS_POT.get(), this::createNameable);
-        add(BlockRegistration.DRYING_CLAY_COOKING_POT.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, ItemRegistration.WET_CLAY_COOKING_POT, ItemRegistration.DRY_CLAY_COOKING_POT));
+        add(BlockRegistration.DRYING_CLAY_COOKING_POT.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, BlockItemRegistration.WET_CLAY_COOKING_POT, BlockItemRegistration.DRY_CLAY_COOKING_POT));
         dropSelf(BlockRegistration.CLAY_COOKING_POT.get());
-        add(BlockRegistration.DRYING_CLAY_CAULDRON.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, ItemRegistration.WET_CLAY_CAULDRON, ItemRegistration.DRY_CLAY_CAULDRON));
+        add(BlockRegistration.DRYING_CLAY_CAULDRON.get(), block -> createSpecialDropOnStateTable(block, DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS, BlockItemRegistration.WET_CLAY_CAULDRON, BlockItemRegistration.DRY_CLAY_CAULDRON));
         dropSelf(BlockRegistration.CLAY_CAULDRON.get());
 
         dropSelf(BlockRegistration.OAK_BRANCH.get());

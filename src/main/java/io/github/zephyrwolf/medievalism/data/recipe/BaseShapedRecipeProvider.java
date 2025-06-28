@@ -1,6 +1,7 @@
 package io.github.zephyrwolf.medievalism.data.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.content.item.BlockItemRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.tools.RecipeTools;
@@ -17,7 +18,7 @@ public final class BaseShapedRecipeProvider {
 
     private static void survivalRecipes(RecipeOutput recipeOutput) {
         // Red Clay Block
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistration.RED_CLAY_BLOCK)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockItemRegistration.RED_CLAY_BLOCK)
                 .pattern("cc")
                 .pattern("cc")
                 .define('c', ItemRegistration.RED_CLAY_BALL)
@@ -32,7 +33,7 @@ public final class BaseShapedRecipeProvider {
                 .unlockedBy("has_mud_balls", RecipeTools.itemPredicateOf(ItemRegistration.MUD_BALL))
                 .save(recipeOutput, MedievalismConstants.resource("mud_from_balls"));
         // Thatch Block
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistration.THATCH_BLOCK)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockItemRegistration.THATCH_BLOCK)
                 .pattern("tt")
                 .pattern("tt")
                 .define('t', ItemRegistration.THATCH)
@@ -46,7 +47,7 @@ public final class BaseShapedRecipeProvider {
                 .unlockedBy("has_mud_stone_brick", RecipeTools.itemPredicateOf(ItemRegistration.PACKED_MUD_BRICK))
                 .save(recipeOutput, MedievalismConstants.resource("mud_brick_from_bricks"));
         // Stone Bench
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, new ItemStack(ItemRegistration.STONE_BENCH.get()))
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, new ItemStack(BlockItemRegistration.STONE_BENCH.get()))
                 .pattern("xx")
                 .define('x', ItemTagCatalog.LARGE_ROCK)
                 .unlockedBy("has_large_rock", RecipeTools.itemPredicateOf(ItemTagCatalog.LARGE_ROCK))
