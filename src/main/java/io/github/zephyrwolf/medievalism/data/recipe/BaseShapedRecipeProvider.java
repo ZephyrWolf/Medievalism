@@ -54,6 +54,12 @@ public final class BaseShapedRecipeProvider {
                 .define('m', ItemRegistration.PACKED_MUD_BRICK)
                 .unlockedBy("has_mud_stone_brick", RecipeTools.itemPredicateOf(ItemRegistration.PACKED_MUD_BRICK))
                 .save(recipeOutput, MedievalismConstants.resource("mud_brick_from_bricks"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockItemRegistration.DAUB_BRICKS, 1)
+                .pattern("mm")
+                .pattern("mm")
+                .define('m', ItemRegistration.DAUB_BRICK)
+                .unlockedBy("has_daub_brick", RecipeTools.itemPredicateOf(ItemRegistration.DAUB_BRICK))
+                .save(recipeOutput, MedievalismConstants.resource("daub_brick_from_bricks"));
         // Stone Bench
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, new ItemStack(BlockItemRegistration.STONE_BENCH.get()))
                 .pattern("xx")

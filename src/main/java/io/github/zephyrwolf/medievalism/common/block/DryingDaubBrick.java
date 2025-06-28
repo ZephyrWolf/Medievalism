@@ -14,8 +14,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.InteractionHand;
+import io.github.zephyrwolf.medievalism.common.block.BlockStatePropertyList.DryingBrickState;import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -45,8 +44,8 @@ import java.util.List;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class WetPackedMudBrick extends Block {
-    public static MapCodec<WetPackedMudBrick> CODEC = simpleCodec(WetPackedMudBrick::new);
+public class DryingDaubBrick extends Block {
+    public static MapCodec<DryingDaubBrick> CODEC = simpleCodec(DryingDaubBrick::new);
 
     protected static final VoxelShape BRICK_SHAPE_1000 = Block.box(2, 0, 1, 6, 3, 7);
     protected static final VoxelShape BRICK_SHAPE_0100 = Block.box(10, 0, 1, 14, 3, 7);
@@ -55,39 +54,21 @@ public class WetPackedMudBrick extends Block {
 
     protected final VoxelShape[] BRICK_SHAPES = new VoxelShape[16];
 
-    @MethodsReturnNonnullByDefault
-    public enum PackedMudBrickState implements StringRepresentable {
-        EMPTY,
-        WET,
-        DRY;
+    protected static final int CHANCE = 3;
 
-        @Override
-        public String getSerializedName() {
-            return switch (this) {
-                case EMPTY -> "empty";
-                case WET -> "wet";
-                case DRY -> "dry";
-            };
-        }
-
-        public boolean isEmpty() {
-            return this == EMPTY;
-        }
-    }
-
-    public static final EnumProperty<PackedMudBrickState> BACK_LEFT = EnumProperty.create("back_left", PackedMudBrickState.class);
-    public static final EnumProperty<PackedMudBrickState> BACK_RIGHT = EnumProperty.create("back_right", PackedMudBrickState.class);
-    public static final EnumProperty<PackedMudBrickState> FRONT_LEFT = EnumProperty.create("front_left", PackedMudBrickState.class);
-    public static final EnumProperty<PackedMudBrickState> FRONT_RIGHT = EnumProperty.create("front_right", PackedMudBrickState.class);
+    public static final EnumProperty<DryingBrickState> BACK_LEFT = EnumProperty.create("back_left", DryingBrickState.class);
+    public static final EnumProperty<DryingBrickState> BACK_RIGHT = EnumProperty.create("back_right", DryingBrickState.class);
+    public static final EnumProperty<DryingBrickState> FRONT_LEFT = EnumProperty.create("front_left", DryingBrickState.class);
+    public static final EnumProperty<DryingBrickState> FRONT_RIGHT = EnumProperty.create("front_right", DryingBrickState.class);
     public static final EnumProperty<?>[] BRICK_PROPERTIES = new EnumProperty[]{BACK_LEFT, BACK_RIGHT, FRONT_LEFT, FRONT_RIGHT};
 
-    public WetPackedMudBrick(Properties props) {
+    public DryingDaubBrick(Properties props) {
         super(props);
         registerDefaultState(getStateDefinition().any()
-                .setValue(BACK_LEFT, PackedMudBrickState.EMPTY)
-                .setValue(BACK_LEFT, PackedMudBrickState.EMPTY)
-                .setValue(BACK_LEFT, PackedMudBrickState.EMPTY)
-                .setValue(BACK_LEFT, PackedMudBrickState.EMPTY)
+                .setValue(BACK_LEFT, DryingBrickState.EMPTY)
+                .setValue(BACK_LEFT, DryingBrickState.EMPTY)
+                .setValue(BACK_LEFT, DryingBrickState.EMPTY)
+                .setValue(BACK_LEFT, DryingBrickState.EMPTY)
         );
         for (int i = 0; i < 16; i++) {
             VoxelShape shape1000 = (i & 0b1000) != 0 ? BRICK_SHAPE_1000 : Shapes.empty();
@@ -117,14 +98,14 @@ public class WetPackedMudBrick extends Block {
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
-        if (pStack.getItem() == BlockItemRegistration.WET_PACKED_MUD_BRICK.get()) {
-            EnumProperty<PackedMudBrickState> prop = null;
+        if (pStack.getItem() == BlockItemRegistration.WET_DAUB_BRICK.get()) {
+            EnumProperty<DryingBrickState> prop = null;
             if (pState.getValue(BACK_LEFT).isEmpty()) prop = BACK_LEFT;
             else if (pState.getValue(BACK_RIGHT).isEmpty()) prop = BACK_RIGHT;
             else if (pState.getValue(FRONT_LEFT).isEmpty()) prop = FRONT_LEFT;
             else if (pState.getValue(FRONT_RIGHT).isEmpty()) prop = FRONT_RIGHT;
             if (prop != null) {
-                pLevel.setBlockAndUpdate(pPos, pState.setValue(prop, PackedMudBrickState.WET));
+                pLevel.setBlockAndUpdate(pPos, pState.setValue(prop, DryingBrickState.WET));
                 if (!pPlayer.isCreative()) {
                     pStack.shrink(1);
                 }
@@ -141,11 +122,11 @@ public class WetPackedMudBrick extends Block {
         List<ItemStack> items = super.getDrops(pState, pParams);
         for (EnumProperty<?> property : BRICK_PROPERTIES) {
             @SuppressWarnings("unchecked")
-            PackedMudBrickState state = pState.getValue((EnumProperty<PackedMudBrickState>) property);
-            if (state == PackedMudBrickState.WET)
-                items.add(new ItemStack(BlockItemRegistration.WET_PACKED_MUD_BRICK.get()));
-            else if (state == PackedMudBrickState.DRY)
-                items.add(new ItemStack(ItemRegistration.PACKED_MUD_BRICK.get()));
+            DryingBrickState state = pState.getValue((EnumProperty<DryingBrickState>) property);
+            if (state == DryingBrickState.WET)
+                items.add(new ItemStack(BlockItemRegistration.WET_DAUB_BRICK.get()));
+            else if (state == DryingBrickState.DRY)
+                items.add(new ItemStack(ItemRegistration.DAUB_BRICK.get()));
         }
         return items;
     }
@@ -153,7 +134,7 @@ public class WetPackedMudBrick extends Block {
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext pContext) {
         return defaultBlockState()
-                .setValue(BACK_LEFT, PackedMudBrickState.WET);
+                .setValue(BACK_LEFT, DryingBrickState.WET);
     }
 
     @Override
@@ -224,20 +205,21 @@ public class WetPackedMudBrick extends Block {
             //long timeOfDay = pLevel.dayTime();
             int index = pRandom.nextInt(4);
             @SuppressWarnings("unchecked")
-            EnumProperty<PackedMudBrickState> property = (EnumProperty<PackedMudBrickState>) BRICK_PROPERTIES[index];
-            PackedMudBrickState state = pState.getValue(property);
-            if (state == PackedMudBrickState.WET) {
-                pLevel.setBlockAndUpdate(pPos, pState.setValue(property, PackedMudBrickState.DRY));
+            EnumProperty<DryingBrickState> property = (EnumProperty<DryingBrickState>) BRICK_PROPERTIES[index];
+            DryingBrickState state = pState.getValue(property);
+            int chance = pRandom.nextInt(CHANCE);
+            if (state == DryingBrickState.WET && chance == 0) {
+                pLevel.setBlockAndUpdate(pPos, pState.setValue(property, DryingBrickState.DRY));
             }
         } else if (isRaining && pLevel.canSeeSky(pPos)) {
             int index = pRandom.nextInt(4);
             @SuppressWarnings("unchecked")
-            EnumProperty<PackedMudBrickState> property = (EnumProperty<PackedMudBrickState>) BRICK_PROPERTIES[index];
-            PackedMudBrickState state = pState.getValue(property);
-            if (state == PackedMudBrickState.DRY) {
-                pLevel.setBlockAndUpdate(pPos, pState.setValue(property, PackedMudBrickState.WET));
-            } else if (state == PackedMudBrickState.WET && pRandom.nextInt(3) == 0) {
-                pLevel.setBlockAndUpdate(pPos, pState.setValue(property, PackedMudBrickState.EMPTY));
+            EnumProperty<DryingBrickState> property = (EnumProperty<DryingBrickState>) BRICK_PROPERTIES[index];
+            DryingBrickState state = pState.getValue(property);
+            if (state == DryingBrickState.DRY) {
+                pLevel.setBlockAndUpdate(pPos, pState.setValue(property, DryingBrickState.WET));
+            } else if (state == DryingBrickState.WET && pRandom.nextInt(3) == 0) {
+                pLevel.setBlockAndUpdate(pPos, pState.setValue(property, DryingBrickState.EMPTY));
 
                 LootParams.Builder pParams = new LootParams.Builder(pLevel);
                 LootParams lootParams = pParams

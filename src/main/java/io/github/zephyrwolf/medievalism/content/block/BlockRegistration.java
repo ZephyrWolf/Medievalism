@@ -11,6 +11,9 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.function.BiFunction;
+import java.util.function.Function;
+
 public final class BlockRegistration {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MedievalismConstants.MOD_ID);
 
@@ -141,11 +144,25 @@ public final class BlockRegistration {
     public static final DeferredBlock<RotatedPillarBlock> THATCH = BLOCKS.registerBlock(
             "thatch_block", RotatedPillarBlock::new, BlockBehaviour.Properties.of()
                     .mapColor(MapColor.WARPED_STEM).strength(0.5f).sound(SoundType.GRASS));
-    public static final DeferredBlock<WetPackedMudBlock> WET_PACKED_MUD = BLOCKS.registerBlock("wet_packed_mud", WetPackedMudBlock::new, BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> WET_PACKED_MUD = BLOCKS.registerBlock("wet_packed_mud", Block::new, BlockBehaviour.Properties.of()
             .mapColor(MapColor.DIRT).strength(1.0f).sound(SoundType.MUD));
-    public static final DeferredBlock<WetPackedMudBrick> WET_PACKED_MUD_BRICK = BLOCKS.registerBlock( // This is singulars drying
-            "wet_packed_mud_brick", WetPackedMudBrick::new, BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.DIRT).strength(1.0f).sound(SoundType.STONE).randomTicks());
+    public static final DeferredBlock<Block> WET_DAUB_BLOCK = BLOCKS.registerBlock("wet_daub_block", Block::new, BlockBehaviour.Properties.of()
+            .mapColor(MapColor.DIRT).strength(1.0f).sound(SoundType.MUD));
+    public static final DeferredBlock<Block> DAUB_BLOCK = BLOCKS.registerBlock("daub_block", Block::new, BlockBehaviour.Properties.of()
+            .mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.PACKED_MUD).requiresCorrectToolForDrops());
+    public static final DeferredBlock<Block> DAUB_BRICKS = BLOCKS.registerBlock("daub_bricks", Block::new, BlockBehaviour.Properties.of()
+            .mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.PACKED_MUD).requiresCorrectToolForDrops());
+    public static final DeferredBlock<Block> CRACKED_DAUB_BLOCK = BLOCKS.registerBlock("cracked_daub_block", Block::new, BlockBehaviour.Properties.of()
+            .mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.PACKED_MUD).requiresCorrectToolForDrops());
+    public static final DeferredBlock<Block> CRACKED_DAUB_BRICKS = BLOCKS.registerBlock("cracked_daub_bricks", Block::new, BlockBehaviour.Properties.of()
+            .mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.PACKED_MUD).requiresCorrectToolForDrops());
+
+    public static final DeferredBlock<DryingBrick> WET_PACKED_MUD_BRICK = registerDryingBrick(BLOCKS,
+            "wet_packed_mud_brick", DryingBrick::new, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.DIRT).strength(1.0f).sound(SoundType.STONE).randomTicks(), 2);
+    public static final DeferredBlock<DryingBrick> WET_DAUB_BRICK = registerDryingBrick(BLOCKS,
+            "wet_daub_brick", DryingBrick::new, BlockBehaviour.Properties.of()
+                .mapColor(MapColor.DIRT).strength(1.0f).sound(SoundType.STONE).randomTicks(), 3);
 
     public static final DeferredBlock<StoneBenchBlock> STONE_BENCH = BLOCKS.registerBlock("stone_bench", StoneBenchBlock::new, BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE).strength(1.0f).sound(SoundType.STONE));
@@ -213,5 +230,10 @@ public final class BlockRegistration {
 
     public static void register(IEventBus modEventBus) {
         BLOCKS.register(modEventBus);
+    }
+
+    private static <B extends Block> DeferredBlock<B> registerDryingBrick(DeferredRegister.Blocks blocks, String name, BiFunction<BlockBehaviour.Properties, Integer, ? extends B> func, BlockBehaviour.Properties props, int chance)
+    {
+        return blocks.register(name, () -> func.apply(props, chance));
     }
 }

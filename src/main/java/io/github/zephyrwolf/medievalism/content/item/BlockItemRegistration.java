@@ -3,12 +3,20 @@ package io.github.zephyrwolf.medievalism.content.item;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.item.blockitem.ContainerItemBlockItem;
 import io.github.zephyrwolf.medievalism.common.item.blockitem.DryingBlockItem;
+import io.github.zephyrwolf.medievalism.common.item.blockitem.DryingBrickBlockItem;
 import io.github.zephyrwolf.medievalism.common.item.blockitem.GatherersJarBlockItem;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public final class BlockItemRegistration {
     public static final DeferredRegister.Items BLOCKITEMS = DeferredRegister.createItems(MedievalismConstants.MOD_ID);
@@ -54,10 +62,17 @@ public final class BlockItemRegistration {
 
     //region Primitive
     public static final DeferredItem<BlockItem> THATCH_BLOCK = BLOCKITEMS.registerSimpleBlockItem("thatch_block", BlockRegistration.THATCH);
-    public static final DeferredItem<BlockItem> WET_PACKED_MUD_BRICK = BLOCKITEMS.registerSimpleBlockItem("wet_packed_mud_brick", BlockRegistration.WET_PACKED_MUD_BRICK);
     public static final DeferredItem<BlockItem> STONE_BENCH = BLOCKITEMS.registerSimpleBlockItem("stone_bench", BlockRegistration.STONE_BENCH);
     public static final DeferredItem<BlockItem> CHOPPING_BLOCK = BLOCKITEMS.registerSimpleBlockItem("chopping_block", BlockRegistration.CHOPPING_BLOCK);
     public static final DeferredItem<BlockItem> WET_PACKED_MUD = BLOCKITEMS.registerSimpleBlockItem("wet_packed_mud", BlockRegistration.WET_PACKED_MUD);
+    public static final DeferredItem<DryingBrickBlockItem> WET_PACKED_MUD_BRICK = registerBlockItem("wet_packed_mud_brick", DryingBrickBlockItem::new, BlockRegistration.WET_PACKED_MUD_BRICK);
+    public static final DeferredItem<DryingBrickBlockItem> WET_DAUB_BRICK = registerBlockItem("wet_daub_brick", DryingBrickBlockItem::new, BlockRegistration.WET_DAUB_BRICK);
+    public static final DeferredItem<BlockItem> WET_DAUB_BLOCK = BLOCKITEMS.registerSimpleBlockItem("wet_daub_block", BlockRegistration.WET_DAUB_BLOCK);
+    public static final DeferredItem<BlockItem> DAUB_BLOCK = BLOCKITEMS.registerSimpleBlockItem("daub_block", BlockRegistration.DAUB_BLOCK);
+    public static final DeferredItem<BlockItem> DAUB_BRICKS = BLOCKITEMS.registerSimpleBlockItem("daub_bricks", BlockRegistration.DAUB_BRICKS);
+    public static final DeferredItem<BlockItem> CRACKED_DAUB_BLOCK = BLOCKITEMS.registerSimpleBlockItem("cracked_daub_block", BlockRegistration.CRACKED_DAUB_BLOCK);
+    public static final DeferredItem<BlockItem> CRACKED_DAUB_BRICKS = BLOCKITEMS.registerSimpleBlockItem("cracked_daub_bricks", BlockRegistration.CRACKED_DAUB_BRICKS);
+
     //endregion
 
     //region Pottery
@@ -113,5 +128,17 @@ public final class BlockItemRegistration {
 
     public static void register(IEventBus modEventBus) {
         BLOCKITEMS.register(modEventBus);
+    }
+
+    // --
+
+    public static <I extends Item> DeferredItem<I> registerBlockItem(String name, BiFunction<Block, Item.Properties, ? extends I> func, Supplier<? extends Block> block)
+    {
+        return registerBlockItem(name, func, block, new Item.Properties());
+    }
+
+    public static <I extends Item> DeferredItem<I> registerBlockItem(String name, BiFunction<Block, Item.Properties, ? extends I> func, Supplier<? extends Block> block, Item.Properties props)
+    {
+        return BLOCKITEMS.register(name, key -> func.apply(block.get(), props));
     }
 }

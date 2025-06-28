@@ -54,6 +54,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
         ));
 
         add(BlockRegistration.WET_PACKED_MUD_BRICK.get(), emptyItemTable());
+        add(BlockRegistration.WET_DAUB_BRICK.get(), emptyItemTable());
 
         add(BlockRegistration.DRYING_GATHERERS_JAR.get(), block -> createSpecialDropOnStateTable(block, DryingBlockHorizontalAxis.DRYNESS, DryingBlockHorizontalAxis.MAX_DRYNESS, BlockItemRegistration.WET_GATHERERS_JAR, BlockItemRegistration.DRY_GATHERERS_JAR));
         add(BlockRegistration.GATHERERS_JAR.get(), this::createCeramicContainer);
@@ -129,6 +130,11 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
 
         dropSelf(BlockRegistration.LIMESTONE.get());
         dropSelf(BlockRegistration.WET_PACKED_MUD.get());
+        dropSelf(BlockRegistration.WET_DAUB_BLOCK.get());
+        dropSelf(BlockRegistration.DAUB_BLOCK.get());
+        dropSelf(BlockRegistration.DAUB_BRICKS.get());
+        dropSelf(BlockRegistration.CRACKED_DAUB_BLOCK.get());
+        dropSelf(BlockRegistration.CRACKED_DAUB_BRICKS.get());
         dropSelf(BlockRegistration.LIMESTONE_ROCK.get());
         dropSelf(BlockRegistration.COPPER_ROCK.get());
 

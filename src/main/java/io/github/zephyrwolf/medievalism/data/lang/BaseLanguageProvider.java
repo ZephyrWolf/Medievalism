@@ -47,13 +47,21 @@ public class BaseLanguageProvider extends LanguageProvider {
         add(BlockItemRegistration.COPPER_ROCK.get(), "Copper Rock");
         add(BlockItemRegistration.THATCH_BLOCK.get(), "Thatch Block");
         add(BlockItemRegistration.WET_PACKED_MUD.get(), "Wet Packed Mud");
+        add(BlockItemRegistration.WET_DAUB_BLOCK.get(), "Wet Daub Block");
+        add(BlockItemRegistration.DAUB_BLOCK.get(), "Daub Block");
+        add(BlockItemRegistration.DAUB_BRICKS.get(), "Daub Brick Block");
+        add(BlockItemRegistration.CRACKED_DAUB_BLOCK.get(), "Cracked Daub Block");
+        add(BlockItemRegistration.CRACKED_DAUB_BRICKS.get(), "Cracked Daub Brick Block");
 
         add(ItemRegistration.BROKEN_GOAT_HORN.get(), "Broken Goat Horn");
         add(BlockItemRegistration.DOGBANE_BLOCK_ITEM.get(), "Dogbane");
 
         add(ItemRegistration.MUD_BALL.get(), "Mud Ball");
+        add(ItemRegistration.WET_DAUB.get(), "Daub");
         add(BlockItemRegistration.WET_PACKED_MUD_BRICK.get(), "Wet Packed Mud Brick");
         add(ItemRegistration.PACKED_MUD_BRICK.get(), "Packed Mud Brick");
+        add(BlockItemRegistration.WET_DAUB_BRICK.get(), "Wet Daub Brick");
+        add(ItemRegistration.DAUB_BRICK.get(), "Daub Brick");
 
         add(BlockItemRegistration.WET_GATHERERS_JAR.get(), "Wet Gatherer's Jar");
         add(BlockItemRegistration.DRY_GATHERERS_JAR.get(), "Unfired Gatherer's Jar");

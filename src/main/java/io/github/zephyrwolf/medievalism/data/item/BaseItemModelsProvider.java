@@ -49,6 +49,12 @@ public class BaseItemModelsProvider extends ItemModelProvider {
             blockBasedModel(BlockItemRegistration.RED_CLAY_BLOCK.get(), "");
             blockBasedModel(BlockItemRegistration.LIMESTONE.get(), "");
             blockBasedModel(BlockItemRegistration.WET_PACKED_MUD.get(), "");
+            blockBasedModel(BlockItemRegistration.WET_DAUB_BLOCK.get(), "");
+            blockBasedModel(BlockItemRegistration.DAUB_BLOCK.get(), "");
+            blockBasedModel(BlockItemRegistration.DAUB_BRICKS.get(), "");
+            blockBasedModel(BlockItemRegistration.CRACKED_DAUB_BLOCK.get(), "");
+            blockBasedModel(BlockItemRegistration.CRACKED_DAUB_BRICKS.get(), "");
+
             blockIconGeneratedModel(BlockItemRegistration.LIMESTONE_ROCK.get());
             blockIconGeneratedModel(BlockItemRegistration.COPPER_ROCK.get());
             blockBasedModel(BlockItemRegistration.THATCH_BLOCK.get(), "");
@@ -57,8 +63,11 @@ public class BaseItemModelsProvider extends ItemModelProvider {
             blockBasedModel(BlockItemRegistration.CHOPPING_BLOCK.get(), "");
 
             itemGeneratedModel(ItemRegistration.MUD_BALL.get());
+            itemGeneratedModel(ItemRegistration.WET_DAUB.get());
             itemGeneratedModel(BlockItemRegistration.WET_PACKED_MUD_BRICK.get());
             itemGeneratedModel(ItemRegistration.PACKED_MUD_BRICK.get());
+            itemGeneratedModel(BlockItemRegistration.WET_DAUB_BRICK.get());
+            itemGeneratedModel(ItemRegistration.DAUB_BRICK.get());
         }
 
         blockBasedModel(BlockItemRegistration.WET_GATHERERS_JAR.get(), "");

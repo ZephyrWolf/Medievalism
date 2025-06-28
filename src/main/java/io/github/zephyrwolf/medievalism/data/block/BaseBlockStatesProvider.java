@@ -1,10 +1,7 @@
 package io.github.zephyrwolf.medievalism.data.block;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.common.block.DryingBlock;
-import io.github.zephyrwolf.medievalism.common.block.DryingBlockHorizontalAxis;
-import io.github.zephyrwolf.medievalism.common.block.DryingBlockHorizontalFacing;
-import io.github.zephyrwolf.medievalism.common.block.WetPackedMudBrick;
+import io.github.zephyrwolf.medievalism.common.block.*;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.Direction;
@@ -40,6 +37,11 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         simpleBlock(BlockRegistration.DEEPSLATE_TIN_ORE.get());
         simpleBlock(BlockRegistration.LIMESTONE.get());
         simpleBlock(BlockRegistration.WET_PACKED_MUD.get());
+        simpleBlock(BlockRegistration.WET_DAUB_BLOCK.get());
+        simpleBlock(BlockRegistration.DAUB_BLOCK.get());
+        simpleBlock(BlockRegistration.DAUB_BRICKS.get());
+        simpleBlock(BlockRegistration.CRACKED_DAUB_BLOCK.get());
+        simpleBlock(BlockRegistration.CRACKED_DAUB_BRICKS.get());
 
         //region Branches
         randomYRotationBlock(BlockRegistration.OAK_BRANCH.get(), existingParent(BlockRegistration.OAK_BRANCH.get(), "block/branch", "", BlockRegistration.OAK_BRANCH.get(), Blocks.OAK_LOG));
@@ -281,7 +283,9 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         shortBlock(BlockRegistration.STONE_BENCH.get());
         shortBlock(BlockRegistration.CHOPPING_BLOCK.get());
 
-        wetPackedMudBrickBlock(BlockRegistration.WET_PACKED_MUD_BRICK.get());
+        dryingBrickBlock(BlockRegistration.WET_PACKED_MUD_BRICK.get(), MedievalismConstants.resource("block/wet_packed_mud"), ResourceLocation.withDefaultNamespace("block/packed_mud"));
+        dryingBrickBlock(BlockRegistration.WET_DAUB_BRICK.get(), MedievalismConstants.resource("block/wet_daub_block"), MedievalismConstants.resource("block/daub_block"));
+
     }
 
     private String blockName(Block block) {
@@ -468,14 +472,17 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         getVariantBuilder(block).partialState().setModels(model);
     }
 
-    private void wetPackedMudBrickBlock(Block block) {
+    private void dryingBrickBlock(Block block, ResourceLocation wetTexture, ResourceLocation dryTexture) {
         var builder = getMultipartBuilder(block);
-        for (EnumProperty<?> aProp : WetPackedMudBrick.BRICK_PROPERTIES) {
+        for (EnumProperty<?> aProp : DryingBrick.BRICK_PROPERTIES) {
             @SuppressWarnings("unchecked")
-            EnumProperty<WetPackedMudBrick.PackedMudBrickState> prop = (EnumProperty<WetPackedMudBrick.PackedMudBrickState>) aProp;
-            for (WetPackedMudBrick.PackedMudBrickState brick : WetPackedMudBrick.PackedMudBrickState.values()) {
+            EnumProperty<BlockStatePropertyList.DryingBrickState> prop = (EnumProperty<BlockStatePropertyList.DryingBrickState>) aProp;
+            for (BlockStatePropertyList.DryingBrickState brick : BlockStatePropertyList.DryingBrickState.values()) {
                 if (brick.isEmpty()) continue;
-                ModelFile model = wetPackedMudBrickModel(brick == WetPackedMudBrick.PackedMudBrickState.WET ? "wet_packed_mud_brick" : "packed_mud_brick", prop, brick, brick == WetPackedMudBrick.PackedMudBrickState.WET ? "minecraft:block/mud" : "minecraft:block/packed_mud");
+                ModelFile model = dryingBrickModel(
+                        brick == BlockStatePropertyList.DryingBrickState.WET ? blockName(block) : blockName(block) + "_dried",
+                        prop, brick,
+                        brick == BlockStatePropertyList.DryingBrickState.WET ? wetTexture : dryTexture);
                 builder.part().modelFile(model).addModel()
                         .condition(prop, brick)
                         .end();
@@ -485,13 +492,17 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
     //endregion
 
     //region Models
-    private ModelFile wetPackedMudBrickModel(String name, EnumProperty<WetPackedMudBrick.PackedMudBrickState> property, WetPackedMudBrick.PackedMudBrickState brick, String texture) {
-        if (brick.isEmpty()) throw new IllegalStateException("Cannot obtain model for an empty PackedMudBrickState.");
+    private ModelFile dryingBrickModel(
+            String name,
+            EnumProperty<BlockStatePropertyList.DryingBrickState> property,
+            BlockStatePropertyList.DryingBrickState brick,
+            ResourceLocation texture) {
+        if (brick.isEmpty()) throw new IllegalStateException("Cannot obtain model for an empty DryingBrickState.");
         String suffix = "";
-        if (property.equals(WetPackedMudBrick.BACK_LEFT)) suffix = "_back_left";
-        if (property.equals(WetPackedMudBrick.BACK_RIGHT)) suffix = "_back_right";
-        if (property.equals(WetPackedMudBrick.FRONT_LEFT)) suffix = "_front_left";
-        if (property.equals(WetPackedMudBrick.FRONT_RIGHT)) suffix = "_front_right";
+        if (property.equals(DryingBrick.BACK_LEFT)) suffix = "_back_left";
+        if (property.equals(DryingBrick.BACK_RIGHT)) suffix = "_back_right";
+        if (property.equals(DryingBrick.FRONT_LEFT)) suffix = "_front_left";
+        if (property.equals(DryingBrick.FRONT_RIGHT)) suffix = "_front_right";
         if (suffix.isEmpty()) throw new IllegalStateException("Unrecognised BlockState Property.");
         return models() // BlockModelProvider extends ModelProvider<BlockModelBuilder>
                 .withExistingParent(name + suffix, MedievalismConstants.resource("block/base_inworld_brick" + suffix))

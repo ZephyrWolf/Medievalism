@@ -1,7 +1,11 @@
 Overhaul flower pot recipe
 
 
-
+Blocks
+- DryingBrick Clay
+- rotate
+- place where click (actually target)
+- sound!/tool/miningspeed based on dryness
 
 Blocks
 -Stone Bench
