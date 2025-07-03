@@ -1,11 +1,32 @@
-Overhaul flower pot recipe
+TODO GIT FIRST
 
+TODO Test SHRUB
+TODO Shrub World Gen
+TODO SHEARS, SILK, Drop chance... fuck I hate loot tables! so messy, wtf mojang
 
-Blocks
-- DryingBrick Clay
-- rotate
-- place where click (actually target)
-- sound!/tool/miningspeed based on dryness
+TODO Overhaul flower pot recipe
+TODO Work on missing models and textures
+TODO Seperate ItemModels from BlockItemModels in registration into another class
+
+TODO Add Clay in Soil
+TODO Add Wild Grass
+TODO Does StoneBenchBlockEntity Drop inventory when broken?!
+
+ADD DRYING
+Wet packed mud
+Wet Daub Block
+recipes for daub and packed stuff including placing the wet bricks in world to dry
+
+THOUGHTS
+Crucuible: we gonna use gatherers jar? and crucible be better material?
+
+ERROR
+[12:00:12] [Render thread/WARN] [minecraft/ClientRecipeBook]: Unknown recipe category: medievalism:in_world/medievalism:campfire
+
+Bugs
+seperate item and itemblock ItemModels
+dogbane is too common
+pickblock on unfired items is always wrong
 
 Blocks
 -Stone Bench

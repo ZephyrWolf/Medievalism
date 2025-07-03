@@ -1,6 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.menu;
 
-import io.github.zephyrwolf.medievalism.common.block.blockentity.StoneBenchBlockEntity;
+import io.github.zephyrwolf.medievalism.common.blockentity.StoneBenchBlockEntity;
 import io.github.zephyrwolf.medievalism.common.malleablematerial.MalleableMaterial;
 import io.github.zephyrwolf.medievalism.common.recipe.MalleableRecipe;
 import io.github.zephyrwolf.medievalism.common.recipe.MalleableRecipeInput;

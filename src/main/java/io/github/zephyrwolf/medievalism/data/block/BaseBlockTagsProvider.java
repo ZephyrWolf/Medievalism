@@ -98,6 +98,19 @@ public class BaseBlockTagsProvider extends BlockTagsProvider
                 BlockRegistration.SNOWY_LARGE_ROCK.get(),
                 BlockRegistration.ICE_LARGE_ROCK.get()
         );
+        tag(BlockTagCatalog.TWIGS).add(
+                BlockRegistration.TWIGS.get()
+        );
+        tag(BlockTagCatalog.BRANCH).add(
+                BlockRegistration.BIRCH_BRANCH.get(),
+                BlockRegistration.OAK_BRANCH.get(),
+                BlockRegistration.SPRUCE_BRANCH.get(),
+                BlockRegistration.JUNGLE_BRANCH.get(),
+                BlockRegistration.DARK_OAK_BRANCH.get(),
+                BlockRegistration.ACACIA_BRANCH.get(),
+                BlockRegistration.CHERRY_BRANCH.get(),
+                BlockRegistration.MANGROVE_BRANCH.get()
+        );
         tag(BlockTagCatalog.CAN_DROP_THATCH).add(
                 Blocks.SHORT_GRASS,
                 Blocks.TALL_GRASS,

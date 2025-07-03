@@ -1,8 +1,8 @@
 package io.github.zephyrwolf.medievalism.common.menu;
 
 import io.github.zephyrwolf.medievalism.common.block.GatherersJarBlock;
-import io.github.zephyrwolf.medievalism.common.block.blockentity.GatherersJarBlockEntity;
-import io.github.zephyrwolf.medievalism.common.block.blockentity.HasInventory;
+import io.github.zephyrwolf.medievalism.common.blockentity.GatherersJarBlockEntity;
+import io.github.zephyrwolf.medievalism.common.blockentity.HasInventory;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.content.menu.MenuRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;

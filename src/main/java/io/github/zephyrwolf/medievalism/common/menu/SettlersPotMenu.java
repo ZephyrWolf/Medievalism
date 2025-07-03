@@ -1,6 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.menu;
 
-import io.github.zephyrwolf.medievalism.common.block.blockentity.SettlersPotBlockEntity;
+import io.github.zephyrwolf.medievalism.common.blockentity.SettlersPotBlockEntity;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.content.menu.MenuRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;

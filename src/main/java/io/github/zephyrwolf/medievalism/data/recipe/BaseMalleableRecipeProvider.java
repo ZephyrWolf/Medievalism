@@ -3,7 +3,7 @@ package io.github.zephyrwolf.medievalism.data.recipe;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.recipe.MalleableMaterialRecipeBuilder;
 import io.github.zephyrwolf.medievalism.common.recipe.MalleableRecipeBuilder;
-import io.github.zephyrwolf.medievalism.content.item.BlockItemRegistration;
+import io.github.zephyrwolf.medievalism.content.blockitem.BlockItemRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.content.recipe.MalleableMaterialRegistration;

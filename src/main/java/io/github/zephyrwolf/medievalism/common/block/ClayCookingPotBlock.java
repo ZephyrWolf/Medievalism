@@ -14,10 +14,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
-import net.minecraft.world.level.block.SupportType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -156,7 +153,7 @@ public class ClayCookingPotBlock extends Block implements SimpleWaterloggedBlock
     public static class DryingClayCookingPotBlock extends DryingBlockHorizontalAxis
     {
         public DryingClayCookingPotBlock(Properties props) {
-            super(props, CLAY_COOKING_POT_SHAPE);
+            super(props, CLAY_COOKING_POT_SHAPE, SoundType.PACKED_MUD, 1.0f);
         }
     }
 }

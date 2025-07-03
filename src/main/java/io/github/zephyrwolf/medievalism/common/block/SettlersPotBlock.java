@@ -1,9 +1,9 @@
 package io.github.zephyrwolf.medievalism.common.block;
 
 import com.mojang.serialization.MapCodec;
-import io.github.zephyrwolf.medievalism.common.block.blockentity.HasInventory;
-import io.github.zephyrwolf.medievalism.common.block.blockentity.SettlersPotBlockEntity;
-import io.github.zephyrwolf.medievalism.content.block.BlockEntityRegistration;
+import io.github.zephyrwolf.medievalism.common.blockentity.HasInventory;
+import io.github.zephyrwolf.medievalism.common.blockentity.SettlersPotBlockEntity;
+import io.github.zephyrwolf.medievalism.content.blockentity.BlockEntityRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -50,7 +50,7 @@ public class SettlersPotBlock extends BaseEntityBlock implements SimpleWaterlogg
 
     public static final String LANG_DEFAULT_NAME = "medievalism.container.settlers_pot";
 
-    public static final ResourceLocation CONTENTS = ResourceLocation.withDefaultNamespace("contents");
+    //public static final ResourceLocation CONTENTS = ResourceLocation.withDefaultNamespace("contents");
     //endregion
 
     //region Boilerplate
@@ -249,7 +249,7 @@ public class SettlersPotBlock extends BaseEntityBlock implements SimpleWaterlogg
     public static class DryingSettlersPotBlockHorizontalAxis extends DryingBlockHorizontalAxis
     {
         public DryingSettlersPotBlockHorizontalAxis(Properties props) {
-            super(props, SETTLERS_POT_SHAPE);
+            super(props, SETTLERS_POT_SHAPE, SoundType.PACKED_MUD, 1.0f);
         }
     }
 }

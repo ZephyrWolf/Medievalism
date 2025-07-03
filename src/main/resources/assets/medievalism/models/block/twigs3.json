@@ -1,0 +1,84 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "medievalism:block/twigs",
+		"particle": "minecraft:block/oak_log"
+	},
+	"elements": [
+		{
+			"name": "main",
+			"from": [14, 0, 4],
+			"to": [15, 1, 15],
+			"rotation": {"angle": -45, "axis": "y", "origin": [13, 0, 1]},
+			"faces": {
+				"north": {"uv": [5, 4, 6, 5], "texture": "#0"},
+				"east": {"uv": [0, 0, 11, 1], "texture": "#0"},
+				"south": {"uv": [5, 5, 6, 6], "texture": "#0"},
+				"west": {"uv": [0, 1, 11, 2], "texture": "#0"},
+				"up": {"uv": [1, 13, 0, 2], "texture": "#0"},
+				"down": {"uv": [2, 2, 1, 13], "texture": "#0"}
+			}
+		},
+		{
+			"name": "offshoot",
+			"from": [4.05, 0.05, 9.05],
+			"to": [6.45, 0.95, 9.95],
+			"faces": {
+				"north": {"uv": [2, 2, 5, 3], "texture": "#0"},
+				"east": {"uv": [5, 2, 6, 3], "texture": "#0"},
+				"south": {"uv": [2, 3, 5, 4], "texture": "#0"},
+				"west": {"uv": [5, 3, 6, 4], "texture": "#0"},
+				"up": {"uv": [5, 5, 2, 4], "texture": "#0"},
+				"down": {"uv": [5, 5, 2, 6], "texture": "#0"}
+			}
+		},
+		{
+			"name": "main2",
+			"from": [9, 1, 1],
+			"to": [10, 2, 12],
+			"rotation": {"angle": 0, "axis": "x", "origin": [9, 1, 0]},
+			"faces": {
+				"north": {"uv": [2, 3, 3, 4], "texture": "#0"},
+				"east": {"uv": [0, 0, 11, 1], "texture": "#0"},
+				"south": {"uv": [2, 2, 3, 3], "texture": "#0"},
+				"west": {"uv": [0, 1, 11, 2], "texture": "#0"},
+				"up": {"uv": [0, 2, 1, 13], "texture": "#0"},
+				"down": {"uv": [1, 2, 2, 13], "texture": "#0"}
+			}
+		},
+		{
+			"name": "main3",
+			"from": [3, 2, 5],
+			"to": [12, 3, 6],
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [9, 2, 4]},
+			"faces": {
+				"north": {"uv": [0, 3, 9, 4], "texture": "#0"},
+				"east": {"uv": [0, 4, 1, 5], "texture": "#0"},
+				"south": {"uv": [0, 2, 9, 3], "texture": "#0"},
+				"west": {"uv": [0, 5, 1, 6], "texture": "#0"},
+				"up": {"uv": [0, 1, 9, 2], "texture": "#0"},
+				"down": {"uv": [0, 0, 9, 1], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "stick1",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1]
+		},
+		{
+			"name": "stick2",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [2]
+		},
+		{
+			"name": "stick3",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [3]
+		}
+	]
+}

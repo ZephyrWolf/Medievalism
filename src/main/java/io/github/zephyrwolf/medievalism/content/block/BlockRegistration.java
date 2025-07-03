@@ -1,5 +1,6 @@
 package io.github.zephyrwolf.medievalism.content.block;
 
+import com.mojang.datafixers.util.Function3;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.block.*;
 import net.minecraft.world.level.block.*;
@@ -10,9 +11,6 @@ import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
-
-import java.util.function.BiFunction;
-import java.util.function.Function;
 
 public final class BlockRegistration {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MedievalismConstants.MOD_ID);
@@ -94,7 +92,8 @@ public final class BlockRegistration {
             .mapColor(MapColor.COLOR_BROWN).dynamicShape()
             .offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false)
             .pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.WOOD);
-
+    public static final DeferredBlock<TwigsBlock> TWIGS = BLOCKS.registerBlock(
+            "twigs", TwigsBlock::new, branch);
     public static final DeferredBlock<WorldLitterBlock> BIRCH_BRANCH = BLOCKS.registerBlock(
             "birch_branch", BranchBlock::new, branch);
     public static final DeferredBlock<WorldLitterBlock> OAK_BRANCH = BLOCKS.registerBlock(
@@ -113,21 +112,38 @@ public final class BlockRegistration {
             "mangrove_branch", BranchBlock::new, branch);
     //endregion
 
+    static BlockBehaviour.Properties plantProps = BlockBehaviour.Properties.of()
+            .mapColor(MapColor.PLANT)
+            .offsetType(BlockBehaviour.OffsetType.XZ)
+            .ignitedByLava()
+            .isViewBlocking((pState, pLevel, pPos) -> false)
+            .pushReaction(PushReaction.DESTROY)
+            .noCollission()
+            .replaceable()
+            .strength(0.05f)
+            .sound(SoundType.GRASS);
+
+    static BlockBehaviour.Properties wildCrops = BlockBehaviour.Properties.of()
+            .mapColor(MapColor.PLANT)
+            .ignitedByLava()
+            .isViewBlocking((pState, pLevel, pPos) -> false)
+            .pushReaction(PushReaction.DESTROY)
+            .noCollission()
+            .strength(0.05f)
+            .sound(SoundType.CROP);
+
     //region Organic
     public static final DeferredBlock<Block> DOGBANE = BLOCKS.registerBlock(
             "dogbane", DogbaneBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN)
                     .strength(0.3f).sound(SoundType.GRASS).randomTicks());
+
+    public static final DeferredBlock<WorldPlantBlock.BasicWorldPlantBlock> SHRUB = BLOCKS.registerBlock(
+            "shrub", WorldPlantBlock.BasicWorldPlantBlock::new, plantProps);
     //endregion
 
     //region Crops
-    public static final DeferredBlock<WildYamBlock> WILD_YAMS = BLOCKS.registerBlock(
-            "wild_yams", WildYamBlock::new, BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.PLANT)
-                    .noCollission()
-                    //.randomTicks()
-                    .instabreak()
-                    .sound(SoundType.CROP)
-                    .pushReaction(PushReaction.DESTROY)
+    public static final DeferredBlock<WorldPlantBlock.BasicWorldPlantBlock> WILD_YAMS = BLOCKS.registerBlock(
+            "wild_yams", WorldPlantBlock.BasicWorldPlantBlock::new, wildCrops
     );
     public static final DeferredBlock<YamBlock> YAMS = BLOCKS.registerBlock(
             "yams", YamBlock::new, BlockBehaviour.Properties.of()
@@ -159,10 +175,16 @@ public final class BlockRegistration {
 
     public static final DeferredBlock<DryingBrick> WET_PACKED_MUD_BRICK = registerDryingBrick(BLOCKS,
             "wet_packed_mud_brick", DryingBrick::new, BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.DIRT).strength(1.0f).sound(SoundType.STONE).randomTicks(), 2);
+                    .mapColor(MapColor.DIRT).strength(1.0f).sound(SoundType.MUD).randomTicks(), SoundType.PACKED_MUD, 1);
     public static final DeferredBlock<DryingBrick> WET_DAUB_BRICK = registerDryingBrick(BLOCKS,
             "wet_daub_brick", DryingBrick::new, BlockBehaviour.Properties.of()
-                .mapColor(MapColor.DIRT).strength(1.0f).sound(SoundType.STONE).randomTicks(), 3);
+                .mapColor(MapColor.DIRT).strength(1.0f).sound(SoundType.MUD).randomTicks(), SoundType.PACKED_MUD, 2);
+    public static final DeferredBlock<DryingBrick> DRYING_CLAY_BRICK = registerDryingBrick(BLOCKS,
+            "drying_clay_brick", DryingBrick::new, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.CLAY).strength(1.0f).sound(SoundType.MUD).randomTicks(), SoundType.PACKED_MUD, 3);
+    public static final DeferredBlock<DryingBrick> DRYING_RED_CLAY_BRICK = registerDryingBrick(BLOCKS,
+            "drying_red_clay_brick", DryingBrick::new, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.CLAY).strength(1.0f).sound(SoundType.MUD).randomTicks(), SoundType.PACKED_MUD, 3);
 
     public static final DeferredBlock<StoneBenchBlock> STONE_BENCH = BLOCKS.registerBlock("stone_bench", StoneBenchBlock::new, BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE).strength(1.0f).sound(SoundType.STONE));
@@ -232,8 +254,8 @@ public final class BlockRegistration {
         BLOCKS.register(modEventBus);
     }
 
-    private static <B extends Block> DeferredBlock<B> registerDryingBrick(DeferredRegister.Blocks blocks, String name, BiFunction<BlockBehaviour.Properties, Integer, ? extends B> func, BlockBehaviour.Properties props, int chance)
+    private static <B extends Block> DeferredBlock<B> registerDryingBrick(DeferredRegister.Blocks blocks, String name, Function3<BlockBehaviour.Properties, SoundType, Integer, ? extends B> func, BlockBehaviour.Properties props, SoundType drySound, int chance)
     {
-        return blocks.register(name, () -> func.apply(props, chance));
+        return blocks.register(name, () -> func.apply(props, drySound, chance));
     }
 }

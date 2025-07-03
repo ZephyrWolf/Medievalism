@@ -19,6 +19,10 @@ public final class BasePlacedFeatures {
     public static final ResourceKey<PlacedFeature> TIN_ORE_PLACED_KEY = registerKey(MedievalismConstants.resource("tin_ore_placed"));
     public static final ResourceKey<PlacedFeature> TIN_ORE_UNIFORM_PLACED_KEY = registerKey(MedievalismConstants.resource("tin_ore_uniform_placed"));
 
+    public static final ResourceKey<PlacedFeature> DENSE_TWIGS_PLACED_KEY = registerKey(MedievalismConstants.resource("dense_twigs"));
+    public static final ResourceKey<PlacedFeature> SPARSE_TWIGS_PLACED_KEY = registerKey(MedievalismConstants.resource("sparse_twigs"));
+    public static final ResourceKey<PlacedFeature> RARE_TWIGS_PLACED_KEY = registerKey(MedievalismConstants.resource("rare_twigs"));
+
     public static final ResourceKey<PlacedFeature> DENSE_OAK_BRANCH_PLACED_KEY = registerKey(MedievalismConstants.resource("dense_oak_branch_placed"));
     public static final ResourceKey<PlacedFeature> DENSE_BIRCH_BRANCH_PLACED_KEY = registerKey(MedievalismConstants.resource("dense_birch_branch_placed"));
     public static final ResourceKey<PlacedFeature> DENSE_SPRUCE_BRANCH_PLACED_KEY = registerKey(MedievalismConstants.resource("dense_spruce_branch_placed"));
@@ -85,6 +89,10 @@ public final class BasePlacedFeatures {
                         )
                 )
         );
+
+        simpleChanceSurfacePlacedFeature(context, DENSE_TWIGS_PLACED_KEY, BaseConfiguredFeatures.DENSE_TWIGS_CONFIGURED_KEY, 2, 2);
+        simpleChanceSurfacePlacedFeature(context, SPARSE_TWIGS_PLACED_KEY, BaseConfiguredFeatures.SPARSE_TWIGS_CONFIGURED_KEY, 1, 2);
+        simpleChanceSurfacePlacedFeature(context, RARE_TWIGS_PLACED_KEY, BaseConfiguredFeatures.RARE_TWIGS_CONFIGURED_KEY, 1, 3);
 
         simpleChanceSurfacePlacedFeature(context, DENSE_OAK_BRANCH_PLACED_KEY, BaseConfiguredFeatures.DENSE_OAK_BRANCH_CONFIGURED_KEY, 4, 2);
         simpleChanceSurfacePlacedFeature(context, DENSE_BIRCH_BRANCH_PLACED_KEY, BaseConfiguredFeatures.DENSE_BIRCH_BRANCH_CONFIGURED_KEY, 4, 2);

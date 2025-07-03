@@ -22,6 +22,10 @@ public final class BaseBiomeModifiers
     public static final ResourceKey<BiomeModifier> ADD_TIN_ORE = registerKey(MedievalismConstants.resource("add_tin_ore"));
     public static final ResourceKey<BiomeModifier> ADD_TIN_ORE_UNIFORM = registerKey(MedievalismConstants.resource("add_tin_ore_uniform"));
 
+    public static final ResourceKey<BiomeModifier> DENSE_TWIGS = registerKey(MedievalismConstants.resource("dense_twigs"));
+    public static final ResourceKey<BiomeModifier> SPARSE_TWIGS = registerKey(MedievalismConstants.resource("sparse_twigs"));
+    public static final ResourceKey<BiomeModifier> RARE_TWIGS = registerKey(MedievalismConstants.resource("rare_twigs"));
+
     public static final ResourceKey<BiomeModifier> DENSE_OAK_BRANCH_MODIFIER = registerKey(MedievalismConstants.resource("dense_oak_branch_modifier"));
     public static final ResourceKey<BiomeModifier> DENSE_BIRCH_BRANCH_MODIFIER = registerKey(MedievalismConstants.resource("dense_birch_branch_modifier"));
     public static final ResourceKey<BiomeModifier> DENSE_SPRUCE_BRANCH_MODIFIER = registerKey(MedievalismConstants.resource("dense_spruce_branch_modifier"));
@@ -82,6 +86,10 @@ public final class BaseBiomeModifiers
                 HolderSet.direct(placedFeatures.getOrThrow(BasePlacedFeatures.TIN_ORE_UNIFORM_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES
         ));
+
+        addSimpleModifier(context, DENSE_TWIGS, BiomeTagCatalog.HAS_DENSE_TREES, BasePlacedFeatures.DENSE_TWIGS_PLACED_KEY, GenerationStep.Decoration.VEGETAL_DECORATION);
+        addSimpleModifier(context, SPARSE_TWIGS, BiomeTagCatalog.HAS_SPARSE_TREES, BasePlacedFeatures.SPARSE_TWIGS_PLACED_KEY, GenerationStep.Decoration.VEGETAL_DECORATION);
+        addSimpleModifier(context, RARE_TWIGS, BiomeTagCatalog.HAS_RARE_TREES, BasePlacedFeatures.RARE_TWIGS_PLACED_KEY, GenerationStep.Decoration.VEGETAL_DECORATION);
 
         addSimpleModifier(context, DENSE_OAK_BRANCH_MODIFIER, BiomeTagCatalog.HAS_DENSE_OAK_TREES, BasePlacedFeatures.DENSE_OAK_BRANCH_PLACED_KEY, GenerationStep.Decoration.VEGETAL_DECORATION);
         addSimpleModifier(context, DENSE_BIRCH_BRANCH_MODIFIER, BiomeTagCatalog.HAS_DENSE_BIRCH_TREES, BasePlacedFeatures.DENSE_BIRCH_BRANCH_PLACED_KEY, GenerationStep.Decoration.VEGETAL_DECORATION);

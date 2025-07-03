@@ -23,6 +23,7 @@ public final class BaseBiomeTagsProvider extends BiomeTagsProvider
         super (output, provider, MedievalismConstants.MOD_ID, existingFileHelper);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     protected void addTags(HolderLookup.@NotNull Provider pProvider)
     {
@@ -98,6 +99,32 @@ public final class BaseBiomeTagsProvider extends BiomeTagsProvider
         tag(BiomeTagCatalog.HAS_DENSE_MANGROVE_TREES)
                 .add(
                         Biomes.MANGROVE_SWAMP
+                );
+        //endregion
+
+        //region Twigs
+        tag(BiomeTagCatalog.HAS_DENSE_TREES)
+                .addTags(
+                        BiomeTagCatalog.HAS_DENSE_OAK_TREES,
+                        BiomeTagCatalog.HAS_DENSE_JUNGLE_TREES,
+                        BiomeTagCatalog.HAS_DENSE_SPRUCE_TREES,
+                        BiomeTagCatalog.HAS_DENSE_BIRCH_TREES,
+                        BiomeTagCatalog.HAS_DENSE_DARK_OAK_TREES,
+                        BiomeTagCatalog.HAS_DENSE_CHERRY_TREES,
+                        BiomeTagCatalog.HAS_DENSE_MANGROVE_TREES
+                );
+        tag(BiomeTagCatalog.HAS_SPARSE_TREES)
+                .addTags(
+                        BiomeTagCatalog.HAS_SPARSE_OAK_TREES,
+                        BiomeTagCatalog.HAS_SPARSE_JUNGLE_TREES,
+                        BiomeTagCatalog.HAS_SPARSE_SPRUCE_TREES,
+                        BiomeTagCatalog.HAS_SPARSE_BIRCH_TREES,
+                        BiomeTagCatalog.HAS_SPARSE_ACACIA_TREES
+                );
+        tag(BiomeTagCatalog.HAS_RARE_TREES)
+                .addTags(
+                        BiomeTagCatalog.HAS_RARE_OAK_TREES,
+                        BiomeTagCatalog.HAS_RARE_BIRCH_TREES
                 );
         //endregion
 

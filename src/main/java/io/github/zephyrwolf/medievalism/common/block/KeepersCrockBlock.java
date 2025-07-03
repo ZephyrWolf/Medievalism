@@ -1,9 +1,9 @@
 package io.github.zephyrwolf.medievalism.common.block;
 
 import com.mojang.serialization.MapCodec;
-import io.github.zephyrwolf.medievalism.common.block.blockentity.HasInventory;
-import io.github.zephyrwolf.medievalism.common.block.blockentity.KeepersCrockBlockEntity;
-import io.github.zephyrwolf.medievalism.content.block.BlockEntityRegistration;
+import io.github.zephyrwolf.medievalism.common.blockentity.HasInventory;
+import io.github.zephyrwolf.medievalism.common.blockentity.KeepersCrockBlockEntity;
+import io.github.zephyrwolf.medievalism.content.blockentity.BlockEntityRegistration;
 import net.minecraft.ChatFormatting;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
@@ -293,7 +293,7 @@ public class KeepersCrockBlock extends BaseEntityBlock implements SimpleWaterlog
     public static class DryingKeepersCrockBlockHorizontalAxis extends DryingBlockHorizontalAxis
     {
         public DryingKeepersCrockBlockHorizontalAxis(Properties props) {
-            super(props, KEEPERS_CROCK_SHAPE);
+            super(props, KEEPERS_CROCK_SHAPE, SoundType.PACKED_MUD, 1.0f);
         }
     }
 }

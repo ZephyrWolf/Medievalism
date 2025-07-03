@@ -1,9 +1,9 @@
 package io.github.zephyrwolf.medievalism.common.block;
 
 import com.mojang.serialization.MapCodec;
-import io.github.zephyrwolf.medievalism.common.block.blockentity.GatherersJarBlockEntity;
-import io.github.zephyrwolf.medievalism.common.block.blockentity.HasInventory;
-import io.github.zephyrwolf.medievalism.content.block.BlockEntityRegistration;
+import io.github.zephyrwolf.medievalism.common.blockentity.GatherersJarBlockEntity;
+import io.github.zephyrwolf.medievalism.common.blockentity.HasInventory;
+import io.github.zephyrwolf.medievalism.content.blockentity.BlockEntityRegistration;
 import net.minecraft.ChatFormatting;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
@@ -289,7 +289,7 @@ public class GatherersJarBlock extends BaseEntityBlock implements SimpleWaterlog
     public static class DryingGatherersJarBlock extends DryingBlock
     {
         public DryingGatherersJarBlock(Properties props) {
-            super(props, GATHERERS_POT_SHAPE);
+            super(props, GATHERERS_POT_SHAPE, SoundType.PACKED_MUD, 1.0f);
         }
     }
 }

@@ -12,9 +12,8 @@ import io.github.zephyrwolf.medievalism.data.loot.BaseAdditionalDropsTablesSubPr
 import io.github.zephyrwolf.medievalism.data.loot.BaseBlockLootTablesSubProvider;
 import io.github.zephyrwolf.medievalism.data.loot.OverhaulBlockLootTablesSubProvider;
 import io.github.zephyrwolf.medievalism.data.loot.OverhaulMobLootTablesSubProvider;
-import io.github.zephyrwolf.medievalism.data.provider.PackMetaProvider;
+import io.github.zephyrwolf.medievalism.data.packmeta.PackMetaProvider;
 import io.github.zephyrwolf.medievalism.data.recipe.BaseRecipeProvider;
-import io.github.zephyrwolf.medievalism.data.recipe.OverhaulBlankRecipeProvider;
 import io.github.zephyrwolf.medievalism.data.recipe.OverhaulRecipeProvider;
 import io.github.zephyrwolf.medievalism.data.worldgen.BaseBiomeTagsProvider;
 import io.github.zephyrwolf.medievalism.data.worldgen.BaseWorldGenProvider;

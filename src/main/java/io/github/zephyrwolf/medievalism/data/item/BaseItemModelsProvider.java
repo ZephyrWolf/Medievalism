@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism.data.item;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.content.item.BlockItemRegistration;
+import io.github.zephyrwolf.medievalism.content.blockitem.BlockItemRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -57,6 +57,7 @@ public class BaseItemModelsProvider extends ItemModelProvider {
 
             blockIconGeneratedModel(BlockItemRegistration.LIMESTONE_ROCK.get());
             blockIconGeneratedModel(BlockItemRegistration.COPPER_ROCK.get());
+            blockIconGeneratedModel(BlockItemRegistration.SHRUB.get());
             blockBasedModel(BlockItemRegistration.THATCH_BLOCK.get(), "");
             itemGeneratedModel(BlockItemRegistration.DOGBANE_BLOCK_ITEM.get());
             blockBasedModel(BlockItemRegistration.STONE_BENCH.get(), "");
@@ -68,6 +69,8 @@ public class BaseItemModelsProvider extends ItemModelProvider {
             itemGeneratedModel(ItemRegistration.PACKED_MUD_BRICK.get());
             itemGeneratedModel(BlockItemRegistration.WET_DAUB_BRICK.get());
             itemGeneratedModel(ItemRegistration.DAUB_BRICK.get());
+            itemGeneratedModel(BlockItemRegistration.DRYING_CLAY_BRICK.get());
+            itemGeneratedModel(BlockItemRegistration.DRYING_RED_CLAY_BRICK.get());
         }
 
         blockBasedModel(BlockItemRegistration.WET_GATHERERS_JAR.get(), "");

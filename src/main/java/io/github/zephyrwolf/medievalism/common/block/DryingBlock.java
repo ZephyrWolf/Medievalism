@@ -1,8 +1,9 @@
 package io.github.zephyrwolf.medievalism.common.block;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.common.item.blockitem.DryingBlockItem;
+import io.github.zephyrwolf.medievalism.common.blockitem.DryingBlockItem;
 import io.github.zephyrwolf.medievalism.content.loot.LootContextParamSetRegistration;
+import io.github.zephyrwolf.medievalism.tools.WarmthTools;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -19,69 +20,91 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.SupportType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.List;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public abstract class DryingBlock extends Block {
+public abstract class DryingBlock extends Block
+{
+    float baseDryingChance;
 
-    public static final int SKY_BRIGHTNESS_TO_DRY = 12;
-    public static final int MAX_DRYNESS = 11;
-    public static final int DEFAULT_DRYNESS = 4;
-    public static final int MIN_DRYNESS = 0;
-
-    public static final IntegerProperty DRYNESS = IntegerProperty.create("dryness", MIN_DRYNESS, MAX_DRYNESS);
-
-    protected final VoxelShape shape;
-
-    public DryingBlock(Properties props, VoxelShape shape) {
+    public DryingBlock(Properties props, VoxelShape shape, SoundType drySound, float baseDryingChance)
+    {
         super(props);
         registerDefaultState(getStateDefinition().any()
-                .setValue(DRYNESS, DEFAULT_DRYNESS)
+                .setValue(WarmthTools.IS_DRY, false)
         );
         this.shape = shape;
+        this.drySound = drySound;
+        this.baseDryingChance = baseDryingChance;
     }
+
+    //region Sounds
+    SoundType drySound;
 
     @Override
     public SoundType getSoundType(BlockState state, LevelReader level, BlockPos pos, @Nullable Entity entity) {
-        if (state.getValue(DRYNESS) == MAX_DRYNESS) {
-            return SoundType.PACKED_MUD;
+        if (WarmthTools.isDry(state)) {
+            return drySound;
         }
         return super.getSoundType(state, level, pos, entity);
     }
+    //endregion
 
+    //region State
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder
-                .add(DRYNESS);
+                .add(WarmthTools.IS_DRY);
     }
+
+    @Override
+    public @Nullable BlockState getStateForPlacement(BlockPlaceContext pContext) {
+        ItemStack held = pContext.getItemInHand();
+        if (held.getItem() instanceof DryingBlockItem dryingItem) {
+            return defaultBlockState()
+                    .setValue(WarmthTools.IS_DRY, dryingItem.isDry());
+        }
+        return defaultBlockState();
+    }
+    //endregion
+
+    //region Shape
+    protected final VoxelShape shape;
 
     @Override
     protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         return shape;
     }
 
+    @Override
+    protected BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
+        if (!isCollisionShapeFullBlock(pState, pLevel, pCurrentPos) && !pState.canSurvive(pLevel, pCurrentPos)) {
+            pLevel.scheduleTick(pCurrentPos, this, 1);
+        }
+
+        return super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
+    }
+    //endregion
+
+    //region Block Behaviour
     @Override
     protected boolean isPathfindable(BlockState pState, PathComputationType pPathComputationType) {
         return false;
@@ -97,6 +120,15 @@ public abstract class DryingBlock extends Block {
         return true;
     }
 
+    @Override
+    protected boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+        BlockPos belowPos = pPos.below();
+        BlockState belowState = pLevel.getBlockState(belowPos);
+        return isCollisionShapeFullBlock(pState, pLevel, pPos) || belowState.isFaceSturdy(pLevel, belowPos, Direction.UP, SupportType.FULL);
+    }
+    //endregion
+
+    //region Tick
     @Override // Scheduled Tick from Block Update
     protected void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         if (!pState.canSurvive(pLevel, pPos)) {
@@ -104,58 +136,19 @@ public abstract class DryingBlock extends Block {
         }
     }
 
-    @Override
-    public @Nullable BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        ItemStack held = pContext.getItemInHand();
-        if (held.getItem() instanceof DryingBlockItem dryingItem) {
-            if (dryingItem.isDry()) {
-                return defaultBlockState()
-                        .setValue(DRYNESS, MAX_DRYNESS);
-            }
-        }
-        return defaultBlockState();
-    }
-
-    @Override
-    protected BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
-        if (!isCollisionShapeFullBlock(pState, pLevel, pCurrentPos) && !pState.canSurvive(pLevel, pCurrentPos)) {
-            pLevel.scheduleTick(pCurrentPos, this, 1);
-        }
-
-        return super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
-    }
-
-    @Override
-    protected boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        BlockPos belowPos = pPos.below();
-        BlockState belowState = pLevel.getBlockState(belowPos);
-        return isCollisionShapeFullBlock(pState, pLevel, pPos) || belowState.isFaceSturdy(pLevel, belowPos, Direction.UP, SupportType.FULL);
-    }
-
-    private ResourceKey<LootTable> _ruinedLootTableKeyCache = null;
-    public ResourceKey<LootTable> getOrCreateRuinedLootTable()
-    {
-        if (_ruinedLootTableKeyCache == null) {
-            var key = BuiltInRegistries.BLOCK.getKey(this);
-            ResourceLocation rl = MedievalismConstants.resource("ruined_" + key.getPath())
-                    .withPrefix("additional_drops/");
-            _ruinedLootTableKeyCache = ResourceKey.create(Registries.LOOT_TABLE, rl);
-        }
-        return _ruinedLootTableKeyCache;
-    }
-
     @Override // Random Tick
-    protected void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+    protected void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom)
+    {
         boolean isRaining = pLevel.isRaining();
-        if (!isRaining && pLevel.getBrightness(LightLayer.SKY, pPos) > SKY_BRIGHTNESS_TO_DRY && pLevel.isDay()) {
-            //long timeOfDay = pLevel.dayTime();
-            int dryness = pState.getValue(DRYNESS);
-            if (dryness != MAX_DRYNESS) {
-                pLevel.setBlockAndUpdate(pPos, pState.setValue(DRYNESS, dryness + 1));
+        boolean canSeeSky = pLevel.canSeeSky(pPos);
+        if (canSeeSky && isRaining)
+        { // Raining
+            if (WarmthTools.isDry(pState))
+            {
+                pLevel.setBlockAndUpdate(pPos, pState.setValue(WarmthTools.IS_DRY, false));
             }
-        } else if (isRaining && pLevel.canSeeSky(pPos)) {
-            int dryness = pState.getValue(DRYNESS);
-            if (dryness == MIN_DRYNESS) {
+            else if (pRandom.nextInt(3) == 0)
+            {
                 pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
 
                 LootParams.Builder pParams = new LootParams.Builder(pLevel);
@@ -176,19 +169,37 @@ public abstract class DryingBlock extends Block {
                             item
                     ));
                 }
-            } else {
-                pLevel.setBlockAndUpdate(pPos, pState.setValue(DRYNESS, dryness - 1));
+            }
+        }
+        else
+        { // Drying
+            if (!WarmthTools.isDry(pState))
+            {
+                if (WarmthTools.canWarm(pLevel, pPos, baseDryingChance))
+                {
+                    pLevel.setBlockAndUpdate(pPos, pState.setValue(WarmthTools.IS_DRY, true));
+                }
             }
         }
     }
+    //endregion
 
-    @Override
-    protected List<ItemStack> getDrops(BlockState pState, LootParams.Builder pParams) {
-        return super.getDrops(pState, pParams);
+    //region Drops
+    private ResourceKey<LootTable> _ruinedLootTableKeyCache = null;
+    public ResourceKey<LootTable> getOrCreateRuinedLootTable()
+    {
+        if (_ruinedLootTableKeyCache == null) {
+            var key = BuiltInRegistries.BLOCK.getKey(this);
+            ResourceLocation rl = MedievalismConstants.resource("ruined_" + key.getPath())
+                    .withPrefix("additional_drops/");
+            _ruinedLootTableKeyCache = ResourceKey.create(Registries.LOOT_TABLE, rl);
+        }
+        return _ruinedLootTableKeyCache;
     }
+    //endregion
 
     public static class BasicDryingBlock extends DryingBlock
     {
-        public BasicDryingBlock(Properties props) { super(props, Block.box(0,0,0, 16, 16, 16)); }
+        public BasicDryingBlock(Properties props) { super(props, Shapes.block(), SoundType.PACKED_MUD, WarmthTools.DEFAULT_WARMING_CHANCE); }
     }
 }

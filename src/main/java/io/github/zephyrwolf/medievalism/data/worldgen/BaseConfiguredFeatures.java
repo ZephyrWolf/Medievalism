@@ -1,6 +1,7 @@
 package io.github.zephyrwolf.medievalism.data.worldgen;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.common.block.TwigsBlock;
 import io.github.zephyrwolf.medievalism.common.worldgen.feature.configuration.CompositeFeatureConfiguration;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.content.block.BlockTagCatalog;
@@ -21,6 +22,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.RandomizedIntStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.HeightmapPlacement;
@@ -30,7 +32,12 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
 import java.util.List;
 
-public final class BaseConfiguredFeatures {
+public final class BaseConfiguredFeatures
+{
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_TWIGS_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_twigs"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_TWIGS_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("sparse_twigs"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RARE_TWIGS_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("rare_twigs"));
+
     public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_OAK_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_oak_branch_configured"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_BIRCH_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_birch_branch_configured"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_SPRUCE_BRANCH_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("dense_spruce_branch_configured"));
@@ -87,6 +94,49 @@ public final class BaseConfiguredFeatures {
                 OreConfiguration.target(deepslateReplaceables, BlockRegistration.DEEPSLATE_TIN_ORE.get().defaultBlockState())
         );
         register(context, OVERWORLD_TIN_ORE_CONFIGURED_KEY, Feature.ORE, new OreConfiguration(overworldTinOres, 9));
+
+        register(context, DENSE_TWIGS_CONFIGURED_KEY, Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(
+                        3, 4, 0,
+                        PlacementUtils.onlyWhenEmpty(
+                                Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(
+                                        new RandomizedIntStateProvider(
+                                                BlockStateProvider.simple(BlockRegistration.TWIGS.get()),
+                                                TwigsBlock.NUM_STICKS,
+                                                UniformInt.of(1, 3))
+                                )
+                        )
+                )
+        );
+        register(context, SPARSE_TWIGS_CONFIGURED_KEY, Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(
+                        2, 4, 0,
+                        PlacementUtils.onlyWhenEmpty(
+                                Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(
+                                        new RandomizedIntStateProvider(
+                                                BlockStateProvider.simple(BlockRegistration.TWIGS.get()),
+                                                TwigsBlock.NUM_STICKS,
+                                                UniformInt.of(1, 2))
+                                )
+                        )
+                )
+        );
+        register(context, RARE_TWIGS_CONFIGURED_KEY, Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(
+                        1, 0, 0,
+                        PlacementUtils.onlyWhenEmpty(
+                                Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(
+                                        new RandomizedIntStateProvider(
+                                                BlockStateProvider.simple(BlockRegistration.TWIGS.get()),
+                                                TwigsBlock.NUM_STICKS,
+                                                UniformInt.of(1, 1))
+                                )
+                        )
+                )
+        );
 
         simpleRandomPatch(context, DENSE_OAK_BRANCH_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.OAK_BRANCH.get());
         simpleRandomPatch(context, DENSE_BIRCH_BRANCH_CONFIGURED_KEY, 3, 4, 0, BlockRegistration.BIRCH_BRANCH.get());

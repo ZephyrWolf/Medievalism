@@ -9,6 +9,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -39,6 +40,13 @@ public final class BaseAdditionalDropsTablesSubProvider implements LootTableSubP
     {
         ruinedDrop(BlockRegistration.WET_PACKED_MUD_BRICK.get(), ItemRegistration.MUD_BALL, 1, 1);
         ruinedDrop(BlockRegistration.WET_DAUB_BRICK.get(), ItemRegistration.WET_DAUB, 1, 1);
+        ruinedDrop(BlockRegistration.DRYING_CLAY_BRICK.get(), Items.CLAY_BALL, 1, 1);
+        ruinedDrop(BlockRegistration.DRYING_RED_CLAY_BRICK.get(), ItemRegistration.RED_CLAY_BALL, 1, 1);
+
+        alternateDrop(BlockRegistration.WET_PACKED_MUD_BRICK.get(), ItemRegistration.PACKED_MUD_BRICK, 1, 1);
+        alternateDrop(BlockRegistration.WET_DAUB_BRICK.get(), ItemRegistration.DAUB_BRICK, 1, 1);
+        alternateDrop(BlockRegistration.DRYING_CLAY_BRICK.get(), ItemRegistration.UNFIRED_BRICK, 1, 1);
+        alternateDrop(BlockRegistration.DRYING_RED_CLAY_BRICK.get(), ItemRegistration.UNFIRED_BRICK, 1, 1);
 
         ruinedDrop(BlockRegistration.DRYING_GATHERERS_JAR.get(), ItemRegistration.RED_CLAY_BALL, 1, 1);
         ruinedDrop(BlockRegistration.DRYING_KEEPERS_CROCK.get(), ItemRegistration.RED_CLAY_BALL, 2, 4);
@@ -47,6 +55,7 @@ public final class BaseAdditionalDropsTablesSubProvider implements LootTableSubP
         ruinedDrop(BlockRegistration.DRYING_JUG.get(), ItemRegistration.RED_CLAY_BALL, 2, 4);
         ruinedDrop(BlockRegistration.DRYING_FLOWER_POT.get(), ItemRegistration.RED_CLAY_BALL, 2, 4);
         ruinedDrop(BlockRegistration.DRYING_DECORATED_POT.get(), ItemRegistration.RED_CLAY_BALL, 2, 4);
+
     }
 
     // --
@@ -56,6 +65,24 @@ public final class BaseAdditionalDropsTablesSubProvider implements LootTableSubP
     {
         ResourceLocation key = BuiltInRegistries.BLOCK.getKey(block);
         ResourceLocation rl = MedievalismConstants.resource("ruined_" + key.getPath());
+        add(rl,
+                LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0f))
+                                        .add(
+                                                LootItem.lootTableItem(itemLike)
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))
+                                        )
+                        )
+        );
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private void alternateDrop(Block block, ItemLike itemLike, float min, float max)
+    {
+        ResourceLocation key = BuiltInRegistries.BLOCK.getKey(block);
+        ResourceLocation rl = MedievalismConstants.resource("alternate_" + key.getPath());
         add(rl,
                 LootTable.lootTable()
                         .withPool(

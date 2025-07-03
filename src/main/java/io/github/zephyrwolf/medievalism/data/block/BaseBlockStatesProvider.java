@@ -3,6 +3,7 @@ package io.github.zephyrwolf.medievalism.data.block;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.block.*;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.tools.WarmthTools;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -13,6 +14,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.*;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -44,6 +46,14 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         simpleBlock(BlockRegistration.CRACKED_DAUB_BRICKS.get());
 
         //region Branches
+        randomYRotationIntegerState(
+                BlockRegistration.TWIGS.get(),
+                TwigsBlock.NUM_STICKS,
+                existingModel(BlockRegistration.TWIGS.get(), "1"),
+                existingModel(BlockRegistration.TWIGS.get(), "2"),
+                existingModel(BlockRegistration.TWIGS.get(), "3")
+        );
+
         randomYRotationBlock(BlockRegistration.OAK_BRANCH.get(), existingParent(BlockRegistration.OAK_BRANCH.get(), "block/branch", "", BlockRegistration.OAK_BRANCH.get(), Blocks.OAK_LOG));
         randomYRotationBlock(BlockRegistration.BIRCH_BRANCH.get(), existingParent(BlockRegistration.BIRCH_BRANCH.get(), "block/branch", "", BlockRegistration.BIRCH_BRANCH.get(), Blocks.BIRCH_LOG));
         randomYRotationBlock(BlockRegistration.SPRUCE_BRANCH.get(), existingParent(BlockRegistration.SPRUCE_BRANCH.get(), "block/branch", "", BlockRegistration.SPRUCE_BRANCH.get(), Blocks.SPRUCE_LOG));
@@ -157,6 +167,8 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 flatModel(BlockRegistration.COPPER_ROCK.get(), false),
                 flatModel(BlockRegistration.COPPER_ROCK.get(), true)
         );
+
+        existingParent(BlockRegistration.SHRUB.get(), "minecraft:block/tinted_cross", "");
         //endregion
 
         //region Pottery
@@ -285,15 +297,207 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
 
         dryingBrickBlock(BlockRegistration.WET_PACKED_MUD_BRICK.get(), MedievalismConstants.resource("block/wet_packed_mud"), ResourceLocation.withDefaultNamespace("block/packed_mud"));
         dryingBrickBlock(BlockRegistration.WET_DAUB_BRICK.get(), MedievalismConstants.resource("block/wet_daub_block"), MedievalismConstants.resource("block/daub_block"));
-
+        dryingBrickBlock(BlockRegistration.DRYING_CLAY_BRICK.get(), ResourceLocation.withDefaultNamespace("block/clay"), MedievalismConstants.resource("block/unfired_clay"));
+        dryingBrickBlock(BlockRegistration.DRYING_RED_CLAY_BRICK.get(), MedievalismConstants.resource("block/red_clay"), MedievalismConstants.resource("block/unfired_clay"));
     }
 
+    //region Util
     private String blockName(Block block) {
         return BuiltInRegistries.BLOCK.getKey(block).getPath();
     }
+    //endregion
 
     //region Blocks
-    private void cropBlock4(CropBlock block) {
+    //region - Drying Blocks
+    private void dryingBlock(DryingBlock block, ModelFile wetModel, ModelFile dryModel)
+    {
+        getVariantBuilder(block)
+                .partialState()
+                .with(WarmthTools.IS_DRY, false)
+                .modelForState().modelFile(wetModel).addModel()
+                .partialState()
+                .with(WarmthTools.IS_DRY, true)
+                .modelForState().modelFile(dryModel).addModel();
+    }
+
+    private void dryingBlockHorizontalAxis(DryingBlockHorizontalAxis block, ModelFile wetZModel, ModelFile wetXModel, ModelFile dryZModel, ModelFile dryXModel)
+    {
+        getVariantBuilder(block)
+                // Z
+                // -- Wet
+                .partialState()
+                .with(WarmthTools.IS_DRY, false)
+                .with(DryingBlockHorizontalAxis.AXIS, Direction.Axis.Z)
+                .modelForState().modelFile(wetZModel).addModel()
+                // -- Dry
+                .partialState()
+                .with(WarmthTools.IS_DRY, true)
+                .with(DryingBlockHorizontalAxis.AXIS, Direction.Axis.Z)
+                .modelForState().modelFile(dryZModel).addModel()
+                // X
+                // -- Wet
+                .partialState()
+                .with(WarmthTools.IS_DRY, false)
+                .with(DryingBlockHorizontalAxis.AXIS, Direction.Axis.X)
+                .modelForState().modelFile(wetXModel).addModel()
+                // -- Dry
+                .partialState()
+                .with(WarmthTools.IS_DRY, true)
+                .with(DryingBlockHorizontalAxis.AXIS, Direction.Axis.X)
+                .modelForState().modelFile(dryXModel).addModel();
+    }
+
+    private void dryingBlockHorizontalFacing(DryingBlockHorizontalFacing block, ModelFile wetModelNorth, ModelFile wetModelEast, ModelFile wetModelSouth, ModelFile wetModelWest, ModelFile dryModelNorth, ModelFile dryModelEast, ModelFile dryModelSouth, ModelFile dryModelWest)
+    {
+        getVariantBuilder(block)
+                // North
+                // -- Wet
+                .partialState()
+                .with(WarmthTools.IS_DRY, false)
+                .with(DryingBlockHorizontalFacing.DIRECTION, Direction.NORTH)
+                .modelForState().modelFile(wetModelNorth).addModel()
+                // -- Dry
+                .partialState()
+                .with(WarmthTools.IS_DRY, true)
+                .with(DryingBlockHorizontalFacing.DIRECTION, Direction.NORTH)
+                .modelForState().modelFile(dryModelNorth).addModel()
+                // East
+                // -- Wet
+                .partialState()
+                .with(WarmthTools.IS_DRY, false)
+                .with(DryingBlockHorizontalFacing.DIRECTION, Direction.EAST)
+                .modelForState().modelFile(wetModelEast).addModel()
+                // -- Dry
+                .partialState()
+                .with(WarmthTools.IS_DRY, true)
+                .with(DryingBlockHorizontalFacing.DIRECTION, Direction.EAST)
+                .modelForState().modelFile(dryModelEast).addModel()
+                // South
+                // -- Wet
+                .partialState()
+                .with(WarmthTools.IS_DRY, false)
+                .with(DryingBlockHorizontalFacing.DIRECTION, Direction.SOUTH)
+                .modelForState().modelFile(wetModelSouth).addModel()
+                // -- Dry
+                .partialState()
+                .with(WarmthTools.IS_DRY, true)
+                .with(DryingBlockHorizontalFacing.DIRECTION, Direction.SOUTH)
+                .modelForState().modelFile(dryModelSouth).addModel()
+                // West
+                // -- Wet
+                .partialState()
+                .with(WarmthTools.IS_DRY, false)
+                .with(DryingBlockHorizontalFacing.DIRECTION, Direction.WEST)
+                .modelForState().modelFile(wetModelWest).addModel()
+                // -- Dry
+                .partialState()
+                .with(WarmthTools.IS_DRY, true)
+                .with(DryingBlockHorizontalFacing.DIRECTION, Direction.WEST)
+                .modelForState().modelFile(dryModelWest).addModel();
+    }
+
+    private void dryingBrickBlock(Block block, ResourceLocation wetTexture, ResourceLocation dryTexture)
+    {
+        var builder = getMultipartBuilder(block);
+
+        for (EnumProperty<WarmthTools.DryingBrickState> aProp : DryingBrick.BRICK_PROPERTIES)
+        {
+            for (WarmthTools.DryingBrickState brick : WarmthTools.DryingBrickState.values()) {
+                if (brick.isEmpty()) continue;
+                ModelFile model = dryingBrickModel(
+                        (brick == WarmthTools.DryingBrickState.WET ? blockName(block) : blockName(block) + "_dried"),
+                        aProp, brick,
+                        brick == WarmthTools.DryingBrickState.WET ? wetTexture : dryTexture);
+                for (Direction dir : BlockStateProperties.HORIZONTAL_FACING.getPossibleValues()) {
+                    builder.part()
+                            .rotationY(((dir.get2DDataValue() + 2)%4) * 90) .modelFile(model).addModel()
+                            .condition(aProp, brick)
+                            .condition(BlockStateProperties.HORIZONTAL_FACING, dir)
+                            .end();
+                }
+            }
+        }
+    }
+    //endregion
+
+    //region - Basic Rotating Blocks
+    @SuppressWarnings("unused")
+    private void horizontalAxisBlock(Block block, ModelFile model) {
+        horizontalAxisBlock(block, model, model);
+    }
+
+    private void horizontalAxisBlock(Block block, ModelFile zAxisModel, ModelFile xAxisModel) {
+        getVariantBuilder(block)
+                .partialState().with(BlockStateProperties.HORIZONTAL_AXIS, Direction.Axis.Z)
+                .modelForState().modelFile(zAxisModel).rotationY(0).addModel()
+                .partialState().with(BlockStateProperties.HORIZONTAL_AXIS, Direction.Axis.X)
+                .modelForState().modelFile(xAxisModel).rotationY(180).addModel();
+    }
+
+    private void horizontalFacingBlock(Block block, ModelFile northModel, ModelFile eastModel, ModelFile southModel, ModelFile westModel)
+    {
+        getVariantBuilder(block)
+                .partialState().with(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
+                .modelForState().modelFile(northModel).rotationY(0).addModel()
+                .partialState().with(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST)
+                .modelForState().modelFile(eastModel).rotationY(90).addModel()
+                .partialState().with(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH)
+                .modelForState().modelFile(southModel).rotationY(180).addModel()
+                .partialState().with(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST)
+                .modelForState().modelFile(westModel).rotationY(270).addModel();
+    }
+
+    private void randomYRotationIntegerState(Block block, IntegerProperty prop, ModelFile... rawModels) {
+        int numVariants = prop.getPossibleValues().size();
+        if (numVariants != rawModels.length)
+        {
+            throw new RuntimeException("Number of models needs to equal the number of values within prop.");
+        }
+        ConfiguredModel[][] models = new ConfiguredModel[numVariants][4];
+        for (int i = 0; i < numVariants; i++) {
+            models[i][0] = new ConfiguredModel(rawModels[i], 0, 0, false);
+            models[i][1] = new ConfiguredModel(rawModels[i], 0, 180, false);
+            models[i][2] = new ConfiguredModel(rawModels[i], 0, 90, false);
+            models[i][3] = new ConfiguredModel(rawModels[i], 0, 270, false);
+        }
+        VariantBlockStateBuilder builder = getVariantBuilder(block);
+        int i = 0;
+        for (int value : prop.getPossibleValues())
+        {
+            builder.partialState().with(prop, value)
+                .setModels(models[i++]);
+        }
+    }
+
+    private void randomYRotationBlock(Block block, ModelFile... rawModels) {
+        ConfiguredModel[] models = new ConfiguredModel[rawModels.length * 4];
+        for (int i = 0; i < rawModels.length; i++) {
+            models[i * 4] = new ConfiguredModel(rawModels[i], 0, 0, false);
+            models[i * 4 + 1] = new ConfiguredModel(rawModels[i], 0, 90, false);
+            models[i * 4 + 2] = new ConfiguredModel(rawModels[i], 0, 180, false);
+            models[i * 4 + 3] = new ConfiguredModel(rawModels[i], 0, 270, false);
+        }
+        getVariantBuilder(block).partialState().setModels(models);
+    }
+    //endregion
+
+    //region - Common Non-Full Blocks
+    private void crossBlock(Block block) {
+        ModelFile rawModel = crossModel(block);
+        ConfiguredModel model = new ConfiguredModel(rawModel, 0, 0, false);
+        getVariantBuilder(block).partialState().setModels(model);
+    }
+
+    private void shortBlock(Block block) {
+        ModelFile rawModel = shortModel(block);
+        ConfiguredModel model = new ConfiguredModel(rawModel, 0, 0, false);
+        getVariantBuilder(block).partialState().setModels(model);
+    }
+    //endregion
+
+    //region - Plants
+    private void cropBlock4(CropBlock block)
+    {
         var model0 = models() // BlockModelProvider extends ModelProvider<BlockModelBuilder>
                 .withExistingParent(blockName(block) + "_stage0", MedievalismConstants.resource("minecraft:block/crop"))
                 .texture("particle", blockTexture(block).withSuffix("_stage0"))
@@ -334,169 +538,17 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 .partialState().with(CropBlock.AGE, 7)
                 .modelForState().modelFile(model3).addModel();
     }
-
-    private void dryingBlock(DryingBlock block, ModelFile wetModel, ModelFile dryModel) {
-        var builder = getVariantBuilder(block);
-        for (int i = DryingBlock.MIN_DRYNESS; i < DryingBlock.MAX_DRYNESS; i++) {
-            builder.partialState()
-                    .with(DryingBlock.DRYNESS, i)
-                    .modelForState().modelFile(wetModel).addModel();
-        }
-        builder.partialState()
-                .with(DryingBlock.DRYNESS, DryingBlock.MAX_DRYNESS)
-                .modelForState().modelFile(dryModel).addModel();
-    }
-
-    private void dryingBlockHorizontalAxis(DryingBlockHorizontalAxis block, ModelFile wetZModel, ModelFile wetXModel, ModelFile dryZModel, ModelFile dryXModel) {
-        var builder = getVariantBuilder(block);
-        for (int i = DryingBlockHorizontalAxis.MIN_DRYNESS; i < DryingBlockHorizontalAxis.MAX_DRYNESS; i++) {
-            builder.partialState()
-                    .with(DryingBlockHorizontalAxis.DRYNESS, i)
-                    .with(DryingBlockHorizontalAxis.AXIS, Direction.Axis.Z)
-                    .modelForState().modelFile(wetZModel).addModel();
-        }
-        builder.partialState()
-                .with(DryingBlockHorizontalAxis.DRYNESS, DryingBlockHorizontalAxis.MAX_DRYNESS)
-                .with(DryingBlockHorizontalAxis.AXIS, Direction.Axis.Z)
-                .modelForState().modelFile(dryZModel).addModel();
-        for (int i = DryingBlockHorizontalAxis.MIN_DRYNESS; i < DryingBlockHorizontalAxis.MAX_DRYNESS; i++) {
-            builder.partialState()
-                    .with(DryingBlockHorizontalAxis.DRYNESS, i)
-                    .with(DryingBlockHorizontalAxis.AXIS, Direction.Axis.X)
-                    .modelForState().modelFile(wetXModel).addModel();
-        }
-        builder.partialState()
-                .with(DryingBlockHorizontalAxis.DRYNESS, DryingBlockHorizontalAxis.MAX_DRYNESS)
-                .with(DryingBlockHorizontalAxis.AXIS, Direction.Axis.X)
-                .modelForState().modelFile(dryXModel).addModel();
-    }
-
-    private void dryingBlockHorizontalFacing(DryingBlockHorizontalFacing block, ModelFile wetModelNorth, ModelFile wetModelEast, ModelFile wetModelSouth, ModelFile wetModelWest, ModelFile dryModelNorth, ModelFile dryModelEast, ModelFile dryModelSouth, ModelFile dryModelWest)
-    {
-        // North
-        var builder = getVariantBuilder(block);
-        for (int i = DryingBlockHorizontalFacing.MIN_DRYNESS; i < DryingBlockHorizontalFacing.MAX_DRYNESS; i++) {
-            builder.partialState()
-                    .with(DryingBlockHorizontalFacing.DRYNESS, i)
-                    .with(DryingBlockHorizontalFacing.DIRECTION, Direction.NORTH)
-                    .modelForState().modelFile(wetModelNorth).addModel();
-        }
-        builder.partialState()
-                .with(DryingBlockHorizontalFacing.DRYNESS, DryingBlockHorizontalAxis.MAX_DRYNESS)
-                .with(DryingBlockHorizontalFacing.DIRECTION, Direction.NORTH)
-                .modelForState().modelFile(dryModelNorth).addModel();
-
-        // East
-        for (int i = DryingBlockHorizontalFacing.MIN_DRYNESS; i < DryingBlockHorizontalFacing.MAX_DRYNESS; i++) {
-            builder.partialState()
-                    .with(DryingBlockHorizontalFacing.DRYNESS, i)
-                    .with(DryingBlockHorizontalFacing.DIRECTION, Direction.EAST)
-                    .modelForState().modelFile(wetModelEast).addModel();
-        }
-        builder.partialState()
-                .with(DryingBlockHorizontalFacing.DRYNESS, DryingBlockHorizontalAxis.MAX_DRYNESS)
-                .with(DryingBlockHorizontalFacing.DIRECTION, Direction.EAST)
-                .modelForState().modelFile(dryModelEast).addModel();
-
-        // South
-        for (int i = DryingBlockHorizontalFacing.MIN_DRYNESS; i < DryingBlockHorizontalFacing.MAX_DRYNESS; i++) {
-            builder.partialState()
-                    .with(DryingBlockHorizontalFacing.DRYNESS, i)
-                    .with(DryingBlockHorizontalFacing.DIRECTION, Direction.SOUTH)
-                    .modelForState().modelFile(wetModelSouth).addModel();
-        }
-        builder.partialState()
-                .with(DryingBlockHorizontalFacing.DRYNESS, DryingBlockHorizontalAxis.MAX_DRYNESS)
-                .with(DryingBlockHorizontalFacing.DIRECTION, Direction.SOUTH)
-                .modelForState().modelFile(dryModelSouth).addModel();
-
-        // West
-        for (int i = DryingBlockHorizontalFacing.MIN_DRYNESS; i < DryingBlockHorizontalFacing.MAX_DRYNESS; i++) {
-            builder.partialState()
-                    .with(DryingBlockHorizontalFacing.DRYNESS, i)
-                    .with(DryingBlockHorizontalFacing.DIRECTION, Direction.WEST)
-                    .modelForState().modelFile(wetModelWest).addModel();
-        }
-        builder.partialState()
-                .with(DryingBlockHorizontalFacing.DRYNESS, DryingBlockHorizontalAxis.MAX_DRYNESS)
-                .with(DryingBlockHorizontalFacing.DIRECTION, Direction.WEST)
-                .modelForState().modelFile(dryModelWest).addModel();
-    }
-
-    @SuppressWarnings("unused")
-    private void horizontalAxisBlock(Block block, ModelFile model) {
-        horizontalAxisBlock(block, model, model);
-    }
-
-    private void horizontalAxisBlock(Block block, ModelFile zAxisModel, ModelFile xAxisModel) {
-        getVariantBuilder(block)
-                .partialState().with(BlockStateProperties.HORIZONTAL_AXIS, Direction.Axis.Z)
-                .modelForState().modelFile(zAxisModel).rotationY(0).addModel()
-                .partialState().with(BlockStateProperties.HORIZONTAL_AXIS, Direction.Axis.X)
-                .modelForState().modelFile(xAxisModel).rotationY(180).addModel();
-    }
-
-    private void horizontalFacingBlock(Block block, ModelFile northModel, ModelFile eastModel, ModelFile southModel, ModelFile westModel)
-    {
-        getVariantBuilder(block)
-                .partialState().with(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
-                .modelForState().modelFile(northModel).rotationY(0).addModel()
-                .partialState().with(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST)
-                .modelForState().modelFile(eastModel).rotationY(90).addModel()
-                .partialState().with(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH)
-                .modelForState().modelFile(southModel).rotationY(180).addModel()
-                .partialState().with(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST)
-                .modelForState().modelFile(westModel).rotationY(270).addModel();
-    }
-
-    private void randomYRotationBlock(Block block, ModelFile... rawModels) {
-        ConfiguredModel[] models = new ConfiguredModel[rawModels.length * 4];
-        for (int i = 0; i < rawModels.length; i++) {
-            models[i * 4] = new ConfiguredModel(rawModels[i], 0, 0, false);
-            models[i * 4 + 1] = new ConfiguredModel(rawModels[i], 0, 90, false);
-            models[i * 4 + 2] = new ConfiguredModel(rawModels[i], 0, 180, false);
-            models[i * 4 + 3] = new ConfiguredModel(rawModels[i], 0, 270, false);
-        }
-        getVariantBuilder(block).partialState().setModels(models);
-    }
-
-    private void crossBlock(Block block) {
-        ModelFile rawModel = crossModel(block);
-        ConfiguredModel model = new ConfiguredModel(rawModel, 0, 0, false);
-        getVariantBuilder(block).partialState().setModels(model);
-    }
-
-    private void shortBlock(Block block) {
-        ModelFile rawModel = shortModel(block);
-        ConfiguredModel model = new ConfiguredModel(rawModel, 0, 0, false);
-        getVariantBuilder(block).partialState().setModels(model);
-    }
-
-    private void dryingBrickBlock(Block block, ResourceLocation wetTexture, ResourceLocation dryTexture) {
-        var builder = getMultipartBuilder(block);
-        for (EnumProperty<?> aProp : DryingBrick.BRICK_PROPERTIES) {
-            @SuppressWarnings("unchecked")
-            EnumProperty<BlockStatePropertyList.DryingBrickState> prop = (EnumProperty<BlockStatePropertyList.DryingBrickState>) aProp;
-            for (BlockStatePropertyList.DryingBrickState brick : BlockStatePropertyList.DryingBrickState.values()) {
-                if (brick.isEmpty()) continue;
-                ModelFile model = dryingBrickModel(
-                        brick == BlockStatePropertyList.DryingBrickState.WET ? blockName(block) : blockName(block) + "_dried",
-                        prop, brick,
-                        brick == BlockStatePropertyList.DryingBrickState.WET ? wetTexture : dryTexture);
-                builder.part().modelFile(model).addModel()
-                        .condition(prop, brick)
-                        .end();
-            }
-        }
-    }
+    //endregion
     //endregion
 
     //region Models
+    //region - Drying Blocks
     private ModelFile dryingBrickModel(
             String name,
-            EnumProperty<BlockStatePropertyList.DryingBrickState> property,
-            BlockStatePropertyList.DryingBrickState brick,
-            ResourceLocation texture) {
+            EnumProperty<WarmthTools.DryingBrickState> property,
+            WarmthTools.DryingBrickState brick,
+            ResourceLocation texture)
+    {
         if (brick.isEmpty()) throw new IllegalStateException("Cannot obtain model for an empty DryingBrickState.");
         String suffix = "";
         if (property.equals(DryingBrick.BACK_LEFT)) suffix = "_back_left";
@@ -509,7 +561,9 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 .texture("0", texture) // block/...
                 .texture("particle", texture);
     }
+    //endregion
 
+    //region - Common Non-Full Blocks
     private ModelFile shortModel(Block block) {
         return shortModel(
                 blockName(block),
@@ -527,6 +581,29 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 .texture("side", side);
     }
 
+    private ModelFile flatModel(Block block, boolean mirrored) {
+        return flatModel(blockName(block), blockTexture(block), mirrored);
+    }
+
+    private ModelFile flatModel(String name, ResourceLocation top, boolean mirrored) {
+        return models() // BlockModelProvider extends ModelProvider<BlockModelBuilder>
+                .withExistingParent(name, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, mirrored ? "block/flat_mirrored" : "block/flat"))
+                .texture("top", top);
+    }
+
+    private ModelFile crossModel(Block block) {
+        return crossModel(blockName(block), blockTexture(block));
+    }
+
+    private ModelFile crossModel(String name, ResourceLocation crossTexture) {
+        return models() // BlockModelProvider extends ModelProvider<BlockModelBuilder>
+                .withExistingParent(name, ResourceLocation.withDefaultNamespace("block/cross"))
+                .texture("cross", crossTexture)
+                .renderType("cutout");
+    }
+    //endregion
+
+    //region - Existing Models
     @SuppressWarnings("SameParameterValue")
     private ModelFile existingModel(Block block, String suffix) {
         return existingModel(blockName(block), suffix);
@@ -537,6 +614,7 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 .getExistingFile(MedievalismConstants.resource(name + suffix));
     }
 
+    @SuppressWarnings("unused")
     private ModelFile existingParent(Block block, String parent, String suffix) {
         return existingParent(block, parent, suffix, block);
     }
@@ -567,26 +645,6 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         }
         return model;
     }
-
-    private ModelFile flatModel(Block block, boolean mirrored) {
-        return flatModel(blockName(block), blockTexture(block), mirrored);
-    }
-
-    private ModelFile flatModel(String name, ResourceLocation top, boolean mirrored) {
-        return models() // BlockModelProvider extends ModelProvider<BlockModelBuilder>
-                .withExistingParent(name, ResourceLocation.fromNamespaceAndPath(MedievalismConstants.MOD_ID, mirrored ? "block/flat_mirrored" : "block/flat"))
-                .texture("top", top);
-    }
-
-    private ModelFile crossModel(Block block) {
-        return crossModel(blockName(block), blockTexture(block));
-    }
-
-    private ModelFile crossModel(String name, ResourceLocation crossTexture) {
-        return models() // BlockModelProvider extends ModelProvider<BlockModelBuilder>
-                .withExistingParent(name, ResourceLocation.withDefaultNamespace("block/cross"))
-                .texture("cross", crossTexture)
-                .renderType("cutout");
-    }
+    //endregion
     //endregion
 }

@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism.common.block;
 
 import com.mojang.serialization.MapCodec;
-import io.github.zephyrwolf.medievalism.common.block.blockentity.StoneBenchBlockEntity;
+import io.github.zephyrwolf.medievalism.common.blockentity.StoneBenchBlockEntity;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;

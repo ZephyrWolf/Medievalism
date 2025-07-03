@@ -5,7 +5,7 @@ import io.github.zephyrwolf.medievalism.common.block.GatherersJarBlock;
 import io.github.zephyrwolf.medievalism.common.block.KeepersCrockBlock;
 import io.github.zephyrwolf.medievalism.common.block.SettlersPotBlock;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
-import io.github.zephyrwolf.medievalism.content.item.BlockItemRegistration;
+import io.github.zephyrwolf.medievalism.content.blockitem.BlockItemRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
@@ -18,6 +18,7 @@ public class BaseLanguageProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add(BlockItemRegistration.LIMESTONE.get(), "Limestone");
+
         add(BlockItemRegistration.OAK_BRANCH.get(), "Oak Branch");
         add(BlockItemRegistration.BIRCH_BRANCH.get(), "Birch Branch");
         add(BlockItemRegistration.SPRUCE_BRANCH.get(), "Spruce Branch");
@@ -53,6 +54,8 @@ public class BaseLanguageProvider extends LanguageProvider {
         add(BlockItemRegistration.CRACKED_DAUB_BLOCK.get(), "Cracked Daub Block");
         add(BlockItemRegistration.CRACKED_DAUB_BRICKS.get(), "Cracked Daub Brick Block");
 
+        add(BlockItemRegistration.SHRUB.get(), "Shrub");
+
         add(ItemRegistration.BROKEN_GOAT_HORN.get(), "Broken Goat Horn");
         add(BlockItemRegistration.DOGBANE_BLOCK_ITEM.get(), "Dogbane");
 
@@ -62,6 +65,8 @@ public class BaseLanguageProvider extends LanguageProvider {
         add(ItemRegistration.PACKED_MUD_BRICK.get(), "Packed Mud Brick");
         add(BlockItemRegistration.WET_DAUB_BRICK.get(), "Wet Daub Brick");
         add(ItemRegistration.DAUB_BRICK.get(), "Daub Brick");
+        add(BlockItemRegistration.DRYING_CLAY_BRICK.get(), "Wet Clay Brick");
+        add(BlockItemRegistration.DRYING_RED_CLAY_BRICK.get(), "Wet Red Clay Brick");
 
         add(BlockItemRegistration.WET_GATHERERS_JAR.get(), "Wet Gatherer's Jar");
         add(BlockItemRegistration.DRY_GATHERERS_JAR.get(), "Unfired Gatherer's Jar");

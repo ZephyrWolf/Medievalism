@@ -2,11 +2,12 @@ package io.github.zephyrwolf.medievalism;
 
 import com.mojang.logging.LogUtils;
 import io.github.zephyrwolf.medievalism.content.*;
-import io.github.zephyrwolf.medievalism.content.block.BlockEntityRegistration;
+import io.github.zephyrwolf.medievalism.content.blockentity.BlockEntityRegistration;
 import io.github.zephyrwolf.medievalism.content.block.BlockEventRegistration;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
-import io.github.zephyrwolf.medievalism.content.item.BlockItemRegistration;
-import io.github.zephyrwolf.medievalism.content.item.CreativeTabRegistration;
+import io.github.zephyrwolf.medievalism.content.blockitem.BlockItemRegistration;
+import io.github.zephyrwolf.medievalism.content.CreativeTabRegistration;
+import io.github.zephyrwolf.medievalism.content.entity.EntityEventRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.content.menu.MenuRegistration;
 import io.github.zephyrwolf.medievalism.content.recipe.MalleableMaterialRegistration;
@@ -34,6 +35,7 @@ public class MedievalismMod {
         MenuRegistration.register(bus);
         RecipeRegistration.register(bus);
         BlockEventRegistration.register();
+        EntityEventRegistration.register();
         FeatureRegistration.register(bus);
         DataGenRegistration.register(bus);
         NetworkRegistration.register(bus);
