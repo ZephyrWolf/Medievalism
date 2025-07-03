@@ -440,7 +440,7 @@ public class DryingBrick extends Block
             return;
         }
         boolean canSeeSky = pLevel.canSeeSky(pPos);
-        if (canSeeSky && isRaining)
+        if (canSeeSky && isRaining && pLevel.getBiome(pPos).value().getModifiedClimateSettings().hasPrecipitation())
         { // Raining
             for (int i = 0; i < 4; i++)
             {

@@ -7,6 +7,7 @@ import io.github.zephyrwolf.medievalism.content.block.BlockEventRegistration;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.content.blockitem.BlockItemRegistration;
 import io.github.zephyrwolf.medievalism.content.CreativeTabRegistration;
+import io.github.zephyrwolf.medievalism.content.client.ClientColoursRegistration;
 import io.github.zephyrwolf.medievalism.content.entity.EntityEventRegistration;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.content.menu.MenuRegistration;
@@ -43,6 +44,7 @@ public class MedievalismMod {
         BlockEntityRegistration.register(bus);
         CreativeTabRegistration.register(bus);
         MalleableMaterialRegistration.register(bus);
+        ClientColoursRegistration.register(bus);
 
         bus.addListener(this::registerCapabilities);
     }

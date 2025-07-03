@@ -46,6 +46,10 @@ public class BaseItemModelsProvider extends ItemModelProvider {
             blockBasedModel(BlockItemRegistration.SNOWY_LARGE_ROCK.get(), "1");
             blockBasedModel(BlockItemRegistration.ICE_LARGE_ROCK.get(), "1");
 
+            blockBasedModel(BlockItemRegistration.CLAY_IN_GRASS.get(), "1");
+            blockBasedModel(BlockItemRegistration.RED_CLAY_IN_GRASS.get(), "1");
+            blockBasedModel(BlockItemRegistration.CLAY_IN_DIRT.get(), "1");
+            blockBasedModel(BlockItemRegistration.RED_CLAY_IN_DIRT.get(), "1");
             blockBasedModel(BlockItemRegistration.RED_CLAY_BLOCK.get(), "");
             blockBasedModel(BlockItemRegistration.LIMESTONE.get(), "");
             blockBasedModel(BlockItemRegistration.WET_PACKED_MUD.get(), "");
@@ -106,6 +110,7 @@ public class BaseItemModelsProvider extends ItemModelProvider {
         //withExistingParent(itemName(BlockRegistration.WET_GATHERERS_JAR_ITEM.get()), resourceBlock(blockName(BlockRegistration.DRYING_GATHERERS_JAR) + "_wet"));
 
         { // World
+            itemGeneratedModel(ItemRegistration.DIRT_CHUNK.get());
             itemGeneratedModel(ItemRegistration.RED_CLAY_BALL.get());
             itemGeneratedModel(ItemRegistration.RAW_TIN.get());
             blockBasedModel(BlockItemRegistration.TIN_ORE_BLOCK.get(), "");

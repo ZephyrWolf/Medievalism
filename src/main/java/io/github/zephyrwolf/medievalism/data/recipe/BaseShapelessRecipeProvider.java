@@ -27,34 +27,22 @@ public final class BaseShapelessRecipeProvider {
     }
 
     private static void survivalRecipes(RecipeOutput recipeOutput) {
-        // Stick
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.STICK, 2)
-                .requires(ItemTagCatalog.BRANCH)
-                .unlockedBy("has_branch", RecipeTools.itemPredicateOf(ItemTagCatalog.BRANCH))
-                .save(recipeOutput, MedievalismConstants.resource("sticks_from_branch"));
         // Thatch
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.THATCH, 4)
                 .requires(BlockItemRegistration.THATCH_BLOCK)
                 .unlockedBy("has_thatch_block", RecipeTools.itemPredicateOf(BlockItemRegistration.THATCH_BLOCK))
                 .save(recipeOutput, MedievalismConstants.resource("thatch_from_block"));
-        // Mud Ball // TODO Temp
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.MUD_BALL, 4)
+        // Mud Ball
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.DIRT_CHUNK, 2)
                 .requires(Blocks.DIRT)
-                .group("mud_ball")
+                .group("dirt_chunk")
                 .unlockedBy("has_dirt", RecipeTools.itemPredicateOf(Blocks.DIRT))
-                .save(recipeOutput, MedievalismConstants.resource("temp_mud_balls_from_dirt"));
+                .save(recipeOutput, MedievalismConstants.resource("dirt_chunk_from_dirt"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.MUD_BALL, 4)
                 .requires(Blocks.MUD)
                 .group("mud_ball")
                 .unlockedBy("has_mud", RecipeTools.itemPredicateOf(Blocks.MUD))
                 .save(recipeOutput, MedievalismConstants.resource("mud_balls_from_mud"));
-        // Wet Mud Stone Brick
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BlockRegistration.WET_PACKED_MUD_BRICK, 2)
-                .requires(ItemRegistration.MUD_BALL)
-                .requires(ItemRegistration.MUD_BALL)
-                .requires(ItemRegistration.THATCH)
-                .unlockedBy("has_mud_thatch", RecipeTools.itemPredicateOf(ItemRegistration.MUD_BALL, ItemRegistration.THATCH))
-                .save(recipeOutput, MedievalismConstants.resource("wet_mud_stone_brick"));
         // Hammerstone, does this belong here?
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.HAMMERSTONE)
                 .requires(ItemTagCatalog.HARD_ROCK)
@@ -83,10 +71,29 @@ public final class BaseShapelessRecipeProvider {
 
     private static void potteryRecipes(RecipeOutput recipeOutput) {
         // Unfired Brick
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.UNFIRED_BRICK)
-                .requires(ItemTagCatalog.CLAY_BALL)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BlockItemRegistration.DRYING_CLAY_BRICK)
+                .requires(Items.CLAY_BALL)
                 .unlockedBy("has_clay_ball", RecipeTools.itemPredicateOf(ItemTagCatalog.CLAY_BALL))
-                .save(recipeOutput, MedievalismConstants.resource("unfired_brick"));
+                .save(recipeOutput, MedievalismConstants.resource("drying_clay_brick"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BlockItemRegistration.DRYING_RED_CLAY_BRICK)
+                .requires(ItemRegistration.RED_CLAY_BALL)
+                .unlockedBy("has_clay_ball", RecipeTools.itemPredicateOf(ItemTagCatalog.CLAY_BALL))
+                .save(recipeOutput, MedievalismConstants.resource("drying_red_clay_brick"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.WET_DAUB, 2)
+                .requires(ItemTagCatalog.CLAY_BALL)
+                .requires(ItemRegistration.MUD_BALL)
+                .requires(ItemRegistration.THATCH)
+                .unlockedBy("has_clay_ball", RecipeTools.itemPredicateOf(ItemTagCatalog.CLAY_BALL))
+                .save(recipeOutput, MedievalismConstants.resource("wet_daub"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BlockItemRegistration.WET_PACKED_MUD_BRICK)
+                .requires(ItemRegistration.MUD_BALL)
+                .requires(ItemRegistration.THATCH)
+                .unlockedBy("has_thatch", RecipeTools.itemPredicateOf(ItemRegistration.THATCH))
+                .save(recipeOutput, MedievalismConstants.resource("drying_mud_brick"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BlockItemRegistration.WET_DAUB_BRICK)
+                .requires(ItemRegistration.WET_DAUB)
+                .unlockedBy("has_wet_daub", RecipeTools.itemPredicateOf(ItemRegistration.WET_DAUB))
+                .save(recipeOutput, MedievalismConstants.resource("drying_daub_brick"));
         // Birch Pot
         /*
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.UNFIRED_BIRCH_POT)

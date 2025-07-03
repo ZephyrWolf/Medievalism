@@ -9,7 +9,7 @@ public class BlockTagCatalog
 {
     public static final TagKey<Block> REQUIRES_AXE_FOR_DROPS = tag( "requires_axe_for_drop");
     public static final TagKey<Block> CAN_DROP_THATCH = tag( "can_drop_thatch");
-    public static final TagKey<Block> RED_CLAY_CAN_REPLACE = tag("red_clay_can_replace");
+    public static final TagKey<Block> CLAY_CAN_REPLACE = tag("clay_can_replace");
 
     public static final TagKey<Block> WHITE_BARK = tag("white_back");
     public static final TagKey<Block> BROWN_BARK = tag("brown_bark");

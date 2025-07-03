@@ -62,6 +62,9 @@ public final class BasePlacedFeatures {
     public static final ResourceKey<PlacedFeature> LIMESTONE_ROCK_PLACED_KEY = registerKey(MedievalismConstants.resource("limestone_rock_placed"));
     public static final ResourceKey<PlacedFeature> COPPER_ROCK_PLACED_KEY = registerKey(MedievalismConstants.resource("copper_rock_placed"));
 
+    public static final ResourceKey<PlacedFeature> CLAY_IN_DIRT_PLACED_KEY = registerKey(MedievalismConstants.resource("clay_in_dirt_placed"));
+    public static final ResourceKey<PlacedFeature> RED_CLAY_IN_DIRT_PLACED_KEY = registerKey(MedievalismConstants.resource("red_clay_in_dirt_placed"));
+
     public static final ResourceKey<PlacedFeature> RED_CLAY_PLACED_KEY = registerKey(MedievalismConstants.resource("red_clay_placed"));
     public static final ResourceKey<PlacedFeature> RED_CLAY_WITH_DOGBANE_PLACED_KEY = registerKey(MedievalismConstants.resource("red_clay_with_dogbane_placed"));
 
@@ -90,8 +93,8 @@ public final class BasePlacedFeatures {
                 )
         );
 
-        simpleChanceSurfacePlacedFeature(context, DENSE_TWIGS_PLACED_KEY, BaseConfiguredFeatures.DENSE_TWIGS_CONFIGURED_KEY, 2, 2);
-        simpleChanceSurfacePlacedFeature(context, SPARSE_TWIGS_PLACED_KEY, BaseConfiguredFeatures.SPARSE_TWIGS_CONFIGURED_KEY, 1, 2);
+        simpleChanceSurfacePlacedFeature(context, DENSE_TWIGS_PLACED_KEY, BaseConfiguredFeatures.DENSE_TWIGS_CONFIGURED_KEY, 4, 2);
+        simpleChanceSurfacePlacedFeature(context, SPARSE_TWIGS_PLACED_KEY, BaseConfiguredFeatures.SPARSE_TWIGS_CONFIGURED_KEY, 2, 2);
         simpleChanceSurfacePlacedFeature(context, RARE_TWIGS_PLACED_KEY, BaseConfiguredFeatures.RARE_TWIGS_CONFIGURED_KEY, 1, 3);
 
         simpleChanceSurfacePlacedFeature(context, DENSE_OAK_BRANCH_PLACED_KEY, BaseConfiguredFeatures.DENSE_OAK_BRANCH_CONFIGURED_KEY, 4, 2);
@@ -134,6 +137,9 @@ public final class BasePlacedFeatures {
         register(context, LIMESTONE_ROCK_PLACED_KEY, configuredFeatures.getOrThrow(BaseConfiguredFeatures.LIMESTONE_ROCK_CONFIGURED_KEY), surfacePlacement(1, 4));
         // Sandstone rock
         register(context, COPPER_ROCK_PLACED_KEY, configuredFeatures.getOrThrow(BaseConfiguredFeatures.COPPER_ROCK_CONFIGURED_KEY), surfacePlacement(1, 4));
+
+        register(context, CLAY_IN_DIRT_PLACED_KEY, configuredFeatures.getOrThrow(BaseConfiguredFeatures.CLAY_IN_DIRT_CONFIGURED_KEY), chanceOceanSurfacePlacement(10, 0, 0));
+        register(context, RED_CLAY_IN_DIRT_PLACED_KEY, configuredFeatures.getOrThrow(BaseConfiguredFeatures.RED_CLAY_IN_DIRT_CONFIGURED_KEY), chanceOceanSurfacePlacement(8, 0, 0));
 
         register(context, RED_CLAY_PLACED_KEY, configuredFeatures.getOrThrow(BaseConfiguredFeatures.RED_CLAY_CONFIGURED_KEY), chanceOceanSurfacePlacement(10, -5, 0));
         register(context, RED_CLAY_WITH_DOGBANE_PLACED_KEY, configuredFeatures.getOrThrow(BaseConfiguredFeatures.RED_CLAY_WITH_DOGBANE_CONFIGURED_KEY), chanceOceanSurfacePlacement(8, 0, 0));

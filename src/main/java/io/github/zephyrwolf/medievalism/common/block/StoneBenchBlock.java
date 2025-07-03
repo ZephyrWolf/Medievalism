@@ -78,7 +78,7 @@ public class StoneBenchBlock extends BaseEntityBlock {
         if (pState.getBlock() != pNewState.getBlock()) {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
             if (blockEntity instanceof StoneBenchBlockEntity entity) {
-                //entity.dropInventory();
+                entity.dropInventory();
                 pLevel.updateNeighbourForOutputSignal(pPos, pState.getBlock());
             }
         }

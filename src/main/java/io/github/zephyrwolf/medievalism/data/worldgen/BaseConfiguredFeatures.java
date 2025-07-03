@@ -16,6 +16,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.BiasedToBottomInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -27,6 +28,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProv
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.HeightmapPlacement;
 import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
+import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
@@ -78,6 +80,9 @@ public final class BaseConfiguredFeatures
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> LIMESTONE_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("limestone_rock_configured"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> COPPER_ROCK_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("copper_rock_configured"));
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CLAY_IN_DIRT_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("clay_in_dirt_configured"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RED_CLAY_IN_DIRT_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("red_clay_in_dirt_configured"));
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> RED_CLAY_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("red_clay_configured"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> RED_CLAY_WITH_DOGBANE_CONFIGURED_KEY = registerKey(MedievalismConstants.resource("red_clay_with_dogbane_configured"));
@@ -183,15 +188,27 @@ public final class BaseConfiguredFeatures
                         PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                                 new SimpleBlockConfiguration(BlockStateProvider.simple(BlockRegistration.COPPER_ROCK.get())))));
 
-        RuleTest redClayReplaceables = new TagMatchTest(BlockTagCatalog.RED_CLAY_CAN_REPLACE);
-        List<OreConfiguration.TargetBlockState> redClayTargetBlockStates = List.of(
-                OreConfiguration.target(redClayReplaceables, BlockRegistration.RED_CLAY.get().defaultBlockState())
-        );
+        RuleTest stoneAndDirtTest = new TagMatchTest(BlockTagCatalog.CLAY_CAN_REPLACE);
+        RuleTest grassBlockTest = new BlockMatchTest(Blocks.GRASS_BLOCK);
 
-        register(context, RED_CLAY_CONFIGURED_KEY, Feature.ORE, new OreConfiguration(redClayTargetBlockStates, 32));
+        List<OreConfiguration.TargetBlockState> clayInDirtTargetBlockStates = List.of(
+                OreConfiguration.target(stoneAndDirtTest, BlockRegistration.CLAY_IN_DIRT.get().defaultBlockState()),
+                OreConfiguration.target(grassBlockTest, BlockRegistration.CLAY_IN_GRASS.get().defaultBlockState())
+        );
+        List<OreConfiguration.TargetBlockState> redClayInDirtTargetBlockStates = List.of(
+                OreConfiguration.target(stoneAndDirtTest, BlockRegistration.RED_CLAY_IN_DIRT.get().defaultBlockState()),
+                OreConfiguration.target(grassBlockTest, BlockRegistration.RED_CLAY_IN_GRASS.get().defaultBlockState())
+        );
+        List<OreConfiguration.TargetBlockState> richClayTargetBlockStates = List.of(
+                OreConfiguration.target(stoneAndDirtTest, BlockRegistration.RED_CLAY.get().defaultBlockState()),
+                OreConfiguration.target(grassBlockTest, BlockRegistration.RED_CLAY_IN_GRASS.get().defaultBlockState())
+        );
+        register(context, CLAY_IN_DIRT_CONFIGURED_KEY, Feature.ORE, new OreConfiguration(clayInDirtTargetBlockStates, 64));
+        register(context, RED_CLAY_IN_DIRT_CONFIGURED_KEY, Feature.ORE, new OreConfiguration(redClayInDirtTargetBlockStates, 48));
+        register(context, RED_CLAY_CONFIGURED_KEY, Feature.ORE, new OreConfiguration(richClayTargetBlockStates, 32));
         register(context, RED_CLAY_WITH_DOGBANE_CONFIGURED_KEY, FeatureRegistration.COMPOSITE_FEATURE.get(), new CompositeFeatureConfiguration(List.of(
                 PlacementUtils.inlinePlaced(Feature.ORE, new OreConfiguration(
-                        redClayTargetBlockStates, 48
+                        richClayTargetBlockStates, 48
                 ), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG), RandomOffsetPlacement.vertical(UniformInt.of(-5, 0))),
                 PlacementUtils.inlinePlaced(Feature.RANDOM_PATCH, new RandomPatchConfiguration(
                         15,

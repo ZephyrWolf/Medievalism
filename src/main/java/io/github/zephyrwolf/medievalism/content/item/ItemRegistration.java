@@ -2,6 +2,7 @@ package io.github.zephyrwolf.medievalism.content.item;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.item.BifaceItem;
+import io.github.zephyrwolf.medievalism.common.item.DirtChunkItem;
 import io.github.zephyrwolf.medievalism.common.item.FireStarterItem;
 import io.github.zephyrwolf.medievalism.common.item.HammerstoneItem;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
@@ -18,6 +19,7 @@ public final class ItemRegistration {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MedievalismConstants.MOD_ID);
 
     //region World
+    public static final DeferredItem<DirtChunkItem> DIRT_CHUNK = ITEMS.registerItem("dirt_chunk", DirtChunkItem::new);
     public static final DeferredItem<Item> RED_CLAY_BALL = ITEMS.registerSimpleItem("red_clay_ball");
     public static final DeferredItem<Item> RAW_TIN = ITEMS.registerSimpleItem("raw_tin");
     //endregion

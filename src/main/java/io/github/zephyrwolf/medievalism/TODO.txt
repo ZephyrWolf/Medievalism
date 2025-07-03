@@ -1,16 +1,22 @@
-TODO GIT FIRST
-
-TODO Test SHRUB
+Working on
 TODO Shrub World Gen
-TODO SHEARS, SILK, Drop chance... fuck I hate loot tables! so messy, wtf mojang
+TODO Add Clay in Soil
+TODO Add Wild Grass
+TODO add hints of clay through tops and bottoms of clay in dirt/grass
+TODO Seperate red and blue clay by biome
+TODO Trees place dirt when in clay patch
+TODO WILD yams are too common
+TODO wild yams should be tinted
+TODO add this to everywhere pPlayer.awardStat(Stats.ITEM_USED.get(this));
 
 TODO Overhaul flower pot recipe
 TODO Work on missing models and textures
-TODO Seperate ItemModels from BlockItemModels in registration into another class
 
-TODO Add Clay in Soil
-TODO Add Wild Grass
-TODO Does StoneBenchBlockEntity Drop inventory when broken?!
+Code Cleanup
+TODO For XXXBlocKStatesProvider
+-make a common methods for BASE and Overhaul
+-rename model functions to be distinct for registration methods
+TODO Seperate ItemModels from BlockItemModels in registration into another class
 
 ADD DRYING
 Wet packed mud
@@ -27,6 +33,8 @@ Bugs
 seperate item and itemblock ItemModels
 dogbane is too common
 pickblock on unfired items is always wrong
+twigs flash weird when adding; think this because client is doing things it shouldnt
+TODO Does StoneBenchBlockEntity Drop inventory when broken?!
 
 Blocks
 -Stone Bench

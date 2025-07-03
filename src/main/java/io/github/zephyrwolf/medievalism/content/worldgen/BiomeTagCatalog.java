@@ -40,7 +40,7 @@ public final class BiomeTagCatalog
     public static final TagKey<Biome> GENERATE_ICE_ROCK = tag("generate_ice_rock");
     public static final TagKey<Biome> GENERATE_LIMESTONE_ROCK = tag("generate_limestone_rock");
 
-    public static final TagKey<Biome> GENERATE_RED_CLAY = tag("generate_red_clay");
+    public static final TagKey<Biome> GENERATE_INLAND_CLAY = tag("generate_inland_clay");
 
     public static final TagKey<Biome> GENERATE_WILD_YAMS = tag("generate_wild_yams");
 

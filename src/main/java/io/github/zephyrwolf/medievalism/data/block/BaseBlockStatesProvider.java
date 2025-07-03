@@ -34,6 +34,12 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
 
     @Override
     protected void registerStatesAndModels() {
+
+        grassBlock4(BlockRegistration.CLAY_IN_GRASS.get());
+        grassBlock4(BlockRegistration.RED_CLAY_IN_GRASS.get());
+        pillarBlock4(BlockRegistration.CLAY_IN_DIRT.get());
+        pillarBlock4(BlockRegistration.RED_CLAY_IN_DIRT.get());
+
         simpleBlock(BlockRegistration.RED_CLAY.get());
         simpleBlock(BlockRegistration.TIN_ORE.get());
         simpleBlock(BlockRegistration.DEEPSLATE_TIN_ORE.get());
@@ -168,7 +174,7 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 flatModel(BlockRegistration.COPPER_ROCK.get(), true)
         );
 
-        existingParent(BlockRegistration.SHRUB.get(), "minecraft:block/tinted_cross", "");
+        simpleBlock(BlockRegistration.SHRUB.get(), tintedCross(BlockRegistration.SHRUB.get(), ""));
         //endregion
 
         //region Pottery
@@ -479,6 +485,32 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         }
         getVariantBuilder(block).partialState().setModels(models);
     }
+
+    private void pillarBlock4(Block block)
+    {
+        ConfiguredModel[] models = new ConfiguredModel[4];
+        for (int i = 0; i < 4; i++)
+        {
+            ModelFile rawModel = pillarModel(blockName(block) + Integer.toString(i + 1), blockTexture(Blocks.DIRT), blockTexture(block).withSuffix(Integer.toString(i+1)));
+            models[i] = new ConfiguredModel(rawModel, 0, 0, false);
+        }
+        getVariantBuilder(block).partialState().setModels(models);
+    }
+
+    private void grassBlock4(Block block)
+    {
+        ConfiguredModel[] models = new ConfiguredModel[4];
+        for (int i = 0; i < 4; i++)
+        {
+            ModelFile rawModel = grassModel(blockName(block) + Integer.toString(i + 1),
+                    blockTexture(Blocks.DIRT),
+                    blockTexture(block).withSuffix(Integer.toString(i + 1)),
+                    blockTexture(Blocks.GRASS_BLOCK).withSuffix("_side_overlay"),
+                    blockTexture(Blocks.GRASS_BLOCK).withSuffix("_top"));
+            models[i] = new ConfiguredModel(rawModel, 0, 0, false);
+        }
+        getVariantBuilder(block).partialState().setModels(models);
+    }
     //endregion
 
     //region - Common Non-Full Blocks
@@ -591,6 +623,26 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 .texture("top", top);
     }
 
+    private ModelFile pillarModel(String modelName, ResourceLocation topTexture, ResourceLocation sideTexture)
+    {
+        return models()
+                .withExistingParent(modelName, ResourceLocation.withDefaultNamespace("block/cube_column"))
+                .texture("end", topTexture)
+                .texture("side", sideTexture);
+    }
+
+    private ModelFile grassModel(String modelName, ResourceLocation bottomTexture, ResourceLocation sideTexture, ResourceLocation sideOverlayTexture, ResourceLocation topTexture)
+    {
+        return models()
+                .withExistingParent(modelName, ResourceLocation.withDefaultNamespace("block/grass_block"))
+                .texture("particle", bottomTexture)
+                .texture("bottom", bottomTexture)
+                .texture("top", topTexture)
+                .texture("side", sideTexture)
+                .texture("overlay", sideOverlayTexture)
+                .renderType("cutout");
+    }
+
     private ModelFile crossModel(Block block) {
         return crossModel(blockName(block), blockTexture(block));
     }
@@ -644,6 +696,19 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
             model.texture(Integer.toString(i), textures[i]);
         }
         return model;
+    }
+
+    private ModelFile tintedCross(Block block, String suffix)
+    {
+        return tintedCross(blockName(block) + suffix, blockTexture(block));
+    }
+
+    private ModelFile tintedCross(String name, ResourceLocation texture) {
+        // BlockModelProvider extends ModelProvider<BlockModelBuilder>
+        return models() // BlockModelProvider extends ModelProvider<BlockModelBuilder>
+                .withExistingParent(name, "minecraft:block/tinted_cross")
+                .texture("cross", texture)
+                .renderType("cutout");
     }
     //endregion
     //endregion

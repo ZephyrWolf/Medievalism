@@ -44,6 +44,10 @@ public class BaseLanguageProvider extends LanguageProvider {
         add(BlockItemRegistration.SNOWY_LARGE_ROCK.get(), "Snowy Large Rock");
         add(BlockItemRegistration.ICE_LARGE_ROCK.get(), "Ice Large Rock");
 
+        add(BlockItemRegistration.CLAY_IN_GRASS.get(), "Clay in Grass");
+        add(BlockItemRegistration.RED_CLAY_IN_GRASS.get(), "Red Clay in Grass");
+        add(BlockItemRegistration.CLAY_IN_DIRT.get(), "Clay in Dirt");
+        add(BlockItemRegistration.RED_CLAY_IN_DIRT.get(), "Red Clay in Dirt");
         add(BlockItemRegistration.LIMESTONE_ROCK.get(), "Limestone Rock");
         add(BlockItemRegistration.COPPER_ROCK.get(), "Copper Rock");
         add(BlockItemRegistration.THATCH_BLOCK.get(), "Thatch Block");
@@ -107,6 +111,7 @@ public class BaseLanguageProvider extends LanguageProvider {
         add(BlockRegistration.DRYING_DECORATED_POT.get(), "Drying Decorated Pot");
 
         { // World
+            add(ItemRegistration.DIRT_CHUNK.get(), "Dirt Chunk");
             add(ItemRegistration.RED_CLAY_BALL.get(), "Red Clay Ball");
             add(BlockItemRegistration.RED_CLAY_BLOCK.get(), "Red Clay");
             add(ItemRegistration.RAW_TIN.get(), "Tin Ore");

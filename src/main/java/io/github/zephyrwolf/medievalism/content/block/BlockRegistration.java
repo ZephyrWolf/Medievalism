@@ -16,6 +16,14 @@ public final class BlockRegistration {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MedievalismConstants.MOD_ID);
 
     //region Stone&Ore
+    private static final BlockBehaviour.Properties GRASS_BLOCK_PROPERTIES = BlockBehaviour.Properties.of().mapColor(MapColor.GRASS).randomTicks().strength(0.6F).sound(SoundType.GRASS);
+    public static final DeferredBlock<GrassBlock> CLAY_IN_GRASS = BLOCKS.registerBlock("clay_in_grass", GrassBlock::new, GRASS_BLOCK_PROPERTIES);
+    public static final DeferredBlock<GrassBlock> RED_CLAY_IN_GRASS = BLOCKS.registerBlock("red_clay_in_grass", GrassBlock::new, GRASS_BLOCK_PROPERTIES);
+
+    private static final BlockBehaviour.Properties DIRT_BLOCK_PROPERTIES = BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL);
+    public static final DeferredBlock<Block> CLAY_IN_DIRT = BLOCKS.registerSimpleBlock("clay_in_dirt", DIRT_BLOCK_PROPERTIES);
+    public static final DeferredBlock<Block> RED_CLAY_IN_DIRT = BLOCKS.registerSimpleBlock("red_clay_in_dirt", DIRT_BLOCK_PROPERTIES);
+
     public static final DeferredBlock<Block> RED_CLAY = BLOCKS.registerSimpleBlock(
             "red_clay", BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).instrument(NoteBlockInstrument.FLUTE)
                     .strength(0.6f).sound(SoundType.GRAVEL));

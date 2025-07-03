@@ -30,6 +30,7 @@ import net.minecraft.world.level.storage.loot.predicates.InvertedLootItemConditi
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
 
@@ -44,6 +45,28 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
+
+        add(BlockRegistration.CLAY_IN_GRASS.get(), (block) -> createSingleItemTableWithSilkTouch(
+                block,
+                Items.CLAY_BALL,
+                UniformGenerator.between(1, 3)
+        ));
+        add(BlockRegistration.RED_CLAY_IN_GRASS.get(), (block) -> createSingleItemTableWithSilkTouch(
+                block,
+                ItemRegistration.RED_CLAY_BALL.get(),
+                UniformGenerator.between(1, 3)
+        ));
+        add(BlockRegistration.CLAY_IN_DIRT.get(), (block) -> createSingleItemTableWithSilkTouch(
+                block,
+                Items.CLAY_BALL,
+                UniformGenerator.between(1, 3)
+        ));
+        add(BlockRegistration.RED_CLAY_IN_DIRT.get(), (block) -> createSingleItemTableWithSilkTouch(
+                block,
+                ItemRegistration.RED_CLAY_BALL.get(),
+                UniformGenerator.between(1, 3)
+        ));
+
         add(BlockRegistration.RED_CLAY.get(), (block) -> createSingleItemTableWithSilkTouch(
                 block,
                 ItemRegistration.RED_CLAY_BALL.get(),

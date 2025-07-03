@@ -65,6 +65,8 @@ public final class BaseBiomeModifiers
     public static final ResourceKey<BiomeModifier> ADD_LIMESTONE_ROCK = registerKey(MedievalismConstants.resource("add_limestone_rock"));
     public static final ResourceKey<BiomeModifier> ADD_COPPER_ROCK = registerKey(MedievalismConstants.resource("add_copper_rock"));
 
+    public static final ResourceKey<BiomeModifier> ADD_CLAY_IN_DIRT = registerKey(MedievalismConstants.resource("add_clay_in_dirt"));
+    public static final ResourceKey<BiomeModifier> ADD_RED_CLAY_IN_DIRT = registerKey(MedievalismConstants.resource("add_red_clay_in_dirt"));
     public static final ResourceKey<BiomeModifier> ADD_RED_CLAY = registerKey(MedievalismConstants.resource("add_red_clay"));
     public static final ResourceKey<BiomeModifier> ADD_RED_CLAY_WITH_DOGBANE = registerKey(MedievalismConstants.resource("add_red_clay_with_dogbane"));
 
@@ -135,13 +137,24 @@ public final class BaseBiomeModifiers
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
 
+        context.register(ADD_CLAY_IN_DIRT, new BiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTagCatalog.GENERATE_INLAND_CLAY),
+                HolderSet.direct(placedFeatures.getOrThrow(BasePlacedFeatures.CLAY_IN_DIRT_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION
+        ));
+        context.register(ADD_RED_CLAY_IN_DIRT, new BiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTagCatalog.GENERATE_INLAND_CLAY),
+                HolderSet.direct(placedFeatures.getOrThrow(BasePlacedFeatures.RED_CLAY_IN_DIRT_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION
+        ));
+
         context.register(ADD_RED_CLAY, new BiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(BiomeTagCatalog.GENERATE_RED_CLAY),
+                biomes.getOrThrow(BiomeTagCatalog.GENERATE_INLAND_CLAY),
                 HolderSet.direct(placedFeatures.getOrThrow(BasePlacedFeatures.RED_CLAY_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
         context.register(ADD_RED_CLAY_WITH_DOGBANE, new BiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(BiomeTagCatalog.GENERATE_RED_CLAY),
+                biomes.getOrThrow(BiomeTagCatalog.GENERATE_INLAND_CLAY),
                 HolderSet.direct(placedFeatures.getOrThrow(BasePlacedFeatures.RED_CLAY_WITH_DOGBANE_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));

@@ -205,7 +205,7 @@ public final class BaseBiomeTagsProvider extends BiomeTagsProvider
                 );
         //endregion
 
-        tag(BiomeTagCatalog.GENERATE_RED_CLAY)
+        tag(BiomeTagCatalog.GENERATE_INLAND_CLAY)
                 .addTag(BiomeTags.IS_FOREST)
                 .add(
                         Biomes.SWAMP,

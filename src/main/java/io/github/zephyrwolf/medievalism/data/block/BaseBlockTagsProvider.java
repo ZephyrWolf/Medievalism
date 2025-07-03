@@ -32,9 +32,18 @@ public class BaseBlockTagsProvider extends BlockTagsProvider
 
     protected void registerVanillaTags()
     { // BlockTags
+        tag(BlockTags.DIRT).add(
+                BlockRegistration.CLAY_IN_GRASS.get(),
+                BlockRegistration.RED_CLAY_IN_GRASS.get(),
+                BlockRegistration.CLAY_IN_DIRT.get(),
+                BlockRegistration.RED_CLAY_IN_DIRT.get()
+        );
+
+
         // TODO Change to REQUIRES_TOOL_FOR_DROPS
         tag(BlockTagCatalog.REQUIRES_AXE_FOR_DROPS) // Add on Overhaul
                 .addTag(BlockTags.LOGS);
+
     }
 
     protected void registerBlockMineables()
@@ -116,7 +125,7 @@ public class BaseBlockTagsProvider extends BlockTagsProvider
                 Blocks.TALL_GRASS,
                 Blocks.FERN
         );
-        tag(BlockTagCatalog.RED_CLAY_CAN_REPLACE)
+        tag(BlockTagCatalog.CLAY_CAN_REPLACE)
                 .addTag(BlockTags.STONE_ORE_REPLACEABLES)
                 .add( Blocks.DIRT );
         tag(BlockTagCatalog.WHITE_BARK).add(

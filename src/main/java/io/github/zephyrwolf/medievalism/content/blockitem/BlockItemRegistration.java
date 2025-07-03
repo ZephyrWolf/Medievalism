@@ -20,6 +20,10 @@ public final class BlockItemRegistration {
     public static final DeferredRegister.Items BLOCKITEMS = DeferredRegister.createItems(MedievalismConstants.MOD_ID);
 
     //region World
+    public static final DeferredItem<BlockItem> CLAY_IN_GRASS = BLOCKITEMS.registerSimpleBlockItem("clay_in_grass", BlockRegistration.CLAY_IN_GRASS);
+    public static final DeferredItem<BlockItem> RED_CLAY_IN_GRASS = BLOCKITEMS.registerSimpleBlockItem("red_clay_in_grass", BlockRegistration.RED_CLAY_IN_GRASS);
+    public static final DeferredItem<BlockItem> CLAY_IN_DIRT = BLOCKITEMS.registerSimpleBlockItem("clay_in_dirt", BlockRegistration.CLAY_IN_DIRT);
+    public static final DeferredItem<BlockItem> RED_CLAY_IN_DIRT = BLOCKITEMS.registerSimpleBlockItem("red_clay_in_dirt", BlockRegistration.RED_CLAY_IN_DIRT);
     public static final DeferredItem<BlockItem> RED_CLAY_BLOCK = BLOCKITEMS.registerSimpleBlockItem("red_clay", BlockRegistration.RED_CLAY);
     public static final DeferredItem<BlockItem> LIMESTONE = BLOCKITEMS.registerSimpleBlockItem("limestone", BlockRegistration.LIMESTONE);
     public static final DeferredItem<BlockItem> TIN_ORE_BLOCK = BLOCKITEMS.registerSimpleBlockItem("tin_ore_block", BlockRegistration.TIN_ORE);
