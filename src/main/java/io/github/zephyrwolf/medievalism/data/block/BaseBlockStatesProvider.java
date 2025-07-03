@@ -491,7 +491,7 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         ConfiguredModel[] models = new ConfiguredModel[4];
         for (int i = 0; i < 4; i++)
         {
-            ModelFile rawModel = pillarModel(blockName(block) + Integer.toString(i + 1), blockTexture(Blocks.DIRT), blockTexture(block).withSuffix(Integer.toString(i+1)));
+            ModelFile rawModel = pillarModel(blockName(block) + (i + 1), blockTexture(Blocks.DIRT), blockTexture(block).withSuffix(Integer.toString(i+1)));
             models[i] = new ConfiguredModel(rawModel, 0, 0, false);
         }
         getVariantBuilder(block).partialState().setModels(models);
@@ -502,7 +502,7 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         ConfiguredModel[] models = new ConfiguredModel[4];
         for (int i = 0; i < 4; i++)
         {
-            ModelFile rawModel = grassModel(blockName(block) + Integer.toString(i + 1),
+            ModelFile rawModel = grassModel(blockName(block) + (i + 1),
                     blockTexture(Blocks.DIRT),
                     blockTexture(block).withSuffix(Integer.toString(i + 1)),
                     blockTexture(Blocks.GRASS_BLOCK).withSuffix("_side_overlay"),
