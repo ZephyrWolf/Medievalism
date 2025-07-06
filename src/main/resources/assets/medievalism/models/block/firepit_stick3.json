@@ -1,0 +1,31 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "medievalism:block/pitfire_twigs",
+		"particle": "medievalism:block/pitfire_twigs"
+	},
+	"elements": [
+		{
+			"from": [4.2, 0, 7.7],
+			"to": [10, 1, 8.7],
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [4, 0, 7.7]},
+			"faces": {
+				"north": {"uv": [2, 2, 9, 3], "texture": "#0"},
+				"east": {"uv": [9, 10, 10, 11], "texture": "#0"},
+				"south": {"uv": [2, 3, 9, 4], "texture": "#0"},
+				"west": {"uv": [10, 9, 11, 10], "texture": "#0"},
+				"up": {"uv": [9, 5, 2, 4], "texture": "#0"},
+				"down": {"uv": [9, 5, 2, 6], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "sticsk3",
+			"origin": [7, 0, 7],
+			"color": 0,
+			"children": [0]
+		}
+	]
+}

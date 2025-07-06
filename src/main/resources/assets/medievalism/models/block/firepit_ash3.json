@@ -1,0 +1,57 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "medievalism:block/pitfire_ash",
+		"particle": "medievalism:block/pitfire_ash"
+	},
+	"elements": [
+		{
+			"from": [8, 0.1, 4],
+			"to": [11.5, 2.25, 7],
+			"rotation": {"angle": -22.5, "axis": "y", "origin": [8, 0, 5]},
+			"faces": {
+				"north": {"uv": [10, 2, 13, 3], "texture": "#0"},
+				"east": {"uv": [6, 10, 8, 11], "texture": "#0"},
+				"south": {"uv": [10, 3, 13, 4], "texture": "#0"},
+				"west": {"uv": [8, 10, 10, 11], "texture": "#0"},
+				"up": {"uv": [9, 8, 6, 6], "texture": "#0"},
+				"down": {"uv": [9, 8, 6, 10], "texture": "#0"}
+			}
+		},
+		{
+			"from": [6.25, 2.1, 6.75],
+			"to": [8.25, 3.25, 8.75],
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [7.25, 2, 5.75]},
+			"faces": {
+				"north": {"uv": [8, 10, 10, 11], "texture": "#0"},
+				"east": {"uv": [10, 2, 13, 3], "texture": "#0"},
+				"south": {"uv": [6, 10, 8, 11], "texture": "#0"},
+				"west": {"uv": [10, 3, 13, 4], "texture": "#0"},
+				"up": {"uv": [9, 8, 6, 6], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [9, 8, 6, 10], "rotation": 270, "texture": "#0"}
+			}
+		},
+		{
+			"from": [8, 0.1, 8.9],
+			"to": [12, 2, 12],
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [8, 0, 12]},
+			"faces": {
+				"north": {"uv": [10, 0, 14, 1], "texture": "#0"},
+				"east": {"uv": [10, 4, 13, 5], "texture": "#0"},
+				"south": {"uv": [10, 1, 14, 2], "texture": "#0"},
+				"west": {"uv": [10, 5, 13, 6], "texture": "#0"},
+				"up": {"uv": [10, 3, 6, 0], "texture": "#0"},
+				"down": {"uv": [10, 3, 6, 6], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "group",
+			"origin": [6, 0, 8],
+			"color": 0,
+			"children": [0, 1, 2]
+		}
+	]
+}

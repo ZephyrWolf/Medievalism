@@ -1,0 +1,31 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "medievalism:block/pitfire_base_lit",
+		"particle": "medievalism:block/pitfire_base_lit"
+	},
+	"elements": [
+		{
+			"from": [4, 0, 4],
+			"to": [12, 0.5, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [9, 0, 5]},
+			"faces": {
+				"north": {"uv": [4, 9, 10, 10], "texture": "#0"},
+				"east": {"uv": [14, 9, 15, 15], "rotation": 90, "texture": "#0"},
+				"south": {"uv": [5, 15, 11, 16], "texture": "#0"},
+				"west": {"uv": [0, 9, 1, 15], "rotation": 90, "texture": "#0"},
+				"up": {"uv": [8, 8, 0, 0], "texture": "#0"},
+				"down": {"uv": [16, 0, 8, 8], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "Base",
+			"origin": [8, 22.5, 8],
+			"color": 0,
+			"children": [0]
+		}
+	]
+}

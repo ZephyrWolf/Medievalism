@@ -1,0 +1,22 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "medievalism:block/firewood"
+	},
+	"elements": [
+		{
+			"from": [10.6, 0, 0.6],
+			"to": [14.6, 4, 14.6],
+			"rotation": {"angle": 0, "axis": "y", "origin": [12.6, 0, 3.6]},
+			"faces": {
+				"north": {"uv": [8, 12, 12, 16], "texture": "#missing"},
+				"east": {"uv": [0, 4, 14, 8], "texture": "#missing"},
+				"south": {"uv": [12, 12, 16, 16], "texture": "#missing"},
+				"west": {"uv": [2, 8, 16, 12], "texture": "#missing"},
+				"up": {"uv": [0, 0, 14, 4], "rotation": 90, "texture": "#missing"},
+				"down": {"uv": [0, 8, 14, 12], "rotation": 270, "texture": "#missing"}
+			}
+		}
+	]
+}

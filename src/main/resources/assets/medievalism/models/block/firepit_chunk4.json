@@ -1,0 +1,36 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "medievalism:block/limestone",
+		"particle": "medievalism:block/limestone"
+	},
+	"elements": [
+		{
+			"from": [6, 0, 10],
+			"to": [8, 2, 12],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [6, 0, 10]},
+			"faces": {
+				"north": {"uv": [4, 10, 6, 12], "texture": "#0"},
+				"east": {"uv": [10, 4, 12, 6], "texture": "#0"},
+				"south": {"uv": [6, 10, 8, 12], "texture": "#0"},
+				"west": {"uv": [10, 6, 12, 8], "texture": "#0"},
+				"up": {"uv": [10, 12, 8, 10], "texture": "#0"},
+				"down": {"uv": [12, 8, 10, 10], "texture": "#0"}
+			}
+		},
+		{
+			"from": [6.75, 0.1, 6],
+			"to": [8.75, 2.1, 8],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [6.75, 0.1, 6]},
+			"faces": {
+				"north": {"uv": [10, 10, 12, 12], "texture": "#0"},
+				"east": {"uv": [2, 12, 4, 14], "texture": "#0"},
+				"south": {"uv": [12, 2, 14, 4], "texture": "#0"},
+				"west": {"uv": [4, 12, 6, 14], "texture": "#0"},
+				"up": {"uv": [14, 6, 12, 4], "texture": "#0"},
+				"down": {"uv": [8, 12, 6, 14], "texture": "#0"}
+			}
+		}
+	]
+}

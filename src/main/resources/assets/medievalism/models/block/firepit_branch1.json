@@ -1,0 +1,31 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "medievalism:block/pitfire_branches",
+		"particle": "medievalism:block/pitfire_branches"
+	},
+	"elements": [
+		{
+			"from": [2.3, 0, 6.1],
+			"to": [12.3, 2, 8.1],
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [2.3, 0, 6.6]},
+			"faces": {
+				"north": {"uv": [0, 0, 5, 1], "texture": "#0"},
+				"east": {"uv": [2, 7, 3, 8], "texture": "#0"},
+				"south": {"uv": [0, 1, 5, 2], "texture": "#0"},
+				"west": {"uv": [3, 7, 4, 8], "texture": "#0"},
+				"up": {"uv": [5, 3, 0, 2], "texture": "#0"},
+				"down": {"uv": [5, 3, 0, 4], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "branch1",
+			"origin": [3, 0, 7],
+			"color": 0,
+			"children": [0]
+		}
+	]
+}

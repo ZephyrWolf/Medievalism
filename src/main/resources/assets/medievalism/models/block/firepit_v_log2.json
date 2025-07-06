@@ -1,0 +1,27 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"textures": {
+		"1": "vanilla_campfire_logs"
+	},
+	"elements": [
+		{
+			"from": [11, 0, 0],
+			"to": [15, 4, 16],
+			"faces": {
+				"north": {"uv": [0, 4, 4, 8], "texture": "#1", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 4], "texture": "#1"},
+				"south": {"uv": [0, 4, 4, 8], "texture": "#1", "cullface": "south"},
+				"west": {"uv": [16, 0, 0, 4], "texture": "#1"},
+				"up": {"uv": [0, 0, 16, 4], "rotation": 90, "texture": "#1"},
+				"down": {"uv": [0, 0, 16, 4], "rotation": 90, "texture": "#1", "cullface": "down"}
+			}
+		}
+	],
+	"display": {
+		"head": {
+			"translation": [0, 10.5, 0]
+		}
+	}
+}

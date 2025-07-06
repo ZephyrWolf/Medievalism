@@ -1,0 +1,23 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "medievalism:block/limestone",
+		"particle": "medievalism:block/limestone"
+	},
+	"elements": [
+		{
+			"from": [9, -0.1, 5.3],
+			"to": [11, 1.9, 7.3],
+			"rotation": {"angle": 45, "axis": "y", "origin": [9, -0.1, 5.3]},
+			"faces": {
+				"north": {"uv": [4, 6, 6, 8], "texture": "#0"},
+				"east": {"uv": [6, 4, 8, 6], "texture": "#0"},
+				"south": {"uv": [6, 6, 8, 8], "texture": "#0"},
+				"west": {"uv": [2, 8, 4, 10], "texture": "#0"},
+				"up": {"uv": [10, 4, 8, 2], "texture": "#0"},
+				"down": {"uv": [6, 8, 4, 10], "texture": "#0"}
+			}
+		}
+	]
+}
