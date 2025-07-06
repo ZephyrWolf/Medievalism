@@ -1,14 +1,17 @@
-Working on
-TODO Shrub World Gen
-TODO Add Clay in Soil
-TODO Add Wild Grass
-TODO add hints of clay through tops and bottoms of clay in dirt/grass
-TODO Seperate red and blue clay by biome
-TODO Trees place dirt when in clay patch
-TODO WILD yams are too common
-TODO wild yams should be tinted
-TODO add this to everywhere pPlayer.awardStat(Stats.ITEM_USED.get(this));
+ERROR
+TODO [12:00:12] [Render thread/WARN] [minecraft/ClientRecipeBook]: Unknown recipe category: medievalism:in_world/medievalism:campfire
 
+Bugs
+TODO pickblock on unfired items is always wrong
+TODO twigs flash weird when adding; think this because client is doing things it shouldnt
+TODO Trees place dirt when in clay patch
+TODO wild yams should be tinted
+
+Balancing
+TODO Seperate red and blue clay by biome
+TODO WILD yams are too common
+TODO dogbane is too common
+TODO Clay is too common
 TODO Overhaul flower pot recipe
 TODO Work on missing models and textures
 
@@ -17,27 +20,24 @@ TODO For XXXBlocKStatesProvider
 -make a common methods for BASE and Overhaul
 -rename model functions to be distinct for registration methods
 TODO Seperate ItemModels from BlockItemModels in registration into another class
+TODO add this to everywhere pPlayer.awardStat(Stats.ITEM_USED.get(this));
+TODO seperate item and itemblock ItemModels
+
+New
+TODO Shrub World Gen
+TODO Add Wild Grass
+
+---
 
 ADD DRYING
 Wet packed mud
 Wet Daub Block
 recipes for daub and packed stuff including placing the wet bricks in world to dry
 
-THOUGHTS
-Crucuible: we gonna use gatherers jar? and crucible be better material?
-
-ERROR
-[12:00:12] [Render thread/WARN] [minecraft/ClientRecipeBook]: Unknown recipe category: medievalism:in_world/medievalism:campfire
-
-Bugs
-seperate item and itemblock ItemModels
-dogbane is too common
-pickblock on unfired items is always wrong
-twigs flash weird when adding; think this because client is doing things it shouldnt
-TODO Does StoneBenchBlockEntity Drop inventory when broken?!
-
-Blocks
+Review Blocks
 -Stone Bench
+
+Planned Blocks
 -Chopping Block
 -Claystone
 -Red Claystone
@@ -50,14 +50,24 @@ Blocks
     -Blueberry
     -Strawberry. different model, its a ground cover
 -Crop Yams
--Wild Yams
+-Crop Oats
+-Crop Barley
+-Crop Flax
 -Wild Potato
 -Wild Beetroot
 -Wild Potato
--Crop Oats
--Crop Barley
+-Wild Oats
+-Wild Wheat // Maybe not since it can be found in villages
+-Wild Barley
+-Wild Flax
+
 -Bloomery
 -Charcoal Mound
--Mud Kiln
+-Firelay
 -Pit Kiln
+
+Textures Exist For
 -Barrel
+
+THOUGHTS
+Crucuible: we gonna use gatherers jar? and crucible be better material?
