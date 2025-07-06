@@ -78,7 +78,7 @@ public final class BlockItemRegistration {
     public static final DeferredItem<BlockItem> DAUB_BRICKS = BLOCKITEMS.registerSimpleBlockItem("daub_bricks", BlockRegistration.DAUB_BRICKS);
     public static final DeferredItem<BlockItem> CRACKED_DAUB_BLOCK = BLOCKITEMS.registerSimpleBlockItem("cracked_daub_block", BlockRegistration.CRACKED_DAUB_BLOCK);
     public static final DeferredItem<BlockItem> CRACKED_DAUB_BRICKS = BLOCKITEMS.registerSimpleBlockItem("cracked_daub_bricks", BlockRegistration.CRACKED_DAUB_BRICKS);
-
+    public static final DeferredItem<BlockItem> THATCH = BLOCKITEMS.registerSimpleBlockItem("thatch", BlockRegistration.FIRE_LAY);
     //endregion
 
     //region Pottery

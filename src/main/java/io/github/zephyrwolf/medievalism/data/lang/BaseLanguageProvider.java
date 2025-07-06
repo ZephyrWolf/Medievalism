@@ -72,6 +72,9 @@ public class BaseLanguageProvider extends LanguageProvider {
         add(BlockItemRegistration.DRYING_CLAY_BRICK.get(), "Wet Clay Brick");
         add(BlockItemRegistration.DRYING_RED_CLAY_BRICK.get(), "Wet Red Clay Brick");
 
+        add(BlockRegistration.FIRE_LAY.get(), "Thatch"); // TODO Seperate firelay and thatch names
+        //add(BlockItemRegistration.THATCH.get().getDescriptionId() + ".item", "Thatch");
+
         add(BlockItemRegistration.WET_GATHERERS_JAR.get(), "Wet Gatherer's Jar");
         add(BlockItemRegistration.DRY_GATHERERS_JAR.get(), "Unfired Gatherer's Jar");
         add(BlockRegistration.DRYING_GATHERERS_JAR.get(), "Drying Gatherer's Jar");
@@ -219,7 +222,6 @@ public class BaseLanguageProvider extends LanguageProvider {
         }
         { // Misc
             add(ItemRegistration.QUICK_LIME.get(), "Quicklime");
-            add(ItemRegistration.THATCH.get(), "Thatch");
             add(ItemRegistration.CHOPPED_WOOD.get(), "Chopped Wood");
             add(ItemRegistration.SLACKED_LIME_BUCKET.get(), "Slacked Lime Bucket");
             add(ItemRegistration.TANNIN_BUCKET.get(), "Tannin Bucket");

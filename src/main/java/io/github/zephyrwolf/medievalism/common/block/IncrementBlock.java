@@ -86,6 +86,7 @@ public abstract class IncrementBlock extends Block implements SimpleWaterloggedB
         }
         else if (canRemove && pStack.isEmpty())
         {
+            ItemStack pickupItem = pickUpItem(pState, pLevel, pPos); // This needs to run before the block set
             BlockState newState;
             if (numCount == 1)
                 newState = pState.getValue(WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
@@ -100,10 +101,10 @@ public abstract class IncrementBlock extends Block implements SimpleWaterloggedB
                     (pLevel.getRandom().nextFloat() - pLevel.getRandom().nextFloat()) * 0.7F + 1.0F // pitch variation like vanilla
             );
             pLevel.gameEvent(GameEvent.BLOCK_PLACE, pPos, GameEvent.Context.of(pPlayer, newState));
-            pPlayer.addItem(pickUpItem(newState, pLevel, pPos));
-            return ItemInteractionResult.SUCCESS;
+            pPlayer.addItem(pickupItem);
+            return ItemInteractionResult.CONSUME_PARTIAL;
         }
-        return super.useItemOn(pStack, pState, pLevel, pPos, pPlayer, pHand, pHitResult);
+        return ItemInteractionResult.SUCCESS;
     }
     //endregion
 

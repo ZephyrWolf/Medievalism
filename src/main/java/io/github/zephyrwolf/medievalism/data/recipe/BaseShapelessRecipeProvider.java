@@ -27,7 +27,7 @@ public final class BaseShapelessRecipeProvider {
 
     private static void survivalRecipes(RecipeOutput recipeOutput) {
         // Thatch
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.THATCH, 4)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BlockItemRegistration.THATCH, 4)
                 .requires(BlockItemRegistration.THATCH_BLOCK)
                 .unlockedBy("has_thatch_block", RecipeTools.itemPredicateOf(BlockItemRegistration.THATCH_BLOCK))
                 .save(recipeOutput, MedievalismConstants.resource("thatch_from_block"));
@@ -81,13 +81,13 @@ public final class BaseShapelessRecipeProvider {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.WET_DAUB, 2)
                 .requires(ItemTagCatalog.CLAY_BALL)
                 .requires(ItemRegistration.MUD_BALL)
-                .requires(ItemRegistration.THATCH)
+                .requires(BlockItemRegistration.THATCH)
                 .unlockedBy("has_clay_ball", RecipeTools.itemPredicateOf(ItemTagCatalog.CLAY_BALL))
                 .save(recipeOutput, MedievalismConstants.resource("wet_daub"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BlockItemRegistration.WET_PACKED_MUD_BRICK)
                 .requires(ItemRegistration.MUD_BALL)
-                .requires(ItemRegistration.THATCH)
-                .unlockedBy("has_thatch", RecipeTools.itemPredicateOf(ItemRegistration.THATCH))
+                .requires(BlockItemRegistration.THATCH)
+                .unlockedBy("has_thatch", RecipeTools.itemPredicateOf(BlockItemRegistration.THATCH))
                 .save(recipeOutput, MedievalismConstants.resource("drying_mud_brick"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BlockItemRegistration.WET_DAUB_BRICK)
                 .requires(ItemRegistration.WET_DAUB)

@@ -126,6 +126,9 @@ public class BaseItemModelsProvider extends ItemModelProvider {
             // Branch
             // Rocks
         }
+        { // Primitive
+            itemGeneratedModel(BlockItemRegistration.THATCH.get());
+        }
         { // Farming
 
             itemGeneratedModel(ItemRegistration.BLUEBERRIES.get());
@@ -219,7 +222,6 @@ public class BaseItemModelsProvider extends ItemModelProvider {
         }
         { // Misc
             itemGeneratedModel(ItemRegistration.QUICK_LIME.get());
-            itemGeneratedModel(ItemRegistration.THATCH.get());
             itemGeneratedModel(ItemRegistration.CHOPPED_WOOD.get());
             itemGeneratedModel(ItemRegistration.SLACKED_LIME_BUCKET.get());
             itemGeneratedModel(ItemRegistration.TANNIN_BUCKET.get());

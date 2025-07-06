@@ -21,7 +21,8 @@ public class EntityEventRegistration
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event)
     {
         if (event.isCanceled()) return;
-        if (!event.getItemStack().isEmpty() && event.getItemStack().getItem() == Items.STICK)
+        // TODO This doesnt work properly; interacting with firelay causes issues
+        if (false && !event.getItemStack().isEmpty() && event.getItemStack().getItem() == Items.STICK)
         {
             Level level = event.getLevel();
             BlockPos hitPos = event.getHitVec().getBlockPos();

@@ -1,11 +1,25 @@
+Currently Working on
+Fire Lay
+-On light goes to Campfire:TEMP until firepit is done... but I should do rest of this list first
+charcoal block
+clay crucible
+birch pot
+quicklime
+limestone
+Firewood
+firepit stuff
+
 ERROR
 TODO [12:00:12] [Render thread/WARN] [minecraft/ClientRecipeBook]: Unknown recipe category: medievalism:in_world/medievalism:campfire
 
 Bugs
+TODO Seperate thatch lang :( I want item: Thatch and Block: Thatch Fire Lay
+TODO adding or removing from InteractBlock does not cause the players arm to move :(
 TODO pickblock on unfired items is always wrong
 TODO twigs flash weird when adding; think this because client is doing things it shouldnt
 TODO Trees place dirt when in clay patch
 TODO wild yams should be tinted
+TODO Can transform a block even if the player is within it
 
 Balancing
 TODO Seperate red and blue clay by biome

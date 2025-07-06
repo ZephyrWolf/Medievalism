@@ -11,7 +11,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public class BlankRecipe implements Recipe<InWorldRecipeInput> {
+public class BlankRecipe implements Recipe<BlankRecipeInput> {
 
     public BlankRecipe(Integer dummyNumber) {
     }
@@ -24,13 +24,13 @@ public class BlankRecipe implements Recipe<InWorldRecipeInput> {
     }
 
     @Override
-    public boolean matches(@NotNull InWorldRecipeInput pInput, @NotNull Level pLevel) {
+    public boolean matches(@NotNull BlankRecipeInput pInput, @NotNull Level pLevel) {
         return false;
     }
 
     @Deprecated
     @Override
-    public @NotNull ItemStack assemble(@NotNull InWorldRecipeInput pInput, HolderLookup.@NotNull Provider pRegistries) {
+    public @NotNull ItemStack assemble(@NotNull BlankRecipeInput pInput, HolderLookup.@NotNull Provider pRegistries) {
         return ItemStack.EMPTY;
     }
 

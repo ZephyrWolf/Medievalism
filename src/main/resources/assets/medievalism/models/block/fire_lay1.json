@@ -2,7 +2,8 @@
 	"format_version": "1.9.0",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"1": "medievalism:block/firepit_tinder_thatch"
+		"1": "medievalism:block/firepit_tinder_thatch",
+		"particle": "medievalism:block/firepit_sticks"
 	},
 	"elements": [
 		{

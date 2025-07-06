@@ -6,6 +6,7 @@ import io.github.zephyrwolf.medievalism.common.item.DirtChunkItem;
 import io.github.zephyrwolf.medievalism.common.item.FireStarterItem;
 import io.github.zephyrwolf.medievalism.common.item.HammerstoneItem;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.content.blockitem.BlockItemRegistration;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
@@ -59,7 +60,6 @@ public final class ItemRegistration {
     public static final DeferredItem<Item> PACKED_MUD_BRICK = ITEMS.registerSimpleItem("packed_mud_brick", new Item.Properties());
     public static final DeferredItem<Item> DAUB_BRICK = ITEMS.registerSimpleItem("daub_brick", new Item.Properties());
     public static final DeferredItem<Item> QUICK_LIME = ITEMS.registerSimpleItem("quicklime", new Item.Properties());
-    public static final DeferredItem<Item> THATCH = ITEMS.registerSimpleItem("thatch", new Item.Properties());
     public static final DeferredItem<Item> CHOPPED_WOOD = ITEMS.registerSimpleItem("chopped_wood", new Item.Properties());
     public static final DeferredItem<Item> SLACKED_LIME_BUCKET = ITEMS.registerSimpleItem("slacked_lime_bucket", new Item.Properties());
     public static final DeferredItem<Item> TANNIN_BUCKET = ITEMS.registerSimpleItem("tannin_bucket", new Item.Properties());
@@ -240,7 +240,7 @@ public final class ItemRegistration {
 
     // InWorldRecipeBuilder.fireStarter
     public static ItemStack getThatchedItem(BlockState ignoredState) { // TODO STUB, Make LootTable
-        return new ItemStack(THATCH.get());
+        return new ItemStack(BlockItemRegistration.THATCH.get());
     }
 
     public static void register(IEventBus modEventBus) {

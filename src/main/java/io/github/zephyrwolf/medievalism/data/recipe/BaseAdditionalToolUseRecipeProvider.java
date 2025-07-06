@@ -2,18 +2,14 @@ package io.github.zephyrwolf.medievalism.data.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.recipe.AdditionalDropToolUseRecipeBuilder;
-import io.github.zephyrwolf.medievalism.common.recipe.InWorldRecipeBuilder;
 import io.github.zephyrwolf.medievalism.content.block.BlockTagCatalog;
 import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
-import io.github.zephyrwolf.medievalism.content.item.ItemTagCatalog;
-import io.github.zephyrwolf.medievalism.tools.RecipeTools;
 import net.minecraft.advancements.critereon.BlockPredicate;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Blocks;
 
 public final class BaseAdditionalToolUseRecipeProvider {
     public static void buildRecipes(RecipeOutput recipeOutput) {

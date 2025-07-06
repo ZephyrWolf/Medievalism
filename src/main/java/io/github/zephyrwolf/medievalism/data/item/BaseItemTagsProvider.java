@@ -123,7 +123,7 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
         );
 
         tag(ItemTagCatalog.TINDER)
-                .add(ItemRegistration.THATCH.get());
+                .add(BlockItemRegistration.THATCH.get());
         // Candlenut leaves?
 
         tag(ItemTagCatalog.BARK).add(

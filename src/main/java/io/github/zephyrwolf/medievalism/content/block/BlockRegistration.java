@@ -15,6 +15,10 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public final class BlockRegistration {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MedievalismConstants.MOD_ID);
 
+    //region Fire Lay
+    public static final DeferredBlock<FireLayBlock> FIRE_LAY = BLOCKS.registerBlock("fire_lay", FireLayBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(0.6F).sound(SoundType.AZALEA_LEAVES));
+    //endregion
+
     //region Stone&Ore
     private static final BlockBehaviour.Properties GRASS_BLOCK_PROPERTIES = BlockBehaviour.Properties.of().mapColor(MapColor.GRASS).randomTicks().strength(0.6F).sound(SoundType.GRASS);
     public static final DeferredBlock<GrassBlock> CLAY_IN_GRASS = BLOCKS.registerBlock("clay_in_grass", GrassBlock::new, GRASS_BLOCK_PROPERTIES);

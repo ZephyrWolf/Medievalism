@@ -1,5 +1,6 @@
 package io.github.zephyrwolf.medievalism.data.loot;
 
+import io.github.zephyrwolf.medievalism.common.block.FireLayBlock;
 import io.github.zephyrwolf.medievalism.common.block.TwigsBlock;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.content.blockitem.BlockItemRegistration;
@@ -235,6 +236,125 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
         dropSelf(BlockRegistration.THATCH.get());
         dropSelf(BlockRegistration.DOGBANE.get());
 
+        //region Fire Lay
+        add( // TODO This is wrong
+                BlockRegistration.FIRE_LAY.get(),
+                LootTable.lootTable()
+                        //region Pool Stage 1
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem
+                                        .lootTableItem(BlockItemRegistration.THATCH.get())
+                                        .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.FIRE_LAY.get())
+                                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                        .hasProperty(FireLayBlock.STAGE_PROP, 1)
+                                                )
+                                        )
+                                )
+                        )
+                        //endregion
+                        //region Pool Stage 2
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem
+                                        .lootTableItem(BlockItemRegistration.THATCH.get())
+                                        .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.FIRE_LAY.get())
+                                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                        .hasProperty(FireLayBlock.STAGE_PROP, 2)
+                                                )
+                                        )
+                                )
+                        )
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem
+                                        .lootTableItem(Items.STICK)
+                                        .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.FIRE_LAY.get())
+                                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                        .hasProperty(FireLayBlock.STAGE_PROP, 2)
+                                                )
+                                        )
+                                )
+                        )
+                        //endregion
+                        //region Pool Stage 3
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem
+                                        .lootTableItem(BlockItemRegistration.THATCH.get())
+                                        .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.FIRE_LAY.get())
+                                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                        .hasProperty(FireLayBlock.STAGE_PROP, 3)
+                                                )
+                                        )
+                                )
+                        )
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem
+                                        .lootTableItem(Items.STICK)
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2)))
+                                        .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.FIRE_LAY.get())
+                                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                        .hasProperty(FireLayBlock.STAGE_PROP, 3)
+                                                )
+                                        )
+                                )
+                        )
+                        //endregion
+                        //region Pool Stage 4
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem
+                                        .lootTableItem(BlockItemRegistration.THATCH.get())
+                                        .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.FIRE_LAY.get())
+                                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                        .hasProperty(FireLayBlock.STAGE_PROP, 4)
+                                                )
+                                        )
+                                )
+                        )
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem
+                                        .lootTableItem(Items.STICK)
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))
+                                        .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.FIRE_LAY.get())
+                                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                        .hasProperty(FireLayBlock.STAGE_PROP, 4)
+                                                )
+                                        )
+                                )
+                        )
+                        //endregion
+                        //region Pool Stage 5
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem
+                                        .lootTableItem(BlockItemRegistration.THATCH.get())
+                                        .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.FIRE_LAY.get())
+                                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                        .hasProperty(FireLayBlock.STAGE_PROP, 5)
+                                                )
+                                        )
+                                )
+                        )
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem
+                                        .lootTableItem(Items.STICK)
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(4)))
+                                        .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.FIRE_LAY.get())
+                                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                        .hasProperty(FireLayBlock.STAGE_PROP, 5)
+                                                )
+                                        )
+                                )
+                        )
+                        //endregion
+
+        );
+        //endregion
         dropSelf(BlockRegistration.STONE_BENCH.get());
         dropSelf(BlockRegistration.CHOPPING_BLOCK.get());
     }

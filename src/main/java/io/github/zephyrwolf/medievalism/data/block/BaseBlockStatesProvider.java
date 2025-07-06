@@ -177,6 +177,18 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         simpleBlock(BlockRegistration.SHRUB.get(), tintedCross(BlockRegistration.SHRUB.get(), ""));
         //endregion
 
+        //region Primitive
+        randomYRotationIntegerState(
+                BlockRegistration.FIRE_LAY.get(),
+                FireLayBlock.STAGE_PROP,
+                existingModel(BlockRegistration.FIRE_LAY.get(), "1"),
+                existingModel(BlockRegistration.FIRE_LAY.get(), "2"),
+                existingModel(BlockRegistration.FIRE_LAY.get(), "3"),
+                existingModel(BlockRegistration.FIRE_LAY.get(), "4"),
+                existingModel(BlockRegistration.FIRE_LAY.get(), "5")
+        );
+        //endregion
+
         //region Pottery
         // Gatherer's Jar
         dryingBlock(BlockRegistration.DRYING_GATHERERS_JAR.get(),

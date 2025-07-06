@@ -1,8 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.item;
 
 import io.github.zephyrwolf.medievalism.content.recipe.RecipeRegistration;
-import io.github.zephyrwolf.medievalism.common.recipe.InWorldRecipe;
-import io.github.zephyrwolf.medievalism.common.recipe.InWorldRecipeInput;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -39,6 +37,7 @@ public class FireStarterItem extends Item
 
         // TODO Test if the player is allowed to modify the world
 
+        /*
         if (!level.isClientSide())
         {
             List<ItemEntity> entities = level.getEntitiesOfClass( ItemEntity.class, new AABB( pos ) );
@@ -61,6 +60,7 @@ public class FireStarterItem extends Item
                 });
             }
         }
+         */
 
 		return InteractionResult.SUCCESS;
 	}

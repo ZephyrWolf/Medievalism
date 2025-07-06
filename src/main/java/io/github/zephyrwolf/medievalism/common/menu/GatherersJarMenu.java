@@ -205,6 +205,7 @@ public class GatherersJarMenu extends AbstractContainerMenu implements HasInvent
                     @Override
                     public void setChanged() {
                         if (!GatherersJarMenu.this.level.isClientSide) {
+                            // TODO _skack can be null for some reason (had a bug here)
                             var map = DataComponentMap.builder().addAll(_stack.getComponents());
                             map.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(getInventoryAsList()));
                             _stack.applyComponents(map.build());
