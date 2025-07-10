@@ -17,7 +17,16 @@ public class BaseLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add(BlockItemRegistration.RHYOLITE.get(), "Rhyolite");
+        add(BlockItemRegistration.SILTSTONE.get(), "Siltstone");
+        add(BlockItemRegistration.DOLOSTONE.get(), "Dolostone");
         add(BlockItemRegistration.LIMESTONE.get(), "Limestone");
+        add(BlockItemRegistration.LATERITE.get(), "Laterite");
+        add(BlockItemRegistration.MARBLE.get(), "Marble");
+        add(BlockItemRegistration.QUARTZITE.get(), "Quartzite");
+        add(BlockItemRegistration.HORNFELS.get(), "Hornfels");
+        add(BlockItemRegistration.SLATE.get(), "Slate");
+        add(BlockItemRegistration.NORITE.get(), "Norite");
 
         add(BlockItemRegistration.OAK_BRANCH.get(), "Oak Branch");
         add(BlockItemRegistration.BIRCH_BRANCH.get(), "Birch Branch");

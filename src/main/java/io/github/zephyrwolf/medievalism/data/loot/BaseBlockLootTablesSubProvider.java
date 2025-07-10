@@ -223,7 +223,17 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
                 )
         );
 
+        dropSelf(BlockRegistration.RHYOLITE.get());
+        dropSelf(BlockRegistration.SILTSTONE.get());
+        dropSelf(BlockRegistration.DOLOSTONE.get());
         dropSelf(BlockRegistration.LIMESTONE.get());
+        dropSelf(BlockRegistration.LATERITE.get());
+        dropSelf(BlockRegistration.MARBLE.get());
+        dropSelf(BlockRegistration.QUARTZITE.get());
+        dropSelf(BlockRegistration.HORNFELS.get());
+        dropSelf(BlockRegistration.SLATE.get());
+        dropSelf(BlockRegistration.NORITE.get());
+
         dropSelf(BlockRegistration.WET_PACKED_MUD.get());
         dropSelf(BlockRegistration.WET_DAUB_BLOCK.get());
         dropSelf(BlockRegistration.DAUB_BLOCK.get());

@@ -51,7 +51,18 @@ public class BaseItemModelsProvider extends ItemModelProvider {
             blockBasedModel(BlockItemRegistration.CLAY_IN_DIRT.get(), "1");
             blockBasedModel(BlockItemRegistration.RED_CLAY_IN_DIRT.get(), "1");
             blockBasedModel(BlockItemRegistration.RED_CLAY_BLOCK.get(), "");
+
+            blockBasedModel(BlockItemRegistration.RHYOLITE.get(), "");
+            blockBasedModel(BlockItemRegistration.SILTSTONE.get(), "");
+            blockBasedModel(BlockItemRegistration.DOLOSTONE.get(), "");
             blockBasedModel(BlockItemRegistration.LIMESTONE.get(), "");
+            blockBasedModel(BlockItemRegistration.LATERITE.get(), "");
+            blockBasedModel(BlockItemRegistration.MARBLE.get(), "");
+            blockBasedModel(BlockItemRegistration.QUARTZITE.get(), "");
+            blockBasedModel(BlockItemRegistration.HORNFELS.get(), "");
+            blockBasedModel(BlockItemRegistration.SLATE.get(), "");
+            blockBasedModel(BlockItemRegistration.NORITE.get(), "");
+
             blockBasedModel(BlockItemRegistration.WET_PACKED_MUD.get(), "");
             blockBasedModel(BlockItemRegistration.WET_DAUB_BLOCK.get(), "");
             blockBasedModel(BlockItemRegistration.DAUB_BLOCK.get(), "");

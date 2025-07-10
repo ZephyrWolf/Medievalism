@@ -63,7 +63,17 @@ public class BaseBlockTagsProvider extends BlockTagsProvider
                 BlockRegistration.THATCH.get()
         );
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
+                BlockRegistration.RHYOLITE.get(),
+                BlockRegistration.SILTSTONE.get(),
+                BlockRegistration.DOLOSTONE.get(),
                 BlockRegistration.LIMESTONE.get(),
+                BlockRegistration.LATERITE.get(),
+                BlockRegistration.MARBLE.get(),
+                BlockRegistration.QUARTZITE.get(),
+                BlockRegistration.HORNFELS.get(),
+                BlockRegistration.SLATE.get(),
+                BlockRegistration.NORITE.get(),
+
                 BlockRegistration.LARGE_ROCK.get(),
                 BlockRegistration.ROCK.get(),
                 BlockRegistration.LIMESTONE_ROCK.get(),
@@ -76,15 +86,32 @@ public class BaseBlockTagsProvider extends BlockTagsProvider
         );
 
         // Material
-        tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).add( // Vs NEEDS_STONE_TOOL
-                BlockRegistration.LIMESTONE.get()
+        /*
+        BlockRegistration.RHYOLITE.get(),
+        BlockRegistration.SILTSTONE.get(),
+        BlockRegistration.DOLOSTONE.get(),
+        BlockRegistration.LIMESTONE.get(),
+        BlockRegistration.LATERITE.get(),
+        BlockRegistration.MARBLE.get(),
+        BlockRegistration.QUARTZITE.get(),
+        BlockRegistration.HORNFELS.get(),
+        BlockRegistration.SLATE.get(),
+        BlockRegistration.NORITE.get(),
+
+         */
+
+        tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).add( // Sedimentary
+                BlockRegistration.RHYOLITE.get(),
+                BlockRegistration.SILTSTONE.get(),
+                BlockRegistration.DOLOSTONE.get(),
+                BlockRegistration.LIMESTONE.get(),
+                BlockRegistration.LATERITE.get(),
+                BlockRegistration.MARBLE.get(),
+                BlockRegistration.QUARTZITE.get(),
+                BlockRegistration.HORNFELS.get(),
+                BlockRegistration.SLATE.get(),
+                BlockRegistration.NORITE.get()
         );
-        tag(BlockTags.NEEDS_STONE_TOOL).add(
-                BlockRegistration.TIN_ORE.get(),
-                BlockRegistration.DEEPSLATE_TIN_ORE.get()
-        );
-        //tag(BlockTags.NEEDS_IRON_TOOL)
-        //tag(BlockTags.NEEDS_DIAMOND_TOOL)
     }
 
     protected void registerModTags()

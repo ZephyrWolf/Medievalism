@@ -43,7 +43,18 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         simpleBlock(BlockRegistration.RED_CLAY.get());
         simpleBlock(BlockRegistration.TIN_ORE.get());
         simpleBlock(BlockRegistration.DEEPSLATE_TIN_ORE.get());
+
+        simpleBlock(BlockRegistration.RHYOLITE.get());
+        simpleBlock(BlockRegistration.SILTSTONE.get());
+        simpleBlock(BlockRegistration.DOLOSTONE.get());
         simpleBlock(BlockRegistration.LIMESTONE.get());
+        simpleBlock(BlockRegistration.LATERITE.get());
+        simpleBlock(BlockRegistration.MARBLE.get());
+        simpleBlock(BlockRegistration.QUARTZITE.get());
+        simpleBlock(BlockRegistration.HORNFELS.get());
+        simpleBlock(BlockRegistration.SLATE.get());
+        simpleBlock(BlockRegistration.NORITE.get());
+
         simpleBlock(BlockRegistration.WET_PACKED_MUD.get());
         simpleBlock(BlockRegistration.WET_DAUB_BLOCK.get());
         simpleBlock(BlockRegistration.DAUB_BLOCK.get());

@@ -1,4 +1,5 @@
 Currently Working on
+World gen stone
 Fire Lay
 -On light goes to Campfire:TEMP until firepit is done... but I should do rest of this list first
 charcoal block

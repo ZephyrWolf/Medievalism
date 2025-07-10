@@ -31,9 +31,32 @@ public final class BlockRegistration {
     public static final DeferredBlock<Block> RED_CLAY = BLOCKS.registerSimpleBlock(
             "red_clay", BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).instrument(NoteBlockInstrument.FLUTE)
                     .strength(0.6f).sound(SoundType.GRAVEL));
-    public static final DeferredBlock<Block> LIMESTONE = BLOCKS.registerSimpleBlock(
-            "limestone", BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE)
-                    .requiresCorrectToolForDrops().strength(0.6f).sound(SoundType.STONE));
+    //region Stones
+    // Ashfall
+    // -- Tuff, maybe Ignimbrite
+    // Soft Extrusive Igneous (Volcanic within Sedementary)
+    public static final DeferredBlock<Block> RHYOLITE =      BLOCKS.registerSimpleBlock("rhyolite",      BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE) .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE));
+    // -- maybe Dacite
+    // Sedimentary
+    // Greywacke -> Rename for Stone
+    public static final DeferredBlock<Block> SILTSTONE =     BLOCKS.registerSimpleBlock("siltstone",     BlockBehaviour.Properties.of().mapColor(MapColor.STONE)            .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE));
+    public static final DeferredBlock<Block> DOLOSTONE =     BLOCKS.registerSimpleBlock("dolostone",     BlockBehaviour.Properties.of().mapColor(MapColor.STONE)            .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE));
+    public static final DeferredBlock<Block> LIMESTONE =     BLOCKS.registerSimpleBlock("limestone",     BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ)           .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE));
+    public static final DeferredBlock<Block> LATERITE =      BLOCKS.registerSimpleBlock("laterite",      BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED)   .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE));
+    // Hard Extrusive Igneous (Volcanic within metamorphic)
+    // -- Andersite, Basalt (maybe add a basalt variant?)
+    // Metamorphic
+    public static final DeferredBlock<Block> MARBLE =        BLOCKS.registerSimpleBlock("marble",        BlockBehaviour.Properties.of().mapColor(MapColor.WOOL)             .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE));
+    public static final DeferredBlock<Block> QUARTZITE =     BLOCKS.registerSimpleBlock("quartzite",     BlockBehaviour.Properties.of().mapColor(MapColor.WOOL)             .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE));
+    public static final DeferredBlock<Block> HORNFELS =      BLOCKS.registerSimpleBlock("hornfels",      BlockBehaviour.Properties.of().mapColor(MapColor.STONE)            .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE));
+    public static final DeferredBlock<Block> SLATE =         BLOCKS.registerSimpleBlock("slate",         BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE)        .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE));
+    // Intrusive Igneous (Plutonic)
+    // Gabbro -> Rename for Deepslate
+    // Diorite, Granite (maybe variant of granite)
+    // Deep Intrusive Igneous (Plutonic)
+    public static final DeferredBlock<Block> NORITE =        BLOCKS.registerSimpleBlock("norite",        BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK)      .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE));
+    //endregion
+
     public static final DeferredBlock<Block> TIN_ORE = BLOCKS.registerSimpleBlock(
             "tin_ore_block", BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
                     .strength(1.3f).sound(SoundType.STONE).requiresCorrectToolForDrops());

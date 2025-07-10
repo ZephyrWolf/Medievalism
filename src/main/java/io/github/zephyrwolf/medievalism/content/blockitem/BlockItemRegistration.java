@@ -25,7 +25,18 @@ public final class BlockItemRegistration {
     public static final DeferredItem<BlockItem> CLAY_IN_DIRT = BLOCKITEMS.registerSimpleBlockItem("clay_in_dirt", BlockRegistration.CLAY_IN_DIRT);
     public static final DeferredItem<BlockItem> RED_CLAY_IN_DIRT = BLOCKITEMS.registerSimpleBlockItem("red_clay_in_dirt", BlockRegistration.RED_CLAY_IN_DIRT);
     public static final DeferredItem<BlockItem> RED_CLAY_BLOCK = BLOCKITEMS.registerSimpleBlockItem("red_clay", BlockRegistration.RED_CLAY);
+
+    public static final DeferredItem<BlockItem> RHYOLITE = BLOCKITEMS.registerSimpleBlockItem("rhyolite", BlockRegistration.RHYOLITE);
+    public static final DeferredItem<BlockItem> SILTSTONE = BLOCKITEMS.registerSimpleBlockItem("siltstone", BlockRegistration.SILTSTONE);
+    public static final DeferredItem<BlockItem> DOLOSTONE = BLOCKITEMS.registerSimpleBlockItem("dolostone", BlockRegistration.DOLOSTONE);
     public static final DeferredItem<BlockItem> LIMESTONE = BLOCKITEMS.registerSimpleBlockItem("limestone", BlockRegistration.LIMESTONE);
+    public static final DeferredItem<BlockItem> LATERITE = BLOCKITEMS.registerSimpleBlockItem("laterite", BlockRegistration.LATERITE);
+    public static final DeferredItem<BlockItem> MARBLE = BLOCKITEMS.registerSimpleBlockItem("marble", BlockRegistration.MARBLE);
+    public static final DeferredItem<BlockItem> QUARTZITE = BLOCKITEMS.registerSimpleBlockItem("quartzite", BlockRegistration.QUARTZITE);
+    public static final DeferredItem<BlockItem> HORNFELS = BLOCKITEMS.registerSimpleBlockItem("hornfels", BlockRegistration.HORNFELS);
+    public static final DeferredItem<BlockItem> SLATE = BLOCKITEMS.registerSimpleBlockItem("slate", BlockRegistration.SLATE);
+    public static final DeferredItem<BlockItem> NORITE = BLOCKITEMS.registerSimpleBlockItem("norite", BlockRegistration.NORITE);
+
     public static final DeferredItem<BlockItem> TIN_ORE_BLOCK = BLOCKITEMS.registerSimpleBlockItem("tin_ore_block", BlockRegistration.TIN_ORE);
     public static final DeferredItem<BlockItem> DEEPSLATE_TIN_ORE_BLOCK = BLOCKITEMS.registerSimpleBlockItem("deepslate_tin_ore_block", BlockRegistration.DEEPSLATE_TIN_ORE);
 
