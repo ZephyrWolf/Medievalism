@@ -33,7 +33,7 @@ public final class PackRegistration
         {
             //FMLLoader.getDist(); //  == FMLEnivornment.GetDist()
             //FMLLoader.isProduction(); // is worse than FMLEnvironment.Production. use environment
-            if (FMLEnvironment.dist == Dist.CLIENT)
+            if (FMLEnvironment.dist == Dist.CLIENT) // TODO is this going to cause problems running in a server environment?
             { // Thread.currentThread().getThreadGroup() == SidedThreadGroups.SERVER
                 //var hi = Thread.currentThread().getThreadGroup();
                 //var s = SidedThreadGroups.SERVER;

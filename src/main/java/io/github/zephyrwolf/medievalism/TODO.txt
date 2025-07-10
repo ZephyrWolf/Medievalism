@@ -20,6 +20,8 @@ TODO twigs flash weird when adding; think this because client is doing things it
 TODO Trees place dirt when in clay patch
 TODO wild yams should be tinted
 TODO Can transform a block even if the player is within it
+TODO create a tag to control what blocks world litter can spawn on
+TODO worldlitter should generate in water too since they can be waterlogged (e.g. river/forest overlap not ocean)
 
 Balancing
 TODO Seperate red and blue clay by biome

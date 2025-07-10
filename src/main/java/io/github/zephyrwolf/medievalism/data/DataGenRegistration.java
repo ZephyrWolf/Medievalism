@@ -17,6 +17,7 @@ import io.github.zephyrwolf.medievalism.data.recipe.BaseRecipeProvider;
 import io.github.zephyrwolf.medievalism.data.recipe.OverhaulRecipeProvider;
 import io.github.zephyrwolf.medievalism.data.worldgen.BaseBiomeTagsProvider;
 import io.github.zephyrwolf.medievalism.data.worldgen.BaseWorldGenProvider;
+import io.github.zephyrwolf.medievalism.data.worldgen.OverhaulWorldGenProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -48,7 +49,6 @@ public final class DataGenRegistration { // https://github.com/vectorwing/Farmer
     }
 
     //region Providers
-    //region Base
     private static void addProvidersForBase(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient) {
         BaseBlockTagsProvider blockTags = new BaseBlockTagsProvider(packOutput, lookupProvider, existingFileHelper);
         generator.addProvider(includeServer, blockTags);
@@ -67,9 +67,6 @@ public final class DataGenRegistration { // https://github.com/vectorwing/Farmer
         generator.addProvider(includeServer, new BaseWorldGenProvider(packOutput, lookupProvider));
     }
 
-    //endregion
-    //region Overhaul Assets
-    @SuppressWarnings("unused")
     private static void addProvidersForAssetOverhaul(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient) {
         //generator.addProvider(includeClient, ...);
         generator.addProvider(includeClient, new OverhaulLanguageProvider(packOutput, "en_us"));
@@ -79,9 +76,6 @@ public final class DataGenRegistration { // https://github.com/vectorwing/Farmer
                         .description("Medievalism will overhaul the look and feel of Minecraft."));
     }
 
-    //endregion
-    //region Overhaul Data
-    @SuppressWarnings("unused")
     private static void addProvidersForDataOverhaul(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient) {
         generator.addProvider(includeServer, new OverhaulRecipeProvider(packOutput, lookupProvider));
         generator.addProvider(includeServer, new OverhaulBlockTagsProvider(packOutput, lookupProvider, existingFileHelper));
@@ -94,8 +88,8 @@ public final class DataGenRegistration { // https://github.com/vectorwing/Farmer
                 PackMetaProvider.of(packOutput, PackType.SERVER_DATA)
                         .description("Medievalism will overhaul the progression of Minecraft."));
         // TODO I wonder if I can translate this ^^^^
+        generator.addProvider(includeServer, new OverhaulWorldGenProvider(packOutput, lookupProvider));
     }
-    //endregion
     //endregion
 
     //region Inject

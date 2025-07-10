@@ -5,6 +5,7 @@ import io.github.zephyrwolf.medievalism.common.malleablematerial.MalleableMateri
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.ModifyRegistriesEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.RegistryBuilder;
 
@@ -17,13 +18,18 @@ public final class RegistryRegistration
             //.maxId(256)
             .create();
 
-    public static void register(IEventBus bus)
+    public static void setup(IEventBus bus)
     {
         bus.addListener(RegistryRegistration::registerRegistries);
+        bus.addListener(RegistryRegistration::modifyRegistries);
     }
 
     private static void registerRegistries(NewRegistryEvent event)
     {
         event.register(MATERIALS_REGISTRY);
+    }
+
+    private static void modifyRegistries(ModifyRegistriesEvent event)
+    {
     }
 }

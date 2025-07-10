@@ -29,6 +29,7 @@ public class MedievalismMod {
     public MedievalismMod(IEventBus bus, ModContainer ignoredModContainer) {
         bus.addListener(this::commonSetup);
 
+        RegistryRegistration.setup(bus);
         PackRegistration.register(bus);
         ItemRegistration.register(bus);
         BlockItemRegistration.register(bus);
@@ -40,7 +41,6 @@ public class MedievalismMod {
         FeatureRegistration.register(bus);
         DataGenRegistration.register(bus);
         NetworkRegistration.register(bus);
-        RegistryRegistration.register(bus);
         BlockEntityRegistration.register(bus);
         CreativeTabRegistration.register(bus);
         MalleableMaterialRegistration.register(bus);

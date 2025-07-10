@@ -19,6 +19,9 @@ license="${mod_license}"
 [[accessTransformers]]
 file="META-INF/accesstransformer.cfg"
 
+[[mixins]]
+config="medievalism.mixins.json"
+
 # showAsResourcePack=true
 # showAsDataPack=true
 
