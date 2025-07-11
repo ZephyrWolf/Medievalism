@@ -86,20 +86,6 @@ public class BaseBlockTagsProvider extends BlockTagsProvider
         );
 
         // Material
-        /*
-        BlockRegistration.RHYOLITE.get(),
-        BlockRegistration.SILTSTONE.get(),
-        BlockRegistration.DOLOSTONE.get(),
-        BlockRegistration.LIMESTONE.get(),
-        BlockRegistration.LATERITE.get(),
-        BlockRegistration.MARBLE.get(),
-        BlockRegistration.QUARTZITE.get(),
-        BlockRegistration.HORNFELS.get(),
-        BlockRegistration.SLATE.get(),
-        BlockRegistration.NORITE.get(),
-
-         */
-
         tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).add( // Sedimentary
                 BlockRegistration.RHYOLITE.get(),
                 BlockRegistration.SILTSTONE.get(),

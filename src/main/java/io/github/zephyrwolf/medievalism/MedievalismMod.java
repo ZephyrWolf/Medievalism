@@ -2,6 +2,7 @@ package io.github.zephyrwolf.medievalism;
 
 import com.mojang.logging.LogUtils;
 import io.github.zephyrwolf.medievalism.content.*;
+import io.github.zephyrwolf.medievalism.content.advancements.CriteriaTriggersRegistration;
 import io.github.zephyrwolf.medievalism.content.blockentity.BlockEntityRegistration;
 import io.github.zephyrwolf.medievalism.content.block.BlockEventRegistration;
 import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
@@ -31,6 +32,7 @@ public class MedievalismMod {
 
         RegistryRegistration.setup(bus);
         PackRegistration.register(bus);
+        CriteriaTriggersRegistration.register(bus);
         ItemRegistration.register(bus);
         BlockItemRegistration.register(bus);
         BlockRegistration.register(bus);

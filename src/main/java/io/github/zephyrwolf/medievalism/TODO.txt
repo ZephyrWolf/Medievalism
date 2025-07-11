@@ -17,7 +17,7 @@ Bugs
 TODO Seperate thatch lang :( I want item: Thatch and Block: Thatch Fire Lay
 TODO adding or removing from InteractBlock does not cause the players arm to move :(
 TODO pickblock on unfired items is always wrong
-TODO twigs flash weird when adding; think this because client is doing things it shouldnt
+TODO twigs flash weird when adding; think this because client is doing things it shouldn't
 TODO Trees place dirt when in clay patch
 TODO wild yams should be tinted
 TODO Can transform a block even if the player is within it
@@ -39,6 +39,7 @@ TODO For XXXBlocKStatesProvider
 TODO Seperate ItemModels from BlockItemModels in registration into another class
 TODO add this to everywhere pPlayer.awardStat(Stats.ITEM_USED.get(this));
 TODO seperate item and itemblock ItemModels
+TODO BlockBreakTrigger and BlockBreakingTrigger are identical. Can I just make them the same file?
 
 New
 TODO Shrub World Gen

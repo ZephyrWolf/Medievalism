@@ -2,8 +2,10 @@ package io.github.zephyrwolf.medievalism.content.block;
 
 import io.github.zephyrwolf.medievalism.common.recipe.AdditionalDropToolUseRecipe;
 import io.github.zephyrwolf.medievalism.common.recipe.AdditionalDropToolUseRecipeInput;
+import io.github.zephyrwolf.medievalism.content.advancements.CriteriaTriggersRegistration;
 import io.github.zephyrwolf.medievalism.content.recipe.RecipeRegistration;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -29,6 +31,18 @@ public class BlockEventRegistration
         NeoForge.EVENT_BUS.addListener(BlockEventRegistration::blockDrops);
         NeoForge.EVENT_BUS.addListener(BlockEventRegistration::breakSpeed);
         NeoForge.EVENT_BUS.addListener(EventPriority.LOWEST, BlockEventRegistration::onToolUse);
+        NeoForge.EVENT_BUS.addListener(EventPriority.LOWEST, BlockEventRegistration::onBlockBreakTrigger);
+    }
+
+    public static void onBlockBreakTrigger(BlockEvent.BreakEvent event)
+    {
+        if (event.getPlayer() instanceof ServerPlayer)
+        {
+            CriteriaTriggersRegistration.BLOCK_BREAK.get().trigger(
+                    (ServerPlayer) event.getPlayer(),
+                    event.getState()
+            );
+        }
     }
 
     public static void onToolUse(BlockEvent.BlockToolModificationEvent event)

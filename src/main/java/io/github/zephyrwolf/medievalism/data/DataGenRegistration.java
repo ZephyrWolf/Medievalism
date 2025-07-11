@@ -3,6 +3,10 @@ package io.github.zephyrwolf.medievalism.data;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.MedievalismMod;
 import io.github.zephyrwolf.medievalism.content.loot.LootContextParamSetRegistration;
+import io.github.zephyrwolf.medievalism.data.advancements.BaseAdvancementsProvider;
+import io.github.zephyrwolf.medievalism.data.advancements.BaseAdvancementsProviderCopperAge;
+import io.github.zephyrwolf.medievalism.data.advancements.BaseAdvancementsProviderStoneAge;
+import io.github.zephyrwolf.medievalism.data.advancements.OverhaulAdvancementsProvider;
 import io.github.zephyrwolf.medievalism.data.block.*;
 import io.github.zephyrwolf.medievalism.data.item.BaseItemModelsProvider;
 import io.github.zephyrwolf.medievalism.data.item.BaseItemTagsProvider;
@@ -25,7 +29,6 @@ import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -56,7 +59,11 @@ public final class DataGenRegistration { // https://github.com/vectorwing/Farmer
         generator.addProvider(includeServer, new BaseItemTagsProvider(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
         generator.addProvider(includeServer, new BaseBiomeTagsProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(includeServer, new BaseRecipeProvider(packOutput, lookupProvider));
-        generator.addProvider(includeServer, new AdvancementProvider(packOutput, lookupProvider, existingFileHelper, List.of(new BaseAdvancementsProvider())));
+        generator.addProvider(includeServer, new AdvancementProvider(packOutput, lookupProvider, existingFileHelper, List.of(
+                new BaseAdvancementsProvider(),
+                new BaseAdvancementsProviderStoneAge(),
+                new BaseAdvancementsProviderCopperAge()
+        )));
         generator.addProvider(includeClient, new BaseLanguageProvider(packOutput, "en_us"));
         generator.addProvider(includeServer, new LootTableProvider(packOutput, Collections.emptySet(), List.of(
                 new LootTableProvider.SubProviderEntry(BaseBlockLootTablesSubProvider::new, LootContextParamSets.BLOCK),
@@ -90,6 +97,9 @@ public final class DataGenRegistration { // https://github.com/vectorwing/Farmer
                         .description("Medievalism will overhaul the progression of Minecraft."));
         // TODO I wonder if I can translate this ^^^^
         generator.addProvider(includeServer, new OverhaulWorldGenProvider(packOutput, lookupProvider));
+        generator.addProvider(includeServer, new AdvancementProvider(packOutput, lookupProvider, existingFileHelper, List.of(
+                new OverhaulAdvancementsProvider()
+        )));
     }
     //endregion
 

@@ -16,7 +16,8 @@ public class BaseLanguageProvider extends LanguageProvider {
     }
 
     @Override
-    protected void addTranslations() {
+    protected void addTranslations() { // TODO seperate these out
+        addAdvancementTranslations();
         add(BlockItemRegistration.RHYOLITE.get(), "Rhyolite");
         add(BlockItemRegistration.SILTSTONE.get(), "Siltstone");
         add(BlockItemRegistration.DOLOSTONE.get(), "Dolostone");
@@ -251,14 +252,44 @@ public class BaseLanguageProvider extends LanguageProvider {
 
         add(SettlersPotBlock.LANG_DEFAULT_NAME, "Settler's Pot");
 
-        add("medievalism.advancement.root", "Medievalism");
-        add("medievalism.advancement.root.desc", "The heart and story of history");
-        add("medievalism.advancement.get_red_clay", "Get Red Clay");
-        add("medievalism.advancement.get_red_clay.desc", "Obtain red clay");
-
         add("medievalism.pack.title.overhaul.client_resources", "Medievalism Overhaul - Looks");
         add("medievalism.pack.title.overhaul.server_data", "Medievalism Overhaul - Progression");
         add("medievalism.pack.source.overhaul", "Medievalism Overhaul Source");
         add("medievalism.networking.failed", "Medievalism crashed you :(");
+    }
+
+    private void addAdvancementTranslations()
+    {
+        // Medievalism
+        addAdvancement(BaseAdvancementTranslations.ROOT_TITLE, "Medievalism");
+        addAdvancement(BaseAdvancementTranslations.ROOT_DESC, "The heart and story of history");
+        addAdvancement(BaseAdvancementTranslations.EXPLORE_GATHER_TITLE, "Explore and Gather to get started!");
+        addAdvancement(BaseAdvancementTranslations.EXPLORE_GATHER_DESC, "Pick up anything you find, you never know what could be useful");
+        addAdvancement(BaseAdvancementTranslations.JOURNAL_TUTORIAL_TITLE, "Press 'L' for hints to guide you!");
+        addAdvancement(BaseAdvancementTranslations.JOURNAL_TUTORIAL_DESC, "All of your discoveries are recorded in this advancement menu");
+
+        // Stone Age
+        addAdvancement(BaseAdvancementTranslations.ROCK_TITLE, "Common but useful");
+        addAdvancement(BaseAdvancementTranslations.ROCK_DESC, "If I find some more, I could probably make something");
+        addAdvancement(BaseAdvancementTranslations.TWO_HARD_ROCKS_TITLE, "I could use these to make something...");
+        addAdvancement(BaseAdvancementTranslations.TWO_HARD_ROCKS_DESC, "Holding right-click with a rock in each hand will let me start knapping");
+
+        add("medievalism.advancement.get_red_clay", "Get Red Clay");
+        add("medievalism.advancement.get_red_clay.desc", "Obtain red clay");
+
+        // Copper Age
+        addAdvancement(BaseAdvancementTranslations.COPPER_ROCK_TITLE, "What's this? Copper!");
+        addAdvancement(BaseAdvancementTranslations.COPPER_ROCK_DESC, "I should keep searching for more rocks with copper traces");
+
+        // Overhaul
+        addAdvancement(BaseAdvancementTranslations.OVERHAUL_TITLE, "Overhauled");
+        addAdvancement(BaseAdvancementTranslations.OVERHAUL_DESC, "You can check here to see what has changed");
+        addAdvancement(BaseAdvancementTranslations.CANT_PUNCH_LOGS_TITLE, "Bare hands won't work");
+        addAdvancement(BaseAdvancementTranslations.CANT_PUNCH_LOGS_DESC, "The forest stands strong against my fists. Perhaps nature demands respect... or an axe");
+    }
+
+    private void addAdvancement(String key, String value)
+    {
+        add(MedievalismConstants.MOD_ID + "." + key, value);
     }
 }

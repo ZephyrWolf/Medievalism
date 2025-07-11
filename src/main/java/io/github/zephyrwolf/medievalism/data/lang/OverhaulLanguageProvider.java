@@ -17,6 +17,7 @@ public class OverhaulLanguageProvider extends LanguageProvider
     @Override
     protected void addTranslations()
     {
+        addAdvancementTranslations();
         //region Other
         add(Items.LEATHER, "Large Leather");
         //endregion
@@ -100,5 +101,26 @@ public class OverhaulLanguageProvider extends LanguageProvider
         add(BlockRegistration.TIN_ORE.get(), "Greywacke Cassiterite Ore");
         add(BlockRegistration.DEEPSLATE_TIN_ORE.get(), "Gabbro Cassiterite Ore");
         //endregion
+    }
+
+    private void addAdvancementTranslations()
+    {
+        addAdvancement(BaseAdvancementTranslations.JOURNAL_TUTORIAL_DESC, "All of your discoveries are recorded in your journal.");
+        add("advancements.toast.task", "New Journal Entry");
+        add("argument.entity.options.advancements.description", "Players with journal entries");
+        add("chat.type.advancement.challenge", "%s has added the challenge %s to their journal");
+        add("chat.type.advancement.goal", "%s has added the goal %s to their journal");
+        add("chat.type.advancement.task", "%s has added %s to their journal");
+        add("demo.help.fullWrapped", "This demo will last 5 in-game days (about 1 hour and 40 minutes of real time). Check your journal for hints! Have fun!");
+        add("gamerule.announceAdvancements", "Announce new journal entries");
+        add("gui.advancements", "Journal");
+        add("key.advancements", "Journal");
+        add("telemetry.event.advancement_made.description", "Understanding the context behind receiving an journal entry can help us better understand and improve the progression of the game.");
+        add("telemetry.event.advancement_made.title", "New Journal Entry");
+    }
+
+    private void addAdvancement(String key, String value)
+    {
+        add(MedievalismConstants.MOD_ID + "." + key, value);
     }
 }
