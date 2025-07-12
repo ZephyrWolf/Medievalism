@@ -30,9 +30,15 @@ import org.slf4j.Logger;
 public class MedievalismMod {
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public MedievalismMod(IEventBus bus, ModContainer ignoredModContainer) {
-        bus.addListener(this::commonSetup);
+    public MedievalismMod(IEventBus bus, ModContainer ignoredModContainer)
+    {
+        registerCommon(bus);
+        registerServer(bus);
+        registerClient(bus);
+    }
 
+    private void registerCommon(IEventBus bus)
+    {
         RegistryRegistration.setup(bus);
         PackRegistration.register(bus);
         CriteriaTriggersRegistration.register(bus);
@@ -49,30 +55,19 @@ public class MedievalismMod {
         BlockEntityRegistration.register(bus);
         CreativeTabRegistration.register(bus);
         MalleableMaterialRegistration.register(bus);
-        ClientColoursRegistration.register(bus);
-
-        bus.addListener(this::registerCapabilities);
+        CapabilitiesRegistration.register(bus);
     }
 
-    private void registerCapabilities(final RegisterCapabilitiesEvent event)
+    private void registerServer(IEventBus bus)
     {
-        /*
-        event.registerItem(
-                Capabilities.ItemHandler.ITEM,
-                (itemStack, context) -> {
-                    ItemStackHandler items = new ItemStackHandler(4);
-                    var dataMap = itemStack.getComponents();
-                    var container = dataMap.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
-                    for (int slot = 0; slot < container.getSlots(); slot++) {
-                        items.setStackInSlot(slot, container.getStackInSlot(slot));
-                    }
-                    return items;
-                    },
-                BlockRegistration.GATHERERS_JAR_ITEM
-        );
-        */
+
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
+    // This approach may still crash in a server environment
+    private void registerClient(IEventBus bus)
+    {
+        ClientColoursRegistration.register(bus);
+        ClientMenuScreenRegistration.register(bus);
+        ClientExtensionsRegistration.register(bus);
     }
 }

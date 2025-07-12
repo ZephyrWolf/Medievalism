@@ -21,28 +21,22 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public final class MenuRegistration {
-    public static final DeferredRegister<MenuType<?>> MENUS =
-            DeferredRegister.create(Registries.MENU, MedievalismConstants.MOD_ID);
+public final class MenuRegistration
+{
+    public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(Registries.MENU, MedievalismConstants.MOD_ID);
 
-    public static final Supplier<MenuType<StoneBenchMenu>> STONE_BENCH_MENU =
-            registerMenuType("stone_bench_menu", StoneBenchMenu::new);
+    public static final Supplier<MenuType<StoneBenchMenu>> STONE_BENCH_MENU = registerMenuType("stone_bench_menu", StoneBenchMenu::new);
 
-    public static final Supplier<MenuType<GatherersJarMenu>> GATHERERS_JAR_MENU =
-            registerMenuType("gatherers_jar_menu", GatherersJarMenu::new);
+    public static final Supplier<MenuType<GatherersJarMenu>> GATHERERS_JAR_MENU = registerMenuType("gatherers_jar_menu", GatherersJarMenu::new);
+    public static final Supplier<MenuType<KeepersCrockMenu>> KEEPERS_CROCK_MENU = registerMenuType("keepers_crock_menu", KeepersCrockMenu::new);
+    public static final Supplier<MenuType<SettlersPotMenu>> SETTLERS_POT_MENU = registerMenuType("settlers_pot_menu", SettlersPotMenu::new);
 
-    public static final Supplier<MenuType<KeepersCrockMenu>> KEEPERS_CROCK_MENU =
-            registerMenuType("keepers_crock_menu", KeepersCrockMenu::new);
-
-    public static final Supplier<MenuType<SettlersPotMenu>> SETTLERS_POT_MENU =
-            registerMenuType("settlers_pot_menu", SettlersPotMenu::new);
-
-    @SuppressWarnings("SameParameterValue")
-    private static <T extends AbstractContainerMenu> Supplier<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
-        return MENUS.register(name, () -> new MenuType<>(factory, FeatureFlags.DEFAULT_FLAGS));
+    public static void register(IEventBus eventBus)
+    {
+        MENUS.register(eventBus);
     }
 
-    public static void register(IEventBus eventBus) {
-        MENUS.register(eventBus);
+    private static <T extends AbstractContainerMenu> Supplier<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
+        return MENUS.register(name, () -> new MenuType<>(factory, FeatureFlags.DEFAULT_FLAGS));
     }
 }
