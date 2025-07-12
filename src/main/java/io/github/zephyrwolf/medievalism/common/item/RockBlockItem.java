@@ -99,6 +99,55 @@ public class RockBlockItem extends BlockItem
                     SoundSource.PLAYERS,
                     0.9f + 0.2f * rand.nextFloat(),
                     0.9f + 0.2f * rand.nextFloat());
+            if (FMLEnvironment.dist == Dist.CLIENT
+                    && pLevel.isClientSide()
+                    && pLivingEntity instanceof Player player
+                    && player == Minecraft.getInstance().player)
+            {
+                ClientLevel clientLevel = (ClientLevel) pLevel;
+                float yaw;
+                if (Minecraft.getInstance().options.getCameraType() == CameraType.FIRST_PERSON)
+                {
+                    // Spawns from head pos 1st person
+                    yaw = pLivingEntity.yHeadRot * ((float)Math.PI / 180F);
+                }
+                else
+                {
+                    // Spawns from body pos 3rd person
+                    yaw = pLivingEntity.yBodyRot * ((float)Math.PI / 180F);
+                }
+                ParticleTools.addParticleClient(
+                        clientLevel,
+                        player,
+                        ParticleTypeRegistration.KNAP_DEBRIS.get(),
+                        pLivingEntity.getX() - Mth.sin(yaw) * 0.6f,
+                        pLivingEntity.getY() + 1.3,
+                        pLivingEntity.getZ() + Mth.cos(yaw) * 0.6F,
+                        rand.nextDouble() - 0.4 - Mth.sin(yaw) * 0.1f,
+                        rand.nextDouble(),
+                        rand.nextDouble() - 0.4 + Mth.cos(yaw) * 0.1F
+                );
+            }
+            else if (FMLEnvironment.dist == Dist.DEDICATED_SERVER
+                    && !pLevel.isClientSide()
+                    && pLivingEntity instanceof Player player)
+            {
+                ServerLevel serverLevel = (ServerLevel) pLevel;
+                float yaw = pLivingEntity.yBodyRot * ((float)Math.PI / 180F);
+                ParticleTools.sendParticlesServer(
+                        serverLevel,
+                        player,
+                        ParticleTypeRegistration.KNAP_DEBRIS.get(),
+                        pLivingEntity.getX() - Mth.sin(yaw) * 0.6f,
+                        pLivingEntity.getY() + 1.3,
+                        pLivingEntity.getZ() + Mth.cos(yaw) * 0.6F,
+                        0,
+                        rand.nextDouble() - 0.4 - Mth.sin(yaw) * 0.1f,
+                        rand.nextDouble(),
+                        rand.nextDouble() - 0.4 + Mth.cos(yaw) * 0.1F,
+                        0.0
+                );
+            }
         }
     }
 

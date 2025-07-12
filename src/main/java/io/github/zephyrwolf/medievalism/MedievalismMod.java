@@ -9,6 +9,8 @@ import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.blockitem.BlockItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.CreativeTabRegistration;
 import io.github.zephyrwolf.medievalism.registration.capabilities.CapabilitiesRegistration;
+import io.github.zephyrwolf.medievalism.registration.particles.ClientParticleProviderRegistration;
+import io.github.zephyrwolf.medievalism.registration.particles.ParticleTypeRegistration;
 import io.github.zephyrwolf.medievalism.registration.render.ClientColoursRegistration;
 import io.github.zephyrwolf.medievalism.registration.render.ClientExtensionsRegistration;
 import io.github.zephyrwolf.medievalism.registration.menu.ClientMenuScreenRegistration;
@@ -57,6 +59,8 @@ public class MedievalismMod {
         MalleableMaterialRegistration.register(bus);
         CapabilitiesRegistration.register(bus);
         SoundsRegistration.register(bus);
+        ParticleTypeRegistration.register(bus);
+        ClientParticleProviderRegistration.register(bus);
     }
 
     private void registerServer(IEventBus bus)

@@ -1,3 +1,6 @@
+TODO Move Magic Variables out of all of the rock stuff
+
+
 Currently Working on
 World gen stone
 Fire Lay
@@ -9,6 +12,7 @@ quicklime
 limestone
 Firewood
 firepit stuff
+TODO Change rocks over to my stone types
 
 ERROR
 TODO [12:00:12] [Render thread/WARN] [minecraft/ClientRecipeBook]: Unknown recipe category: medievalism:in_world/medievalism:campfire
@@ -31,6 +35,7 @@ TODO dogbane is too common
 TODO Clay is too common
 TODO Overhaul flower pot recipe
 TODO Work on missing models and textures
+TODO Clay in soil does not have a snowy top when covered by a snow layer
 
 Code Cleanup
 TODO For XXXBlocKStatesProvider
