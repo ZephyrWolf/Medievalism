@@ -2,8 +2,8 @@ package io.github.zephyrwolf.medievalism.data.advancements;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.advancements.critereon.PlayerStatsTrigger;
-import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
-import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.tools.TextTools;
 import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.*;

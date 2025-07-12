@@ -1,8 +1,8 @@
 package io.github.zephyrwolf.medievalism.data.item;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.content.blockitem.BlockItemRegistration;
-import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.blockitem.BlockItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;

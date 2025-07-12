@@ -2,7 +2,7 @@ package io.github.zephyrwolf.medievalism.data;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.MedievalismMod;
-import io.github.zephyrwolf.medievalism.content.loot.LootContextParamSetRegistration;
+import io.github.zephyrwolf.medievalism.registration.loot.LootContextParamSetRegistration;
 import io.github.zephyrwolf.medievalism.data.advancements.BaseAdvancementsProvider;
 import io.github.zephyrwolf.medievalism.data.advancements.BaseAdvancementsProviderCopperAge;
 import io.github.zephyrwolf.medievalism.data.advancements.BaseAdvancementsProviderStoneAge;

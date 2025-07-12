@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism.data.advancements;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.data.lang.BaseAdvancementTranslations;
 import io.github.zephyrwolf.medievalism.tools.TextTools;
 import net.minecraft.advancements.Advancement;

@@ -2,7 +2,7 @@ package io.github.zephyrwolf.medievalism.common.block;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.blockitem.DryingBlockItem;
-import io.github.zephyrwolf.medievalism.content.loot.LootContextParamSetRegistration;
+import io.github.zephyrwolf.medievalism.registration.loot.LootContextParamSetRegistration;
 import io.github.zephyrwolf.medievalism.tools.WarmthTools;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;

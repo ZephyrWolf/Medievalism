@@ -1,12 +1,13 @@
 package io.github.zephyrwolf.medievalism.data.advancements;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
-import io.github.zephyrwolf.medievalism.content.item.ItemTagCatalog;
+import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.data.lang.BaseAdvancementTranslations;
 import io.github.zephyrwolf.medievalism.tools.TextTools;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
+import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementType;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;

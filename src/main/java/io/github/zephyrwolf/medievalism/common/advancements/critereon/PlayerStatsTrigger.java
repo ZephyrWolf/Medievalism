@@ -2,7 +2,7 @@ package io.github.zephyrwolf.medievalism.common.advancements.critereon;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.github.zephyrwolf.medievalism.content.advancements.CriteriaTriggersRegistration;
+import io.github.zephyrwolf.medievalism.registration.advancements.CriteriaTriggersRegistration;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.ContextAwarePredicate;
 import net.minecraft.advancements.critereon.EntityPredicate;

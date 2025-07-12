@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism.tools;
 
 import io.github.zephyrwolf.medievalism.common.block.TwigsBlock;
-import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

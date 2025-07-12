@@ -3,7 +3,7 @@ package io.github.zephyrwolf.medievalism.common.block;
 import com.mojang.serialization.MapCodec;
 import io.github.zephyrwolf.medievalism.common.blockentity.HasInventory;
 import io.github.zephyrwolf.medievalism.common.blockentity.KeepersCrockBlockEntity;
-import io.github.zephyrwolf.medievalism.content.blockentity.BlockEntityRegistration;
+import io.github.zephyrwolf.medievalism.registration.blockentity.BlockEntityRegistration;
 import net.minecraft.ChatFormatting;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;

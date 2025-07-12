@@ -1,6 +1,6 @@
 package io.github.zephyrwolf.medievalism.data.loot;
 
-import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;

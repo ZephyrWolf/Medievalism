@@ -5,7 +5,7 @@ import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Decoder;
-import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.tools.SurfaceRulesTools;
 import net.minecraft.core.RegistrationInfo;
 import net.minecraft.core.WritableRegistry;

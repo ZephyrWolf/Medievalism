@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism.common.network;
 
 import io.github.zephyrwolf.medievalism.common.menu.StoneBenchMenu;
-import io.github.zephyrwolf.medievalism.content.NetworkRegistration;
+import io.github.zephyrwolf.medievalism.registration.NetworkRegistration;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.network.chat.Component;

@@ -4,9 +4,9 @@ import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.block.GatherersJarBlock;
 import io.github.zephyrwolf.medievalism.common.block.KeepersCrockBlock;
 import io.github.zephyrwolf.medievalism.common.block.SettlersPotBlock;
-import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
-import io.github.zephyrwolf.medievalism.content.blockitem.BlockItemRegistration;
-import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.registration.blockitem.BlockItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 

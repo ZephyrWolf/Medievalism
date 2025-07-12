@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism.common.item;
 
 
-import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;

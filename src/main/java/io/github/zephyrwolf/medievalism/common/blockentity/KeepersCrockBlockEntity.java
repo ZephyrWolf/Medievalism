@@ -3,7 +3,7 @@ package io.github.zephyrwolf.medievalism.common.blockentity;
 import io.github.zephyrwolf.medievalism.common.block.GatherersJarBlock;
 import io.github.zephyrwolf.medievalism.common.block.KeepersCrockBlock;
 import io.github.zephyrwolf.medievalism.common.menu.KeepersCrockMenu;
-import io.github.zephyrwolf.medievalism.content.blockentity.BlockEntityRegistration;
+import io.github.zephyrwolf.medievalism.registration.blockentity.BlockEntityRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;

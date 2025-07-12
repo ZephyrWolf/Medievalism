@@ -2,9 +2,9 @@ package io.github.zephyrwolf.medievalism.data.loot;
 
 import io.github.zephyrwolf.medievalism.common.block.FireLayBlock;
 import io.github.zephyrwolf.medievalism.common.block.TwigsBlock;
-import io.github.zephyrwolf.medievalism.content.block.BlockRegistration;
-import io.github.zephyrwolf.medievalism.content.blockitem.BlockItemRegistration;
-import io.github.zephyrwolf.medievalism.content.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.registration.blockitem.BlockItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.tools.WarmthTools;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;

@@ -2,16 +2,11 @@ package io.github.zephyrwolf.medievalism.common.advancements.critereon;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.github.zephyrwolf.medievalism.content.advancements.CriteriaTriggersRegistration;
+import io.github.zephyrwolf.medievalism.registration.advancements.CriteriaTriggersRegistration;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.stats.Stat;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
