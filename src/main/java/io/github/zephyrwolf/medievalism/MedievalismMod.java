@@ -12,6 +12,7 @@ import io.github.zephyrwolf.medievalism.registration.capabilities.CapabilitiesRe
 import io.github.zephyrwolf.medievalism.registration.render.ClientColoursRegistration;
 import io.github.zephyrwolf.medievalism.registration.render.ClientExtensionsRegistration;
 import io.github.zephyrwolf.medievalism.registration.menu.ClientMenuScreenRegistration;
+import io.github.zephyrwolf.medievalism.registration.render.ClientRenderRegistration;
 import io.github.zephyrwolf.medievalism.registration.entity.EntityEventRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.menu.MenuRegistration;

@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/client/model/HumanoidModel$ArmPose",
+      "name": "MEDIEVALISM_KNAPPING",
+      "constructor": "(ZLnet/neoforged/neoforge/client/IArmPoseTransformer;)V",
+      "parameters": {
+        "class": "io/github/zephyrwolf/medievalism/MedievalismEnumProxies",
+        "field": "KNAPPING_ARM_POSE"
+      }
+    }
+  ]
+}
