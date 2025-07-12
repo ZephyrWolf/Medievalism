@@ -252,6 +252,8 @@ public class BaseLanguageProvider extends LanguageProvider {
 
         add(SettlersPotBlock.LANG_DEFAULT_NAME, "Settler's Pot");
 
+        add("medievalism.tooltip.hard_rock.can_knap", "This rock is hard enough to knap");
+
         add("medievalism.pack.title.overhaul.client_resources", "Medievalism Overhaul - Looks");
         add("medievalism.pack.title.overhaul.server_data", "Medievalism Overhaul - Progression");
         add("medievalism.pack.source.overhaul", "Medievalism Overhaul Source");
