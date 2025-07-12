@@ -3,11 +3,9 @@ package io.github.zephyrwolf.medievalism.registration;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.resource.BuiltinRepositorySource;
 import net.minecraft.server.packs.PackType;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
-import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforgespi.language.IModInfo;
 
@@ -22,29 +20,12 @@ public final class PackRegistration
 
     private static void addBuiltinPacks(final AddPackFindersEvent event)
     {
-        if (event.getPackType() == PackType.CLIENT_RESOURCES)
-        {
-            IModInfo modInfo = ModList.get().getModContainerById(MedievalismConstants.MOD_ID).orElseThrow(() -> new IllegalArgumentException("Mod not found: " + MedievalismConstants.MOD_ID)).getModInfo();
-            Path root = modInfo.getOwningFile().getFile().getFilePath();
-            Path overhaulClientPath = root.resolve("overhaul_client");
-            event.addRepositorySource(BuiltinRepositorySource.of(event.getPackType(), overhaulClientPath));
-        }
-        else if (event.getPackType() == PackType.SERVER_DATA)  // TODO Datapacks written like this are forced!
-        {
-            //FMLLoader.getDist(); //  == FMLEnivornment.GetDist()
-            //FMLLoader.isProduction(); // is worse than FMLEnvironment.Production. use environment
-            if (FMLEnvironment.dist == Dist.CLIENT) // TODO is this going to cause problems running in a server environment?
-            { // Thread.currentThread().getThreadGroup() == SidedThreadGroups.SERVER
-                //var hi = Thread.currentThread().getThreadGroup();
-                //var s = SidedThreadGroups.SERVER;
-                //var c = SidedThreadGroups.CLIENT;
-                //var dangerous = Minecraft.getInstance().level; // Wont work, what if i am a client, connecting to a server/lan
-                // Haha very dangerous, its fucking null too hahaha, well fuck.
-                IModInfo modInfo = ModList.get().getModContainerById(MedievalismConstants.MOD_ID).orElseThrow(() -> new IllegalArgumentException("Mod not found: " + MedievalismConstants.MOD_ID)).getModInfo();
-                Path root = modInfo.getOwningFile().getFile().getFilePath();
-                Path overhaulClientPath = root.resolve("overhaul_server");
-                event.addRepositorySource(BuiltinRepositorySource.of(event.getPackType(), overhaulClientPath));
-            }
-        }
+        IModInfo modInfo = ModList.get().getModContainerById(MedievalismConstants.MOD_ID)
+                .orElseThrow(() -> new IllegalArgumentException("Mod not found: " + MedievalismConstants.MOD_ID)).getModInfo();
+        Path root = modInfo.getOwningFile().getFile().getFilePath();
+        Path overhaulClientPath = event.getPackType() == PackType.CLIENT_RESOURCES
+                ? root.resolve("overhaul_client")
+                : root.resolve("overhaul_server");
+        event.addRepositorySource(BuiltinRepositorySource.of(event.getPackType(), overhaulClientPath));
     }
 }
