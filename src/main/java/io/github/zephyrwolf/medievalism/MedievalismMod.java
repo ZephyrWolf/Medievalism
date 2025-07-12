@@ -9,9 +9,9 @@ import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.blockitem.BlockItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.CreativeTabRegistration;
 import io.github.zephyrwolf.medievalism.registration.capabilities.CapabilitiesRegistration;
-import io.github.zephyrwolf.medievalism.registration.client.ClientColoursRegistration;
-import io.github.zephyrwolf.medievalism.registration.client.ClientExtensionsRegistration;
-import io.github.zephyrwolf.medievalism.registration.client.ClientMenuScreenRegistration;
+import io.github.zephyrwolf.medievalism.registration.render.ClientColoursRegistration;
+import io.github.zephyrwolf.medievalism.registration.render.ClientExtensionsRegistration;
+import io.github.zephyrwolf.medievalism.registration.menu.ClientMenuScreenRegistration;
 import io.github.zephyrwolf.medievalism.registration.entity.EntityEventRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.menu.MenuRegistration;
@@ -22,8 +22,6 @@ import io.github.zephyrwolf.medievalism.data.DataGenRegistration;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import org.slf4j.Logger;
 
 @Mod(MedievalismConstants.MOD_ID)

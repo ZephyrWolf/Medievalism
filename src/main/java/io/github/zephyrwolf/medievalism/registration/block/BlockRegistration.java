@@ -71,6 +71,7 @@ public final class BlockRegistration {
             .pushReaction(PushReaction.DESTROY).strength(0.05f)
             .sound(SoundType.STONE).mapColor(MapColor.STONE);
 
+    // TODO Change these over to my stone types
     public static final DeferredBlock<WorldLitterBlock> ROCK = BLOCKS.registerBlock(
             "rock", RockBlock::new, rockProps);
     public static final DeferredBlock<WorldLitterBlock> SANDSTONE_ROCK = BLOCKS.registerBlock(

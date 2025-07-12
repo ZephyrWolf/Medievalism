@@ -1,10 +1,9 @@
-package io.github.zephyrwolf.medievalism.registration.client;
+package io.github.zephyrwolf.medievalism.registration.menu;
 
 import io.github.zephyrwolf.medievalism.client.screen.GatherersJarScreen;
 import io.github.zephyrwolf.medievalism.client.screen.KeepersCrockScreen;
 import io.github.zephyrwolf.medievalism.client.screen.SettlersPotScreen;
 import io.github.zephyrwolf.medievalism.client.screen.StoneBenchScreen;
-import io.github.zephyrwolf.medievalism.registration.menu.MenuRegistration;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 

@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.registration.client;
+package io.github.zephyrwolf.medievalism.registration.render;
 
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.blockitem.BlockItemRegistration;
@@ -12,6 +12,7 @@ import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 
 public final class ClientColoursRegistration
 {
+
     public static void register(IEventBus eventBus)
     {
         eventBus.addListener(ClientColoursRegistration::registerBlockColours);
