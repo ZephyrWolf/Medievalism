@@ -79,4 +79,26 @@ public class RockBlockItem extends BlockItem
         return InteractionResultHolder.consume(itemStack);
     }
 
+    @Override
+    public void onUseTick(
+            @NotNull Level pLevel,
+            @NotNull LivingEntity pLivingEntity,
+            @NotNull ItemStack pStack,
+            int pRemainingUseDuration)
+    {
+        super.onUseTick(pLevel, pLivingEntity, pStack, pRemainingUseDuration);
+        RandomSource rand = pLevel.getRandom();
+        if (pRemainingUseDuration % 10 == 2)
+        {
+            pLevel.playSound(
+                    pLivingEntity,
+                    pLivingEntity.getOnPos(),
+                    pRemainingUseDuration == 2
+                            ? SoundsRegistration.KNAP_FINAL_HIT.value()
+                            : SoundsRegistration.KNAP_HIT.value(),
+                    SoundSource.PLAYERS,
+                    0.9f + 0.2f * rand.nextFloat(),
+                    0.9f + 0.2f * rand.nextFloat());
+        }
+    }
 }

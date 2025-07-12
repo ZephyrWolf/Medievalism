@@ -18,6 +18,7 @@ import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.menu.MenuRegistration;
 import io.github.zephyrwolf.medievalism.registration.recipe.MalleableMaterialRegistration;
 import io.github.zephyrwolf.medievalism.registration.recipe.RecipeRegistration;
+import io.github.zephyrwolf.medievalism.registration.sounds.SoundsRegistration;
 import io.github.zephyrwolf.medievalism.registration.worldgen.FeatureRegistration;
 import io.github.zephyrwolf.medievalism.data.DataGenRegistration;
 import net.neoforged.bus.api.IEventBus;
@@ -55,6 +56,7 @@ public class MedievalismMod {
         CreativeTabRegistration.register(bus);
         MalleableMaterialRegistration.register(bus);
         CapabilitiesRegistration.register(bus);
+        SoundsRegistration.register(bus);
     }
 
     private void registerServer(IEventBus bus)
@@ -68,5 +70,6 @@ public class MedievalismMod {
         ClientColoursRegistration.register(bus);
         ClientMenuScreenRegistration.register(bus);
         ClientExtensionsRegistration.register(bus);
+        ClientRenderRegistration.register(bus);
     }
 }
