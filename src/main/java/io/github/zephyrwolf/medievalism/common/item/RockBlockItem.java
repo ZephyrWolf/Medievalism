@@ -101,4 +101,17 @@ public class RockBlockItem extends BlockItem
                     0.9f + 0.2f * rand.nextFloat());
         }
     }
+
+    @Override
+    public @NotNull ItemStack finishUsingItem(
+            @NotNull ItemStack pStack,
+            @NotNull Level pLevel,
+            @NotNull LivingEntity pLivingEntity)
+    {
+        if (!pLevel.isClientSide && pLivingEntity instanceof Player player)
+        {
+            player.getCooldowns().addCooldown(this, 10);
+        }
+        return pStack;
+    }
 }
