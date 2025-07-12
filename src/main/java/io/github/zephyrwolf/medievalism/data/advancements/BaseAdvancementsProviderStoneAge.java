@@ -33,11 +33,10 @@ public class BaseAdvancementsProviderStoneAge implements AdvancementProvider.Adv
                         MedievalismConstants.resource("textures/gui/advancements/paper.png"),
                         AdvancementType.TASK, true, false, false)
                 .addCriterion("has_rocks", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item()
-                                .of(ItemTagCatalog.ROCK)
-                                .of(ItemTagCatalog.LARGE_ROCK)
-                                .build()
-                ))
+                        ItemPredicate.Builder.item().of(ItemTagCatalog.ROCK).build()))
+                .addCriterion("has_large_rocks", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ItemTagCatalog.LARGE_ROCK).build()))
+                .requirements(AdvancementRequirements.Strategy.OR)
                 .save(saver, getNameId("stone_age/rock"));
 
         AdvancementHolder two_hard_rocks = Advancement.Builder.advancement()
