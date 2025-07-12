@@ -18,21 +18,23 @@ public final class ClientColoursRegistration
         eventBus.addListener(ClientColoursRegistration::registerItemColours);
     }
 
-    public static void registerBlockColours(RegisterColorHandlersEvent.Block event)
+    private static void registerBlockColours(RegisterColorHandlersEvent.Block event)
     {
         registerAverageGrassColour(event, BlockRegistration.SHRUB.get());
         registerAverageGrassColour(event, BlockRegistration.CLAY_IN_GRASS.get());
         registerAverageGrassColour(event, BlockRegistration.RED_CLAY_IN_GRASS.get());
     }
 
-    public static void registerItemColours(RegisterColorHandlersEvent.Item event)
+    private static void registerItemColours(RegisterColorHandlersEvent.Item event)
     {
         registerDefaultGrassColour(event, BlockItemRegistration.SHRUB.get());
         registerDefaultGrassColour(event, BlockItemRegistration.CLAY_IN_GRASS.get());
         registerDefaultGrassColour(event, BlockItemRegistration.RED_CLAY_IN_GRASS.get());
     }
 
-    public static void registerAverageGrassColour(RegisterColorHandlersEvent.Block event, Block block)
+    // --
+
+    private static void registerAverageGrassColour(RegisterColorHandlersEvent.Block event, Block block)
     {
         event.register(
                 (state, world, pos, tintIndex)
@@ -42,7 +44,7 @@ public final class ClientColoursRegistration
                 block);
     }
 
-    public static void registerDefaultGrassColour(RegisterColorHandlersEvent.Item event, Item item)
+    private static void registerDefaultGrassColour(RegisterColorHandlersEvent.Item event, Item item)
     {
         event.register(
                 (stack, tintIndex) -> GrassColor.getDefaultColor(),
