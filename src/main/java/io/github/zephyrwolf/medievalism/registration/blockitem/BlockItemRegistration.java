@@ -41,13 +41,14 @@ public final class BlockItemRegistration {
     public static final DeferredItem<BlockItem> TIN_ORE_BLOCK = BLOCKITEMS.registerSimpleBlockItem("tin_ore_block", BlockRegistration.TIN_ORE);
     public static final DeferredItem<BlockItem> DEEPSLATE_TIN_ORE_BLOCK = BLOCKITEMS.registerSimpleBlockItem("deepslate_tin_ore_block", BlockRegistration.DEEPSLATE_TIN_ORE);
 
-    public static final DeferredItem<RockBlockItem> ROCK = registerBlockItem("rock", RockBlockItem::new, BlockRegistration.ROCK);
+    private static final Item.Properties rockItemProps = new Item.Properties().durability(20);
+    public static final DeferredItem<RockBlockItem> ROCK = registerBlockItem("rock", RockBlockItem::new, BlockRegistration.ROCK, rockItemProps);
     public static final DeferredItem<RockBlockItem> SANDSTONE_ROCK = registerBlockItem("sandstone_rock", RockBlockItem::new, BlockRegistration.SANDSTONE_ROCK);
     public static final DeferredItem<RockBlockItem> RED_SANDSTONE_ROCK = registerBlockItem("red_sandstone_rock", RockBlockItem::new, BlockRegistration.RED_SANDSTONE_ROCK);
-    public static final DeferredItem<RockBlockItem> MOSSY_ROCK = registerBlockItem("mossy_rock", RockBlockItem::new, BlockRegistration.MOSSY_ROCK);
-    public static final DeferredItem<RockBlockItem> LIGHTER_ROCK = registerBlockItem("lighter_rock", RockBlockItem::new, BlockRegistration.LIGHTER_ROCK);
-    public static final DeferredItem<RockBlockItem> SNOWY_ROCK = registerBlockItem("snowy_rock", RockBlockItem::new, BlockRegistration.SNOWY_ROCK);
-    public static final DeferredItem<RockBlockItem> ICE_ROCK = registerBlockItem("ice_rock", RockBlockItem::new, BlockRegistration.ICE_ROCK);
+    public static final DeferredItem<RockBlockItem> MOSSY_ROCK = registerBlockItem("mossy_rock", RockBlockItem::new, BlockRegistration.MOSSY_ROCK, rockItemProps);
+    public static final DeferredItem<RockBlockItem> LIGHTER_ROCK = registerBlockItem("lighter_rock", RockBlockItem::new, BlockRegistration.LIGHTER_ROCK, rockItemProps);
+    public static final DeferredItem<RockBlockItem> SNOWY_ROCK = registerBlockItem("snowy_rock", RockBlockItem::new, BlockRegistration.SNOWY_ROCK, rockItemProps);
+    public static final DeferredItem<RockBlockItem> ICE_ROCK = registerBlockItem("ice_rock", RockBlockItem::new, BlockRegistration.ICE_ROCK, rockItemProps);
 
     public static final DeferredItem<BlockItem> LARGE_ROCK = registerBlockItem("large_rock", BlockItem::new, BlockRegistration.LARGE_ROCK);
     public static final DeferredItem<BlockItem> SANDSTONE_LARGE_ROCK = registerBlockItem("sandstone_large_rock", BlockItem::new, BlockRegistration.SANDSTONE_LARGE_ROCK);

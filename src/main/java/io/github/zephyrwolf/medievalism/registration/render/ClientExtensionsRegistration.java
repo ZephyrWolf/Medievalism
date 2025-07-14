@@ -1,6 +1,6 @@
 package io.github.zephyrwolf.medievalism.registration.render;
 
-import io.github.zephyrwolf.medievalism.client.item.RockBlockItemClientExtension;
+import io.github.zephyrwolf.medievalism.client.item.KnappingItemAnimationClientExtension;
 import io.github.zephyrwolf.medievalism.registration.blockitem.BlockItemRegistration;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
@@ -14,7 +14,7 @@ public final class ClientExtensionsRegistration
 
     private static void registerClientItemExtensions(RegisterClientExtensionsEvent event)
     {
-        event.registerItem(new RockBlockItemClientExtension(),
+        event.registerItem(new KnappingItemAnimationClientExtension(),
                 BlockItemRegistration.ROCK.get(),
                 BlockItemRegistration.MOSSY_ROCK.get(),
                 BlockItemRegistration.LIGHTER_ROCK.get(),

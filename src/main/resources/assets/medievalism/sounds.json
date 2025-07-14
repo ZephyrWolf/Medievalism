@@ -1,6 +1,6 @@
 {
-	"entity.knap.hit": {
-		"subtitle": "medievalism.sound.entity.knap.hit",
+	"entity.inhand_knap.hit": {
+		"subtitle": "medievalism.sound.entity.inhand_knap.hit",
 		"sounds": [
 			{ "name": "medievalism:knap_hit_1" },
 			{ "name": "medievalism:knap_hit_2" },
@@ -8,12 +8,18 @@
 			{ "name": "medievalism:knap_hit_4" }
 		]
 	},
-	"entity.knap.final_hit": {
-		"subtitle": "medievalism.sound.entity.knap.hit",
+	"entity.inhand_knap.final_hit": {
+		"subtitle": "medievalism.sound.entity.inhand_knap.final_hit",
 		"sounds": [
 			{ "name": "medievalism:knap_final_hit_1" },
 			{ "name": "medievalism:knap_final_hit_2" },
 			{ "name": "medievalism:knap_final_hit_3" }
+		]
+	},
+	"entity.inhand_knap.fail": {
+		"subtitle": "medievalism.sound.entity.inhand_knap.fail",
+		"sounds": [
+			{ "name": "medievalism:error" }
 		]
 	},
 	"entity.knap.craft": {

@@ -39,12 +39,17 @@ public class BaseLanguageProvider extends LanguageProvider {
         add(BlockItemRegistration.CHERRY_BRANCH.get(), "Cherry Branch");
 
         add(BlockItemRegistration.ROCK.get(), "Rock");
+        add(BlockItemRegistration.ROCK.get().getDescriptionId() + ".hammerstone", "Hammerstone");
         add(BlockItemRegistration.SANDSTONE_ROCK.get(), "Sandstone Rock");
         add(BlockItemRegistration.RED_SANDSTONE_ROCK.get(), "Red Sandstone Rock");
         add(BlockItemRegistration.MOSSY_ROCK.get(), "Mossy Rock");
+        add(BlockItemRegistration.MOSSY_ROCK.get().getDescriptionId() + ".hammerstone", "Mossy Hammerstone");
         add(BlockItemRegistration.LIGHTER_ROCK.get(), "Lighter Rock");
+        add(BlockItemRegistration.LIGHTER_ROCK.get().getDescriptionId() + ".hammerstone", "Lighter Hammerstone");
         add(BlockItemRegistration.SNOWY_ROCK.get(), "Snowy Rock");
+        add(BlockItemRegistration.SNOWY_ROCK.get().getDescriptionId() + ".hammerstone", "Snowy Hammerstone");
         add(BlockItemRegistration.ICE_ROCK.get(), "Ice Rock");
+        add(BlockItemRegistration.ICE_ROCK.get().getDescriptionId() + ".hammerstone", "Icy Hammerstone");
 
         add(BlockItemRegistration.LARGE_ROCK.get(), "Large Rock");
         add(BlockItemRegistration.SANDSTONE_LARGE_ROCK.get(), "Sandstone Large Rock");
@@ -258,6 +263,12 @@ public class BaseLanguageProvider extends LanguageProvider {
         add("medievalism.pack.title.overhaul.server_data", "Medievalism Overhaul - Progression");
         add("medievalism.pack.source.overhaul", "Medievalism Overhaul Source");
         add("medievalism.networking.failed", "Medievalism crashed you :(");
+
+        //region Sounds
+        add("medievalism.sound.entity.inhand_knap.hit", "In-hand Knap Hit");
+        add("medievalism.sound.entity.inhand_knap.final_hit", "In-hand Knap Final Hit");
+        add("medievalism.sound.entity.inhand_knap.fail", "In-hand Knap Fail");
+        //endregion
     }
 
     private void addAdvancementTranslations()
