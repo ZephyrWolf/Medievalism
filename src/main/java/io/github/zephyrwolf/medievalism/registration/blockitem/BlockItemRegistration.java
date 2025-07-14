@@ -5,7 +5,7 @@ import io.github.zephyrwolf.medievalism.common.blockitem.ContainerItemBlockItem;
 import io.github.zephyrwolf.medievalism.common.blockitem.DryingBlockItem;
 import io.github.zephyrwolf.medievalism.common.blockitem.DryingBrickBlockItem;
 import io.github.zephyrwolf.medievalism.common.blockitem.GatherersJarBlockItem;
-import io.github.zephyrwolf.medievalism.common.item.RockBlockItem;
+import io.github.zephyrwolf.medievalism.common.blockitem.RockBlockItem;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;

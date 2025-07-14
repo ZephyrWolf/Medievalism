@@ -1,6 +1,7 @@
 package io.github.zephyrwolf.medievalism.tools;
 
-import net.minecraft.world.InteractionHand;
+import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -13,12 +14,10 @@ public final class PlayerInventoryTools
      */
     public static int addStackToPlayerInventory(@NotNull Player pPlayer, @NotNull ItemStack pStack, boolean includeOffhand, boolean pSendPacket, boolean simulate)
     {
-        Inventory inv = pPlayer.getInventory();
         ItemStack toInsert = simulate ? pStack.copy() : pStack; // defensive copy
-        int pStackCount = toInsert.getCount();
         int slotId = includeOffhand ? Inventory.SLOT_OFFHAND : Inventory.NOT_FOUND_INDEX;
 
-        pStackCount = addStackToPlayerInventorySlot(pPlayer, toInsert, slotId, pSendPacket, simulate);
+        int pStackCount = addStackToPlayerInventorySlot(pPlayer, toInsert, slotId, pSendPacket, simulate);
         for (slotId = 0; slotId < Inventory.INVENTORY_SIZE && pStackCount > 0; slotId++)
         {
             pStackCount = addStackToPlayerInventorySlot(pPlayer, toInsert, slotId, pSendPacket, simulate);
@@ -39,7 +38,9 @@ public final class PlayerInventoryTools
         {
             if (!simulate)
             {
-                pPlayer.getInventory().setItem(slotId, toInsert); // toInsert.copy());
+                pPlayer.getInventory().setItem(slotId, toInsert);
+                if (pSendPacket)
+                { notifyChangedSlot(pPlayer, slotId); }
             }
             return 0; // Moved the entire stack
         }
@@ -55,10 +56,20 @@ public final class PlayerInventoryTools
                 {
                     stackInSlot.grow(transferAmt);
                     toInsert.shrink(transferAmt);
+                    if (pSendPacket)
+                    { notifyChangedSlot(pPlayer, slotId); }
                 }
-                //if (toInsertCount <= space) return 0;
             }
         }
         return pStackCount;
     }
+
+    public static void notifyChangedSlot(Player pPlayer, int slotId)
+    {
+        if (pPlayer instanceof ServerPlayer serverPlayer)
+        { // I got sending this packet from Inventory.placeItemBackInInventory which this method is based upon
+            serverPlayer.connection.send(new ClientboundContainerSetSlotPacket(-2, 0, slotId, pPlayer.getInventory().getItem(slotId)));
+        }
+    }
+
 }

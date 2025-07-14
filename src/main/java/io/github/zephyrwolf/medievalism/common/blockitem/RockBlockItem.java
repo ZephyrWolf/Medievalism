@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.common.item;
+package io.github.zephyrwolf.medievalism.common.blockitem;
 
 import io.github.zephyrwolf.medievalism.common.components.DummyDataComponent;
 import io.github.zephyrwolf.medievalism.registration.components.DataComponentTypeRegistration;
@@ -116,7 +116,7 @@ public class RockBlockItem extends BlockItem
             @NotNull InteractionHand pHand)
     {
         ItemStack itemStack = pPlayer.getItemInHand(pHand);
-        if (pHand == InteractionHand.OFF_HAND) return InteractionResultHolder.pass(itemStack);
+        // if (pHand == InteractionHand.OFF_HAND) return InteractionResultHolder.pass(itemStack);
 
         KnapAction action = getKnapAction(pPlayer, pHand);
         if (action == KnapAction.NO_ACTION && pLevel.isClientSide())

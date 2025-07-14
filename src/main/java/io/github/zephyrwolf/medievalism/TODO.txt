@@ -2,47 +2,49 @@ ERROR
 TODO [12:00:12] [Render thread/WARN] [minecraft/ClientRecipeBook]: Unknown recipe category: medievalism:in_world/medievalism:campfire
 
 Bugs
-TODO Seperate thatch lang :( I want item: Thatch and Block: Thatch Fire Lay
 TODO adding or removing from InteractBlock does not cause the players arm to move :(
-TODO pickblock on unfired items is always wrong
-TODO twigs flash weird when adding; think this because client is doing things it shouldn't
+TODO pick block on unfired items is always wrong
+TODO twigs flash weird when adding; think this because client is doing things it shouldn't --------------------
 TODO Trees place dirt when in clay patch
 TODO wild yams should be tinted
-TODO Can transform a block even if the player is within it
 TODO create a tag to control what blocks world litter can spawn on
-TODO worldlitter should generate in water too since they can be waterlogged (e.g. river/forest overlap not ocean)
-TODO vanilla allows combining damaged items to repair... i need that to not happen for rocks... (actually how can i stop alltogeather for overhaul?!)
+TODO world litter should generate in water too since they can be waterlogged (e.g. river/forest overlap not ocean)
+TODO vanilla allows combining damaged items to repair... i need that to not happen for rocks... (actually how can I stop all togeather for overhaul?!)
 TODO When knapping 3rd person, main hand jumps up for a moment
+TODO When knap fail, the main hand item shifts to the middle of the screen (noticed when on server)
+TODO In hand knapping doesn't check if the result can fit into the inventory before knapping, or should we just toss it?
 
 Balancing
-TODO Seperate red and blue clay by biome
+TODO Separate thatch lang :( I want item: Thatch and Block: Thatch Fire Lay
+TODO Separate red and blue clay by biome
 TODO WILD yams are too common
 TODO dogbane is too common
 TODO Clay is too common
 TODO Overhaul flower pot recipe
 TODO Work on missing models and textures
 TODO Clay in soil does not have a snowy top when covered by a snow layer
+TODO Twigs & Branches are too clustered
 
 Code Cleanup
-TODO For XXXBlocKStatesProvider
+TODO For XXXBlockStatesProvider
 -make a common methods for BASE and Overhaul
 -rename model functions to be distinct for registration methods
-TODO Seperate ItemModels from BlockItemModels in registration into another class
+TODO Separate ItemModels from BlockItemModels in registration into another class
 TODO add this to everywhere pPlayer.awardStat(Stats.ITEM_USED.get(this));
-TODO seperate item and itemblock ItemModels
+TODO separate item and item block ItemModels
 TODO BlockBreakTrigger and BlockBreakingTrigger are identical. Can I just make them the same file?
 
 Planned Tech
-TODO add recipe handler for inhand knapping
+TODO add recipe handler for in-hand knapping
 TODO add chopped wood
 TODO add chopping block with render!
 TODO add chopped wood / firewood pile
-TODO add charcoal
-TODO Fire Lay
--On light goes to Campfire:TEMP until firepit is done... but I should do rest of this list first
+TODO add charcoal -block -Charcoal Mound
+TODO Fire Lay -On light goes to Campfire:TEMP until firepit is done... but I should do rest of this list first
 TODO clay crucible
 TODO birch pot
 TODO quicklime
+TODO Rework Stone Bench -> Stone Anvil (not for knapping) + Work Mat??? (knapping and weaving)
 
 Planned World Gen
 TODO World gen stone
@@ -50,15 +52,21 @@ TODO Change rocks over to my stone types
 TODO Shrub World Gen
 TODO Add Wild Grass
 
+Crops & Wild Crops
+TODO Yams
+TODO Oats
+TODO Barley
+TODO Flax
+TODO Potato
+TODO Beetroot
+TODO Wheat // Maybe not since it can be found in villages
+
 // Add Drying
 
 ADD DRYING
 Wet packed mud
 Wet Daub Block
 recipes for daub and packed stuff including placing the wet bricks in world to dry
-
-Review Blocks
--Stone Bench
 
 Planned Blocks
 -Chopping Block
@@ -72,25 +80,6 @@ Planned Blocks
     -Raspberry
     -Blueberry
     -Strawberry. different model, its a ground cover
--Crop Yams
--Crop Oats
--Crop Barley
--Crop Flax
--Wild Potato
--Wild Beetroot
--Wild Potato
--Wild Oats
--Wild Wheat // Maybe not since it can be found in villages
--Wild Barley
--Wild Flax
 
--Bloomery
--Charcoal Mound
--Firelay
--Pit Kiln
-
-Textures Exist For
+Abandoned Textures Exist For
 -Barrel
-
-THOUGHTS
-Crucuible: we gonna use gatherers jar? and crucible be better material?
