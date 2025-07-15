@@ -85,7 +85,7 @@ public class KnappingItemAnimationClientExtension implements IClientItemExtensio
         Player player = Minecraft.getInstance().player;
         if (player == null
                 || !player.isUsingItem()
-                || !player.getUseItem().is(ItemTagCatalog.INHAND_KNAP_TOOL))
+                || !player.getUseItem().is(ItemTagCatalog.KNAP_TOOL))
         { return; }
 
         HumanoidArm arm = (player.getMainArm() == HumanoidArm.RIGHT) == (event.getHand() == InteractionHand.MAIN_HAND)

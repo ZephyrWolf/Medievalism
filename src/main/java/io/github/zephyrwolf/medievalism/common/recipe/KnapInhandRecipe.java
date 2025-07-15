@@ -24,7 +24,7 @@ public record KnapInhandRecipe(@Nonnull String group, @Nonnull Optional<Ingredie
     @Override
     public TagKey<Item> getToolTag() { return ToolTag(); }
 
-    public static TagKey<Item> ToolTag() { return ItemTagCatalog.INHAND_KNAP_TOOL; }
+    public static TagKey<Item> ToolTag() { return ItemTagCatalog.KNAP_TOOL; }
 
     @Override
     public Ingredient getIngredient() { return ingredient; }

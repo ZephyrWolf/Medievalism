@@ -24,14 +24,10 @@ public final class ItemTagCatalog
     public static final TagKey<Item> TINDER = tag("tinder");
 
     public static final TagKey<Item> BARK = tag("bark");
-    public static final TagKey<Item> CLAY_FLUX = tag("clay_flux"); // wood_ash & potash // TODO Is this the right name
+    public static final TagKey<Item> CLAY_FLUX = tag("clay_flux"); // wood_ash & potash // TODO Is this the right name for forge?
 
-    public static final TagKey<Item> HAMMER = tag("hammer");
-    public static final TagKey<Item> AWL = tag("awl");
-    public static final TagKey<Item> KNIFE = tag("knife");
-
-    public static final TagKey<Item> INHAND_KNAP_TOOL = tag("inhand_knap_tool");
-    // public static final TagKey<Item> INHAND_SCRAP_TOOL = tag("inhand_scrap_tool");
+    public static final TagKey<Item> CARVING_TOOL = tag("carving_tool");
+    public static final TagKey<Item> KNAP_TOOL = tag("knap_tool");
 
     private static TagKey<Item> tag(String name)
     {

@@ -139,15 +139,11 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
                 ItemRegistration.POTASH.get()
         );
 
-        tag(ItemTagCatalog.HAMMER).add(
-                ItemRegistration.HAMMERSTONE.get()
-        );
-
-        tag(ItemTagCatalog.KNIFE).add(
+        tag(ItemTagCatalog.CARVING_TOOL).add(
                 ItemRegistration.LUNATE.get()
         );
 
-        tag(ItemTagCatalog.INHAND_KNAP_TOOL).addTag(ItemTagCatalog.HARD_ROCK);
+        tag(ItemTagCatalog.KNAP_TOOL).addTag(ItemTagCatalog.HARD_ROCK);
     }
 
     public void registerCommonModTags() {

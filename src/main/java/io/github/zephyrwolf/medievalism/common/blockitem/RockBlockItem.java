@@ -315,7 +315,7 @@ public class RockBlockItem extends BlockItem
     private static boolean couldKnap(@NotNull ItemStack stack)
     {
         //return stack.getItem() instanceof RockBlockItem;
-        return stack.is(ItemTagCatalog.INHAND_KNAP_TOOL);
+        return stack.is(ItemTagCatalog.KNAP_TOOL);
     }
 
     /*

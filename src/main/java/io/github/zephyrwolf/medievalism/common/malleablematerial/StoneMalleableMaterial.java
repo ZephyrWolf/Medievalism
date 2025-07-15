@@ -18,7 +18,7 @@ public class StoneMalleableMaterial extends MalleableMaterialType
     @Override
     public boolean validTool(ItemStack stack)
     {
-        return !stack.isEmpty() && stack.is(ItemTagCatalog.HAMMER);
+        return !stack.isEmpty() && stack.is(ItemTagCatalog.KNAP_TOOL);
     }
 
     @Override

@@ -49,22 +49,22 @@ public final class BaseShapelessRecipeProvider {
                 .save(recipeOutput, MedievalismConstants.resource("hammerstone"));
         // Lunate
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.LUNATE)
-                .requires(ItemTagCatalog.HAMMER)
+                .requires(ItemTagCatalog.KNAP_TOOL)
                 .requires(ItemTagCatalog.HARD_ROCK)
-                .unlockedBy("has_hammer", RecipeTools.itemPredicateOf(ItemTagCatalog.HAMMER))
+                .unlockedBy("has_hammer", RecipeTools.itemPredicateOf(ItemTagCatalog.KNAP_TOOL))
                 .save(recipeOutput, MedievalismConstants.resource("lunate"));
         // Fire Starter
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.FIRE_STARTER)
                 .requires(Items.STICK)
                 .requires(Items.STICK)
-                .requires(ItemTagCatalog.KNIFE)
-                .unlockedBy("has_knife", RecipeTools.itemPredicateOf(ItemTagCatalog.KNIFE))
+                .requires(ItemTagCatalog.CARVING_TOOL)
+                .unlockedBy("has_knife", RecipeTools.itemPredicateOf(ItemTagCatalog.CARVING_TOOL))
                 .save(recipeOutput, MedievalismConstants.resource("fire_starter"));
         // Digging Stick TODO Temp recipe, make handle and then sharpen handle?
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.DIGGING_STICK)
                 .requires(ItemTagCatalog.BRANCH)
-                .requires(ItemTagCatalog.KNIFE)
-                .unlockedBy("has_knife", RecipeTools.itemPredicateOf(ItemTagCatalog.KNIFE))
+                .requires(ItemTagCatalog.CARVING_TOOL)
+                .unlockedBy("has_knife", RecipeTools.itemPredicateOf(ItemTagCatalog.CARVING_TOOL))
                 .save(recipeOutput, MedievalismConstants.resource("digging_stick"));
     }
 
@@ -116,28 +116,28 @@ public final class BaseShapelessRecipeProvider {
                 .requires(Items.WHEAT)
                 .requires(Items.WHEAT)
                 .requires(Items.WHEAT)
-                .requires(ItemTagCatalog.HAMMER)
+                //.requires(ItemTagCatalog.HAMMER)
                 .unlockedBy("has_wheat", RecipeTools.itemPredicateOf(Items.WHEAT))
                 .save(recipeOutput, MedievalismConstants.resource("cracked_wheat_shapeless"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistration.CRACKED_BARLEY)
                 .requires(ItemRegistration.BARLEY)
                 .requires(ItemRegistration.BARLEY)
                 .requires(ItemRegistration.BARLEY)
-                .requires(ItemTagCatalog.HAMMER)
+                //.requires(ItemTagCatalog.HAMMER)
                 .unlockedBy("has_barley", RecipeTools.itemPredicateOf(ItemRegistration.BARLEY))
                 .save(recipeOutput, MedievalismConstants.resource("cracked_barley_shapeless"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistration.ROLLED_OATS)
                 .requires(ItemRegistration.OATS)
                 .requires(ItemRegistration.OATS)
                 .requires(ItemRegistration.OATS)
-                .requires(ItemTagCatalog.HAMMER)
+                //.requires(ItemTagCatalog.HAMMER)
                 .unlockedBy("has_oat", RecipeTools.itemPredicateOf(ItemRegistration.OATS))
                 .save(recipeOutput, MedievalismConstants.resource("rolled_oats_shapeless"));
         // TODO Should I have different types of flour and bread?
         // Flour
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistration.FLOUR)
                 .requires(ItemTagCatalog.CAN_CRAFT_FLOUR)
-                .requires(ItemTagCatalog.HAMMER)
+                //.requires(ItemTagCatalog.HAMMER)
                 .group("flour")
                 .unlockedBy("can_make_flour", RecipeTools.itemPredicateOf(ItemTagCatalog.CAN_CRAFT_FLOUR))
                 .save(recipeOutput, MedievalismConstants.resource("flour"));
