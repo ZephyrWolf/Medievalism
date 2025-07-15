@@ -30,6 +30,9 @@ public final class ItemTagCatalog
     public static final TagKey<Item> AWL = tag("awl");
     public static final TagKey<Item> KNIFE = tag("knife");
 
+    public static final TagKey<Item> INHAND_KNAP_TOOL = tag("inhand_knap_tool");
+    // public static final TagKey<Item> INHAND_SCRAP_TOOL = tag("inhand_scrap_tool");
+
     private static TagKey<Item> tag(String name)
     {
         return ItemTags.create(MedievalismConstants.resource(name));

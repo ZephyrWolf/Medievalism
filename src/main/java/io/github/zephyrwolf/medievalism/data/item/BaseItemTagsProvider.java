@@ -146,6 +146,8 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
         tag(ItemTagCatalog.KNIFE).add(
                 ItemRegistration.LUNATE.get()
         );
+
+        tag(ItemTagCatalog.INHAND_KNAP_TOOL).addTag(ItemTagCatalog.HARD_ROCK);
     }
 
     public void registerCommonModTags() {

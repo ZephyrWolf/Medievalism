@@ -1,9 +1,12 @@
 package io.github.zephyrwolf.medievalism.common.blockitem;
 
 import io.github.zephyrwolf.medievalism.common.components.DummyDataComponent;
+import io.github.zephyrwolf.medievalism.common.recipe.InhandRecipe;
+import io.github.zephyrwolf.medievalism.common.recipe.InhandRecipeInput;
 import io.github.zephyrwolf.medievalism.registration.components.DataComponentTypeRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.registration.particles.ParticleTypeRegistration;
+import io.github.zephyrwolf.medievalism.registration.recipe.RecipeRegistration;
 import io.github.zephyrwolf.medievalism.registration.sounds.SoundsRegistration;
 import io.github.zephyrwolf.medievalism.tools.ParticleTools;
 import io.github.zephyrwolf.medievalism.tools.PlayerInventoryTools;
@@ -23,6 +26,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -32,13 +37,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Optional;
 
 public class RockBlockItem extends BlockItem
 {
     //region Constants
     private static final int TICKS_PER_SECOND = 20;
     private static final int KNAP_DURATION_TICKS = 50;
-    private static final int KNAP_PREPARE_DURATION_TICKS = 10;
+    private static final int KNAP_PREPARE_DURATION_TICKS = 8;
     private static final int KNAP_FAIL_DURATION_TICKS = 10;
     public static final int HITS = 5;
     private static final float PERIOD = KNAP_DURATION_TICKS / (float) (HITS * TICKS_PER_SECOND); // Sec
@@ -59,6 +65,14 @@ public class RockBlockItem extends BlockItem
         return super.canPlace(pContext, pState);
     }
     //endregion
+
+    /*
+    If this stack is a hammer type and has been damaged (no longer a rock)
+     */
+    private boolean isHammerstone(@NotNull ItemStack stack)
+    {
+        return canKnap(stack) && stack.isDamaged();
+    }
 
     //region - Item
     @Override
@@ -126,7 +140,7 @@ public class RockBlockItem extends BlockItem
                     pPlayer.getOnPos(),
                     SoundsRegistration.INHAND_KNAP_FAIL.value(),
                     SoundSource.PLAYERS,
-                    1.0f,
+                    1.5f,
                     1.0f);
         }
         pPlayer.startUsingItem(pHand);
@@ -210,46 +224,46 @@ public class RockBlockItem extends BlockItem
     {
         InteractionHand hand = pLivingEntity.getUsedItemHand();
         InteractionHand oHand = hand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
-        ItemStack itemStack = pLivingEntity.getItemInHand(hand);
+        ItemStack mItemStack = pLivingEntity.getItemInHand(hand);
         ItemStack oItemStack = pLivingEntity.getItemInHand(oHand);
 
         KnapAction action = getKnapAction(pLivingEntity, hand);
         if (action == KnapAction.UNSTACK_INTO_EMPTY_OFF_HAND)
         {
-            oItemStack = itemStack.copy();
+            oItemStack = mItemStack.copy();
             oItemStack.shrink(1);
             pLivingEntity.setItemInHand(oHand, oItemStack);
 
-            itemStack.setCount(1);
-            return itemStack;
+            mItemStack.setCount(1);
+            return mItemStack;
         }
         else if (action == KnapAction.UNSTACK_INTO_EMPTY_MAIN_HAND)
         {
-            oItemStack = itemStack.copy();
+            oItemStack = mItemStack.copy();
             oItemStack.setCount(1);
             pLivingEntity.setItemInHand(oHand, oItemStack);
 
-            //itemStack = itemStack.copy();
-            itemStack.shrink(1);
-            return itemStack;
+            //mItemStack = mItemStack.copy();
+            mItemStack.shrink(1);
+            return mItemStack;
         }
         else if (action == KnapAction.UNSTACK_MAIN_HAND_INTO_INV && pLivingEntity instanceof Player player)
         {
-            ItemStack invStack = itemStack.copy();
+            ItemStack invStack = mItemStack.copy();
             invStack.shrink(1);
 
-            itemStack.set(DataComponentTypeRegistration.DUMMY, DummyDataComponent.INSTANCE);
+            mItemStack.set(DataComponentTypeRegistration.DUMMY, DummyDataComponent.INSTANCE);
             int rem = PlayerInventoryTools.addStackToPlayerInventory(player, invStack, true, false, true);
-            itemStack.remove(DataComponentTypeRegistration.DUMMY);
+            mItemStack.remove(DataComponentTypeRegistration.DUMMY);
             if (rem == 0)
             {
                 PlayerInventoryTools.addStackToPlayerInventory(player, invStack, true, false, false);
-                itemStack.setCount(1);
+                mItemStack.setCount(1);
             }
         }
         else if (action == KnapAction.SWAP_HANDS)
         {
-            ItemStack swap = itemStack.copy();
+            ItemStack swap = mItemStack.copy();
             pLivingEntity.setItemInHand(hand, oItemStack);
             pLivingEntity.setItemInHand(oHand, swap);
             return oItemStack;
@@ -261,9 +275,18 @@ public class RockBlockItem extends BlockItem
             {
                 // We check so that if we are using an item, and we shouldn't, we aren't acting on items that we shouldn't
                 // e.g. What if another mod modifies the players inventory?
-                if (itemStack.getItem() instanceof RockBlockItem // TODO is hammerstone
-                        && oItemStack.getItem() instanceof RockBlockItem) // TODO is recipe ingredient
+                if (canKnap(mItemStack) && isKnappable(pLevel, mItemStack, oItemStack))
                 {
+                    InhandRecipeInput input = getRecipeInput(mItemStack, oItemStack);
+                    getRecipe(pLevel, mItemStack, oItemStack).ifPresent(recipe
+                            -> {
+                        ItemStack result = recipe.assemble(input, pLevel.registryAccess());
+                        if (!player.addItem(result))
+                        {
+                            player.drop(result, true);
+                        }
+                    });
+
                     if (!player.isCreative()) {
                         pStack.setDamageValue(pStack.getDamageValue() + 1);
                         if (pStack.getDamageValue() >= pStack.getMaxDamage())
@@ -289,31 +312,36 @@ public class RockBlockItem extends BlockItem
     /*
     Filter on item type to items that can hammer
      */
-    private static boolean couldHammer(@NotNull ItemStack stack)
+    private static boolean couldKnap(@NotNull ItemStack stack)
     {
-        return stack.getItem() instanceof RockBlockItem;
+        //return stack.getItem() instanceof RockBlockItem;
+        return stack.is(ItemTagCatalog.INHAND_KNAP_TOOL);
     }
 
     /*
     Is this stack ready to hammer; i.e. is a hammer type and stack is only one
      */
-    private static boolean canHammer(@NotNull ItemStack stack)
+    private static boolean canKnap(@NotNull ItemStack stack)
     {
-        return stack.getCount() == 1 && stack.getItem() instanceof RockBlockItem;
+        return couldKnap(stack) && stack.getCount() == 1;
     }
 
-    /*
-    If this stack is a hammer type and has been damaged (no longer a rock)
-     */
-    private static boolean isHammerstone(@NotNull ItemStack stack)
+    private static InhandRecipeInput getRecipeInput(ItemStack tool, ItemStack ingredient)
     {
-        return stack.getCount() == 1 && stack.getItem() instanceof RockBlockItem && stack.isDamaged();
+        return new InhandRecipeInput(tool, ingredient);
     }
 
-    private static boolean isKnappableStone(ItemStack stack)
+    private static Optional<InhandRecipe> getRecipe(Level level, ItemStack tool, ItemStack ingredient)
     {
-        return !stack.isEmpty() && !stack.isDamaged() &&
-                stack.getItem() instanceof RockBlockItem && stack.is(ItemTagCatalog.HARD_ROCK); // TODO tie this into the recipe system
+        var recipes = RecipeManager.createCheck(RecipeRegistration.INHAND_RECIPE_TYPE.get());
+        return recipes.getRecipeFor(getRecipeInput(tool, ingredient), level)
+                .map(RecipeHolder::value);
+    }
+
+    private static boolean isKnappable(Level level, ItemStack tool, ItemStack ingredient)
+    {
+        if (ingredient.isEmpty() || ingredient.isDamaged()) { return false; } // TODO is this line required?
+        return getRecipe(level, tool, ingredient).isPresent();
     }
 
     /*
@@ -348,7 +376,7 @@ public class RockBlockItem extends BlockItem
     {
         ItemStack mItemStack = pEntity.getItemInHand(InteractionHand.MAIN_HAND);
         ItemStack oItemStack = pEntity.getItemInHand(InteractionHand.OFF_HAND);
-        if (isKnappableStone(oItemStack) && couldHammer(mItemStack) && mItemStack.getCount() > 1 && pEntity instanceof Player player)
+        if (couldKnap(mItemStack) && isKnappable(pEntity.level(), mItemStack, oItemStack) && mItemStack.getCount() > 1 && pEntity instanceof Player player)
         {
             ItemStack insertStack = mItemStack.copy();
             mItemStack.set(DataComponentTypeRegistration.DUMMY, DummyDataComponent.INSTANCE);
@@ -359,20 +387,20 @@ public class RockBlockItem extends BlockItem
                 return KnapAction.UNSTACK_MAIN_HAND_INTO_INV;
             }
         }
-        else if (oItemStack.isEmpty() && isKnappableStone(mItemStack) && couldHammer(mItemStack) && mItemStack.getCount() > 1)
+        else if (oItemStack.isEmpty() && couldKnap(mItemStack) && isKnappable(pEntity.level(), mItemStack, mItemStack) && mItemStack.getCount() > 1)
         {
             return KnapAction.UNSTACK_INTO_EMPTY_OFF_HAND;
         }
-        else if (mItemStack.isEmpty() && isKnappableStone(oItemStack) && couldHammer(oItemStack) && oItemStack.getCount() > 1)
+        else if (mItemStack.isEmpty() && couldKnap(oItemStack) && isKnappable(pEntity.level(), oItemStack, oItemStack) && oItemStack.getCount() > 1)
         {
-
             return KnapAction.UNSTACK_INTO_EMPTY_MAIN_HAND;
         }
-        else if (isHammerstone(oItemStack) && isKnappableStone(mItemStack) && !isHammerstone(mItemStack))
+        //else if (isHammerstone(oItemStack) && isKnappableStone(mItemStack) && !isHammerstone(mItemStack))
+        else if (canKnap(oItemStack) && isKnappable(pEntity.level(), oItemStack, mItemStack) && !canKnap(mItemStack))
         {
             return KnapAction.SWAP_HANDS;
         }
-        else if (hand == InteractionHand.MAIN_HAND && canHammer(mItemStack) && isKnappableStone(oItemStack))
+        else if (hand == InteractionHand.MAIN_HAND && canKnap(mItemStack) && isKnappable(pEntity.level(), mItemStack, oItemStack))
         {
             return KnapAction.CAN_KNAP;
         }

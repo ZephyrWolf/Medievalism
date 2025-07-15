@@ -9,7 +9,7 @@ TODO Trees place dirt when in clay patch
 TODO wild yams should be tinted
 TODO create a tag to control what blocks world litter can spawn on
 TODO world litter should generate in water too since they can be waterlogged (e.g. river/forest overlap not ocean)
-TODO vanilla allows combining damaged items to repair... i need that to not happen for rocks... (actually how can I stop all togeather for overhaul?!)
+TODO vanilla allows combining damaged items to repair... I need that to not happen for rocks... (actually how can I stop all together for overhaul?!)
 TODO When knapping 3rd person, main hand jumps up for a moment
 TODO When knap fail, the main hand item shifts to the middle of the screen (noticed when on server)
 TODO In hand knapping doesn't check if the result can fit into the inventory before knapping, or should we just toss it?
@@ -33,6 +33,9 @@ TODO Separate ItemModels from BlockItemModels in registration into another class
 TODO add this to everywhere pPlayer.awardStat(Stats.ITEM_USED.get(this));
 TODO separate item and item block ItemModels
 TODO BlockBreakTrigger and BlockBreakingTrigger are identical. Can I just make them the same file?
+TODO Review furnace recipes
+TODO Revisit Blank recipe... I think I can stop recipes from loading at load time with my "stone world gen" code
+TODO Move out In Hand recipe code from within RockBlockItem :)
 
 Planned Tech
 TODO add recipe handler for in-hand knapping
@@ -79,7 +82,7 @@ Planned Blocks
 -Berry Bush
     -Raspberry
     -Blueberry
-    -Strawberry. different model, its a ground cover
+    -Strawberry. different model, it is a ground cover
 
 Abandoned Textures Exist For
 -Barrel
