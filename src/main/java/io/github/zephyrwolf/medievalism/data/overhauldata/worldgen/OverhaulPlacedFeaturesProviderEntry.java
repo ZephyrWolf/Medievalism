@@ -2,6 +2,7 @@ package io.github.zephyrwolf.medievalism.data.overhauldata.worldgen;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.placement.CellPlacement;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.synth.CellNoiseSettings;
 import io.github.zephyrwolf.medievalism.data.base.worldgen.BaseConfiguredFeaturesProviderEntry;
 import io.github.zephyrwolf.medievalism.data.base.worldgen.BasePlacedFeaturesProviderEntry;
 import io.github.zephyrwolf.medievalism.registration.world.level.WorldGenNoiseCatalog;
@@ -12,6 +13,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -166,50 +168,37 @@ public final class OverhaulPlacedFeaturesProviderEntry
     {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
-        PlacementModifier SAPROLITE_ROCK_RULE =     CellPlacement.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,        WorldGenNoiseCatalog.VARIANTS_REGOLITH.SAPROLITE);
-        PlacementModifier LATERITE_ROCK_RULE =      CellPlacement.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,        WorldGenNoiseCatalog.VARIANTS_REGOLITH.LATERITE);
-        PlacementModifier GREYWACKE_ROCK_RULE =     CellPlacement.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.GREYWACKE);
-        PlacementModifier SILTSTONE_ROCK_RULE =     CellPlacement.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.SILTSTONE);
-        PlacementModifier DOLOSTONE_ROCK_RULE =     CellPlacement.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.DOLOSTONE);
-        PlacementModifier LIMESTONE_ROCK_RULE =     CellPlacement.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.LIMESTONE);
-        PlacementModifier IRONSTONE_ROCK_RULE =     CellPlacement.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.IRONSTONE);
-        PlacementModifier SHALE_ROCK_RULE =         CellPlacement.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.SHALE);
-        PlacementModifier ARKOSE_ROCK_RULE =        CellPlacement.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.ARKOSE);
+        List<PlacementModifier> SURFACE_SANDSTONE_ROCK_PLACEMENT_RULES =            surfacePlacement(1, 2);
+        List<PlacementModifier> SURFACE_RED_SANDSTONE_ROCK_PLACEMENT_RULES =        surfacePlacement(1, 2);
+        List<PlacementModifier> SURFACE_SAPROLITE_ROCK_PLACEMENT_RULES =            surfaceCellPlacement(1, 2, WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,        WorldGenNoiseCatalog.VARIANTS_REGOLITH.SAPROLITE);
+        List<PlacementModifier> SURFACE_LATERITE_ROCK_PLACEMENT_RULES =             surfaceCellPlacement(1, 2, WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,        WorldGenNoiseCatalog.VARIANTS_REGOLITH.LATERITE);
+        List<PlacementModifier> SURFACE_GREYWACKE_ROCK_PLACEMENT_RULES =            surfaceCellPlacement(1, 2, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.GREYWACKE);
+        List<PlacementModifier> SURFACE_SILTSTONE_ROCK_PLACEMENT_RULES =            surfaceCellPlacement(1, 2, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.SILTSTONE);
+        List<PlacementModifier> SURFACE_DOLOSTONE_ROCK_PLACEMENT_RULES =            surfaceCellPlacement(1, 2, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.DOLOSTONE);
+        List<PlacementModifier> SURFACE_LIMESTONE_ROCK_PLACEMENT_RULES =            surfaceCellPlacement(1, 2, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.LIMESTONE);
+        List<PlacementModifier> SURFACE_IRONSTONE_ROCK_PLACEMENT_RULES =            surfaceCellPlacement(1, 2, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.IRONSTONE);
+        List<PlacementModifier> SURFACE_SHALE_ROCK_PLACEMENT_RULES =                surfaceCellPlacement(1, 2, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.SHALE);
+        List<PlacementModifier> SURFACE_ARKOSE_ROCK_PLACEMENT_RULES =               surfaceCellPlacement(1, 2, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.ARKOSE);
 
-        List<PlacementModifier> SURFACE_ROCK_PLACEMENT_RULES =                      new ArrayList<>(surfacePlacement(1, 2));
-        List<PlacementModifier> SURFACE_SANDSTONE_ROCK_PLACEMENT_RULES =            SURFACE_ROCK_PLACEMENT_RULES;
-        List<PlacementModifier> SURFACE_RED_SANDSTONE_ROCK_PLACEMENT_RULES =        SURFACE_ROCK_PLACEMENT_RULES;
-        List<PlacementModifier> SURFACE_SAPROLITE_ROCK_PLACEMENT_RULES =            SURFACE_ROCK_PLACEMENT_RULES; SURFACE_SAPROLITE_ROCK_PLACEMENT_RULES.add(SAPROLITE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_LATERITE_ROCK_PLACEMENT_RULES =             SURFACE_ROCK_PLACEMENT_RULES; SURFACE_LATERITE_ROCK_PLACEMENT_RULES.add(LATERITE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_GREYWACKE_ROCK_PLACEMENT_RULES =            SURFACE_ROCK_PLACEMENT_RULES; SURFACE_GREYWACKE_ROCK_PLACEMENT_RULES.add(GREYWACKE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_SILTSTONE_ROCK_PLACEMENT_RULES =            SURFACE_ROCK_PLACEMENT_RULES; SURFACE_SILTSTONE_ROCK_PLACEMENT_RULES.add(SILTSTONE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_DOLOSTONE_ROCK_PLACEMENT_RULES =            SURFACE_ROCK_PLACEMENT_RULES; SURFACE_DOLOSTONE_ROCK_PLACEMENT_RULES.add(DOLOSTONE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_LIMESTONE_ROCK_PLACEMENT_RULES =            SURFACE_ROCK_PLACEMENT_RULES; SURFACE_LIMESTONE_ROCK_PLACEMENT_RULES.add(LIMESTONE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_IRONSTONE_ROCK_PLACEMENT_RULES =            SURFACE_ROCK_PLACEMENT_RULES; SURFACE_IRONSTONE_ROCK_PLACEMENT_RULES.add(IRONSTONE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_SHALE_ROCK_PLACEMENT_RULES =                SURFACE_ROCK_PLACEMENT_RULES; SURFACE_SHALE_ROCK_PLACEMENT_RULES.add(SHALE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_ARKOSE_ROCK_PLACEMENT_RULES =               SURFACE_ROCK_PLACEMENT_RULES; SURFACE_ARKOSE_ROCK_PLACEMENT_RULES.add(ARKOSE_ROCK_RULE);
+        List<PlacementModifier> SURFACE_LARGE_SANDSTONE_ROCK_PLACEMENT_RULES =      surfacePlacement(1, 4);
+        List<PlacementModifier> SURFACE_LARGE_RED_SANDSTONE_ROCK_PLACEMENT_RULES =  surfacePlacement(1, 4);
+        List<PlacementModifier> SURFACE_LARGE_SAPROLITE_ROCK_PLACEMENT_RULES =      surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,        WorldGenNoiseCatalog.VARIANTS_REGOLITH.SAPROLITE);
+        List<PlacementModifier> SURFACE_LARGE_LATERITE_ROCK_PLACEMENT_RULES =       surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,        WorldGenNoiseCatalog.VARIANTS_REGOLITH.LATERITE);
+        List<PlacementModifier> SURFACE_LARGE_GREYWACKE_ROCK_PLACEMENT_RULES =      surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.GREYWACKE);
+        List<PlacementModifier> SURFACE_LARGE_SILTSTONE_ROCK_PLACEMENT_RULES =      surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.SILTSTONE);
+        List<PlacementModifier> SURFACE_LARGE_DOLOSTONE_ROCK_PLACEMENT_RULES =      surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.DOLOSTONE);
+        List<PlacementModifier> SURFACE_LARGE_LIMESTONE_ROCK_PLACEMENT_RULES =      surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.LIMESTONE);
+        List<PlacementModifier> SURFACE_LARGE_IRONSTONE_ROCK_PLACEMENT_RULES =      surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.IRONSTONE);
+        List<PlacementModifier> SURFACE_LARGE_SHALE_ROCK_PLACEMENT_RULES =          surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.SHALE);
+        List<PlacementModifier> SURFACE_LARGE_ARKOSE_ROCK_PLACEMENT_RULES =         surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.ARKOSE);
 
-        List<PlacementModifier> SURFACE_LARGE_ROCK_PLACEMENT_RULES =                new ArrayList<>(surfacePlacement(1, 4));
-        List<PlacementModifier> SURFACE_LARGE_SANDSTONE_ROCK_PLACEMENT_RULES =      SURFACE_LARGE_ROCK_PLACEMENT_RULES;
-        List<PlacementModifier> SURFACE_LARGE_RED_SANDSTONE_ROCK_PLACEMENT_RULES =  SURFACE_LARGE_ROCK_PLACEMENT_RULES;
-        List<PlacementModifier> SURFACE_LARGE_SAPROLITE_ROCK_PLACEMENT_RULES =      SURFACE_LARGE_ROCK_PLACEMENT_RULES; SURFACE_LARGE_SAPROLITE_ROCK_PLACEMENT_RULES.add(SAPROLITE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_LARGE_LATERITE_ROCK_PLACEMENT_RULES =       SURFACE_LARGE_ROCK_PLACEMENT_RULES; SURFACE_LARGE_LATERITE_ROCK_PLACEMENT_RULES.add(LATERITE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_LARGE_GREYWACKE_ROCK_PLACEMENT_RULES =      SURFACE_LARGE_ROCK_PLACEMENT_RULES; SURFACE_LARGE_GREYWACKE_ROCK_PLACEMENT_RULES.add(GREYWACKE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_LARGE_SILTSTONE_ROCK_PLACEMENT_RULES =      SURFACE_LARGE_ROCK_PLACEMENT_RULES; SURFACE_LARGE_SILTSTONE_ROCK_PLACEMENT_RULES.add(SILTSTONE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_LARGE_DOLOSTONE_ROCK_PLACEMENT_RULES =      SURFACE_LARGE_ROCK_PLACEMENT_RULES; SURFACE_LARGE_DOLOSTONE_ROCK_PLACEMENT_RULES.add(DOLOSTONE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_LARGE_LIMESTONE_ROCK_PLACEMENT_RULES =      SURFACE_LARGE_ROCK_PLACEMENT_RULES; SURFACE_LARGE_LIMESTONE_ROCK_PLACEMENT_RULES.add(LIMESTONE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_LARGE_IRONSTONE_ROCK_PLACEMENT_RULES =      SURFACE_LARGE_ROCK_PLACEMENT_RULES; SURFACE_LARGE_IRONSTONE_ROCK_PLACEMENT_RULES.add(IRONSTONE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_LARGE_SHALE_ROCK_PLACEMENT_RULES =          SURFACE_LARGE_ROCK_PLACEMENT_RULES; SURFACE_LARGE_SHALE_ROCK_PLACEMENT_RULES.add(SHALE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_LARGE_ARKOSE_ROCK_PLACEMENT_RULES =         SURFACE_LARGE_ROCK_PLACEMENT_RULES; SURFACE_LARGE_ARKOSE_ROCK_PLACEMENT_RULES.add(ARKOSE_ROCK_RULE);
-
-        List<PlacementModifier> SURFACE_COPPER_ROCK_PLACEMENT_RULES =               new ArrayList<>(surfacePlacement(1, 4));
-        List<PlacementModifier> SURFACE_COPPER_GREYWACKE_ROCK_PLACEMENT_RULES =     SURFACE_COPPER_ROCK_PLACEMENT_RULES; SURFACE_COPPER_GREYWACKE_ROCK_PLACEMENT_RULES.add(GREYWACKE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_COPPER_SILTSTONE_ROCK_PLACEMENT_RULES =     SURFACE_COPPER_ROCK_PLACEMENT_RULES; SURFACE_COPPER_SILTSTONE_ROCK_PLACEMENT_RULES.add(SILTSTONE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_COPPER_DOLOSTONE_ROCK_PLACEMENT_RULES =     SURFACE_COPPER_ROCK_PLACEMENT_RULES; SURFACE_COPPER_DOLOSTONE_ROCK_PLACEMENT_RULES.add(DOLOSTONE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_COPPER_LIMESTONE_ROCK_PLACEMENT_RULES =     SURFACE_COPPER_ROCK_PLACEMENT_RULES; SURFACE_COPPER_LIMESTONE_ROCK_PLACEMENT_RULES.add(LIMESTONE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_COPPER_IRONSTONE_ROCK_PLACEMENT_RULES =     SURFACE_COPPER_ROCK_PLACEMENT_RULES; SURFACE_COPPER_IRONSTONE_ROCK_PLACEMENT_RULES.add(IRONSTONE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_COPPER_SHALE_ROCK_PLACEMENT_RULES =         SURFACE_COPPER_ROCK_PLACEMENT_RULES; SURFACE_COPPER_SHALE_ROCK_PLACEMENT_RULES.add(SHALE_ROCK_RULE);
-        List<PlacementModifier> SURFACE_COPPER_ARKOSE_ROCK_PLACEMENT_RULES =        SURFACE_COPPER_ROCK_PLACEMENT_RULES; SURFACE_COPPER_ARKOSE_ROCK_PLACEMENT_RULES.add(ARKOSE_ROCK_RULE);
+        List<PlacementModifier> SURFACE_COPPER_GREYWACKE_ROCK_PLACEMENT_RULES =     surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.GREYWACKE);
+        List<PlacementModifier> SURFACE_COPPER_SILTSTONE_ROCK_PLACEMENT_RULES =     surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.SILTSTONE);
+        List<PlacementModifier> SURFACE_COPPER_DOLOSTONE_ROCK_PLACEMENT_RULES =     surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.DOLOSTONE);
+        List<PlacementModifier> SURFACE_COPPER_LIMESTONE_ROCK_PLACEMENT_RULES =     surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.LIMESTONE);
+        List<PlacementModifier> SURFACE_COPPER_IRONSTONE_ROCK_PLACEMENT_RULES =     surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.IRONSTONE);
+        List<PlacementModifier> SURFACE_COPPER_SHALE_ROCK_PLACEMENT_RULES =         surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.SHALE);
+        List<PlacementModifier> SURFACE_COPPER_ARKOSE_ROCK_PLACEMENT_RULES =        surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.ARKOSE);
 
         // ROCK
         register(context, SANDSTONE_ROCK,               configuredFeatures.getOrThrow(OverhaulConfiguredFeaturesProviderEntry.SANDSTONE_ROCK),              SURFACE_SANDSTONE_ROCK_PLACEMENT_RULES);
@@ -279,6 +268,17 @@ public final class OverhaulPlacedFeaturesProviderEntry
     private static List<PlacementModifier> surfacePlacement(int count, int chance) {
         return List.of(
                 RarityFilter.onAverageOnceEvery(chance),
+                InSquarePlacement.spread(),
+                CountPlacement.of(count),
+                HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG), // WORLD_SURFACE_WG -- WATER LEVEL
+                BiomeFilter.biome());
+    }
+
+    private static <E extends Enum<E>> List<PlacementModifier> surfaceCellPlacement(int count, int _chance, CellNoiseSettings cell, E variant)
+    {
+        return List.of(
+                //RarityFilter.onAverageOnceEvery(chance),
+                CellPlacement.cell(cell, variant),
                 InSquarePlacement.spread(),
                 CountPlacement.of(count),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG), // WORLD_SURFACE_WG -- WATER LEVEL

@@ -16,12 +16,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.levelgen.RandomState;
 import net.minecraft.world.level.levelgen.placement.PlacementContext;
+import net.minecraft.world.level.levelgen.placement.PlacementFilter;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import org.jetbrains.annotations.NotNull;
 
-public class CellPlacement extends PlacementModifier
+public class CellPlacement extends PlacementFilter
 {
     public static <E extends Enum<E>> CellPlacement cell(CellNoiseSettings noiseSettings, E e)
     {
@@ -59,11 +60,11 @@ public class CellPlacement extends PlacementModifier
     }
 
     @Override
-    public @NotNull Stream<BlockPos> getPositions(PlacementContext pContext, @NotNull RandomSource pRandom, @NotNull BlockPos pPos)
+    protected boolean shouldPlace(PlacementContext pContext, @NotNull RandomSource pRandom, @NotNull BlockPos pPos)
     {
-        RandomState randomState =pContext.getLevel().getLevel().getChunkSource().randomState();
+        RandomState randomState = pContext.getLevel().getLevel().getChunkSource().randomState();
         NormalNoise noise = randomState.getOrCreateNoise(settings.noiseKey());
         int stoneVariant = CellNoise.noise(settings, noise, pPos);
-        return stoneVariant == targetVariant ? Stream.of(pPos) : Stream.of();
+        return stoneVariant == targetVariant;
     }
 }
