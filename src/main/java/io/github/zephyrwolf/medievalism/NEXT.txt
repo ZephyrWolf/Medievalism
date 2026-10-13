@@ -1,5 +1,20 @@
-You need to add loot and world gen to
- vanilla ores
- copper rocks
-Then filter rocks based upon regolith and sedimentary rocks
-can we world gen rocks into caves?
+can we world gen rocks into caves? gen rock underground
+fix copper rock textures in blockbench
+
+bugs:
+overwrite stone on no overhaul datapack;
+	can we replace mixin with json?
+
+
+
+
+Provide alternate generation for Chalk, chert and geode ore in base and more origional to overhaul
+chert
+geode
+all stone
+Alternate gens for stones like diorite/grantite/andersite
+
+
+add surface ores of copper with groups of copper rocks above
+-in regolith or sedimentary? what stage I want to access this?
+

@@ -8,13 +8,17 @@ import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.block.BlockTagCatalog;
 import io.github.zephyrwolf.medievalism.registration.world.level.FeatureRegistration;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.BiasedToBottomInt;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -27,6 +31,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.stateproviders.RandomizedIntStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
+import net.minecraft.world.level.levelgen.placement.EnvironmentScanPlacement;
 import net.minecraft.world.level.levelgen.placement.HeightmapPlacement;
 import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
@@ -52,6 +57,8 @@ public final class BaseConfiguredFeaturesProviderEntry
     public static final ResourceKey<ConfiguredFeature<?, ?>> SANDSTONE_ROCK = registerKey(MedievalismConstants.resource("sandstone_rock"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> RED_SANDSTONE_ROCK = registerKey(MedievalismConstants.resource("red_sandstone_rock"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> GREYWACKE_ROCK = registerKey(MedievalismConstants.resource("greywacke"));
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> UNDERGROUND_ROCK = registerKey(MedievalismConstants.resource("temp_underground_rock"));
     // LARGE ROCK
     public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_SANDSTONE_ROCK = registerKey(MedievalismConstants.resource("large_sandstone_rock"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_RED_SANDSTONE_ROCK = registerKey(MedievalismConstants.resource("large_red_sandstone_rock"));
@@ -245,6 +252,24 @@ public final class BaseConfiguredFeaturesProviderEntry
                         )
                 )
         );
+
+        FeatureUtils.register(
+                context,
+                UNDERGROUND_ROCK,
+                Feature.SIMPLE_RANDOM_SELECTOR, // TODO Only way I can have inlinePlaced because I duh know how to otherwise
+                new SimpleRandomFeatureConfiguration(
+                        HolderSet.direct(
+                                PlacementUtils.inlinePlaced(
+                                        Feature.SIMPLE_BLOCK,
+                                        new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.DIAMOND_BLOCK) ),
+                                        EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 8), // TODO Have waterlogged rocks BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE
+                                        RandomOffsetPlacement.vertical(ConstantInt.of(1)) // TODO I need this up by one always
+                                )
+                        )
+                )
+        );
+
+
     }
 
     public static void simpleRandomPatch(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> featureKey,

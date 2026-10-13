@@ -387,19 +387,19 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         );
         randomYRotationBlock(
                 BlockRegistration.SILTSTONE_ROCK_COPPER_ORE.get(),
-                existingParent(BlockRegistration.SILTSTONE_ROCK_COPPER_ORE.get(), "block/base_rock2", "", BlockRegistration.SILTSTONE_ROCK_COPPER_ORE.get())
+                existingParent(BlockRegistration.SILTSTONE_ROCK_COPPER_ORE.get(), "block/base_rock1", "", BlockRegistration.SILTSTONE_ROCK_COPPER_ORE.get())
         );
         randomYRotationBlock(
                 BlockRegistration.DOLOSTONE_ROCK_COPPER_ORE.get(),
-                existingParent(BlockRegistration.DOLOSTONE_ROCK_COPPER_ORE.get(), "block/base_rock3", "", BlockRegistration.DOLOSTONE_ROCK_COPPER_ORE.get())
+                existingParent(BlockRegistration.DOLOSTONE_ROCK_COPPER_ORE.get(), "block/base_rock1", "", BlockRegistration.DOLOSTONE_ROCK_COPPER_ORE.get())
         );
         randomYRotationBlock(
                 BlockRegistration.LIMESTONE_ROCK_COPPER_ORE.get(),
-                existingParent(BlockRegistration.LIMESTONE_ROCK_COPPER_ORE.get(), "block/base_rock4", "", BlockRegistration.LIMESTONE_ROCK_COPPER_ORE.get())
+                existingParent(BlockRegistration.LIMESTONE_ROCK_COPPER_ORE.get(), "block/base_rock1", "", BlockRegistration.LIMESTONE_ROCK_COPPER_ORE.get())
         );
         randomYRotationBlock(
                 BlockRegistration.CHALK_ROCK_COPPER_ORE.get(),
-                existingParent(BlockRegistration.CHALK_ROCK_COPPER_ORE.get(), "block/base_rock5", "", BlockRegistration.CHALK_ROCK_COPPER_ORE.get())
+                existingParent(BlockRegistration.CHALK_ROCK_COPPER_ORE.get(), "block/base_rock1", "", BlockRegistration.CHALK_ROCK_COPPER_ORE.get())
         );
         randomYRotationBlock(
                 BlockRegistration.IRONSTONE_ROCK_COPPER_ORE.get(),
@@ -407,11 +407,11 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         );
         randomYRotationBlock(
                 BlockRegistration.SHALE_ROCK_COPPER_ORE.get(),
-                existingParent(BlockRegistration.SHALE_ROCK_COPPER_ORE.get(), "block/base_rock2", "", BlockRegistration.SHALE_ROCK_COPPER_ORE.get())
+                existingParent(BlockRegistration.SHALE_ROCK_COPPER_ORE.get(), "block/base_rock1", "", BlockRegistration.SHALE_ROCK_COPPER_ORE.get())
         );
         randomYRotationBlock(
                 BlockRegistration.ARKOSE_ROCK_COPPER_ORE.get(),
-                existingParent(BlockRegistration.ARKOSE_ROCK_COPPER_ORE.get(), "block/base_rock3", "", BlockRegistration.ARKOSE_ROCK_COPPER_ORE.get())
+                existingParent(BlockRegistration.ARKOSE_ROCK_COPPER_ORE.get(), "block/base_rock1", "", BlockRegistration.ARKOSE_ROCK_COPPER_ORE.get())
         );
 
         simpleBlock(BlockRegistration.SHRUB.get(), tintedCross(BlockRegistration.SHRUB.get(), ""));

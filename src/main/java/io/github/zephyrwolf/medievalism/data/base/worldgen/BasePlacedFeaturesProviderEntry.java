@@ -1,14 +1,17 @@
 package io.github.zephyrwolf.medievalism.data.base.worldgen;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.placement.BelowHeightmapFilter;
 import io.github.zephyrwolf.medievalism.data.overhauldata.level.OverhaulVanillaLevelStoneGeneration;
 import io.github.zephyrwolf.medievalism.registration.world.level.WorldGenLayerConstants;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.valueproviders.ClampedNormalInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -36,6 +39,8 @@ public final class BasePlacedFeaturesProviderEntry
     public static final ResourceKey<PlacedFeature> SANDSTONE_ROCK = registerKey(MedievalismConstants.resource("sandstone_rock"));
     public static final ResourceKey<PlacedFeature> RED_SANDSTONE_ROCK = registerKey(MedievalismConstants.resource("red_sandstone_rock"));
     public static final ResourceKey<PlacedFeature> GREYWACKE_ROCK = registerKey(MedievalismConstants.resource("greywacke_rock"));
+
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ROCK = registerKey(MedievalismConstants.resource("underground_rock"));
     // LARGE ROCK
     public static final ResourceKey<PlacedFeature> LARGE_SANDSTONE_ROCK = registerKey(MedievalismConstants.resource("large_sandstone_rock"));
     public static final ResourceKey<PlacedFeature> LARGE_RED_SANDSTONE_ROCK = registerKey(MedievalismConstants.resource("large_red_sandstone_rock"));
@@ -94,6 +99,28 @@ public final class BasePlacedFeaturesProviderEntry
         register(context, SANDSTONE_ROCK, configuredFeatures.getOrThrow(BaseConfiguredFeaturesProviderEntry.SANDSTONE_ROCK), surfacePlacement(1, 2));
         register(context, RED_SANDSTONE_ROCK, configuredFeatures.getOrThrow(BaseConfiguredFeaturesProviderEntry.RED_SANDSTONE_ROCK), surfacePlacement(1, 2));
         register(context, GREYWACKE_ROCK, configuredFeatures.getOrThrow(BaseConfiguredFeaturesProviderEntry.GREYWACKE_ROCK), surfacePlacement(1, 2));
+
+
+        HeightRangePlacement HEIGHT_RANGE_SEDIMENTARY = HeightRangePlacement.uniform(
+                WorldGenLayerConstants.MIN_SEDIMENTARY, WorldGenLayerConstants.MAX_SEDIMENTARY
+        );
+
+        PlacementUtils.register(
+                context,
+                UNDERGROUND_ROCK,
+                configuredFeatures.getOrThrow(BaseConfiguredFeaturesProviderEntry.UNDERGROUND_ROCK),
+                CountPlacement.of(UniformInt.of(5, 30)), // How many locations
+                InSquarePlacement.spread(),
+                HEIGHT_RANGE_SEDIMENTARY,
+                BelowHeightmapFilter.belowHeightmap(Heightmap.Types.OCEAN_FLOOR_WG, 1),
+                CountPlacement.of(UniformInt.of(1, 3)), // How many in a cluster
+                RandomOffsetPlacement.of(
+                        ClampedNormalInt.of(0.0F, 3.0F, -7, 7), // XZ spread
+                        ClampedNormalInt.of(0.0F, 0.6F, -2, 2)), // Y spread
+                BiomeFilter.biome()
+        );
+
+        //register(context, UNDERGROUND_ROCK, configuredFeatures.getOrThrow(BaseConfiguredFeaturesProviderEntry.UNDERGROUND_ROCK), hi);
         // LARGE ROCK
         register(context, LARGE_SANDSTONE_ROCK, configuredFeatures.getOrThrow(BaseConfiguredFeaturesProviderEntry.LARGE_SANDSTONE_ROCK), surfacePlacement(1, 4));
         register(context, LARGE_RED_SANDSTONE_ROCK, configuredFeatures.getOrThrow(BaseConfiguredFeaturesProviderEntry.LARGE_RED_SANDSTONE_ROCK), surfacePlacement(1, 4));

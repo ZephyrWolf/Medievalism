@@ -43,6 +43,7 @@
         ],
         "warp": 1.0
       },
+      "chance": 4,
       "target_variant": 0
     },
     {

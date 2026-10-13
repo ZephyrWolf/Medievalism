@@ -1,9 +1,8 @@
 package io.github.zephyrwolf.medievalism.data.overhauldata.worldgen;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.common.world.level.levelgen.placement.CellPlacement;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.placement.CellRarityFilter;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.synth.CellNoiseSettings;
-import io.github.zephyrwolf.medievalism.data.base.worldgen.BaseConfiguredFeaturesProviderEntry;
 import io.github.zephyrwolf.medievalism.data.base.worldgen.BasePlacedFeaturesProviderEntry;
 import io.github.zephyrwolf.medievalism.registration.world.level.WorldGenNoiseCatalog;
 import net.minecraft.core.Holder;
@@ -13,13 +12,12 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public final class OverhaulPlacedFeaturesProviderEntry
@@ -163,15 +161,14 @@ public final class OverhaulPlacedFeaturesProviderEntry
                 commonOrePlacement( 8, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(32))));
     }
 
-    @SuppressWarnings("UnnecessaryLocalVariable")
     public static void bootstrap_medievalism(BootstrapContext<PlacedFeature> context)
     {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
         List<PlacementModifier> SURFACE_SANDSTONE_ROCK_PLACEMENT_RULES =            surfacePlacement(1, 2);
         List<PlacementModifier> SURFACE_RED_SANDSTONE_ROCK_PLACEMENT_RULES =        surfacePlacement(1, 2);
-        List<PlacementModifier> SURFACE_SAPROLITE_ROCK_PLACEMENT_RULES =            surfaceCellPlacement(1, 2, WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,        WorldGenNoiseCatalog.VARIANTS_REGOLITH.SAPROLITE);
-        List<PlacementModifier> SURFACE_LATERITE_ROCK_PLACEMENT_RULES =             surfaceCellPlacement(1, 2, WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,        WorldGenNoiseCatalog.VARIANTS_REGOLITH.LATERITE);
+        List<PlacementModifier> SURFACE_SAPROLITE_ROCK_PLACEMENT_RULES =            surfaceCellPlacement(1, 3, WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,        WorldGenNoiseCatalog.VARIANTS_REGOLITH.SAPROLITE);
+        List<PlacementModifier> SURFACE_LATERITE_ROCK_PLACEMENT_RULES =             surfaceCellPlacement(1, 3, WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,        WorldGenNoiseCatalog.VARIANTS_REGOLITH.LATERITE);
         List<PlacementModifier> SURFACE_GREYWACKE_ROCK_PLACEMENT_RULES =            surfaceCellPlacement(1, 2, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.GREYWACKE);
         List<PlacementModifier> SURFACE_SILTSTONE_ROCK_PLACEMENT_RULES =            surfaceCellPlacement(1, 2, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.SILTSTONE);
         List<PlacementModifier> SURFACE_DOLOSTONE_ROCK_PLACEMENT_RULES =            surfaceCellPlacement(1, 2, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.DOLOSTONE);
@@ -182,8 +179,8 @@ public final class OverhaulPlacedFeaturesProviderEntry
 
         List<PlacementModifier> SURFACE_LARGE_SANDSTONE_ROCK_PLACEMENT_RULES =      surfacePlacement(1, 4);
         List<PlacementModifier> SURFACE_LARGE_RED_SANDSTONE_ROCK_PLACEMENT_RULES =  surfacePlacement(1, 4);
-        List<PlacementModifier> SURFACE_LARGE_SAPROLITE_ROCK_PLACEMENT_RULES =      surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,        WorldGenNoiseCatalog.VARIANTS_REGOLITH.SAPROLITE);
-        List<PlacementModifier> SURFACE_LARGE_LATERITE_ROCK_PLACEMENT_RULES =       surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,        WorldGenNoiseCatalog.VARIANTS_REGOLITH.LATERITE);
+        List<PlacementModifier> SURFACE_LARGE_SAPROLITE_ROCK_PLACEMENT_RULES =      surfaceCellPlacement(1, 6, WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,        WorldGenNoiseCatalog.VARIANTS_REGOLITH.SAPROLITE);
+        List<PlacementModifier> SURFACE_LARGE_LATERITE_ROCK_PLACEMENT_RULES =       surfaceCellPlacement(1, 6, WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,        WorldGenNoiseCatalog.VARIANTS_REGOLITH.LATERITE);
         List<PlacementModifier> SURFACE_LARGE_GREYWACKE_ROCK_PLACEMENT_RULES =      surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.GREYWACKE);
         List<PlacementModifier> SURFACE_LARGE_SILTSTONE_ROCK_PLACEMENT_RULES =      surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.SILTSTONE);
         List<PlacementModifier> SURFACE_LARGE_DOLOSTONE_ROCK_PLACEMENT_RULES =      surfaceCellPlacement(1, 4, WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,     WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.DOLOSTONE);
@@ -274,11 +271,10 @@ public final class OverhaulPlacedFeaturesProviderEntry
                 BiomeFilter.biome());
     }
 
-    private static <E extends Enum<E>> List<PlacementModifier> surfaceCellPlacement(int count, int _chance, CellNoiseSettings cell, E variant)
+    private static <E extends Enum<E>> List<PlacementModifier> surfaceCellPlacement(int count, int chance, CellNoiseSettings cell, E variant)
     {
         return List.of(
-                //RarityFilter.onAverageOnceEvery(chance),
-                CellPlacement.cell(cell, variant),
+                CellRarityFilter.onAverageOnceEvery(chance, cell, variant),
                 InSquarePlacement.spread(),
                 CountPlacement.of(count),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG), // WORLD_SURFACE_WG -- WATER LEVEL

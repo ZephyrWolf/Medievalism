@@ -35,6 +35,8 @@ public final class BaseBiomeModifiersProviderEntry
     public static final ResourceKey<BiomeModifier> SANDSTONE_ROCK = registerKey(MedievalismConstants.resource("sandstone_rock"));
     public static final ResourceKey<BiomeModifier> RED_SANDSTONE_ROCK = registerKey(MedievalismConstants.resource("red_sandstone_rock"));
     public static final ResourceKey<BiomeModifier> GREYWACKE_ROCK = registerKey(MedievalismConstants.resource("greywacke_rock"));
+
+    public static final ResourceKey<BiomeModifier> UNDERGROUND_ROCK = registerKey(MedievalismConstants.resource("underground_rock"));
     // ROCK LARGE
     public static final ResourceKey<BiomeModifier> LARGE_SANDSTONE_ROCK = registerKey(MedievalismConstants.resource("large_sandstone_rock"));
     public static final ResourceKey<BiomeModifier> LARGE_RED_SANDSTONE_ROCK = registerKey(MedievalismConstants.resource("large_red_sandstone_rock"));
@@ -87,13 +89,15 @@ public final class BaseBiomeModifiersProviderEntry
         addSimpleModifier(context, GEODE_ORE,                   BiomeTags.IS_OVERWORLD, BasePlacedFeaturesProviderEntry.GEODE_ORE, GenerationStep.Decoration.UNDERGROUND_ORES);
         addSimpleModifier(context, HARD_IG_EX_GEODE_ORE,        BiomeTags.IS_OVERWORLD, BasePlacedFeaturesProviderEntry.HARD_IG_ED_GEODE_ORE, GenerationStep.Decoration.UNDERGROUND_ORES);
         // ROCK
-        addSimpleModifier(context, SANDSTONE_ROCK,              BiomeTagCatalog.IS_SURFACE_WITH_SAND,       BasePlacedFeaturesProviderEntry.SANDSTONE_ROCK, GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, RED_SANDSTONE_ROCK,          BiomeTagCatalog.IS_SURFACE_WITH_RED_SAND,   BasePlacedFeaturesProviderEntry.RED_SANDSTONE_ROCK, GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, GREYWACKE_ROCK,              BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    BasePlacedFeaturesProviderEntry.GREYWACKE_ROCK, GenerationStep.Decoration.VEGETAL_DECORATION);
+        addSimpleModifier(context, SANDSTONE_ROCK,              BiomeTagCatalog.IS_SURFACE_WITH_SAND,       BasePlacedFeaturesProviderEntry.SANDSTONE_ROCK,             GenerationStep.Decoration.VEGETAL_DECORATION);
+        addSimpleModifier(context, RED_SANDSTONE_ROCK,          BiomeTagCatalog.IS_SURFACE_WITH_RED_SAND,   BasePlacedFeaturesProviderEntry.RED_SANDSTONE_ROCK,         GenerationStep.Decoration.VEGETAL_DECORATION);
+        addSimpleModifier(context, GREYWACKE_ROCK,              BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    BasePlacedFeaturesProviderEntry.GREYWACKE_ROCK,             GenerationStep.Decoration.VEGETAL_DECORATION);
+
+        addSimpleModifier(context, UNDERGROUND_ROCK,            BiomeTags.IS_OVERWORLD,                     BasePlacedFeaturesProviderEntry.UNDERGROUND_ROCK,           GenerationStep.Decoration.UNDERGROUND_DECORATION);
         // LARGE ROCK
-        addSimpleModifier(context, LARGE_SANDSTONE_ROCK,        BiomeTagCatalog.IS_SURFACE_WITH_SAND,       BasePlacedFeaturesProviderEntry.LARGE_SANDSTONE_ROCK, GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, LARGE_RED_SANDSTONE_ROCK,    BiomeTagCatalog.IS_SURFACE_WITH_RED_SAND,   BasePlacedFeaturesProviderEntry.LARGE_RED_SANDSTONE_ROCK, GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, LARGE_GREYWACKE_ROCK,        BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    BasePlacedFeaturesProviderEntry.LARGE_GREYWACKE_ROCK, GenerationStep.Decoration.VEGETAL_DECORATION);
+        addSimpleModifier(context, LARGE_SANDSTONE_ROCK,        BiomeTagCatalog.IS_SURFACE_WITH_SAND,       BasePlacedFeaturesProviderEntry.LARGE_SANDSTONE_ROCK,       GenerationStep.Decoration.VEGETAL_DECORATION);
+        addSimpleModifier(context, LARGE_RED_SANDSTONE_ROCK,    BiomeTagCatalog.IS_SURFACE_WITH_RED_SAND,   BasePlacedFeaturesProviderEntry.LARGE_RED_SANDSTONE_ROCK,   GenerationStep.Decoration.VEGETAL_DECORATION);
+        addSimpleModifier(context, LARGE_GREYWACKE_ROCK,        BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    BasePlacedFeaturesProviderEntry.LARGE_GREYWACKE_ROCK,       GenerationStep.Decoration.VEGETAL_DECORATION);
         // COPPER ROCK
         addSimpleModifier(context, GREYWACKE_ROCK_COPPER_ORE,   BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    BasePlacedFeaturesProviderEntry.GREYWACKE_ROCK_COPPER_ORE, GenerationStep.Decoration.VEGETAL_DECORATION);
         // TWIGS
