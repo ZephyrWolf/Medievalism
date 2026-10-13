@@ -50,7 +50,7 @@ TODO quicklime
 TODO Rework Stone Bench -> Stone Anvil (not for knapping) + Work Mat??? (knapping and weaving)
 
 Planned World Gen
-TODO World gen stone
+TODO World gen stone; rebalance heights
 TODO Change rocks over to my stone types
 TODO Shrub World Gen
 TODO Add Wild Grass
@@ -86,3 +86,54 @@ Planned Blocks
 
 Abandoned Textures Exist For
 -Barrel
+
+ITEMS
+chert
+geode
+agate
+
+// rocks gen according to sedimentary type
+
+body temp; cold
+berries
+forage
+biome enhancement
+
+
+
+Ash 0 rock/primitive
+Sedementary 0 copper
+Soft Extrusive Igneous 1 bronze
+Metamorphic 1 bronze
+Hard Extrusive Igneous 2 iron
+Intrusive Igneous 2 iron
+Deep Intrusive Igneous 3 steel
+
+MC -> Mod
+Less than -> rock   -1
+wood -> copper      0
+stone -> bronze     1
+iron -> iron        2
+diamond -> steel    3
+
+
+Rocks filter on cell
+cobbled stones for rogalith & sedimentary stones; igneous stay as they are... not sure about metamorphic
+wattle & daub fences / walls
+
+rework tuff
+revist tin ore and ore in general
+fix parity blocktags and itemtags
+
+fix stone drops to cobble
+
+//within limestone and chalk; less in other sedimentary;
+    // large chalk
+    // chert ore
+    // can drop flint as well as other things
+    // agate within igneous layers
+
+Get override data pack to be enable / diable able
+blank recipe is one way, but is there a proper way to remove? a mod library?
+
+yam green doesnt follow tint rules; e.g. savanah grass colour

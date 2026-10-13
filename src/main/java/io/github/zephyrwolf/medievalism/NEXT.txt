@@ -1,0 +1,5 @@
+You need to add loot and world gen to
+ vanilla ores
+ copper rocks
+Then filter rocks based upon regolith and sedimentary rocks
+can we world gen rocks into caves?

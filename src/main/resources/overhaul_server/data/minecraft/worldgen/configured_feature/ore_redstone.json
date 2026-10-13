@@ -1,0 +1,57 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "discard_chance_on_air_exposure": 0.0,
+    "size": 8,
+    "targets": [
+      {
+        "state": {
+          "Name": "minecraft:deepslate_redstone_ore",
+          "Properties": {
+            "lit": "false"
+          }
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:gabbro_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:smooth_diorite_redstone_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:smooth_diorite_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:smooth_granite_redstone_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:smooth_granite_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:norite_redstone_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:norite_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:peridotite_redstone_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:peridotite_ore_replaceables"
+        }
+      }
+    ]
+  }
+}

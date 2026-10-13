@@ -1,0 +1,35 @@
+{
+  "parent": "medievalism:overhaul/root",
+  "criteria": {
+    "punch_log": {
+      "conditions": {
+        "block": {
+          "blocks": "#minecraft:logs"
+        },
+        "item": {
+          "count": 0
+        }
+      },
+      "trigger": "medievalism:block_breaking"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "medievalism.advancement.overhaul.cant_punch_logs.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:iron_axe"
+    },
+    "title": {
+      "translate": "medievalism.advancement.overhaul.cant_punch_logs.title"
+    }
+  },
+  "requirements": [
+    [
+      "punch_log"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

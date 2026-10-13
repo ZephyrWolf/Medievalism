@@ -1,0 +1,53 @@
+Tier PRIMITIVE = Tiers.GOLD;        0   -1
+Tier COPPER = Tiers.WOOD;           0   0
+Tier BRONZE = Tiers.STONE;          1   1
+Tier WROUGHT_IRON = Tiers.IRON;     2   2
+Tier STEEl = Tiers.DIAMOND;         3   3
+Tier NETHERITE = Tiers.NETHERITE    4   4
+
+ideally
+
+wood
+primitive / stone // flint / antler
+copper
+bronze
+wrought_iron / iron
+steel / diamond
+netherite
+
+minecraft doesnt use mining levels anymnore, it uses tags, so relearn and change your thinking
+
+Hmmmm can I make primitive another tier so not same as gold?
+in future releases, will need to change copper tools and armour to behave differently to mc
+
+primitive
+copper
+bronze
+wrought_iron
+steel
+
+Layer                           Gate            Obtain
+surface;                        nothing         copper
+soil;                           shovel
+regolith;                       primitive
+ashfall;                        primitive
+sedimentary;                    copper          tin (usually found at metamorphic so make is low)
+metamorphic;                    bronze          iron
+soft igneous extrusive (sed);   bronze          iron
+hard igneous extrusive(meta);   wrought_iron    ???
+igneous intrusive;              wrought_iron    ???
+deep igneous intrusive;         steel           tungsten
+
+
+refractory fireclay is made from keolinite-rich clay (aluminium silicate mineral with quartz) sedimentary
+
+Flint
+Red chert
+Yellow chert
+Brown chert
+Green chert
+White chert
+Grey chert
+Black chert
+
+Agate

@@ -1,0 +1,60 @@
+package io.github.zephyrwolf.medievalism.data.overhauldata.loot;
+
+import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class OverhaulBlockLootTablesSubProvider extends BlockLootSubProvider
+{
+    private final Set<Block> generatedLootTables = new HashSet<>();
+
+    public OverhaulBlockLootTablesSubProvider(HolderLookup.Provider lookupProvider)
+    {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), lookupProvider);
+    }
+
+    @Override
+    protected void generate() {
+        addLootTable(Blocks.CAMPFIRE, () ->
+                add(
+                        Blocks.CAMPFIRE,
+                        block -> this.createSilkTouchDispatchTable(
+                                block,
+                                this.applyExplosionCondition(
+                                        block,
+                                        LootItem.lootTableItem(Items.CHARCOAL)
+                                                .apply(
+                                                        SetItemCountFunction.setCount(UniformGenerator.between(0, 1)
+                                                        )
+                                                )
+                                )
+                        )
+                )
+        );
+        addLootTable(BlockRegistration.WELDED_TUFF.get(), () -> add(BlockRegistration.WELDED_TUFF.get(),
+                block -> createSingleItemTableWithSilkTouch(block, BlockRegistration.COBBLED_WELDED_TUFF.get())));
+    }
+
+    protected void addLootTable(Block block, Runnable run)
+    {
+        run.run();
+        generatedLootTables.add(block);
+    }
+
+    @Override
+    protected @NotNull Iterable<Block> getKnownBlocks()
+    {
+        return generatedLootTables; // .BLOCKS.getEntries().stream().map(DeferredHolder::get).map(b -> (Block) b)::iterator;
+    }
+}

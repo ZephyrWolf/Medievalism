@@ -12,7 +12,7 @@ public final class DataComponentTypeRegistration
 {
     public static final DeferredRegister.DataComponents DATA_COMPONENT_TYPES = DeferredRegister.createDataComponents(MedievalismConstants.MOD_ID);
 
-    public static final Supplier<DataComponentType<DummyDataComponent>> DUMMY =DATA_COMPONENT_TYPES.registerComponentType(
+    public static final Supplier<DataComponentType<DummyDataComponent>> DUMMY = DATA_COMPONENT_TYPES.registerComponentType(
             "dummy", builder -> builder.networkSynchronized(DummyDataComponent.STREAM_CODEC));
 
     public static void register(IEventBus bus)

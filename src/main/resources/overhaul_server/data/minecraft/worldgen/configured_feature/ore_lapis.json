@@ -1,0 +1,45 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "discard_chance_on_air_exposure": 0.0,
+    "size": 14,
+    "targets": [
+      {
+        "state": {
+          "Name": "medievalism:marble_lapis_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:marble_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:quartzite_lapis_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:quartzite_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:hornfels_lapis_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:hornfels_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:slate_lapis_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:slate_ore_replaceables"
+        }
+      }
+    ]
+  }
+}

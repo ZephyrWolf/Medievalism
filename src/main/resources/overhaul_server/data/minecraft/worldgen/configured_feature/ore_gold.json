@@ -1,0 +1,198 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "discard_chance_on_air_exposure": 0.0,
+    "size": 9,
+    "targets": [
+      {
+        "state": {
+          "Name": "minecraft:gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:greywacke_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:siltstone_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:siltstone_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:dolostone_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:dolostone_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:limestone_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:limestone_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:chalk_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:chalk_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:ironstone_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:ironstone_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:shale_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:shale_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:arkose_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:arkose_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:marble_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:marble_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:quartzite_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:quartzite_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:hornfels_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:hornfels_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:slate_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:slate_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "minecraft:deepslate_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:gabbro_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:smooth_diorite_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:smooth_diorite_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:smooth_granite_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:smooth_granite_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:norite_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:norite_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:peridotite_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:peridotite_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:rhyolite_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:rhyolite_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:dacite_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:dacite_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:andesite_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:andesite_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:basalt_gold_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:basalt_ore_replaceables"
+        }
+      }
+    ]
+  }
+}

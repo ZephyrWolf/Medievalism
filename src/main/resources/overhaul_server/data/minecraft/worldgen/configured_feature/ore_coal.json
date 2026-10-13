@@ -1,0 +1,135 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "discard_chance_on_air_exposure": 0.0,
+    "size": 17,
+    "targets": [
+      {
+        "state": {
+          "Name": "medievalism:saprolite_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:saprolite_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:laterite_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:laterite_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "minecraft:coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:greywacke_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:siltstone_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:siltstone_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:dolostone_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:dolostone_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:limestone_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:limestone_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:chalk_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:chalk_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:ironstone_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:ironstone_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:shale_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:shale_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:arkose_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:arkose_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:marble_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:marble_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:quartzite_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:quartzite_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:hornfels_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:hornfels_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "medievalism:slate_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "medievalism:slate_ore_replaceables"
+        }
+      }
+    ]
+  }
+}

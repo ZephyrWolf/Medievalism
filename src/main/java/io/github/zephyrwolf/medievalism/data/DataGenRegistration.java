@@ -2,26 +2,28 @@ package io.github.zephyrwolf.medievalism.data;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.MedievalismMod;
+import io.github.zephyrwolf.medievalism.data.base.block.BaseBlockStatesProvider;
+import io.github.zephyrwolf.medievalism.data.base.tag.BaseBlockTagsProvider;
 import io.github.zephyrwolf.medievalism.registration.loot.LootContextParamSetRegistration;
-import io.github.zephyrwolf.medievalism.data.advancements.BaseAdvancementsProvider;
-import io.github.zephyrwolf.medievalism.data.advancements.BaseAdvancementsProviderCopperAge;
-import io.github.zephyrwolf.medievalism.data.advancements.BaseAdvancementsProviderStoneAge;
-import io.github.zephyrwolf.medievalism.data.advancements.OverhaulAdvancementsProvider;
-import io.github.zephyrwolf.medievalism.data.block.*;
-import io.github.zephyrwolf.medievalism.data.item.BaseItemModelsProvider;
-import io.github.zephyrwolf.medievalism.data.item.BaseItemTagsProvider;
-import io.github.zephyrwolf.medievalism.data.lang.BaseLanguageProvider;
-import io.github.zephyrwolf.medievalism.data.lang.OverhaulLanguageProvider;
-import io.github.zephyrwolf.medievalism.data.loot.BaseAdditionalDropsTablesSubProvider;
-import io.github.zephyrwolf.medievalism.data.loot.BaseBlockLootTablesSubProvider;
-import io.github.zephyrwolf.medievalism.data.loot.OverhaulBlockLootTablesSubProvider;
-import io.github.zephyrwolf.medievalism.data.loot.OverhaulMobLootTablesSubProvider;
+import io.github.zephyrwolf.medievalism.data.base.advancements.BaseAdvancementsProvider;
+import io.github.zephyrwolf.medievalism.data.base.advancements.BaseAdvancementsProviderCopperAge;
+import io.github.zephyrwolf.medievalism.data.base.advancements.BaseAdvancementsProviderStoneAge;
+import io.github.zephyrwolf.medievalism.data.overhauldata.advancements.OverhaulAdvancementsProvider;
+import io.github.zephyrwolf.medievalism.data.overhauldata.block.*;
+import io.github.zephyrwolf.medievalism.data.base.item.BaseItemModelsProvider;
+import io.github.zephyrwolf.medievalism.data.base.tag.BaseItemTagsProvider;
+import io.github.zephyrwolf.medievalism.data.base.lang.BaseLanguageProvider;
+import io.github.zephyrwolf.medievalism.data.overhaulassets.lang.OverhaulLanguageProvider;
+import io.github.zephyrwolf.medievalism.data.base.loot.BaseAdditionalDropsTablesSubProvider;
+import io.github.zephyrwolf.medievalism.data.base.loot.BaseBlockLootTablesSubProvider;
+import io.github.zephyrwolf.medievalism.data.overhauldata.loot.OverhaulBlockLootTablesSubProvider;
+import io.github.zephyrwolf.medievalism.data.overhauldata.loot.OverhaulMobLootTablesSubProvider;
 import io.github.zephyrwolf.medievalism.data.packmeta.PackMetaProvider;
-import io.github.zephyrwolf.medievalism.data.recipe.BaseRecipeProvider;
-import io.github.zephyrwolf.medievalism.data.recipe.OverhaulRecipeProvider;
-import io.github.zephyrwolf.medievalism.data.worldgen.BaseBiomeTagsProvider;
-import io.github.zephyrwolf.medievalism.data.worldgen.BaseWorldGenProvider;
-import io.github.zephyrwolf.medievalism.data.worldgen.OverhaulWorldGenProvider;
+import io.github.zephyrwolf.medievalism.data.base.recipe.BaseRecipeProvider;
+import io.github.zephyrwolf.medievalism.data.overhauldata.recipe.OverhaulRecipeProvider;
+import io.github.zephyrwolf.medievalism.data.base.tag.BaseBiomeTagsProvider;
+import io.github.zephyrwolf.medievalism.data.base.worldgen.BaseWorldGenProvider;
+import io.github.zephyrwolf.medievalism.data.overhauldata.worldgen.OverhaulWorldGenProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -40,20 +42,23 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-public final class DataGenRegistration { // https://github.com/vectorwing/FarmersDelight/blob/1.20/src/main/java/vectorwing/farmersdelight/data/DataGenerators.java
+public final class DataGenRegistration
+{ // https://github.com/vectorwing/FarmersDelight/blob/1.20/src/main/java/vectorwing/farmersdelight/data/DataGenerators.java
 
     public static void register(IEventBus eventBus) {
         eventBus.addListener(DataGenRegistration::gatherData);
     }
 
-    public static void gatherData(GatherDataEvent event) {
+    public static void gatherData(GatherDataEvent event)
+    {
         injectDataForBase(event);
         injectDataForAssetOverhaul(event);
         injectDataForDataOverhaul(event);
     }
 
     //region Providers
-    private static void addProvidersForBase(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient) {
+    private static void addProvidersForBase(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient)
+    {
         BaseBlockTagsProvider blockTags = new BaseBlockTagsProvider(packOutput, lookupProvider, existingFileHelper);
         generator.addProvider(includeServer, blockTags);
         generator.addProvider(includeServer, new BaseItemTagsProvider(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
@@ -75,31 +80,28 @@ public final class DataGenRegistration { // https://github.com/vectorwing/Farmer
         generator.addProvider(includeServer, new BaseWorldGenProvider(packOutput, lookupProvider));
     }
 
-    private static void addProvidersForAssetOverhaul(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient) {
-        //generator.addProvider(includeClient, ...);
+    private static void addProvidersForAssetOverhaul(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient)
+    {
         generator.addProvider(includeClient, new OverhaulLanguageProvider(packOutput, "en_us"));
-        generator.addProvider(
-                includeClient,
-                PackMetaProvider.of(packOutput, PackType.CLIENT_RESOURCES)
-                        .description("Medievalism will overhaul the look and feel of Minecraft."));
+        generator.addProvider( includeClient, PackMetaProvider.of(packOutput, PackType.CLIENT_RESOURCES).description("Medievalism will overhaul the look and feel of Minecraft."));
     }
 
-    private static void addProvidersForDataOverhaul(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient) {
+    private static void addProvidersForDataOverhaul(DataGenerator generator, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper, boolean includeServer, boolean includeClient)
+    {
         generator.addProvider(includeServer, new OverhaulRecipeProvider(packOutput, lookupProvider));
         generator.addProvider(includeServer, new OverhaulBlockTagsProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(includeServer, new LootTableProvider(packOutput, Collections.emptySet(), List.of(
                 new LootTableProvider.SubProviderEntry(OverhaulMobLootTablesSubProvider::new, LootContextParamSets.ENTITY),
                 new LootTableProvider.SubProviderEntry(OverhaulBlockLootTablesSubProvider::new, LootContextParamSets.BLOCK)
         ), lookupProvider));
-        generator.addProvider(
-                includeServer,
-                PackMetaProvider.of(packOutput, PackType.SERVER_DATA)
-                        .description("Medievalism will overhaul the progression of Minecraft."));
+        generator.addProvider( includeServer, PackMetaProvider.of(packOutput, PackType.SERVER_DATA).description("Medievalism will overhaul the progression of Minecraft."));
         // TODO I wonder if I can translate this ^^^^
-        generator.addProvider(includeServer, new OverhaulWorldGenProvider(packOutput, lookupProvider));
         generator.addProvider(includeServer, new AdvancementProvider(packOutput, lookupProvider, existingFileHelper, List.of(
                 new OverhaulAdvancementsProvider()
         )));
+
+        // We need to have the below set to 'minecraft' to modify vanilla, but we can only have one worldgen so can't have one for any other mod
+        generator.addProvider(includeServer, new OverhaulWorldGenProvider(packOutput, lookupProvider));
     }
     //endregion
 

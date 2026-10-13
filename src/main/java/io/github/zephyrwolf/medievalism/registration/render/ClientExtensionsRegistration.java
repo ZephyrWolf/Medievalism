@@ -18,11 +18,12 @@ public final class ClientExtensionsRegistration
     private static void registerClientItemExtensions(RegisterClientExtensionsEvent event)
     {
         event.registerItem(new KnappingItemAnimationClientExtension(),
-                BlockItemRegistration.ROCK.get(),
-                BlockItemRegistration.MOSSY_ROCK.get(),
-                BlockItemRegistration.LIGHTER_ROCK.get(),
-                BlockItemRegistration.SNOWY_ROCK.get(),
-                BlockItemRegistration.ICE_ROCK.get()
+                BlockItemRegistration.GREYWACKE_ROCK.get(),
+                BlockItemRegistration.SILTSTONE_ROCK.get(),
+                BlockItemRegistration.DOLOSTONE_ROCK.get(),
+                BlockItemRegistration.LIMESTONE_ROCK.get(),
+                BlockItemRegistration.IRONSTONE_ROCK.get(),
+                BlockItemRegistration.SHALE_ROCK.get()
         );
     }
 }

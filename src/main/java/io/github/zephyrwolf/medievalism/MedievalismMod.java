@@ -21,8 +21,9 @@ import io.github.zephyrwolf.medievalism.registration.menu.MenuRegistration;
 import io.github.zephyrwolf.medievalism.registration.recipe.MalleableMaterialRegistration;
 import io.github.zephyrwolf.medievalism.registration.recipe.RecipeRegistration;
 import io.github.zephyrwolf.medievalism.registration.sounds.SoundsRegistration;
-import io.github.zephyrwolf.medievalism.registration.worldgen.FeatureRegistration;
+import io.github.zephyrwolf.medievalism.registration.world.level.FeatureRegistration;
 import io.github.zephyrwolf.medievalism.data.DataGenRegistration;
+import io.github.zephyrwolf.medievalism.registration.world.level.PlacementModifierRegistration;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -52,6 +53,7 @@ public class MedievalismMod {
         BlockEventRegistration.register();
         EntityEventRegistration.register();
         FeatureRegistration.register(bus);
+        PlacementModifierRegistration.register(bus);
         DataGenRegistration.register(bus);
         NetworkRegistration.register(bus);
         BlockEntityRegistration.register(bus);

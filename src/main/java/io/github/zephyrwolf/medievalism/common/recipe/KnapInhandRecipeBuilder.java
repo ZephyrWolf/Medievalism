@@ -22,6 +22,11 @@ public class KnapInhandRecipeBuilder extends InhandRecipeBuilder<KnapInhandRecip
         return new KnapInhandRecipeBuilder(new ItemStack(result, 1));
     }
 
+    public static KnapInhandRecipeBuilder knapInhand(ItemLike result, int count)
+    {
+        return new KnapInhandRecipeBuilder(new ItemStack(result, count));
+    }
+
     protected KnapInhandRecipeBuilder(ItemStack result)
     {
         super(result);

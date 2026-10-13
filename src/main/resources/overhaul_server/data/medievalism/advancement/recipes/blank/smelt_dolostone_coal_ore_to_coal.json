@@ -1,0 +1,25 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "cant_unlock": {
+      "trigger": "minecraft:impossible"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "medievalism:smelt_dolostone_coal_ore_to_coal"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "cant_unlock"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "medievalism:smelt_dolostone_coal_ore_to_coal"
+    ]
+  }
+}

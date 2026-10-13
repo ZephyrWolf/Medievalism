@@ -1,0 +1,32 @@
+{
+  "criteria": {
+    "auto": {
+      "conditions": {
+        "stat": "minecraft:play_time",
+        "ticks": 0
+      },
+      "trigger": "medievalism:player_stat"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "medievalism:textures/gui/advancements/paper.png",
+    "description": {
+      "translate": "medievalism.advancement.overhaul.root.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:crafting_table"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "medievalism.advancement.overhaul.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "auto"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

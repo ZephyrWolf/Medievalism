@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#medievalism:is_surface_without_sand",
+  "features": "medievalism:shale_rock",
+  "step": "vegetal_decoration"
+}
