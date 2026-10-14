@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.tools;
+package io.github.zephyrwolf.medievalism.common.item;
 
 import io.github.zephyrwolf.medievalism.common.block.TwigsBlock;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;

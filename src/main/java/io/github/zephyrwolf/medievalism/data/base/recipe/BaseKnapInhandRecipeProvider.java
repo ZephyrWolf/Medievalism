@@ -5,7 +5,7 @@ import io.github.zephyrwolf.medievalism.common.recipe.KnapInhandRecipeBuilder;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemTagCatalog;
-import io.github.zephyrwolf.medievalism.tools.RecipeTools;
+import io.github.zephyrwolf.medievalism.common.recipe.RecipeTools;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.world.item.crafting.Ingredient;
 

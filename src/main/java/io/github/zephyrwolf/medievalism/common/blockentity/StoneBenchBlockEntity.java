@@ -6,7 +6,7 @@ import io.github.zephyrwolf.medievalism.common.recipe.MalleableMaterialRecipe;
 import io.github.zephyrwolf.medievalism.common.recipe.MalleableMaterialRecipeInput;
 import io.github.zephyrwolf.medievalism.registration.blockentity.BlockEntityRegistration;
 import io.github.zephyrwolf.medievalism.registration.recipe.RecipeRegistration;
-import io.github.zephyrwolf.medievalism.tools.ItemTools;
+import io.github.zephyrwolf.medievalism.common.item.ItemTools;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;

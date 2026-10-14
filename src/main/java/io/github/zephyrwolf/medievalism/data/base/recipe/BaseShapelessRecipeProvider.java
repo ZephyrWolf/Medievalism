@@ -4,7 +4,7 @@ import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.registration.blockitem.BlockItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemTagCatalog;
-import io.github.zephyrwolf.medievalism.tools.RecipeTools;
+import io.github.zephyrwolf.medievalism.common.recipe.RecipeTools;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;

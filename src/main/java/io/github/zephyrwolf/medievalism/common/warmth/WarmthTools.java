@@ -1,5 +1,6 @@
-package io.github.zephyrwolf.medievalism.tools;
+package io.github.zephyrwolf.medievalism.common.warmth;
 
+import io.github.zephyrwolf.medievalism.tools.GeometryTools;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;

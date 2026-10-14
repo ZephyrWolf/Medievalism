@@ -2,7 +2,7 @@ package io.github.zephyrwolf.medievalism.registration.entity;
 
 import io.github.zephyrwolf.medievalism.registration.advancements.CriteriaTriggersRegistration;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
-import io.github.zephyrwolf.medievalism.tools.ItemTools;
+import io.github.zephyrwolf.medievalism.common.item.ItemTools;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;

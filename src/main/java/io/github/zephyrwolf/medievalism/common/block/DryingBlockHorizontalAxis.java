@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism.common.block;
 
 import io.github.zephyrwolf.medievalism.common.blockitem.DryingBlockItem;
-import io.github.zephyrwolf.medievalism.tools.WarmthTools;
+import io.github.zephyrwolf.medievalism.common.warmth.WarmthTools;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;

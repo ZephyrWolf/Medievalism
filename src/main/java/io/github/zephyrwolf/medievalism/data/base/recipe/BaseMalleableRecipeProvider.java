@@ -7,7 +7,7 @@ import io.github.zephyrwolf.medievalism.registration.blockitem.BlockItemRegistra
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.registration.recipe.MalleableMaterialRegistration;
-import io.github.zephyrwolf.medievalism.tools.RecipeTools;
+import io.github.zephyrwolf.medievalism.common.recipe.RecipeTools;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.world.item.ItemStack;

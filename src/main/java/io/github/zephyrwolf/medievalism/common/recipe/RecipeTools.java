@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.tools;
+package io.github.zephyrwolf.medievalism.common.recipe;
 
 import io.github.zephyrwolf.medievalism.registration.item.ItemTagCatalog;
 import net.minecraft.advancements.Criterion;

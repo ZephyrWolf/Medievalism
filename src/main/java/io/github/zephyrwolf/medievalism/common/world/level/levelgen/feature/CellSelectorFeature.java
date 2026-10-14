@@ -44,17 +44,12 @@ public class CellSelectorFeature extends Feature<CellSelectorFeatureConfiguratio
         NormalNoise noise = randomState.getOrCreateNoise(settings.noiseKey());
         int stoneVariant = CellNoise.noise(settings, noise, origin);
         List<CellVariant> variants = settings.variants();
-        if (!variants.isEmpty() && stoneVariant >= 0 && stoneVariant < variants.size())
-        {
-            String variantName = variants.get(stoneVariant).name().toString();
-            if (config.features.containsKey(variantName))
-            {
-                PlacedFeature placedfeature = config.features.get(variantName).value();
-                ChunkGenerator chunkGenerator = context.chunkGenerator();
-                RandomSource randomSource = context.random();
-                return placedfeature.place(level, chunkGenerator, randomSource, origin);
-            }
-        }
-        return false;
+        if (variants.isEmpty() || stoneVariant < 0 || stoneVariant >= variants.size()) return false;
+        String variantName = variants.get(stoneVariant).name().toString();
+        if (!config.features.containsKey(variantName) || config.features.get(variantName) == null) return false;
+        PlacedFeature placedfeature = config.features.get(variantName).value();
+        ChunkGenerator chunkGenerator = context.chunkGenerator();
+        RandomSource randomSource = context.random();
+        return placedfeature.place(level, chunkGenerator, randomSource, origin);
     }
 }

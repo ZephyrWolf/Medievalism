@@ -2,7 +2,7 @@ package io.github.zephyrwolf.medievalism.data.base.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
-import io.github.zephyrwolf.medievalism.tools.RecipeTools;
+import io.github.zephyrwolf.medievalism.common.recipe.RecipeTools;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;

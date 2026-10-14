@@ -3,7 +3,7 @@ package io.github.zephyrwolf.medievalism.data.base.block;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.block.*;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
-import io.github.zephyrwolf.medievalism.tools.WarmthTools;
+import io.github.zephyrwolf.medievalism.common.warmth.WarmthTools;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
