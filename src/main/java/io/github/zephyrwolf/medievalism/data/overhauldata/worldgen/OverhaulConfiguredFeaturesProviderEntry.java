@@ -1,22 +1,28 @@
 package io.github.zephyrwolf.medievalism.data.overhauldata.worldgen;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.FeatureTools;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.LayerSelectorFeatureConfiguration;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.LayeredPlacedFeature;
 import io.github.zephyrwolf.medievalism.data.base.worldgen.BaseConfiguredFeaturesProviderEntry;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.block.BlockTagCatalog;
+import io.github.zephyrwolf.medievalism.registration.world.level.FeatureRegistration;
+import io.github.zephyrwolf.medievalism.registration.world.level.WorldGenLayerCatalog;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
@@ -24,68 +30,84 @@ import java.util.List;
 
 public final class OverhaulConfiguredFeaturesProviderEntry
 {
+    // ==DEBUG==
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DEBUG_SIMPLE =                         FeatureTools.registerKey(MedievalismConstants.resource("debug_simple"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DEBUG_FIND_LOWER =                     FeatureTools.registerKey(MedievalismConstants.resource("debug_find_lower"));
+
     // ==Vanilla==
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_CLAY =             registerKey(ResourceLocation.withDefaultNamespace("ore_clay"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_DIRT =             registerKey(ResourceLocation.withDefaultNamespace("ore_dirt"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GRAVEL =           registerKey(ResourceLocation.withDefaultNamespace("ore_gravel"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ANDESITE =         registerKey(ResourceLocation.withDefaultNamespace("ore_andesite"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_DIORITE =          registerKey(ResourceLocation.withDefaultNamespace("ore_diorite"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GRANITE =          registerKey(ResourceLocation.withDefaultNamespace("ore_granite"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_TUFF =             registerKey(ResourceLocation.withDefaultNamespace("ore_tuff"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_INFESTED =         registerKey(ResourceLocation.withDefaultNamespace("ore_infested"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_COPPER_LARGE =     registerKey(ResourceLocation.withDefaultNamespace("ore_copper_large"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_COPPER_SMALL =     registerKey(ResourceLocation.withDefaultNamespace("ore_copper_small"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_IRON =             registerKey(ResourceLocation.withDefaultNamespace("ore_iron"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_IRON_SMALL =       registerKey(ResourceLocation.withDefaultNamespace("ore_iron_small"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GOLD =             registerKey(ResourceLocation.withDefaultNamespace("ore_gold"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GOLD_BURIED =      registerKey(ResourceLocation.withDefaultNamespace("ore_gold_buried"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_COAL =             registerKey(ResourceLocation.withDefaultNamespace("ore_coal"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_COAL_BURIED =      registerKey(ResourceLocation.withDefaultNamespace("ore_coal_buried"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_DIAMOND_BURIED =   registerKey(ResourceLocation.withDefaultNamespace("ore_diamond_buried"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_DIAMOND_LARGE =    registerKey(ResourceLocation.withDefaultNamespace("ore_diamond_large"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_DIAMOND_MEDIUM =   registerKey(ResourceLocation.withDefaultNamespace("ore_diamond_medium"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_DIAMOND_SMALL =    registerKey(ResourceLocation.withDefaultNamespace("ore_diamond_small"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_EMERALD =          registerKey(ResourceLocation.withDefaultNamespace("ore_emerald"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_LAPIS =            registerKey(ResourceLocation.withDefaultNamespace("ore_lapis"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_LAPIS_BURIED =     registerKey(ResourceLocation.withDefaultNamespace("ore_lapis_buried"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_REDSTONE =         registerKey(ResourceLocation.withDefaultNamespace("ore_redstone"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_CLAY =                             FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_clay"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_DIRT =                             FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_dirt"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GRAVEL =                           FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_gravel"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ANDESITE =                         FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_andesite"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_DIORITE =                          FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_diorite"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GRANITE =                          FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_granite"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_TUFF =                             FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_tuff"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_INFESTED =                         FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_infested"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_COPPER_LARGE =                     FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_copper_large"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_COPPER_SMALL =                     FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_copper_small"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_IRON =                             FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_iron"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_IRON_SMALL =                       FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_iron_small"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GOLD =                             FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_gold"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GOLD_BURIED =                      FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_gold_buried"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_COAL =                             FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_coal"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_COAL_BURIED =                      FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_coal_buried"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_DIAMOND_BURIED =                   FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_diamond_buried"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_DIAMOND_LARGE =                    FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_diamond_large"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_DIAMOND_MEDIUM =                   FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_diamond_medium"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_DIAMOND_SMALL =                    FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_diamond_small"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_EMERALD =                          FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_emerald"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_LAPIS =                            FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_lapis"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_LAPIS_BURIED =                     FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_lapis_buried"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_REDSTONE =                         FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_redstone"));
 
     // ==Medievalism==
-    // ROCK
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SANDSTONE_ROCK =             BaseConfiguredFeaturesProviderEntry.SANDSTONE_ROCK;
-    public static final ResourceKey<ConfiguredFeature<?, ?>> RED_SANDSTONE_ROCK =         BaseConfiguredFeaturesProviderEntry.RED_SANDSTONE_ROCK;
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SAPROLITE_ROCK =             registerKey(MedievalismConstants.resource("saprolite_rock"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LATERITE_ROCK =              registerKey(MedievalismConstants.resource("laterite_rock"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GREYWACKE_ROCK =             BaseConfiguredFeaturesProviderEntry.GREYWACKE_ROCK;
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SILTSTONE_ROCK =             registerKey(MedievalismConstants.resource("siltstone_rock"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DOLOSTONE_ROCK =             registerKey(MedievalismConstants.resource("dolostone_rock"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LIMESTONE_ROCK =             registerKey(MedievalismConstants.resource("limestone_rock"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> IRONSTONE_ROCK =             registerKey(MedievalismConstants.resource("ironstone_rock"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SHALE_ROCK =                 registerKey(MedievalismConstants.resource("shale_rock"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ARKOSE_ROCK =                registerKey(MedievalismConstants.resource("arkose_rock"));
-    // LARGE ROCK
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_SANDSTONE_ROCK =       BaseConfiguredFeaturesProviderEntry.LARGE_SANDSTONE_ROCK;
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_RED_SANDSTONE_ROCK =   BaseConfiguredFeaturesProviderEntry.LARGE_RED_SANDSTONE_ROCK;
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_SAPROLITE_ROCK =       registerKey(MedievalismConstants.resource("large_saprolite_rock"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_LATERITE_ROCK =        registerKey(MedievalismConstants.resource("large_laterite_rock"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_GREYWACKE_ROCK =       BaseConfiguredFeaturesProviderEntry.LARGE_GREYWACKE_ROCK;
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_SILTSTONE_ROCK =       registerKey(MedievalismConstants.resource("large_siltstone_rock"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_DOLOSTONE_ROCK =       registerKey(MedievalismConstants.resource("large_dolostone_rock"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_LIMESTONE_ROCK =       registerKey(MedievalismConstants.resource("large_limestone_rock"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_IRONSTONE_ROCK =       registerKey(MedievalismConstants.resource("large_ironstone_rock"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_SHALE_ROCK =           registerKey(MedievalismConstants.resource("large_shale_rock"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_ARKOSE_ROCK =          registerKey(MedievalismConstants.resource("large_arkose_rock"));
-    // COPPER ROCK
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GREYWACKE_ROCK_COPPER_ORE =  BaseConfiguredFeaturesProviderEntry.GREYWACKE_ROCK_COPPER_ORE;
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SILTSTONE_ROCK_COPPER_ORE =  registerKey(MedievalismConstants.resource("siltstone_rock_copper_ore"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DOLOSTONE_ROCK_COPPER_ORE =  registerKey(MedievalismConstants.resource("dolostone_rock_copper_ore"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LIMESTONE_ROCK_COPPER_ORE =  registerKey(MedievalismConstants.resource("limestone_rock_copper_ore"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> IRONSTONE_ROCK_COPPER_ORE =  registerKey(MedievalismConstants.resource("ironstone_rock_copper_ore"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SHALE_ROCK_COPPER_ORE =      registerKey(MedievalismConstants.resource("shale_rock_copper_ore"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ARKOSE_ROCK_COPPER_ORE =     registerKey(MedievalismConstants.resource("arkose_rock_copper_ore"));
+    // ROCKS
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SANDSTONE_ROCKS =              BaseConfiguredFeaturesProviderEntry.SURFACE_SANDSTONE_ROCKS;
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_RED_SANDSTONE_ROCKS =          BaseConfiguredFeaturesProviderEntry.SURFACE_RED_SANDSTONE_ROCKS;
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SAPROLITE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_saprolite_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_LATERITE_ROCKS =               FeatureTools.registerKey(MedievalismConstants.resource("surface_laterite_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SILT_CLUMPS =                  FeatureTools.registerKey(MedievalismConstants.resource("surface_silt_clumps"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_GREYWACKE_ROCKS =              BaseConfiguredFeaturesProviderEntry.SURFACE_GREYWACKE_ROCKS;
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SILTSTONE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_siltstone_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_DOLOSTONE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_dolostone_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_LIMESTONE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_limestone_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_IRONSTONE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_ironstone_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SHALE_ROCKS =                  FeatureTools.registerKey(MedievalismConstants.resource("surface_shale_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_ARKOSE_ROCKS =                 FeatureTools.registerKey(MedievalismConstants.resource("surface_arkose_rocks"));
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_GREYWACKE_ROCKS =                 BaseConfiguredFeaturesProviderEntry.CAVE_GREYWACKE_ROCKS;
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_SILTSTONE_ROCKS =                 FeatureTools.registerKey(MedievalismConstants.resource("cave_siltstone_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_DOLOSTONE_ROCKS =                 FeatureTools.registerKey(MedievalismConstants.resource("cave_dolostone_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_LIMESTONE_ROCKS =                 FeatureTools.registerKey(MedievalismConstants.resource("cave_limestone_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_IRONSTONE_ROCKS =                 FeatureTools.registerKey(MedievalismConstants.resource("cave_ironstone_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_SHALE_ROCKS =                     FeatureTools.registerKey(MedievalismConstants.resource("cave_shale_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_ARKOSE_ROCKS =                    FeatureTools.registerKey(MedievalismConstants.resource("cave_arkose_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_MARBLE_ROCKS =                    FeatureTools.registerKey(MedievalismConstants.resource("cave_marble_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_QUARTZITE_ROCKS =                 FeatureTools.registerKey(MedievalismConstants.resource("cave_quartzite_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_HORNFELS_ROCKS =                  FeatureTools.registerKey(MedievalismConstants.resource("cave_hornfels_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_SLATE_ROCKS =                     FeatureTools.registerKey(MedievalismConstants.resource("cave_slate_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_GABBRO_ROCKS =                    BaseConfiguredFeaturesProviderEntry.CAVE_GABBRO_ROCKS;
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_SMOOTH_DIORITE_ROCKS =            FeatureTools.registerKey(MedievalismConstants.resource("cave_smooth_diorite_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_SMOOTH_GRANITE_ROCKS =            FeatureTools.registerKey(MedievalismConstants.resource("cave_smooth_granite_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_NORITE_ROCKS =                    FeatureTools.registerKey(MedievalismConstants.resource("cave_norite_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_PERIDOTITE_ROCKS =                FeatureTools.registerKey(MedievalismConstants.resource("cave_peridotite_rocks"));
+
+    // --
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context)
     {
+        FeatureTools.register(context, DEBUG_SIMPLE, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.DIAMOND_BLOCK)));
+        //FeatureTools.registerSimpleRandomFeature(context, DEBUG_FIND_LOWER, FeatureTools.inlineSteppedPlacement(Blocks.DIAMOND_BLOCK, Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1));
+
+        FeatureTools.register(context, DEBUG_FIND_LOWER, FeatureRegistration.LAYER_SELECTOR_FEATURE.get(), LayerSelectorFeatureConfiguration.layers(
+                LayeredPlacedFeature.layer(
+                        WorldGenLayerCatalog.WorldLayer.DEEP_IGNEOUS_INTRUSIVE,
+                        FeatureTools.inlineSteppedPlacement(Blocks.DIAMOND_BLOCK, Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1)),
+                LayeredPlacedFeature.layer(
+                        WorldGenLayerCatalog.WorldLayer.IGNEOUS_INTRUSIVE,
+                        FeatureTools.inlineSteppedPlacement(Blocks.GOLD_BLOCK, Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1))
+                ));
+
         bootstrap_vanilla(context);
         bootstrap_medievalism(context);
     }
@@ -150,7 +172,6 @@ public final class OverhaulConfiguredFeaturesProviderEntry
         List<OreConfiguration.TargetBlockState> copperOres = List.of(
                 //Meta->Regolith
                 OreConfiguration.target(saproliteOreReplaceables, BlockRegistration.SAPROLITE_COPPER_ORE.get().defaultBlockState()),
-                OreConfiguration.target(lateriteOreReplaceables, BlockRegistration.LATERITE_COPPER_ORE.get().defaultBlockState()),
                 OreConfiguration.target(greywackeOreReplaceables, BlockRegistration.GREYWACKE_COPPER_ORE.get().defaultBlockState()),
                 OreConfiguration.target(siltstoneOreReplaceables, BlockRegistration.SILTSTONE_COPPER_ORE.get().defaultBlockState()),
                 OreConfiguration.target(dolostoneOreReplaceables, BlockRegistration.DOLOSTONE_COPPER_ORE.get().defaultBlockState()),
@@ -263,94 +284,169 @@ public final class OverhaulConfiguredFeaturesProviderEntry
                 OreConfiguration.target(peridotiteOreReplaceables, BlockRegistration.PERIDOTITE_REDSTONE_ORE.get().defaultBlockState())
         );
 
-        register(context, ORE_CLAY, Feature.ORE, new OreConfiguration(clayOres, 33));
-        register(context, ORE_DIRT, Feature.ORE, new OreConfiguration(dirtOres, 33));
-        register(context, ORE_GRAVEL, Feature.ORE, new OreConfiguration(gravelOres, 33));
-        register(context, ORE_ANDESITE, Feature.ORE, new OreConfiguration(andesiteOres, 64));
-        register(context, ORE_DIORITE, Feature.ORE, new OreConfiguration(dioriteOres, 64));
-        register(context, ORE_GRANITE, Feature.ORE, new OreConfiguration(graniteOres, 64));
-        register(context, ORE_TUFF, Feature.ORE, new OreConfiguration(tuffOres, 64));
-        register(context, ORE_INFESTED, Feature.ORE, new OreConfiguration(infestedOres, 9));
-        register(context, ORE_COPPER_LARGE, Feature.ORE, new OreConfiguration(copperOres, 20));
-        register(context, ORE_COPPER_SMALL, Feature.ORE, new OreConfiguration(copperOres, 10));
-        register(context, ORE_IRON, Feature.ORE, new OreConfiguration(ironOres, 9));
-        register(context, ORE_IRON_SMALL, Feature.ORE, new OreConfiguration(ironOres, 4));
-        register(context, ORE_GOLD, Feature.ORE, new OreConfiguration(goldOres, 9));
-        register(context, ORE_GOLD_BURIED, Feature.ORE, new OreConfiguration(goldOres, 9, 0.5f));
-        register(context, ORE_COAL, Feature.ORE, new OreConfiguration(coalOres, 17));
-        register(context, ORE_COAL_BURIED, Feature.ORE, new OreConfiguration(coalOres, 17, 0.5f));
-        register(context, ORE_DIAMOND_BURIED, Feature.ORE, new OreConfiguration(diamondOres, 8, 1.0f));
-        register(context, ORE_DIAMOND_LARGE, Feature.ORE, new OreConfiguration(diamondOres, 12, 0.7f));
-        register(context, ORE_DIAMOND_MEDIUM, Feature.ORE, new OreConfiguration(diamondOres, 8, 0.5f));
-        register(context, ORE_DIAMOND_SMALL, Feature.ORE, new OreConfiguration(diamondOres, 4, 0.5f));
-        register(context, ORE_EMERALD, Feature.ORE, new OreConfiguration(emeraldOres, 3));
-        register(context, ORE_LAPIS, Feature.ORE, new OreConfiguration(lapisOres, 14)); // 7
-        register(context, ORE_LAPIS_BURIED, Feature.ORE, new OreConfiguration(lapisOres, 7, 1.0f));
-        register(context, ORE_REDSTONE, Feature.ORE, new OreConfiguration(redstoneOres, 8));
+        FeatureTools.register(context, ORE_CLAY, Feature.ORE, new OreConfiguration(clayOres, 33));
+        FeatureTools.register(context, ORE_DIRT, Feature.ORE, new OreConfiguration(dirtOres, 33));
+        FeatureTools.register(context, ORE_GRAVEL, Feature.ORE, new OreConfiguration(gravelOres, 33));
+        FeatureTools.register(context, ORE_ANDESITE, Feature.ORE, new OreConfiguration(andesiteOres, 64));
+        FeatureTools.register(context, ORE_DIORITE, Feature.ORE, new OreConfiguration(dioriteOres, 64));
+        FeatureTools.register(context, ORE_GRANITE, Feature.ORE, new OreConfiguration(graniteOres, 64));
+        FeatureTools.register(context, ORE_TUFF, Feature.ORE, new OreConfiguration(tuffOres, 64));
+        FeatureTools.register(context, ORE_INFESTED, Feature.ORE, new OreConfiguration(infestedOres, 9));
+        FeatureTools.register(context, ORE_COPPER_LARGE, Feature.ORE, new OreConfiguration(copperOres, 20));
+        FeatureTools.register(context, ORE_COPPER_SMALL, Feature.ORE, new OreConfiguration(copperOres, 10));
+        FeatureTools.register(context, ORE_IRON, Feature.ORE, new OreConfiguration(ironOres, 9));
+        FeatureTools.register(context, ORE_IRON_SMALL, Feature.ORE, new OreConfiguration(ironOres, 4));
+        FeatureTools.register(context, ORE_GOLD, Feature.ORE, new OreConfiguration(goldOres, 9));
+        FeatureTools.register(context, ORE_GOLD_BURIED, Feature.ORE, new OreConfiguration(goldOres, 9, 0.5f));
+        FeatureTools.register(context, ORE_COAL, Feature.ORE, new OreConfiguration(coalOres, 17));
+        FeatureTools.register(context, ORE_COAL_BURIED, Feature.ORE, new OreConfiguration(coalOres, 17, 0.5f));
+        FeatureTools.register(context, ORE_DIAMOND_BURIED, Feature.ORE, new OreConfiguration(diamondOres, 8, 1.0f));
+        FeatureTools.register(context, ORE_DIAMOND_LARGE, Feature.ORE, new OreConfiguration(diamondOres, 12, 0.7f));
+        FeatureTools.register(context, ORE_DIAMOND_MEDIUM, Feature.ORE, new OreConfiguration(diamondOres, 8, 0.5f));
+        FeatureTools.register(context, ORE_DIAMOND_SMALL, Feature.ORE, new OreConfiguration(diamondOres, 4, 0.5f));
+        FeatureTools.register(context, ORE_EMERALD, Feature.ORE, new OreConfiguration(emeraldOres, 3));
+        FeatureTools.register(context, ORE_LAPIS, Feature.ORE, new OreConfiguration(lapisOres, 14)); // 7
+        FeatureTools.register(context, ORE_LAPIS_BURIED, Feature.ORE, new OreConfiguration(lapisOres, 7, 1.0f));
+        FeatureTools.register(context, ORE_REDSTONE, Feature.ORE, new OreConfiguration(redstoneOres, 8));
     }
 
     public static void bootstrap_medievalism(BootstrapContext<ConfiguredFeature<?, ?>> context)
     {
-        // ROCK
-        simpleRandomPatch(context, SANDSTONE_ROCK,              2, 3, 0, BlockRegistration.SANDSTONE_ROCK.get());
-        simpleRandomPatch(context, RED_SANDSTONE_ROCK,          2, 3, 0, BlockRegistration.RED_SANDSTONE_ROCK.get());
-        simpleRandomPatch(context, SAPROLITE_ROCK,              2, 3, 0, BlockRegistration.SAPROLITE_ROCK.get());
-        simpleRandomPatch(context, LATERITE_ROCK,               2, 3, 0, BlockRegistration.LATERITE_ROCK.get());
-        simpleRandomPatch(context, GREYWACKE_ROCK,              2, 3, 0, BlockRegistration.GREYWACKE_ROCK.get());
-        simpleRandomPatch(context, SILTSTONE_ROCK,              2, 3, 0, BlockRegistration.SILTSTONE_ROCK.get());
-        simpleRandomPatch(context, DOLOSTONE_ROCK,              2, 3, 0, BlockRegistration.DOLOSTONE_ROCK.get());
-        simpleRandomPatch(context, LIMESTONE_ROCK,              2, 3, 0, BlockRegistration.LIMESTONE_ROCK.get());
-        simpleRandomPatch(context, IRONSTONE_ROCK,              2, 3, 0, BlockRegistration.IRONSTONE_ROCK.get());
-        simpleRandomPatch(context, SHALE_ROCK,                  2, 3, 0, BlockRegistration.SHALE_ROCK.get());
-        simpleRandomPatch(context, ARKOSE_ROCK,                 2, 3, 0, BlockRegistration.ARKOSE_ROCK.get());
-        // LARGE ROCK
-        simpleRandomPatch(context, LARGE_SANDSTONE_ROCK,        2, 3, 0, BlockRegistration.LARGE_SANDSTONE_ROCK.get());
-        simpleRandomPatch(context, LARGE_RED_SANDSTONE_ROCK,    2, 3, 0, BlockRegistration.LARGE_RED_SANDSTONE_ROCK.get());
-        simpleRandomPatch(context, LARGE_SAPROLITE_ROCK,        2, 3, 0, BlockRegistration.LARGE_SAPROLITE_ROCK.get());
-        simpleRandomPatch(context, LARGE_LATERITE_ROCK,         2, 3, 0, BlockRegistration.LARGE_LATERITE_ROCK.get());
-        simpleRandomPatch(context, LARGE_GREYWACKE_ROCK,        2, 3, 0, BlockRegistration.LARGE_GREYWACKE_ROCK.get());
-        simpleRandomPatch(context, LARGE_SILTSTONE_ROCK,        2, 3, 0, BlockRegistration.LARGE_SILTSTONE_ROCK.get());
-        simpleRandomPatch(context, LARGE_DOLOSTONE_ROCK,        2, 3, 0, BlockRegistration.LARGE_DOLOSTONE_ROCK.get());
-        simpleRandomPatch(context, LARGE_LIMESTONE_ROCK,        2, 3, 0, BlockRegistration.LARGE_LIMESTONE_ROCK.get());
-        simpleRandomPatch(context, LARGE_IRONSTONE_ROCK,        2, 3, 0, BlockRegistration.LARGE_IRONSTONE_ROCK.get());
-        simpleRandomPatch(context, LARGE_SHALE_ROCK,            2, 3, 0, BlockRegistration.LARGE_SHALE_ROCK.get());
-        simpleRandomPatch(context, LARGE_ARKOSE_ROCK,           2, 3, 0, BlockRegistration.LARGE_ARKOSE_ROCK.get());
-        // COPPER ROCK
-        simpleRandomPatch(context, GREYWACKE_ROCK_COPPER_ORE,   1, 0, 0, BlockRegistration.GREYWACKE_ROCK_COPPER_ORE.get());
-        simpleRandomPatch(context, SILTSTONE_ROCK_COPPER_ORE,   1, 0, 0, BlockRegistration.SILTSTONE_ROCK_COPPER_ORE.get());
-        simpleRandomPatch(context, DOLOSTONE_ROCK_COPPER_ORE,   1, 0, 0, BlockRegistration.DOLOSTONE_ROCK_COPPER_ORE.get());
-        simpleRandomPatch(context, LIMESTONE_ROCK_COPPER_ORE,   1, 0, 0, BlockRegistration.LIMESTONE_ROCK_COPPER_ORE.get());
-        simpleRandomPatch(context, IRONSTONE_ROCK_COPPER_ORE,   1, 0, 0, BlockRegistration.IRONSTONE_ROCK_COPPER_ORE.get());
-        simpleRandomPatch(context, SHALE_ROCK_COPPER_ORE,       1, 0, 0, BlockRegistration.SHALE_ROCK_COPPER_ORE.get());
-        simpleRandomPatch(context, ARKOSE_ROCK_COPPER_ORE,      1, 0, 0, BlockRegistration.ARKOSE_ROCK_COPPER_ORE.get());
-    }
+        final int Y_SPREAD = 0;
 
-    // --
+        final int SURFACE_SANDSTONE_TRIES = 2;
+        final int SURFACE_REGOLITH_TRIES = 3;
+        final int SURFACE_SEDIMENTARY_TRIES = 2;
+        final int CAVE_TRIES = 3;
 
-    public static void simpleRandomPatch(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> featureKey,
-                                         int tries, int xzSpread, int ySpread, Block block) {
-        simpleRandomPatch(context, featureKey, tries, xzSpread, ySpread, BlockStateProvider.simple(block));
-    }
+        final int SURFACE_SANDSTONE_XZ_SPREAD = 3;
+        final int SURFACE_REGOLITH_XZ_SPREAD = 3;
+        final int SURFACE_SEDIMENTARY_XZ_SPREAD = 3;
+        final int CAVE_XZ_SPREAD = 3;
 
-    public static void simpleRandomPatch(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> featureKey,
-                                         int tries, int xzSpread, int ySpread, BlockStateProvider blockStateProvider) {
-        register(context, featureKey, Feature.RANDOM_PATCH,
-                new RandomPatchConfiguration(
-                        tries, xzSpread, ySpread,
-                        PlacementUtils.onlyWhenEmpty(
-                                Feature.SIMPLE_BLOCK,
-                                new SimpleBlockConfiguration(blockStateProvider)
-                        )
-                )
-        );
-    }
+        final float LARGE_ROCK_CHANCE = 0.3f;
+        final float ORE_ROCK_CHANCE = 0.25f;
 
-    public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(ResourceLocation resource) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, resource);
-    }
-
-    private static <FC extends FeatureConfiguration, F extends Feature<FC>>
-    void register(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
-        context.register(key, new ConfiguredFeature<>(feature, configuration));
+        // ROCKS
+        FeatureTools.registerRandomPatch(context, SURFACE_SANDSTONE_ROCKS, SURFACE_SANDSTONE_TRIES, SURFACE_SANDSTONE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.SANDSTONE_ROCK.get()),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_SANDSTONE_ROCK.get()), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, SURFACE_RED_SANDSTONE_ROCKS, SURFACE_SANDSTONE_TRIES, SURFACE_SANDSTONE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.RED_SANDSTONE_ROCK.get()),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_RED_SANDSTONE_ROCK.get()), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, SURFACE_SAPROLITE_ROCKS, SURFACE_REGOLITH_TRIES, SURFACE_REGOLITH_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.SAPROLITE_ROCK.get()),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_SAPROLITE_ROCK.get()), LARGE_ROCK_CHANCE),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.SAPROLITE_ROCK_COPPER_ORE.get()), ORE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, SURFACE_LATERITE_ROCKS, SURFACE_REGOLITH_TRIES, SURFACE_REGOLITH_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LATERITE_ROCK.get()),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_LATERITE_ROCK.get()), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, SURFACE_SILT_CLUMPS, SURFACE_REGOLITH_TRIES, SURFACE_REGOLITH_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.SILT_CLUMP.get()),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_SILT_CLUMP.get()), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, SURFACE_GREYWACKE_ROCKS, SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.GREYWACKE_ROCK.get()),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_GREYWACKE_ROCK.get()), LARGE_ROCK_CHANCE),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.GREYWACKE_ROCK_COPPER_ORE.get()), ORE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, SURFACE_SILTSTONE_ROCKS, SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.SILTSTONE_ROCK.get()),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_SILTSTONE_ROCK.get()), LARGE_ROCK_CHANCE),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.SILTSTONE_ROCK_COPPER_ORE.get()), ORE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, SURFACE_DOLOSTONE_ROCKS, SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.DOLOSTONE_ROCK.get()),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_DOLOSTONE_ROCK.get()), LARGE_ROCK_CHANCE),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.DOLOSTONE_ROCK_COPPER_ORE.get()), ORE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, SURFACE_LIMESTONE_ROCKS, SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LIMESTONE_ROCK.get()),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_LIMESTONE_ROCK.get()), LARGE_ROCK_CHANCE),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LIMESTONE_ROCK_COPPER_ORE.get()), ORE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, SURFACE_IRONSTONE_ROCKS, SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.IRONSTONE_ROCK.get()),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_IRONSTONE_ROCK.get()), LARGE_ROCK_CHANCE),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.IRONSTONE_ROCK_COPPER_ORE.get()), ORE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, SURFACE_SHALE_ROCKS, SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.SHALE_ROCK.get()),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_SHALE_ROCK.get()), LARGE_ROCK_CHANCE),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.SHALE_ROCK_COPPER_ORE.get()), ORE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, SURFACE_ARKOSE_ROCKS, SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.ARKOSE_ROCK.get()),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_ARKOSE_ROCK.get()), LARGE_ROCK_CHANCE),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.ARKOSE_ROCK_COPPER_ORE.get()), ORE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, CAVE_GREYWACKE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.GREYWACKE_ROCK.get()),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_GREYWACKE_ROCK.get()), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, CAVE_SILTSTONE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.SILTSTONE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_SILTSTONE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, CAVE_DOLOSTONE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.DOLOSTONE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_DOLOSTONE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, CAVE_LIMESTONE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.LIMESTONE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_LIMESTONE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, CAVE_IRONSTONE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.IRONSTONE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_IRONSTONE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, CAVE_SHALE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.SHALE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_SHALE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, CAVE_ARKOSE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.ARKOSE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_ARKOSE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, CAVE_MARBLE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.MARBLE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_MARBLE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, CAVE_QUARTZITE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.QUARTZITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_QUARTZITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, CAVE_HORNFELS_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.HORNFELS_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_HORNFELS_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, CAVE_SLATE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.SLATE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_SLATE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, CAVE_GABBRO_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.GABBRO_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.GABBRO_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, CAVE_SMOOTH_DIORITE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.SMOOTH_DIORITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_SMOOTH_DIORITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, CAVE_SMOOTH_GRANITE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.SMOOTH_GRANITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_SMOOTH_GRANITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, CAVE_NORITE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.NORITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_NORITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, CAVE_PERIDOTITE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.PERIDOTITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.PERIDOTITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
+        ));
     }
 }

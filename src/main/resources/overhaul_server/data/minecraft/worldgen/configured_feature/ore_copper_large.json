@@ -15,15 +15,6 @@
       },
       {
         "state": {
-          "Name": "medievalism:laterite_copper_ore"
-        },
-        "target": {
-          "predicate_type": "minecraft:tag_match",
-          "tag": "medievalism:laterite_replaceables"
-        }
-      },
-      {
-        "state": {
           "Name": "minecraft:copper_ore"
         },
         "target": {

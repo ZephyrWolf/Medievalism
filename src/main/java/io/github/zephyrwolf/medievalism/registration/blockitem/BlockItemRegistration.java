@@ -124,7 +124,6 @@ public final class BlockItemRegistration
     public static final DeferredItem<BlockItem> INFESTED_COBBLED_ARKOSE =           BLOCKITEMS.registerSimpleBlockItem("infested_cobbled_arkose",       BlockRegistration.INFESTED_COBBLED_ARKOSE);
     // COPPER ORE
     public static final DeferredItem<BlockItem> SAPROLITE_COPPER_ORE =              BLOCKITEMS.registerSimpleBlockItem("saprolite_copper_ore",          BlockRegistration.SAPROLITE_COPPER_ORE);
-    public static final DeferredItem<BlockItem> LATERITE_COPPER_ORE =               BLOCKITEMS.registerSimpleBlockItem("laterite_copper_ore",           BlockRegistration.LATERITE_COPPER_ORE);
     public static final DeferredItem<BlockItem> GREYWACKE_COPPER_ORE =              new VanillaDeferredItem<>(Items.COPPER_ORE);
     public static final DeferredItem<BlockItem> SILTSTONE_COPPER_ORE =              BLOCKITEMS.registerSimpleBlockItem("siltstone_copper_ore",          BlockRegistration.SILTSTONE_COPPER_ORE);
     public static final DeferredItem<BlockItem> DOLOSTONE_COPPER_ORE =              BLOCKITEMS.registerSimpleBlockItem("dolostone_copper_ore",          BlockRegistration.DOLOSTONE_COPPER_ORE);
@@ -228,22 +227,33 @@ public final class BlockItemRegistration
     // ROCK PROPERTIES
     private static final Item.Properties ROCK_PROPERTIES =                          new Item.Properties().durability(20);
     //ROCK
-    public static final DeferredItem<RockBlockItem> SANDSTONE_ROCK =                registerBlockItem("sandstone_rock",     RockBlockItem::new,         BlockRegistration.SANDSTONE_ROCK, ROCK_PROPERTIES);
-    public static final DeferredItem<RockBlockItem> RED_SANDSTONE_ROCK =            registerBlockItem("red_sandstone_rock", RockBlockItem::new,         BlockRegistration.RED_SANDSTONE_ROCK, ROCK_PROPERTIES);
-    public static final DeferredItem<RockBlockItem> SAPROLITE_ROCK =                registerBlockItem("saprolite_rock",     RockBlockItem::new,         BlockRegistration.SAPROLITE_ROCK, ROCK_PROPERTIES);
-    public static final DeferredItem<RockBlockItem> LATERITE_ROCK =                 registerBlockItem("laterite_rock",      RockBlockItem::new,         BlockRegistration.LATERITE_ROCK, ROCK_PROPERTIES);
-    public static final DeferredItem<RockBlockItem> GREYWACKE_ROCK =                registerBlockItem("greywacke_rock",     RockBlockItem::new,         BlockRegistration.GREYWACKE_ROCK, ROCK_PROPERTIES);
-    public static final DeferredItem<RockBlockItem> SILTSTONE_ROCK =                registerBlockItem("siltstone_rock",     RockBlockItem::new,         BlockRegistration.SILTSTONE_ROCK, ROCK_PROPERTIES);
-    public static final DeferredItem<RockBlockItem> DOLOSTONE_ROCK =                registerBlockItem("dolostone_rock",     RockBlockItem::new,         BlockRegistration.DOLOSTONE_ROCK, ROCK_PROPERTIES);
-    public static final DeferredItem<RockBlockItem> LIMESTONE_ROCK =                registerBlockItem("limestone_rock",     RockBlockItem::new,         BlockRegistration.LIMESTONE_ROCK, ROCK_PROPERTIES);
-    public static final DeferredItem<RockBlockItem> IRONSTONE_ROCK =                registerBlockItem("ironstone_rock",     RockBlockItem::new,         BlockRegistration.IRONSTONE_ROCK, ROCK_PROPERTIES);
-    public static final DeferredItem<RockBlockItem> SHALE_ROCK =                    registerBlockItem("shale_rock",         RockBlockItem::new,         BlockRegistration.SHALE_ROCK, ROCK_PROPERTIES);
-    public static final DeferredItem<RockBlockItem> ARKOSE_ROCK =                   registerBlockItem("arkose_rock",        RockBlockItem::new,         BlockRegistration.ARKOSE_ROCK, ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> SANDSTONE_ROCK =                registerBlockItem("sandstone_rock",         RockBlockItem::new,     BlockRegistration.SANDSTONE_ROCK,       ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> RED_SANDSTONE_ROCK =            registerBlockItem("red_sandstone_rock",     RockBlockItem::new,     BlockRegistration.RED_SANDSTONE_ROCK,   ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> SAPROLITE_ROCK =                registerBlockItem("saprolite_rock",         RockBlockItem::new,     BlockRegistration.SAPROLITE_ROCK,       ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> LATERITE_ROCK =                 registerBlockItem("laterite_rock",          RockBlockItem::new,     BlockRegistration.LATERITE_ROCK,        ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> SILT_CLUMP =                    registerBlockItem("silt_clump",             RockBlockItem::new,     BlockRegistration.SILT_CLUMP,           ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> GREYWACKE_ROCK =                registerBlockItem("greywacke_rock",         RockBlockItem::new,     BlockRegistration.GREYWACKE_ROCK,       ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> SILTSTONE_ROCK =                registerBlockItem("siltstone_rock",         RockBlockItem::new,     BlockRegistration.SILTSTONE_ROCK,       ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> DOLOSTONE_ROCK =                registerBlockItem("dolostone_rock",         RockBlockItem::new,     BlockRegistration.DOLOSTONE_ROCK,       ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> LIMESTONE_ROCK =                registerBlockItem("limestone_rock",         RockBlockItem::new,     BlockRegistration.LIMESTONE_ROCK,       ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> IRONSTONE_ROCK =                registerBlockItem("ironstone_rock",         RockBlockItem::new,     BlockRegistration.IRONSTONE_ROCK,       ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> SHALE_ROCK =                    registerBlockItem("shale_rock",             RockBlockItem::new,     BlockRegistration.SHALE_ROCK,           ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> ARKOSE_ROCK =                   registerBlockItem("arkose_rock",            RockBlockItem::new,     BlockRegistration.ARKOSE_ROCK,          ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> MARBLE_ROCK =                   registerBlockItem("marble_rock",            RockBlockItem::new,     BlockRegistration.MARBLE_ROCK,          ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> QUARTZITE_ROCK =                registerBlockItem("quartzite_rock",         RockBlockItem::new,     BlockRegistration.QUARTZITE_ROCK,       ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> HORNFELS_ROCK =                 registerBlockItem("hornfels_rock",          RockBlockItem::new,     BlockRegistration.HORNFELS_ROCK,        ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> SLATE_ROCK =                    registerBlockItem("slate_rock",             RockBlockItem::new,     BlockRegistration.SLATE_ROCK,           ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> GABBRO_ROCK =                   registerBlockItem("gabbro_rock",            RockBlockItem::new,     BlockRegistration.GABBRO_ROCK,          ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> SMOOTH_DIORITE_ROCK =           registerBlockItem("smooth_diorite_rock",    RockBlockItem::new,     BlockRegistration.SMOOTH_DIORITE_ROCK,  ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> SMOOTH_GRANITE_ROCK =           registerBlockItem("smooth_granite_rock",    RockBlockItem::new,     BlockRegistration.SMOOTH_GRANITE_ROCK,  ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> NORITE_ROCK =                   registerBlockItem("norite_rock",            RockBlockItem::new,     BlockRegistration.NORITE_ROCK,          ROCK_PROPERTIES);
+    public static final DeferredItem<RockBlockItem> PERIDOTITE_ROCK =               registerBlockItem("peridotite_rock",        RockBlockItem::new,     BlockRegistration.PERIDOTITE_ROCK,      ROCK_PROPERTIES);
     // LARGE ROCK
     public static final DeferredItem<BlockItem> LARGE_SANDSTONE_ROCK =              BLOCKITEMS.registerSimpleBlockItem("large_sandstone_rock",          BlockRegistration.LARGE_SANDSTONE_ROCK);
     public static final DeferredItem<BlockItem> LARGE_RED_SANDSTONE_ROCK =          BLOCKITEMS.registerSimpleBlockItem("large_red_sandstone_rock",      BlockRegistration.LARGE_RED_SANDSTONE_ROCK);
     public static final DeferredItem<BlockItem> LARGE_SAPROLITE_ROCK =              BLOCKITEMS.registerSimpleBlockItem("large_saprolite_rock",          BlockRegistration.LARGE_SAPROLITE_ROCK);
     public static final DeferredItem<BlockItem> LARGE_LATERITE_ROCK =               BLOCKITEMS.registerSimpleBlockItem("large_laterite_rock",           BlockRegistration.LARGE_LATERITE_ROCK);
+    public static final DeferredItem<BlockItem> LARGE_SILT_CLUMP =                  BLOCKITEMS.registerSimpleBlockItem("large_silt_clump",              BlockRegistration.LARGE_SILT_CLUMP);
     public static final DeferredItem<BlockItem> LARGE_GREYWACKE_ROCK =              BLOCKITEMS.registerSimpleBlockItem("large_greywacke_rock",          BlockRegistration.LARGE_GREYWACKE_ROCK);
     public static final DeferredItem<BlockItem> LARGE_SILTSTONE_ROCK =              BLOCKITEMS.registerSimpleBlockItem("large_siltstone_rock",          BlockRegistration.LARGE_SILTSTONE_ROCK);
     public static final DeferredItem<BlockItem> LARGE_DOLOSTONE_ROCK =              BLOCKITEMS.registerSimpleBlockItem("large_dolostone_rock",          BlockRegistration.LARGE_DOLOSTONE_ROCK);
@@ -251,7 +261,17 @@ public final class BlockItemRegistration
     public static final DeferredItem<BlockItem> LARGE_IRONSTONE_ROCK =              BLOCKITEMS.registerSimpleBlockItem("large_ironstone_rock",          BlockRegistration.LARGE_IRONSTONE_ROCK);
     public static final DeferredItem<BlockItem> LARGE_SHALE_ROCK =                  BLOCKITEMS.registerSimpleBlockItem("large_shale_rock",              BlockRegistration.LARGE_SHALE_ROCK);
     public static final DeferredItem<BlockItem> LARGE_ARKOSE_ROCK =                 BLOCKITEMS.registerSimpleBlockItem("large_arkose_rock",             BlockRegistration.LARGE_ARKOSE_ROCK);
+    public static final DeferredItem<BlockItem> LARGE_MARBLE_ROCK =                 BLOCKITEMS.registerSimpleBlockItem("large_marble_rock",             BlockRegistration.LARGE_MARBLE_ROCK);
+    public static final DeferredItem<BlockItem> LARGE_QUARTZITE_ROCK =              BLOCKITEMS.registerSimpleBlockItem("large_quartzite_rock",          BlockRegistration.LARGE_QUARTZITE_ROCK);
+    public static final DeferredItem<BlockItem> LARGE_HORNFELS_ROCK =               BLOCKITEMS.registerSimpleBlockItem("large_hornfels_rock",           BlockRegistration.LARGE_HORNFELS_ROCK);
+    public static final DeferredItem<BlockItem> LARGE_SLATE_ROCK =                  BLOCKITEMS.registerSimpleBlockItem("large_slate_rock",              BlockRegistration.LARGE_SLATE_ROCK);
+    public static final DeferredItem<BlockItem> LARGE_GABBRO_ROCK =                 BLOCKITEMS.registerSimpleBlockItem("large_gabbro_rock",             BlockRegistration.LARGE_GABBRO_ROCK);
+    public static final DeferredItem<BlockItem> LARGE_SMOOTH_DIORITE_ROCK =         BLOCKITEMS.registerSimpleBlockItem("large_smooth_diorite_rock",     BlockRegistration.LARGE_SMOOTH_DIORITE_ROCK);
+    public static final DeferredItem<BlockItem> LARGE_SMOOTH_GRANITE_ROCK =         BLOCKITEMS.registerSimpleBlockItem("large_smooth_granite_rock",     BlockRegistration.LARGE_SMOOTH_GRANITE_ROCK);
+    public static final DeferredItem<BlockItem> LARGE_NORITE_ROCK =                 BLOCKITEMS.registerSimpleBlockItem("large_norite_rock",             BlockRegistration.LARGE_NORITE_ROCK);
+    public static final DeferredItem<BlockItem> LARGE_PERIDOTITE_ROCK =             BLOCKITEMS.registerSimpleBlockItem("large_peridotite_rock",         BlockRegistration.LARGE_PERIDOTITE_ROCK);
     // COPPER ROCK
+    public static final DeferredItem<BlockItem> SAPROLITE_ROCK_COPPER_ORE =         BLOCKITEMS.registerSimpleBlockItem("saprolite_rock_copper_ore",     BlockRegistration.SAPROLITE_ROCK_COPPER_ORE);
     public static final DeferredItem<BlockItem> GREYWACKE_ROCK_COPPER_ORE =         BLOCKITEMS.registerSimpleBlockItem("greywacke_rock_copper_ore",     BlockRegistration.GREYWACKE_ROCK_COPPER_ORE);
     public static final DeferredItem<BlockItem> SILTSTONE_ROCK_COPPER_ORE =         BLOCKITEMS.registerSimpleBlockItem("siltstone_rock_copper_ore",     BlockRegistration.SILTSTONE_ROCK_COPPER_ORE);
     public static final DeferredItem<BlockItem> DOLOSTONE_ROCK_COPPER_ORE =         BLOCKITEMS.registerSimpleBlockItem("dolostone_rock_copper_ore",     BlockRegistration.DOLOSTONE_ROCK_COPPER_ORE);

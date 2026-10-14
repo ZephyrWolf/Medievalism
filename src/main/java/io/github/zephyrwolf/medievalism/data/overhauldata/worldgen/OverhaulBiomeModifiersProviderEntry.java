@@ -1,6 +1,7 @@
 package io.github.zephyrwolf.medievalism.data.overhauldata.worldgen;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.BiomeModifierTools;
 import io.github.zephyrwolf.medievalism.data.base.worldgen.BaseBiomeModifiersProviderEntry;
 import io.github.zephyrwolf.medievalism.registration.world.level.BiomeTagCatalog;
 import net.minecraft.core.HolderSet;
@@ -8,6 +9,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -21,38 +23,36 @@ public final class OverhaulBiomeModifiersProviderEntry
     // ==Vanilla==
 
     // ==Medievalism==
-    // ROCK
-    public static final ResourceKey<BiomeModifier> SANDSTONE_ROCK =             BaseBiomeModifiersProviderEntry.SANDSTONE_ROCK;
-    public static final ResourceKey<BiomeModifier> RED_SANDSTONE_ROCK =         BaseBiomeModifiersProviderEntry.RED_SANDSTONE_ROCK;
-    public static final ResourceKey<BiomeModifier> SAPROLITE_ROCK =             registerKey(MedievalismConstants.resource("saprolite_rock"));
-    public static final ResourceKey<BiomeModifier> LATERITE_ROCK =              registerKey(MedievalismConstants.resource("laterite_rock"));
-    public static final ResourceKey<BiomeModifier> GREYWACKE_ROCK =             BaseBiomeModifiersProviderEntry.GREYWACKE_ROCK;
-    public static final ResourceKey<BiomeModifier> SILTSTONE_ROCK =             registerKey(MedievalismConstants.resource("siltstone_rock"));
-    public static final ResourceKey<BiomeModifier> DOLOSTONE_ROCK =             registerKey(MedievalismConstants.resource("dolostone_rock"));
-    public static final ResourceKey<BiomeModifier> LIMESTONE_ROCK =             registerKey(MedievalismConstants.resource("limestone_rock"));
-    public static final ResourceKey<BiomeModifier> IRONSTONE_ROCK =             registerKey(MedievalismConstants.resource("ironstone_rock"));
-    public static final ResourceKey<BiomeModifier> SHALE_ROCK =                 registerKey(MedievalismConstants.resource("shale_rock"));
-    public static final ResourceKey<BiomeModifier> ARKOSE_ROCK =                registerKey(MedievalismConstants.resource("arkose_rock"));
-    // LARGE ROCK
-    public static final ResourceKey<BiomeModifier> LARGE_SANDSTONE_ROCK =       BaseBiomeModifiersProviderEntry.LARGE_SANDSTONE_ROCK;
-    public static final ResourceKey<BiomeModifier> LARGE_RED_SANDSTONE_ROCK =   BaseBiomeModifiersProviderEntry.LARGE_RED_SANDSTONE_ROCK;
-    public static final ResourceKey<BiomeModifier> LARGE_SAPROLITE_ROCK =       registerKey(MedievalismConstants.resource("large_saprolite_rock"));
-    public static final ResourceKey<BiomeModifier> LARGE_LATERITE_ROCK =        registerKey(MedievalismConstants.resource("large_laterite_rock"));
-    public static final ResourceKey<BiomeModifier> LARGE_GREYWACKE_ROCK =       BaseBiomeModifiersProviderEntry.LARGE_GREYWACKE_ROCK;
-    public static final ResourceKey<BiomeModifier> LARGE_SILTSTONE_ROCK =       registerKey(MedievalismConstants.resource("large_siltstone_rock"));
-    public static final ResourceKey<BiomeModifier> LARGE_DOLOSTONE_ROCK =       registerKey(MedievalismConstants.resource("large_dolostone_rock"));
-    public static final ResourceKey<BiomeModifier> LARGE_LIMESTONE_ROCK =       registerKey(MedievalismConstants.resource("large_limestone_rock"));
-    public static final ResourceKey<BiomeModifier> LARGE_IRONSTONE_ROCK =       registerKey(MedievalismConstants.resource("large_ironstone_rock"));
-    public static final ResourceKey<BiomeModifier> LARGE_SHALE_ROCK =           registerKey(MedievalismConstants.resource("large_shale_rock"));
-    public static final ResourceKey<BiomeModifier> LARGE_ARKOSE_ROCK =          registerKey(MedievalismConstants.resource("large_arkose_rock"));
-    // COPPER ROCK
-    public static final ResourceKey<BiomeModifier> GREYWACKE_ROCK_COPPER_ORE =  BaseBiomeModifiersProviderEntry.GREYWACKE_ROCK_COPPER_ORE;
-    public static final ResourceKey<BiomeModifier> SILTSTONE_ROCK_COPPER_ORE =  registerKey(MedievalismConstants.resource("siltstone_rock_copper_ore"));
-    public static final ResourceKey<BiomeModifier> DOLOSTONE_ROCK_COPPER_ORE =  registerKey(MedievalismConstants.resource("dolostone_rock_copper_ore"));
-    public static final ResourceKey<BiomeModifier> LIMESTONE_ROCK_COPPER_ORE =  registerKey(MedievalismConstants.resource("limestone_rock_copper_ore"));
-    public static final ResourceKey<BiomeModifier> IRONSTONE_ROCK_COPPER_ORE =  registerKey(MedievalismConstants.resource("ironstone_rock_copper_ore"));
-    public static final ResourceKey<BiomeModifier> SHALE_ROCK_COPPER_ORE =      registerKey(MedievalismConstants.resource("shale_rock_copper_ore"));
-    public static final ResourceKey<BiomeModifier> ARKOSE_ROCK_COPPER_ORE =     registerKey(MedievalismConstants.resource("arkose_rock_copper_ore"));
+    // ROCKS
+    public static final ResourceKey<BiomeModifier> SURFACE_SANDSTONE_ROCKS =            BaseBiomeModifiersProviderEntry.SURFACE_SANDSTONE_ROCKS;
+    public static final ResourceKey<BiomeModifier> SURFACE_RED_SANDSTONE_ROCKS =        BaseBiomeModifiersProviderEntry.SURFACE_RED_SANDSTONE_ROCKS;
+    public static final ResourceKey<BiomeModifier> SURFACE_SAPROLITE_ROCKS =            BiomeModifierTools.registerKey(MedievalismConstants.resource("surface_saprolite_rocks"));
+    public static final ResourceKey<BiomeModifier> SURFACE_LATERITE_ROCKS =             BiomeModifierTools.registerKey(MedievalismConstants.resource("surface_laterite_rocks"));
+    public static final ResourceKey<BiomeModifier> SURFACE_SILT_CLUMPS =                BiomeModifierTools.registerKey(MedievalismConstants.resource("surface_silt_clumps"));
+    public static final ResourceKey<BiomeModifier> SURFACE_GREYWACKE_ROCKS =            BaseBiomeModifiersProviderEntry.SURFACE_GREYWACKE_ROCKS;
+    public static final ResourceKey<BiomeModifier> SURFACE_SILTSTONE_ROCKS =            BiomeModifierTools.registerKey(MedievalismConstants.resource("surface_siltstone_rocks"));
+    public static final ResourceKey<BiomeModifier> SURFACE_DOLOSTONE_ROCKS =            BiomeModifierTools.registerKey(MedievalismConstants.resource("surface_dolostone_rocks"));
+    public static final ResourceKey<BiomeModifier> SURFACE_LIMESTONE_ROCKS =            BiomeModifierTools.registerKey(MedievalismConstants.resource("surface_limestone_rocks"));
+    public static final ResourceKey<BiomeModifier> SURFACE_IRONSTONE_ROCKS =            BiomeModifierTools.registerKey(MedievalismConstants.resource("surface_ironstone_rocks"));
+    public static final ResourceKey<BiomeModifier> SURFACE_SHALE_ROCKS =                BiomeModifierTools.registerKey(MedievalismConstants.resource("surface_shale_rocks"));
+    public static final ResourceKey<BiomeModifier> SURFACE_ARKOSE_ROCKS =               BiomeModifierTools.registerKey(MedievalismConstants.resource("surface_arkose_rocks"));
+    public static final ResourceKey<BiomeModifier> CAVE_GREYWACKE_ROCKS =               BiomeModifierTools.registerKey(MedievalismConstants.resource("cave_greywacke_rocks"));
+    public static final ResourceKey<BiomeModifier> CAVE_SILTSTONE_ROCKS =               BiomeModifierTools.registerKey(MedievalismConstants.resource("cave_siltstone_rocks"));
+    public static final ResourceKey<BiomeModifier> CAVE_DOLOSTONE_ROCKS =               BiomeModifierTools.registerKey(MedievalismConstants.resource("cave_dolostone_rocks"));
+    public static final ResourceKey<BiomeModifier> CAVE_LIMESTONE_ROCKS =               BiomeModifierTools.registerKey(MedievalismConstants.resource("cave_limestone_rocks"));
+    public static final ResourceKey<BiomeModifier> CAVE_IRONSTONE_ROCKS =               BiomeModifierTools.registerKey(MedievalismConstants.resource("cave_ironstone_rocks"));
+    public static final ResourceKey<BiomeModifier> CAVE_SHALE_ROCKS =                   BiomeModifierTools.registerKey(MedievalismConstants.resource("cave_shale_rocks"));
+    public static final ResourceKey<BiomeModifier> CAVE_ARKOSE_ROCKS =                  BiomeModifierTools.registerKey(MedievalismConstants.resource("cave_arkose_rocks"));
+    public static final ResourceKey<BiomeModifier> CAVE_MARBLE_ROCKS =                  BiomeModifierTools.registerKey(MedievalismConstants.resource("cave_marble_rocks"));
+    public static final ResourceKey<BiomeModifier> CAVE_QUARTZITE_ROCKS =               BiomeModifierTools.registerKey(MedievalismConstants.resource("cave_quartzite_rocks"));
+    public static final ResourceKey<BiomeModifier> CAVE_HORNFELS_ROCKS =                BiomeModifierTools.registerKey(MedievalismConstants.resource("cave_hornfels_rocks"));
+    public static final ResourceKey<BiomeModifier> CAVE_SLATE_ROCKS =                   BiomeModifierTools.registerKey(MedievalismConstants.resource("cave_slate_rocks"));
+    public static final ResourceKey<BiomeModifier> CAVE_GABBRO_ROCKS =                  BiomeModifierTools.registerKey(MedievalismConstants.resource("cave_gabbro_rocks"));
+    public static final ResourceKey<BiomeModifier> CAVE_SMOOTH_DIORITE_ROCKS =          BiomeModifierTools.registerKey(MedievalismConstants.resource("cave_smooth_diorite_rocks"));
+    public static final ResourceKey<BiomeModifier> CAVE_SMOOTH_GRANITE_ROCKS =          BiomeModifierTools.registerKey(MedievalismConstants.resource("cave_smooth_granite_rocks"));
+    public static final ResourceKey<BiomeModifier> CAVE_NORITE_ROCKS =                  BiomeModifierTools.registerKey(MedievalismConstants.resource("cave_norite_rocks"));
+    public static final ResourceKey<BiomeModifier> CAVE_PERIDOTITE_ROCKS =              BiomeModifierTools.registerKey(MedievalismConstants.resource("cave_peridotite_rocks"));
+
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context)
     {
@@ -67,54 +67,34 @@ public final class OverhaulBiomeModifiersProviderEntry
 
     public static void bootstrap_medievalism(BootstrapContext<BiomeModifier> context)
     {
-        // ROCK
-        addSimpleModifier(context, SANDSTONE_ROCK,              BiomeTagCatalog.IS_SURFACE_WITH_SAND,       OverhaulPlacedFeaturesProviderEntry.SANDSTONE_ROCK,             GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, RED_SANDSTONE_ROCK,          BiomeTagCatalog.IS_SURFACE_WITH_RED_SAND,   OverhaulPlacedFeaturesProviderEntry.RED_SANDSTONE_ROCK,         GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, SAPROLITE_ROCK,              BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.SAPROLITE_ROCK,             GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, LATERITE_ROCK,               BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.LATERITE_ROCK,              GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, GREYWACKE_ROCK,              BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.GREYWACKE_ROCK,             GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, SILTSTONE_ROCK,              BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.SILTSTONE_ROCK,             GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, DOLOSTONE_ROCK,              BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.DOLOSTONE_ROCK,             GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, LIMESTONE_ROCK,              BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.LIMESTONE_ROCK,             GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, IRONSTONE_ROCK,              BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.IRONSTONE_ROCK,             GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, SHALE_ROCK,                  BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.SHALE_ROCK,                 GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, ARKOSE_ROCK,                 BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.ARKOSE_ROCK,                GenerationStep.Decoration.VEGETAL_DECORATION);
-        // LARGE ROCK
-        addSimpleModifier(context, LARGE_SANDSTONE_ROCK,        BiomeTagCatalog.IS_SURFACE_WITH_SAND,       OverhaulPlacedFeaturesProviderEntry.LARGE_SANDSTONE_ROCK,       GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, LARGE_RED_SANDSTONE_ROCK,    BiomeTagCatalog.IS_SURFACE_WITH_RED_SAND,   OverhaulPlacedFeaturesProviderEntry.LARGE_RED_SANDSTONE_ROCK,   GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, LARGE_SAPROLITE_ROCK,        BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.LARGE_SAPROLITE_ROCK,       GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, LARGE_LATERITE_ROCK,         BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.LARGE_LATERITE_ROCK,        GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, LARGE_GREYWACKE_ROCK,        BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.LARGE_GREYWACKE_ROCK,       GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, LARGE_SILTSTONE_ROCK,        BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.LARGE_SILTSTONE_ROCK,       GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, LARGE_DOLOSTONE_ROCK,        BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.LARGE_DOLOSTONE_ROCK,       GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, LARGE_LIMESTONE_ROCK,        BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.LARGE_LIMESTONE_ROCK,       GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, LARGE_IRONSTONE_ROCK,        BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.LARGE_IRONSTONE_ROCK,       GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, LARGE_SHALE_ROCK,            BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.LARGE_SHALE_ROCK,           GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, LARGE_ARKOSE_ROCK,           BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.LARGE_ARKOSE_ROCK,          GenerationStep.Decoration.VEGETAL_DECORATION);
-        // COPPER ROCK
-        addSimpleModifier(context, GREYWACKE_ROCK_COPPER_ORE,   BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.GREYWACKE_ROCK_COPPER_ORE,  GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, SILTSTONE_ROCK_COPPER_ORE,   BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.SILTSTONE_ROCK_COPPER_ORE,  GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, DOLOSTONE_ROCK_COPPER_ORE,   BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.DOLOSTONE_ROCK_COPPER_ORE,  GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, LIMESTONE_ROCK_COPPER_ORE,   BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.LIMESTONE_ROCK_COPPER_ORE,  GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, IRONSTONE_ROCK_COPPER_ORE,   BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.IRONSTONE_ROCK_COPPER_ORE,  GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, SHALE_ROCK_COPPER_ORE,       BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.SHALE_ROCK_COPPER_ORE,      GenerationStep.Decoration.VEGETAL_DECORATION);
-        addSimpleModifier(context, ARKOSE_ROCK_COPPER_ORE,      BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.ARKOSE_ROCK_COPPER_ORE,     GenerationStep.Decoration.VEGETAL_DECORATION);
-    }
-
-    public static void addSimpleModifier(BootstrapContext<BiomeModifier> context, ResourceKey<BiomeModifier> biomeModifierKey,
-                                      TagKey<Biome> biomeTagKey, ResourceKey<PlacedFeature> placedFeatureKey, GenerationStep.Decoration step)
-    {
-        var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
-        var biomes = context.lookup(Registries.BIOME);
-        context.register(biomeModifierKey, new BiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(biomeTagKey),
-                HolderSet.direct(placedFeatures.getOrThrow(placedFeatureKey)),
-                step
-        ));
-    }
-
-    private static ResourceKey<BiomeModifier> registerKey(ResourceLocation resource)
-    {
-        return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, resource);
+        // ROCKS
+        BiomeModifierTools.addSimpleModifier(context, SURFACE_SANDSTONE_ROCKS,      BiomeTagCatalog.IS_SURFACE_WITH_SAND,       OverhaulPlacedFeaturesProviderEntry.SURFACE_SANDSTONE_ROCKS,        GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, SURFACE_RED_SANDSTONE_ROCKS,  BiomeTagCatalog.IS_SURFACE_WITH_RED_SAND,   OverhaulPlacedFeaturesProviderEntry.SURFACE_RED_SANDSTONE_ROCKS,    GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, SURFACE_SAPROLITE_ROCKS,      BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.SURFACE_SAPROLITE_ROCKS,        GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, SURFACE_LATERITE_ROCKS,       BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.SURFACE_LATERITE_ROCKS,         GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, SURFACE_SILT_CLUMPS,          BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.SURFACE_SILT_CLUMPS,            GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, SURFACE_GREYWACKE_ROCKS,      BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.SURFACE_GREYWACKE_ROCKS,        GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, SURFACE_SILTSTONE_ROCKS,      BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.SURFACE_SILTSTONE_ROCKS,        GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, SURFACE_DOLOSTONE_ROCKS,      BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.SURFACE_DOLOSTONE_ROCKS,        GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, SURFACE_LIMESTONE_ROCKS,      BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.SURFACE_LIMESTONE_ROCKS,        GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, SURFACE_IRONSTONE_ROCKS,      BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.SURFACE_IRONSTONE_ROCKS,        GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, SURFACE_SHALE_ROCKS,          BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.SURFACE_SHALE_ROCKS,            GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, SURFACE_ARKOSE_ROCKS,         BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.SURFACE_ARKOSE_ROCKS,           GenerationStep.Decoration.VEGETAL_DECORATION);
+        //BiomeModifierTools.addSimpleModifier(context, CAVE_GREYWACKE_ROCKS,         BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_GREYWACKE_ROCKS,           GenerationStep.Decoration.UNDERGROUND_DECORATION);
+        //BiomeModifierTools.addSimpleModifier(context, CAVE_SILTSTONE_ROCKS,         BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_SILTSTONE_ROCKS,           GenerationStep.Decoration.UNDERGROUND_DECORATION);
+        //BiomeModifierTools.addSimpleModifier(context, CAVE_DOLOSTONE_ROCKS,         BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_DOLOSTONE_ROCKS,           GenerationStep.Decoration.UNDERGROUND_DECORATION);
+        //BiomeModifierTools.addSimpleModifier(context, CAVE_LIMESTONE_ROCKS,         BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_LIMESTONE_ROCKS,           GenerationStep.Decoration.UNDERGROUND_DECORATION);
+        //BiomeModifierTools.addSimpleModifier(context, CAVE_IRONSTONE_ROCKS,         BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_IRONSTONE_ROCKS,           GenerationStep.Decoration.UNDERGROUND_DECORATION);
+        //BiomeModifierTools.addSimpleModifier(context, CAVE_SHALE_ROCKS,             BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_SHALE_ROCKS,               GenerationStep.Decoration.UNDERGROUND_DECORATION);
+        //BiomeModifierTools.addSimpleModifier(context, CAVE_ARKOSE_ROCKS,            BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_ARKOSE_ROCKS,              GenerationStep.Decoration.UNDERGROUND_DECORATION);
+        //BiomeModifierTools.addSimpleModifier(context, CAVE_MARBLE_ROCKS,            BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_MARBLE_ROCKS,              GenerationStep.Decoration.UNDERGROUND_DECORATION);
+        //BiomeModifierTools.addSimpleModifier(context, CAVE_QUARTZITE_ROCKS,         BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_QUARTZITE_ROCKS,           GenerationStep.Decoration.UNDERGROUND_DECORATION);
+        //BiomeModifierTools.addSimpleModifier(context, CAVE_HORNFELS_ROCKS,          BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_HORNFELS_ROCKS,            GenerationStep.Decoration.UNDERGROUND_DECORATION);
+        //BiomeModifierTools.addSimpleModifier(context, CAVE_SLATE_ROCKS,             BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_SLATE_ROCKS,               GenerationStep.Decoration.UNDERGROUND_DECORATION);
+        //BiomeModifierTools.addSimpleModifier(context, CAVE_GABBRO_ROCKS,            BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_GABBRO_ROCKS,              GenerationStep.Decoration.UNDERGROUND_DECORATION);
+        //BiomeModifierTools.addSimpleModifier(context, CAVE_SMOOTH_DIORITE_ROCKS,    BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_SMOOTH_DIORITE_ROCKS,      GenerationStep.Decoration.UNDERGROUND_DECORATION);
+        //BiomeModifierTools.addSimpleModifier(context, CAVE_SMOOTH_GRANITE_ROCKS,    BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_SMOOTH_GRANITE_ROCKS,      GenerationStep.Decoration.UNDERGROUND_DECORATION);
+        //BiomeModifierTools.addSimpleModifier(context, CAVE_NORITE_ROCKS,            BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_NORITE_ROCKS,              GenerationStep.Decoration.UNDERGROUND_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, CAVE_PERIDOTITE_ROCKS,        BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_PERIDOTITE_ROCKS,          GenerationStep.Decoration.UNDERGROUND_DECORATION);
     }
 }

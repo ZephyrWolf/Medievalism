@@ -8,6 +8,7 @@ import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.blockitem.BlockItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.BlockItem;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
 public class BaseLanguageProvider extends LanguageProvider
@@ -97,8 +98,7 @@ public class BaseLanguageProvider extends LanguageProvider
         add(BlockItemRegistration.RHYOLITE.get(), "Rhyolite");
         add(BlockItemRegistration.DACITE.get(), "Dacite");
         // COPPER ORE
-        add(BlockItemRegistration.SAPROLITE_COPPER_ORE.get(), "Copper Ore in Saprolite");
-        add(BlockItemRegistration.LATERITE_COPPER_ORE.get(), "Copper Ore in Laterite");
+        add(BlockItemRegistration.SAPROLITE_COPPER_ORE.get(), "Copper Traces in Saprolite");
         add(BlockItemRegistration.SILTSTONE_COPPER_ORE.get(), "Copper Ore in Siltstone");
         add(BlockItemRegistration.DOLOSTONE_COPPER_ORE.get(), "Copper Ore in Dolostone");
         add(BlockItemRegistration.LIMESTONE_COPPER_ORE.get(), "Copper Ore in Limestone");
@@ -250,6 +250,7 @@ public class BaseLanguageProvider extends LanguageProvider
         add(BlockItemRegistration.RED_SANDSTONE_ROCK.get(), "Red Sandstone Rock");
         add(BlockItemRegistration.SAPROLITE_ROCK.get(), "Saprolite Rock");
         add(BlockItemRegistration.LATERITE_ROCK.get(), "Laterite Rock");
+        add(BlockItemRegistration.SILT_CLUMP.get(), "Silt Clump");
         add(BlockItemRegistration.GREYWACKE_ROCK.get(), "Greywacke Rock");
         add(BlockItemRegistration.SILTSTONE_ROCK.get(), "Siltstone Rock");
         add(BlockItemRegistration.DOLOSTONE_ROCK.get(), "Dolostone Rock");
@@ -257,17 +258,36 @@ public class BaseLanguageProvider extends LanguageProvider
         add(BlockItemRegistration.IRONSTONE_ROCK.get(), "Ironstone Rock");
         add(BlockItemRegistration.SHALE_ROCK.get(), "Shale Rock");
         add(BlockItemRegistration.ARKOSE_ROCK.get(), "Arkose Rock");
+        add(BlockItemRegistration.MARBLE_ROCK.get(), "Marble Rock");
+        add(BlockItemRegistration.QUARTZITE_ROCK.get(), "Quartzite Rock");
+        add(BlockItemRegistration.HORNFELS_ROCK.get(), "Hornfels Rock");
+        add(BlockItemRegistration.SLATE_ROCK.get(), "Slate Rock");
+        add(BlockItemRegistration.GABBRO_ROCK.get(), "Gabbro Rock");
+        add(BlockItemRegistration.SMOOTH_DIORITE_ROCK.get(), "Smooth Diorite Rock");
+        add(BlockItemRegistration.SMOOTH_GRANITE_ROCK.get(), "Smooth Granite Rock");
+        add(BlockItemRegistration.NORITE_ROCK.get(), "Norite Rock");
+        add(BlockItemRegistration.PERIDOTITE_ROCK.get(), "Peridotite Rock");
         add(BlockItemRegistration.GREYWACKE_ROCK.get().getDescriptionId() + ".hammerstone", "Greywacke Hammerstone");
         add(BlockItemRegistration.SILTSTONE_ROCK.get().getDescriptionId() + ".hammerstone", "Siltstone Hammerstone");
         add(BlockItemRegistration.DOLOSTONE_ROCK.get().getDescriptionId() + ".hammerstone", "Dolostone Hammerstone");
         add(BlockItemRegistration.LIMESTONE_ROCK.get().getDescriptionId() + ".hammerstone", "Limestone Hammerstone");
         add(BlockItemRegistration.IRONSTONE_ROCK.get().getDescriptionId() + ".hammerstone", "Ironstone Hammerstone");
         add(BlockItemRegistration.ARKOSE_ROCK.get().getDescriptionId() + ".hammerstone", "Arkose Hammerstone");
+        add(BlockItemRegistration.MARBLE_ROCK.get().getDescriptionId() + ".hammerstone", "Marble Hammerstone");
+        add(BlockItemRegistration.QUARTZITE_ROCK.get().getDescriptionId() + ".hammerstone", "Quartzite Hammerstone");
+        add(BlockItemRegistration.HORNFELS_ROCK.get().getDescriptionId() + ".hammerstone", "Hornfels Hammerstone");
+        add(BlockItemRegistration.SLATE_ROCK.get().getDescriptionId() + ".hammerstone", "Slate Hammerstone");
+        add(BlockItemRegistration.GABBRO_ROCK.get().getDescriptionId() + ".hammerstone", "Gabbro Hammerstone");
+        add(BlockItemRegistration.SMOOTH_DIORITE_ROCK.get().getDescriptionId() + ".hammerstone", "Smooth Diorite Hammerstone");
+        add(BlockItemRegistration.SMOOTH_GRANITE_ROCK.get().getDescriptionId() + ".hammerstone", "Smooth Granite Hammerstone");
+        add(BlockItemRegistration.NORITE_ROCK.get().getDescriptionId() + ".hammerstone", "Norite Hammerstone");
+        add(BlockItemRegistration.PERIDOTITE_ROCK.get().getDescriptionId() + ".hammerstone", "Peridotite Hammerstone");
         // LARGE ROCK
         add(BlockItemRegistration.LARGE_SANDSTONE_ROCK.get(), "Large Sandstone Rock");
         add(BlockItemRegistration.LARGE_RED_SANDSTONE_ROCK.get(), "Red Large Sandstone Rock");
         add(BlockItemRegistration.LARGE_SAPROLITE_ROCK.get(), "Large Saprolite Rock");
         add(BlockItemRegistration.LARGE_LATERITE_ROCK.get(), "Large Laterite Rock");
+        add(BlockItemRegistration.LARGE_SILT_CLUMP.get(), "Large Silt Clump");
         add(BlockItemRegistration.LARGE_GREYWACKE_ROCK.get(), "Large Greywacke Rock");
         add(BlockItemRegistration.LARGE_SILTSTONE_ROCK.get(), "Large Siltstone Rock");
         add(BlockItemRegistration.LARGE_DOLOSTONE_ROCK.get(), "Large Dolostone Rock");
@@ -275,7 +295,17 @@ public class BaseLanguageProvider extends LanguageProvider
         add(BlockItemRegistration.LARGE_IRONSTONE_ROCK.get(), "Large Ironstone Rock");
         add(BlockItemRegistration.LARGE_SHALE_ROCK.get(), "Large Shale Rock");
         add(BlockItemRegistration.LARGE_ARKOSE_ROCK.get(), "Large Arkose Rock");
+        add(BlockItemRegistration.LARGE_MARBLE_ROCK.get(), "Large Marble Rock");
+        add(BlockItemRegistration.LARGE_QUARTZITE_ROCK.get(), "Large Quartzite Rock");
+        add(BlockItemRegistration.LARGE_HORNFELS_ROCK.get(), "Large Hornfels Rock");
+        add(BlockItemRegistration.LARGE_SLATE_ROCK.get(), "Large Slate Rock");
+        add(BlockItemRegistration.LARGE_GABBRO_ROCK.get(), "Large Gabbro Rock");
+        add(BlockItemRegistration.LARGE_SMOOTH_DIORITE_ROCK.get(), "Large Smooth Diorite Rock");
+        add(BlockItemRegistration.LARGE_SMOOTH_GRANITE_ROCK.get(), "Large Smooth Granite Rock");
+        add(BlockItemRegistration.LARGE_NORITE_ROCK.get(), "Large Norite Rock");
+        add(BlockItemRegistration.LARGE_PERIDOTITE_ROCK.get(), "Large Peridotite Rock");
         // COPPER ROCK
+        add(BlockItemRegistration.SAPROLITE_ROCK_COPPER_ORE.get(), "Saprolite Rock with Copper");
         add(BlockItemRegistration.GREYWACKE_ROCK_COPPER_ORE.get(), "Greywacke Rock with Copper");
         add(BlockItemRegistration.SILTSTONE_ROCK_COPPER_ORE.get(), "Siltstone Rock with Copper");
         add(BlockItemRegistration.DOLOSTONE_ROCK_COPPER_ORE.get(), "Dolostone Rock with Copper");

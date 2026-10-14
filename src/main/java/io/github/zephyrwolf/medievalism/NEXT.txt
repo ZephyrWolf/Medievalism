@@ -18,3 +18,46 @@ Alternate gens for stones like diorite/grantite/andersite
 add surface ores of copper with groups of copper rocks above
 -in regolith or sedimentary? what stage I want to access this?
 
+
+
+
+
+
+// --
+
+generate copper traces in saprolite; with clusters of ore bearing rocks on the surface above (not for all ore deposits tho)
+
+Bugs
+Dont generate much at all
+either chance too small or cave rocks are not generating
+rock types changing too much; lower your go, larger they should be
+rocks generate in max region of layers, not actual; extract filter from layer code
+Should sedimentary rocks generate in DESERTS/badlands?
+
+// Rocks not created
+SOFT_TUFF
+IGNIMBRITE
+LAPILLISTONE
+WELDED_TUFF
+RHYOLITE
+DACITE
+ANDESITE
+BASALT
+TRAVERTINE
+CALCITE
+CHALK
+
+
+
+
+
+-need way more rocks underground
+-cave rocks need bigger patches
+-large marble thru large peridotite have no item model
+restrict height to live layer height, not extremes
+
+
+reduce regolith cluster, increase common
+sediment surface, increase common
+
+either my noise code is making the computer chug, or it needs a reboot

@@ -92,7 +92,6 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         infestedBlock(BlockRegistration.INFESTED_BASALT.get(),          BlockRegistration.BASALT.get());
         // COPPER ORE
         simpleBlock(BlockRegistration.SAPROLITE_COPPER_ORE.get());
-        simpleBlock(BlockRegistration.LATERITE_COPPER_ORE.get());
         simpleBlock(BlockRegistration.GREYWACKE_COPPER_ORE.get());
         simpleBlock(BlockRegistration.SILTSTONE_COPPER_ORE.get());
         simpleBlock(BlockRegistration.DOLOSTONE_COPPER_ORE.get());
@@ -279,6 +278,14 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 existingParent(BlockRegistration.LATERITE_ROCK.get(), "block/base_rock5", "5", BlockRegistration.LATERITE.get())
         );
         randomYRotationBlock(
+                BlockRegistration.SILT_CLUMP.get(),
+                existingParent(BlockRegistration.SILT_CLUMP.get(), "block/base_rock1", "1", BlockRegistration.SILT.get()),
+                existingParent(BlockRegistration.SILT_CLUMP.get(), "block/base_rock2", "2", BlockRegistration.SILT.get()),
+                existingParent(BlockRegistration.SILT_CLUMP.get(), "block/base_rock3", "3", BlockRegistration.SILT.get()),
+                existingParent(BlockRegistration.SILT_CLUMP.get(), "block/base_rock4", "4", BlockRegistration.SILT.get()),
+                existingParent(BlockRegistration.SILT_CLUMP.get(), "block/base_rock5", "5", BlockRegistration.SILT.get())
+        );
+        randomYRotationBlock(
                 BlockRegistration.GREYWACKE_ROCK.get(),
                 existingParent(BlockRegistration.GREYWACKE_ROCK.get(), "block/base_rock1", "1", BlockRegistration.GREYWACKE.get()),
                 existingParent(BlockRegistration.GREYWACKE_ROCK.get(), "block/base_rock2", "2", BlockRegistration.GREYWACKE.get()),
@@ -326,7 +333,6 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 existingParent(BlockRegistration.SHALE_ROCK.get(), "block/base_rock4", "4", BlockRegistration.SHALE.get()),
                 existingParent(BlockRegistration.SHALE_ROCK.get(), "block/base_rock5", "5", BlockRegistration.SHALE.get())
         );
-
         randomYRotationBlock(
                 BlockRegistration.ARKOSE_ROCK.get(),
                 existingParent(BlockRegistration.ARKOSE_ROCK.get(), "block/base_rock1", "1", BlockRegistration.ARKOSE.get()),
@@ -335,6 +341,79 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 existingParent(BlockRegistration.ARKOSE_ROCK.get(), "block/base_rock4", "4", BlockRegistration.ARKOSE.get()),
                 existingParent(BlockRegistration.ARKOSE_ROCK.get(), "block/base_rock5", "5", BlockRegistration.ARKOSE.get())
         );
+        randomYRotationBlock(
+                BlockRegistration.MARBLE_ROCK.get(),
+                existingParent(BlockRegistration.MARBLE_ROCK.get(), "block/base_rock1", "1", BlockRegistration.MARBLE.get()),
+                existingParent(BlockRegistration.MARBLE_ROCK.get(), "block/base_rock2", "2", BlockRegistration.MARBLE.get()),
+                existingParent(BlockRegistration.MARBLE_ROCK.get(), "block/base_rock3", "3", BlockRegistration.MARBLE.get()),
+                existingParent(BlockRegistration.MARBLE_ROCK.get(), "block/base_rock4", "4", BlockRegistration.MARBLE.get()),
+                existingParent(BlockRegistration.MARBLE_ROCK.get(), "block/base_rock5", "5", BlockRegistration.MARBLE.get())
+        );
+        randomYRotationBlock(
+                BlockRegistration.QUARTZITE_ROCK.get(),
+                existingParent(BlockRegistration.QUARTZITE_ROCK.get(), "block/base_rock1", "1", BlockRegistration.QUARTZITE.get()),
+                existingParent(BlockRegistration.QUARTZITE_ROCK.get(), "block/base_rock2", "2", BlockRegistration.QUARTZITE.get()),
+                existingParent(BlockRegistration.QUARTZITE_ROCK.get(), "block/base_rock3", "3", BlockRegistration.QUARTZITE.get()),
+                existingParent(BlockRegistration.QUARTZITE_ROCK.get(), "block/base_rock4", "4", BlockRegistration.QUARTZITE.get()),
+                existingParent(BlockRegistration.QUARTZITE_ROCK.get(), "block/base_rock5", "5", BlockRegistration.QUARTZITE.get())
+        );
+        randomYRotationBlock(
+                BlockRegistration.HORNFELS_ROCK.get(),
+                existingParent(BlockRegistration.HORNFELS_ROCK.get(), "block/base_rock1", "1", BlockRegistration.HORNFELS.get()),
+                existingParent(BlockRegistration.HORNFELS_ROCK.get(), "block/base_rock2", "2", BlockRegistration.HORNFELS.get()),
+                existingParent(BlockRegistration.HORNFELS_ROCK.get(), "block/base_rock3", "3", BlockRegistration.HORNFELS.get()),
+                existingParent(BlockRegistration.HORNFELS_ROCK.get(), "block/base_rock4", "4", BlockRegistration.HORNFELS.get()),
+                existingParent(BlockRegistration.HORNFELS_ROCK.get(), "block/base_rock5", "5", BlockRegistration.HORNFELS.get())
+        );
+        randomYRotationBlock(
+                BlockRegistration.SLATE_ROCK.get(),
+                existingParent(BlockRegistration.SLATE_ROCK.get(), "block/base_rock1", "1", BlockRegistration.SLATE.get()),
+                existingParent(BlockRegistration.SLATE_ROCK.get(), "block/base_rock2", "2", BlockRegistration.SLATE.get()),
+                existingParent(BlockRegistration.SLATE_ROCK.get(), "block/base_rock3", "3", BlockRegistration.SLATE.get()),
+                existingParent(BlockRegistration.SLATE_ROCK.get(), "block/base_rock4", "4", BlockRegistration.SLATE.get()),
+                existingParent(BlockRegistration.SLATE_ROCK.get(), "block/base_rock5", "5", BlockRegistration.SLATE.get())
+        );
+        randomYRotationBlock(
+                BlockRegistration.GABBRO_ROCK.get(),
+                existingParent(BlockRegistration.GABBRO_ROCK.get(), "block/base_rock1", "1", BlockRegistration.GABBRO.get()),
+                existingParent(BlockRegistration.GABBRO_ROCK.get(), "block/base_rock2", "2", BlockRegistration.GABBRO.get()),
+                existingParent(BlockRegistration.GABBRO_ROCK.get(), "block/base_rock3", "3", BlockRegistration.GABBRO.get()),
+                existingParent(BlockRegistration.GABBRO_ROCK.get(), "block/base_rock4", "4", BlockRegistration.GABBRO.get()),
+                existingParent(BlockRegistration.GABBRO_ROCK.get(), "block/base_rock5", "5", BlockRegistration.GABBRO.get())
+        );
+        randomYRotationBlock(
+                BlockRegistration.SMOOTH_DIORITE_ROCK.get(),
+                existingParent(BlockRegistration.SMOOTH_DIORITE_ROCK.get(), "block/base_rock1", "1", BlockRegistration.SMOOTH_DIORITE.get()),
+                existingParent(BlockRegistration.SMOOTH_DIORITE_ROCK.get(), "block/base_rock2", "2", BlockRegistration.SMOOTH_DIORITE.get()),
+                existingParent(BlockRegistration.SMOOTH_DIORITE_ROCK.get(), "block/base_rock3", "3", BlockRegistration.SMOOTH_DIORITE.get()),
+                existingParent(BlockRegistration.SMOOTH_DIORITE_ROCK.get(), "block/base_rock4", "4", BlockRegistration.SMOOTH_DIORITE.get()),
+                existingParent(BlockRegistration.SMOOTH_DIORITE_ROCK.get(), "block/base_rock5", "5", BlockRegistration.SMOOTH_DIORITE.get())
+        );
+        randomYRotationBlock(
+                BlockRegistration.SMOOTH_GRANITE_ROCK.get(),
+                existingParent(BlockRegistration.SMOOTH_GRANITE_ROCK.get(), "block/base_rock1", "1", BlockRegistration.SMOOTH_GRANITE.get()),
+                existingParent(BlockRegistration.SMOOTH_GRANITE_ROCK.get(), "block/base_rock2", "2", BlockRegistration.SMOOTH_GRANITE.get()),
+                existingParent(BlockRegistration.SMOOTH_GRANITE_ROCK.get(), "block/base_rock3", "3", BlockRegistration.SMOOTH_GRANITE.get()),
+                existingParent(BlockRegistration.SMOOTH_GRANITE_ROCK.get(), "block/base_rock4", "4", BlockRegistration.SMOOTH_GRANITE.get()),
+                existingParent(BlockRegistration.SMOOTH_GRANITE_ROCK.get(), "block/base_rock5", "5", BlockRegistration.SMOOTH_GRANITE.get())
+        );
+        randomYRotationBlock(
+                BlockRegistration.NORITE_ROCK.get(),
+                existingParent(BlockRegistration.NORITE_ROCK.get(), "block/base_rock1", "1", BlockRegistration.NORITE.get()),
+                existingParent(BlockRegistration.NORITE_ROCK.get(), "block/base_rock2", "2", BlockRegistration.NORITE.get()),
+                existingParent(BlockRegistration.NORITE_ROCK.get(), "block/base_rock3", "3", BlockRegistration.NORITE.get()),
+                existingParent(BlockRegistration.NORITE_ROCK.get(), "block/base_rock4", "4", BlockRegistration.NORITE.get()),
+                existingParent(BlockRegistration.NORITE_ROCK.get(), "block/base_rock5", "5", BlockRegistration.NORITE.get())
+        );
+        randomYRotationBlock(
+                BlockRegistration.PERIDOTITE_ROCK.get(),
+                existingParent(BlockRegistration.PERIDOTITE_ROCK.get(), "block/base_rock1", "1", BlockRegistration.PERIDOTITE.get()),
+                existingParent(BlockRegistration.PERIDOTITE_ROCK.get(), "block/base_rock2", "2", BlockRegistration.PERIDOTITE.get()),
+                existingParent(BlockRegistration.PERIDOTITE_ROCK.get(), "block/base_rock3", "3", BlockRegistration.PERIDOTITE.get()),
+                existingParent(BlockRegistration.PERIDOTITE_ROCK.get(), "block/base_rock4", "4", BlockRegistration.PERIDOTITE.get()),
+                existingParent(BlockRegistration.PERIDOTITE_ROCK.get(), "block/base_rock5", "5", BlockRegistration.PERIDOTITE.get())
+        );
+
         // LARGE ROCK
         randomYRotationBlock(
                 BlockRegistration.LARGE_SANDSTONE_ROCK.get(),
@@ -351,6 +430,10 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         randomYRotationBlock(
                 BlockRegistration.LARGE_LATERITE_ROCK.get(),
                 existingParent(BlockRegistration.LARGE_LATERITE_ROCK.get(), "block/base_large_rock1", "1", BlockRegistration.LATERITE.get())
+        );
+        randomYRotationBlock(
+                BlockRegistration.LARGE_SILT_CLUMP.get(),
+                existingParent(BlockRegistration.LARGE_SILT_CLUMP.get(), "block/base_large_rock1", "1", BlockRegistration.SILT.get())
         );
         randomYRotationBlock(
                 BlockRegistration.LARGE_GREYWACKE_ROCK.get(),
@@ -380,7 +463,48 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
                 BlockRegistration.LARGE_ARKOSE_ROCK.get(),
                 existingParent(BlockRegistration.LARGE_ARKOSE_ROCK.get(), "block/base_large_rock1", "1", BlockRegistration.ARKOSE.get())
         );
+        randomYRotationBlock(
+                BlockRegistration.LARGE_MARBLE_ROCK.get(),
+                existingParent(BlockRegistration.LARGE_MARBLE_ROCK.get(), "block/base_large_rock1", "1", BlockRegistration.MARBLE.get())
+        );
+        randomYRotationBlock(
+                BlockRegistration.LARGE_QUARTZITE_ROCK.get(),
+                existingParent(BlockRegistration.LARGE_QUARTZITE_ROCK.get(), "block/base_large_rock1", "1", BlockRegistration.QUARTZITE.get())
+        );
+        randomYRotationBlock(
+                BlockRegistration.LARGE_HORNFELS_ROCK.get(),
+                existingParent(BlockRegistration.LARGE_HORNFELS_ROCK.get(), "block/base_large_rock1", "1", BlockRegistration.HORNFELS.get())
+        );
+        randomYRotationBlock(
+                BlockRegistration.LARGE_SLATE_ROCK.get(),
+                existingParent(BlockRegistration.LARGE_SLATE_ROCK.get(), "block/base_large_rock1", "1", BlockRegistration.SLATE.get())
+        );
+        randomYRotationBlock(
+                BlockRegistration.LARGE_GABBRO_ROCK.get(),
+                existingParent(BlockRegistration.LARGE_GABBRO_ROCK.get(), "block/base_large_rock1", "1", BlockRegistration.GABBRO.get())
+        );
+        randomYRotationBlock(
+                BlockRegistration.LARGE_SMOOTH_DIORITE_ROCK.get(),
+                existingParent(BlockRegistration.LARGE_SMOOTH_DIORITE_ROCK.get(), "block/base_large_rock1", "1", BlockRegistration.SMOOTH_DIORITE.get())
+        );
+        randomYRotationBlock(
+                BlockRegistration.LARGE_SMOOTH_GRANITE_ROCK.get(),
+                existingParent(BlockRegistration.LARGE_SMOOTH_GRANITE_ROCK.get(), "block/base_large_rock1", "1", BlockRegistration.SMOOTH_GRANITE.get())
+        );
+        randomYRotationBlock(
+                BlockRegistration.LARGE_NORITE_ROCK.get(),
+                existingParent(BlockRegistration.LARGE_NORITE_ROCK.get(), "block/base_large_rock1", "1", BlockRegistration.NORITE.get())
+        );
+        randomYRotationBlock(
+                BlockRegistration.LARGE_PERIDOTITE_ROCK.get(),
+                existingParent(BlockRegistration.LARGE_PERIDOTITE_ROCK.get(), "block/base_large_rock1", "1", BlockRegistration.PERIDOTITE.get())
+        );
+
         // COPPER ROCK
+        randomYRotationBlock(
+                BlockRegistration.SAPROLITE_ROCK_COPPER_ORE.get(),
+                existingParent(BlockRegistration.SAPROLITE_ROCK_COPPER_ORE.get(), "block/base_rock1", "", BlockRegistration.SAPROLITE_ROCK_COPPER_ORE.get())
+        );
         randomYRotationBlock(
                 BlockRegistration.GREYWACKE_ROCK_COPPER_ORE.get(),
                 existingParent(BlockRegistration.GREYWACKE_ROCK_COPPER_ORE.get(), "block/base_rock1", "", BlockRegistration.GREYWACKE_ROCK_COPPER_ORE.get())
@@ -955,6 +1079,7 @@ public final class BaseBlockStatesProvider extends BlockStateProvider { // https
         return model;
     }
 
+    @SuppressWarnings("SameParameterValue")
     private ModelFile tintedCross(Block block, String suffix)
     {
         return tintedCross(blockName(block) + suffix, blockTexture(block));

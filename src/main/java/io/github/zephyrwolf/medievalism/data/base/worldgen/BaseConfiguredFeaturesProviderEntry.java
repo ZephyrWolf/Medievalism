@@ -2,6 +2,7 @@ package io.github.zephyrwolf.medievalism.data.base.worldgen;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.block.TwigsBlock;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.FeatureTools;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.CompositeFeatureConfiguration;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.SpeckledOreConfiguration;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
@@ -9,31 +10,23 @@ import io.github.zephyrwolf.medievalism.registration.block.BlockTagCatalog;
 import io.github.zephyrwolf.medievalism.registration.world.level.FeatureRegistration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.BiasedToBottomInt;
-import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.RandomizedIntStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
-import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
-import net.minecraft.world.level.levelgen.placement.EnvironmentScanPlacement;
-import net.minecraft.world.level.levelgen.placement.HeightmapPlacement;
-import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
+import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
@@ -43,51 +36,45 @@ import java.util.List;
 public final class BaseConfiguredFeaturesProviderEntry
 {
     // DIRT
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CLAY_IN_DIRT = registerKey(MedievalismConstants.resource("clay_in_dirt"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> RED_CLAY_IN_DIRT = registerKey(MedievalismConstants.resource("red_clay_in_dirt"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> RED_CLAY = registerKey(MedievalismConstants.resource("red_clay"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> RED_CLAY_WITH_DOGBANE = registerKey(MedievalismConstants.resource("red_clay_with_dogbane"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CLAY_IN_DIRT =                     FeatureTools.registerKey(MedievalismConstants.resource("clay_in_dirt"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RED_CLAY_IN_DIRT =                 FeatureTools.registerKey(MedievalismConstants.resource("red_clay_in_dirt"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RED_CLAY =                         FeatureTools.registerKey(MedievalismConstants.resource("red_clay"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RED_CLAY_WITH_DOGBANE =            FeatureTools.registerKey(MedievalismConstants.resource("red_clay_with_dogbane"));
     // STONE
     // ORE
-    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_TIN_ORE = registerKey(MedievalismConstants.resource("tin_ore"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CHALK_ORE = registerKey(MedievalismConstants.resource("chalk_ore"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CHERT_ORE = registerKey(MedievalismConstants.resource("chert_ore"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GEODE_ORE = registerKey(MedievalismConstants.resource("geode_ore"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_TIN_ORE =                FeatureTools.registerKey(MedievalismConstants.resource("tin_ore"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CHALK_ORE =                        FeatureTools.registerKey(MedievalismConstants.resource("chalk_ore"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CHERT_ORE =                        FeatureTools.registerKey(MedievalismConstants.resource("chert_ore"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GEODE_ORE =                        FeatureTools.registerKey(MedievalismConstants.resource("geode_ore"));
     // ROCK
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SANDSTONE_ROCK = registerKey(MedievalismConstants.resource("sandstone_rock"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> RED_SANDSTONE_ROCK = registerKey(MedievalismConstants.resource("red_sandstone_rock"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GREYWACKE_ROCK = registerKey(MedievalismConstants.resource("greywacke"));
-
-    public static final ResourceKey<ConfiguredFeature<?, ?>> UNDERGROUND_ROCK = registerKey(MedievalismConstants.resource("temp_underground_rock"));
-    // LARGE ROCK
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_SANDSTONE_ROCK = registerKey(MedievalismConstants.resource("large_sandstone_rock"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_RED_SANDSTONE_ROCK = registerKey(MedievalismConstants.resource("large_red_sandstone_rock"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_GREYWACKE_ROCK = registerKey(MedievalismConstants.resource("large_greywacke"));
-    // COPPER ROCK
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GREYWACKE_ROCK_COPPER_ORE = registerKey(MedievalismConstants.resource("greywacke_rock_copper_ore"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SANDSTONE_ROCKS =          FeatureTools.registerKey(MedievalismConstants.resource("surface_sandstone_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_RED_SANDSTONE_ROCKS =      FeatureTools.registerKey(MedievalismConstants.resource("surface_red_sandstone_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_GREYWACKE_ROCKS =          FeatureTools.registerKey(MedievalismConstants.resource("surface_greywacke_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_GREYWACKE_ROCKS =             FeatureTools.registerKey(MedievalismConstants.resource("cave_greywacke_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_GABBRO_ROCKS =                FeatureTools.registerKey(MedievalismConstants.resource("cave_gabbro_rocks"));
     //TWIGS
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_TWIGS = registerKey(MedievalismConstants.resource("dense_twigs"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_TWIGS = registerKey(MedievalismConstants.resource("sparse_twigs"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> RARE_TWIGS = registerKey(MedievalismConstants.resource("rare_twigs"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_TWIGS =                      FeatureTools.registerKey(MedievalismConstants.resource("dense_twigs"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_TWIGS =                     FeatureTools.registerKey(MedievalismConstants.resource("sparse_twigs"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RARE_TWIGS =                       FeatureTools.registerKey(MedievalismConstants.resource("rare_twigs"));
     // DENSE BRANCH
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_OAK_BRANCH = registerKey(MedievalismConstants.resource("dense_oak_branch"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_BIRCH_BRANCH = registerKey(MedievalismConstants.resource("dense_birch_branch"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_SPRUCE_BRANCH = registerKey(MedievalismConstants.resource("dense_spruce_branch"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_JUNGLE_BRANCH = registerKey(MedievalismConstants.resource("dense_jungle_branch"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_CHERRY_BRANCH = registerKey(MedievalismConstants.resource("dense_cherry_branch"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_DARK_OAK_BRANCH = registerKey(MedievalismConstants.resource("dense_dark_oak_branch"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_MANGROVE_BRANCH = registerKey(MedievalismConstants.resource("dense_mangrove_branch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_OAK_BRANCH =                 FeatureTools.registerKey(MedievalismConstants.resource("dense_oak_branch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_BIRCH_BRANCH =               FeatureTools.registerKey(MedievalismConstants.resource("dense_birch_branch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_SPRUCE_BRANCH =              FeatureTools.registerKey(MedievalismConstants.resource("dense_spruce_branch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_JUNGLE_BRANCH =              FeatureTools.registerKey(MedievalismConstants.resource("dense_jungle_branch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_CHERRY_BRANCH =              FeatureTools.registerKey(MedievalismConstants.resource("dense_cherry_branch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_DARK_OAK_BRANCH =            FeatureTools.registerKey(MedievalismConstants.resource("dense_dark_oak_branch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_MANGROVE_BRANCH =            FeatureTools.registerKey(MedievalismConstants.resource("dense_mangrove_branch"));
     // SPARSE BRANCH
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_OAK_BRANCH = registerKey(MedievalismConstants.resource("sparse_oak_branch"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_BIRCH_BRANCH = registerKey(MedievalismConstants.resource("sparse_birch_branch"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_SPRUCE_BRANCH = registerKey(MedievalismConstants.resource("sparse_spruce_branch"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_JUNGLE_BRANCH = registerKey(MedievalismConstants.resource("sparse_jungle_branch"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_ACACIA_BRANCH = registerKey(MedievalismConstants.resource("spare_acacia_branch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_OAK_BRANCH =                FeatureTools.registerKey(MedievalismConstants.resource("sparse_oak_branch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_BIRCH_BRANCH =              FeatureTools.registerKey(MedievalismConstants.resource("sparse_birch_branch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_SPRUCE_BRANCH =             FeatureTools.registerKey(MedievalismConstants.resource("sparse_spruce_branch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_JUNGLE_BRANCH =             FeatureTools.registerKey(MedievalismConstants.resource("sparse_jungle_branch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_ACACIA_BRANCH =             FeatureTools.registerKey(MedievalismConstants.resource("spare_acacia_branch"));
     // RARE BRANCH
-    public static final ResourceKey<ConfiguredFeature<?, ?>> RARE_OAK_BRANCH = registerKey(MedievalismConstants.resource("rare_oak_branch"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> RARE_BIRCH_BRANCH = registerKey(MedievalismConstants.resource("rare_birch_branch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RARE_OAK_BRANCH =                  FeatureTools.registerKey(MedievalismConstants.resource("rare_oak_branch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RARE_BIRCH_BRANCH =                FeatureTools.registerKey(MedievalismConstants.resource("rare_birch_branch"));
     // WILD CROPS
-    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_YAMS = registerKey(MedievalismConstants.resource("wild_yams"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_YAMS =                        FeatureTools.registerKey(MedievalismConstants.resource("wild_yams"));
 
     // --
 
@@ -139,10 +126,10 @@ public final class BaseConfiguredFeaturesProviderEntry
         );
 
         // DIRT
-        register(context, CLAY_IN_DIRT, Feature.ORE, new OreConfiguration(clayInDirtTargetBlockStates, 64));
-        register(context, RED_CLAY_IN_DIRT, Feature.ORE, new OreConfiguration(redClayInDirtTargetBlockStates, 48));
-        register(context, RED_CLAY, Feature.ORE, new OreConfiguration(richClayTargetBlockStates, 32));
-        register(context, RED_CLAY_WITH_DOGBANE, FeatureRegistration.COMPOSITE_FEATURE.get(), new CompositeFeatureConfiguration(List.of(
+        FeatureTools.register(context, CLAY_IN_DIRT, Feature.ORE, new OreConfiguration(clayInDirtTargetBlockStates, 64));
+        FeatureTools.register(context, RED_CLAY_IN_DIRT, Feature.ORE, new OreConfiguration(redClayInDirtTargetBlockStates, 48));
+        FeatureTools.register(context, RED_CLAY, Feature.ORE, new OreConfiguration(richClayTargetBlockStates, 32));
+        FeatureTools.register(context, RED_CLAY_WITH_DOGBANE, FeatureRegistration.COMPOSITE_FEATURE.get(), new CompositeFeatureConfiguration(List.of(
                 PlacementUtils.inlinePlaced(Feature.ORE, new OreConfiguration(
                         richClayTargetBlockStates, 48
                 ), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG), RandomOffsetPlacement.vertical(UniformInt.of(-5, 0))),
@@ -165,22 +152,48 @@ public final class BaseConfiguredFeaturesProviderEntry
         )));
         // STONE
         // ORES
-        register(context, OVERWORLD_TIN_ORE, Feature.ORE, new OreConfiguration(tinOres, 9));
-        register(context, CHALK_ORE, FeatureRegistration.SPECKLED_ORE_FEATURE.get(), new SpeckledOreConfiguration(chalkOres, chertOres, 56, 0.15f));
-        register(context, CHERT_ORE, Feature.ORE, new OreConfiguration(chertOres, 2));
-        register(context, GEODE_ORE, Feature.ORE, new OreConfiguration(geodeOres, 1));
+        FeatureTools.register(context, OVERWORLD_TIN_ORE, Feature.ORE, new OreConfiguration(tinOres, 9));
+        FeatureTools.register(context, CHALK_ORE, FeatureRegistration.SPECKLED_ORE_FEATURE.get(), new SpeckledOreConfiguration(chalkOres, chertOres, 56, 0.15f));
+        FeatureTools.register(context, CHERT_ORE, Feature.ORE, new OreConfiguration(chertOres, 2));
+        FeatureTools.register(context, GEODE_ORE, Feature.ORE, new OreConfiguration(geodeOres, 1));
         // ROCK
-        simpleRandomPatch(context, SANDSTONE_ROCK, 2, 3, 0, BlockRegistration.SANDSTONE_ROCK.get());
-        simpleRandomPatch(context, RED_SANDSTONE_ROCK, 2, 3, 0, BlockRegistration.RED_SANDSTONE_ROCK.get());
-        simpleRandomPatch(context, GREYWACKE_ROCK, 2, 3, 0, BlockRegistration.GREYWACKE_ROCK.get());
-        // LARGE ROCK
-        simpleRandomPatch(context, LARGE_SANDSTONE_ROCK, 2, 3, 0, BlockRegistration.LARGE_SANDSTONE_ROCK.get());
-        simpleRandomPatch(context, LARGE_RED_SANDSTONE_ROCK, 2, 3, 0, BlockRegistration.LARGE_RED_SANDSTONE_ROCK.get());
-        simpleRandomPatch(context, LARGE_GREYWACKE_ROCK, 2, 3, 0, BlockRegistration.LARGE_GREYWACKE_ROCK.get());
-        // COPPER ROCK
-        simpleRandomPatch(context, GREYWACKE_ROCK_COPPER_ORE, 1, 0, 0, BlockRegistration.GREYWACKE_ROCK_COPPER_ORE.get());
+        final int Y_SPREAD = 0;
+
+        final int SURFACE_SANDSTONE_TRIES = 2;
+        final int SURFACE_STONE_TRIES = 2;
+        final int CAVE_TRIES = 2;
+
+        final int SURFACE_SANDSTONE_XZ_SPREAD = 3;
+        final int SURFACE_STONE_XZ_SPREAD = 3;
+        final int CAVE_XZ_SPREAD = 3;
+
+        final float LARGE_ROCK_CHANCE = 0.3f;
+        final float ORE_ROCK_CHANCE = 0.25f;
+
+        FeatureTools.registerRandomPatch(context, SURFACE_SANDSTONE_ROCKS, SURFACE_SANDSTONE_TRIES, SURFACE_SANDSTONE_XZ_SPREAD, 0, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.SANDSTONE_ROCK.get()),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_SANDSTONE_ROCK.get()), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, SURFACE_RED_SANDSTONE_ROCKS, SURFACE_SANDSTONE_TRIES, SURFACE_SANDSTONE_XZ_SPREAD, 0, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.RED_SANDSTONE_ROCK.get()),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_RED_SANDSTONE_ROCK.get()), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, SURFACE_GREYWACKE_ROCKS, SURFACE_STONE_TRIES, SURFACE_STONE_XZ_SPREAD, 0, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.GREYWACKE_ROCK.get()),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_GREYWACKE_ROCK.get()), LARGE_ROCK_CHANCE),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.GREYWACKE_ROCK_COPPER_ORE.get()), ORE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, CAVE_GREYWACKE_ROCKS,CAVE_TRIES, CAVE_XZ_SPREAD, 0, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.GREYWACKE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 8, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_GREYWACKE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 8, 1), LARGE_ROCK_CHANCE),
+                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.GREYWACKE_ROCK_COPPER_ORE.get()), LARGE_ROCK_CHANCE)
+        ));
+        FeatureTools.registerRandomPatch(context, CAVE_GABBRO_ROCKS,CAVE_TRIES, CAVE_XZ_SPREAD, 0, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.GABBRO_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 8, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_GABBRO_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 8, 1), LARGE_ROCK_CHANCE)
+        ));
         // TWIGS
-        register(context, DENSE_TWIGS, Feature.RANDOM_PATCH,
+        FeatureTools.register(context, DENSE_TWIGS, Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(
                         3, 4, 0,
                         PlacementUtils.onlyWhenEmpty(
@@ -194,7 +207,7 @@ public final class BaseConfiguredFeaturesProviderEntry
                         )
                 )
         );
-        register(context, SPARSE_TWIGS, Feature.RANDOM_PATCH,
+        FeatureTools.register(context, SPARSE_TWIGS, Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(
                         2, 4, 0,
                         PlacementUtils.onlyWhenEmpty(
@@ -208,7 +221,7 @@ public final class BaseConfiguredFeaturesProviderEntry
                         )
                 )
         );
-        register(context, RARE_TWIGS, Feature.RANDOM_PATCH,
+        FeatureTools.register(context, RARE_TWIGS, Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(
                         1, 0, 0,
                         PlacementUtils.onlyWhenEmpty(
@@ -223,24 +236,24 @@ public final class BaseConfiguredFeaturesProviderEntry
                 )
         );
         // DENSE BRANCH
-        simpleRandomPatch(context, DENSE_OAK_BRANCH, 3, 4, 0, BlockRegistration.OAK_BRANCH.get());
-        simpleRandomPatch(context, DENSE_BIRCH_BRANCH, 3, 4, 0, BlockRegistration.BIRCH_BRANCH.get());
-        simpleRandomPatch(context, DENSE_SPRUCE_BRANCH, 3, 4, 0, BlockRegistration.SPRUCE_BRANCH.get());
-        simpleRandomPatch(context, DENSE_JUNGLE_BRANCH, 3, 4, 0, BlockRegistration.JUNGLE_BRANCH.get());
-        simpleRandomPatch(context, DENSE_CHERRY_BRANCH, 3, 4, 0, BlockRegistration.CHERRY_BRANCH.get());
-        simpleRandomPatch(context, DENSE_DARK_OAK_BRANCH, 3, 4, 0, BlockRegistration.DARK_OAK_BRANCH.get());
-        simpleRandomPatch(context, DENSE_MANGROVE_BRANCH, 3, 4, 0, BlockRegistration.MANGROVE_BRANCH.get());
+        FeatureTools.registerRandomPatch(context, DENSE_OAK_BRANCH,         3, 4, 0, FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.OAK_BRANCH.get()));
+        FeatureTools.registerRandomPatch(context, DENSE_BIRCH_BRANCH,       3, 4, 0, FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.BIRCH_BRANCH.get()));
+        FeatureTools.registerRandomPatch(context, DENSE_SPRUCE_BRANCH,      3, 4, 0, FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.SPRUCE_BRANCH.get()));
+        FeatureTools.registerRandomPatch(context, DENSE_JUNGLE_BRANCH,      3, 4, 0, FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.JUNGLE_BRANCH.get()));
+        FeatureTools.registerRandomPatch(context, DENSE_CHERRY_BRANCH,      3, 4, 0, FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.CHERRY_BRANCH.get()));
+        FeatureTools.registerRandomPatch(context, DENSE_DARK_OAK_BRANCH,    3, 4, 0, FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.DARK_OAK_BRANCH.get()));
+        FeatureTools.registerRandomPatch(context, DENSE_MANGROVE_BRANCH,    3, 4, 0, FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.MANGROVE_BRANCH.get()));
         // SPARSE BRANCH
-        simpleRandomPatch(context, SPARSE_OAK_BRANCH, 2, 3, 0, BlockRegistration.OAK_BRANCH.get());
-        simpleRandomPatch(context, SPARSE_BIRCH_BRANCH, 2, 3, 0, BlockRegistration.BIRCH_BRANCH.get());
-        simpleRandomPatch(context, SPARSE_SPRUCE_BRANCH, 2, 3, 0, BlockRegistration.SPRUCE_BRANCH.get());
-        simpleRandomPatch(context, SPARSE_JUNGLE_BRANCH, 2, 3, 0, BlockRegistration.JUNGLE_BRANCH.get());
-        simpleRandomPatch(context, SPARSE_ACACIA_BRANCH, 2, 3, 0, BlockRegistration.ACACIA_BRANCH.get());
+        FeatureTools.registerRandomPatch(context, SPARSE_OAK_BRANCH,        2, 3, 0, FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.OAK_BRANCH.get()));
+        FeatureTools.registerRandomPatch(context, SPARSE_BIRCH_BRANCH,      2, 3, 0, FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.BIRCH_BRANCH.get()));
+        FeatureTools.registerRandomPatch(context, SPARSE_SPRUCE_BRANCH,     2, 3, 0, FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.SPRUCE_BRANCH.get()));
+        FeatureTools.registerRandomPatch(context, SPARSE_JUNGLE_BRANCH,     2, 3, 0, FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.JUNGLE_BRANCH.get()));
+        FeatureTools.registerRandomPatch(context, SPARSE_ACACIA_BRANCH,     2, 3, 0, FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.ACACIA_BRANCH.get()));
         // RARE BRANCH
-        simpleRandomPatch(context, RARE_OAK_BRANCH, 1, 0, 0, BlockRegistration.OAK_BRANCH.get());
-        simpleRandomPatch(context, RARE_BIRCH_BRANCH, 1, 0, 0, BlockRegistration.BIRCH_BRANCH.get());
+        FeatureTools.registerRandomPatch(context, RARE_OAK_BRANCH,          1, 0, 0, FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.OAK_BRANCH.get()));
+        FeatureTools.registerRandomPatch(context, RARE_BIRCH_BRANCH,        1, 0, 0, FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.BIRCH_BRANCH.get()));
         // WILD CROPS
-        register(context, WILD_YAMS, Feature.RANDOM_PATCH,
+        FeatureTools.register(context, WILD_YAMS, Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(7, 3, 0,
                         PlacementUtils.onlyWhenEmpty(
                                 Feature.SIMPLE_BLOCK,
@@ -252,51 +265,5 @@ public final class BaseConfiguredFeaturesProviderEntry
                         )
                 )
         );
-
-        FeatureUtils.register(
-                context,
-                UNDERGROUND_ROCK,
-                Feature.SIMPLE_RANDOM_SELECTOR, // TODO Only way I can have inlinePlaced because I duh know how to otherwise
-                new SimpleRandomFeatureConfiguration(
-                        HolderSet.direct(
-                                PlacementUtils.inlinePlaced(
-                                        Feature.SIMPLE_BLOCK,
-                                        new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.DIAMOND_BLOCK) ),
-                                        EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 8), // TODO Have waterlogged rocks BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE
-                                        RandomOffsetPlacement.vertical(ConstantInt.of(1)) // TODO I need this up by one always
-                                )
-                        )
-                )
-        );
-
-
-    }
-
-    public static void simpleRandomPatch(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> featureKey,
-                                         int tries, int xzSpread, int ySpread, Block block) {
-        simpleRandomPatch(context, featureKey, tries, xzSpread, ySpread, BlockStateProvider.simple(block));
-    }
-
-    public static void simpleRandomPatch(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> featureKey,
-                                         int tries, int xzSpread, int ySpread, BlockStateProvider blockStateProvider) {
-        register(context, featureKey, Feature.RANDOM_PATCH,
-                new RandomPatchConfiguration(
-                        tries, xzSpread, ySpread,
-                        PlacementUtils.onlyWhenEmpty(
-                                Feature.SIMPLE_BLOCK,
-                                new SimpleBlockConfiguration(blockStateProvider)
-                        )
-                )
-        );
-    }
-
-    public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(ResourceLocation resource) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, resource);
-    }
-
-    private static <FC extends FeatureConfiguration, F extends Feature<FC>>
-    void register(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration)
-    {
-        context.register(key, new ConfiguredFeature<>(feature, configuration));
     }
 }

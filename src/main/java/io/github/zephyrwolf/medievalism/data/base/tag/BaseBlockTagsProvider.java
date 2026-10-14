@@ -425,8 +425,6 @@ public class BaseBlockTagsProvider extends BlockTagsProvider
     protected void registerOreVariants()
     {
         tag(Tags.Blocks.ORES_COPPER).add(
-                BlockRegistration.SAPROLITE_COPPER_ORE.get(),
-                BlockRegistration.LATERITE_COPPER_ORE.get(),
                 BlockRegistration.GREYWACKE_COPPER_ORE.get(),
                 BlockRegistration.SILTSTONE_COPPER_ORE.get(),
                 BlockRegistration.DOLOSTONE_COPPER_ORE.get(),
@@ -740,28 +738,49 @@ public class BaseBlockTagsProvider extends BlockTagsProvider
                 BlockRegistration.RED_SANDSTONE_ROCK.get(),
                 BlockRegistration.SAPROLITE_ROCK.get(),
                 BlockRegistration.LATERITE_ROCK.get(),
+                BlockRegistration.SILT_CLUMP.get(),
                 BlockRegistration.GREYWACKE_ROCK.get(),
                 BlockRegistration.SILTSTONE_ROCK.get(),
                 BlockRegistration.DOLOSTONE_ROCK.get(),
                 BlockRegistration.LIMESTONE_ROCK.get(),
                 BlockRegistration.IRONSTONE_ROCK.get(),
                 BlockRegistration.SHALE_ROCK.get(),
-                BlockRegistration.ARKOSE_ROCK.get()
+                BlockRegistration.ARKOSE_ROCK.get(),
+                BlockRegistration.MARBLE_ROCK.get(),
+                BlockRegistration.QUARTZITE_ROCK.get(),
+                BlockRegistration.HORNFELS_ROCK.get(),
+                BlockRegistration.SLATE_ROCK.get(),
+                BlockRegistration.GABBRO_ROCK.get(),
+                BlockRegistration.SMOOTH_DIORITE_ROCK.get(),
+                BlockRegistration.SMOOTH_GRANITE_ROCK.get(),
+                BlockRegistration.NORITE_ROCK.get(),
+                BlockRegistration.PERIDOTITE_ROCK.get()
         );
         tag(BlockTagCatalog.LARGE_ROCK).add(
                 BlockRegistration.LARGE_SANDSTONE_ROCK.get(),
                 BlockRegistration.LARGE_RED_SANDSTONE_ROCK.get(),
                 BlockRegistration.LARGE_SAPROLITE_ROCK.get(),
                 BlockRegistration.LARGE_LATERITE_ROCK.get(),
+                BlockRegistration.LARGE_SILT_CLUMP.get(),
                 BlockRegistration.LARGE_GREYWACKE_ROCK.get(),
                 BlockRegistration.LARGE_SILTSTONE_ROCK.get(),
                 BlockRegistration.LARGE_DOLOSTONE_ROCK.get(),
                 BlockRegistration.LARGE_LIMESTONE_ROCK.get(),
                 BlockRegistration.LARGE_IRONSTONE_ROCK.get(),
                 BlockRegistration.LARGE_SHALE_ROCK.get(),
-                BlockRegistration.LARGE_ARKOSE_ROCK.get()
+                BlockRegistration.LARGE_ARKOSE_ROCK.get(),
+                BlockRegistration.LARGE_MARBLE_ROCK.get(),
+                BlockRegistration.LARGE_QUARTZITE_ROCK.get(),
+                BlockRegistration.LARGE_HORNFELS_ROCK.get(),
+                BlockRegistration.LARGE_SLATE_ROCK.get(),
+                BlockRegistration.LARGE_GABBRO_ROCK.get(),
+                BlockRegistration.LARGE_SMOOTH_DIORITE_ROCK.get(),
+                BlockRegistration.LARGE_SMOOTH_GRANITE_ROCK.get(),
+                BlockRegistration.LARGE_NORITE_ROCK.get(),
+                BlockRegistration.LARGE_PERIDOTITE_ROCK.get()
         );
         tag(BlockTagCatalog.COPPER_ROCK).add(
+                BlockRegistration.SAPROLITE_ROCK_COPPER_ORE.get(),
                 BlockRegistration.GREYWACKE_ROCK_COPPER_ORE.get(),
                 BlockRegistration.SILTSTONE_ROCK_COPPER_ORE.get(),
                 BlockRegistration.DOLOSTONE_ROCK_COPPER_ORE.get(),

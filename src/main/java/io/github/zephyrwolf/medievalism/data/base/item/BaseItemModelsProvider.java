@@ -10,7 +10,8 @@ import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-public class BaseItemModelsProvider extends ItemModelProvider {
+public class BaseItemModelsProvider extends ItemModelProvider
+{
     public static final String GENERATED = "item/generated";
     public static final String HANDHELD = "item/handheld";
 
@@ -19,7 +20,8 @@ public class BaseItemModelsProvider extends ItemModelProvider {
     }
 
     @Override
-    protected void registerModels() {
+    protected void registerModels()
+    {
         {
             blockBasedModel(BlockItemRegistration.BIRCH_BRANCH.get(), "");
             blockBasedModel(BlockItemRegistration.OAK_BRANCH.get(), "");
@@ -35,6 +37,7 @@ public class BaseItemModelsProvider extends ItemModelProvider {
             blockBasedModel(BlockItemRegistration.RED_SANDSTONE_ROCK.get(), "1");
             blockBasedModel(BlockItemRegistration.SAPROLITE_ROCK.get(), "1");
             blockBasedModel(BlockItemRegistration.LATERITE_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.SILT_CLUMP.get(), "1");
             blockBasedModel(BlockItemRegistration.GREYWACKE_ROCK.get(), "1");
             blockBasedModel(BlockItemRegistration.SILTSTONE_ROCK.get(), "1");
             blockBasedModel(BlockItemRegistration.DOLOSTONE_ROCK.get(), "1");
@@ -42,11 +45,21 @@ public class BaseItemModelsProvider extends ItemModelProvider {
             blockBasedModel(BlockItemRegistration.IRONSTONE_ROCK.get(), "1");
             blockBasedModel(BlockItemRegistration.SHALE_ROCK.get(), "1");
             blockBasedModel(BlockItemRegistration.ARKOSE_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.MARBLE_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.QUARTZITE_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.HORNFELS_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.SLATE_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.GABBRO_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.SMOOTH_DIORITE_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.SMOOTH_GRANITE_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.NORITE_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.PERIDOTITE_ROCK.get(), "1");
             // LARGE ROCK
             blockBasedModel(BlockItemRegistration.LARGE_SANDSTONE_ROCK.get(), "1");
             blockBasedModel(BlockItemRegistration.LARGE_RED_SANDSTONE_ROCK.get(), "1");
             blockBasedModel(BlockItemRegistration.LARGE_SAPROLITE_ROCK.get(), "1");
             blockBasedModel(BlockItemRegistration.LARGE_LATERITE_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.LARGE_SILT_CLUMP.get(), "1");
             blockBasedModel(BlockItemRegistration.LARGE_GREYWACKE_ROCK.get(), "1");
             blockBasedModel(BlockItemRegistration.LARGE_SILTSTONE_ROCK.get(), "1");
             blockBasedModel(BlockItemRegistration.LARGE_DOLOSTONE_ROCK.get(), "1");
@@ -54,7 +67,17 @@ public class BaseItemModelsProvider extends ItemModelProvider {
             blockBasedModel(BlockItemRegistration.LARGE_IRONSTONE_ROCK.get(), "1");
             blockBasedModel(BlockItemRegistration.LARGE_SHALE_ROCK.get(), "1");
             blockBasedModel(BlockItemRegistration.LARGE_ARKOSE_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.LARGE_MARBLE_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.LARGE_QUARTZITE_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.LARGE_HORNFELS_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.LARGE_SLATE_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.LARGE_GABBRO_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.LARGE_SMOOTH_DIORITE_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.LARGE_SMOOTH_GRANITE_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.LARGE_NORITE_ROCK.get(), "1");
+            blockBasedModel(BlockItemRegistration.LARGE_PERIDOTITE_ROCK.get(), "1");
             // COPPER ROCK
+            blockBasedModel(BlockItemRegistration.SAPROLITE_ROCK_COPPER_ORE.get(), "");
             blockBasedModel(BlockItemRegistration.GREYWACKE_ROCK_COPPER_ORE.get(), "");
             blockBasedModel(BlockItemRegistration.SILTSTONE_ROCK_COPPER_ORE.get(), "");
             blockBasedModel(BlockItemRegistration.DOLOSTONE_ROCK_COPPER_ORE.get(), "");
@@ -116,7 +139,6 @@ public class BaseItemModelsProvider extends ItemModelProvider {
             withExistingParent(itemName(BlockItemRegistration.INFESTED_BASALT.get()), ResourceLocation.withDefaultNamespace("block/" + itemName(BlockItemRegistration.BASALT.get())));
             // COPPER ORE
             blockBasedModel(BlockItemRegistration.SAPROLITE_COPPER_ORE.get(), "");
-            blockBasedModel(BlockItemRegistration.LATERITE_COPPER_ORE.get(), "");
             blockBasedModel(BlockItemRegistration.SILTSTONE_COPPER_ORE.get(), "");
             blockBasedModel(BlockItemRegistration.DOLOSTONE_COPPER_ORE.get(), "");
             blockBasedModel(BlockItemRegistration.LIMESTONE_COPPER_ORE.get(), "");

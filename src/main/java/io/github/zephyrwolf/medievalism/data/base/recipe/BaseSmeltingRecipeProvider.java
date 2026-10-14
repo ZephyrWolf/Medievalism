@@ -63,8 +63,7 @@ public final class BaseSmeltingRecipeProvider
 
     private static void oreRecipes(RecipeOutput recipeOutput)
     { // TODO I hate these
-        smelting(recipeOutput, RecipeCategory.MISC, BlockItemRegistration.SAPROLITE_COPPER_ORE, Items.RAW_COPPER, "smelt_saprolite_copper_ore_to_raw_copper", 0.0f, 100);
-        smelting(recipeOutput, RecipeCategory.MISC, BlockItemRegistration.LATERITE_COPPER_ORE, Items.RAW_COPPER, "smelt_laterite_copper_ore_to_raw_copper", 0.0f, 100);
+        smelting(recipeOutput, RecipeCategory.MISC, BlockItemRegistration.SAPROLITE_COPPER_ORE, BlockItemRegistration.SAPROLITE_COPPER_ORE, "smelt_saprolite_copper_ore_to_saprolite_copper_ore", 0.0f, 100);
         smelting(recipeOutput, RecipeCategory.MISC, BlockItemRegistration.SILTSTONE_COPPER_ORE, Items.RAW_COPPER, "smelt_siltstone_copper_ore_to_raw_copper", 0.0f, 100);
         smelting(recipeOutput, RecipeCategory.MISC, BlockItemRegistration.DOLOSTONE_COPPER_ORE, Items.RAW_COPPER, "smelt_dolostone_copper_ore_to_raw_copper", 0.0f, 100);
         smelting(recipeOutput, RecipeCategory.MISC, BlockItemRegistration.LIMESTONE_COPPER_ORE, Items.RAW_COPPER, "smelt_limestone_copper_ore_to_raw_copper", 0.0f, 100);

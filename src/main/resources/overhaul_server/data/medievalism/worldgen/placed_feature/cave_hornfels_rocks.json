@@ -1,0 +1,28 @@
+{
+  "feature": "medievalism:cave_hornfels_rocks",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 100,
+        "min_inclusive": 30
+      }
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "medievalism:layer",
+      "layer": "METAMORPHIC"
+    },
+    {
+      "type": "medievalism:below_heightmap",
+      "depth": 1,
+      "heightmap": "OCEAN_FLOOR_WG"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

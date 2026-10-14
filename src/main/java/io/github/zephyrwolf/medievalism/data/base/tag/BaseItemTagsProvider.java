@@ -138,6 +138,7 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
                 BlockItemRegistration.RED_SANDSTONE_ROCK.get(),
                 BlockItemRegistration.SAPROLITE_ROCK.get(),
                 BlockItemRegistration.LATERITE_ROCK.get(),
+                BlockItemRegistration.SILT_CLUMP.get(),
                 BlockItemRegistration.GREYWACKE_ROCK.get(),
                 BlockItemRegistration.SILTSTONE_ROCK.get(),
                 BlockItemRegistration.DOLOSTONE_ROCK.get(),
@@ -152,19 +153,38 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
                 BlockItemRegistration.DOLOSTONE_ROCK.get(),
                 BlockItemRegistration.LIMESTONE_ROCK.get(),
                 BlockItemRegistration.IRONSTONE_ROCK.get(),
-                BlockItemRegistration.ARKOSE_ROCK.get()
+                BlockItemRegistration.ARKOSE_ROCK.get(),
+                BlockItemRegistration.MARBLE_ROCK.get(),
+                BlockItemRegistration.QUARTZITE_ROCK.get(),
+                BlockItemRegistration.HORNFELS_ROCK.get(),
+                BlockItemRegistration.SLATE_ROCK.get(),
+                BlockItemRegistration.GABBRO_ROCK.get(),
+                BlockItemRegistration.SMOOTH_DIORITE_ROCK.get(),
+                BlockItemRegistration.SMOOTH_GRANITE_ROCK.get(),
+                BlockItemRegistration.NORITE_ROCK.get(),
+                BlockItemRegistration.PERIDOTITE_ROCK.get()
         );
         tag(ItemTagCatalog.LARGE_ROCK).add(
                 BlockItemRegistration.LARGE_SANDSTONE_ROCK.get(),
                 BlockItemRegistration.LARGE_RED_SANDSTONE_ROCK.get(),
                 BlockItemRegistration.LARGE_SAPROLITE_ROCK.get(),
                 BlockItemRegistration.LARGE_LATERITE_ROCK.get(),
+                BlockItemRegistration.LARGE_SILT_CLUMP.get(),
                 BlockItemRegistration.LARGE_GREYWACKE_ROCK.get(),
                 BlockItemRegistration.LARGE_SILTSTONE_ROCK.get(),
                 BlockItemRegistration.LARGE_DOLOSTONE_ROCK.get(),
                 BlockItemRegistration.LARGE_LIMESTONE_ROCK.get(),
                 BlockItemRegistration.LARGE_IRONSTONE_ROCK.get(),
-                BlockItemRegistration.LARGE_ARKOSE_ROCK.get()
+                BlockItemRegistration.LARGE_ARKOSE_ROCK.get(),
+                BlockItemRegistration.MARBLE_ROCK.get(),
+                BlockItemRegistration.QUARTZITE_ROCK.get(),
+                BlockItemRegistration.HORNFELS_ROCK.get(),
+                BlockItemRegistration.SLATE_ROCK.get(),
+                BlockItemRegistration.GABBRO_ROCK.get(),
+                BlockItemRegistration.SMOOTH_DIORITE_ROCK.get(),
+                BlockItemRegistration.SMOOTH_GRANITE_ROCK.get(),
+                BlockItemRegistration.NORITE_ROCK.get(),
+                BlockItemRegistration.PERIDOTITE_ROCK.get()
         );
         tag(ItemTagCatalog.LARGE_HARD_ROCK).add(
                 BlockItemRegistration.LARGE_GREYWACKE_ROCK.get(),
@@ -172,9 +192,19 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
                 BlockItemRegistration.LARGE_DOLOSTONE_ROCK.get(),
                 BlockItemRegistration.LARGE_LIMESTONE_ROCK.get(),
                 BlockItemRegistration.LARGE_IRONSTONE_ROCK.get(),
-                BlockItemRegistration.LARGE_ARKOSE_ROCK.get()
+                BlockItemRegistration.LARGE_ARKOSE_ROCK.get(),
+                BlockItemRegistration.MARBLE_ROCK.get(),
+                BlockItemRegistration.QUARTZITE_ROCK.get(),
+                BlockItemRegistration.HORNFELS_ROCK.get(),
+                BlockItemRegistration.SLATE_ROCK.get(),
+                BlockItemRegistration.GABBRO_ROCK.get(),
+                BlockItemRegistration.SMOOTH_DIORITE_ROCK.get(),
+                BlockItemRegistration.SMOOTH_GRANITE_ROCK.get(),
+                BlockItemRegistration.NORITE_ROCK.get(),
+                BlockItemRegistration.PERIDOTITE_ROCK.get()
         );
         tag(ItemTagCatalog.COPPER_ROCK).add(
+                BlockItemRegistration.SAPROLITE_ROCK_COPPER_ORE.get(),
                 BlockItemRegistration.GREYWACKE_ROCK_COPPER_ORE.get(),
                 BlockItemRegistration.SILTSTONE_ROCK_COPPER_ORE.get(),
                 BlockItemRegistration.DOLOSTONE_ROCK_COPPER_ORE.get(),
@@ -297,8 +327,6 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
         );
 
         tag(Tags.Items.ORES_COPPER).add(
-                BlockItemRegistration.SAPROLITE_COPPER_ORE.get(),
-                BlockItemRegistration.LATERITE_COPPER_ORE.get(),
                 BlockItemRegistration.GREYWACKE_COPPER_ORE.get(),
                 BlockItemRegistration.SILTSTONE_COPPER_ORE.get(),
                 BlockItemRegistration.DOLOSTONE_COPPER_ORE.get(),

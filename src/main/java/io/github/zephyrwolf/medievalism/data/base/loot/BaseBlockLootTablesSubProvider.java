@@ -161,6 +161,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
         dropSelf(BlockRegistration.RED_SANDSTONE_ROCK.get());
         dropSelf(BlockRegistration.SAPROLITE_ROCK.get());
         dropSelf(BlockRegistration.LATERITE_ROCK.get());
+        dropSelf(BlockRegistration.SILT_CLUMP.get());
         dropSelf(BlockRegistration.GREYWACKE_ROCK.get());
         dropSelf(BlockRegistration.SILTSTONE_ROCK.get());
         dropSelf(BlockRegistration.DOLOSTONE_ROCK.get());
@@ -168,11 +169,21 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
         dropSelf(BlockRegistration.IRONSTONE_ROCK.get());
         dropSelf(BlockRegistration.SHALE_ROCK.get());
         dropSelf(BlockRegistration.ARKOSE_ROCK.get());
+        dropSelf(BlockRegistration.MARBLE_ROCK.get());
+        dropSelf(BlockRegistration.QUARTZITE_ROCK.get());
+        dropSelf(BlockRegistration.HORNFELS_ROCK.get());
+        dropSelf(BlockRegistration.SLATE_ROCK.get());
+        dropSelf(BlockRegistration.GABBRO_ROCK.get());
+        dropSelf(BlockRegistration.SMOOTH_DIORITE_ROCK.get());
+        dropSelf(BlockRegistration.SMOOTH_GRANITE_ROCK.get());
+        dropSelf(BlockRegistration.NORITE_ROCK.get());
+        dropSelf(BlockRegistration.PERIDOTITE_ROCK.get());
         // LARGE ROCK
         dropSelf(BlockRegistration.LARGE_SANDSTONE_ROCK.get());
         dropSelf(BlockRegistration.LARGE_RED_SANDSTONE_ROCK.get());
         dropSelf(BlockRegistration.LARGE_SAPROLITE_ROCK.get());
         dropSelf(BlockRegistration.LARGE_LATERITE_ROCK.get());
+        dropSelf(BlockRegistration.LARGE_SILT_CLUMP.get());
         dropSelf(BlockRegistration.LARGE_GREYWACKE_ROCK.get());
         dropSelf(BlockRegistration.LARGE_SILTSTONE_ROCK.get());
         dropSelf(BlockRegistration.LARGE_DOLOSTONE_ROCK.get());
@@ -180,7 +191,17 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
         dropSelf(BlockRegistration.LARGE_IRONSTONE_ROCK.get());
         dropSelf(BlockRegistration.LARGE_SHALE_ROCK.get());
         dropSelf(BlockRegistration.LARGE_ARKOSE_ROCK.get());
+        dropSelf(BlockRegistration.LARGE_MARBLE_ROCK.get());
+        dropSelf(BlockRegistration.LARGE_QUARTZITE_ROCK.get());
+        dropSelf(BlockRegistration.LARGE_HORNFELS_ROCK.get());
+        dropSelf(BlockRegistration.LARGE_SLATE_ROCK.get());
+        dropSelf(BlockRegistration.LARGE_GABBRO_ROCK.get());
+        dropSelf(BlockRegistration.LARGE_SMOOTH_DIORITE_ROCK.get());
+        dropSelf(BlockRegistration.LARGE_SMOOTH_GRANITE_ROCK.get());
+        dropSelf(BlockRegistration.LARGE_NORITE_ROCK.get());
+        dropSelf(BlockRegistration.LARGE_PERIDOTITE_ROCK.get());
         // COPPER ROCK
+        dropSelf(BlockRegistration.SAPROLITE_ROCK_COPPER_ORE.get());
         dropSelf(BlockRegistration.GREYWACKE_ROCK_COPPER_ORE.get());
         dropSelf(BlockRegistration.SILTSTONE_ROCK_COPPER_ORE.get());
         dropSelf(BlockRegistration.DOLOSTONE_ROCK_COPPER_ORE.get());
@@ -292,8 +313,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
         otherWhenSilkTouch(BlockRegistration.INFESTED_ANDESITE.get(), BlockRegistration.ANDESITE.get());
         otherWhenSilkTouch(BlockRegistration.INFESTED_BASALT.get(), BlockRegistration.BASALT.get());
         // COPPER ORE
-        add( BlockRegistration.SAPROLITE_COPPER_ORE.get(), createCopperOreDrops(BlockRegistration.SAPROLITE_COPPER_ORE.get() ));
-        add( BlockRegistration.LATERITE_COPPER_ORE.get(), createCopperOreDrops(BlockRegistration.LATERITE_COPPER_ORE.get() ));
+        add( BlockRegistration.SAPROLITE_COPPER_ORE.get(), createOreDrops(BlockRegistration.SAPROLITE_COPPER_ORE.get(), BlockItemRegistration.SAPROLITE_ROCK_COPPER_ORE, 1.0f, 3.0f ));
         add( BlockRegistration.SILTSTONE_COPPER_ORE.get(), createCopperOreDrops(BlockRegistration.SILTSTONE_COPPER_ORE.get() ));
         add( BlockRegistration.DOLOSTONE_COPPER_ORE.get(), createCopperOreDrops(BlockRegistration.DOLOSTONE_COPPER_ORE.get() ));
         add( BlockRegistration.LIMESTONE_COPPER_ORE.get(), createCopperOreDrops(BlockRegistration.LIMESTONE_COPPER_ORE.get() ));
@@ -676,6 +696,20 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
                         pBlock,
                         LootItem.lootTableItem(item)
                                 //.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 1.0f)))
+                                .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))
+                )
+        );
+    }
+
+    protected LootTable.Builder createOreDrops(Block pBlock, ItemLike item, float minCount, float maxCount)
+    {
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        return this.createSilkTouchDispatchTable(
+                pBlock,
+                (LootPoolEntryContainer.Builder<?>)this.applyExplosionDecay(
+                        pBlock,
+                        LootItem.lootTableItem(item)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(minCount, maxCount)))
                                 .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))
                 )
         );

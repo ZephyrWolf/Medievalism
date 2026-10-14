@@ -55,8 +55,8 @@ public final class WorldGenNoiseCatalog
     public enum VARIANTS_IGNEOUS_INTRUSIVE
     {
         GABBRO,
-        DIORITE,
-        GRANITE
+        SMOOTH_DIORITE,
+        SMOOTH_GRANITE
     }
 
     public enum VARIANTS_DEEP_IGNEOUS_INTRUSIVE

@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.placement.BelowHeightmapFilter;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.placement.CellRarityFilter;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.placement.LayerHeightPlacement;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
@@ -21,6 +22,7 @@ public final class PlacementModifierRegistration
 
     public static final Supplier<PlacementModifierType<?>> CELL = modifier("cell", CellRarityFilter.CODEC);
     public static final Supplier<PlacementModifierType<?>> BELOW_HEIGHTMAP = modifier("below_heightmap", BelowHeightmapFilter.CODEC);
+    public static final Supplier<PlacementModifierType<?>> LAYER = modifier("layer", LayerHeightPlacement.CODEC);
 
     private static <T extends PlacementModifier> Supplier<PlacementModifierType<?>> modifier(String name, MapCodec<T> codec)
     {

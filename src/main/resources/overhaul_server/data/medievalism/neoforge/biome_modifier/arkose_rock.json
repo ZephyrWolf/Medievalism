@@ -1,6 +1,0 @@
-{
-  "type": "neoforge:add_features",
-  "biomes": "#medievalism:is_surface_without_sand",
-  "features": "medievalism:arkose_rock",
-  "step": "vegetal_decoration"
-}

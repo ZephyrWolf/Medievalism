@@ -87,9 +87,6 @@ public final class BlockRegistration
     public static final DeferredBlock<Block> GABBRO =                       new VanillaDeferredBlock<>(Blocks.DEEPSLATE);
     public static final DeferredBlock<Block> SMOOTH_DIORITE =               BLOCKS.registerSimpleBlock("smooth_diorite",    SMOOTH_DIORITE_PROPERTIES);
     public static final DeferredBlock<Block> SMOOTH_GRANITE =               BLOCKS.registerSimpleBlock("smooth_granite",    SMOOTH_GRANITE_PROPERTIES);
-    public static final DeferredBlock<Block> COBBLED_GABBRO =               new VanillaDeferredBlock<>(Blocks.COBBLED_DEEPSLATE);
-    public static final DeferredBlock<Block> ROUGH_DIORITE =                new VanillaDeferredBlock<>(Blocks.DIORITE);
-    public static final DeferredBlock<Block> ROUGH_GRANITE =                new VanillaDeferredBlock<>(Blocks.GRANITE);
     public static final DeferredBlock<Block> NORITE =                       BLOCKS.registerSimpleBlock("norite",            NORITE_PROPERTIES);
     public static final DeferredBlock<Block> PERIDOTITE =                   BLOCKS.registerSimpleBlock("peridotite",        PERIDOTITE_PROPERTIES);
     public static final DeferredBlock<Block> RHYOLITE =                     BLOCKS.registerSimpleBlock("rhyolite",          RHYOLITE_PROPERTIES);
@@ -120,7 +117,6 @@ public final class BlockRegistration
     public static final DeferredBlock<Block> INFESTED_BASALT =              BLOCKS.registerBlock("infested_basalt",             (props) -> new InfestedBlock(BASALT.get(), props),              BASALT_PROPERTIES);
     // COPPER ORE
     public static final DeferredBlock<Block> SAPROLITE_COPPER_ORE =         BLOCKS.registerSimpleBlock("saprolite_copper_ore",          SAPROLITE_PROPERTIES);
-    public static final DeferredBlock<Block> LATERITE_COPPER_ORE =          BLOCKS.registerSimpleBlock("laterite_copper_ore",           LATERITE_PROPERTIES);
     public static final DeferredBlock<Block> GREYWACKE_COPPER_ORE =         new VanillaDeferredBlock<>(Blocks.COPPER_ORE);
     public static final DeferredBlock<Block> SILTSTONE_COPPER_ORE =         BLOCKS.registerSimpleBlock("siltstone_copper_ore",          SILTSTONE_PROPERTIES);
     public static final DeferredBlock<Block> DOLOSTONE_COPPER_ORE =         BLOCKS.registerSimpleBlock("dolostone_copper_ore",          DOLOSTONE_PROPERTIES);
@@ -268,6 +264,9 @@ public final class BlockRegistration
     public static final DeferredBlock<Block> COBBLED_IRONSTONE =                            BLOCKS.registerSimpleBlock("cobbled_ironstone",         COBBLED_IRONSTONE_PROPERTIES);
     public static final DeferredBlock<Block> COBBLED_SHALE =                                BLOCKS.registerSimpleBlock("cobbled_shale",             COBBLED_SHALE_PROPERTIES);
     public static final DeferredBlock<Block> COBBLED_ARKOSE =                               BLOCKS.registerSimpleBlock("cobbled_arkose",            COBBLED_ARKOSE_PROPERTIES);
+    public static final DeferredBlock<Block> COBBLED_GABBRO =                               new VanillaDeferredBlock<>(Blocks.COBBLED_DEEPSLATE);
+    public static final DeferredBlock<Block> ROUGH_DIORITE =                                new VanillaDeferredBlock<>(Blocks.DIORITE);
+    public static final DeferredBlock<Block> ROUGH_GRANITE =                                new VanillaDeferredBlock<>(Blocks.GRANITE);
     // INFESTED COBBLESTONE
     public static final DeferredBlock<Block> INFESTED_COBBLED_GREYWACKE =                   new VanillaDeferredBlock<>(Blocks.INFESTED_COBBLESTONE);
     public static final DeferredBlock<Block> INFESTED_COBBLED_SILTSTONE =                   BLOCKS.registerBlock("infested_cobbled_siltstone",  (props) -> new InfestedBlock(COBBLED_SILTSTONE.get(), props),   COBBLED_SILTSTONE_PROPERTIES);
@@ -323,14 +322,17 @@ public final class BlockRegistration
     public static final DeferredBlock<DryingBrick> DRYING_RED_CLAY_BRICK =                  registerDryingBrick(BLOCKS, "drying_red_clay_brick",    DryingBrick::new, DRYING_RED_CLAY_BRICK_PROPERTIES, SoundType.PACKED_MUD, 3);
 
     // ROCK PROPERTIES
+    public static BlockBehaviour.Properties CLUMP_PROPERTIES =                              BlockBehaviour.Properties.of().offsetType(BlockBehaviour.OffsetType.XZ).dynamicShape().isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.GRAVEL).mapColor(MapColor.DIRT);
     public static BlockBehaviour.Properties ROCK_PROPERTIES =                               BlockBehaviour.Properties.of().offsetType(BlockBehaviour.OffsetType.XZ).dynamicShape().isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.STONE).mapColor(MapColor.STONE);
     public static BlockBehaviour.Properties ROCK_COPPER_ORE_PROPERTIES =                    ROCK_PROPERTIES;
+    public static BlockBehaviour.Properties LARGE_CLUMP_PROPERTIES =                        BlockBehaviour.Properties.of().offsetType(BlockBehaviour.OffsetType.XZ).dynamicShape().isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.GRAVEL).mapColor(MapColor.DIRT);
     public static BlockBehaviour.Properties LARGE_ROCK_PROPERTIES =                         BlockBehaviour.Properties.of().offsetType(BlockBehaviour.OffsetType.XZ).dynamicShape().isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.STONE).mapColor(MapColor.STONE);
     // ROCK
     public static final DeferredBlock<WorldLitterBlock> SANDSTONE_ROCK =                    BLOCKS.registerBlock("sandstone_rock", RockBlock::new, ROCK_PROPERTIES);
     public static final DeferredBlock<WorldLitterBlock> RED_SANDSTONE_ROCK =                BLOCKS.registerBlock("red_sandstone_rock", RockBlock::new, ROCK_PROPERTIES);
     public static final DeferredBlock<WorldLitterBlock> SAPROLITE_ROCK =                    BLOCKS.registerBlock("saprolite_rock", RockBlock::new, ROCK_PROPERTIES);
     public static final DeferredBlock<WorldLitterBlock> LATERITE_ROCK =                     BLOCKS.registerBlock("laterite_rock", RockBlock::new, ROCK_PROPERTIES);
+    public static final DeferredBlock<WorldLitterBlock> SILT_CLUMP =                        BLOCKS.registerBlock("silt_clump", RockBlock::new, CLUMP_PROPERTIES);
     public static final DeferredBlock<WorldLitterBlock> GREYWACKE_ROCK =                    BLOCKS.registerBlock("greywacke_rock", RockBlock::new, ROCK_PROPERTIES);
     public static final DeferredBlock<WorldLitterBlock> SILTSTONE_ROCK =                    BLOCKS.registerBlock("siltstone_rock", RockBlock::new, ROCK_PROPERTIES);
     public static final DeferredBlock<WorldLitterBlock> DOLOSTONE_ROCK =                    BLOCKS.registerBlock("dolostone_rock", RockBlock::new, ROCK_PROPERTIES);
@@ -338,12 +340,21 @@ public final class BlockRegistration
     public static final DeferredBlock<WorldLitterBlock> IRONSTONE_ROCK =                    BLOCKS.registerBlock("ironstone_rock", RockBlock::new, ROCK_PROPERTIES);
     public static final DeferredBlock<WorldLitterBlock> SHALE_ROCK =                        BLOCKS.registerBlock("shale_rock", RockBlock::new, ROCK_PROPERTIES);
     public static final DeferredBlock<WorldLitterBlock> ARKOSE_ROCK =                       BLOCKS.registerBlock("arkose_rock", RockBlock::new, ROCK_PROPERTIES);
-    // TODO Decorate caves with rocks
+    public static final DeferredBlock<WorldLitterBlock> MARBLE_ROCK =                       BLOCKS.registerBlock("marble_rock", RockBlock::new, ROCK_PROPERTIES);
+    public static final DeferredBlock<WorldLitterBlock> QUARTZITE_ROCK =                    BLOCKS.registerBlock("quartzite_rock", RockBlock::new, ROCK_PROPERTIES);
+    public static final DeferredBlock<WorldLitterBlock> HORNFELS_ROCK =                     BLOCKS.registerBlock("hornfels_rock", RockBlock::new, ROCK_PROPERTIES);
+    public static final DeferredBlock<WorldLitterBlock> SLATE_ROCK =                        BLOCKS.registerBlock("slate_rock", RockBlock::new, ROCK_PROPERTIES);
+    public static final DeferredBlock<WorldLitterBlock> GABBRO_ROCK =                       BLOCKS.registerBlock("gabbro_rock", RockBlock::new, ROCK_PROPERTIES);
+    public static final DeferredBlock<WorldLitterBlock> SMOOTH_DIORITE_ROCK =               BLOCKS.registerBlock("smooth_diorite_rock", RockBlock::new, ROCK_PROPERTIES);
+    public static final DeferredBlock<WorldLitterBlock> SMOOTH_GRANITE_ROCK =               BLOCKS.registerBlock("smooth_granite_rock", RockBlock::new, ROCK_PROPERTIES);
+    public static final DeferredBlock<WorldLitterBlock> NORITE_ROCK =                       BLOCKS.registerBlock("norite_rock", RockBlock::new, ROCK_PROPERTIES);
+    public static final DeferredBlock<WorldLitterBlock> PERIDOTITE_ROCK =                   BLOCKS.registerBlock("peridotite_rock", RockBlock::new, ROCK_PROPERTIES);
     // LARGE ROCK
     public static final DeferredBlock<WorldLitterBlock> LARGE_SANDSTONE_ROCK =              BLOCKS.registerBlock("large_sandstone_rock",        RockBlock::new, LARGE_ROCK_PROPERTIES);
     public static final DeferredBlock<WorldLitterBlock> LARGE_RED_SANDSTONE_ROCK =          BLOCKS.registerBlock("large_red_sandstone_rock",    RockBlock::new, LARGE_ROCK_PROPERTIES);
     public static final DeferredBlock<WorldLitterBlock> LARGE_SAPROLITE_ROCK =              BLOCKS.registerBlock("large_saprolite_rock",        RockBlock::new, LARGE_ROCK_PROPERTIES);
     public static final DeferredBlock<WorldLitterBlock> LARGE_LATERITE_ROCK =               BLOCKS.registerBlock("large_laterite_rock",         RockBlock::new, LARGE_ROCK_PROPERTIES);
+    public static final DeferredBlock<WorldLitterBlock> LARGE_SILT_CLUMP =                  BLOCKS.registerBlock("large_silt_clump",            RockBlock::new, LARGE_CLUMP_PROPERTIES);
     public static final DeferredBlock<WorldLitterBlock> LARGE_GREYWACKE_ROCK =              BLOCKS.registerBlock("large_greywacke_rock",        RockBlock::new, LARGE_ROCK_PROPERTIES);
     public static final DeferredBlock<WorldLitterBlock> LARGE_SILTSTONE_ROCK =              BLOCKS.registerBlock("large_siltstone_rock",        RockBlock::new, LARGE_ROCK_PROPERTIES);
     public static final DeferredBlock<WorldLitterBlock> LARGE_DOLOSTONE_ROCK =              BLOCKS.registerBlock("large_dolostone_rock",        RockBlock::new, LARGE_ROCK_PROPERTIES);
@@ -351,8 +362,17 @@ public final class BlockRegistration
     public static final DeferredBlock<WorldLitterBlock> LARGE_IRONSTONE_ROCK =              BLOCKS.registerBlock("large_ironstone_rock",        RockBlock::new, LARGE_ROCK_PROPERTIES);
     public static final DeferredBlock<WorldLitterBlock> LARGE_SHALE_ROCK =                  BLOCKS.registerBlock("large_shale_rock",            RockBlock::new, LARGE_ROCK_PROPERTIES);
     public static final DeferredBlock<WorldLitterBlock> LARGE_ARKOSE_ROCK =                 BLOCKS.registerBlock("large_arkose_rock",           RockBlock::new, LARGE_ROCK_PROPERTIES);
-    // TODO Decorate caves with rocks
+    public static final DeferredBlock<WorldLitterBlock> LARGE_MARBLE_ROCK =                 BLOCKS.registerBlock("large_marble_rock",           RockBlock::new, LARGE_ROCK_PROPERTIES);
+    public static final DeferredBlock<WorldLitterBlock> LARGE_QUARTZITE_ROCK =              BLOCKS.registerBlock("large_quartzite_rock",        RockBlock::new, LARGE_ROCK_PROPERTIES);
+    public static final DeferredBlock<WorldLitterBlock> LARGE_HORNFELS_ROCK =               BLOCKS.registerBlock("large_hornfels_rock",         RockBlock::new, LARGE_ROCK_PROPERTIES);
+    public static final DeferredBlock<WorldLitterBlock> LARGE_SLATE_ROCK =                  BLOCKS.registerBlock("large_slate_rock",            RockBlock::new, LARGE_ROCK_PROPERTIES);
+    public static final DeferredBlock<WorldLitterBlock> LARGE_GABBRO_ROCK =                 BLOCKS.registerBlock("large_gabbro_rock",           RockBlock::new, LARGE_ROCK_PROPERTIES);
+    public static final DeferredBlock<WorldLitterBlock> LARGE_SMOOTH_DIORITE_ROCK =         BLOCKS.registerBlock("large_smooth_diorite_rock",   RockBlock::new, LARGE_ROCK_PROPERTIES);
+    public static final DeferredBlock<WorldLitterBlock> LARGE_SMOOTH_GRANITE_ROCK =         BLOCKS.registerBlock("large_smooth_granite_rock",   RockBlock::new, LARGE_ROCK_PROPERTIES);
+    public static final DeferredBlock<WorldLitterBlock> LARGE_NORITE_ROCK =                 BLOCKS.registerBlock("large_norite_rock",           RockBlock::new, LARGE_ROCK_PROPERTIES);
+    public static final DeferredBlock<WorldLitterBlock> LARGE_PERIDOTITE_ROCK =             BLOCKS.registerBlock("large_peridotite_rock",       RockBlock::new, LARGE_ROCK_PROPERTIES);
     // COPPER ROCK
+    public static final DeferredBlock<WorldLitterBlock> SAPROLITE_ROCK_COPPER_ORE =         BLOCKS.registerBlock("saprolite_rock_copper_ore",   RockBlock::new, ROCK_COPPER_ORE_PROPERTIES);
     public static final DeferredBlock<WorldLitterBlock> GREYWACKE_ROCK_COPPER_ORE =         BLOCKS.registerBlock("greywacke_rock_copper_ore",   RockBlock::new, ROCK_COPPER_ORE_PROPERTIES);
     public static final DeferredBlock<WorldLitterBlock> SILTSTONE_ROCK_COPPER_ORE =         BLOCKS.registerBlock( "siltstone_rock_copper_ore",  RockBlock::new, ROCK_COPPER_ORE_PROPERTIES);
     public static final DeferredBlock<WorldLitterBlock> DOLOSTONE_ROCK_COPPER_ORE =         BLOCKS.registerBlock( "dolostone_rock_copper_ore",  RockBlock::new, ROCK_COPPER_ORE_PROPERTIES);

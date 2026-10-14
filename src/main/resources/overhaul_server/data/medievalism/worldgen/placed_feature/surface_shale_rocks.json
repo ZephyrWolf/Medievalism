@@ -1,0 +1,68 @@
+{
+  "feature": "medievalism:surface_shale_rocks",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 1,
+        "min_inclusive": 1
+      }
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "medievalism:cell",
+      "cell": {
+        "amplitudes": [
+          1.0
+        ],
+        "baseOctave": 1,
+        "boarder_thickness": 15,
+        "cell_size": 500,
+        "noise": "medievalism:sedimentary",
+        "variants": [
+          {
+            "name": "medievalism:greywacke",
+            "ordinal": 0
+          },
+          {
+            "name": "medievalism:siltstone",
+            "ordinal": 1
+          },
+          {
+            "name": "medievalism:dolostone",
+            "ordinal": 2
+          },
+          {
+            "name": "medievalism:limestone",
+            "ordinal": 3
+          },
+          {
+            "name": "medievalism:ironstone",
+            "ordinal": 4
+          },
+          {
+            "name": "medievalism:shale",
+            "ordinal": 5
+          },
+          {
+            "name": "medievalism:arkose",
+            "ordinal": 6
+          }
+        ],
+        "warp": 1.0
+      },
+      "chance": 3,
+      "target_variant": 5
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR_WG"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}
