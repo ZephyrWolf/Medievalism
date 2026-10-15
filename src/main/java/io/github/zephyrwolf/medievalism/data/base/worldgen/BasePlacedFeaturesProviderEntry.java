@@ -88,7 +88,7 @@ public final class BasePlacedFeaturesProviderEntry
 
         List<PlacementModifier> SURFACE_SANDSTONE_ROCKS_PLACEMENT_RULES = PlacementTools.surfacePlacement(1, 1, 2);
         List<PlacementModifier> SURFACE_RED_SANDSTONE_ROCKS_PLACEMENT_RULES = PlacementTools.surfacePlacement(1, 1, 2);
-        List<PlacementModifier> SURFACE_GREYWACKE_ROCKS_PLACEMENT_RULES = PlacementTools.surfacePlacement(1, 1, 2);
+        List<PlacementModifier> SURFACE_GREYWACKE_ROCKS_PLACEMENT_RULES = PlacementTools.surfacePlacement(1, 4, 2);
         List<PlacementModifier> CAVE_GREYWACKE_ROCKS_PLACEMENT_RULES = PlacementTools.cavePlacement(10, 30, 1, HEIGHT_RANGE_STONE, 1);
         List<PlacementModifier> CAVE_GABBRO_ROCKS_PLACEMENT_RULES = PlacementTools.cavePlacement(10, 30, 1, HEIGHT_RANGE_DEEPSLATE, 1);
 

@@ -6,6 +6,8 @@ import java.util.stream.Stream;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.zephyrwolf.medievalism.common.world.level.layer.WorldLayer;
+import io.github.zephyrwolf.medievalism.common.world.level.layer.WorldLayerMap;
+import io.github.zephyrwolf.medievalism.registration.RegistryRegistration;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -13,9 +15,10 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import org.jetbrains.annotations.NotNull;
 
-public record LayerSelectorFeatureConfiguration(Map<ResourceKey<WorldLayer>, Holder<PlacedFeature>> features) implements FeatureConfiguration
+public record LayerSelectorFeatureConfiguration(ResourceKey<WorldLayerMap> layerMap, Map<ResourceKey<WorldLayer>, Holder<PlacedFeature>> features) implements FeatureConfiguration
 {
     public static final MapCodec<LayerSelectorFeatureConfiguration> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+            ResourceKey.codec(RegistryRegistration.WORLD_LAYER_MAPS).fieldOf("layer_map").forGetter(LayerSelectorFeatureConfiguration::layerMap),
             LayeredPlacedFeature.CODEC.listOf().fieldOf("features").forGetter(LayerSelectorFeatureConfiguration::getLayeredFeatures)
     ).apply(instance, LayerSelectorFeatureConfiguration::create));
 
@@ -33,12 +36,12 @@ public record LayerSelectorFeatureConfiguration(Map<ResourceKey<WorldLayer>, Hol
         return featuresList;
     }
 
-    public static LayerSelectorFeatureConfiguration layers(LayeredPlacedFeature ... features)
+    public static LayerSelectorFeatureConfiguration layers(ResourceKey<WorldLayerMap> layerMap, LayeredPlacedFeature ... features)
     {
-        return create(Arrays.stream(features).toList());
+        return create(layerMap, Arrays.stream(features).toList());
     }
 
-    public static LayerSelectorFeatureConfiguration create(List<LayeredPlacedFeature> features)
+    public static LayerSelectorFeatureConfiguration create(ResourceKey<WorldLayerMap> layerMap, List<LayeredPlacedFeature> features)
     {
         Map<ResourceKey<WorldLayer>, Holder<PlacedFeature>> featuresMap = new HashMap<>();
         for (LayeredPlacedFeature feature : features)
@@ -49,7 +52,7 @@ public record LayerSelectorFeatureConfiguration(Map<ResourceKey<WorldLayer>, Hol
             }
             featuresMap.put(feature.layer(), feature.feature());
         }
-        return new LayerSelectorFeatureConfiguration(featuresMap);
+        return new LayerSelectorFeatureConfiguration(layerMap, featuresMap);
     }
 
     @Override

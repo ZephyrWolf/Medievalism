@@ -50,6 +50,9 @@ public final class OverhaulPlacedFeaturesProviderEntry
     // ROCKS
     public static final ResourceKey<PlacedFeature> SURFACE_SANDSTONE_ROCKS =        BasePlacedFeaturesProviderEntry.SURFACE_SANDSTONE_ROCKS;
     public static final ResourceKey<PlacedFeature> SURFACE_RED_SANDSTONE_ROCKS =    BasePlacedFeaturesProviderEntry.SURFACE_RED_SANDSTONE_ROCKS;
+    public static final ResourceKey<PlacedFeature> SURFACE_ROCKS =                  BasePlacedFeaturesProviderEntry.SURFACE_ROCKS;
+    public static final ResourceKey<PlacedFeature> SURFACE_SEDIMENTARY_ROCKS =      PlacementTools.registerKey(MedievalismConstants.resource("surface_sedimentary_rocks"));
+    public static final ResourceKey<PlacedFeature> CAVE_ROCKS =                     PlacementTools.registerKey(MedievalismConstants.resource("cave_rocks"));
     //public static final ResourceKey<PlacedFeature> SURFACE_SAPROLITE_ROCKS =        PlacementTools.registerKey(MedievalismConstants.resource("surface_saprolite_rocks"));
     //public static final ResourceKey<PlacedFeature> SURFACE_LATERITE_ROCKS =         PlacementTools.registerKey(MedievalismConstants.resource("surface_laterite_rocks"));
     //public static final ResourceKey<PlacedFeature> SURFACE_SILT_CLUMPS =            PlacementTools.registerKey(MedievalismConstants.resource("surface_silt_clumps"));
@@ -60,8 +63,6 @@ public final class OverhaulPlacedFeaturesProviderEntry
     //public static final ResourceKey<PlacedFeature> SURFACE_IRONSTONE_ROCKS =        PlacementTools.registerKey(MedievalismConstants.resource("surface_ironstone_rocks"));
     //public static final ResourceKey<PlacedFeature> SURFACE_SHALE_ROCKS =            PlacementTools.registerKey(MedievalismConstants.resource("surface_shale_rocks"));
     //public static final ResourceKey<PlacedFeature> SURFACE_ARKOSE_ROCKS =           PlacementTools.registerKey(MedievalismConstants.resource("surface_arkose_rocks"));
-    public static final ResourceKey<PlacedFeature> SURFACE_ROCKS =                  BasePlacedFeaturesProviderEntry.SURFACE_ROCKS;
-    public static final ResourceKey<PlacedFeature> SURFACE_SEDIMENTARY_ROCKS =      PlacementTools.registerKey(MedievalismConstants.resource("surface_sedimentary_rocks"));
     //public static final ResourceKey<PlacedFeature> CAVE_GREYWACKE_ROCKS =           BasePlacedFeaturesProviderEntry.CAVE_GREYWACKE_ROCKS;
     //public static final ResourceKey<PlacedFeature> CAVE_SILTSTONE_ROCKS =           PlacementTools.registerKey(MedievalismConstants.resource("cave_siltstone_rocks"));
     //public static final ResourceKey<PlacedFeature> CAVE_DOLOSTONE_ROCKS =           PlacementTools.registerKey(MedievalismConstants.resource("cave_dolostone_rocks"));
@@ -78,7 +79,6 @@ public final class OverhaulPlacedFeaturesProviderEntry
     //public static final ResourceKey<PlacedFeature> CAVE_SMOOTH_GRANITE_ROCKS =      PlacementTools.registerKey(MedievalismConstants.resource("cave_smooth_granite_rocks"));
     //public static final ResourceKey<PlacedFeature> CAVE_NORITE_ROCKS =              PlacementTools.registerKey(MedievalismConstants.resource("cave_norite_rocks"));
     //public static final ResourceKey<PlacedFeature> CAVE_PERIDOTITE_ROCKS =          PlacementTools.registerKey(MedievalismConstants.resource("cave_peridotite_rocks"));
-    public static final ResourceKey<PlacedFeature> CAVE_ROCKS =                     PlacementTools.registerKey(MedievalismConstants.resource("cave_rocks"));
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context)
     {
@@ -164,8 +164,8 @@ public final class OverhaulPlacedFeaturesProviderEntry
 
         List<PlacementModifier> SURFACE_SANDSTONE_ROCKS_PLACEMENT_RULES =       PlacementTools.surfacePlacement(1, 2, 2);
         List<PlacementModifier> SURFACE_RED_SANDSTONE_ROCKS_PLACEMENT_RULES =   PlacementTools.surfacePlacement(1, 2, 2);
-        List<PlacementModifier> SURFACE_REGOLITH_ROCKS_PLACEMENT_RULES =       PlacementTools.surfacePlacement(1, 2, 2);
-        List<PlacementModifier> SURFACE_SEDIMENTARY_ROCKS_PLACEMENT_RULES =       PlacementTools.surfacePlacement(1, 1, 3);
+        List<PlacementModifier> SURFACE_REGOLITH_ROCKS_PLACEMENT_RULES =        PlacementTools.surfacePlacement(1, 2, 2);
+        List<PlacementModifier> SURFACE_SEDIMENTARY_ROCKS_PLACEMENT_RULES =     PlacementTools.surfacePlacement(1, 1, 3);
         List<PlacementModifier> CAVE_DECORATION_PLACEMENT_RULES =               PlacementTools.cavePlacement(60, 100, 1);
 
         //List<PlacementModifier> SURFACE_SAPROLITE_ROCKS_PLACEMENT_RULES =       PlacementTools.surfaceCellPlacement(1, 2, 2,    WorldLayersRegistration.REGOLITH.getKey(),                   LayerCellRegistration.SAPROLITE.getKey());
@@ -207,7 +207,7 @@ public final class OverhaulPlacedFeaturesProviderEntry
         //PlacementTools.register(context, SURFACE_IRONSTONE_ROCKS,        OverhaulConfiguredFeaturesProviderEntry.SURFACE_IRONSTONE_ROCKS,       SURFACE_IRONSTONE_ROCKS_PLACEMENT_RULES);
         //PlacementTools.register(context, SURFACE_SHALE_ROCKS,            OverhaulConfiguredFeaturesProviderEntry.SURFACE_SHALE_ROCKS,           SURFACE_SHALE_ROCKS_PLACEMENT_RULES);
         //PlacementTools.register(context, SURFACE_ARKOSE_ROCKS,           OverhaulConfiguredFeaturesProviderEntry.SURFACE_ARKOSE_ROCKS,          SURFACE_ARKOSE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, SURFACE_ROCKS,         OverhaulConfiguredFeaturesProviderEntry.SURFACE_ROCKS,        SURFACE_REGOLITH_ROCKS_PLACEMENT_RULES);
+        PlacementTools.register(context, SURFACE_ROCKS,                  OverhaulConfiguredFeaturesProviderEntry.SURFACE_ROCKS,                 SURFACE_REGOLITH_ROCKS_PLACEMENT_RULES);
         PlacementTools.register(context, SURFACE_SEDIMENTARY_ROCKS,      OverhaulConfiguredFeaturesProviderEntry.SURFACE_SEDIMENTARY_ROCKS,     SURFACE_SEDIMENTARY_ROCKS_PLACEMENT_RULES);
         //PlacementTools.register(context, CAVE_GREYWACKE_ROCKS,           OverhaulConfiguredFeaturesProviderEntry.CAVE_GREYWACKE_ROCKS,          CAVE_GREYWACKE_ROCKS_PLACEMENT_RULES);
         //PlacementTools.register(context, CAVE_SILTSTONE_ROCKS,           OverhaulConfiguredFeaturesProviderEntry.CAVE_SILTSTONE_ROCKS,          CAVE_SILTSTONE_ROCKS_PLACEMENT_RULES);

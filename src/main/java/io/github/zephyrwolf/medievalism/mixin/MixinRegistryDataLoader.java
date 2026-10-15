@@ -5,7 +5,7 @@ import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Decoder;
-import io.github.zephyrwolf.medievalism.data.overhauldata.level.OverhaulVanillaLevelStoneGeneration;
+import io.github.zephyrwolf.medievalism.data.overhauldata.worldgen.level.OverhaulVanillaLevelStoneGeneration;
 import net.minecraft.core.RegistrationInfo;
 import net.minecraft.core.WritableRegistry;
 import net.minecraft.resources.RegistryDataLoader;

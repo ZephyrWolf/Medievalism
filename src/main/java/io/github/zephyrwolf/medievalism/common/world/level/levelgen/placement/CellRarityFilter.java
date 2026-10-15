@@ -4,7 +4,8 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldLayerCell;
+import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldCellRegion;
+import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldCellRegionMap;
 import io.github.zephyrwolf.medievalism.common.world.level.layer.WorldLayer;
 import io.github.zephyrwolf.medievalism.registration.RegistryRegistration;
 import io.github.zephyrwolf.medievalism.registration.world.level.PlacementModifierRegistration;
@@ -22,22 +23,22 @@ public class CellRarityFilter extends PlacementFilter
 {
     public static final MapCodec<CellRarityFilter> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             Codec.INT.fieldOf( "chance").forGetter(placement -> placement.chance),
-            ResourceKey.codec(RegistryRegistration.WORLD_LAYERS).fieldOf("layer").forGetter(placement -> placement.layer),
-            ResourceKey.codec(RegistryRegistration.LAYER_CELLS).fieldOf("variant").forGetter(placement -> placement.variant)
+            ResourceKey.codec(RegistryRegistration.WORLD_CELL_REGION_MAPS).fieldOf("region_map").forGetter(placement -> placement.regionMap),
+            ResourceKey.codec(RegistryRegistration.WORLD_CELL_REGIONS).fieldOf("region").forGetter(placement -> placement.region)
     ).apply(instance, CellRarityFilter::new));
 
     @Override
     public @NotNull PlacementModifierType<?> type() { return PlacementModifierRegistration.CELL.get(); }
 
     int chance;
-    ResourceKey<WorldLayer> layer;
-    ResourceKey<WorldLayerCell> variant;
+    ResourceKey<WorldCellRegionMap> regionMap;
+    ResourceKey<WorldCellRegion> region;
 
-    public CellRarityFilter(int chance, ResourceKey<WorldLayer> layer, ResourceKey<WorldLayerCell> variant)
+    public CellRarityFilter(int chance, ResourceKey<WorldCellRegionMap> regionMap, ResourceKey<WorldCellRegion> region)
     {
         this.chance = chance;
-        this.layer = layer;
-        this.variant = variant;
+        this.region = region;
+        this.regionMap = regionMap;
     }
 
     @Override
@@ -48,7 +49,12 @@ public class CellRarityFilter extends PlacementFilter
             return false;
         } // Process the above first to save the expensive check below
         RandomState randomState = pContext.getLevel().getLevel().getChunkSource().randomState();
-        ResourceKey<WorldLayerCell> variant = WorldLayer.getCellAt(randomState, pPos, layer);
-        return this.variant == variant;
+        ResourceKey<WorldCellRegion> atVariant = WorldCellRegionMap.getCellAt(
+                pContext.getLevel(),
+                pContext.getLevel().getLevel().getChunkSource().getGenerator(),
+                randomState,
+                pPos,
+                regionMap);
+        return this.region == atVariant;
     }
 }

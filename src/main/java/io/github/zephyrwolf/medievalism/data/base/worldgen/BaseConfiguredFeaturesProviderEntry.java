@@ -196,6 +196,7 @@ public final class BaseConfiguredFeaturesProviderEntry
                 new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.GABBRO_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
         ));
         FeatureTools.register(context, CAVE_ROCKS, FeatureRegistration.LAYER_SELECTOR_FEATURE.get(), LayerSelectorFeatureConfiguration.layers(
+                WorldLayersRegistration.VANILLA_OVERWORLD_MAP.getKey(),
                 LayeredPlacedFeature.layer(WorldLayersRegistration.VANILLA_OVERWORLD_STONE.getKey(), holderCaveStone),
                 LayeredPlacedFeature.layer(WorldLayersRegistration.VANILLA_OVERWORLD_DEEPSLATE.getKey(), holderCaveDeepslate)
         ));

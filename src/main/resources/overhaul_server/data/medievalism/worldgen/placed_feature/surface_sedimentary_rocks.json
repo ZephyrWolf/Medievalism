@@ -1,5 +1,5 @@
 {
-  "feature": "medievalism:surface_ironstone_rocks",
+  "feature": "medievalism:surface_sedimentary_rocks",
   "placement": [
     {
       "type": "minecraft:count",
@@ -13,10 +13,8 @@
       "type": "minecraft:in_square"
     },
     {
-      "type": "medievalism:cell",
-      "chance": 3,
-      "layer": "medievalism:sedimentary",
-      "variant": "medievalism:ironstone"
+      "type": "minecraft:rarity_filter",
+      "chance": 3
     },
     {
       "type": "minecraft:heightmap",

@@ -66,7 +66,12 @@ public final class OverhaulBiomeModifiersProviderEntry
         BiomeModifierTools.addSimpleModifier(context, SURFACE_SANDSTONE_ROCKS,      BiomeTagCatalog.IS_SURFACE_WITH_SAND,       OverhaulPlacedFeaturesProviderEntry.SURFACE_SANDSTONE_ROCKS,        GenerationStep.Decoration.VEGETAL_DECORATION);
         BiomeModifierTools.addSimpleModifier(context, SURFACE_RED_SANDSTONE_ROCKS,  BiomeTagCatalog.IS_SURFACE_WITH_RED_SAND,   OverhaulPlacedFeaturesProviderEntry.SURFACE_RED_SANDSTONE_ROCKS,    GenerationStep.Decoration.VEGETAL_DECORATION);
         BiomeModifierTools.addSimpleModifier(context, SURFACE_ROCKS,                BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.SURFACE_ROCKS,        GenerationStep.Decoration.VEGETAL_DECORATION);
-        BiomeModifierTools.addSimpleModifier(context, SURFACE_SEDIMENTARY_ROCKS,      BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.SURFACE_ROCKS,        GenerationStep.Decoration.VEGETAL_DECORATION);
+
+        BiomeModifierTools.addSimpleModifier(context, SURFACE_SEDIMENTARY_ROCKS,    BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.SURFACE_SEDIMENTARY_ROCKS,        GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, CAVE_ROCKS,                   BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_ROCKS,          GenerationStep.Decoration.UNDERGROUND_DECORATION);
+
+
+
         //BiomeModifierTools.addSimpleModifier(context, SURFACE_SAPROLITE_ROCKS,      BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.SURFACE_SAPROLITE_ROCKS,        GenerationStep.Decoration.VEGETAL_DECORATION);
         //BiomeModifierTools.addSimpleModifier(context, SURFACE_LATERITE_ROCKS,       BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.SURFACE_LATERITE_ROCKS,         GenerationStep.Decoration.VEGETAL_DECORATION);
         //BiomeModifierTools.addSimpleModifier(context, SURFACE_SILT_CLUMPS,          BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    OverhaulPlacedFeaturesProviderEntry.SURFACE_SILT_CLUMPS,            GenerationStep.Decoration.VEGETAL_DECORATION);
@@ -93,6 +98,5 @@ public final class OverhaulBiomeModifiersProviderEntry
         //BiomeModifierTools.addSimpleModifier(context, CAVE_SMOOTH_GRANITE_ROCKS,    BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_SMOOTH_GRANITE_ROCKS,      GenerationStep.Decoration.UNDERGROUND_DECORATION);
         //BiomeModifierTools.addSimpleModifier(context, CAVE_NORITE_ROCKS,            BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_NORITE_ROCKS,              GenerationStep.Decoration.UNDERGROUND_DECORATION);
         //BiomeModifierTools.addSimpleModifier(context, CAVE_PERIDOTITE_ROCKS,        BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_PERIDOTITE_ROCKS,          GenerationStep.Decoration.UNDERGROUND_DECORATION);
-        BiomeModifierTools.addSimpleModifier(context, CAVE_ROCKS,        BiomeTags.IS_OVERWORLD,                     OverhaulPlacedFeaturesProviderEntry.CAVE_ROCKS,          GenerationStep.Decoration.UNDERGROUND_DECORATION);
     }
 }

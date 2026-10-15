@@ -1,6 +1,7 @@
 package io.github.zephyrwolf.medievalism.common.world.level.levelgen;
 
-import io.github.zephyrwolf.medievalism.common.world.level.layer.WorldLayer;
+import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldCellRegionMap;
+import io.github.zephyrwolf.medievalism.common.world.level.layer.WorldLayerMap;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.CellSelectorFeatureConfiguration;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.CelledPlacedFeature;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.LayerSelectorFeatureConfiguration;
@@ -54,11 +55,11 @@ public final class FeatureTools
 
     // --
 
-    public static Holder<PlacedFeature> inlineLayeredPlacement(LayeredPlacedFeature ... features)
+    public static Holder<PlacedFeature> inlineLayeredPlacement(ResourceKey<WorldLayerMap> layerMap, LayeredPlacedFeature ... features)
     {
         return PlacementUtils.inlinePlaced(
                 FeatureRegistration.LAYER_SELECTOR_FEATURE.get(),
-                LayerSelectorFeatureConfiguration.create(Arrays.stream(features).toList())
+                LayerSelectorFeatureConfiguration.create(layerMap, Arrays.stream(features).toList())
         );
     }
 
@@ -109,19 +110,19 @@ public final class FeatureTools
                 ));
     }
 
-    public static Holder<PlacedFeature> inlineLayerSelect(LayeredPlacedFeature ... features)
+    public static Holder<PlacedFeature> inlineLayerSelect(ResourceKey<WorldLayerMap> layerMap, LayeredPlacedFeature ... features)
     {
         return PlacementUtils.inlinePlaced(
                 FeatureRegistration.LAYER_SELECTOR_FEATURE.get(),
-                LayerSelectorFeatureConfiguration.layers(features)
+                LayerSelectorFeatureConfiguration.layers(layerMap, features)
         );
     }
 
-    public static Holder<PlacedFeature> inlineCellSelect(ResourceKey<WorldLayer> layer, CelledPlacedFeature ... features)
+    public static Holder<PlacedFeature> inlineCellSelect(ResourceKey<WorldCellRegionMap> cellRegionMap, CelledPlacedFeature ... features)
     {
         return PlacementUtils.inlinePlaced(
                 FeatureRegistration.CELL_SELECTOR_FEATURE.get(),
-                CellSelectorFeatureConfiguration.cells(layer, features)
+                CellSelectorFeatureConfiguration.cells(cellRegionMap, features)
         );
     }
     // Random Patch

@@ -1,8 +1,8 @@
 package io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature;
 
 import com.mojang.serialization.Codec;
-import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldLayerCell;
-import io.github.zephyrwolf.medievalism.common.world.level.layer.WorldLayer;
+import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldCellRegion;
+import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldCellRegionMap;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.CellSelectorFeatureConfiguration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
@@ -26,7 +26,12 @@ public class CellSelectorFeature extends Feature<CellSelectorFeatureConfiguratio
         WorldGenLevel level = context.level();
         BlockPos origin = context.origin();
         CellSelectorFeatureConfiguration config = context.config();
-        ResourceKey<WorldLayerCell> cell = WorldLayer.getCellAt(level.getLevel().getChunkSource().randomState(), origin, config.layer());
+        ResourceKey<WorldCellRegion> cell = WorldCellRegionMap.getCellAt(
+                level,
+                level.getLevel().getChunkSource().getGenerator(),
+                level.getLevel().getChunkSource().randomState(),
+                origin,
+                config.cellRegionMap());
         if (!config.features().containsKey(cell)) return false;
         PlacedFeature placedfeature = config.features().get(cell).value();
         ChunkGenerator chunkGenerator = context.chunkGenerator();

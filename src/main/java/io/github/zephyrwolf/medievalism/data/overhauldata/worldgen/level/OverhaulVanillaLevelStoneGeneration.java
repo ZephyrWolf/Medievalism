@@ -1,11 +1,11 @@
-package io.github.zephyrwolf.medievalism.data.overhauldata.level;
+package io.github.zephyrwolf.medievalism.data.overhauldata.worldgen.level;
 
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.anchor.AwareVerticalAnchor;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.conditionsource.AwareConditionSources;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.conditionsource.CellConditionSource;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.conditionsource.HeightmapRangeConditionSource;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
-import io.github.zephyrwolf.medievalism.registration.world.level.LayerCellRegistration;
+import io.github.zephyrwolf.medievalism.registration.world.level.WorldCellRegionRegistration;
 import io.github.zephyrwolf.medievalism.registration.world.level.WorldGenLayerConstants;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
@@ -18,6 +18,27 @@ import java.util.Optional;
 
 public final class OverhaulVanillaLevelStoneGeneration
 { // TODO Try to eliminate this file with json
+    @Unique
+    public static <E> @NotNull Optional<E> modifyNoiseGeneratorSettings_vanilla(NoiseGeneratorSettings e)
+    {
+        SurfaceRules.SequenceRuleSource parent = (SurfaceRules.SequenceRuleSource) e.surfaceRule();
+
+        NoiseGeneratorSettings vanilla = new NoiseGeneratorSettings(
+                e.noiseSettings(),
+                e.defaultBlock(),
+                e.defaultFluid(),
+                e.noiseRouter(),
+                e.surfaceRule(),
+                e.spawnTarget(),
+                e.seaLevel(),
+                e.disableMobGeneration(),
+                e.aquifersEnabled(),
+                e.oreVeinsEnabled(),
+                e.useLegacyRandomSource()
+        );
+        return Optional.of((E) vanilla);
+    }
+
     @Unique
     public static <E> @NotNull Optional<E> modifyNoiseGeneratorSettings(NoiseGeneratorSettings e)
     {
@@ -55,19 +76,19 @@ public final class OverhaulVanillaLevelStoneGeneration
                                 ),
                                 SurfaceRules.sequence( // Ashfall
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(LayerCellRegistration.SOFT_TUFF.getKey()),
+                                                CellConditionSource.cell(WorldCellRegionRegistration.SOFT_TUFF.getKey()),
                                                 SurfaceRules.state(BlockRegistration.SOFT_TUFF.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(LayerCellRegistration.IGNIMBRITE.getKey()),
+                                                CellConditionSource.cell(WorldCellRegionRegistration.IGNIMBRITE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.IGNIMBRITE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(LayerCellRegistration.LAPILLISTONE.getKey()),
+                                                CellConditionSource.cell(WorldCellRegionRegistration.LAPILLISTONE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.LAPILLISTONE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(LayerCellRegistration.WELDED_TUFF.getKey()),
+                                                CellConditionSource.cell(WorldCellRegionRegistration.WELDED_TUFF.getKey()),
                                                 SurfaceRules.state(BlockRegistration.WELDED_TUFF.get().defaultBlockState())
                                         )
                                 )
@@ -83,15 +104,15 @@ public final class OverhaulVanillaLevelStoneGeneration
                                 ),
                                 SurfaceRules.sequence( // Regolith
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(LayerCellRegistration.LATERITE.getKey()),
+                                                CellConditionSource.cell(WorldCellRegionRegistration.LATERITE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.LATERITE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(LayerCellRegistration.SAPROLITE.getKey()),
+                                                CellConditionSource.cell(WorldCellRegionRegistration.SAPROLITE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.SAPROLITE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(LayerCellRegistration.SILT.getKey()),
+                                                CellConditionSource.cell(WorldCellRegionRegistration.SILT.getKey()),
                                                 SurfaceRules.state(BlockRegistration.SILT.get().defaultBlockState())
                                         )
                                 )
@@ -112,11 +133,11 @@ public final class OverhaulVanillaLevelStoneGeneration
                         //SurfaceRules.state(BlockRegistration.NORITE.get().defaultBlockState())
                         SurfaceRules.sequence( // Deep Igneous Intrusive
                                 SurfaceRules.ifTrue(
-                                        CellConditionSource.cell(LayerCellRegistration.NORITE.getKey()),
+                                        CellConditionSource.cell(WorldCellRegionRegistration.NORITE.getKey()),
                                         SurfaceRules.state(BlockRegistration.NORITE.get().defaultBlockState())
                                 ),
                                 SurfaceRules.ifTrue(
-                                        CellConditionSource.cell(LayerCellRegistration.PERIDOTITE.getKey()),
+                                        CellConditionSource.cell(WorldCellRegionRegistration.PERIDOTITE.getKey()),
                                         SurfaceRules.state(BlockRegistration.PERIDOTITE.get().defaultBlockState())
                                 )
                         )
@@ -135,15 +156,15 @@ public final class OverhaulVanillaLevelStoneGeneration
                         ),
                         SurfaceRules.sequence( // Igneous Intrusive
                                 SurfaceRules.ifTrue(
-                                        CellConditionSource.cell(LayerCellRegistration.GABBRO.getKey()),
+                                        CellConditionSource.cell(WorldCellRegionRegistration.GABBRO.getKey()),
                                         SurfaceRules.state(BlockRegistration.GABBRO.get().defaultBlockState())
                                 ),
                                 SurfaceRules.ifTrue(
-                                        CellConditionSource.cell(LayerCellRegistration.SMOOTH_DIORITE.getKey()),
+                                        CellConditionSource.cell(WorldCellRegionRegistration.SMOOTH_DIORITE.getKey()),
                                         SurfaceRules.state(BlockRegistration.SMOOTH_DIORITE.get().defaultBlockState())
                                 ),
                                 SurfaceRules.ifTrue(
-                                        CellConditionSource.cell(LayerCellRegistration.SMOOTH_GRANITE.getKey()),
+                                        CellConditionSource.cell(WorldCellRegionRegistration.SMOOTH_GRANITE.getKey()),
                                         SurfaceRules.state(BlockRegistration.SMOOTH_GRANITE.get().defaultBlockState())
                                 )
                         )
@@ -178,11 +199,11 @@ public final class OverhaulVanillaLevelStoneGeneration
                                                         ),
                                                         SurfaceRules.sequence( // Hard extrusive igneous
                                                                 SurfaceRules.ifTrue(
-                                                                        CellConditionSource.cell(LayerCellRegistration.ANDESITE.getKey()),
+                                                                        CellConditionSource.cell(WorldCellRegionRegistration.ANDESITE.getKey()),
                                                                         SurfaceRules.state(BlockRegistration.ANDESITE.get().defaultBlockState())
                                                                 ),
                                                                 SurfaceRules.ifTrue(
-                                                                        CellConditionSource.cell(LayerCellRegistration.BASALT.getKey()),
+                                                                        CellConditionSource.cell(WorldCellRegionRegistration.BASALT.getKey()),
                                                                         SurfaceRules.state(BlockRegistration.BASALT.get().defaultBlockState())
                                                                 )
                                                         )
@@ -190,19 +211,19 @@ public final class OverhaulVanillaLevelStoneGeneration
                                         ),
                                         SurfaceRules.sequence( // Metamorphic
                                                 SurfaceRules.ifTrue(
-                                                        CellConditionSource.cell(LayerCellRegistration.MARBLE.getKey()),
+                                                        CellConditionSource.cell(WorldCellRegionRegistration.MARBLE.getKey()),
                                                         SurfaceRules.state(BlockRegistration.MARBLE.get().defaultBlockState())
                                                 ),
                                                 SurfaceRules.ifTrue(
-                                                        CellConditionSource.cell(LayerCellRegistration.QUARTZITE.getKey()),
+                                                        CellConditionSource.cell(WorldCellRegionRegistration.QUARTZITE.getKey()),
                                                         SurfaceRules.state(BlockRegistration.QUARTZITE.get().defaultBlockState())
                                                 ),
                                                 SurfaceRules.ifTrue(
-                                                        CellConditionSource.cell(LayerCellRegistration.HORNFELS.getKey()),
+                                                        CellConditionSource.cell(WorldCellRegionRegistration.HORNFELS.getKey()),
                                                         SurfaceRules.state(BlockRegistration.HORNFELS.get().defaultBlockState())
                                                 ),
                                                 SurfaceRules.ifTrue(
-                                                        CellConditionSource.cell(LayerCellRegistration.SLATE.getKey()),
+                                                        CellConditionSource.cell(WorldCellRegionRegistration.SLATE.getKey()),
                                                         SurfaceRules.state(BlockRegistration.SLATE.get().defaultBlockState())
                                                 )
                                         )
@@ -227,11 +248,11 @@ public final class OverhaulVanillaLevelStoneGeneration
                                                 ),
                                                 SurfaceRules.sequence( // Soft extrusive igneous
                                                         SurfaceRules.ifTrue(
-                                                                CellConditionSource.cell(LayerCellRegistration.RHYOLITE.getKey()),
+                                                                CellConditionSource.cell(WorldCellRegionRegistration.RHYOLITE.getKey()),
                                                                 SurfaceRules.state(BlockRegistration.RHYOLITE.get().defaultBlockState())
                                                         ),
                                                         SurfaceRules.ifTrue(
-                                                                CellConditionSource.cell(LayerCellRegistration.DACITE.getKey()),
+                                                                CellConditionSource.cell(WorldCellRegionRegistration.DACITE.getKey()),
                                                                 SurfaceRules.state(BlockRegistration.DACITE.get().defaultBlockState())
                                                         )
                                                 )
@@ -240,31 +261,31 @@ public final class OverhaulVanillaLevelStoneGeneration
                                 SurfaceRules.sequence( // Sedimentary // Fills in the gap
                                         SurfaceRules.ifTrue(
                                                 //CellConditionSource.cell(BaseNoiseProviderEntry.NOISE_SEDIMENTARY, 1000, 0.03f, 0.2f, 5, 0),
-                                                CellConditionSource.cell(LayerCellRegistration.GREYWACKE.getKey()),
+                                                CellConditionSource.cell(WorldCellRegionRegistration.GREYWACKE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.GREYWACKE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(LayerCellRegistration.SILTSTONE.getKey()),
+                                                CellConditionSource.cell(WorldCellRegionRegistration.SILTSTONE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.SILTSTONE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(LayerCellRegistration.DOLOSTONE.getKey()),
+                                                CellConditionSource.cell(WorldCellRegionRegistration.DOLOSTONE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.DOLOSTONE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(LayerCellRegistration.LIMESTONE.getKey()),
+                                                CellConditionSource.cell(WorldCellRegionRegistration.LIMESTONE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.LIMESTONE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(LayerCellRegistration.IRONSTONE.getKey()),
+                                                CellConditionSource.cell(WorldCellRegionRegistration.IRONSTONE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.IRONSTONE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(LayerCellRegistration.SHALE.getKey()),
+                                                CellConditionSource.cell(WorldCellRegionRegistration.SHALE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.SHALE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(LayerCellRegistration.ARKOSE.getKey()),
+                                                CellConditionSource.cell(WorldCellRegionRegistration.ARKOSE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.ARKOSE.get().defaultBlockState())
                                         )
                                 )

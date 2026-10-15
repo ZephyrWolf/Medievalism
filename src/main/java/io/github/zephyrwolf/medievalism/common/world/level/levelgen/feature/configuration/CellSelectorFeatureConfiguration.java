@@ -5,8 +5,8 @@ import java.util.stream.Stream;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldLayerCell;
-import io.github.zephyrwolf.medievalism.common.world.level.layer.WorldLayer;
+import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldCellRegion;
+import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldCellRegionMap;
 import io.github.zephyrwolf.medievalism.registration.RegistryRegistration;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
@@ -15,17 +15,17 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import org.jetbrains.annotations.NotNull;
 
-public record CellSelectorFeatureConfiguration(ResourceKey<WorldLayer> layer, Map<ResourceKey<WorldLayerCell>, Holder<PlacedFeature>> features) implements FeatureConfiguration
+public record CellSelectorFeatureConfiguration(ResourceKey<WorldCellRegionMap> cellRegionMap, Map<ResourceKey<WorldCellRegion>, Holder<PlacedFeature>> features) implements FeatureConfiguration
 {
     public static final MapCodec<CellSelectorFeatureConfiguration> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-            ResourceKey.codec(RegistryRegistration.WORLD_LAYERS).fieldOf("layer").forGetter(CellSelectorFeatureConfiguration::layer),
+            ResourceKey.codec(RegistryRegistration.WORLD_CELL_REGION_MAPS).fieldOf("cell_region_map").forGetter(CellSelectorFeatureConfiguration::cellRegionMap),
             CelledPlacedFeature.CODEC.listOf().fieldOf("features").forGetter(CellSelectorFeatureConfiguration::getCelledFeatures)
     ).apply(instance, CellSelectorFeatureConfiguration::create));
 
     public List<CelledPlacedFeature> getCelledFeatures()
     {
         List<CelledPlacedFeature> featuresList = new ArrayList<>();
-        for (ResourceKey<WorldLayerCell> cell : features.keySet())
+        for (ResourceKey<WorldCellRegion> cell : features.keySet())
         {
             Holder<PlacedFeature> feature = features.get(cell);
             if (feature != null) // I don't trust it
@@ -36,24 +36,24 @@ public record CellSelectorFeatureConfiguration(ResourceKey<WorldLayer> layer, Ma
         return featuresList;
     }
 
-    public static CellSelectorFeatureConfiguration cells(ResourceKey<WorldLayer> layer, CelledPlacedFeature ... features)
+    public static CellSelectorFeatureConfiguration cells(ResourceKey<WorldCellRegionMap> cellRegionMap, CelledPlacedFeature ... features)
     {
-        return create(layer, Arrays.stream(features).toList());
+        return create(cellRegionMap, Arrays.stream(features).toList());
     }
 
-    public static CellSelectorFeatureConfiguration create(ResourceKey<WorldLayer> layer, List<CelledPlacedFeature> features)
+    public static CellSelectorFeatureConfiguration create(ResourceKey<WorldCellRegionMap> cellRegionMap, List<CelledPlacedFeature> features)
     {
-        Map<ResourceKey<WorldLayerCell>, Holder<PlacedFeature>> featuresMap = new HashMap<>();
+        Map<ResourceKey<WorldCellRegion>, Holder<PlacedFeature>> featuresMap = new HashMap<>();
         for (CelledPlacedFeature feature : features)
         {
-            WorldLayerCell cell = RegistryRegistration.LAYER_CELLS_REGISTRY.getOrThrow(feature.cell());
-            if (layer != cell.layer())
+            WorldCellRegion cell = RegistryRegistration.WORLD_CELL_REGION_REGISTRY.getOrThrow(feature.cell());
+            if (cellRegionMap != cell.cellRegionMap())
             {
-                throw new IllegalArgumentException("Cell '" + feature.cell() + "' cannot be grouped with layer '" + layer + "'.");
+                throw new IllegalArgumentException("Cell '" + feature.cell() + "' not found within '" + cellRegionMap + "'.");
             }
             featuresMap.put(feature.cell(), feature.feature());
         }
-        return new CellSelectorFeatureConfiguration(layer, featuresMap);
+        return new CellSelectorFeatureConfiguration(cellRegionMap, featuresMap);
     }
 
     @Override

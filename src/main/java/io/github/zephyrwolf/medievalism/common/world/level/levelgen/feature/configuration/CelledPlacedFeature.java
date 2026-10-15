@@ -2,7 +2,7 @@ package io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.con
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldLayerCell;
+import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldCellRegion;
 import io.github.zephyrwolf.medievalism.registration.RegistryRegistration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -12,15 +12,15 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
-public record CelledPlacedFeature(ResourceKey<WorldLayerCell> cell, Holder<PlacedFeature> feature)
+public record CelledPlacedFeature(ResourceKey<WorldCellRegion> cell, Holder<PlacedFeature> feature)
 {
     public static final Codec<CelledPlacedFeature> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-                    ResourceKey.codec(RegistryRegistration.LAYER_CELLS).fieldOf("cell").forGetter(CelledPlacedFeature::cell),
+                    ResourceKey.codec(RegistryRegistration.WORLD_CELL_REGIONS).fieldOf("cell").forGetter(CelledPlacedFeature::cell),
                     PlacedFeature.CODEC.fieldOf("feature").forGetter(CelledPlacedFeature::feature)
             )
             .apply(instance, CelledPlacedFeature::new));
 
-    public static CelledPlacedFeature cell(ResourceKey<WorldLayerCell> cell, Holder<PlacedFeature> feature)
+    public static CelledPlacedFeature cell(ResourceKey<WorldCellRegion> cell, Holder<PlacedFeature> feature)
     {
         return new CelledPlacedFeature(cell, feature);
     }

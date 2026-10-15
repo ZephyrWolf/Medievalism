@@ -1,6 +1,7 @@
 package io.github.zephyrwolf.medievalism.common.world.level.levelgen;
 
-import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldLayerCell;
+import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldCellRegion;
+import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldCellRegionMap;
 import io.github.zephyrwolf.medievalism.common.world.level.layer.WorldLayer;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.placement.BelowHeightmapFilter;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.placement.CellRarityFilter;
@@ -127,12 +128,12 @@ public final class PlacementTools
     }
 
     @Deprecated
-    public static <E extends Enum<E>> List<PlacementModifier> surfaceCellPlacement(int minCount, int maxCount, int chance, ResourceKey<WorldLayer> layer, ResourceKey<WorldLayerCell> cell)
+    public static <E extends Enum<E>> List<PlacementModifier> surfaceCellPlacement(int minCount, int maxCount, int chance, ResourceKey<WorldCellRegionMap> regionMap, ResourceKey<WorldCellRegion> cell)
     {
         return List.of(
                 CountPlacement.of(UniformInt.of(minCount, maxCount)),
                 InSquarePlacement.spread(),
-                new CellRarityFilter(chance, layer, cell),
+                new CellRarityFilter(chance, regionMap, cell),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG), // WORLD_SURFACE_WG -- WATER LEVEL
                 BiomeFilter.biome());
     }
@@ -149,7 +150,7 @@ public final class PlacementTools
     }
 
     @Deprecated
-    public static <E extends Enum<E>> List<PlacementModifier> caveCellPlacement(int minCount, int maxCount, int chance, ResourceKey<WorldLayer> layer, ResourceKey<WorldLayerCell> variant, PlacementModifier heightRangePlacement)
+    public static <E extends Enum<E>> List<PlacementModifier> caveCellPlacement(int minCount, int maxCount, int chance, ResourceKey<WorldLayer> layer, ResourceKey<WorldCellRegion> variant, PlacementModifier heightRangePlacement)
     {
         /*
         return List.of(

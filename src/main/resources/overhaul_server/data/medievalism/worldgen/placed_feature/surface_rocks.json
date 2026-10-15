@@ -1,11 +1,11 @@
 {
-  "feature": "medievalism:surface_greywacke_rocks",
+  "feature": "medievalism:surface_rocks",
   "placement": [
     {
       "type": "minecraft:count",
       "count": {
         "type": "minecraft:uniform",
-        "max_inclusive": 1,
+        "max_inclusive": 2,
         "min_inclusive": 1
       }
     },
@@ -13,10 +13,8 @@
       "type": "minecraft:in_square"
     },
     {
-      "type": "medievalism:cell",
-      "chance": 3,
-      "layer": "medievalism:sedimentary",
-      "variant": "medievalism:greywacke"
+      "type": "minecraft:rarity_filter",
+      "chance": 2
     },
     {
       "type": "minecraft:heightmap",

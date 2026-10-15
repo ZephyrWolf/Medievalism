@@ -1,29 +1,30 @@
 package io.github.zephyrwolf.medievalism.common.world.level.levelgen.conditionsource;
 
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldLayerCell;
-import io.github.zephyrwolf.medievalism.common.world.level.layer.WorldLayer;
+import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldCellRegion;
+import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldCellRegionMap;
 import io.github.zephyrwolf.medievalism.registration.RegistryRegistration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.KeyDispatchDataCodec;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import org.jetbrains.annotations.NotNull;
 
-public record CellConditionSource(ResourceKey<WorldLayer> layer, ResourceKey<WorldLayerCell> variant) implements SurfaceRules.ConditionSource
+// Used by mixin stone gen overhaul code, injected in
+public record CellConditionSource(ResourceKey<WorldCellRegionMap> regionMap, ResourceKey<WorldCellRegion> region) implements SurfaceRules.ConditionSource
 {
     static final KeyDispatchDataCodec<CellConditionSource> CODEC = KeyDispatchDataCodec.of(
             RecordCodecBuilder.mapCodec( instance -> instance.group(
-                            ResourceKey.codec(RegistryRegistration.WORLD_LAYERS).fieldOf("layer").forGetter(CellConditionSource::layer),
-                            ResourceKey.codec(RegistryRegistration.LAYER_CELLS).fieldOf("variant").forGetter(CellConditionSource::variant)
+                            ResourceKey.codec(RegistryRegistration.WORLD_CELL_REGION_MAPS).fieldOf("region_map").forGetter(CellConditionSource::regionMap),
+                            ResourceKey.codec(RegistryRegistration.WORLD_CELL_REGIONS).fieldOf("region").forGetter(CellConditionSource::region)
                     ).apply(instance, CellConditionSource::new)
             ));
 
-    public static CellConditionSource cell(ResourceKey<WorldLayerCell> variant)
+    public static CellConditionSource cell(ResourceKey<WorldCellRegion> region)
     {
-        WorldLayerCell cell = RegistryRegistration.LAYER_CELLS_REGISTRY.getOrThrow(variant);
-        return new CellConditionSource(cell.layer(), variant);
+        WorldCellRegion cell = RegistryRegistration.WORLD_CELL_REGION_REGISTRY.getOrThrow(region);
+        return new CellConditionSource(cell.cellRegionMap(), region);
     }
 
     @Override
@@ -32,8 +33,6 @@ public record CellConditionSource(ResourceKey<WorldLayer> layer, ResourceKey<Wor
     public SurfaceRules.Condition apply(final SurfaceRules.Context pContext)
     {
         // For some reason, we HAVE to query heightmap now and not at lazy
-        final int heightMapY = AwareConditionSources.getSurfaceHeight(Heightmap.Types.OCEAN_FLOOR_WG, pContext);
-
         class LazyVerticalRangeAwareConditionSource extends SurfaceRules.LazyYCondition
         {
             LazyVerticalRangeAwareConditionSource()
@@ -44,9 +43,15 @@ public record CellConditionSource(ResourceKey<WorldLayer> layer, ResourceKey<Wor
             @Override
             protected boolean compute()
             {
-                BlockPos pos = new BlockPos(pContext.blockX, pContext.blockY, pContext.blockZ);
-                ResourceKey<WorldLayerCell> atVariant = WorldLayer.getCellAt(pContext.randomState, pos, layer());
-                return variant == atVariant;
+                ServerLevel level = (ServerLevel) this.context.chunk.getLevel();
+                BlockPos pos = new BlockPos(this.context.blockX, this.context.blockY, this.context.blockZ);
+                ResourceKey<WorldCellRegion> atVariant = WorldCellRegionMap.getCellAt(
+                        level,
+                        level == null ? null : level.getChunkSource().getGenerator(),
+                        this.context.randomState,
+                        pos,
+                        regionMap);
+                return region == atVariant;
             }
         }
         return new LazyVerticalRangeAwareConditionSource();

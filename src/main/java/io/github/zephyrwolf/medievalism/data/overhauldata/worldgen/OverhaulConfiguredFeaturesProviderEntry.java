@@ -10,7 +10,7 @@ import io.github.zephyrwolf.medievalism.data.base.worldgen.BaseConfiguredFeature
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.block.BlockTagCatalog;
 import io.github.zephyrwolf.medievalism.registration.world.level.FeatureRegistration;
-import io.github.zephyrwolf.medievalism.registration.world.level.LayerCellRegistration;
+import io.github.zephyrwolf.medievalism.registration.world.level.WorldCellRegionRegistration;
 import io.github.zephyrwolf.medievalism.registration.world.level.WorldLayersRegistration;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -429,52 +429,57 @@ public final class OverhaulConfiguredFeaturesProviderEntry
         ));
 
         FeatureTools.register(context, SURFACE_ROCKS, FeatureRegistration.CELL_SELECTOR_FEATURE.get(),CellSelectorFeatureConfiguration.cells(
-                WorldLayersRegistration.OVERHAUL_OVERWORLD_REGOLITH.getKey(),
-                CelledPlacedFeature.cell(LayerCellRegistration.SAPROLITE.getKey(), holderSurfaceSaprolite),
-                CelledPlacedFeature.cell(LayerCellRegistration.LATERITE.getKey(), holderSurfaceLaterite),
-                CelledPlacedFeature.cell(LayerCellRegistration.SILT.getKey(), holderSurfaceSilt)
+                WorldCellRegionRegistration.OVERWORLD_REGOLITH_MAP.getKey(),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.SAPROLITE.getKey(), holderSurfaceSaprolite),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.LATERITE.getKey(), holderSurfaceLaterite),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.SILT.getKey(), holderSurfaceSilt)
         ));
 
         FeatureTools.register(context, SURFACE_SEDIMENTARY_ROCKS, FeatureRegistration.CELL_SELECTOR_FEATURE.get(), CellSelectorFeatureConfiguration.cells(
-                WorldLayersRegistration.OVERHAUL_OVERWORLD_SEDIMENTARY.getKey(),
-                CelledPlacedFeature.cell(LayerCellRegistration.GREYWACKE.getKey(), holderSurfaceGreywacke),
-                CelledPlacedFeature.cell(LayerCellRegistration.SILTSTONE.getKey(), holderSurfaceSiltstone),
-                CelledPlacedFeature.cell(LayerCellRegistration.DOLOSTONE.getKey(), holderSurfaceDolostone),
-                CelledPlacedFeature.cell(LayerCellRegistration.LIMESTONE.getKey(), holderSurfaceLimestone),
-                CelledPlacedFeature.cell(LayerCellRegistration.IRONSTONE.getKey(), holderSurfaceIronstone),
-                CelledPlacedFeature.cell(LayerCellRegistration.SHALE.getKey(), holderSurfaceShale),
-                CelledPlacedFeature.cell(LayerCellRegistration.ARKOSE.getKey(), holderSurfaceArkose)
+                WorldCellRegionRegistration.OVERWORLD_SEDIMENTARY_MAP.getKey(),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.GREYWACKE.getKey(), holderSurfaceGreywacke),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.SILTSTONE.getKey(), holderSurfaceSiltstone),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.DOLOSTONE.getKey(), holderSurfaceDolostone),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.LIMESTONE.getKey(), holderSurfaceLimestone),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.IRONSTONE.getKey(), holderSurfaceIronstone),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.SHALE.getKey(), holderSurfaceShale),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.ARKOSE.getKey(), holderSurfaceArkose)
         ));
 
-        Holder<PlacedFeature> holderCaveSedimentary = FeatureTools.inlineCellSelect(WorldLayersRegistration.OVERHAUL_OVERWORLD_SEDIMENTARY.getKey(),
-                CelledPlacedFeature.cell(LayerCellRegistration.GREYWACKE.getKey(), holderCaveGreywacke),
-                CelledPlacedFeature.cell(LayerCellRegistration.SILTSTONE.getKey(), holderCaveSiltstone),
-                CelledPlacedFeature.cell(LayerCellRegistration.DOLOSTONE.getKey(), holderCaveDolostone),
-                CelledPlacedFeature.cell(LayerCellRegistration.LIMESTONE.getKey(), holderCaveLimestone),
-                CelledPlacedFeature.cell(LayerCellRegistration.IRONSTONE.getKey(), holderCaveIronstone),
-                CelledPlacedFeature.cell(LayerCellRegistration.SHALE.getKey(), holderCaveShale),
-                CelledPlacedFeature.cell(LayerCellRegistration.ARKOSE.getKey(), holderCaveArkose)
+        Holder<PlacedFeature> holderCaveSedimentary = FeatureTools.inlineCellSelect(
+                WorldCellRegionRegistration.OVERWORLD_SEDIMENTARY_MAP.getKey(),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.GREYWACKE.getKey(), holderCaveGreywacke),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.SILTSTONE.getKey(), holderCaveSiltstone),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.DOLOSTONE.getKey(), holderCaveDolostone),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.LIMESTONE.getKey(), holderCaveLimestone),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.IRONSTONE.getKey(), holderCaveIronstone),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.SHALE.getKey(), holderCaveShale),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.ARKOSE.getKey(), holderCaveArkose)
         );
 
-        Holder<PlacedFeature> holderCaveMetamorphic = FeatureTools.inlineCellSelect(WorldLayersRegistration.OVERHAUL_OVERWORLD_METAMORPHIC.getKey(),
-                CelledPlacedFeature.cell(LayerCellRegistration.MARBLE.getKey(), holderCaveMarble),
-                CelledPlacedFeature.cell(LayerCellRegistration.QUARTZITE.getKey(), holderCaveQuartzite),
-                CelledPlacedFeature.cell(LayerCellRegistration.HORNFELS.getKey(), holderCaveHornfels),
-                CelledPlacedFeature.cell(LayerCellRegistration.SLATE.getKey(), holderCaveSlate)
+        Holder<PlacedFeature> holderCaveMetamorphic = FeatureTools.inlineCellSelect(
+                WorldCellRegionRegistration.OVERWORLD_METAMORPHIC_MAP.getKey(),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.MARBLE.getKey(), holderCaveMarble),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.QUARTZITE.getKey(), holderCaveQuartzite),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.HORNFELS.getKey(), holderCaveHornfels),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.SLATE.getKey(), holderCaveSlate)
         );
 
-        Holder<PlacedFeature> holderCaveIgneousIntrusive = FeatureTools.inlineCellSelect(WorldLayersRegistration.OVERHAUL_OVERWORLD_IGNEOUS_INTRUSIVE.getKey(),
-                CelledPlacedFeature.cell(LayerCellRegistration.GABBRO.getKey(), holderCaveGabbro),
-                CelledPlacedFeature.cell(LayerCellRegistration.SMOOTH_DIORITE.getKey(), holderCaveSmoothDiorite),
-                CelledPlacedFeature.cell(LayerCellRegistration.SMOOTH_GRANITE.getKey(), holderCaveSmoothGranite)
+        Holder<PlacedFeature> holderCaveIgneousIntrusive = FeatureTools.inlineCellSelect(
+                WorldCellRegionRegistration.OVERWORLD_IGNEOUS_INTRUSIVE_MAP.getKey(),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.GABBRO.getKey(), holderCaveGabbro),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.SMOOTH_DIORITE.getKey(), holderCaveSmoothDiorite),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.SMOOTH_GRANITE.getKey(), holderCaveSmoothGranite)
         );
 
-        Holder<PlacedFeature> holderCaveDeepIgneousIntrusive = FeatureTools.inlineCellSelect(WorldLayersRegistration.OVERHAUL_OVERWORLD_DEEP_IGNEOUS_INTRUSIVE.getKey(),
-                CelledPlacedFeature.cell(LayerCellRegistration.NORITE.getKey(), holderCaveNorite),
-                CelledPlacedFeature.cell(LayerCellRegistration.PERIDOTITE.getKey(), holderCavePeridotite)
+        Holder<PlacedFeature> holderCaveDeepIgneousIntrusive = FeatureTools.inlineCellSelect(
+                WorldCellRegionRegistration.OVERWORLD_DEEP_IGNEOUS_INTRUSIVE_MAP.getKey(),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.NORITE.getKey(), holderCaveNorite),
+                CelledPlacedFeature.cell(WorldCellRegionRegistration.PERIDOTITE.getKey(), holderCavePeridotite)
         );
 
         FeatureTools.register(context, CAVE_ROCKS, FeatureRegistration.LAYER_SELECTOR_FEATURE.get(), LayerSelectorFeatureConfiguration.layers(
+                WorldLayersRegistration.OVERHAUL_OVERWORLD_MAP.getKey(),
                 LayeredPlacedFeature.layer(WorldLayersRegistration.OVERHAUL_OVERWORLD_SEDIMENTARY.getKey(), holderCaveSedimentary),
                 LayeredPlacedFeature.layer(WorldLayersRegistration.OVERHAUL_OVERWORLD_METAMORPHIC.getKey(), holderCaveMetamorphic),
                 LayeredPlacedFeature.layer(WorldLayersRegistration.OVERHAUL_OVERWORLD_IGNEOUS_INTRUSIVE.getKey(), holderCaveIgneousIntrusive),
