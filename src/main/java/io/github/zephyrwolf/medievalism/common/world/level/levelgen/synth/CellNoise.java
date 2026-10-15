@@ -17,16 +17,16 @@ public final class CellNoise
 
     private record CellPoint(int cx, int cz) { }
 
-    private static CellNoise.WorldPoint WarpPoint(CellNoiseSettings settings, NormalNoise noise, BlockPos pos)
+    private static CellNoise.WorldPoint WarpPoint(NormalNoise noise, float warp, int boarderThickness, BlockPos pos)
     {
         double wx = pos.getX() + (noise.getValue(
-                pos.getX() * settings.warp(),
-                pos.getY() * settings.warp(),
-                pos.getZ() * settings.warp()) - 0.5) * settings.boarderThickness();
+                pos.getX() * warp,
+                pos.getY() * warp,
+                pos.getZ() * warp) - 0.5) * boarderThickness;
         double wz = pos.getZ() + (noise.getValue(
-                pos.getX() * settings.warp() + 1000,
-                pos.getY() * settings.warp() + 1000,
-                pos.getZ() * settings.warp() + 1000) - 0.5) * settings.boarderThickness();
+                pos.getX() * warp + 1000,
+                pos.getY() * warp + 1000,
+                pos.getZ() * warp + 1000) - 0.5) * boarderThickness;
         return new CellNoise.WorldPoint((int) wx, (int) wz);
     }
 
@@ -59,10 +59,10 @@ public final class CellNoise
         return h;
     }
 
-    public static int noise(CellNoiseSettings settings, NormalNoise noise, BlockPos oPos)
+    public static long noise(NormalNoise noise, int cellSize, float warp, int boarderThickness, BlockPos oPos)
     {
-        CellNoise.WorldPoint wpt = CellNoise.WarpPoint(settings, noise, oPos);
-        CellNoise.CellPoint originCellPt = getCellPoint(settings.cellSize(), wpt);
+        CellNoise.WorldPoint wpt = CellNoise.WarpPoint(noise, warp, boarderThickness, oPos);
+        CellNoise.CellPoint originCellPt = getCellPoint(cellSize, wpt);
         float minDistance = Float.MAX_VALUE;
         CellNoise.WorldPoint bestPt = new CellNoise.WorldPoint(0, 0);
         for (int cxd = -1; cxd < 2; cxd++)
@@ -70,7 +70,7 @@ public final class CellNoise
             for (int czd = -1; czd < 2; czd++)
             {
                 CellNoise.CellPoint offsetCellPt = new CellNoise.CellPoint(originCellPt.cx() + cxd, originCellPt.cz() + czd);
-                CellNoise.WorldPoint cellOriginPt = GetWorldPoint(noise, settings.cellSize(), offsetCellPt);
+                CellNoise.WorldPoint cellOriginPt = GetWorldPoint(noise, cellSize, offsetCellPt);
                 float distance = wpt.distance( cellOriginPt );
                 if (distance < minDistance)
                 {
@@ -79,7 +79,6 @@ public final class CellNoise
                 }
             }
         }
-        long h = hash(bestPt.x(), bestPt.z());
-        return Math.floorMod(h, settings.variants().size());
+        return hash(bestPt.x(), bestPt.z());
     }
 }

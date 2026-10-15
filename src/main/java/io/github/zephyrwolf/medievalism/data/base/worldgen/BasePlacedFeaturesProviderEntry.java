@@ -2,7 +2,7 @@ package io.github.zephyrwolf.medievalism.data.base.worldgen;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.PlacementTools;
-import io.github.zephyrwolf.medievalism.registration.world.level.WorldGenLayerCatalog;
+import io.github.zephyrwolf.medievalism.registration.world.level.WorldGenLayerConstants;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -31,9 +31,8 @@ public final class BasePlacedFeaturesProviderEntry
     // ROCK
     public static final ResourceKey<PlacedFeature> SURFACE_SANDSTONE_ROCKS =        PlacementTools.registerKey(MedievalismConstants.resource("surface_sandstone_rocks"));
     public static final ResourceKey<PlacedFeature> SURFACE_RED_SANDSTONE_ROCKS =    PlacementTools.registerKey(MedievalismConstants.resource("surface_red_sandstone_rocks"));
-    public static final ResourceKey<PlacedFeature> SURFACE_GREYWACKE_ROCKS =        PlacementTools.registerKey(MedievalismConstants.resource("surface_greywacke_rocks"));
-    public static final ResourceKey<PlacedFeature> CAVE_GREYWACKE_ROCKS =           PlacementTools.registerKey(MedievalismConstants.resource("cave_greywacke_rocks"));
-    public static final ResourceKey<PlacedFeature> CAVE_GABBRO_ROCKS =              PlacementTools.registerKey(MedievalismConstants.resource("cave_gabbro_rocks"));
+    public static final ResourceKey<PlacedFeature> SURFACE_ROCKS =                  PlacementTools.registerKey(MedievalismConstants.resource("surface_rocks"));
+    public static final ResourceKey<PlacedFeature> CAVE_ROCKS =                     PlacementTools.registerKey(MedievalismConstants.resource("cave_rocks"));
     // TWIGS
     public static final ResourceKey<PlacedFeature> DENSE_TWIGS =                    PlacementTools.registerKey(MedievalismConstants.resource("dense_twigs"));
     public static final ResourceKey<PlacedFeature> SPARSE_TWIGS =                   PlacementTools.registerKey(MedievalismConstants.resource("sparse_twigs"));
@@ -76,13 +75,13 @@ public final class BasePlacedFeaturesProviderEntry
         PlacementTools.register(context, TIN_ORE_UNIFORM, BaseConfiguredFeaturesProviderEntry.OVERWORLD_TIN_ORE,
                 PlacementTools.commonOrePlacement(10, HeightRangePlacement.uniform( VerticalAnchor.absolute(0), VerticalAnchor.absolute(80))));
         PlacementTools.register(context, CHALK_ORE, BaseConfiguredFeaturesProviderEntry.CHALK_ORE,
-                PlacementTools.commonOrePlacement( 7, HeightRangePlacement.uniform(WorldGenLayerCatalog.MIN_SEDIMENTARY, WorldGenLayerCatalog.MAX_SEDIMENTARY)));
+                PlacementTools.commonOrePlacement( 7, HeightRangePlacement.uniform(WorldGenLayerConstants.MIN_SEDIMENTARY, WorldGenLayerConstants.MAX_SEDIMENTARY)));
         PlacementTools.register(context, CHERT_ORE, BaseConfiguredFeaturesProviderEntry.CHERT_ORE,
-                PlacementTools.commonOrePlacement( 50, HeightRangePlacement.uniform(WorldGenLayerCatalog.MIN_SEDIMENTARY, WorldGenLayerCatalog.MAX_SEDIMENTARY)));
+                PlacementTools.commonOrePlacement( 50, HeightRangePlacement.uniform(WorldGenLayerConstants.MIN_SEDIMENTARY, WorldGenLayerConstants.MAX_SEDIMENTARY)));
         PlacementTools.register(context, GEODE_ORE, BaseConfiguredFeaturesProviderEntry.GEODE_ORE,
-                PlacementTools.commonOrePlacement( 50, HeightRangePlacement.uniform( WorldGenLayerCatalog.MIN_IGNEOUS_EXTRUSIVE_GROUP, WorldGenLayerCatalog.MAX_IGNEOUS_EXTRUSIVE_GROUP)));
+                PlacementTools.commonOrePlacement( 50, HeightRangePlacement.uniform( WorldGenLayerConstants.MIN_IGNEOUS_EXTRUSIVE_GROUP, WorldGenLayerConstants.MAX_IGNEOUS_EXTRUSIVE_GROUP)));
         PlacementTools.register(context, HARD_IG_ED_GEODE_ORE, BaseConfiguredFeaturesProviderEntry.GEODE_ORE,
-                PlacementTools.commonOrePlacement( 20, HeightRangePlacement.uniform( WorldGenLayerCatalog.MIN_IGNEOUS_EXTRUSIVE_GROUP, WorldGenLayerCatalog.MAX_IGNEOUS_EXTRUSIVE_GROUP)));
+                PlacementTools.commonOrePlacement( 20, HeightRangePlacement.uniform( WorldGenLayerConstants.MIN_IGNEOUS_EXTRUSIVE_GROUP, WorldGenLayerConstants.MAX_IGNEOUS_EXTRUSIVE_GROUP)));
         // ROCK
         HeightRangePlacement HEIGHT_RANGE_STONE = HeightRangePlacement.uniform( VerticalAnchor.absolute(0), VerticalAnchor.TOP );
         HeightRangePlacement HEIGHT_RANGE_DEEPSLATE = HeightRangePlacement.uniform( VerticalAnchor.BOTTOM, VerticalAnchor.absolute(0) );
@@ -95,9 +94,8 @@ public final class BasePlacedFeaturesProviderEntry
 
         PlacementTools.register(context,    SURFACE_SANDSTONE_ROCKS,        BaseConfiguredFeaturesProviderEntry.SURFACE_SANDSTONE_ROCKS,        SURFACE_SANDSTONE_ROCKS_PLACEMENT_RULES);
         PlacementTools.register(context,    SURFACE_RED_SANDSTONE_ROCKS,    BaseConfiguredFeaturesProviderEntry.SURFACE_RED_SANDSTONE_ROCKS,    SURFACE_RED_SANDSTONE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context,    SURFACE_GREYWACKE_ROCKS,        BaseConfiguredFeaturesProviderEntry.SURFACE_GREYWACKE_ROCKS,        SURFACE_GREYWACKE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context,    CAVE_GREYWACKE_ROCKS,           BaseConfiguredFeaturesProviderEntry.SURFACE_GREYWACKE_ROCKS,        CAVE_GREYWACKE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context,    CAVE_GABBRO_ROCKS,              BaseConfiguredFeaturesProviderEntry.SURFACE_GREYWACKE_ROCKS,        CAVE_GABBRO_ROCKS_PLACEMENT_RULES);
+        PlacementTools.register(context,    SURFACE_ROCKS,                  BaseConfiguredFeaturesProviderEntry.SURFACE_ROCKS,                  SURFACE_GREYWACKE_ROCKS_PLACEMENT_RULES);
+        PlacementTools.register(context,    CAVE_ROCKS,                     BaseConfiguredFeaturesProviderEntry.CAVE_ROCKS,                     CAVE_GREYWACKE_ROCKS_PLACEMENT_RULES);
         // TWIGS
         PlacementTools.simpleChanceSurfacePlacedFeature(context, DENSE_TWIGS, BaseConfiguredFeaturesProviderEntry.DENSE_TWIGS, 4, 2);
         PlacementTools.simpleChanceSurfacePlacedFeature(context, SPARSE_TWIGS, BaseConfiguredFeaturesProviderEntry.SPARSE_TWIGS, 2, 2);

@@ -1,5 +1,8 @@
 package io.github.zephyrwolf.medievalism.common.world.level.levelgen;
 
+import io.github.zephyrwolf.medievalism.common.world.level.layer.WorldLayer;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.CellSelectorFeatureConfiguration;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.CelledPlacedFeature;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.LayerSelectorFeatureConfiguration;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.LayeredPlacedFeature;
 import io.github.zephyrwolf.medievalism.registration.world.level.FeatureRegistration;
@@ -23,7 +26,6 @@ import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.placement.EnvironmentScanPlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
 
 import java.util.Arrays;
@@ -56,7 +58,7 @@ public final class FeatureTools
     {
         return PlacementUtils.inlinePlaced(
                 FeatureRegistration.LAYER_SELECTOR_FEATURE.get(),
-                new LayerSelectorFeatureConfiguration(Arrays.stream(features).toList())
+                LayerSelectorFeatureConfiguration.create(Arrays.stream(features).toList())
         );
     }
 
@@ -105,6 +107,22 @@ public final class FeatureTools
                 new SimpleRandomFeatureConfiguration(
                         HolderSet.direct(features)
                 ));
+    }
+
+    public static Holder<PlacedFeature> inlineLayerSelect(LayeredPlacedFeature ... features)
+    {
+        return PlacementUtils.inlinePlaced(
+                FeatureRegistration.LAYER_SELECTOR_FEATURE.get(),
+                LayerSelectorFeatureConfiguration.layers(features)
+        );
+    }
+
+    public static Holder<PlacedFeature> inlineCellSelect(ResourceKey<WorldLayer> layer, CelledPlacedFeature ... features)
+    {
+        return PlacementUtils.inlinePlaced(
+                FeatureRegistration.CELL_SELECTOR_FEATURE.get(),
+                CellSelectorFeatureConfiguration.cells(layer, features)
+        );
     }
     // Random Patch
     public static Holder<PlacedFeature> inlineRandomPatch(int tries, int xzSpread, int ySpread, Holder<PlacedFeature> feature)

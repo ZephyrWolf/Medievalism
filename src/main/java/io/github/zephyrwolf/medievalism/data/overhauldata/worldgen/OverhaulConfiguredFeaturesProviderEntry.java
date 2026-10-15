@@ -2,13 +2,16 @@ package io.github.zephyrwolf.medievalism.data.overhauldata.worldgen;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.FeatureTools;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.CellSelectorFeatureConfiguration;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.CelledPlacedFeature;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.LayerSelectorFeatureConfiguration;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.LayeredPlacedFeature;
 import io.github.zephyrwolf.medievalism.data.base.worldgen.BaseConfiguredFeaturesProviderEntry;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.block.BlockTagCatalog;
 import io.github.zephyrwolf.medievalism.registration.world.level.FeatureRegistration;
-import io.github.zephyrwolf.medievalism.registration.world.level.WorldGenLayerCatalog;
+import io.github.zephyrwolf.medievalism.registration.world.level.LayerCellRegistration;
+import io.github.zephyrwolf.medievalism.registration.world.level.WorldLayersRegistration;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -21,7 +24,6 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
@@ -31,8 +33,8 @@ import java.util.List;
 public final class OverhaulConfiguredFeaturesProviderEntry
 {
     // ==DEBUG==
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DEBUG_SIMPLE =                         FeatureTools.registerKey(MedievalismConstants.resource("debug_simple"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DEBUG_FIND_LOWER =                     FeatureTools.registerKey(MedievalismConstants.resource("debug_find_lower"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DEBUG_LAYER =                          FeatureTools.registerKey(MedievalismConstants.resource("debug_layer"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DEBUG_CELL =                           FeatureTools.registerKey(MedievalismConstants.resource("debug_cell"));
 
     // ==Vanilla==
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_CLAY =                             FeatureTools.registerKey(ResourceLocation.withDefaultNamespace("ore_clay"));
@@ -64,50 +66,25 @@ public final class OverhaulConfiguredFeaturesProviderEntry
     // ROCKS
     public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SANDSTONE_ROCKS =              BaseConfiguredFeaturesProviderEntry.SURFACE_SANDSTONE_ROCKS;
     public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_RED_SANDSTONE_ROCKS =          BaseConfiguredFeaturesProviderEntry.SURFACE_RED_SANDSTONE_ROCKS;
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SAPROLITE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_saprolite_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_LATERITE_ROCKS =               FeatureTools.registerKey(MedievalismConstants.resource("surface_laterite_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SILT_CLUMPS =                  FeatureTools.registerKey(MedievalismConstants.resource("surface_silt_clumps"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_GREYWACKE_ROCKS =              BaseConfiguredFeaturesProviderEntry.SURFACE_GREYWACKE_ROCKS;
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SILTSTONE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_siltstone_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_DOLOSTONE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_dolostone_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_LIMESTONE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_limestone_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_IRONSTONE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_ironstone_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SHALE_ROCKS =                  FeatureTools.registerKey(MedievalismConstants.resource("surface_shale_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_ARKOSE_ROCKS =                 FeatureTools.registerKey(MedievalismConstants.resource("surface_arkose_rocks"));
+    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SAPROLITE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_saprolite_rocks"));
+    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_LATERITE_ROCKS =               FeatureTools.registerKey(MedievalismConstants.resource("surface_laterite_rocks"));
+    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SILT_CLUMPS =                  FeatureTools.registerKey(MedievalismConstants.resource("surface_silt_clumps"));
+    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_GREYWACKE_ROCKS =              BaseConfiguredFeaturesProviderEntry.SURFACE_GREYWACKE_ROCKS;
+    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SILTSTONE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_siltstone_rocks"));
+    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_DOLOSTONE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_dolostone_rocks"));
+    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_LIMESTONE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_limestone_rocks"));
+    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_IRONSTONE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_ironstone_rocks"));
+    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SHALE_ROCKS =                  FeatureTools.registerKey(MedievalismConstants.resource("surface_shale_rocks"));
+    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_ARKOSE_ROCKS =                 FeatureTools.registerKey(MedievalismConstants.resource("surface_arkose_rocks"));
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_GREYWACKE_ROCKS =                 BaseConfiguredFeaturesProviderEntry.CAVE_GREYWACKE_ROCKS;
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_SILTSTONE_ROCKS =                 FeatureTools.registerKey(MedievalismConstants.resource("cave_siltstone_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_DOLOSTONE_ROCKS =                 FeatureTools.registerKey(MedievalismConstants.resource("cave_dolostone_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_LIMESTONE_ROCKS =                 FeatureTools.registerKey(MedievalismConstants.resource("cave_limestone_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_IRONSTONE_ROCKS =                 FeatureTools.registerKey(MedievalismConstants.resource("cave_ironstone_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_SHALE_ROCKS =                     FeatureTools.registerKey(MedievalismConstants.resource("cave_shale_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_ARKOSE_ROCKS =                    FeatureTools.registerKey(MedievalismConstants.resource("cave_arkose_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_MARBLE_ROCKS =                    FeatureTools.registerKey(MedievalismConstants.resource("cave_marble_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_QUARTZITE_ROCKS =                 FeatureTools.registerKey(MedievalismConstants.resource("cave_quartzite_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_HORNFELS_ROCKS =                  FeatureTools.registerKey(MedievalismConstants.resource("cave_hornfels_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_SLATE_ROCKS =                     FeatureTools.registerKey(MedievalismConstants.resource("cave_slate_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_GABBRO_ROCKS =                    BaseConfiguredFeaturesProviderEntry.CAVE_GABBRO_ROCKS;
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_SMOOTH_DIORITE_ROCKS =            FeatureTools.registerKey(MedievalismConstants.resource("cave_smooth_diorite_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_SMOOTH_GRANITE_ROCKS =            FeatureTools.registerKey(MedievalismConstants.resource("cave_smooth_granite_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_NORITE_ROCKS =                    FeatureTools.registerKey(MedievalismConstants.resource("cave_norite_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_PERIDOTITE_ROCKS =                FeatureTools.registerKey(MedievalismConstants.resource("cave_peridotite_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_ROCKS =                        BaseConfiguredFeaturesProviderEntry.SURFACE_ROCKS;
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SEDIMENTARY_ROCKS =            FeatureTools.registerKey(MedievalismConstants.resource("surface_sedimentary_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_ROCKS =                           BaseConfiguredFeaturesProviderEntry.CAVE_ROCKS;
 
     // --
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context)
     {
-        FeatureTools.register(context, DEBUG_SIMPLE, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.DIAMOND_BLOCK)));
-        //FeatureTools.registerSimpleRandomFeature(context, DEBUG_FIND_LOWER, FeatureTools.inlineSteppedPlacement(Blocks.DIAMOND_BLOCK, Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1));
-
-        FeatureTools.register(context, DEBUG_FIND_LOWER, FeatureRegistration.LAYER_SELECTOR_FEATURE.get(), LayerSelectorFeatureConfiguration.layers(
-                LayeredPlacedFeature.layer(
-                        WorldGenLayerCatalog.WorldLayer.DEEP_IGNEOUS_INTRUSIVE,
-                        FeatureTools.inlineSteppedPlacement(Blocks.DIAMOND_BLOCK, Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1)),
-                LayeredPlacedFeature.layer(
-                        WorldGenLayerCatalog.WorldLayer.IGNEOUS_INTRUSIVE,
-                        FeatureTools.inlineSteppedPlacement(Blocks.GOLD_BLOCK, Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1))
-                ));
-
         bootstrap_vanilla(context);
         bootstrap_medievalism(context);
     }
@@ -336,117 +313,172 @@ public final class OverhaulConfiguredFeaturesProviderEntry
                 FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.RED_SANDSTONE_ROCK.get()),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_RED_SANDSTONE_ROCK.get()), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, SURFACE_SAPROLITE_ROCKS, SURFACE_REGOLITH_TRIES, SURFACE_REGOLITH_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderSurfaceSaprolite = FeatureTools.inlineRandomPatch(SURFACE_REGOLITH_TRIES, SURFACE_REGOLITH_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.SAPROLITE_ROCK.get()),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_SAPROLITE_ROCK.get()), LARGE_ROCK_CHANCE),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.SAPROLITE_ROCK_COPPER_ORE.get()), ORE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, SURFACE_LATERITE_ROCKS, SURFACE_REGOLITH_TRIES, SURFACE_REGOLITH_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderSurfaceLaterite = FeatureTools.inlineRandomPatch(SURFACE_REGOLITH_TRIES, SURFACE_REGOLITH_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LATERITE_ROCK.get()),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_LATERITE_ROCK.get()), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, SURFACE_SILT_CLUMPS, SURFACE_REGOLITH_TRIES, SURFACE_REGOLITH_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderSurfaceSilt = FeatureTools.inlineRandomPatch(SURFACE_REGOLITH_TRIES, SURFACE_REGOLITH_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.SILT_CLUMP.get()),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_SILT_CLUMP.get()), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, SURFACE_GREYWACKE_ROCKS, SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderSurfaceGreywacke = FeatureTools.inlineRandomPatch(SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.GREYWACKE_ROCK.get()),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_GREYWACKE_ROCK.get()), LARGE_ROCK_CHANCE),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.GREYWACKE_ROCK_COPPER_ORE.get()), ORE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, SURFACE_SILTSTONE_ROCKS, SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderSurfaceSiltstone = FeatureTools.inlineRandomPatch(SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.SILTSTONE_ROCK.get()),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_SILTSTONE_ROCK.get()), LARGE_ROCK_CHANCE),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.SILTSTONE_ROCK_COPPER_ORE.get()), ORE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, SURFACE_DOLOSTONE_ROCKS, SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderSurfaceDolostone = FeatureTools.inlineRandomPatch(SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.DOLOSTONE_ROCK.get()),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_DOLOSTONE_ROCK.get()), LARGE_ROCK_CHANCE),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.DOLOSTONE_ROCK_COPPER_ORE.get()), ORE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, SURFACE_LIMESTONE_ROCKS, SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderSurfaceLimestone = FeatureTools.inlineRandomPatch(SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LIMESTONE_ROCK.get()),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_LIMESTONE_ROCK.get()), LARGE_ROCK_CHANCE),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LIMESTONE_ROCK_COPPER_ORE.get()), ORE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, SURFACE_IRONSTONE_ROCKS, SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderSurfaceIronstone = FeatureTools.inlineRandomPatch(SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.IRONSTONE_ROCK.get()),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_IRONSTONE_ROCK.get()), LARGE_ROCK_CHANCE),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.IRONSTONE_ROCK_COPPER_ORE.get()), ORE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, SURFACE_SHALE_ROCKS, SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderSurfaceShale = FeatureTools.inlineRandomPatch(SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.SHALE_ROCK.get()),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_SHALE_ROCK.get()), LARGE_ROCK_CHANCE),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.SHALE_ROCK_COPPER_ORE.get()), ORE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, SURFACE_ARKOSE_ROCKS, SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderSurfaceArkose = FeatureTools.inlineRandomPatch(SURFACE_SEDIMENTARY_TRIES, SURFACE_SEDIMENTARY_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.ARKOSE_ROCK.get()),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_ARKOSE_ROCK.get()), LARGE_ROCK_CHANCE),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.ARKOSE_ROCK_COPPER_ORE.get()), ORE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, CAVE_GREYWACKE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
-                FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.GREYWACKE_ROCK.get()),
-                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_GREYWACKE_ROCK.get()), LARGE_ROCK_CHANCE)
+
+        // -- Cave
+        Holder<PlacedFeature> holderCaveGreywacke = FeatureTools.inlineRandomPatch(CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.GREYWACKE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_GREYWACKE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, CAVE_SILTSTONE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderCaveSiltstone = FeatureTools.inlineRandomPatch(CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSteppedPlacement(BlockRegistration.SILTSTONE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
                 new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_SILTSTONE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, CAVE_DOLOSTONE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderCaveDolostone = FeatureTools.inlineRandomPatch(CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSteppedPlacement(BlockRegistration.DOLOSTONE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
                 new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_DOLOSTONE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, CAVE_LIMESTONE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderCaveLimestone = FeatureTools.inlineRandomPatch(CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSteppedPlacement(BlockRegistration.LIMESTONE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
                 new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_LIMESTONE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, CAVE_IRONSTONE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderCaveIronstone = FeatureTools.inlineRandomPatch(CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSteppedPlacement(BlockRegistration.IRONSTONE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
                 new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_IRONSTONE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, CAVE_SHALE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderCaveShale = FeatureTools.inlineRandomPatch(CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSteppedPlacement(BlockRegistration.SHALE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
                 new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_SHALE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, CAVE_ARKOSE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderCaveArkose = FeatureTools.inlineRandomPatch(CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSteppedPlacement(BlockRegistration.ARKOSE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
                 new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_ARKOSE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, CAVE_MARBLE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderCaveMarble = FeatureTools.inlineRandomPatch(CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSteppedPlacement(BlockRegistration.MARBLE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
                 new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_MARBLE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, CAVE_QUARTZITE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderCaveQuartzite = FeatureTools.inlineRandomPatch(CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSteppedPlacement(BlockRegistration.QUARTZITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
                 new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_QUARTZITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, CAVE_HORNFELS_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderCaveHornfels = FeatureTools.inlineRandomPatch(CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSteppedPlacement(BlockRegistration.HORNFELS_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
                 new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_HORNFELS_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, CAVE_SLATE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderCaveSlate = FeatureTools.inlineRandomPatch(CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSteppedPlacement(BlockRegistration.SLATE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
                 new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_SLATE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, CAVE_GABBRO_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderCaveGabbro = FeatureTools.inlineRandomPatch(CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSteppedPlacement(BlockRegistration.GABBRO_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
                 new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.GABBRO_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, CAVE_SMOOTH_DIORITE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderCaveSmoothDiorite = FeatureTools.inlineRandomPatch(CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSteppedPlacement(BlockRegistration.SMOOTH_DIORITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
                 new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_SMOOTH_DIORITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, CAVE_SMOOTH_GRANITE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderCaveSmoothGranite = FeatureTools.inlineRandomPatch(CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSteppedPlacement(BlockRegistration.SMOOTH_GRANITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
                 new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_SMOOTH_GRANITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, CAVE_NORITE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderCaveNorite = FeatureTools.inlineRandomPatch(CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSteppedPlacement(BlockRegistration.NORITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
                 new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_NORITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, CAVE_PERIDOTITE_ROCKS, CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+        Holder<PlacedFeature> holderCavePeridotite = FeatureTools.inlineRandomPatch(CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSteppedPlacement(BlockRegistration.PERIDOTITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
                 new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.PERIDOTITE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
+        ));
+
+        FeatureTools.register(context, SURFACE_ROCKS, FeatureRegistration.CELL_SELECTOR_FEATURE.get(),CellSelectorFeatureConfiguration.cells(
+                WorldLayersRegistration.OVERHAUL_OVERWORLD_REGOLITH.getKey(),
+                CelledPlacedFeature.cell(LayerCellRegistration.SAPROLITE.getKey(), holderSurfaceSaprolite),
+                CelledPlacedFeature.cell(LayerCellRegistration.LATERITE.getKey(), holderSurfaceLaterite),
+                CelledPlacedFeature.cell(LayerCellRegistration.SILT.getKey(), holderSurfaceSilt)
+        ));
+
+        FeatureTools.register(context, SURFACE_SEDIMENTARY_ROCKS, FeatureRegistration.CELL_SELECTOR_FEATURE.get(), CellSelectorFeatureConfiguration.cells(
+                WorldLayersRegistration.OVERHAUL_OVERWORLD_SEDIMENTARY.getKey(),
+                CelledPlacedFeature.cell(LayerCellRegistration.GREYWACKE.getKey(), holderSurfaceGreywacke),
+                CelledPlacedFeature.cell(LayerCellRegistration.SILTSTONE.getKey(), holderSurfaceSiltstone),
+                CelledPlacedFeature.cell(LayerCellRegistration.DOLOSTONE.getKey(), holderSurfaceDolostone),
+                CelledPlacedFeature.cell(LayerCellRegistration.LIMESTONE.getKey(), holderSurfaceLimestone),
+                CelledPlacedFeature.cell(LayerCellRegistration.IRONSTONE.getKey(), holderSurfaceIronstone),
+                CelledPlacedFeature.cell(LayerCellRegistration.SHALE.getKey(), holderSurfaceShale),
+                CelledPlacedFeature.cell(LayerCellRegistration.ARKOSE.getKey(), holderSurfaceArkose)
+        ));
+
+        Holder<PlacedFeature> holderCaveSedimentary = FeatureTools.inlineCellSelect(WorldLayersRegistration.OVERHAUL_OVERWORLD_SEDIMENTARY.getKey(),
+                CelledPlacedFeature.cell(LayerCellRegistration.GREYWACKE.getKey(), holderCaveGreywacke),
+                CelledPlacedFeature.cell(LayerCellRegistration.SILTSTONE.getKey(), holderCaveSiltstone),
+                CelledPlacedFeature.cell(LayerCellRegistration.DOLOSTONE.getKey(), holderCaveDolostone),
+                CelledPlacedFeature.cell(LayerCellRegistration.LIMESTONE.getKey(), holderCaveLimestone),
+                CelledPlacedFeature.cell(LayerCellRegistration.IRONSTONE.getKey(), holderCaveIronstone),
+                CelledPlacedFeature.cell(LayerCellRegistration.SHALE.getKey(), holderCaveShale),
+                CelledPlacedFeature.cell(LayerCellRegistration.ARKOSE.getKey(), holderCaveArkose)
+        );
+
+        Holder<PlacedFeature> holderCaveMetamorphic = FeatureTools.inlineCellSelect(WorldLayersRegistration.OVERHAUL_OVERWORLD_METAMORPHIC.getKey(),
+                CelledPlacedFeature.cell(LayerCellRegistration.MARBLE.getKey(), holderCaveMarble),
+                CelledPlacedFeature.cell(LayerCellRegistration.QUARTZITE.getKey(), holderCaveQuartzite),
+                CelledPlacedFeature.cell(LayerCellRegistration.HORNFELS.getKey(), holderCaveHornfels),
+                CelledPlacedFeature.cell(LayerCellRegistration.SLATE.getKey(), holderCaveSlate)
+        );
+
+        Holder<PlacedFeature> holderCaveIgneousIntrusive = FeatureTools.inlineCellSelect(WorldLayersRegistration.OVERHAUL_OVERWORLD_IGNEOUS_INTRUSIVE.getKey(),
+                CelledPlacedFeature.cell(LayerCellRegistration.GABBRO.getKey(), holderCaveGabbro),
+                CelledPlacedFeature.cell(LayerCellRegistration.SMOOTH_DIORITE.getKey(), holderCaveSmoothDiorite),
+                CelledPlacedFeature.cell(LayerCellRegistration.SMOOTH_GRANITE.getKey(), holderCaveSmoothGranite)
+        );
+
+        Holder<PlacedFeature> holderCaveDeepIgneousIntrusive = FeatureTools.inlineCellSelect(WorldLayersRegistration.OVERHAUL_OVERWORLD_DEEP_IGNEOUS_INTRUSIVE.getKey(),
+                CelledPlacedFeature.cell(LayerCellRegistration.NORITE.getKey(), holderCaveNorite),
+                CelledPlacedFeature.cell(LayerCellRegistration.PERIDOTITE.getKey(), holderCavePeridotite)
+        );
+
+        FeatureTools.register(context, CAVE_ROCKS, FeatureRegistration.LAYER_SELECTOR_FEATURE.get(), LayerSelectorFeatureConfiguration.layers(
+                LayeredPlacedFeature.layer(WorldLayersRegistration.OVERHAUL_OVERWORLD_SEDIMENTARY.getKey(), holderCaveSedimentary),
+                LayeredPlacedFeature.layer(WorldLayersRegistration.OVERHAUL_OVERWORLD_METAMORPHIC.getKey(), holderCaveMetamorphic),
+                LayeredPlacedFeature.layer(WorldLayersRegistration.OVERHAUL_OVERWORLD_IGNEOUS_INTRUSIVE.getKey(), holderCaveIgneousIntrusive),
+                LayeredPlacedFeature.layer(WorldLayersRegistration.OVERHAUL_OVERWORLD_DEEP_IGNEOUS_INTRUSIVE.getKey(), holderCaveDeepIgneousIntrusive)
         ));
     }
 }

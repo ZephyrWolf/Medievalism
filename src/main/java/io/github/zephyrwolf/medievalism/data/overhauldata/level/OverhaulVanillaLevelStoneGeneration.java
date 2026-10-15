@@ -5,8 +5,8 @@ import io.github.zephyrwolf.medievalism.common.world.level.levelgen.conditionsou
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.conditionsource.CellConditionSource;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.conditionsource.HeightmapRangeConditionSource;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
-import io.github.zephyrwolf.medievalism.registration.world.level.WorldGenLayerCatalog;
-import io.github.zephyrwolf.medievalism.registration.world.level.WorldGenNoiseCatalog;
+import io.github.zephyrwolf.medievalism.registration.world.level.LayerCellRegistration;
+import io.github.zephyrwolf.medievalism.registration.world.level.WorldGenLayerConstants;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 import net.minecraft.world.level.levelgen.SurfaceRules;
@@ -24,7 +24,7 @@ public final class OverhaulVanillaLevelStoneGeneration
         SurfaceRules.SequenceRuleSource parent = (SurfaceRules.SequenceRuleSource) e.surfaceRule();
 
         // Remove Deepslate layer
-        ArrayList<SurfaceRules.RuleSource> parentRules = new ArrayList<SurfaceRules.RuleSource>();
+        ArrayList<SurfaceRules.RuleSource> parentRules = new ArrayList<>();
         for (SurfaceRules.RuleSource rule : parent.sequence()) {
             if (rule instanceof SurfaceRules.TestRuleSource testRule) {
                 if (testRule.thenRun() instanceof SurfaceRules.BlockRuleSource blockRule) {
@@ -46,59 +46,52 @@ public final class OverhaulVanillaLevelStoneGeneration
         SurfaceRules.RuleSource modifiedSurfaceRule = SurfaceRules.sequence(
                 strippedParent,
                 SurfaceRules.ifTrue( // Try Ashfall
-                        AwareConditionSources.verticalRange(WorldGenLayerCatalog.MIN_ASHFALL, WorldGenLayerCatalog.MAX_ASHFALL),
+                        AwareConditionSources.verticalRange(WorldGenLayerConstants.MIN_ASHFALL, WorldGenLayerConstants.MAX_ASHFALL),
                         SurfaceRules.ifTrue(
                                 AwareConditionSources.upperVerticalGradient(
                                         "medievalism:ashfall",
-                                        AwareVerticalAnchor.heightMap(-WorldGenLayerCatalog.DEPTH_SURFACE_ASHFALL),
-                                        WorldGenLayerCatalog.TRANSITION_THICKNESS_ASHFALL
+                                        AwareVerticalAnchor.heightMap(-WorldGenLayerConstants.DEPTH_SURFACE_ASHFALL),
+                                        WorldGenLayerConstants.TRANSITION_THICKNESS_ASHFALL
                                 ),
                                 SurfaceRules.sequence( // Ashfall
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_ASHFALL,
-                                                        WorldGenNoiseCatalog.VARIANTS_ASHFALL.SOFT_TUFF),
+                                                CellConditionSource.cell(LayerCellRegistration.SOFT_TUFF.getKey()),
                                                 SurfaceRules.state(BlockRegistration.SOFT_TUFF.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_ASHFALL,
-                                                        WorldGenNoiseCatalog.VARIANTS_ASHFALL.IGNIMBRITE),
+                                                CellConditionSource.cell(LayerCellRegistration.IGNIMBRITE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.IGNIMBRITE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_ASHFALL,
-                                                        WorldGenNoiseCatalog.VARIANTS_ASHFALL.LAPILLISTONE),
+                                                CellConditionSource.cell(LayerCellRegistration.LAPILLISTONE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.LAPILLISTONE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_ASHFALL,
-                                                        WorldGenNoiseCatalog.VARIANTS_ASHFALL.WELDED_TUFF),
+                                                CellConditionSource.cell(LayerCellRegistration.WELDED_TUFF.getKey()),
                                                 SurfaceRules.state(BlockRegistration.WELDED_TUFF.get().defaultBlockState())
                                         )
                                 )
                         )
                 ),
                 SurfaceRules.ifTrue( // Try Regolith
-                        AwareConditionSources.verticalRange(WorldGenLayerCatalog.MIN_REGOLITH, WorldGenLayerCatalog.MAX_REGOLITH),
+                        AwareConditionSources.verticalRange(WorldGenLayerConstants.MIN_REGOLITH, WorldGenLayerConstants.MAX_REGOLITH),
                         SurfaceRules.ifTrue(
                                 AwareConditionSources.upperVerticalGradient(
                                         "medievalism:regolith",
-                                        AwareVerticalAnchor.heightMap(-WorldGenLayerCatalog.DEPTH_SURFACE_REGOLITH),
-                                        WorldGenLayerCatalog.TRANSITION_THICKNESS_REGOLITH
+                                        AwareVerticalAnchor.heightMap(-WorldGenLayerConstants.DEPTH_SURFACE_REGOLITH),
+                                        WorldGenLayerConstants.TRANSITION_THICKNESS_REGOLITH
                                 ),
-                                SurfaceRules.sequence( // Reolith
+                                SurfaceRules.sequence( // Regolith
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,
-                                                        WorldGenNoiseCatalog.VARIANTS_REGOLITH.LATERITE),
+                                                CellConditionSource.cell(LayerCellRegistration.LATERITE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.LATERITE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,
-                                                        WorldGenNoiseCatalog.VARIANTS_REGOLITH.SAPROLITE),
+                                                CellConditionSource.cell(LayerCellRegistration.SAPROLITE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.SAPROLITE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,
-                                                        WorldGenNoiseCatalog.VARIANTS_REGOLITH.SILT),
+                                                CellConditionSource.cell(LayerCellRegistration.SILT.getKey()),
                                                 SurfaceRules.state(BlockRegistration.SILT.get().defaultBlockState())
                                         )
                                 )
@@ -108,24 +101,22 @@ public final class OverhaulVanillaLevelStoneGeneration
                         AwareConditionSources.lowerVerticalGradient(
                                 "medievalism:deep_igneous_intrusive",
                                 AwareVerticalAnchor.worldLayer(
-                                        WorldGenLayerCatalog.MIN_DEEP_IGNEOUS_INTRUSIVE,
-                                        WorldGenLayerCatalog.TYPICAL_DEEP_IGNEOUS_INTRUSIVE,
-                                        WorldGenLayerCatalog.MAX_DEEP_IGNEOUS_INTRUSIVE,
-                                        WorldGenLayerCatalog.DATUM,
-                                        WorldGenLayerCatalog.POS_SCALE_DEEP_IGNEOUS_INTRUSIVE,
-                                        WorldGenLayerCatalog.NEG_SCALE_DEEP_IGNEOUS_INTRUSIVE),
-                                WorldGenLayerCatalog.TRANSITION_THICKNESS_DEEP_IGNEOUS_INTRUSIVE
+                                        WorldGenLayerConstants.MIN_DEEP_IGNEOUS_INTRUSIVE,
+                                        WorldGenLayerConstants.TYPICAL_DEEP_IGNEOUS_INTRUSIVE,
+                                        WorldGenLayerConstants.MAX_DEEP_IGNEOUS_INTRUSIVE,
+                                        WorldGenLayerConstants.DATUM,
+                                        WorldGenLayerConstants.POS_SCALE_DEEP_IGNEOUS_INTRUSIVE,
+                                        WorldGenLayerConstants.NEG_SCALE_DEEP_IGNEOUS_INTRUSIVE),
+                                WorldGenLayerConstants.TRANSITION_THICKNESS_DEEP_IGNEOUS_INTRUSIVE
                         ),
                         //SurfaceRules.state(BlockRegistration.NORITE.get().defaultBlockState())
                         SurfaceRules.sequence( // Deep Igneous Intrusive
                                 SurfaceRules.ifTrue(
-                                        CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_DEEP_IGNEOUS_INTRUSIVE,
-                                                WorldGenNoiseCatalog.VARIANTS_DEEP_IGNEOUS_INTRUSIVE.NORITE),
+                                        CellConditionSource.cell(LayerCellRegistration.NORITE.getKey()),
                                         SurfaceRules.state(BlockRegistration.NORITE.get().defaultBlockState())
                                 ),
                                 SurfaceRules.ifTrue(
-                                        CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_DEEP_IGNEOUS_INTRUSIVE,
-                                                WorldGenNoiseCatalog.VARIANTS_DEEP_IGNEOUS_INTRUSIVE.PERIDOTITE),
+                                        CellConditionSource.cell(LayerCellRegistration.PERIDOTITE.getKey()),
                                         SurfaceRules.state(BlockRegistration.PERIDOTITE.get().defaultBlockState())
                                 )
                         )
@@ -134,69 +125,64 @@ public final class OverhaulVanillaLevelStoneGeneration
                         AwareConditionSources.lowerVerticalGradient(
                                 "medievalism:igneous_intrusive",
                                 AwareVerticalAnchor.worldLayer(
-                                        WorldGenLayerCatalog.MIN_IGNEOUS_INTRUSIVE,
-                                        WorldGenLayerCatalog.TYPICAL_IGNEOUS_INTRUSIVE,
-                                        WorldGenLayerCatalog.MAX_IGNEOUS_INTRUSIVE,
-                                        WorldGenLayerCatalog.DATUM,
-                                        WorldGenLayerCatalog.POS_SCALE_IGNEOUS_INTRUSIVE,
-                                        WorldGenLayerCatalog.NEG_SCALE_IGNEOUS_INTRUSIVE),
-                                WorldGenLayerCatalog.TRANSITION_THICKNESS_IGNEOUS_INTRUSIVE
+                                        WorldGenLayerConstants.MIN_IGNEOUS_INTRUSIVE,
+                                        WorldGenLayerConstants.TYPICAL_IGNEOUS_INTRUSIVE,
+                                        WorldGenLayerConstants.MAX_IGNEOUS_INTRUSIVE,
+                                        WorldGenLayerConstants.DATUM,
+                                        WorldGenLayerConstants.POS_SCALE_IGNEOUS_INTRUSIVE,
+                                        WorldGenLayerConstants.NEG_SCALE_IGNEOUS_INTRUSIVE),
+                                WorldGenLayerConstants.TRANSITION_THICKNESS_IGNEOUS_INTRUSIVE
                         ),
                         SurfaceRules.sequence( // Igneous Intrusive
                                 SurfaceRules.ifTrue(
-                                        CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_IGNEOUS_INTRUSIVE,
-                                                WorldGenNoiseCatalog.VARIANTS_IGNEOUS_INTRUSIVE.GABBRO),
+                                        CellConditionSource.cell(LayerCellRegistration.GABBRO.getKey()),
                                         SurfaceRules.state(BlockRegistration.GABBRO.get().defaultBlockState())
                                 ),
                                 SurfaceRules.ifTrue(
-                                        CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_IGNEOUS_INTRUSIVE,
-                                                WorldGenNoiseCatalog.VARIANTS_IGNEOUS_INTRUSIVE.SMOOTH_DIORITE),
+                                        CellConditionSource.cell(LayerCellRegistration.SMOOTH_DIORITE.getKey()),
                                         SurfaceRules.state(BlockRegistration.SMOOTH_DIORITE.get().defaultBlockState())
                                 ),
                                 SurfaceRules.ifTrue(
-                                        CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_IGNEOUS_INTRUSIVE,
-                                                WorldGenNoiseCatalog.VARIANTS_IGNEOUS_INTRUSIVE.SMOOTH_GRANITE),
+                                        CellConditionSource.cell(LayerCellRegistration.SMOOTH_GRANITE.getKey()),
                                         SurfaceRules.state(BlockRegistration.SMOOTH_GRANITE.get().defaultBlockState())
                                 )
                         )
                 ),
                 SurfaceRules.ifTrue( // Try Metamorphic & Hard Extrusive Igneous
-                        AwareConditionSources.verticalRange(WorldGenLayerCatalog.MIN_METAMORPHIC, WorldGenLayerCatalog.MAX_METAMORPHIC),
+                        AwareConditionSources.verticalRange(WorldGenLayerConstants.MIN_METAMORPHIC, WorldGenLayerConstants.MAX_METAMORPHIC),
                         SurfaceRules.ifTrue(
                                 AwareConditionSources.lowerVerticalGradient(
                                         "medievalism:metamorphic",
                                         AwareVerticalAnchor.worldLayer(
-                                                WorldGenLayerCatalog.MIN_METAMORPHIC,
-                                                WorldGenLayerCatalog.TYPICAL_METAMORPHIC,
-                                                WorldGenLayerCatalog.MAX_METAMORPHIC,
-                                                WorldGenLayerCatalog.DATUM,
-                                                WorldGenLayerCatalog.POS_SCALE_METAMORPHIC,
-                                                WorldGenLayerCatalog.NEG_SCALE_METAMORPHIC),
-                                        WorldGenLayerCatalog.TRANSITION_THICKNESS_METAMORPHIC
+                                                WorldGenLayerConstants.MIN_METAMORPHIC,
+                                                WorldGenLayerConstants.TYPICAL_METAMORPHIC,
+                                                WorldGenLayerConstants.MAX_METAMORPHIC,
+                                                WorldGenLayerConstants.DATUM,
+                                                WorldGenLayerConstants.POS_SCALE_METAMORPHIC,
+                                                WorldGenLayerConstants.NEG_SCALE_METAMORPHIC),
+                                        WorldGenLayerConstants.TRANSITION_THICKNESS_METAMORPHIC
                                 ),
                                 SurfaceRules.sequence(
                                         SurfaceRules.ifTrue(
                                                 HeightmapRangeConditionSource.within(
-                                                        WorldGenLayerCatalog.MIN_HEIGHTMAP_HARD_IGNEOUS_EXTRUSIVE,
-                                                        WorldGenLayerCatalog.MAX_HEIGHTMAP_HARD_IGNEOUS_EXTRUSIVE
+                                                        WorldGenLayerConstants.MIN_HEIGHTMAP_HARD_IGNEOUS_EXTRUSIVE,
+                                                        WorldGenLayerConstants.MAX_HEIGHTMAP_HARD_IGNEOUS_EXTRUSIVE
                                                 ),
                                                 SurfaceRules.ifTrue(
                                                         AwareConditionSources.upperVerticalGradient( // Gradient comes from medievalism:metamorphic parent
                                                                 "medievalism:hard_igneous_extrusive",
                                                                 AwareVerticalAnchor.inverseBell(
-                                                                        WorldGenLayerCatalog.DATUM_HARD_IGNEOUS_EXTRUSIVE,
-                                                                        WorldGenLayerCatalog.SCALE_HARD_IGNEOUS_EXTRUSIVE),
-                                                                WorldGenLayerCatalog.TRANSITION_THICKNESS_HARD_IGNEOUS_EXTRUSIVE
+                                                                        WorldGenLayerConstants.DATUM_HARD_IGNEOUS_EXTRUSIVE,
+                                                                        WorldGenLayerConstants.SCALE_HARD_IGNEOUS_EXTRUSIVE),
+                                                                WorldGenLayerConstants.TRANSITION_THICKNESS_HARD_IGNEOUS_EXTRUSIVE
                                                         ),
                                                         SurfaceRules.sequence( // Hard extrusive igneous
                                                                 SurfaceRules.ifTrue(
-                                                                        CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_HARD_IGNEOUS_EXTRUSIVE,
-                                                                                WorldGenNoiseCatalog.VARIANTS_HARD_IGNEOUS_EXTRUSIVE.ANDESITE),
+                                                                        CellConditionSource.cell(LayerCellRegistration.ANDESITE.getKey()),
                                                                         SurfaceRules.state(BlockRegistration.ANDESITE.get().defaultBlockState())
                                                                 ),
                                                                 SurfaceRules.ifTrue(
-                                                                        CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_HARD_IGNEOUS_EXTRUSIVE,
-                                                                                WorldGenNoiseCatalog.VARIANTS_HARD_IGNEOUS_EXTRUSIVE.BASALT),
+                                                                        CellConditionSource.cell(LayerCellRegistration.BASALT.getKey()),
                                                                         SurfaceRules.state(BlockRegistration.BASALT.get().defaultBlockState())
                                                                 )
                                                         )
@@ -204,23 +190,19 @@ public final class OverhaulVanillaLevelStoneGeneration
                                         ),
                                         SurfaceRules.sequence( // Metamorphic
                                                 SurfaceRules.ifTrue(
-                                                        CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_METAMORPHIC,
-                                                                WorldGenNoiseCatalog.VARIANTS_METAMORPHIC.MARBLE),
+                                                        CellConditionSource.cell(LayerCellRegistration.MARBLE.getKey()),
                                                         SurfaceRules.state(BlockRegistration.MARBLE.get().defaultBlockState())
                                                 ),
                                                 SurfaceRules.ifTrue(
-                                                        CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_METAMORPHIC,
-                                                                WorldGenNoiseCatalog.VARIANTS_METAMORPHIC.QUARTZITE),
+                                                        CellConditionSource.cell(LayerCellRegistration.QUARTZITE.getKey()),
                                                         SurfaceRules.state(BlockRegistration.QUARTZITE.get().defaultBlockState())
                                                 ),
                                                 SurfaceRules.ifTrue(
-                                                        CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_METAMORPHIC,
-                                                                WorldGenNoiseCatalog.VARIANTS_METAMORPHIC.HORNFELS),
+                                                        CellConditionSource.cell(LayerCellRegistration.HORNFELS.getKey()),
                                                         SurfaceRules.state(BlockRegistration.HORNFELS.get().defaultBlockState())
                                                 ),
                                                 SurfaceRules.ifTrue(
-                                                        CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_METAMORPHIC,
-                                                                WorldGenNoiseCatalog.VARIANTS_METAMORPHIC.SLATE),
+                                                        CellConditionSource.cell(LayerCellRegistration.SLATE.getKey()),
                                                         SurfaceRules.state(BlockRegistration.SLATE.get().defaultBlockState())
                                                 )
                                         )
@@ -228,30 +210,28 @@ public final class OverhaulVanillaLevelStoneGeneration
                         )
                 ),
                 SurfaceRules.ifTrue( // Try Metamorphic & Hard Extrusive Igneous
-                        AwareConditionSources.verticalRange(WorldGenLayerCatalog.MIN_SEDIMENTARY, WorldGenLayerCatalog.MAX_SEDIMENTARY),
+                        AwareConditionSources.verticalRange(WorldGenLayerConstants.MIN_SEDIMENTARY, WorldGenLayerConstants.MAX_SEDIMENTARY),
                         SurfaceRules.sequence( // Try Sedimentary & Soft extrusive igneous
                                 SurfaceRules.ifTrue(
                                         HeightmapRangeConditionSource.within(
-                                                WorldGenLayerCatalog.MIN_HEIGHTMAP_SOFT_IGNEOUS_EXTRUSIVE,
-                                                WorldGenLayerCatalog.MAX_HEIGHTMAP_SOFT_IGNEOUS_EXTRUSIVE
+                                                WorldGenLayerConstants.MIN_HEIGHTMAP_SOFT_IGNEOUS_EXTRUSIVE,
+                                                WorldGenLayerConstants.MAX_HEIGHTMAP_SOFT_IGNEOUS_EXTRUSIVE
                                         ),
                                         SurfaceRules.ifTrue(
                                                 AwareConditionSources.upperVerticalGradient(
-                                                        "medievalism:soft_igenous_extrusive",
+                                                        "medievalism:soft_igneous_extrusive",
                                                         AwareVerticalAnchor.inverseBell(
-                                                                WorldGenLayerCatalog.DATUM_SOFT_IGNEOUS_EXTRUSIVE,
-                                                                WorldGenLayerCatalog.SCALE_SOFT_IGNEOUS_EXTRUSIVE),
-                                                        WorldGenLayerCatalog.TRANSITION_THICKNESS_SOFT_IGNEOUS_EXTRUSIVE
+                                                                WorldGenLayerConstants.DATUM_SOFT_IGNEOUS_EXTRUSIVE,
+                                                                WorldGenLayerConstants.SCALE_SOFT_IGNEOUS_EXTRUSIVE),
+                                                        WorldGenLayerConstants.TRANSITION_THICKNESS_SOFT_IGNEOUS_EXTRUSIVE
                                                 ),
                                                 SurfaceRules.sequence( // Soft extrusive igneous
                                                         SurfaceRules.ifTrue(
-                                                                CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_SOFT_IGNEOUS_EXTRUSIVE,
-                                                                        WorldGenNoiseCatalog.VARIANTS_SOFT_IGNEOUS_EXTRUSIVE.RHYOLITE),
+                                                                CellConditionSource.cell(LayerCellRegistration.RHYOLITE.getKey()),
                                                                 SurfaceRules.state(BlockRegistration.RHYOLITE.get().defaultBlockState())
                                                         ),
                                                         SurfaceRules.ifTrue(
-                                                                CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_SOFT_IGNEOUS_EXTRUSIVE,
-                                                                        WorldGenNoiseCatalog.VARIANTS_SOFT_IGNEOUS_EXTRUSIVE.DACITE),
+                                                                CellConditionSource.cell(LayerCellRegistration.DACITE.getKey()),
                                                                 SurfaceRules.state(BlockRegistration.DACITE.get().defaultBlockState())
                                                         )
                                                 )
@@ -260,38 +240,31 @@ public final class OverhaulVanillaLevelStoneGeneration
                                 SurfaceRules.sequence( // Sedimentary // Fills in the gap
                                         SurfaceRules.ifTrue(
                                                 //CellConditionSource.cell(BaseNoiseProviderEntry.NOISE_SEDIMENTARY, 1000, 0.03f, 0.2f, 5, 0),
-                                                CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,
-                                                        WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.GREYWACKE),
+                                                CellConditionSource.cell(LayerCellRegistration.GREYWACKE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.GREYWACKE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,
-                                                        WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.SILTSTONE),
+                                                CellConditionSource.cell(LayerCellRegistration.SILTSTONE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.SILTSTONE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,
-                                                        WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.DOLOSTONE),
+                                                CellConditionSource.cell(LayerCellRegistration.DOLOSTONE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.DOLOSTONE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,
-                                                        WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.LIMESTONE),
+                                                CellConditionSource.cell(LayerCellRegistration.LIMESTONE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.LIMESTONE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,
-                                                        WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.IRONSTONE),
+                                                CellConditionSource.cell(LayerCellRegistration.IRONSTONE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.IRONSTONE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,
-                                                        WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.SHALE),
+                                                CellConditionSource.cell(LayerCellRegistration.SHALE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.SHALE.get().defaultBlockState())
                                         ),
                                         SurfaceRules.ifTrue(
-                                                CellConditionSource.cell(WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,
-                                                        WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.ARKOSE),
+                                                CellConditionSource.cell(LayerCellRegistration.ARKOSE.getKey()),
                                                 SurfaceRules.state(BlockRegistration.ARKOSE.get().defaultBlockState())
                                         )
                                 )

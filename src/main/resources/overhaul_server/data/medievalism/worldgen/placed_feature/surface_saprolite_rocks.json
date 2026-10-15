@@ -14,32 +14,9 @@
     },
     {
       "type": "medievalism:cell",
-      "cell": {
-        "amplitudes": [
-          1.0
-        ],
-        "baseOctave": 1,
-        "boarder_thickness": 15,
-        "cell_size": 500,
-        "noise": "medievalism:regolith",
-        "variants": [
-          {
-            "name": "medievalism:laterite",
-            "ordinal": 0
-          },
-          {
-            "name": "medievalism:saprolite",
-            "ordinal": 1
-          },
-          {
-            "name": "medievalism:silt",
-            "ordinal": 2
-          }
-        ],
-        "warp": 1.0
-      },
       "chance": 2,
-      "target_variant": 1
+      "layer": "medievalism:regolith",
+      "variant": "medievalism:saprolite"
     },
     {
       "type": "minecraft:heightmap",

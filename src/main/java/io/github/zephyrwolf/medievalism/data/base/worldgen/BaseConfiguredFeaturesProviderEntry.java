@@ -4,12 +4,16 @@ import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.block.TwigsBlock;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.FeatureTools;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.CompositeFeatureConfiguration;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.LayerSelectorFeatureConfiguration;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.LayeredPlacedFeature;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.SpeckledOreConfiguration;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.block.BlockTagCatalog;
 import io.github.zephyrwolf.medievalism.registration.world.level.FeatureRegistration;
+import io.github.zephyrwolf.medievalism.registration.world.level.WorldLayersRegistration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
@@ -49,9 +53,8 @@ public final class BaseConfiguredFeaturesProviderEntry
     // ROCK
     public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SANDSTONE_ROCKS =          FeatureTools.registerKey(MedievalismConstants.resource("surface_sandstone_rocks"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_RED_SANDSTONE_ROCKS =      FeatureTools.registerKey(MedievalismConstants.resource("surface_red_sandstone_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_GREYWACKE_ROCKS =          FeatureTools.registerKey(MedievalismConstants.resource("surface_greywacke_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_GREYWACKE_ROCKS =             FeatureTools.registerKey(MedievalismConstants.resource("cave_greywacke_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_GABBRO_ROCKS =                FeatureTools.registerKey(MedievalismConstants.resource("cave_gabbro_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_ROCKS =          FeatureTools.registerKey(MedievalismConstants.resource("surface_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_ROCKS =             FeatureTools.registerKey(MedievalismConstants.resource("cave_rocks"));
     //TWIGS
     public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_TWIGS =                      FeatureTools.registerKey(MedievalismConstants.resource("dense_twigs"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_TWIGS =                     FeatureTools.registerKey(MedievalismConstants.resource("sparse_twigs"));
@@ -178,20 +181,25 @@ public final class BaseConfiguredFeaturesProviderEntry
                 FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.RED_SANDSTONE_ROCK.get()),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_RED_SANDSTONE_ROCK.get()), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, SURFACE_GREYWACKE_ROCKS, SURFACE_STONE_TRIES, SURFACE_STONE_XZ_SPREAD, 0, FeatureTools.inlineRandomFeature(
+        FeatureTools.registerRandomPatch(context, SURFACE_ROCKS, SURFACE_STONE_TRIES, SURFACE_STONE_XZ_SPREAD, 0, FeatureTools.inlineRandomFeature(
                 FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.GREYWACKE_ROCK.get()),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.LARGE_GREYWACKE_ROCK.get()), LARGE_ROCK_CHANCE),
                 new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.GREYWACKE_ROCK_COPPER_ORE.get()), ORE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, CAVE_GREYWACKE_ROCKS,CAVE_TRIES, CAVE_XZ_SPREAD, 0, FeatureTools.inlineRandomFeature(
-                FeatureTools.inlineSteppedPlacement(BlockRegistration.GREYWACKE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 8, 1),
-                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_GREYWACKE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 8, 1), LARGE_ROCK_CHANCE),
-                new WeightedPlacedFeature(FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.GREYWACKE_ROCK_COPPER_ORE.get()), LARGE_ROCK_CHANCE)
+
+        Holder<PlacedFeature> holderCaveStone = FeatureTools.inlineRandomPatch(CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.GREYWACKE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_GREYWACKE_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
         ));
-        FeatureTools.registerRandomPatch(context, CAVE_GABBRO_ROCKS,CAVE_TRIES, CAVE_XZ_SPREAD, 0, FeatureTools.inlineRandomFeature(
-                FeatureTools.inlineSteppedPlacement(BlockRegistration.GABBRO_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 8, 1),
-                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.LARGE_GABBRO_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 8, 1), LARGE_ROCK_CHANCE)
+        Holder<PlacedFeature> holderCaveDeepslate = FeatureTools.inlineRandomPatch(CAVE_TRIES, CAVE_XZ_SPREAD, Y_SPREAD, FeatureTools.inlineRandomFeature(
+                FeatureTools.inlineSteppedPlacement(BlockRegistration.GABBRO_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1),
+                new WeightedPlacedFeature(FeatureTools.inlineSteppedPlacement(BlockRegistration.GABBRO_ROCK.get(), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, 10, 1), LARGE_ROCK_CHANCE)
         ));
+        FeatureTools.register(context, CAVE_ROCKS, FeatureRegistration.LAYER_SELECTOR_FEATURE.get(), LayerSelectorFeatureConfiguration.layers(
+                LayeredPlacedFeature.layer(WorldLayersRegistration.VANILLA_OVERWORLD_STONE.getKey(), holderCaveStone),
+                LayeredPlacedFeature.layer(WorldLayersRegistration.VANILLA_OVERWORLD_DEEPSLATE.getKey(), holderCaveDeepslate)
+        ));
+
         // TWIGS
         FeatureTools.register(context, DENSE_TWIGS, Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(

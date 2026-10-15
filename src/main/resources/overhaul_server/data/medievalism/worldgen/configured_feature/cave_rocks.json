@@ -1,0 +1,1595 @@
+{
+  "type": "medievalism:layer_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "feature": {
+            "type": "medievalism:cell_selector",
+            "config": {
+              "features": [
+                {
+                  "cell": "medievalism:smooth_diorite",
+                  "feature": {
+                    "feature": {
+                      "type": "minecraft:random_patch",
+                      "config": {
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:random_selector",
+                            "config": {
+                              "default": {
+                                "feature": {
+                                  "type": "minecraft:simple_block",
+                                  "config": {
+                                    "to_place": {
+                                      "type": "minecraft:simple_state_provider",
+                                      "state": {
+                                        "Name": "medievalism:smooth_diorite_rock",
+                                        "Properties": {
+                                          "waterlogged": "false"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "placement": [
+                                  {
+                                    "type": "minecraft:environment_scan",
+                                    "allowed_search_condition": {
+                                      "type": "minecraft:matching_blocks",
+                                      "blocks": "minecraft:air"
+                                    },
+                                    "direction_of_search": "down",
+                                    "max_steps": 10,
+                                    "target_condition": {
+                                      "type": "minecraft:solid"
+                                    }
+                                  },
+                                  {
+                                    "type": "minecraft:random_offset",
+                                    "xz_spread": 0,
+                                    "y_spread": 1
+                                  }
+                                ]
+                              },
+                              "features": [
+                                {
+                                  "chance": 0.3,
+                                  "feature": {
+                                    "feature": {
+                                      "type": "minecraft:simple_block",
+                                      "config": {
+                                        "to_place": {
+                                          "type": "minecraft:simple_state_provider",
+                                          "state": {
+                                            "Name": "medievalism:large_smooth_diorite_rock",
+                                            "Properties": {
+                                              "waterlogged": "false"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "placement": [
+                                      {
+                                        "type": "minecraft:environment_scan",
+                                        "allowed_search_condition": {
+                                          "type": "minecraft:matching_blocks",
+                                          "blocks": "minecraft:air"
+                                        },
+                                        "direction_of_search": "down",
+                                        "max_steps": 10,
+                                        "target_condition": {
+                                          "type": "minecraft:solid"
+                                        }
+                                      },
+                                      {
+                                        "type": "minecraft:random_offset",
+                                        "xz_spread": 0,
+                                        "y_spread": 1
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "placement": []
+                        },
+                        "tries": 3,
+                        "xz_spread": 3,
+                        "y_spread": 0
+                      }
+                    },
+                    "placement": []
+                  }
+                },
+                {
+                  "cell": "medievalism:smooth_granite",
+                  "feature": {
+                    "feature": {
+                      "type": "minecraft:random_patch",
+                      "config": {
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:random_selector",
+                            "config": {
+                              "default": {
+                                "feature": {
+                                  "type": "minecraft:simple_block",
+                                  "config": {
+                                    "to_place": {
+                                      "type": "minecraft:simple_state_provider",
+                                      "state": {
+                                        "Name": "medievalism:smooth_granite_rock",
+                                        "Properties": {
+                                          "waterlogged": "false"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "placement": [
+                                  {
+                                    "type": "minecraft:environment_scan",
+                                    "allowed_search_condition": {
+                                      "type": "minecraft:matching_blocks",
+                                      "blocks": "minecraft:air"
+                                    },
+                                    "direction_of_search": "down",
+                                    "max_steps": 10,
+                                    "target_condition": {
+                                      "type": "minecraft:solid"
+                                    }
+                                  },
+                                  {
+                                    "type": "minecraft:random_offset",
+                                    "xz_spread": 0,
+                                    "y_spread": 1
+                                  }
+                                ]
+                              },
+                              "features": [
+                                {
+                                  "chance": 0.3,
+                                  "feature": {
+                                    "feature": {
+                                      "type": "minecraft:simple_block",
+                                      "config": {
+                                        "to_place": {
+                                          "type": "minecraft:simple_state_provider",
+                                          "state": {
+                                            "Name": "medievalism:large_smooth_granite_rock",
+                                            "Properties": {
+                                              "waterlogged": "false"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "placement": [
+                                      {
+                                        "type": "minecraft:environment_scan",
+                                        "allowed_search_condition": {
+                                          "type": "minecraft:matching_blocks",
+                                          "blocks": "minecraft:air"
+                                        },
+                                        "direction_of_search": "down",
+                                        "max_steps": 10,
+                                        "target_condition": {
+                                          "type": "minecraft:solid"
+                                        }
+                                      },
+                                      {
+                                        "type": "minecraft:random_offset",
+                                        "xz_spread": 0,
+                                        "y_spread": 1
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "placement": []
+                        },
+                        "tries": 3,
+                        "xz_spread": 3,
+                        "y_spread": 0
+                      }
+                    },
+                    "placement": []
+                  }
+                },
+                {
+                  "cell": "medievalism:gabbro",
+                  "feature": {
+                    "feature": {
+                      "type": "minecraft:random_patch",
+                      "config": {
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:random_selector",
+                            "config": {
+                              "default": {
+                                "feature": {
+                                  "type": "minecraft:simple_block",
+                                  "config": {
+                                    "to_place": {
+                                      "type": "minecraft:simple_state_provider",
+                                      "state": {
+                                        "Name": "medievalism:gabbro_rock",
+                                        "Properties": {
+                                          "waterlogged": "false"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "placement": [
+                                  {
+                                    "type": "minecraft:environment_scan",
+                                    "allowed_search_condition": {
+                                      "type": "minecraft:matching_blocks",
+                                      "blocks": "minecraft:air"
+                                    },
+                                    "direction_of_search": "down",
+                                    "max_steps": 10,
+                                    "target_condition": {
+                                      "type": "minecraft:solid"
+                                    }
+                                  },
+                                  {
+                                    "type": "minecraft:random_offset",
+                                    "xz_spread": 0,
+                                    "y_spread": 1
+                                  }
+                                ]
+                              },
+                              "features": [
+                                {
+                                  "chance": 0.3,
+                                  "feature": {
+                                    "feature": {
+                                      "type": "minecraft:simple_block",
+                                      "config": {
+                                        "to_place": {
+                                          "type": "minecraft:simple_state_provider",
+                                          "state": {
+                                            "Name": "medievalism:gabbro_rock",
+                                            "Properties": {
+                                              "waterlogged": "false"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "placement": [
+                                      {
+                                        "type": "minecraft:environment_scan",
+                                        "allowed_search_condition": {
+                                          "type": "minecraft:matching_blocks",
+                                          "blocks": "minecraft:air"
+                                        },
+                                        "direction_of_search": "down",
+                                        "max_steps": 10,
+                                        "target_condition": {
+                                          "type": "minecraft:solid"
+                                        }
+                                      },
+                                      {
+                                        "type": "minecraft:random_offset",
+                                        "xz_spread": 0,
+                                        "y_spread": 1
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "placement": []
+                        },
+                        "tries": 3,
+                        "xz_spread": 3,
+                        "y_spread": 0
+                      }
+                    },
+                    "placement": []
+                  }
+                }
+              ],
+              "layer": "medievalism:igneous_intrusive"
+            }
+          },
+          "placement": []
+        },
+        "layer": "medievalism:igneous_intrusive"
+      },
+      {
+        "feature": {
+          "feature": {
+            "type": "medievalism:cell_selector",
+            "config": {
+              "features": [
+                {
+                  "cell": "medievalism:peridotite",
+                  "feature": {
+                    "feature": {
+                      "type": "minecraft:random_patch",
+                      "config": {
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:random_selector",
+                            "config": {
+                              "default": {
+                                "feature": {
+                                  "type": "minecraft:simple_block",
+                                  "config": {
+                                    "to_place": {
+                                      "type": "minecraft:simple_state_provider",
+                                      "state": {
+                                        "Name": "medievalism:peridotite_rock",
+                                        "Properties": {
+                                          "waterlogged": "false"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "placement": [
+                                  {
+                                    "type": "minecraft:environment_scan",
+                                    "allowed_search_condition": {
+                                      "type": "minecraft:matching_blocks",
+                                      "blocks": "minecraft:air"
+                                    },
+                                    "direction_of_search": "down",
+                                    "max_steps": 10,
+                                    "target_condition": {
+                                      "type": "minecraft:solid"
+                                    }
+                                  },
+                                  {
+                                    "type": "minecraft:random_offset",
+                                    "xz_spread": 0,
+                                    "y_spread": 1
+                                  }
+                                ]
+                              },
+                              "features": [
+                                {
+                                  "chance": 0.3,
+                                  "feature": {
+                                    "feature": {
+                                      "type": "minecraft:simple_block",
+                                      "config": {
+                                        "to_place": {
+                                          "type": "minecraft:simple_state_provider",
+                                          "state": {
+                                            "Name": "medievalism:peridotite_rock",
+                                            "Properties": {
+                                              "waterlogged": "false"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "placement": [
+                                      {
+                                        "type": "minecraft:environment_scan",
+                                        "allowed_search_condition": {
+                                          "type": "minecraft:matching_blocks",
+                                          "blocks": "minecraft:air"
+                                        },
+                                        "direction_of_search": "down",
+                                        "max_steps": 10,
+                                        "target_condition": {
+                                          "type": "minecraft:solid"
+                                        }
+                                      },
+                                      {
+                                        "type": "minecraft:random_offset",
+                                        "xz_spread": 0,
+                                        "y_spread": 1
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "placement": []
+                        },
+                        "tries": 3,
+                        "xz_spread": 3,
+                        "y_spread": 0
+                      }
+                    },
+                    "placement": []
+                  }
+                },
+                {
+                  "cell": "medievalism:norite",
+                  "feature": {
+                    "feature": {
+                      "type": "minecraft:random_patch",
+                      "config": {
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:random_selector",
+                            "config": {
+                              "default": {
+                                "feature": {
+                                  "type": "minecraft:simple_block",
+                                  "config": {
+                                    "to_place": {
+                                      "type": "minecraft:simple_state_provider",
+                                      "state": {
+                                        "Name": "medievalism:norite_rock",
+                                        "Properties": {
+                                          "waterlogged": "false"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "placement": [
+                                  {
+                                    "type": "minecraft:environment_scan",
+                                    "allowed_search_condition": {
+                                      "type": "minecraft:matching_blocks",
+                                      "blocks": "minecraft:air"
+                                    },
+                                    "direction_of_search": "down",
+                                    "max_steps": 10,
+                                    "target_condition": {
+                                      "type": "minecraft:solid"
+                                    }
+                                  },
+                                  {
+                                    "type": "minecraft:random_offset",
+                                    "xz_spread": 0,
+                                    "y_spread": 1
+                                  }
+                                ]
+                              },
+                              "features": [
+                                {
+                                  "chance": 0.3,
+                                  "feature": {
+                                    "feature": {
+                                      "type": "minecraft:simple_block",
+                                      "config": {
+                                        "to_place": {
+                                          "type": "minecraft:simple_state_provider",
+                                          "state": {
+                                            "Name": "medievalism:large_norite_rock",
+                                            "Properties": {
+                                              "waterlogged": "false"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "placement": [
+                                      {
+                                        "type": "minecraft:environment_scan",
+                                        "allowed_search_condition": {
+                                          "type": "minecraft:matching_blocks",
+                                          "blocks": "minecraft:air"
+                                        },
+                                        "direction_of_search": "down",
+                                        "max_steps": 10,
+                                        "target_condition": {
+                                          "type": "minecraft:solid"
+                                        }
+                                      },
+                                      {
+                                        "type": "minecraft:random_offset",
+                                        "xz_spread": 0,
+                                        "y_spread": 1
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "placement": []
+                        },
+                        "tries": 3,
+                        "xz_spread": 3,
+                        "y_spread": 0
+                      }
+                    },
+                    "placement": []
+                  }
+                }
+              ],
+              "layer": "medievalism:deep_igneous_intrusive"
+            }
+          },
+          "placement": []
+        },
+        "layer": "medievalism:deep_igneous_intrusive"
+      },
+      {
+        "feature": {
+          "feature": {
+            "type": "medievalism:cell_selector",
+            "config": {
+              "features": [
+                {
+                  "cell": "medievalism:arkose",
+                  "feature": {
+                    "feature": {
+                      "type": "minecraft:random_patch",
+                      "config": {
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:random_selector",
+                            "config": {
+                              "default": {
+                                "feature": {
+                                  "type": "minecraft:simple_block",
+                                  "config": {
+                                    "to_place": {
+                                      "type": "minecraft:simple_state_provider",
+                                      "state": {
+                                        "Name": "medievalism:arkose_rock",
+                                        "Properties": {
+                                          "waterlogged": "false"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "placement": [
+                                  {
+                                    "type": "minecraft:environment_scan",
+                                    "allowed_search_condition": {
+                                      "type": "minecraft:matching_blocks",
+                                      "blocks": "minecraft:air"
+                                    },
+                                    "direction_of_search": "down",
+                                    "max_steps": 10,
+                                    "target_condition": {
+                                      "type": "minecraft:solid"
+                                    }
+                                  },
+                                  {
+                                    "type": "minecraft:random_offset",
+                                    "xz_spread": 0,
+                                    "y_spread": 1
+                                  }
+                                ]
+                              },
+                              "features": [
+                                {
+                                  "chance": 0.3,
+                                  "feature": {
+                                    "feature": {
+                                      "type": "minecraft:simple_block",
+                                      "config": {
+                                        "to_place": {
+                                          "type": "minecraft:simple_state_provider",
+                                          "state": {
+                                            "Name": "medievalism:large_arkose_rock",
+                                            "Properties": {
+                                              "waterlogged": "false"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "placement": [
+                                      {
+                                        "type": "minecraft:environment_scan",
+                                        "allowed_search_condition": {
+                                          "type": "minecraft:matching_blocks",
+                                          "blocks": "minecraft:air"
+                                        },
+                                        "direction_of_search": "down",
+                                        "max_steps": 10,
+                                        "target_condition": {
+                                          "type": "minecraft:solid"
+                                        }
+                                      },
+                                      {
+                                        "type": "minecraft:random_offset",
+                                        "xz_spread": 0,
+                                        "y_spread": 1
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "placement": []
+                        },
+                        "tries": 3,
+                        "xz_spread": 3,
+                        "y_spread": 0
+                      }
+                    },
+                    "placement": []
+                  }
+                },
+                {
+                  "cell": "medievalism:siltstone",
+                  "feature": {
+                    "feature": {
+                      "type": "minecraft:random_patch",
+                      "config": {
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:random_selector",
+                            "config": {
+                              "default": {
+                                "feature": {
+                                  "type": "minecraft:simple_block",
+                                  "config": {
+                                    "to_place": {
+                                      "type": "minecraft:simple_state_provider",
+                                      "state": {
+                                        "Name": "medievalism:siltstone_rock",
+                                        "Properties": {
+                                          "waterlogged": "false"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "placement": [
+                                  {
+                                    "type": "minecraft:environment_scan",
+                                    "allowed_search_condition": {
+                                      "type": "minecraft:matching_blocks",
+                                      "blocks": "minecraft:air"
+                                    },
+                                    "direction_of_search": "down",
+                                    "max_steps": 10,
+                                    "target_condition": {
+                                      "type": "minecraft:solid"
+                                    }
+                                  },
+                                  {
+                                    "type": "minecraft:random_offset",
+                                    "xz_spread": 0,
+                                    "y_spread": 1
+                                  }
+                                ]
+                              },
+                              "features": [
+                                {
+                                  "chance": 0.3,
+                                  "feature": {
+                                    "feature": {
+                                      "type": "minecraft:simple_block",
+                                      "config": {
+                                        "to_place": {
+                                          "type": "minecraft:simple_state_provider",
+                                          "state": {
+                                            "Name": "medievalism:large_siltstone_rock",
+                                            "Properties": {
+                                              "waterlogged": "false"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "placement": [
+                                      {
+                                        "type": "minecraft:environment_scan",
+                                        "allowed_search_condition": {
+                                          "type": "minecraft:matching_blocks",
+                                          "blocks": "minecraft:air"
+                                        },
+                                        "direction_of_search": "down",
+                                        "max_steps": 10,
+                                        "target_condition": {
+                                          "type": "minecraft:solid"
+                                        }
+                                      },
+                                      {
+                                        "type": "minecraft:random_offset",
+                                        "xz_spread": 0,
+                                        "y_spread": 1
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "placement": []
+                        },
+                        "tries": 3,
+                        "xz_spread": 3,
+                        "y_spread": 0
+                      }
+                    },
+                    "placement": []
+                  }
+                },
+                {
+                  "cell": "medievalism:shale",
+                  "feature": {
+                    "feature": {
+                      "type": "minecraft:random_patch",
+                      "config": {
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:random_selector",
+                            "config": {
+                              "default": {
+                                "feature": {
+                                  "type": "minecraft:simple_block",
+                                  "config": {
+                                    "to_place": {
+                                      "type": "minecraft:simple_state_provider",
+                                      "state": {
+                                        "Name": "medievalism:shale_rock",
+                                        "Properties": {
+                                          "waterlogged": "false"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "placement": [
+                                  {
+                                    "type": "minecraft:environment_scan",
+                                    "allowed_search_condition": {
+                                      "type": "minecraft:matching_blocks",
+                                      "blocks": "minecraft:air"
+                                    },
+                                    "direction_of_search": "down",
+                                    "max_steps": 10,
+                                    "target_condition": {
+                                      "type": "minecraft:solid"
+                                    }
+                                  },
+                                  {
+                                    "type": "minecraft:random_offset",
+                                    "xz_spread": 0,
+                                    "y_spread": 1
+                                  }
+                                ]
+                              },
+                              "features": [
+                                {
+                                  "chance": 0.3,
+                                  "feature": {
+                                    "feature": {
+                                      "type": "minecraft:simple_block",
+                                      "config": {
+                                        "to_place": {
+                                          "type": "minecraft:simple_state_provider",
+                                          "state": {
+                                            "Name": "medievalism:large_shale_rock",
+                                            "Properties": {
+                                              "waterlogged": "false"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "placement": [
+                                      {
+                                        "type": "minecraft:environment_scan",
+                                        "allowed_search_condition": {
+                                          "type": "minecraft:matching_blocks",
+                                          "blocks": "minecraft:air"
+                                        },
+                                        "direction_of_search": "down",
+                                        "max_steps": 10,
+                                        "target_condition": {
+                                          "type": "minecraft:solid"
+                                        }
+                                      },
+                                      {
+                                        "type": "minecraft:random_offset",
+                                        "xz_spread": 0,
+                                        "y_spread": 1
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "placement": []
+                        },
+                        "tries": 3,
+                        "xz_spread": 3,
+                        "y_spread": 0
+                      }
+                    },
+                    "placement": []
+                  }
+                },
+                {
+                  "cell": "medievalism:dolostone",
+                  "feature": {
+                    "feature": {
+                      "type": "minecraft:random_patch",
+                      "config": {
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:random_selector",
+                            "config": {
+                              "default": {
+                                "feature": {
+                                  "type": "minecraft:simple_block",
+                                  "config": {
+                                    "to_place": {
+                                      "type": "minecraft:simple_state_provider",
+                                      "state": {
+                                        "Name": "medievalism:dolostone_rock",
+                                        "Properties": {
+                                          "waterlogged": "false"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "placement": [
+                                  {
+                                    "type": "minecraft:environment_scan",
+                                    "allowed_search_condition": {
+                                      "type": "minecraft:matching_blocks",
+                                      "blocks": "minecraft:air"
+                                    },
+                                    "direction_of_search": "down",
+                                    "max_steps": 10,
+                                    "target_condition": {
+                                      "type": "minecraft:solid"
+                                    }
+                                  },
+                                  {
+                                    "type": "minecraft:random_offset",
+                                    "xz_spread": 0,
+                                    "y_spread": 1
+                                  }
+                                ]
+                              },
+                              "features": [
+                                {
+                                  "chance": 0.3,
+                                  "feature": {
+                                    "feature": {
+                                      "type": "minecraft:simple_block",
+                                      "config": {
+                                        "to_place": {
+                                          "type": "minecraft:simple_state_provider",
+                                          "state": {
+                                            "Name": "medievalism:large_dolostone_rock",
+                                            "Properties": {
+                                              "waterlogged": "false"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "placement": [
+                                      {
+                                        "type": "minecraft:environment_scan",
+                                        "allowed_search_condition": {
+                                          "type": "minecraft:matching_blocks",
+                                          "blocks": "minecraft:air"
+                                        },
+                                        "direction_of_search": "down",
+                                        "max_steps": 10,
+                                        "target_condition": {
+                                          "type": "minecraft:solid"
+                                        }
+                                      },
+                                      {
+                                        "type": "minecraft:random_offset",
+                                        "xz_spread": 0,
+                                        "y_spread": 1
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "placement": []
+                        },
+                        "tries": 3,
+                        "xz_spread": 3,
+                        "y_spread": 0
+                      }
+                    },
+                    "placement": []
+                  }
+                },
+                {
+                  "cell": "medievalism:ironstone",
+                  "feature": {
+                    "feature": {
+                      "type": "minecraft:random_patch",
+                      "config": {
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:random_selector",
+                            "config": {
+                              "default": {
+                                "feature": {
+                                  "type": "minecraft:simple_block",
+                                  "config": {
+                                    "to_place": {
+                                      "type": "minecraft:simple_state_provider",
+                                      "state": {
+                                        "Name": "medievalism:ironstone_rock",
+                                        "Properties": {
+                                          "waterlogged": "false"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "placement": [
+                                  {
+                                    "type": "minecraft:environment_scan",
+                                    "allowed_search_condition": {
+                                      "type": "minecraft:matching_blocks",
+                                      "blocks": "minecraft:air"
+                                    },
+                                    "direction_of_search": "down",
+                                    "max_steps": 10,
+                                    "target_condition": {
+                                      "type": "minecraft:solid"
+                                    }
+                                  },
+                                  {
+                                    "type": "minecraft:random_offset",
+                                    "xz_spread": 0,
+                                    "y_spread": 1
+                                  }
+                                ]
+                              },
+                              "features": [
+                                {
+                                  "chance": 0.3,
+                                  "feature": {
+                                    "feature": {
+                                      "type": "minecraft:simple_block",
+                                      "config": {
+                                        "to_place": {
+                                          "type": "minecraft:simple_state_provider",
+                                          "state": {
+                                            "Name": "medievalism:large_ironstone_rock",
+                                            "Properties": {
+                                              "waterlogged": "false"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "placement": [
+                                      {
+                                        "type": "minecraft:environment_scan",
+                                        "allowed_search_condition": {
+                                          "type": "minecraft:matching_blocks",
+                                          "blocks": "minecraft:air"
+                                        },
+                                        "direction_of_search": "down",
+                                        "max_steps": 10,
+                                        "target_condition": {
+                                          "type": "minecraft:solid"
+                                        }
+                                      },
+                                      {
+                                        "type": "minecraft:random_offset",
+                                        "xz_spread": 0,
+                                        "y_spread": 1
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "placement": []
+                        },
+                        "tries": 3,
+                        "xz_spread": 3,
+                        "y_spread": 0
+                      }
+                    },
+                    "placement": []
+                  }
+                },
+                {
+                  "cell": "medievalism:limestone",
+                  "feature": {
+                    "feature": {
+                      "type": "minecraft:random_patch",
+                      "config": {
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:random_selector",
+                            "config": {
+                              "default": {
+                                "feature": {
+                                  "type": "minecraft:simple_block",
+                                  "config": {
+                                    "to_place": {
+                                      "type": "minecraft:simple_state_provider",
+                                      "state": {
+                                        "Name": "medievalism:limestone_rock",
+                                        "Properties": {
+                                          "waterlogged": "false"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "placement": [
+                                  {
+                                    "type": "minecraft:environment_scan",
+                                    "allowed_search_condition": {
+                                      "type": "minecraft:matching_blocks",
+                                      "blocks": "minecraft:air"
+                                    },
+                                    "direction_of_search": "down",
+                                    "max_steps": 10,
+                                    "target_condition": {
+                                      "type": "minecraft:solid"
+                                    }
+                                  },
+                                  {
+                                    "type": "minecraft:random_offset",
+                                    "xz_spread": 0,
+                                    "y_spread": 1
+                                  }
+                                ]
+                              },
+                              "features": [
+                                {
+                                  "chance": 0.3,
+                                  "feature": {
+                                    "feature": {
+                                      "type": "minecraft:simple_block",
+                                      "config": {
+                                        "to_place": {
+                                          "type": "minecraft:simple_state_provider",
+                                          "state": {
+                                            "Name": "medievalism:large_limestone_rock",
+                                            "Properties": {
+                                              "waterlogged": "false"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "placement": [
+                                      {
+                                        "type": "minecraft:environment_scan",
+                                        "allowed_search_condition": {
+                                          "type": "minecraft:matching_blocks",
+                                          "blocks": "minecraft:air"
+                                        },
+                                        "direction_of_search": "down",
+                                        "max_steps": 10,
+                                        "target_condition": {
+                                          "type": "minecraft:solid"
+                                        }
+                                      },
+                                      {
+                                        "type": "minecraft:random_offset",
+                                        "xz_spread": 0,
+                                        "y_spread": 1
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "placement": []
+                        },
+                        "tries": 3,
+                        "xz_spread": 3,
+                        "y_spread": 0
+                      }
+                    },
+                    "placement": []
+                  }
+                },
+                {
+                  "cell": "medievalism:greywacke",
+                  "feature": {
+                    "feature": {
+                      "type": "minecraft:random_patch",
+                      "config": {
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:random_selector",
+                            "config": {
+                              "default": {
+                                "feature": {
+                                  "type": "minecraft:simple_block",
+                                  "config": {
+                                    "to_place": {
+                                      "type": "minecraft:simple_state_provider",
+                                      "state": {
+                                        "Name": "medievalism:greywacke_rock",
+                                        "Properties": {
+                                          "waterlogged": "false"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "placement": [
+                                  {
+                                    "type": "minecraft:block_predicate_filter",
+                                    "predicate": {
+                                      "type": "minecraft:matching_blocks",
+                                      "blocks": "minecraft:air"
+                                    }
+                                  }
+                                ]
+                              },
+                              "features": [
+                                {
+                                  "chance": 0.3,
+                                  "feature": {
+                                    "feature": {
+                                      "type": "minecraft:simple_block",
+                                      "config": {
+                                        "to_place": {
+                                          "type": "minecraft:simple_state_provider",
+                                          "state": {
+                                            "Name": "medievalism:large_greywacke_rock",
+                                            "Properties": {
+                                              "waterlogged": "false"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "placement": [
+                                      {
+                                        "type": "minecraft:block_predicate_filter",
+                                        "predicate": {
+                                          "type": "minecraft:matching_blocks",
+                                          "blocks": "minecraft:air"
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "placement": []
+                        },
+                        "tries": 3,
+                        "xz_spread": 3,
+                        "y_spread": 0
+                      }
+                    },
+                    "placement": []
+                  }
+                }
+              ],
+              "layer": "medievalism:sedimentary"
+            }
+          },
+          "placement": []
+        },
+        "layer": "medievalism:sedimentary"
+      },
+      {
+        "feature": {
+          "feature": {
+            "type": "medievalism:cell_selector",
+            "config": {
+              "features": [
+                {
+                  "cell": "medievalism:marble",
+                  "feature": {
+                    "feature": {
+                      "type": "minecraft:random_patch",
+                      "config": {
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:random_selector",
+                            "config": {
+                              "default": {
+                                "feature": {
+                                  "type": "minecraft:simple_block",
+                                  "config": {
+                                    "to_place": {
+                                      "type": "minecraft:simple_state_provider",
+                                      "state": {
+                                        "Name": "medievalism:marble_rock",
+                                        "Properties": {
+                                          "waterlogged": "false"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "placement": [
+                                  {
+                                    "type": "minecraft:environment_scan",
+                                    "allowed_search_condition": {
+                                      "type": "minecraft:matching_blocks",
+                                      "blocks": "minecraft:air"
+                                    },
+                                    "direction_of_search": "down",
+                                    "max_steps": 10,
+                                    "target_condition": {
+                                      "type": "minecraft:solid"
+                                    }
+                                  },
+                                  {
+                                    "type": "minecraft:random_offset",
+                                    "xz_spread": 0,
+                                    "y_spread": 1
+                                  }
+                                ]
+                              },
+                              "features": [
+                                {
+                                  "chance": 0.3,
+                                  "feature": {
+                                    "feature": {
+                                      "type": "minecraft:simple_block",
+                                      "config": {
+                                        "to_place": {
+                                          "type": "minecraft:simple_state_provider",
+                                          "state": {
+                                            "Name": "medievalism:large_marble_rock",
+                                            "Properties": {
+                                              "waterlogged": "false"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "placement": [
+                                      {
+                                        "type": "minecraft:environment_scan",
+                                        "allowed_search_condition": {
+                                          "type": "minecraft:matching_blocks",
+                                          "blocks": "minecraft:air"
+                                        },
+                                        "direction_of_search": "down",
+                                        "max_steps": 10,
+                                        "target_condition": {
+                                          "type": "minecraft:solid"
+                                        }
+                                      },
+                                      {
+                                        "type": "minecraft:random_offset",
+                                        "xz_spread": 0,
+                                        "y_spread": 1
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "placement": []
+                        },
+                        "tries": 3,
+                        "xz_spread": 3,
+                        "y_spread": 0
+                      }
+                    },
+                    "placement": []
+                  }
+                },
+                {
+                  "cell": "medievalism:slate",
+                  "feature": {
+                    "feature": {
+                      "type": "minecraft:random_patch",
+                      "config": {
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:random_selector",
+                            "config": {
+                              "default": {
+                                "feature": {
+                                  "type": "minecraft:simple_block",
+                                  "config": {
+                                    "to_place": {
+                                      "type": "minecraft:simple_state_provider",
+                                      "state": {
+                                        "Name": "medievalism:slate_rock",
+                                        "Properties": {
+                                          "waterlogged": "false"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "placement": [
+                                  {
+                                    "type": "minecraft:environment_scan",
+                                    "allowed_search_condition": {
+                                      "type": "minecraft:matching_blocks",
+                                      "blocks": "minecraft:air"
+                                    },
+                                    "direction_of_search": "down",
+                                    "max_steps": 10,
+                                    "target_condition": {
+                                      "type": "minecraft:solid"
+                                    }
+                                  },
+                                  {
+                                    "type": "minecraft:random_offset",
+                                    "xz_spread": 0,
+                                    "y_spread": 1
+                                  }
+                                ]
+                              },
+                              "features": [
+                                {
+                                  "chance": 0.3,
+                                  "feature": {
+                                    "feature": {
+                                      "type": "minecraft:simple_block",
+                                      "config": {
+                                        "to_place": {
+                                          "type": "minecraft:simple_state_provider",
+                                          "state": {
+                                            "Name": "medievalism:large_slate_rock",
+                                            "Properties": {
+                                              "waterlogged": "false"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "placement": [
+                                      {
+                                        "type": "minecraft:environment_scan",
+                                        "allowed_search_condition": {
+                                          "type": "minecraft:matching_blocks",
+                                          "blocks": "minecraft:air"
+                                        },
+                                        "direction_of_search": "down",
+                                        "max_steps": 10,
+                                        "target_condition": {
+                                          "type": "minecraft:solid"
+                                        }
+                                      },
+                                      {
+                                        "type": "minecraft:random_offset",
+                                        "xz_spread": 0,
+                                        "y_spread": 1
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "placement": []
+                        },
+                        "tries": 3,
+                        "xz_spread": 3,
+                        "y_spread": 0
+                      }
+                    },
+                    "placement": []
+                  }
+                },
+                {
+                  "cell": "medievalism:hornfels",
+                  "feature": {
+                    "feature": {
+                      "type": "minecraft:random_patch",
+                      "config": {
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:random_selector",
+                            "config": {
+                              "default": {
+                                "feature": {
+                                  "type": "minecraft:simple_block",
+                                  "config": {
+                                    "to_place": {
+                                      "type": "minecraft:simple_state_provider",
+                                      "state": {
+                                        "Name": "medievalism:hornfels_rock",
+                                        "Properties": {
+                                          "waterlogged": "false"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "placement": [
+                                  {
+                                    "type": "minecraft:environment_scan",
+                                    "allowed_search_condition": {
+                                      "type": "minecraft:matching_blocks",
+                                      "blocks": "minecraft:air"
+                                    },
+                                    "direction_of_search": "down",
+                                    "max_steps": 10,
+                                    "target_condition": {
+                                      "type": "minecraft:solid"
+                                    }
+                                  },
+                                  {
+                                    "type": "minecraft:random_offset",
+                                    "xz_spread": 0,
+                                    "y_spread": 1
+                                  }
+                                ]
+                              },
+                              "features": [
+                                {
+                                  "chance": 0.3,
+                                  "feature": {
+                                    "feature": {
+                                      "type": "minecraft:simple_block",
+                                      "config": {
+                                        "to_place": {
+                                          "type": "minecraft:simple_state_provider",
+                                          "state": {
+                                            "Name": "medievalism:large_hornfels_rock",
+                                            "Properties": {
+                                              "waterlogged": "false"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "placement": [
+                                      {
+                                        "type": "minecraft:environment_scan",
+                                        "allowed_search_condition": {
+                                          "type": "minecraft:matching_blocks",
+                                          "blocks": "minecraft:air"
+                                        },
+                                        "direction_of_search": "down",
+                                        "max_steps": 10,
+                                        "target_condition": {
+                                          "type": "minecraft:solid"
+                                        }
+                                      },
+                                      {
+                                        "type": "minecraft:random_offset",
+                                        "xz_spread": 0,
+                                        "y_spread": 1
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "placement": []
+                        },
+                        "tries": 3,
+                        "xz_spread": 3,
+                        "y_spread": 0
+                      }
+                    },
+                    "placement": []
+                  }
+                },
+                {
+                  "cell": "medievalism:quartzite",
+                  "feature": {
+                    "feature": {
+                      "type": "minecraft:random_patch",
+                      "config": {
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:random_selector",
+                            "config": {
+                              "default": {
+                                "feature": {
+                                  "type": "minecraft:simple_block",
+                                  "config": {
+                                    "to_place": {
+                                      "type": "minecraft:simple_state_provider",
+                                      "state": {
+                                        "Name": "medievalism:quartzite_rock",
+                                        "Properties": {
+                                          "waterlogged": "false"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "placement": [
+                                  {
+                                    "type": "minecraft:environment_scan",
+                                    "allowed_search_condition": {
+                                      "type": "minecraft:matching_blocks",
+                                      "blocks": "minecraft:air"
+                                    },
+                                    "direction_of_search": "down",
+                                    "max_steps": 10,
+                                    "target_condition": {
+                                      "type": "minecraft:solid"
+                                    }
+                                  },
+                                  {
+                                    "type": "minecraft:random_offset",
+                                    "xz_spread": 0,
+                                    "y_spread": 1
+                                  }
+                                ]
+                              },
+                              "features": [
+                                {
+                                  "chance": 0.3,
+                                  "feature": {
+                                    "feature": {
+                                      "type": "minecraft:simple_block",
+                                      "config": {
+                                        "to_place": {
+                                          "type": "minecraft:simple_state_provider",
+                                          "state": {
+                                            "Name": "medievalism:large_quartzite_rock",
+                                            "Properties": {
+                                              "waterlogged": "false"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "placement": [
+                                      {
+                                        "type": "minecraft:environment_scan",
+                                        "allowed_search_condition": {
+                                          "type": "minecraft:matching_blocks",
+                                          "blocks": "minecraft:air"
+                                        },
+                                        "direction_of_search": "down",
+                                        "max_steps": 10,
+                                        "target_condition": {
+                                          "type": "minecraft:solid"
+                                        }
+                                      },
+                                      {
+                                        "type": "minecraft:random_offset",
+                                        "xz_spread": 0,
+                                        "y_spread": 1
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "placement": []
+                        },
+                        "tries": 3,
+                        "xz_spread": 3,
+                        "y_spread": 0
+                      }
+                    },
+                    "placement": []
+                  }
+                }
+              ],
+              "layer": "medievalism:metamorphic"
+            }
+          },
+          "placement": []
+        },
+        "layer": "medievalism:metamorphic"
+      }
+    ]
+  }
+}

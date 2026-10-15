@@ -11,24 +11,24 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.PositionalRandomFactory;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
+import org.jetbrains.annotations.NotNull;
 
 public record UpperGradientAwareConditionSource(
-        ResourceLocation randomName,
+        ResourceLocation random,
         VerticalAnchor trueAtAndAbove,
         int depthBelow
 ) implements SurfaceRules.ConditionSource
 {
     static final KeyDispatchDataCodec<UpperGradientAwareConditionSource> CODEC = KeyDispatchDataCodec.of(
             RecordCodecBuilder.mapCodec(instance -> instance.group(
-                                    ResourceLocation.CODEC.fieldOf("random_name").forGetter(UpperGradientAwareConditionSource::randomName),
+                                    ResourceLocation.CODEC.fieldOf("random_name").forGetter(UpperGradientAwareConditionSource::random),
                                     VerticalAnchor.CODEC.fieldOf("true_at_and_above").forGetter(UpperGradientAwareConditionSource::trueAtAndAbove),
                                     Codec.INT.fieldOf("depth_below").forGetter(UpperGradientAwareConditionSource::depthBelow)
                             )
                             .apply(instance, UpperGradientAwareConditionSource::new)
             ));
-
     @Override
-    public KeyDispatchDataCodec<? extends SurfaceRules.ConditionSource> codec() {
+    public @NotNull KeyDispatchDataCodec<? extends SurfaceRules.ConditionSource> codec() {
         return CODEC;
     }
 
@@ -38,7 +38,7 @@ public record UpperGradientAwareConditionSource(
         final int heightMapY = AwareConditionSources.getSurfaceHeight(Heightmap.Types.WORLD_SURFACE_WG, pContext);
         final int j = AwareVerticalAnchor.resolveY(trueAtAndAbove, pContext.context, heightMapY);
         final int i = j - depthBelow;
-        final PositionalRandomFactory positionalrandomfactory = pContext.randomState.getOrCreateRandomFactory(this.randomName());
+        final PositionalRandomFactory positionalrandomfactory = pContext.randomState.getOrCreateRandomFactory(random);
 
         class LazyLowerGradientAwareConditionSource extends SurfaceRules.LazyYCondition
         {
@@ -61,7 +61,7 @@ public record UpperGradientAwareConditionSource(
                 }
                 else
                 {
-                    double d0 = Mth.map((double)k, (double)i, (double)j, 1.0, 0.0);
+                    double d0 = Mth.map(k, i, j, 1.0, 0.0);
                     RandomSource randomsource = positionalrandomfactory.at(this.context.blockX, k, this.context.blockZ);
                     return (double)randomsource.nextFloat() >= d0;
                 }

@@ -30,9 +30,8 @@ public final class BaseBiomeModifiersProviderEntry
     // ROCKS
     public static final ResourceKey<BiomeModifier> SURFACE_SANDSTONE_ROCKS =        BiomeModifierTools.registerKey(MedievalismConstants.resource("surface_sandstone_rocks"));
     public static final ResourceKey<BiomeModifier> SURFACE_RED_SANDSTONE_ROCKS =    BiomeModifierTools.registerKey(MedievalismConstants.resource("surface_red_sandstone_rocks"));
-    public static final ResourceKey<BiomeModifier> SURFACE_GREYWACKE_ROCKS =        BiomeModifierTools.registerKey(MedievalismConstants.resource("surface_greywacke_rocks"));
-    public static final ResourceKey<BiomeModifier> CAVE_GREYWACKE_ROCKS =           BiomeModifierTools.registerKey(MedievalismConstants.resource("cave_greywacke_rocks"));
-    public static final ResourceKey<BiomeModifier> CAVE_GABBRO_ROCKS =              BiomeModifierTools.registerKey(MedievalismConstants.resource("cave_gabbro_rocks"));
+    public static final ResourceKey<BiomeModifier> SURFACE_ROCKS =        BiomeModifierTools.registerKey(MedievalismConstants.resource("surface_rocks"));
+    public static final ResourceKey<BiomeModifier> CAVE_ROCKS =           BiomeModifierTools.registerKey(MedievalismConstants.resource("cave_rocks"));
     // TWIGS
     public static final ResourceKey<BiomeModifier> DENSE_TWIGS =                    BiomeModifierTools.registerKey(MedievalismConstants.resource("dense_twigs"));
     public static final ResourceKey<BiomeModifier> SPARSE_TWIGS =                   BiomeModifierTools.registerKey(MedievalismConstants.resource("sparse_twigs"));
@@ -71,18 +70,17 @@ public final class BaseBiomeModifiersProviderEntry
         context.register(RED_CLAY_WITH_DOGBANE, new BiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(BiomeTagCatalog.GENERATE_INLAND_CLAY), HolderSet.direct(placedFeatures.getOrThrow(BasePlacedFeaturesProviderEntry.RED_CLAY_WITH_DOGBANE)), GenerationStep.Decoration.VEGETAL_DECORATION));
         // STONE
         // ORE
-        BiomeModifierTools.addSimpleModifier(context, TIN_ORE,                     BiomeTags.IS_OVERWORLD, BasePlacedFeaturesProviderEntry.TIN_ORE, GenerationStep.Decoration.UNDERGROUND_ORES);
-        BiomeModifierTools.addSimpleModifier(context, TIN_ORE_UNIFORM,             BiomeTags.IS_OVERWORLD, BasePlacedFeaturesProviderEntry.TIN_ORE_UNIFORM, GenerationStep.Decoration.UNDERGROUND_ORES);
-        BiomeModifierTools.addSimpleModifier(context, CHALK_ORE,                   BiomeTags.IS_OVERWORLD, BasePlacedFeaturesProviderEntry.CHALK_ORE, GenerationStep.Decoration.UNDERGROUND_ORES);
-        BiomeModifierTools.addSimpleModifier(context, CHERT_ORE,                   BiomeTags.IS_OVERWORLD, BasePlacedFeaturesProviderEntry.CHERT_ORE, GenerationStep.Decoration.UNDERGROUND_ORES);
-        BiomeModifierTools.addSimpleModifier(context, GEODE_ORE,                   BiomeTags.IS_OVERWORLD, BasePlacedFeaturesProviderEntry.GEODE_ORE, GenerationStep.Decoration.UNDERGROUND_ORES);
-        BiomeModifierTools.addSimpleModifier(context, HARD_IG_EX_GEODE_ORE,        BiomeTags.IS_OVERWORLD, BasePlacedFeaturesProviderEntry.HARD_IG_ED_GEODE_ORE, GenerationStep.Decoration.UNDERGROUND_ORES);
+        BiomeModifierTools.addSimpleModifier(context, TIN_ORE,                      BiomeTags.IS_OVERWORLD,                     BasePlacedFeaturesProviderEntry.TIN_ORE,                        GenerationStep.Decoration.UNDERGROUND_ORES);
+        BiomeModifierTools.addSimpleModifier(context, TIN_ORE_UNIFORM,              BiomeTags.IS_OVERWORLD,                     BasePlacedFeaturesProviderEntry.TIN_ORE_UNIFORM,                GenerationStep.Decoration.UNDERGROUND_ORES);
+        BiomeModifierTools.addSimpleModifier(context, CHALK_ORE,                    BiomeTags.IS_OVERWORLD,                     BasePlacedFeaturesProviderEntry.CHALK_ORE,                      GenerationStep.Decoration.UNDERGROUND_ORES);
+        BiomeModifierTools.addSimpleModifier(context, CHERT_ORE,                    BiomeTags.IS_OVERWORLD,                     BasePlacedFeaturesProviderEntry.CHERT_ORE,                      GenerationStep.Decoration.UNDERGROUND_ORES);
+        BiomeModifierTools.addSimpleModifier(context, GEODE_ORE,                    BiomeTags.IS_OVERWORLD,                     BasePlacedFeaturesProviderEntry.GEODE_ORE,                      GenerationStep.Decoration.UNDERGROUND_ORES);
+        BiomeModifierTools.addSimpleModifier(context, HARD_IG_EX_GEODE_ORE,         BiomeTags.IS_OVERWORLD,                     BasePlacedFeaturesProviderEntry.HARD_IG_ED_GEODE_ORE,           GenerationStep.Decoration.UNDERGROUND_ORES);
         // ROCKS
-        BiomeModifierTools.addSimpleModifier(context, SURFACE_SANDSTONE_ROCKS,              BiomeTagCatalog.IS_SURFACE_WITH_SAND,       BasePlacedFeaturesProviderEntry.SURFACE_SANDSTONE_ROCKS,             GenerationStep.Decoration.VEGETAL_DECORATION);
-        BiomeModifierTools.addSimpleModifier(context, SURFACE_RED_SANDSTONE_ROCKS,          BiomeTagCatalog.IS_SURFACE_WITH_RED_SAND,   BasePlacedFeaturesProviderEntry.SURFACE_RED_SANDSTONE_ROCKS,         GenerationStep.Decoration.VEGETAL_DECORATION);
-        BiomeModifierTools.addSimpleModifier(context, SURFACE_GREYWACKE_ROCKS,              BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    BasePlacedFeaturesProviderEntry.SURFACE_GREYWACKE_ROCKS,             GenerationStep.Decoration.VEGETAL_DECORATION);
-        BiomeModifierTools.addSimpleModifier(context, CAVE_GREYWACKE_ROCKS,                 BiomeTags.IS_OVERWORLD,                     BasePlacedFeaturesProviderEntry.CAVE_GREYWACKE_ROCKS,                GenerationStep.Decoration.UNDERGROUND_DECORATION);
-        BiomeModifierTools.addSimpleModifier(context, CAVE_GABBRO_ROCKS,                    BiomeTags.IS_OVERWORLD,                     BasePlacedFeaturesProviderEntry.CAVE_GABBRO_ROCKS,                   GenerationStep.Decoration.UNDERGROUND_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, SURFACE_SANDSTONE_ROCKS,      BiomeTagCatalog.IS_SURFACE_WITH_SAND,       BasePlacedFeaturesProviderEntry.SURFACE_SANDSTONE_ROCKS,        GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, SURFACE_RED_SANDSTONE_ROCKS,  BiomeTagCatalog.IS_SURFACE_WITH_RED_SAND,   BasePlacedFeaturesProviderEntry.SURFACE_RED_SANDSTONE_ROCKS,    GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, SURFACE_ROCKS,                BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    BasePlacedFeaturesProviderEntry.SURFACE_ROCKS,                  GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, CAVE_ROCKS,                   BiomeTags.IS_OVERWORLD,                     BasePlacedFeaturesProviderEntry.CAVE_ROCKS,                     GenerationStep.Decoration.UNDERGROUND_DECORATION);
         // TWIGS
         BiomeModifierTools.addSimpleModifier(context, DENSE_TWIGS, BiomeTagCatalog.HAS_DENSE_TREES, BasePlacedFeaturesProviderEntry.DENSE_TWIGS, GenerationStep.Decoration.VEGETAL_DECORATION);
         BiomeModifierTools.addSimpleModifier(context, SPARSE_TWIGS, BiomeTagCatalog.HAS_SPARSE_TREES, BasePlacedFeaturesProviderEntry.SPARSE_TWIGS, GenerationStep.Decoration.VEGETAL_DECORATION);

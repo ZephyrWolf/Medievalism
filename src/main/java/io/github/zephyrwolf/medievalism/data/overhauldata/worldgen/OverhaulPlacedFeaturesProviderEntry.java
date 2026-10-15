@@ -2,17 +2,10 @@ package io.github.zephyrwolf.medievalism.data.overhauldata.worldgen;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.PlacementTools;
-import io.github.zephyrwolf.medievalism.common.world.level.levelgen.conditionsource.HeightmapRangeConditionSource;
-import io.github.zephyrwolf.medievalism.common.world.level.levelgen.placement.BelowHeightmapFilter;
-import io.github.zephyrwolf.medievalism.common.world.level.levelgen.placement.LayerHeightPlacement;
 import io.github.zephyrwolf.medievalism.data.base.worldgen.BasePlacedFeaturesProviderEntry;
-import io.github.zephyrwolf.medievalism.registration.world.level.WorldGenLayerCatalog;
-import io.github.zephyrwolf.medievalism.registration.world.level.WorldGenNoiseCatalog;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.*;
 
@@ -57,32 +50,35 @@ public final class OverhaulPlacedFeaturesProviderEntry
     // ROCKS
     public static final ResourceKey<PlacedFeature> SURFACE_SANDSTONE_ROCKS =        BasePlacedFeaturesProviderEntry.SURFACE_SANDSTONE_ROCKS;
     public static final ResourceKey<PlacedFeature> SURFACE_RED_SANDSTONE_ROCKS =    BasePlacedFeaturesProviderEntry.SURFACE_RED_SANDSTONE_ROCKS;
-    public static final ResourceKey<PlacedFeature> SURFACE_SAPROLITE_ROCKS =        PlacementTools.registerKey(MedievalismConstants.resource("surface_saprolite_rocks"));
-    public static final ResourceKey<PlacedFeature> SURFACE_LATERITE_ROCKS =         PlacementTools.registerKey(MedievalismConstants.resource("surface_laterite_rocks"));
-    public static final ResourceKey<PlacedFeature> SURFACE_SILT_CLUMPS =            PlacementTools.registerKey(MedievalismConstants.resource("surface_silt_clumps"));
-    public static final ResourceKey<PlacedFeature> SURFACE_GREYWACKE_ROCKS =        BasePlacedFeaturesProviderEntry.SURFACE_GREYWACKE_ROCKS;
-    public static final ResourceKey<PlacedFeature> SURFACE_SILTSTONE_ROCKS =        PlacementTools.registerKey(MedievalismConstants.resource("surface_siltstone_rocks"));
-    public static final ResourceKey<PlacedFeature> SURFACE_DOLOSTONE_ROCKS =        PlacementTools.registerKey(MedievalismConstants.resource("surface_dolostone_rocks"));
-    public static final ResourceKey<PlacedFeature> SURFACE_LIMESTONE_ROCKS =        PlacementTools.registerKey(MedievalismConstants.resource("surface_limestone_rocks"));
-    public static final ResourceKey<PlacedFeature> SURFACE_IRONSTONE_ROCKS =        PlacementTools.registerKey(MedievalismConstants.resource("surface_ironstone_rocks"));
-    public static final ResourceKey<PlacedFeature> SURFACE_SHALE_ROCKS =            PlacementTools.registerKey(MedievalismConstants.resource("surface_shale_rocks"));
-    public static final ResourceKey<PlacedFeature> SURFACE_ARKOSE_ROCKS =           PlacementTools.registerKey(MedievalismConstants.resource("surface_arkose_rocks"));
-    public static final ResourceKey<PlacedFeature> CAVE_GREYWACKE_ROCKS =           BasePlacedFeaturesProviderEntry.CAVE_GREYWACKE_ROCKS;
-    public static final ResourceKey<PlacedFeature> CAVE_SILTSTONE_ROCKS =           PlacementTools.registerKey(MedievalismConstants.resource("cave_siltstone_rocks"));
-    public static final ResourceKey<PlacedFeature> CAVE_DOLOSTONE_ROCKS =           PlacementTools.registerKey(MedievalismConstants.resource("cave_dolostone_rocks"));
-    public static final ResourceKey<PlacedFeature> CAVE_LIMESTONE_ROCKS =           PlacementTools.registerKey(MedievalismConstants.resource("cave_limestone_rocks"));
-    public static final ResourceKey<PlacedFeature> CAVE_IRONSTONE_ROCKS =           PlacementTools.registerKey(MedievalismConstants.resource("cave_ironstone_rocks"));
-    public static final ResourceKey<PlacedFeature> CAVE_SHALE_ROCKS =               PlacementTools.registerKey(MedievalismConstants.resource("cave_shale_rocks"));
-    public static final ResourceKey<PlacedFeature> CAVE_ARKOSE_ROCKS =              PlacementTools.registerKey(MedievalismConstants.resource("cave_arkose_rocks"));
-    public static final ResourceKey<PlacedFeature> CAVE_MARBLE_ROCKS =              PlacementTools.registerKey(MedievalismConstants.resource("cave_marble_rocks"));
-    public static final ResourceKey<PlacedFeature> CAVE_QUARTZITE_ROCKS =           PlacementTools.registerKey(MedievalismConstants.resource("cave_quartzite_rocks"));
-    public static final ResourceKey<PlacedFeature> CAVE_HORNFELS_ROCKS =            PlacementTools.registerKey(MedievalismConstants.resource("cave_hornfels_rocks"));
-    public static final ResourceKey<PlacedFeature> CAVE_SLATE_ROCKS =               PlacementTools.registerKey(MedievalismConstants.resource("cave_slate_rocks"));
-    public static final ResourceKey<PlacedFeature> CAVE_GABBRO_ROCKS =              BasePlacedFeaturesProviderEntry.CAVE_GABBRO_ROCKS;
-    public static final ResourceKey<PlacedFeature> CAVE_SMOOTH_DIORITE_ROCKS =      PlacementTools.registerKey(MedievalismConstants.resource("cave_smooth_diorite_rocks"));
-    public static final ResourceKey<PlacedFeature> CAVE_SMOOTH_GRANITE_ROCKS =      PlacementTools.registerKey(MedievalismConstants.resource("cave_smooth_granite_rocks"));
-    public static final ResourceKey<PlacedFeature> CAVE_NORITE_ROCKS =              PlacementTools.registerKey(MedievalismConstants.resource("cave_norite_rocks"));
-    public static final ResourceKey<PlacedFeature> CAVE_PERIDOTITE_ROCKS =          PlacementTools.registerKey(MedievalismConstants.resource("cave_peridotite_rocks"));
+    //public static final ResourceKey<PlacedFeature> SURFACE_SAPROLITE_ROCKS =        PlacementTools.registerKey(MedievalismConstants.resource("surface_saprolite_rocks"));
+    //public static final ResourceKey<PlacedFeature> SURFACE_LATERITE_ROCKS =         PlacementTools.registerKey(MedievalismConstants.resource("surface_laterite_rocks"));
+    //public static final ResourceKey<PlacedFeature> SURFACE_SILT_CLUMPS =            PlacementTools.registerKey(MedievalismConstants.resource("surface_silt_clumps"));
+    //public static final ResourceKey<PlacedFeature> SURFACE_GREYWACKE_ROCKS =        BasePlacedFeaturesProviderEntry.SURFACE_GREYWACKE_ROCKS;
+    //public static final ResourceKey<PlacedFeature> SURFACE_SILTSTONE_ROCKS =        PlacementTools.registerKey(MedievalismConstants.resource("surface_siltstone_rocks"));
+    //public static final ResourceKey<PlacedFeature> SURFACE_DOLOSTONE_ROCKS =        PlacementTools.registerKey(MedievalismConstants.resource("surface_dolostone_rocks"));
+    //public static final ResourceKey<PlacedFeature> SURFACE_LIMESTONE_ROCKS =        PlacementTools.registerKey(MedievalismConstants.resource("surface_limestone_rocks"));
+    //public static final ResourceKey<PlacedFeature> SURFACE_IRONSTONE_ROCKS =        PlacementTools.registerKey(MedievalismConstants.resource("surface_ironstone_rocks"));
+    //public static final ResourceKey<PlacedFeature> SURFACE_SHALE_ROCKS =            PlacementTools.registerKey(MedievalismConstants.resource("surface_shale_rocks"));
+    //public static final ResourceKey<PlacedFeature> SURFACE_ARKOSE_ROCKS =           PlacementTools.registerKey(MedievalismConstants.resource("surface_arkose_rocks"));
+    public static final ResourceKey<PlacedFeature> SURFACE_ROCKS =                  BasePlacedFeaturesProviderEntry.SURFACE_ROCKS;
+    public static final ResourceKey<PlacedFeature> SURFACE_SEDIMENTARY_ROCKS =      PlacementTools.registerKey(MedievalismConstants.resource("surface_sedimentary_rocks"));
+    //public static final ResourceKey<PlacedFeature> CAVE_GREYWACKE_ROCKS =           BasePlacedFeaturesProviderEntry.CAVE_GREYWACKE_ROCKS;
+    //public static final ResourceKey<PlacedFeature> CAVE_SILTSTONE_ROCKS =           PlacementTools.registerKey(MedievalismConstants.resource("cave_siltstone_rocks"));
+    //public static final ResourceKey<PlacedFeature> CAVE_DOLOSTONE_ROCKS =           PlacementTools.registerKey(MedievalismConstants.resource("cave_dolostone_rocks"));
+    //public static final ResourceKey<PlacedFeature> CAVE_LIMESTONE_ROCKS =           PlacementTools.registerKey(MedievalismConstants.resource("cave_limestone_rocks"));
+    //public static final ResourceKey<PlacedFeature> CAVE_IRONSTONE_ROCKS =           PlacementTools.registerKey(MedievalismConstants.resource("cave_ironstone_rocks"));
+    //public static final ResourceKey<PlacedFeature> CAVE_SHALE_ROCKS =               PlacementTools.registerKey(MedievalismConstants.resource("cave_shale_rocks"));
+    //public static final ResourceKey<PlacedFeature> CAVE_ARKOSE_ROCKS =              PlacementTools.registerKey(MedievalismConstants.resource("cave_arkose_rocks"));
+    //public static final ResourceKey<PlacedFeature> CAVE_MARBLE_ROCKS =              PlacementTools.registerKey(MedievalismConstants.resource("cave_marble_rocks"));
+    //public static final ResourceKey<PlacedFeature> CAVE_QUARTZITE_ROCKS =           PlacementTools.registerKey(MedievalismConstants.resource("cave_quartzite_rocks"));
+    //public static final ResourceKey<PlacedFeature> CAVE_HORNFELS_ROCKS =            PlacementTools.registerKey(MedievalismConstants.resource("cave_hornfels_rocks"));
+    //public static final ResourceKey<PlacedFeature> CAVE_SLATE_ROCKS =               PlacementTools.registerKey(MedievalismConstants.resource("cave_slate_rocks"));
+    //public static final ResourceKey<PlacedFeature> CAVE_GABBRO_ROCKS =              BasePlacedFeaturesProviderEntry.CAVE_GABBRO_ROCKS;
+    //public static final ResourceKey<PlacedFeature> CAVE_SMOOTH_DIORITE_ROCKS =      PlacementTools.registerKey(MedievalismConstants.resource("cave_smooth_diorite_rocks"));
+    //public static final ResourceKey<PlacedFeature> CAVE_SMOOTH_GRANITE_ROCKS =      PlacementTools.registerKey(MedievalismConstants.resource("cave_smooth_granite_rocks"));
+    //public static final ResourceKey<PlacedFeature> CAVE_NORITE_ROCKS =              PlacementTools.registerKey(MedievalismConstants.resource("cave_norite_rocks"));
+    //public static final ResourceKey<PlacedFeature> CAVE_PERIDOTITE_ROCKS =          PlacementTools.registerKey(MedievalismConstants.resource("cave_peridotite_rocks"));
+    public static final ResourceKey<PlacedFeature> CAVE_ROCKS =                     PlacementTools.registerKey(MedievalismConstants.resource("cave_rocks"));
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context)
     {
@@ -157,86 +153,107 @@ public final class OverhaulPlacedFeaturesProviderEntry
     public static void bootstrap_medievalism(BootstrapContext<PlacedFeature> context)
     {
         // ROCKS
-        PlacementModifier ASHFALL_LAYER_FILTER =                  LayerHeightPlacement.withinLayer(WorldGenLayerCatalog.WorldLayer.ASHFALL);
-        PlacementModifier REGOLITH_LAYER_FILTER =                 LayerHeightPlacement.withinLayer(WorldGenLayerCatalog.WorldLayer.REGOLITH);
-        PlacementModifier SEDIMENTARY_LAYER_FILTER =              LayerHeightPlacement.withinLayer(WorldGenLayerCatalog.WorldLayer.SEDIMENTARY);
-        PlacementModifier METAMORPHIC_LAYER_FILTER =              LayerHeightPlacement.withinLayer(WorldGenLayerCatalog.WorldLayer.METAMORPHIC);
-        PlacementModifier SOFT_IGNEOUS_EXTRUSIVE_LAYER_FILTER =   LayerHeightPlacement.withinLayer(WorldGenLayerCatalog.WorldLayer.SOFT_IGNEOUS_EXTRUSIVE);
-        PlacementModifier HARD_IGNEOUS_EXTRUSIVE_LAYER_FILTER =   LayerHeightPlacement.withinLayer(WorldGenLayerCatalog.WorldLayer.HARD_IGNEOUS_EXTRUSIVE);
-        PlacementModifier IGNEOUS_INTRUSIVE_LAYER_FILTER =        LayerHeightPlacement.withinLayer(WorldGenLayerCatalog.WorldLayer.IGNEOUS_INTRUSIVE);
-        PlacementModifier DEEP_IGNEOUS_INTRUSIVE_LAYER_FILTER =   LayerHeightPlacement.withinLayer(WorldGenLayerCatalog.WorldLayer.DEEP_IGNEOUS_INTRUSIVE);
+        //PlacementModifier ASHFALL_LAYER_FILTER =                  LayerHeightPlacement.withinLayer(WorldLayersRegistration.ASHFALL.getKey());
+        //PlacementModifier REGOLITH_LAYER_FILTER =                 LayerHeightPlacement.withinLayer(WorldLayersRegistration.REGOLITH.getKey());
+        //PlacementModifier SEDIMENTARY_LAYER_FILTER =              LayerHeightPlacement.withinLayer(WorldLayersRegistration.SEDIMENTARY.getKey());
+        //PlacementModifier METAMORPHIC_LAYER_FILTER =              LayerHeightPlacement.withinLayer(WorldLayersRegistration.METAMORPHIC.getKey());
+        //PlacementModifier SOFT_IGNEOUS_EXTRUSIVE_LAYER_FILTER =   LayerHeightPlacement.withinLayer(WorldLayersRegistration.SOFT_IGNEOUS_EXTRUSIVE.getKey());
+        //PlacementModifier HARD_IGNEOUS_EXTRUSIVE_LAYER_FILTER =   LayerHeightPlacement.withinLayer(WorldLayersRegistration.HARD_IGNEOUS_EXTRUSIVE.getKey());
+        //PlacementModifier IGNEOUS_INTRUSIVE_LAYER_FILTER =        LayerHeightPlacement.withinLayer(WorldLayersRegistration.IGNEOUS_INTRUSIVE.getKey());
+        //PlacementModifier DEEP_IGNEOUS_INTRUSIVE_LAYER_FILTER =   LayerHeightPlacement.withinLayer(WorldLayersRegistration.DEEP_IGNEOUS_INTRUSIVE.getKey());
 
         List<PlacementModifier> SURFACE_SANDSTONE_ROCKS_PLACEMENT_RULES =       PlacementTools.surfacePlacement(1, 2, 2);
         List<PlacementModifier> SURFACE_RED_SANDSTONE_ROCKS_PLACEMENT_RULES =   PlacementTools.surfacePlacement(1, 2, 2);
-        List<PlacementModifier> SURFACE_SAPROLITE_ROCKS_PLACEMENT_RULES =       PlacementTools.surfaceCellPlacement(1, 2, 2,    WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,                   WorldGenNoiseCatalog.VARIANTS_REGOLITH.SAPROLITE);
-        List<PlacementModifier> SURFACE_LATERITE_ROCKS_PLACEMENT_RULES =        PlacementTools.surfaceCellPlacement(1, 2, 2,    WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,                   WorldGenNoiseCatalog.VARIANTS_REGOLITH.LATERITE);
-        List<PlacementModifier> SURFACE_SILT_CLUMPS_PLACEMENT_RULES =           PlacementTools.surfaceCellPlacement(1, 2, 2,    WorldGenNoiseCatalog.NOISE_SETTINGS_REGOLITH,                   WorldGenNoiseCatalog.VARIANTS_REGOLITH.SILT);
-        List<PlacementModifier> SURFACE_GREYWACKE_ROCKS_PLACEMENT_RULES =       PlacementTools.surfaceCellPlacement(1, 1, 3,    WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,                WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.GREYWACKE);
-        List<PlacementModifier> SURFACE_SILTSTONE_ROCKS_PLACEMENT_RULES =       PlacementTools.surfaceCellPlacement(1, 1, 3,    WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,                WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.SILTSTONE);
-        List<PlacementModifier> SURFACE_DOLOSTONE_ROCKS_PLACEMENT_RULES =       PlacementTools.surfaceCellPlacement(1, 1, 3,    WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,                WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.DOLOSTONE);
-        List<PlacementModifier> SURFACE_LIMESTONE_ROCKS_PLACEMENT_RULES =       PlacementTools.surfaceCellPlacement(1, 1, 3,    WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,                WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.LIMESTONE);
-        List<PlacementModifier> SURFACE_IRONSTONE_ROCKS_PLACEMENT_RULES =       PlacementTools.surfaceCellPlacement(1, 1, 3,    WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,                WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.IRONSTONE);
-        List<PlacementModifier> SURFACE_SHALE_ROCKS_PLACEMENT_RULES =           PlacementTools.surfaceCellPlacement(1, 1, 3,    WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,                WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.SHALE);
-        List<PlacementModifier> SURFACE_ARKOSE_ROCKS_PLACEMENT_RULES =          PlacementTools.surfaceCellPlacement(1, 1, 3,    WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,                WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.ARKOSE);
-        List<PlacementModifier> CAVE_GREYWACKE_ROCKS_PLACEMENT_RULES =          PlacementTools.caveCellPlacement(30, 100, 1,    WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,                WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.GREYWACKE,                SEDIMENTARY_LAYER_FILTER);
-        List<PlacementModifier> CAVE_SILTSTONE_ROCKS_PLACEMENT_RULES =          PlacementTools.caveCellPlacement(30, 100, 1,    WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,                WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.SILTSTONE,                SEDIMENTARY_LAYER_FILTER);
-        List<PlacementModifier> CAVE_DOLOSTONE_ROCKS_PLACEMENT_RULES =          PlacementTools.caveCellPlacement(30, 100, 1,    WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,                WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.DOLOSTONE,                SEDIMENTARY_LAYER_FILTER);
-        List<PlacementModifier> CAVE_LIMESTONE_ROCKS_PLACEMENT_RULES =          PlacementTools.caveCellPlacement(30, 100, 1,    WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,                WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.LIMESTONE,                SEDIMENTARY_LAYER_FILTER);
-        List<PlacementModifier> CAVE_IRONSTONE_ROCKS_PLACEMENT_RULES =          PlacementTools.caveCellPlacement(30, 100, 1,    WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,                WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.IRONSTONE,                SEDIMENTARY_LAYER_FILTER);
-        List<PlacementModifier> CAVE_SHALE_ROCKS_PLACEMENT_RULES =              PlacementTools.caveCellPlacement(30, 100, 1,    WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,                WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.SHALE,                    SEDIMENTARY_LAYER_FILTER);
-        List<PlacementModifier> CAVE_ARKOSE_ROCKS_PLACEMENT_RULES =             PlacementTools.caveCellPlacement(30, 100, 1,    WorldGenNoiseCatalog.NOISE_SETTINGS_SEDIMENTARY,                WorldGenNoiseCatalog.VARIANTS_SEDIMENTARY.ARKOSE,                   SEDIMENTARY_LAYER_FILTER);
-        List<PlacementModifier> CAVE_MARBLE_ROCKS_PLACEMENT_RULES =             PlacementTools.caveCellPlacement(30, 100, 1,    WorldGenNoiseCatalog.NOISE_SETTINGS_METAMORPHIC,                WorldGenNoiseCatalog.VARIANTS_METAMORPHIC.MARBLE,                   METAMORPHIC_LAYER_FILTER);
-        List<PlacementModifier> CAVE_QUARTZITE_ROCKS_PLACEMENT_RULES =          PlacementTools.caveCellPlacement(30, 100, 1,    WorldGenNoiseCatalog.NOISE_SETTINGS_METAMORPHIC,                WorldGenNoiseCatalog.VARIANTS_METAMORPHIC.QUARTZITE,                METAMORPHIC_LAYER_FILTER);
-        List<PlacementModifier> CAVE_HORNFELS_ROCKS_PLACEMENT_RULES =           PlacementTools.caveCellPlacement(30, 100, 1,    WorldGenNoiseCatalog.NOISE_SETTINGS_METAMORPHIC,                WorldGenNoiseCatalog.VARIANTS_METAMORPHIC.HORNFELS,                 METAMORPHIC_LAYER_FILTER);
-        List<PlacementModifier> CAVE_SLATE_ROCKS_PLACEMENT_RULES =              PlacementTools.caveCellPlacement(30, 100, 1,    WorldGenNoiseCatalog.NOISE_SETTINGS_METAMORPHIC,                WorldGenNoiseCatalog.VARIANTS_METAMORPHIC.SLATE,                    METAMORPHIC_LAYER_FILTER);
-        List<PlacementModifier> CAVE_GABBRO_ROCKS_PLACEMENT_RULES =             PlacementTools.caveCellPlacement(30, 100, 1,    WorldGenNoiseCatalog.NOISE_SETTINGS_IGNEOUS_INTRUSIVE,          WorldGenNoiseCatalog.VARIANTS_IGNEOUS_INTRUSIVE.GABBRO,             IGNEOUS_INTRUSIVE_LAYER_FILTER);
-        List<PlacementModifier> CAVE_SMOOTH_DIORITE_ROCKS_PLACEMENT_RULES =     PlacementTools.caveCellPlacement(30, 100, 1,    WorldGenNoiseCatalog.NOISE_SETTINGS_IGNEOUS_INTRUSIVE,          WorldGenNoiseCatalog.VARIANTS_IGNEOUS_INTRUSIVE.SMOOTH_DIORITE,     IGNEOUS_INTRUSIVE_LAYER_FILTER);
-        List<PlacementModifier> CAVE_SMOOTH_GRANITE_ROCKS_PLACEMENT_RULES =     PlacementTools.caveCellPlacement(30, 100, 1,    WorldGenNoiseCatalog.NOISE_SETTINGS_IGNEOUS_INTRUSIVE,          WorldGenNoiseCatalog.VARIANTS_IGNEOUS_INTRUSIVE.SMOOTH_GRANITE,     IGNEOUS_INTRUSIVE_LAYER_FILTER);
-        List<PlacementModifier> CAVE_NORITE_ROCKS_PLACEMENT_RULES =             PlacementTools.caveCellPlacement(30, 100, 1,    WorldGenNoiseCatalog.NOISE_SETTINGS_DEEP_IGNEOUS_INTRUSIVE,     WorldGenNoiseCatalog.VARIANTS_DEEP_IGNEOUS_INTRUSIVE.NORITE,        DEEP_IGNEOUS_INTRUSIVE_LAYER_FILTER);
-        List<PlacementModifier> CAVE_PERIDOTITE_ROCKS_PLACEMENT_RULES =         PlacementTools.caveCellPlacement(30, 100, 1,    WorldGenNoiseCatalog.NOISE_SETTINGS_DEEP_IGNEOUS_INTRUSIVE,     WorldGenNoiseCatalog.VARIANTS_DEEP_IGNEOUS_INTRUSIVE.PERIDOTITE,    DEEP_IGNEOUS_INTRUSIVE_LAYER_FILTER);
+        List<PlacementModifier> SURFACE_REGOLITH_ROCKS_PLACEMENT_RULES =       PlacementTools.surfacePlacement(1, 2, 2);
+        List<PlacementModifier> SURFACE_SEDIMENTARY_ROCKS_PLACEMENT_RULES =       PlacementTools.surfacePlacement(1, 1, 3);
+        List<PlacementModifier> CAVE_DECORATION_PLACEMENT_RULES =               PlacementTools.cavePlacement(60, 100, 1);
+
+        //List<PlacementModifier> SURFACE_SAPROLITE_ROCKS_PLACEMENT_RULES =       PlacementTools.surfaceCellPlacement(1, 2, 2,    WorldLayersRegistration.REGOLITH.getKey(),                   LayerCellRegistration.SAPROLITE.getKey());
+        //List<PlacementModifier> SURFACE_LATERITE_ROCKS_PLACEMENT_RULES =        PlacementTools.surfaceCellPlacement(1, 2, 2,    WorldLayersRegistration.REGOLITH.getKey(),                   LayerCellRegistration.LATERITE.getKey());
+        //List<PlacementModifier> SURFACE_SILT_CLUMPS_PLACEMENT_RULES =           PlacementTools.surfaceCellPlacement(1, 2, 2,    WorldLayersRegistration.REGOLITH.getKey(),                   LayerCellRegistration.SILT.getKey());
+        //List<PlacementModifier> SURFACE_GREYWACKE_ROCKS_PLACEMENT_RULES =       PlacementTools.surfaceCellPlacement(1, 1, 3,    WorldLayersRegistration.SEDIMENTARY.getKey(),                LayerCellRegistration.GREYWACKE.getKey());
+        //List<PlacementModifier> SURFACE_SILTSTONE_ROCKS_PLACEMENT_RULES =       PlacementTools.surfaceCellPlacement(1, 1, 3,    WorldLayersRegistration.SEDIMENTARY.getKey(),                LayerCellRegistration.SILTSTONE.getKey());
+        //List<PlacementModifier> SURFACE_DOLOSTONE_ROCKS_PLACEMENT_RULES =       PlacementTools.surfaceCellPlacement(1, 1, 3,    WorldLayersRegistration.SEDIMENTARY.getKey(),                LayerCellRegistration.DOLOSTONE.getKey());
+        //List<PlacementModifier> SURFACE_LIMESTONE_ROCKS_PLACEMENT_RULES =       PlacementTools.surfaceCellPlacement(1, 1, 3,    WorldLayersRegistration.SEDIMENTARY.getKey(),                LayerCellRegistration.LIMESTONE.getKey());
+        //List<PlacementModifier> SURFACE_IRONSTONE_ROCKS_PLACEMENT_RULES =       PlacementTools.surfaceCellPlacement(1, 1, 3,    WorldLayersRegistration.SEDIMENTARY.getKey(),                LayerCellRegistration.IRONSTONE.getKey());
+        //List<PlacementModifier> SURFACE_SHALE_ROCKS_PLACEMENT_RULES =           PlacementTools.surfaceCellPlacement(1, 1, 3,    WorldLayersRegistration.SEDIMENTARY.getKey(),                LayerCellRegistration.SHALE.getKey());
+        //List<PlacementModifier> SURFACE_ARKOSE_ROCKS_PLACEMENT_RULES =          PlacementTools.surfaceCellPlacement(1, 1, 3,    WorldLayersRegistration.SEDIMENTARY.getKey(),                LayerCellRegistration.ARKOSE.getKey());
+        //List<PlacementModifier> CAVE_GREYWACKE_ROCKS_PLACEMENT_RULES =          PlacementTools.caveCellPlacement(30, 100, 1,    WorldLayersRegistration.SEDIMENTARY.getKey(),                LayerCellRegistration.GREYWACKE.getKey(),                SEDIMENTARY_LAYER_FILTER);
+        //List<PlacementModifier> CAVE_SILTSTONE_ROCKS_PLACEMENT_RULES =          PlacementTools.caveCellPlacement(30, 100, 1,    WorldLayersRegistration.SEDIMENTARY.getKey(),                LayerCellRegistration.SILTSTONE.getKey(),                SEDIMENTARY_LAYER_FILTER);
+        //List<PlacementModifier> CAVE_DOLOSTONE_ROCKS_PLACEMENT_RULES =          PlacementTools.caveCellPlacement(30, 100, 1,    WorldLayersRegistration.SEDIMENTARY.getKey(),                LayerCellRegistration.DOLOSTONE.getKey(),                SEDIMENTARY_LAYER_FILTER);
+        //List<PlacementModifier> CAVE_LIMESTONE_ROCKS_PLACEMENT_RULES =          PlacementTools.caveCellPlacement(30, 100, 1,    WorldLayersRegistration.SEDIMENTARY.getKey(),                LayerCellRegistration.LIMESTONE.getKey(),                SEDIMENTARY_LAYER_FILTER);
+        //List<PlacementModifier> CAVE_IRONSTONE_ROCKS_PLACEMENT_RULES =          PlacementTools.caveCellPlacement(30, 100, 1,    WorldLayersRegistration.SEDIMENTARY.getKey(),                LayerCellRegistration.IRONSTONE.getKey(),                SEDIMENTARY_LAYER_FILTER);
+        //List<PlacementModifier> CAVE_SHALE_ROCKS_PLACEMENT_RULES =              PlacementTools.caveCellPlacement(30, 100, 1,    WorldLayersRegistration.SEDIMENTARY.getKey(),                LayerCellRegistration.SHALE.getKey(),                    SEDIMENTARY_LAYER_FILTER);
+        //List<PlacementModifier> CAVE_ARKOSE_ROCKS_PLACEMENT_RULES =             PlacementTools.caveCellPlacement(30, 100, 1,    WorldLayersRegistration.SEDIMENTARY.getKey(),                LayerCellRegistration.ARKOSE.getKey(),                   SEDIMENTARY_LAYER_FILTER);
+        //List<PlacementModifier> CAVE_MARBLE_ROCKS_PLACEMENT_RULES =             PlacementTools.caveCellPlacement(30, 100, 1,    WorldLayersRegistration.METAMORPHIC.getKey(),                LayerCellRegistration.MARBLE.getKey(),                   METAMORPHIC_LAYER_FILTER);
+        //List<PlacementModifier> CAVE_QUARTZITE_ROCKS_PLACEMENT_RULES =          PlacementTools.caveCellPlacement(30, 100, 1,    WorldLayersRegistration.METAMORPHIC.getKey(),                LayerCellRegistration.QUARTZITE.getKey(),                METAMORPHIC_LAYER_FILTER);
+        //List<PlacementModifier> CAVE_HORNFELS_ROCKS_PLACEMENT_RULES =           PlacementTools.caveCellPlacement(30, 100, 1,    WorldLayersRegistration.METAMORPHIC.getKey(),                LayerCellRegistration.HORNFELS.getKey(),                 METAMORPHIC_LAYER_FILTER);
+        //List<PlacementModifier> CAVE_SLATE_ROCKS_PLACEMENT_RULES =              PlacementTools.caveCellPlacement(30, 100, 1,    WorldLayersRegistration.METAMORPHIC.getKey(),                LayerCellRegistration.SLATE.getKey(),                    METAMORPHIC_LAYER_FILTER);
+        //List<PlacementModifier> CAVE_GABBRO_ROCKS_PLACEMENT_RULES =             PlacementTools.caveCellPlacement(30, 100, 1,    WorldLayersRegistration.IGNEOUS_INTRUSIVE.getKey(),          LayerCellRegistration.GABBRO.getKey(),             IGNEOUS_INTRUSIVE_LAYER_FILTER);
+        //List<PlacementModifier> CAVE_SMOOTH_DIORITE_ROCKS_PLACEMENT_RULES =     PlacementTools.caveCellPlacement(30, 100, 1,    WorldLayersRegistration.IGNEOUS_INTRUSIVE.getKey(),          LayerCellRegistration.SMOOTH_DIORITE.getKey(),     IGNEOUS_INTRUSIVE_LAYER_FILTER);
+        //List<PlacementModifier> CAVE_SMOOTH_GRANITE_ROCKS_PLACEMENT_RULES =     PlacementTools.caveCellPlacement(30, 100, 1,    WorldLayersRegistration.IGNEOUS_INTRUSIVE.getKey(),          LayerCellRegistration.SMOOTH_GRANITE.getKey(),     IGNEOUS_INTRUSIVE_LAYER_FILTER);
+        //List<PlacementModifier> CAVE_NORITE_ROCKS_PLACEMENT_RULES =             PlacementTools.caveCellPlacement(30, 100, 1,    WorldLayersRegistration.DEEP_IGNEOUS_INTRUSIVE.getKey(),     LayerCellRegistration.NORITE.getKey(),        DEEP_IGNEOUS_INTRUSIVE_LAYER_FILTER);
+        //List<PlacementModifier> CAVE_PERIDOTITE_ROCKS_PLACEMENT_RULES =         PlacementTools.caveCellPlacement(30, 100, 1,    WorldLayersRegistration.DEEP_IGNEOUS_INTRUSIVE.getKey(),     LayerCellRegistration.PERIDOTITE.getKey(),    DEEP_IGNEOUS_INTRUSIVE_LAYER_FILTER);
 
         PlacementTools.register(context, SURFACE_SANDSTONE_ROCKS,        OverhaulConfiguredFeaturesProviderEntry.SURFACE_SANDSTONE_ROCKS,       SURFACE_SANDSTONE_ROCKS_PLACEMENT_RULES);
         PlacementTools.register(context, SURFACE_RED_SANDSTONE_ROCKS,    OverhaulConfiguredFeaturesProviderEntry.SURFACE_RED_SANDSTONE_ROCKS,   SURFACE_RED_SANDSTONE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, SURFACE_SAPROLITE_ROCKS,        OverhaulConfiguredFeaturesProviderEntry.SURFACE_SAPROLITE_ROCKS,       SURFACE_SAPROLITE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, SURFACE_LATERITE_ROCKS,         OverhaulConfiguredFeaturesProviderEntry.SURFACE_LATERITE_ROCKS,        SURFACE_LATERITE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, SURFACE_SILT_CLUMPS,            OverhaulConfiguredFeaturesProviderEntry.SURFACE_SILT_CLUMPS,           SURFACE_SILT_CLUMPS_PLACEMENT_RULES);
-        PlacementTools.register(context, SURFACE_GREYWACKE_ROCKS,        OverhaulConfiguredFeaturesProviderEntry.SURFACE_GREYWACKE_ROCKS,       SURFACE_GREYWACKE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, SURFACE_SILTSTONE_ROCKS,        OverhaulConfiguredFeaturesProviderEntry.SURFACE_SILTSTONE_ROCKS,       SURFACE_SILTSTONE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, SURFACE_DOLOSTONE_ROCKS,        OverhaulConfiguredFeaturesProviderEntry.SURFACE_DOLOSTONE_ROCKS,       SURFACE_DOLOSTONE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, SURFACE_LIMESTONE_ROCKS,        OverhaulConfiguredFeaturesProviderEntry.SURFACE_LIMESTONE_ROCKS,       SURFACE_LIMESTONE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, SURFACE_IRONSTONE_ROCKS,        OverhaulConfiguredFeaturesProviderEntry.SURFACE_IRONSTONE_ROCKS,       SURFACE_IRONSTONE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, SURFACE_SHALE_ROCKS,            OverhaulConfiguredFeaturesProviderEntry.SURFACE_SHALE_ROCKS,           SURFACE_SHALE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, SURFACE_ARKOSE_ROCKS,           OverhaulConfiguredFeaturesProviderEntry.SURFACE_ARKOSE_ROCKS,          SURFACE_ARKOSE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, CAVE_GREYWACKE_ROCKS,           OverhaulConfiguredFeaturesProviderEntry.CAVE_GREYWACKE_ROCKS,          CAVE_GREYWACKE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, CAVE_SILTSTONE_ROCKS,           OverhaulConfiguredFeaturesProviderEntry.CAVE_SILTSTONE_ROCKS,          CAVE_SILTSTONE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, CAVE_DOLOSTONE_ROCKS,           OverhaulConfiguredFeaturesProviderEntry.CAVE_DOLOSTONE_ROCKS,          CAVE_DOLOSTONE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, CAVE_LIMESTONE_ROCKS,           OverhaulConfiguredFeaturesProviderEntry.CAVE_LIMESTONE_ROCKS,          CAVE_LIMESTONE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, CAVE_IRONSTONE_ROCKS,           OverhaulConfiguredFeaturesProviderEntry.CAVE_IRONSTONE_ROCKS,          CAVE_IRONSTONE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, CAVE_SHALE_ROCKS,               OverhaulConfiguredFeaturesProviderEntry.CAVE_SHALE_ROCKS,              CAVE_SHALE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, CAVE_ARKOSE_ROCKS,              OverhaulConfiguredFeaturesProviderEntry.CAVE_ARKOSE_ROCKS,             CAVE_ARKOSE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, CAVE_MARBLE_ROCKS,              OverhaulConfiguredFeaturesProviderEntry.CAVE_MARBLE_ROCKS,             CAVE_MARBLE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, CAVE_QUARTZITE_ROCKS,           OverhaulConfiguredFeaturesProviderEntry.CAVE_QUARTZITE_ROCKS,          CAVE_QUARTZITE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, CAVE_HORNFELS_ROCKS,            OverhaulConfiguredFeaturesProviderEntry.CAVE_HORNFELS_ROCKS,           CAVE_HORNFELS_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, CAVE_SLATE_ROCKS,               OverhaulConfiguredFeaturesProviderEntry.CAVE_SLATE_ROCKS,              CAVE_SLATE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, CAVE_GABBRO_ROCKS,              OverhaulConfiguredFeaturesProviderEntry.CAVE_GABBRO_ROCKS,             CAVE_GABBRO_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, CAVE_SMOOTH_DIORITE_ROCKS,      OverhaulConfiguredFeaturesProviderEntry.CAVE_SMOOTH_DIORITE_ROCKS,     CAVE_SMOOTH_DIORITE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, CAVE_SMOOTH_GRANITE_ROCKS,      OverhaulConfiguredFeaturesProviderEntry.CAVE_SMOOTH_GRANITE_ROCKS,     CAVE_SMOOTH_GRANITE_ROCKS_PLACEMENT_RULES);
-        PlacementTools.register(context, CAVE_NORITE_ROCKS,              OverhaulConfiguredFeaturesProviderEntry.CAVE_NORITE_ROCKS,             CAVE_NORITE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, SURFACE_SAPROLITE_ROCKS,        OverhaulConfiguredFeaturesProviderEntry.SURFACE_SAPROLITE_ROCKS,       SURFACE_SAPROLITE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, SURFACE_LATERITE_ROCKS,         OverhaulConfiguredFeaturesProviderEntry.SURFACE_LATERITE_ROCKS,        SURFACE_LATERITE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, SURFACE_SILT_CLUMPS,            OverhaulConfiguredFeaturesProviderEntry.SURFACE_SILT_CLUMPS,           SURFACE_SILT_CLUMPS_PLACEMENT_RULES);
+        //PlacementTools.register(context, SURFACE_GREYWACKE_ROCKS,        OverhaulConfiguredFeaturesProviderEntry.SURFACE_GREYWACKE_ROCKS,       SURFACE_GREYWACKE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, SURFACE_SILTSTONE_ROCKS,        OverhaulConfiguredFeaturesProviderEntry.SURFACE_SILTSTONE_ROCKS,       SURFACE_SILTSTONE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, SURFACE_DOLOSTONE_ROCKS,        OverhaulConfiguredFeaturesProviderEntry.SURFACE_DOLOSTONE_ROCKS,       SURFACE_DOLOSTONE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, SURFACE_LIMESTONE_ROCKS,        OverhaulConfiguredFeaturesProviderEntry.SURFACE_LIMESTONE_ROCKS,       SURFACE_LIMESTONE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, SURFACE_IRONSTONE_ROCKS,        OverhaulConfiguredFeaturesProviderEntry.SURFACE_IRONSTONE_ROCKS,       SURFACE_IRONSTONE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, SURFACE_SHALE_ROCKS,            OverhaulConfiguredFeaturesProviderEntry.SURFACE_SHALE_ROCKS,           SURFACE_SHALE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, SURFACE_ARKOSE_ROCKS,           OverhaulConfiguredFeaturesProviderEntry.SURFACE_ARKOSE_ROCKS,          SURFACE_ARKOSE_ROCKS_PLACEMENT_RULES);
+        PlacementTools.register(context, SURFACE_ROCKS,         OverhaulConfiguredFeaturesProviderEntry.SURFACE_ROCKS,        SURFACE_REGOLITH_ROCKS_PLACEMENT_RULES);
+        PlacementTools.register(context, SURFACE_SEDIMENTARY_ROCKS,      OverhaulConfiguredFeaturesProviderEntry.SURFACE_SEDIMENTARY_ROCKS,     SURFACE_SEDIMENTARY_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, CAVE_GREYWACKE_ROCKS,           OverhaulConfiguredFeaturesProviderEntry.CAVE_GREYWACKE_ROCKS,          CAVE_GREYWACKE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, CAVE_SILTSTONE_ROCKS,           OverhaulConfiguredFeaturesProviderEntry.CAVE_SILTSTONE_ROCKS,          CAVE_SILTSTONE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, CAVE_DOLOSTONE_ROCKS,           OverhaulConfiguredFeaturesProviderEntry.CAVE_DOLOSTONE_ROCKS,          CAVE_DOLOSTONE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, CAVE_LIMESTONE_ROCKS,           OverhaulConfiguredFeaturesProviderEntry.CAVE_LIMESTONE_ROCKS,          CAVE_LIMESTONE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, CAVE_IRONSTONE_ROCKS,           OverhaulConfiguredFeaturesProviderEntry.CAVE_IRONSTONE_ROCKS,          CAVE_IRONSTONE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, CAVE_SHALE_ROCKS,               OverhaulConfiguredFeaturesProviderEntry.CAVE_SHALE_ROCKS,              CAVE_SHALE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, CAVE_ARKOSE_ROCKS,              OverhaulConfiguredFeaturesProviderEntry.CAVE_ARKOSE_ROCKS,             CAVE_ARKOSE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, CAVE_MARBLE_ROCKS,              OverhaulConfiguredFeaturesProviderEntry.CAVE_MARBLE_ROCKS,             CAVE_MARBLE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, CAVE_QUARTZITE_ROCKS,           OverhaulConfiguredFeaturesProviderEntry.CAVE_QUARTZITE_ROCKS,          CAVE_QUARTZITE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, CAVE_HORNFELS_ROCKS,            OverhaulConfiguredFeaturesProviderEntry.CAVE_HORNFELS_ROCKS,           CAVE_HORNFELS_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, CAVE_SLATE_ROCKS,               OverhaulConfiguredFeaturesProviderEntry.CAVE_SLATE_ROCKS,              CAVE_SLATE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, CAVE_GABBRO_ROCKS,              OverhaulConfiguredFeaturesProviderEntry.CAVE_GABBRO_ROCKS,             CAVE_GABBRO_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, CAVE_SMOOTH_DIORITE_ROCKS,      OverhaulConfiguredFeaturesProviderEntry.CAVE_SMOOTH_DIORITE_ROCKS,     CAVE_SMOOTH_DIORITE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, CAVE_SMOOTH_GRANITE_ROCKS,      OverhaulConfiguredFeaturesProviderEntry.CAVE_SMOOTH_GRANITE_ROCKS,     CAVE_SMOOTH_GRANITE_ROCKS_PLACEMENT_RULES);
+        //PlacementTools.register(context, CAVE_NORITE_ROCKS,              OverhaulConfiguredFeaturesProviderEntry.CAVE_NORITE_ROCKS,             CAVE_NORITE_ROCKS_PLACEMENT_RULES);
         //PlacementTools.register(context, CAVE_PERIDOTITE_ROCKS,          OverhaulConfiguredFeaturesProviderEntry.CAVE_PERIDOTITE_ROCKS,         CAVE_PERIDOTITE_ROCKS_PLACEMENT_RULES);
-
 
         //PlacementTools.register(context, CAVE_PERIDOTITE_ROCKS, OverhaulConfiguredFeaturesProviderEntry.CAVE_PERIDOTITE_ROCKS, );
 
-
-        // TODO, This should be based on the HM
-        HeightRangePlacement placement = HeightRangePlacement.uniform(VerticalAnchor.BOTTOM, VerticalAnchor.absolute(150));
+        // TO DO, This should be based on the HM
+        //HeightRangePlacement placement = HeightRangePlacement.uniform(VerticalAnchor.BOTTOM, VerticalAnchor.absolute(200));
         // Set range to o to hm
         // then use layerSelector to div it up
-        PlacementTools.register(context, CAVE_PERIDOTITE_ROCKS, OverhaulConfiguredFeaturesProviderEntry.DEBUG_FIND_LOWER,
-                PlacementTools.caveCellPlacement(30, 50, 1,
-                        WorldGenNoiseCatalog.NOISE_SETTINGS_DEEP_IGNEOUS_INTRUSIVE,
-                        WorldGenNoiseCatalog.VARIANTS_DEEP_IGNEOUS_INTRUSIVE.PERIDOTITE,
-                        placement
-                ));
+        //PlacementTools.register(context, CAVE_PERIDOTITE_ROCKS, OverhaulConfiguredFeaturesProviderEntry.DEBUG_CELL,
+        //        PlacementTools.caveCellPlacement(30, 100, 1,
+        //                WorldLayersRegistration.DEEP_IGNEOUS_INTRUSIVE.getKey(),
+        //                LayerCellRegistration.PERIDOTITE.getKey(),
+        //                placement
+        //        ));
+
+        //List<PlacementModifier> placementList = List.of(
+        //        // CellRarityFilter.onAverageOnceEvery(chance, cell, variant), // If we don't pass the filter of base pos, don't both with spamming checks
+        //        CountPlacement.of(UniformInt.of(30, 100)), // How many locations
+        //        InSquarePlacement.spread(),
+        //        HeightRangePlacement.uniform(VerticalAnchor.BOTTOM, VerticalAnchor.absolute(200)),
+//
+        //        BelowHeightmapFilter.belowHeightmap(Heightmap.Types.OCEAN_FLOOR_WG, 1),
+        //        //CountPlacement.of(UniformInt.of(1, 1)), // How many in a cluster
+        //        //RandomOffsetPlacement.of(
+        //        //        ClampedNormalInt.of(0.0F, 3.0F, -7, 7), // XZ spread
+        //        //        ClampedNormalInt.of(0.0F, 0.6F, -2, 2)), // Y spread
+//
+        //        BiomeFilter.biome()
+        //);
+
+        PlacementTools.register(context, CAVE_ROCKS, OverhaulConfiguredFeaturesProviderEntry.CAVE_ROCKS, CAVE_DECORATION_PLACEMENT_RULES);
     }
 }

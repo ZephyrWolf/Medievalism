@@ -1,35 +1,31 @@
 package io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Stream;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.github.zephyrwolf.medievalism.common.world.level.levelgen.synth.CellNoiseSettings;
-import io.github.zephyrwolf.medievalism.registration.world.level.WorldGenLayerCatalog;
+import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldLayerCell;
+import io.github.zephyrwolf.medievalism.common.world.level.layer.WorldLayer;
+import io.github.zephyrwolf.medievalism.registration.RegistryRegistration;
 import net.minecraft.core.Holder;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import org.jetbrains.annotations.NotNull;
 
-public class CellSelectorFeatureConfiguration implements FeatureConfiguration
+public record CellSelectorFeatureConfiguration(ResourceKey<WorldLayer> layer, Map<ResourceKey<WorldLayerCell>, Holder<PlacedFeature>> features) implements FeatureConfiguration
 {
     public static final MapCodec<CellSelectorFeatureConfiguration> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-            CelledPlacedFeature.CODEC.listOf().fieldOf("features").forGetter(CellSelectorFeatureConfiguration::getCelledFeatures),
-            CellNoiseSettings.CODEC.codec().fieldOf("settings").forGetter(selector -> selector.settings)
-    ).apply(instance, CellSelectorFeatureConfiguration::new));
-
-    public final Map<String, Holder<PlacedFeature>> features;
-    public final CellNoiseSettings settings;
+            ResourceKey.codec(RegistryRegistration.WORLD_LAYERS).fieldOf("layer").forGetter(CellSelectorFeatureConfiguration::layer),
+            CelledPlacedFeature.CODEC.listOf().fieldOf("features").forGetter(CellSelectorFeatureConfiguration::getCelledFeatures)
+    ).apply(instance, CellSelectorFeatureConfiguration::create));
 
     public List<CelledPlacedFeature> getCelledFeatures()
     {
         List<CelledPlacedFeature> featuresList = new ArrayList<>();
-        for (String cell : features.keySet())
+        for (ResourceKey<WorldLayerCell> cell : features.keySet())
         {
             Holder<PlacedFeature> feature = features.get(cell);
             if (feature != null) // I don't trust it
@@ -40,21 +36,24 @@ public class CellSelectorFeatureConfiguration implements FeatureConfiguration
         return featuresList;
     }
 
-    public CellSelectorFeatureConfiguration(List<CelledPlacedFeature> features, CellNoiseSettings settings)
+    public static CellSelectorFeatureConfiguration cells(ResourceKey<WorldLayer> layer, CelledPlacedFeature ... features)
     {
-        Map<String, Holder<PlacedFeature>> featuresMap = new HashMap<>();
-        for (CelledPlacedFeature feature : features)
-        {
-            featuresMap.put(feature.Cell, feature.Feature);
-        }
-        this.features = featuresMap;
-        this.settings = settings;
+        return create(layer, Arrays.stream(features).toList());
     }
 
-    public CellSelectorFeatureConfiguration(HashMap<String, Holder<PlacedFeature>> features, CellNoiseSettings settings)
+    public static CellSelectorFeatureConfiguration create(ResourceKey<WorldLayer> layer, List<CelledPlacedFeature> features)
     {
-        this.features = features;
-        this.settings = settings;
+        Map<ResourceKey<WorldLayerCell>, Holder<PlacedFeature>> featuresMap = new HashMap<>();
+        for (CelledPlacedFeature feature : features)
+        {
+            WorldLayerCell cell = RegistryRegistration.LAYER_CELLS_REGISTRY.getOrThrow(feature.cell());
+            if (layer != cell.layer())
+            {
+                throw new IllegalArgumentException("Cell '" + feature.cell() + "' cannot be grouped with layer '" + layer + "'.");
+            }
+            featuresMap.put(feature.cell(), feature.feature());
+        }
+        return new CellSelectorFeatureConfiguration(layer, featuresMap);
     }
 
     @Override

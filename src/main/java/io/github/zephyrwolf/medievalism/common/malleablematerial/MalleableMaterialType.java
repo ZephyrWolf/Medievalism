@@ -2,7 +2,6 @@ package io.github.zephyrwolf.medievalism.common.malleablematerial;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.registration.recipe.MalleableMaterialRegistration;
 import io.github.zephyrwolf.medievalism.registration.RegistryRegistration;
 import net.minecraft.core.Holder;
@@ -15,26 +14,13 @@ import java.util.Objects;
 
 public class MalleableMaterialType
 {
-    public static final Codec<Holder<MalleableMaterialType>> CODEC = // MapCodec.unit(MalleableMaterialType::create);
-            RegistryRegistration.MATERIALS_REGISTRY
-                    .holderByNameCodec()
-                    .validate(
-                            holder -> Objects.requireNonNull(holder.getKey()).location().equals(MedievalismConstants.resource("air"))
-                            ? DataResult.error(() -> "Material must not be medieval:air")
+    public static final Codec<Holder<MalleableMaterialType>> CODEC = RegistryRegistration.MALLEABLE_MATERIALS_REGISTRY.holderByNameCodec()
+            .validate(
+                    holder -> Objects.requireNonNull(holder.getKey()).equals(MalleableMaterialRegistration.AIR.getKey())
+                            ? DataResult.error(() -> "Malleable Material must not be " + MalleableMaterialRegistration.AIR.getId())
                             : DataResult.success(holder)
-                    );
+            );
     public static final StreamCodec<RegistryFriendlyByteBuf, Holder<MalleableMaterialType>> STREAM_CODEC = ByteBufCodecs.holderRegistry(MalleableMaterialRegistration.MATERIALS.getRegistryKey());
-
-    public Holder.Reference<MalleableMaterialType> builtInRegistryHolder()
-    {
-        var key = RegistryRegistration.MATERIALS_REGISTRY.getId(this);
-        var holder = RegistryRegistration.MATERIALS_REGISTRY.getHolder(key);
-        if (holder.isEmpty())
-        {
-            throw new IllegalStateException("Cannot locate holder for " + key);
-        }
-        return holder.get();
-    }
 
     // --
 

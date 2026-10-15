@@ -1,5 +1,5 @@
 {
-  "feature": "medievalism:cave_ironstone_rocks",
+  "feature": "medievalism:cave_rocks",
   "placement": [
     {
       "type": "minecraft:count",
@@ -13,8 +13,16 @@
       "type": "minecraft:in_square"
     },
     {
-      "type": "medievalism:layer",
-      "layer": "SEDIMENTARY"
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": {
+          "absolute": 200
+        },
+        "min_inclusive": {
+          "above_bottom": 0
+        }
+      }
     },
     {
       "type": "medievalism:below_heightmap",

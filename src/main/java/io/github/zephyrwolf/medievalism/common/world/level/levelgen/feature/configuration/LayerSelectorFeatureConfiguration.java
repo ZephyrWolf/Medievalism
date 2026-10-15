@@ -5,25 +5,24 @@ import java.util.stream.Stream;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.github.zephyrwolf.medievalism.registration.world.level.WorldGenLayerCatalog;
+import io.github.zephyrwolf.medievalism.common.world.level.layer.WorldLayer;
 import net.minecraft.core.Holder;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import org.jetbrains.annotations.NotNull;
 
-public class LayerSelectorFeatureConfiguration implements FeatureConfiguration
+public record LayerSelectorFeatureConfiguration(Map<ResourceKey<WorldLayer>, Holder<PlacedFeature>> features) implements FeatureConfiguration
 {
     public static final MapCodec<LayerSelectorFeatureConfiguration> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             LayeredPlacedFeature.CODEC.listOf().fieldOf("features").forGetter(LayerSelectorFeatureConfiguration::getLayeredFeatures)
-    ).apply(instance, LayerSelectorFeatureConfiguration::new));
-
-    public final Map<WorldGenLayerCatalog.WorldLayer, Holder<PlacedFeature>> features;
+    ).apply(instance, LayerSelectorFeatureConfiguration::create));
 
     public List<LayeredPlacedFeature> getLayeredFeatures()
     {
         List<LayeredPlacedFeature> featuresList = new ArrayList<>();
-        for (WorldGenLayerCatalog.WorldLayer layer : features.keySet())
+        for (ResourceKey<WorldLayer> layer : features.keySet())
         {
             Holder<PlacedFeature> feature = features.get(layer);
             if (feature != null) // I don't trust it
@@ -36,26 +35,21 @@ public class LayerSelectorFeatureConfiguration implements FeatureConfiguration
 
     public static LayerSelectorFeatureConfiguration layers(LayeredPlacedFeature ... features)
     {
-        return new LayerSelectorFeatureConfiguration(Arrays.stream(features).toList());
+        return create(Arrays.stream(features).toList());
     }
 
-    public LayerSelectorFeatureConfiguration(List<LayeredPlacedFeature> features)
+    public static LayerSelectorFeatureConfiguration create(List<LayeredPlacedFeature> features)
     {
-        Map<WorldGenLayerCatalog.WorldLayer, Holder<PlacedFeature>> featuresMap = new HashMap<>();
+        Map<ResourceKey<WorldLayer>, Holder<PlacedFeature>> featuresMap = new HashMap<>();
         for (LayeredPlacedFeature feature : features)
         {
-            if (featuresMap.containsKey(feature.Layer))
+            if (featuresMap.containsKey(feature.layer()))
             {
-                throw new IllegalArgumentException("Duplicate layer '"+feature.Layer.name()+"'on LayerSelectorFeatureConfiguration.");
+                throw new IllegalArgumentException("Duplicate layer '" + feature.layer() + "'on LayerSelectorFeatureConfiguration.");
             }
-            featuresMap.put(feature.Layer, feature.Feature);
+            featuresMap.put(feature.layer(), feature.feature());
         }
-        this.features = featuresMap;
-    }
-
-    public LayerSelectorFeatureConfiguration(HashMap<WorldGenLayerCatalog.WorldLayer, Holder<PlacedFeature>> features)
-    {
-        this.features = features;
+        return new LayerSelectorFeatureConfiguration(featuresMap);
     }
 
     @Override

@@ -4,58 +4,40 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.common.world.level.levelgen.synth.CellNoise;
-import io.github.zephyrwolf.medievalism.common.world.level.levelgen.synth.CellNoiseSettings;
-import io.github.zephyrwolf.medievalism.common.world.level.levelgen.synth.CellVariant;
+import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldLayerCell;
+import io.github.zephyrwolf.medievalism.common.world.level.layer.WorldLayer;
+import io.github.zephyrwolf.medievalism.registration.RegistryRegistration;
 import io.github.zephyrwolf.medievalism.registration.world.level.PlacementModifierRegistration;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.levelgen.RandomState;
 import net.minecraft.world.level.levelgen.placement.PlacementContext;
 import net.minecraft.world.level.levelgen.placement.PlacementFilter;
 import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import org.jetbrains.annotations.NotNull;
 
+@Deprecated
 public class CellRarityFilter extends PlacementFilter
 {
-    public static <E extends Enum<E>> CellRarityFilter onAverageOnceEvery(int chance, CellNoiseSettings noiseSettings, E e)
-    {
-        return onAverageOnceEvery(chance, noiseSettings, MedievalismConstants.MOD_ID, e);
-    }
-
-    public static <E extends Enum<E>> CellRarityFilter onAverageOnceEvery(int chance, CellNoiseSettings noiseSettings, String modid, E e)
-    {
-        return onAverageOnceEvery(chance, noiseSettings, CellVariant.getName(modid, e));
-    }
-
-    public static CellRarityFilter onAverageOnceEvery(int chance, CellNoiseSettings noiseSettings, ResourceLocation name)
-    {
-        return new CellRarityFilter(chance, noiseSettings, noiseSettings.getOrdinal(name));
-    }
-
     public static final MapCodec<CellRarityFilter> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             Codec.INT.fieldOf( "chance").forGetter(placement -> placement.chance),
-            CellNoiseSettings.CODEC.codec().fieldOf("cell").forGetter(placement -> placement.settings),
-            Codec.INT.fieldOf( "target_variant").forGetter(placement -> placement.targetVariant)
+            ResourceKey.codec(RegistryRegistration.WORLD_LAYERS).fieldOf("layer").forGetter(placement -> placement.layer),
+            ResourceKey.codec(RegistryRegistration.LAYER_CELLS).fieldOf("variant").forGetter(placement -> placement.variant)
     ).apply(instance, CellRarityFilter::new));
 
     @Override
     public @NotNull PlacementModifierType<?> type() { return PlacementModifierRegistration.CELL.get(); }
 
-    // --
-
     int chance;
-    private final CellNoiseSettings settings;
-    private final int targetVariant;
+    ResourceKey<WorldLayer> layer;
+    ResourceKey<WorldLayerCell> variant;
 
-    private CellRarityFilter(int chance, CellNoiseSettings cell, int targetVariant)
+    public CellRarityFilter(int chance, ResourceKey<WorldLayer> layer, ResourceKey<WorldLayerCell> variant)
     {
         this.chance = chance;
-        this.settings = cell;
-        this.targetVariant = targetVariant;
+        this.layer = layer;
+        this.variant = variant;
     }
 
     @Override
@@ -66,8 +48,7 @@ public class CellRarityFilter extends PlacementFilter
             return false;
         } // Process the above first to save the expensive check below
         RandomState randomState = pContext.getLevel().getLevel().getChunkSource().randomState();
-        NormalNoise noise = randomState.getOrCreateNoise(settings.noiseKey());
-        int stoneVariant = CellNoise.noise(settings, noise, pPos);
-        return stoneVariant == targetVariant;
+        ResourceKey<WorldLayerCell> variant = WorldLayer.getCellAt(randomState, pPos, layer);
+        return this.variant == variant;
     }
 }

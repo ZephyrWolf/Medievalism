@@ -1,6 +1,6 @@
 {
   "type": "neoforge:add_features",
   "biomes": "#minecraft:is_overworld",
-  "features": "medievalism:cave_peridotite_rocks",
+  "features": "medievalism:cave_rocks",
   "step": "underground_decoration"
 }

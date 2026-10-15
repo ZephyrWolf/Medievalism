@@ -1,8 +1,9 @@
 package io.github.zephyrwolf.medievalism.common.world.level.levelgen;
 
+import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldLayerCell;
+import io.github.zephyrwolf.medievalism.common.world.level.layer.WorldLayer;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.placement.BelowHeightmapFilter;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.placement.CellRarityFilter;
-import io.github.zephyrwolf.medievalism.common.world.level.levelgen.synth.CellNoiseSettings;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -12,6 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ClampedNormalInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 
@@ -107,12 +109,30 @@ public final class PlacementTools
                 BiomeFilter.biome());
     }
 
-    public static <E extends Enum<E>> List<PlacementModifier> surfaceCellPlacement(int minCount, int maxCount, int chance, CellNoiseSettings cell, E variant)
+    public static List<PlacementModifier> cavePlacement(int minCount, int maxCount, int chance)
+    {
+        return cavePlacement(minCount, maxCount, chance, VerticalAnchor.BOTTOM, VerticalAnchor.TOP);
+    }
+
+    public static List<PlacementModifier> cavePlacement(int minCount, int maxCount, int chance, VerticalAnchor lowerAnchor, VerticalAnchor upperAnchor)
+    {
+        return List.of(
+                CountPlacement.of(UniformInt.of(minCount, maxCount)), // How many locations
+                InSquarePlacement.spread(),
+                RarityFilter.onAverageOnceEvery(chance),
+                HeightRangePlacement.uniform(lowerAnchor, upperAnchor),
+                BelowHeightmapFilter.belowHeightmap(Heightmap.Types.OCEAN_FLOOR_WG, 1),
+                BiomeFilter.biome()
+        );
+    }
+
+    @Deprecated
+    public static <E extends Enum<E>> List<PlacementModifier> surfaceCellPlacement(int minCount, int maxCount, int chance, ResourceKey<WorldLayer> layer, ResourceKey<WorldLayerCell> cell)
     {
         return List.of(
                 CountPlacement.of(UniformInt.of(minCount, maxCount)),
                 InSquarePlacement.spread(),
-                CellRarityFilter.onAverageOnceEvery(chance, cell, variant),
+                new CellRarityFilter(chance, layer, cell),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG), // WORLD_SURFACE_WG -- WATER LEVEL
                 BiomeFilter.biome());
     }
@@ -128,7 +148,8 @@ public final class PlacementTools
                 BiomeFilter.biome());
     }
 
-    public static <E extends Enum<E>> List<PlacementModifier> caveCellPlacement(int minCount, int maxCount, int chance, CellNoiseSettings cell, E variant, PlacementModifier heightRangePlacement)
+    @Deprecated
+    public static <E extends Enum<E>> List<PlacementModifier> caveCellPlacement(int minCount, int maxCount, int chance, ResourceKey<WorldLayer> layer, ResourceKey<WorldLayerCell> variant, PlacementModifier heightRangePlacement)
     {
         /*
         return List.of(

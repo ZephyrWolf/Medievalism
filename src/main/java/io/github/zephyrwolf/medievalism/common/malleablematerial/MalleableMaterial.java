@@ -27,7 +27,7 @@ public record MalleableMaterial(MalleableMaterialType materialType, int rows, in
 {
     public static final MapCodec<MalleableMaterial> CODEC =
             RecordCodecBuilder.mapCodec(inst -> inst.group(
-                    MalleableMaterialType.CODEC.fieldOf("materialType").forGetter(MalleableMaterial::getMaterialHolder),
+                    MalleableMaterialType.CODEC.fieldOf("material_type").forGetter(MalleableMaterial::getMaterialHolder),
                     ExtraCodecs.intRange(1, 9).fieldOf("rows").orElse(1).forGetter(MalleableMaterial::rows),
                     ExtraCodecs.intRange(1, 9).fieldOf("cols").orElse(1).forGetter(MalleableMaterial::cols),
                     Codec.BOOL.listOf().fieldOf("pattern").forGetter(MalleableMaterial::pattern)
@@ -93,7 +93,7 @@ public record MalleableMaterial(MalleableMaterialType materialType, int rows, in
     {
         String strResource = tag.getString("materialType");
         ResourceLocation location = ResourceLocation.bySeparator(strResource, ':');
-        MalleableMaterialType type = RegistryRegistration.MATERIALS_REGISTRY.get(location);
+        MalleableMaterialType type = RegistryRegistration.MALLEABLE_MATERIALS_REGISTRY.get(location);
         if (type == null) return null;
         int rows = tag.getInt("rows");
         int cols = tag.getInt("cols");
@@ -111,10 +111,7 @@ public record MalleableMaterial(MalleableMaterialType materialType, int rows, in
         return new MalleableMaterial(materialType, rows, cols, new ArrayList<>(pattern));
     }
 
-    public Holder<MalleableMaterialType> getMaterialHolder()
-    {
-        return this.materialType().builtInRegistryHolder();
-    }
+    public Holder<MalleableMaterialType> getMaterialHolder() { return RegistryRegistration.lookupRegistryHolder(RegistryRegistration.MALLEABLE_MATERIALS_REGISTRY, materialType);  }
 
     public boolean is(MalleableMaterialType pMaterial) { return materialType() == pMaterial; }
 
