@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism.data.overhauldata.worldgen.level;
 
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.anchor.AwareVerticalAnchor;
-import io.github.zephyrwolf.medievalism.common.world.level.levelgen.conditionsource.AwareConditionSources;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.ConditionTools;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.conditionsource.CellConditionSource;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.conditionsource.HeightmapRangeConditionSource;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
@@ -67,9 +67,9 @@ public final class OverhaulVanillaLevelStoneGeneration
         SurfaceRules.RuleSource modifiedSurfaceRule = SurfaceRules.sequence(
                 strippedParent,
                 SurfaceRules.ifTrue( // Try Ashfall
-                        AwareConditionSources.verticalRange(WorldGenLayerConstants.MIN_ASHFALL, WorldGenLayerConstants.MAX_ASHFALL),
+                        ConditionTools.verticalRange(WorldGenLayerConstants.MIN_ASHFALL, WorldGenLayerConstants.MAX_ASHFALL),
                         SurfaceRules.ifTrue(
-                                AwareConditionSources.upperVerticalGradient(
+                                ConditionTools.upperVerticalGradient(
                                         "medievalism:ashfall",
                                         AwareVerticalAnchor.heightMap(-WorldGenLayerConstants.DEPTH_SURFACE_ASHFALL),
                                         WorldGenLayerConstants.TRANSITION_THICKNESS_ASHFALL
@@ -95,9 +95,9 @@ public final class OverhaulVanillaLevelStoneGeneration
                         )
                 ),
                 SurfaceRules.ifTrue( // Try Regolith
-                        AwareConditionSources.verticalRange(WorldGenLayerConstants.MIN_REGOLITH, WorldGenLayerConstants.MAX_REGOLITH),
+                        ConditionTools.verticalRange(WorldGenLayerConstants.MIN_REGOLITH, WorldGenLayerConstants.MAX_REGOLITH),
                         SurfaceRules.ifTrue(
-                                AwareConditionSources.upperVerticalGradient(
+                                ConditionTools.upperVerticalGradient(
                                         "medievalism:regolith",
                                         AwareVerticalAnchor.heightMap(-WorldGenLayerConstants.DEPTH_SURFACE_REGOLITH),
                                         WorldGenLayerConstants.TRANSITION_THICKNESS_REGOLITH
@@ -119,7 +119,7 @@ public final class OverhaulVanillaLevelStoneGeneration
                         )
                 ),
                 SurfaceRules.ifTrue( // Try Deep Igneous Intrusive
-                        AwareConditionSources.lowerVerticalGradient(
+                        ConditionTools.lowerVerticalGradient(
                                 "medievalism:deep_igneous_intrusive",
                                 AwareVerticalAnchor.worldLayer(
                                         WorldGenLayerConstants.MIN_DEEP_IGNEOUS_INTRUSIVE,
@@ -143,7 +143,7 @@ public final class OverhaulVanillaLevelStoneGeneration
                         )
                 ),
                 SurfaceRules.ifTrue( // Try Igneous Intrusive
-                        AwareConditionSources.lowerVerticalGradient(
+                        ConditionTools.lowerVerticalGradient(
                                 "medievalism:igneous_intrusive",
                                 AwareVerticalAnchor.worldLayer(
                                         WorldGenLayerConstants.MIN_IGNEOUS_INTRUSIVE,
@@ -170,9 +170,9 @@ public final class OverhaulVanillaLevelStoneGeneration
                         )
                 ),
                 SurfaceRules.ifTrue( // Try Metamorphic & Hard Extrusive Igneous
-                        AwareConditionSources.verticalRange(WorldGenLayerConstants.MIN_METAMORPHIC, WorldGenLayerConstants.MAX_METAMORPHIC),
+                        ConditionTools.verticalRange(WorldGenLayerConstants.MIN_METAMORPHIC, WorldGenLayerConstants.MAX_METAMORPHIC),
                         SurfaceRules.ifTrue(
-                                AwareConditionSources.lowerVerticalGradient(
+                                ConditionTools.lowerVerticalGradient(
                                         "medievalism:metamorphic",
                                         AwareVerticalAnchor.worldLayer(
                                                 WorldGenLayerConstants.MIN_METAMORPHIC,
@@ -190,7 +190,7 @@ public final class OverhaulVanillaLevelStoneGeneration
                                                         WorldGenLayerConstants.MAX_HEIGHTMAP_HARD_IGNEOUS_EXTRUSIVE
                                                 ),
                                                 SurfaceRules.ifTrue(
-                                                        AwareConditionSources.upperVerticalGradient( // Gradient comes from medievalism:metamorphic parent
+                                                        ConditionTools.upperVerticalGradient( // Gradient comes from medievalism:metamorphic parent
                                                                 "medievalism:hard_igneous_extrusive",
                                                                 AwareVerticalAnchor.inverseBell(
                                                                         WorldGenLayerConstants.DATUM_HARD_IGNEOUS_EXTRUSIVE,
@@ -231,7 +231,7 @@ public final class OverhaulVanillaLevelStoneGeneration
                         )
                 ),
                 SurfaceRules.ifTrue( // Try Metamorphic & Hard Extrusive Igneous
-                        AwareConditionSources.verticalRange(WorldGenLayerConstants.MIN_SEDIMENTARY, WorldGenLayerConstants.MAX_SEDIMENTARY),
+                        ConditionTools.verticalRange(WorldGenLayerConstants.MIN_SEDIMENTARY, WorldGenLayerConstants.MAX_SEDIMENTARY),
                         SurfaceRules.sequence( // Try Sedimentary & Soft extrusive igneous
                                 SurfaceRules.ifTrue(
                                         HeightmapRangeConditionSource.within(
@@ -239,7 +239,7 @@ public final class OverhaulVanillaLevelStoneGeneration
                                                 WorldGenLayerConstants.MAX_HEIGHTMAP_SOFT_IGNEOUS_EXTRUSIVE
                                         ),
                                         SurfaceRules.ifTrue(
-                                                AwareConditionSources.upperVerticalGradient(
+                                                ConditionTools.upperVerticalGradient(
                                                         "medievalism:soft_igneous_extrusive",
                                                         AwareVerticalAnchor.inverseBell(
                                                                 WorldGenLayerConstants.DATUM_SOFT_IGNEOUS_EXTRUSIVE,

@@ -66,17 +66,6 @@ public final class OverhaulConfiguredFeaturesProviderEntry
     // ROCKS
     public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SANDSTONE_ROCKS =              BaseConfiguredFeaturesProviderEntry.SURFACE_SANDSTONE_ROCKS;
     public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_RED_SANDSTONE_ROCKS =          BaseConfiguredFeaturesProviderEntry.SURFACE_RED_SANDSTONE_ROCKS;
-    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SAPROLITE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_saprolite_rocks"));
-    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_LATERITE_ROCKS =               FeatureTools.registerKey(MedievalismConstants.resource("surface_laterite_rocks"));
-    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SILT_CLUMPS =                  FeatureTools.registerKey(MedievalismConstants.resource("surface_silt_clumps"));
-    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_GREYWACKE_ROCKS =              BaseConfiguredFeaturesProviderEntry.SURFACE_GREYWACKE_ROCKS;
-    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SILTSTONE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_siltstone_rocks"));
-    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_DOLOSTONE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_dolostone_rocks"));
-    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_LIMESTONE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_limestone_rocks"));
-    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_IRONSTONE_ROCKS =              FeatureTools.registerKey(MedievalismConstants.resource("surface_ironstone_rocks"));
-    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SHALE_ROCKS =                  FeatureTools.registerKey(MedievalismConstants.resource("surface_shale_rocks"));
-    //public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_ARKOSE_ROCKS =                 FeatureTools.registerKey(MedievalismConstants.resource("surface_arkose_rocks"));
-
     public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_ROCKS =                        BaseConfiguredFeaturesProviderEntry.SURFACE_ROCKS;
     public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SEDIMENTARY_ROCKS =            FeatureTools.registerKey(MedievalismConstants.resource("surface_sedimentary_rocks"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_ROCKS =                           BaseConfiguredFeaturesProviderEntry.CAVE_ROCKS;
@@ -161,10 +150,8 @@ public final class OverhaulConfiguredFeaturesProviderEntry
                 OreConfiguration.target(quartziteOreReplaceables, BlockRegistration.QUARTZITE_COPPER_ORE.get().defaultBlockState()),
                 OreConfiguration.target(hornfelsOreReplaceables, BlockRegistration.HORNFELS_COPPER_ORE.get().defaultBlockState()),
                 OreConfiguration.target(slateOreReplaceables, BlockRegistration.SLATE_COPPER_ORE.get().defaultBlockState())
-                //OreConfiguration.target(deepslateOreReplaceables, Blocks.DEEPSLATE_COPPER_ORE.defaultBlockState())
         );
         List<OreConfiguration.TargetBlockState> ironOres = List.of(
-                //OreConfiguration.target(stoneOreReplaceables, Blocks.IRON_ORE.defaultBlockState()),
                 // Igneous
                 OreConfiguration.target(gabbroOreReplaceables, BlockRegistration.GABBRO_IRON_ORE.get().defaultBlockState()),
                 OreConfiguration.target(smoothDioriteOreReplaceables, BlockRegistration.SMOOTH_DIORITE_IRON_ORE.get().defaultBlockState()),
@@ -201,7 +188,6 @@ public final class OverhaulConfiguredFeaturesProviderEntry
                 OreConfiguration.target(basaltOreReplaceables, BlockRegistration.BASALT_GOLD_ORE.get().defaultBlockState())
         );
         List<OreConfiguration.TargetBlockState> coalOres = List.of(
-                //OreConfiguration.target(deepslateOreReplaceables, Blocks.DEEPSLATE_COAL_ORE.defaultBlockState()),
                 // Metamorphic -> Regolith
                 OreConfiguration.target(saproliteOreReplaceables, BlockRegistration.SAPROLITE_COAL_ORE.get().defaultBlockState()),
                 OreConfiguration.target(lateriteOreReplaceables, BlockRegistration.LATERITE_COAL_ORE.get().defaultBlockState()),
@@ -230,7 +216,6 @@ public final class OverhaulConfiguredFeaturesProviderEntry
                 OreConfiguration.target(basaltOreReplaceables, BlockRegistration.BASALT_DIAMOND_ORE.get().defaultBlockState())
         );
         List<OreConfiguration.TargetBlockState> emeraldOres = List.of(
-                //OreConfiguration.target(stoneOreReplaceables, Blocks.EMERALD_ORE.defaultBlockState()),
                 // Igneous Intrusive -> Igneous Extrusive
                 OreConfiguration.target(gabbroOreReplaceables, BlockRegistration.GABBRO_EMERALD_ORE.get().defaultBlockState()),
                 OreConfiguration.target(smoothDioriteOreReplaceables, BlockRegistration.SMOOTH_DIORITE_EMERALD_ORE.get().defaultBlockState()),
@@ -243,8 +228,6 @@ public final class OverhaulConfiguredFeaturesProviderEntry
                 OreConfiguration.target(basaltOreReplaceables, BlockRegistration.BASALT_EMERALD_ORE.get().defaultBlockState())
         );
         List<OreConfiguration.TargetBlockState> lapisOres = List.of(
-                //OreConfiguration.target(stoneOreReplaceables, Blocks.LAPIS_ORE.defaultBlockState()),
-                //OreConfiguration.target(deepslateOreReplaceables, Blocks.DEEPSLATE_LAPIS_ORE.defaultBlockState()),
                 // Metamorphic
                 OreConfiguration.target(marbleOreReplaceables, BlockRegistration.MARBLE_LAPIS_ORE.get().defaultBlockState()),
                 OreConfiguration.target(quartziteOreReplaceables, BlockRegistration.QUARTZITE_LAPIS_ORE.get().defaultBlockState()),
@@ -252,7 +235,6 @@ public final class OverhaulConfiguredFeaturesProviderEntry
                 OreConfiguration.target(slateOreReplaceables, BlockRegistration.SLATE_LAPIS_ORE.get().defaultBlockState())
         );
         List<OreConfiguration.TargetBlockState> redstoneOres = List.of(
-                //OreConfiguration.target(stoneOreReplaceables, Blocks.REDSTONE_ORE.defaultBlockState()),
                 // Igneous Intrusive
                 OreConfiguration.target(gabbroOreReplaceables, BlockRegistration.GABBRO_REDSTONE_ORE.get().defaultBlockState()),
                 OreConfiguration.target(smoothDioriteOreReplaceables, BlockRegistration.SMOOTH_DIORITE_REDSTONE_ORE.get().defaultBlockState()),

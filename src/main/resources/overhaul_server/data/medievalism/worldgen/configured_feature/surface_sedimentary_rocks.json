@@ -4,6 +4,111 @@
     "cell_region_map": "medievalism:overworld_sedimentary",
     "features": [
       {
+        "cell": "medievalism:ironstone",
+        "feature": {
+          "feature": {
+            "type": "minecraft:random_patch",
+            "config": {
+              "feature": {
+                "feature": {
+                  "type": "minecraft:random_selector",
+                  "config": {
+                    "default": {
+                      "feature": {
+                        "type": "minecraft:simple_block",
+                        "config": {
+                          "to_place": {
+                            "type": "minecraft:simple_state_provider",
+                            "state": {
+                              "Name": "medievalism:ironstone_rock",
+                              "Properties": {
+                                "waterlogged": "false"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "placement": [
+                        {
+                          "type": "minecraft:block_predicate_filter",
+                          "predicate": {
+                            "type": "minecraft:matching_blocks",
+                            "blocks": "minecraft:air"
+                          }
+                        }
+                      ]
+                    },
+                    "features": [
+                      {
+                        "chance": 0.3,
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:simple_block",
+                            "config": {
+                              "to_place": {
+                                "type": "minecraft:simple_state_provider",
+                                "state": {
+                                  "Name": "medievalism:large_ironstone_rock",
+                                  "Properties": {
+                                    "waterlogged": "false"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "placement": [
+                            {
+                              "type": "minecraft:block_predicate_filter",
+                              "predicate": {
+                                "type": "minecraft:matching_blocks",
+                                "blocks": "minecraft:air"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "chance": 0.25,
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:simple_block",
+                            "config": {
+                              "to_place": {
+                                "type": "minecraft:simple_state_provider",
+                                "state": {
+                                  "Name": "medievalism:ironstone_rock_copper_ore",
+                                  "Properties": {
+                                    "waterlogged": "false"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "placement": [
+                            {
+                              "type": "minecraft:block_predicate_filter",
+                              "predicate": {
+                                "type": "minecraft:matching_blocks",
+                                "blocks": "minecraft:air"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                "placement": []
+              },
+              "tries": 2,
+              "xz_spread": 3,
+              "y_spread": 0
+            }
+          },
+          "placement": []
+        }
+      },
+      {
         "cell": "medievalism:arkose",
         "feature": {
           "feature": {
@@ -77,426 +182,6 @@
                                 "type": "minecraft:simple_state_provider",
                                 "state": {
                                   "Name": "medievalism:arkose_rock_copper_ore",
-                                  "Properties": {
-                                    "waterlogged": "false"
-                                  }
-                                }
-                              }
-                            }
-                          },
-                          "placement": [
-                            {
-                              "type": "minecraft:block_predicate_filter",
-                              "predicate": {
-                                "type": "minecraft:matching_blocks",
-                                "blocks": "minecraft:air"
-                              }
-                            }
-                          ]
-                        }
-                      }
-                    ]
-                  }
-                },
-                "placement": []
-              },
-              "tries": 2,
-              "xz_spread": 3,
-              "y_spread": 0
-            }
-          },
-          "placement": []
-        }
-      },
-      {
-        "cell": "medievalism:siltstone",
-        "feature": {
-          "feature": {
-            "type": "minecraft:random_patch",
-            "config": {
-              "feature": {
-                "feature": {
-                  "type": "minecraft:random_selector",
-                  "config": {
-                    "default": {
-                      "feature": {
-                        "type": "minecraft:simple_block",
-                        "config": {
-                          "to_place": {
-                            "type": "minecraft:simple_state_provider",
-                            "state": {
-                              "Name": "medievalism:siltstone_rock",
-                              "Properties": {
-                                "waterlogged": "false"
-                              }
-                            }
-                          }
-                        }
-                      },
-                      "placement": [
-                        {
-                          "type": "minecraft:block_predicate_filter",
-                          "predicate": {
-                            "type": "minecraft:matching_blocks",
-                            "blocks": "minecraft:air"
-                          }
-                        }
-                      ]
-                    },
-                    "features": [
-                      {
-                        "chance": 0.3,
-                        "feature": {
-                          "feature": {
-                            "type": "minecraft:simple_block",
-                            "config": {
-                              "to_place": {
-                                "type": "minecraft:simple_state_provider",
-                                "state": {
-                                  "Name": "medievalism:large_siltstone_rock",
-                                  "Properties": {
-                                    "waterlogged": "false"
-                                  }
-                                }
-                              }
-                            }
-                          },
-                          "placement": [
-                            {
-                              "type": "minecraft:block_predicate_filter",
-                              "predicate": {
-                                "type": "minecraft:matching_blocks",
-                                "blocks": "minecraft:air"
-                              }
-                            }
-                          ]
-                        }
-                      },
-                      {
-                        "chance": 0.25,
-                        "feature": {
-                          "feature": {
-                            "type": "minecraft:simple_block",
-                            "config": {
-                              "to_place": {
-                                "type": "minecraft:simple_state_provider",
-                                "state": {
-                                  "Name": "medievalism:siltstone_rock_copper_ore",
-                                  "Properties": {
-                                    "waterlogged": "false"
-                                  }
-                                }
-                              }
-                            }
-                          },
-                          "placement": [
-                            {
-                              "type": "minecraft:block_predicate_filter",
-                              "predicate": {
-                                "type": "minecraft:matching_blocks",
-                                "blocks": "minecraft:air"
-                              }
-                            }
-                          ]
-                        }
-                      }
-                    ]
-                  }
-                },
-                "placement": []
-              },
-              "tries": 2,
-              "xz_spread": 3,
-              "y_spread": 0
-            }
-          },
-          "placement": []
-        }
-      },
-      {
-        "cell": "medievalism:limestone",
-        "feature": {
-          "feature": {
-            "type": "minecraft:random_patch",
-            "config": {
-              "feature": {
-                "feature": {
-                  "type": "minecraft:random_selector",
-                  "config": {
-                    "default": {
-                      "feature": {
-                        "type": "minecraft:simple_block",
-                        "config": {
-                          "to_place": {
-                            "type": "minecraft:simple_state_provider",
-                            "state": {
-                              "Name": "medievalism:limestone_rock",
-                              "Properties": {
-                                "waterlogged": "false"
-                              }
-                            }
-                          }
-                        }
-                      },
-                      "placement": [
-                        {
-                          "type": "minecraft:block_predicate_filter",
-                          "predicate": {
-                            "type": "minecraft:matching_blocks",
-                            "blocks": "minecraft:air"
-                          }
-                        }
-                      ]
-                    },
-                    "features": [
-                      {
-                        "chance": 0.3,
-                        "feature": {
-                          "feature": {
-                            "type": "minecraft:simple_block",
-                            "config": {
-                              "to_place": {
-                                "type": "minecraft:simple_state_provider",
-                                "state": {
-                                  "Name": "medievalism:large_limestone_rock",
-                                  "Properties": {
-                                    "waterlogged": "false"
-                                  }
-                                }
-                              }
-                            }
-                          },
-                          "placement": [
-                            {
-                              "type": "minecraft:block_predicate_filter",
-                              "predicate": {
-                                "type": "minecraft:matching_blocks",
-                                "blocks": "minecraft:air"
-                              }
-                            }
-                          ]
-                        }
-                      },
-                      {
-                        "chance": 0.25,
-                        "feature": {
-                          "feature": {
-                            "type": "minecraft:simple_block",
-                            "config": {
-                              "to_place": {
-                                "type": "minecraft:simple_state_provider",
-                                "state": {
-                                  "Name": "medievalism:limestone_rock_copper_ore",
-                                  "Properties": {
-                                    "waterlogged": "false"
-                                  }
-                                }
-                              }
-                            }
-                          },
-                          "placement": [
-                            {
-                              "type": "minecraft:block_predicate_filter",
-                              "predicate": {
-                                "type": "minecraft:matching_blocks",
-                                "blocks": "minecraft:air"
-                              }
-                            }
-                          ]
-                        }
-                      }
-                    ]
-                  }
-                },
-                "placement": []
-              },
-              "tries": 2,
-              "xz_spread": 3,
-              "y_spread": 0
-            }
-          },
-          "placement": []
-        }
-      },
-      {
-        "cell": "medievalism:dolostone",
-        "feature": {
-          "feature": {
-            "type": "minecraft:random_patch",
-            "config": {
-              "feature": {
-                "feature": {
-                  "type": "minecraft:random_selector",
-                  "config": {
-                    "default": {
-                      "feature": {
-                        "type": "minecraft:simple_block",
-                        "config": {
-                          "to_place": {
-                            "type": "minecraft:simple_state_provider",
-                            "state": {
-                              "Name": "medievalism:dolostone_rock",
-                              "Properties": {
-                                "waterlogged": "false"
-                              }
-                            }
-                          }
-                        }
-                      },
-                      "placement": [
-                        {
-                          "type": "minecraft:block_predicate_filter",
-                          "predicate": {
-                            "type": "minecraft:matching_blocks",
-                            "blocks": "minecraft:air"
-                          }
-                        }
-                      ]
-                    },
-                    "features": [
-                      {
-                        "chance": 0.3,
-                        "feature": {
-                          "feature": {
-                            "type": "minecraft:simple_block",
-                            "config": {
-                              "to_place": {
-                                "type": "minecraft:simple_state_provider",
-                                "state": {
-                                  "Name": "medievalism:large_dolostone_rock",
-                                  "Properties": {
-                                    "waterlogged": "false"
-                                  }
-                                }
-                              }
-                            }
-                          },
-                          "placement": [
-                            {
-                              "type": "minecraft:block_predicate_filter",
-                              "predicate": {
-                                "type": "minecraft:matching_blocks",
-                                "blocks": "minecraft:air"
-                              }
-                            }
-                          ]
-                        }
-                      },
-                      {
-                        "chance": 0.25,
-                        "feature": {
-                          "feature": {
-                            "type": "minecraft:simple_block",
-                            "config": {
-                              "to_place": {
-                                "type": "minecraft:simple_state_provider",
-                                "state": {
-                                  "Name": "medievalism:dolostone_rock_copper_ore",
-                                  "Properties": {
-                                    "waterlogged": "false"
-                                  }
-                                }
-                              }
-                            }
-                          },
-                          "placement": [
-                            {
-                              "type": "minecraft:block_predicate_filter",
-                              "predicate": {
-                                "type": "minecraft:matching_blocks",
-                                "blocks": "minecraft:air"
-                              }
-                            }
-                          ]
-                        }
-                      }
-                    ]
-                  }
-                },
-                "placement": []
-              },
-              "tries": 2,
-              "xz_spread": 3,
-              "y_spread": 0
-            }
-          },
-          "placement": []
-        }
-      },
-      {
-        "cell": "medievalism:shale",
-        "feature": {
-          "feature": {
-            "type": "minecraft:random_patch",
-            "config": {
-              "feature": {
-                "feature": {
-                  "type": "minecraft:random_selector",
-                  "config": {
-                    "default": {
-                      "feature": {
-                        "type": "minecraft:simple_block",
-                        "config": {
-                          "to_place": {
-                            "type": "minecraft:simple_state_provider",
-                            "state": {
-                              "Name": "medievalism:shale_rock",
-                              "Properties": {
-                                "waterlogged": "false"
-                              }
-                            }
-                          }
-                        }
-                      },
-                      "placement": [
-                        {
-                          "type": "minecraft:block_predicate_filter",
-                          "predicate": {
-                            "type": "minecraft:matching_blocks",
-                            "blocks": "minecraft:air"
-                          }
-                        }
-                      ]
-                    },
-                    "features": [
-                      {
-                        "chance": 0.3,
-                        "feature": {
-                          "feature": {
-                            "type": "minecraft:simple_block",
-                            "config": {
-                              "to_place": {
-                                "type": "minecraft:simple_state_provider",
-                                "state": {
-                                  "Name": "medievalism:large_shale_rock",
-                                  "Properties": {
-                                    "waterlogged": "false"
-                                  }
-                                }
-                              }
-                            }
-                          },
-                          "placement": [
-                            {
-                              "type": "minecraft:block_predicate_filter",
-                              "predicate": {
-                                "type": "minecraft:matching_blocks",
-                                "blocks": "minecraft:air"
-                              }
-                            }
-                          ]
-                        }
-                      },
-                      {
-                        "chance": 0.25,
-                        "feature": {
-                          "feature": {
-                            "type": "minecraft:simple_block",
-                            "config": {
-                              "to_place": {
-                                "type": "minecraft:simple_state_provider",
-                                "state": {
-                                  "Name": "medievalism:shale_rock_copper_ore",
                                   "Properties": {
                                     "waterlogged": "false"
                                   }
@@ -634,7 +319,7 @@
         }
       },
       {
-        "cell": "medievalism:ironstone",
+        "cell": "medievalism:siltstone",
         "feature": {
           "feature": {
             "type": "minecraft:random_patch",
@@ -650,7 +335,7 @@
                           "to_place": {
                             "type": "minecraft:simple_state_provider",
                             "state": {
-                              "Name": "medievalism:ironstone_rock",
+                              "Name": "medievalism:siltstone_rock",
                               "Properties": {
                                 "waterlogged": "false"
                               }
@@ -678,7 +363,7 @@
                               "to_place": {
                                 "type": "minecraft:simple_state_provider",
                                 "state": {
-                                  "Name": "medievalism:large_ironstone_rock",
+                                  "Name": "medievalism:large_siltstone_rock",
                                   "Properties": {
                                     "waterlogged": "false"
                                   }
@@ -706,7 +391,322 @@
                               "to_place": {
                                 "type": "minecraft:simple_state_provider",
                                 "state": {
-                                  "Name": "medievalism:ironstone_rock_copper_ore",
+                                  "Name": "medievalism:siltstone_rock_copper_ore",
+                                  "Properties": {
+                                    "waterlogged": "false"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "placement": [
+                            {
+                              "type": "minecraft:block_predicate_filter",
+                              "predicate": {
+                                "type": "minecraft:matching_blocks",
+                                "blocks": "minecraft:air"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                "placement": []
+              },
+              "tries": 2,
+              "xz_spread": 3,
+              "y_spread": 0
+            }
+          },
+          "placement": []
+        }
+      },
+      {
+        "cell": "medievalism:shale",
+        "feature": {
+          "feature": {
+            "type": "minecraft:random_patch",
+            "config": {
+              "feature": {
+                "feature": {
+                  "type": "minecraft:random_selector",
+                  "config": {
+                    "default": {
+                      "feature": {
+                        "type": "minecraft:simple_block",
+                        "config": {
+                          "to_place": {
+                            "type": "minecraft:simple_state_provider",
+                            "state": {
+                              "Name": "medievalism:shale_rock",
+                              "Properties": {
+                                "waterlogged": "false"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "placement": [
+                        {
+                          "type": "minecraft:block_predicate_filter",
+                          "predicate": {
+                            "type": "minecraft:matching_blocks",
+                            "blocks": "minecraft:air"
+                          }
+                        }
+                      ]
+                    },
+                    "features": [
+                      {
+                        "chance": 0.3,
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:simple_block",
+                            "config": {
+                              "to_place": {
+                                "type": "minecraft:simple_state_provider",
+                                "state": {
+                                  "Name": "medievalism:large_shale_rock",
+                                  "Properties": {
+                                    "waterlogged": "false"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "placement": [
+                            {
+                              "type": "minecraft:block_predicate_filter",
+                              "predicate": {
+                                "type": "minecraft:matching_blocks",
+                                "blocks": "minecraft:air"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "chance": 0.25,
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:simple_block",
+                            "config": {
+                              "to_place": {
+                                "type": "minecraft:simple_state_provider",
+                                "state": {
+                                  "Name": "medievalism:shale_rock_copper_ore",
+                                  "Properties": {
+                                    "waterlogged": "false"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "placement": [
+                            {
+                              "type": "minecraft:block_predicate_filter",
+                              "predicate": {
+                                "type": "minecraft:matching_blocks",
+                                "blocks": "minecraft:air"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                "placement": []
+              },
+              "tries": 2,
+              "xz_spread": 3,
+              "y_spread": 0
+            }
+          },
+          "placement": []
+        }
+      },
+      {
+        "cell": "medievalism:dolostone",
+        "feature": {
+          "feature": {
+            "type": "minecraft:random_patch",
+            "config": {
+              "feature": {
+                "feature": {
+                  "type": "minecraft:random_selector",
+                  "config": {
+                    "default": {
+                      "feature": {
+                        "type": "minecraft:simple_block",
+                        "config": {
+                          "to_place": {
+                            "type": "minecraft:simple_state_provider",
+                            "state": {
+                              "Name": "medievalism:dolostone_rock",
+                              "Properties": {
+                                "waterlogged": "false"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "placement": [
+                        {
+                          "type": "minecraft:block_predicate_filter",
+                          "predicate": {
+                            "type": "minecraft:matching_blocks",
+                            "blocks": "minecraft:air"
+                          }
+                        }
+                      ]
+                    },
+                    "features": [
+                      {
+                        "chance": 0.3,
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:simple_block",
+                            "config": {
+                              "to_place": {
+                                "type": "minecraft:simple_state_provider",
+                                "state": {
+                                  "Name": "medievalism:large_dolostone_rock",
+                                  "Properties": {
+                                    "waterlogged": "false"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "placement": [
+                            {
+                              "type": "minecraft:block_predicate_filter",
+                              "predicate": {
+                                "type": "minecraft:matching_blocks",
+                                "blocks": "minecraft:air"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "chance": 0.25,
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:simple_block",
+                            "config": {
+                              "to_place": {
+                                "type": "minecraft:simple_state_provider",
+                                "state": {
+                                  "Name": "medievalism:dolostone_rock_copper_ore",
+                                  "Properties": {
+                                    "waterlogged": "false"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "placement": [
+                            {
+                              "type": "minecraft:block_predicate_filter",
+                              "predicate": {
+                                "type": "minecraft:matching_blocks",
+                                "blocks": "minecraft:air"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                "placement": []
+              },
+              "tries": 2,
+              "xz_spread": 3,
+              "y_spread": 0
+            }
+          },
+          "placement": []
+        }
+      },
+      {
+        "cell": "medievalism:limestone",
+        "feature": {
+          "feature": {
+            "type": "minecraft:random_patch",
+            "config": {
+              "feature": {
+                "feature": {
+                  "type": "minecraft:random_selector",
+                  "config": {
+                    "default": {
+                      "feature": {
+                        "type": "minecraft:simple_block",
+                        "config": {
+                          "to_place": {
+                            "type": "minecraft:simple_state_provider",
+                            "state": {
+                              "Name": "medievalism:limestone_rock",
+                              "Properties": {
+                                "waterlogged": "false"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "placement": [
+                        {
+                          "type": "minecraft:block_predicate_filter",
+                          "predicate": {
+                            "type": "minecraft:matching_blocks",
+                            "blocks": "minecraft:air"
+                          }
+                        }
+                      ]
+                    },
+                    "features": [
+                      {
+                        "chance": 0.3,
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:simple_block",
+                            "config": {
+                              "to_place": {
+                                "type": "minecraft:simple_state_provider",
+                                "state": {
+                                  "Name": "medievalism:large_limestone_rock",
+                                  "Properties": {
+                                    "waterlogged": "false"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "placement": [
+                            {
+                              "type": "minecraft:block_predicate_filter",
+                              "predicate": {
+                                "type": "minecraft:matching_blocks",
+                                "blocks": "minecraft:air"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "chance": 0.25,
+                        "feature": {
+                          "feature": {
+                            "type": "minecraft:simple_block",
+                            "config": {
+                              "to_place": {
+                                "type": "minecraft:simple_state_provider",
+                                "state": {
+                                  "Name": "medievalism:limestone_rock_copper_ore",
                                   "Properties": {
                                     "waterlogged": "false"
                                   }

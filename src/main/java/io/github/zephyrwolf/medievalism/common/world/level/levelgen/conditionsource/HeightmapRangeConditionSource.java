@@ -1,11 +1,14 @@
 package io.github.zephyrwolf.medievalism.common.world.level.levelgen.conditionsource;
 
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.ConditionTools;
 import net.minecraft.util.KeyDispatchDataCodec;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import org.jetbrains.annotations.NotNull;
+
+// Used by OverhaulVanillaLevelStoneGeneration
 
 public record HeightmapRangeConditionSource(Heightmap.Types hmType, VerticalAnchor anchorLower, VerticalAnchor anchorHigher) implements SurfaceRules.ConditionSource {
     static final KeyDispatchDataCodec<HeightmapRangeConditionSource> CODEC = KeyDispatchDataCodec.of(
@@ -27,7 +30,7 @@ public record HeightmapRangeConditionSource(Heightmap.Types hmType, VerticalAnch
     public SurfaceRules.Condition apply(final SurfaceRules.Context pContext)
     {
         // For some reason, we HAVE to query heightmap now and not at lazy
-        final int heightMapY = AwareConditionSources.getSurfaceHeight(Heightmap.Types.OCEAN_FLOOR_WG, pContext);
+        final int heightMapY = ConditionTools.getSurfaceHeight(Heightmap.Types.OCEAN_FLOOR_WG, pContext);
 
         class LazyVerticalRangeAwareConditionSource extends SurfaceRules.LazyYCondition
         {

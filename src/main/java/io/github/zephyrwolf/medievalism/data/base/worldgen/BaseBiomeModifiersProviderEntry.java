@@ -80,7 +80,7 @@ public final class BaseBiomeModifiersProviderEntry
         BiomeModifierTools.addSimpleModifier(context, SURFACE_SANDSTONE_ROCKS,      BiomeTagCatalog.IS_SURFACE_WITH_SAND,       BasePlacedFeaturesProviderEntry.SURFACE_SANDSTONE_ROCKS,        GenerationStep.Decoration.VEGETAL_DECORATION);
         BiomeModifierTools.addSimpleModifier(context, SURFACE_RED_SANDSTONE_ROCKS,  BiomeTagCatalog.IS_SURFACE_WITH_RED_SAND,   BasePlacedFeaturesProviderEntry.SURFACE_RED_SANDSTONE_ROCKS,    GenerationStep.Decoration.VEGETAL_DECORATION);
         BiomeModifierTools.addSimpleModifier(context, SURFACE_ROCKS,                BiomeTagCatalog.IS_SURFACE_WITHOUT_SAND,    BasePlacedFeaturesProviderEntry.SURFACE_ROCKS,                  GenerationStep.Decoration.VEGETAL_DECORATION);
-        //BiomeModifierTools.addSimpleModifier(context, CAVE_ROCKS,                   BiomeTags.IS_OVERWORLD,                     BasePlacedFeaturesProviderEntry.CAVE_ROCKS,                     GenerationStep.Decoration.UNDERGROUND_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, CAVE_ROCKS,                   BiomeTags.IS_OVERWORLD,                     BasePlacedFeaturesProviderEntry.CAVE_ROCKS,                     GenerationStep.Decoration.UNDERGROUND_DECORATION);
         // TWIGS
         BiomeModifierTools.addSimpleModifier(context, DENSE_TWIGS, BiomeTagCatalog.HAS_DENSE_TREES, BasePlacedFeaturesProviderEntry.DENSE_TWIGS, GenerationStep.Decoration.VEGETAL_DECORATION);
         BiomeModifierTools.addSimpleModifier(context, SPARSE_TWIGS, BiomeTagCatalog.HAS_SPARSE_TREES, BasePlacedFeaturesProviderEntry.SPARSE_TWIGS, GenerationStep.Decoration.VEGETAL_DECORATION);

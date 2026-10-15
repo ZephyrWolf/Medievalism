@@ -1,10 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.world.level.levelgen;
 
-import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldCellRegion;
-import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldCellRegionMap;
-import io.github.zephyrwolf.medievalism.common.world.level.layer.WorldLayer;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.placement.BelowHeightmapFilter;
-import io.github.zephyrwolf.medievalism.common.world.level.levelgen.placement.CellRarityFilter;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -127,17 +123,6 @@ public final class PlacementTools
         );
     }
 
-    @Deprecated
-    public static <E extends Enum<E>> List<PlacementModifier> surfaceCellPlacement(int minCount, int maxCount, int chance, ResourceKey<WorldCellRegionMap> regionMap, ResourceKey<WorldCellRegion> cell)
-    {
-        return List.of(
-                CountPlacement.of(UniformInt.of(minCount, maxCount)),
-                InSquarePlacement.spread(),
-                new CellRarityFilter(chance, regionMap, cell),
-                HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG), // WORLD_SURFACE_WG -- WATER LEVEL
-                BiomeFilter.biome());
-    }
-
     public static List<PlacementModifier> cavePlacement(int minCount, int maxCount, int chance, PlacementModifier heightRangePlacement, int minSurfaceDepth)
     {
         return List.of(
@@ -147,34 +132,5 @@ public final class PlacementTools
                 heightRangePlacement,
                 BelowHeightmapFilter.belowHeightmap(Heightmap.Types.OCEAN_FLOOR_WG, minSurfaceDepth),
                 BiomeFilter.biome());
-    }
-
-    @Deprecated
-    public static <E extends Enum<E>> List<PlacementModifier> caveCellPlacement(int minCount, int maxCount, int chance, ResourceKey<WorldLayer> layer, ResourceKey<WorldCellRegion> variant, PlacementModifier heightRangePlacement)
-    {
-        /*
-        return List.of(
-
-                //CellRarityFilter.onAverageOnceEvery(chance, cell, variant),
-                RarityFilter.onAverageOnceEvery(1),
-                //BelowHeightmapFilter.belowHeightmap(Heightmap.Types.OCEAN_FLOOR_WG, 1),
-
-        );
-        */
-
-        return List.of(
-                // CellRarityFilter.onAverageOnceEvery(chance, cell, variant), // If we don't pass the filter of base pos, don't both with spamming checks
-                CountPlacement.of(UniformInt.of(minCount, maxCount)), // How many locations
-                InSquarePlacement.spread(),
-                heightRangePlacement,
-
-                BelowHeightmapFilter.belowHeightmap(Heightmap.Types.OCEAN_FLOOR_WG, 1),
-                //CountPlacement.of(UniformInt.of(1, 1)), // How many in a cluster
-                //RandomOffsetPlacement.of(
-                //        ClampedNormalInt.of(0.0F, 3.0F, -7, 7), // XZ spread
-                //        ClampedNormalInt.of(0.0F, 0.6F, -2, 2)), // Y spread
-
-                BiomeFilter.biome()
-        );
     }
 }

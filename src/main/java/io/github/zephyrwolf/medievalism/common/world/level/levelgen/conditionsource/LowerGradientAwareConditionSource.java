@@ -2,6 +2,7 @@ package io.github.zephyrwolf.medievalism.common.world.level.levelgen.conditionso
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.ConditionTools;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.anchor.AwareVerticalAnchor;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.KeyDispatchDataCodec;
@@ -35,7 +36,7 @@ public record LowerGradientAwareConditionSource(
     public SurfaceRules.Condition apply(final SurfaceRules.Context pContext)
     {
         // For some reason, we HAVE to query heightmap now and not at lazy
-        final int heightMapY = AwareConditionSources.getSurfaceHeight(Heightmap.Types.OCEAN_FLOOR_WG, pContext);
+        final int heightMapY = ConditionTools.getSurfaceHeight(Heightmap.Types.OCEAN_FLOOR_WG, pContext);
         final int i = AwareVerticalAnchor.resolveY( trueAtAndBelow, pContext.context, heightMapY);
         final int j = i + depthAbove;
         final PositionalRandomFactory positionalrandomfactory = pContext.randomState.getOrCreateRandomFactory(this.randomName());

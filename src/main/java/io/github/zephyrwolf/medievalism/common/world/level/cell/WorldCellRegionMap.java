@@ -2,7 +2,6 @@ package io.github.zephyrwolf.medievalism.common.world.level.cell;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import io.github.zephyrwolf.medievalism.common.world.level.levelgen.synth.CellNoise;
 import io.github.zephyrwolf.medievalism.registration.RegistryRegistration;
 import io.github.zephyrwolf.medievalism.registration.world.level.WorldCellRegionRegistration;
 import net.minecraft.core.BlockPos;
@@ -21,7 +20,7 @@ import javax.annotation.Nullable;
 import java.util.*;
 import java.util.function.Supplier;
 
-public record WorldCellRegionMap(ResourceKey<Level> dimension, ResourceKey<NormalNoise.NoiseParameters> noise, int cellSize, float warp, int boarderThickness)
+public record WorldCellRegionMap(ResourceKey<Level> dimension, CellRegionGetter cellRegionGetter, @Nullable ResourceKey<NormalNoise.NoiseParameters> noise, @Nullable Object extra)
 {
     public static final Codec<Holder<WorldCellRegionMap>> CODEC = RegistryRegistration.WORLD_CELL_REGION_MAP_REGISTRY.holderByNameCodec()
             .validate(
@@ -30,9 +29,23 @@ public record WorldCellRegionMap(ResourceKey<Level> dimension, ResourceKey<Norma
                             : DataResult.success(holder)
             );
     public static final StreamCodec<RegistryFriendlyByteBuf, Holder<WorldCellRegionMap>> STREAM_CODEC = ByteBufCodecs.holderRegistry(WorldCellRegionRegistration.CELL_REGION_MAPS.getRegistryKey());
-    public static Supplier<WorldCellRegionMap> newCellMap(ResourceKey<Level> dimension, ResourceKey<NormalNoise.NoiseParameters> noise, int cellSize, float warp, int boarderThickness)
+    public static Supplier<WorldCellRegionMap> newCellMap(ResourceKey<Level> dimension, CellRegionGetter cellRegionGetter, @Nullable ResourceKey<NormalNoise.NoiseParameters> noise, @Nullable Object extra)
     {
-        return () -> new WorldCellRegionMap(dimension, noise, cellSize, warp, boarderThickness);
+        return () -> new WorldCellRegionMap(dimension, cellRegionGetter, noise, extra);
+    }
+    @SuppressWarnings("unused")
+    public static Supplier<WorldCellRegionMap> newCellMap(ResourceKey<Level> dimension, CellRegionGetter cellRegionGetter, @Nullable ResourceKey<NormalNoise.NoiseParameters> noise)
+    {
+        return () -> new WorldCellRegionMap(dimension, cellRegionGetter, noise, null);
+    }
+    public static Supplier<WorldCellRegionMap> newCellMap(ResourceKey<Level> dimension, CellRegionGetter cellRegionGetter, @Nullable Object extra)
+    {
+        return () -> new WorldCellRegionMap(dimension, cellRegionGetter, null, extra);
+    }
+    @SuppressWarnings("unused")
+    public static Supplier<WorldCellRegionMap> newCellMap(ResourceKey<Level> dimension, CellRegionGetter cellRegionGetter)
+    {
+        return () -> new WorldCellRegionMap(dimension, cellRegionGetter, null,null);
     }
     @SuppressWarnings("FieldMayBeFinal") // No it can't
     private static Map<ResourceKey<WorldCellRegionMap>, List<ResourceKey<WorldCellRegion>>> _cachedCellRegions = new HashMap<>();
@@ -55,21 +68,39 @@ public record WorldCellRegionMap(ResourceKey<Level> dimension, ResourceKey<Norma
         return _cachedCellRegions.get(celLRegionMapKey);
     }
 
-    // TODO Abstract away noise function?
-    private static ResourceKey<WorldCellRegion> getCell(@Nullable LevelReader level, @Nullable ChunkGenerator chunkGenerator, RandomState randomState, WorldCellRegionMap cellRegionMap, List<ResourceKey<WorldCellRegion>> cellRegionKeyList, BlockPos origin)
+    @FunctionalInterface
+    public interface CellRegionGetter
     {
-        NormalNoise noise = randomState.getOrCreateNoise(cellRegionMap.noise());
-        long n =  CellNoise.noise(noise, cellRegionMap.cellSize(), cellRegionMap.warp(), cellRegionMap.boarderThickness(), origin);
-        int ordinal = Math.floorMod(n, cellRegionKeyList.size());
-        return cellRegionKeyList.get(ordinal);
+        ResourceKey<WorldCellRegion> getCellRegion(
+                @Nullable LevelReader level,
+                @Nullable ChunkGenerator chunkGenerator,
+                RandomState randomState,
+                WorldCellRegionMap cellRegionMap,
+                List<ResourceKey<WorldCellRegion>> cellRegionKeyList,
+                BlockPos origin
+        );
     }
+
+    private static class DummyCellRegionGetter implements CellRegionGetter
+    {
+        @Override
+        public ResourceKey<WorldCellRegion> getCellRegion(
+                @org.jetbrains.annotations.Nullable LevelReader level,
+                @org.jetbrains.annotations.Nullable ChunkGenerator chunkGenerator,
+                RandomState randomState, WorldCellRegionMap cellRegionMap,
+                List<ResourceKey<WorldCellRegion>> cellRegionKeyList, BlockPos origin)
+        {
+            return WorldCellRegionRegistration.NONE_CELL_REGION.getKey();
+        }
+    }
+    public static CellRegionGetter DEFAULT_CELL_REGION_GETTER = new DummyCellRegionGetter();
 
     public static ResourceKey<WorldCellRegion> getCellAt(@Nullable LevelReader level, @Nullable ChunkGenerator chunkGenerator, RandomState randomState, BlockPos origin, ResourceKey<WorldCellRegionMap> regionMapKey)
     {
         try {
             WorldCellRegionMap regionMap = RegistryRegistration.WORLD_CELL_REGION_MAP_REGISTRY.getOrThrow(regionMapKey);
             List<ResourceKey<WorldCellRegion>> regionList = _getCellRegions(regionMapKey);
-            return getCell(level, chunkGenerator, randomState, regionMap, regionList, origin);
+            return regionMap.cellRegionGetter.getCellRegion(level, chunkGenerator, randomState, regionMap, regionList, origin);
         } catch (Exception e) {
             return WorldCellRegionRegistration.NONE_CELL_REGION.getKey();
         }

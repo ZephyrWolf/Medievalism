@@ -1,5 +1,8 @@
-package io.github.zephyrwolf.medievalism.common.world.level.levelgen.conditionsource;
+package io.github.zephyrwolf.medievalism.common.world.level.levelgen;
 
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.conditionsource.LowerGradientAwareConditionSource;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.conditionsource.UpperGradientAwareConditionSource;
+import io.github.zephyrwolf.medievalism.common.world.level.levelgen.conditionsource.VerticalRangeAwareConditionSource;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.SurfaceRules;
@@ -8,7 +11,7 @@ import net.minecraft.world.level.levelgen.VerticalAnchor;
 import java.util.Collection;
 import java.util.Map;
 
-public final class AwareConditionSources
+public final class ConditionTools
 {
     public static SurfaceRules.ConditionSource verticalRange(VerticalAnchor pAnchorLower, VerticalAnchor pAnchorHigher)
     {

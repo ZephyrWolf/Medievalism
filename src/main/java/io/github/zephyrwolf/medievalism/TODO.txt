@@ -137,3 +137,57 @@ Get override data pack to be enable / diable able
 blank recipe is one way, but is there a proper way to remove? a mod library?
 
 yam green doesnt follow tint rules; e.g. savanah grass colour
+
+// --
+
+fix copper rock textures in blockbench
+
+bugs:
+overwrite stone on no overhaul datapack;
+	can we replace mixin with json?
+
+base: Alternate gens for stones like diorite/grantite/andersite
+-chunk of limestone
+-all stone
+Provide alternate generation for Chalk, chert and geode ore in base and more origional to overhaul
+-chert
+-geode
+
+overhaul: change granite and diorite for smooth variety
+-use smooth diorite
+-use smooth granite
+
+add surface ores of copper with groups of copper rocks above
+-in regolith or sedimentary? what stage I want to access this?
+
+review what ores are available in regolith layer
+-eg, I have coal on saprolite which breaks progression
+
+generate copper traces in saprolite; with clusters of ore bearing rocks on the surface above (not for all ore deposits tho)
+
+Should sedimentary rocks generate in DESERTS/badlands?
+
+// Rocks not created
+SOFT_TUFF
+IGNIMBRITE
+LAPILLISTONE
+WELDED_TUFF
+RHYOLITE
+DACITE
+ANDESITE
+BASALT
+TRAVERTINE
+CALCITE
+CHALK
+
+Balance base and overhaul rock gen
+generate cave rubble
+generate loose ceiling rock, doesn't fall below unless player mines around it (intended behaviour unlike vanilla gravel)
+-1-3 blocks thick
+
+more biome enhancement
+
+Bad Classes
+-OverhaulVanillaLevelStoneGeneration: hard coded mess
+-WorldLayerAnchor: its metadata for me and nothing to do with code
+-WorldGenLayerConstants: Doing a lot of work to mimic OverhaulVanillaLevelStoneGeneration, should reference the same algorithm
