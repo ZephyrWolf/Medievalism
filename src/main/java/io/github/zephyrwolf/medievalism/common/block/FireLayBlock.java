@@ -1,6 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.block;
 
-import io.github.zephyrwolf.medievalism.registration.blockitem.BlockItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.BlockItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;

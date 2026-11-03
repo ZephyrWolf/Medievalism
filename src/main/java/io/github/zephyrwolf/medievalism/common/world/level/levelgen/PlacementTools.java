@@ -108,29 +108,29 @@ public final class PlacementTools
 
     public static List<PlacementModifier> cavePlacement(int minCount, int maxCount, int chance)
     {
-        return cavePlacement(minCount, maxCount, chance, VerticalAnchor.BOTTOM, VerticalAnchor.TOP);
+        return cavePlacement(minCount, maxCount, chance, VerticalAnchor.BOTTOM, VerticalAnchor.TOP, 1);
     }
 
-    public static List<PlacementModifier> cavePlacement(int minCount, int maxCount, int chance, VerticalAnchor lowerAnchor, VerticalAnchor upperAnchor)
+    public static List<PlacementModifier> cavePlacement(int minCount, int maxCount, int chance, VerticalAnchor lowerAnchor, VerticalAnchor upperAnchor, int minSurfaceDepth)
+    {
+        return cavePlacement(
+                minCount,
+                maxCount,
+                chance,
+                HeightRangePlacement.uniform(lowerAnchor, upperAnchor),
+                minSurfaceDepth
+        );
+    }
+
+    public static List<PlacementModifier> cavePlacement(int minCount, int maxCount, int chance, HeightRangePlacement heightPlacement, int minSurfaceDepth)
     {
         return List.of(
                 CountPlacement.of(UniformInt.of(minCount, maxCount)), // How many locations
                 InSquarePlacement.spread(),
                 RarityFilter.onAverageOnceEvery(chance),
-                HeightRangePlacement.uniform(lowerAnchor, upperAnchor),
-                BelowHeightmapFilter.belowHeightmap(Heightmap.Types.OCEAN_FLOOR_WG, 1),
+                heightPlacement,
+                BelowHeightmapFilter.belowHeightmap(Heightmap.Types.OCEAN_FLOOR_WG, minSurfaceDepth),
                 BiomeFilter.biome()
         );
-    }
-
-    public static List<PlacementModifier> cavePlacement(int minCount, int maxCount, int chance, PlacementModifier heightRangePlacement, int minSurfaceDepth)
-    {
-        return List.of(
-                CountPlacement.of(UniformInt.of(minCount, maxCount)),
-                InSquarePlacement.spread(),
-                RarityFilter.onAverageOnceEvery(chance),
-                heightRangePlacement,
-                BelowHeightmapFilter.belowHeightmap(Heightmap.Types.OCEAN_FLOOR_WG, minSurfaceDepth),
-                BiomeFilter.biome());
     }
 }

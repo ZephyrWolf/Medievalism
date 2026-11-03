@@ -280,12 +280,9 @@ public final class BlockRegistration
     // SOIL PROPERTIES
     public static final BlockBehaviour.Properties GRASS_BLOCK_PROPERTIES =                  Blocks.GRASS_BLOCK.properties();
     public static final BlockBehaviour.Properties CLAY_IN_GRASS_PROPERTIES =                GRASS_BLOCK_PROPERTIES;
-    public static final BlockBehaviour.Properties RED_CLAY_IN_GRASS_PROPERTIES =            GRASS_BLOCK_PROPERTIES;
     public static final BlockBehaviour.Properties DIRT_BLOCK_PROPERTIES =                   Blocks.DIRT.properties();
     public static final BlockBehaviour.Properties CLAY_IN_DIRT_PROPERTIES =                 DIRT_BLOCK_PROPERTIES;
-    public static final BlockBehaviour.Properties RED_CLAY_IN_DIRT_PROPERTIES =             DIRT_BLOCK_PROPERTIES;
     public static final BlockBehaviour.Properties CLAY_BLOCK_PROPERTIES =                   Blocks.CLAY.properties();
-    public static final BlockBehaviour.Properties RED_CLAY_PROPERTIES =                     CLAY_BLOCK_PROPERTIES; // mapColor
     public static final BlockBehaviour.Properties GRAVEL_PROPERTIES =                       Blocks.GRAVEL.properties();
     public static final BlockBehaviour.Properties SILT_PROPERTIES =                         GRAVEL_PROPERTIES; // mapColor
     public static final BlockBehaviour.Properties DRYING_MUD_PROPERTIES =                   BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(1.0f).sound(SoundType.MUD);
@@ -299,13 +296,9 @@ public final class BlockRegistration
     public static final BlockBehaviour.Properties DRYING_PACKED_MUD_BRICK_PROPERTIES =      DRYING_MUD_PROPERTIES.randomTicks().mapColor(MapColor.DIRT).mapColor(MapColor.TERRACOTTA_BROWN);
     public static final BlockBehaviour.Properties DRYING_DAUB_BRICK_PROPERTIES =            DRYING_MUD_PROPERTIES.randomTicks().mapColor(MapColor.DIRT).mapColor(MapColor.TERRACOTTA_BROWN);
     public static final BlockBehaviour.Properties DRYING_CLAY_BRICK_PROPERTIES =            DRYING_MUD_PROPERTIES.randomTicks().mapColor(MapColor.CLAY).mapColor(MapColor.CLAY);
-    public static final BlockBehaviour.Properties DRYING_RED_CLAY_BRICK_PROPERTIES =        DRYING_MUD_PROPERTIES.randomTicks().mapColor(MapColor.CLAY).mapColor(MapColor.TERRACOTTA_ORANGE);
     // SOIL
     public static final DeferredBlock<GrassBlock> CLAY_IN_GRASS =                           BLOCKS.registerBlock("clay_in_grass",                   GrassBlock::new, CLAY_IN_GRASS_PROPERTIES);
-    public static final DeferredBlock<GrassBlock> RED_CLAY_IN_GRASS =                       BLOCKS.registerBlock("red_clay_in_grass",               GrassBlock::new, RED_CLAY_IN_GRASS_PROPERTIES);
     public static final DeferredBlock<Block> CLAY_IN_DIRT =                                 BLOCKS.registerSimpleBlock("clay_in_dirt",              CLAY_IN_DIRT_PROPERTIES);
-    public static final DeferredBlock<Block> RED_CLAY_IN_DIRT =                             BLOCKS.registerSimpleBlock("red_clay_in_dirt",          RED_CLAY_IN_DIRT_PROPERTIES);
-    public static final DeferredBlock<Block> RED_CLAY =                                     BLOCKS.registerSimpleBlock("red_clay",                  CLAY_BLOCK_PROPERTIES);
     public static final DeferredBlock<Block> GRAVEL =                                       new VanillaDeferredBlock<>(Blocks.GRAVEL);
     public static final DeferredBlock<Block> SILT =                                         BLOCKS.registerSimpleBlock("silt",                      SILTSTONE_PROPERTIES);
     // WET MUD
@@ -319,7 +312,6 @@ public final class BlockRegistration
     public static final DeferredBlock<DryingBrick> WET_PACKED_MUD_BRICK =                   registerDryingBrick(BLOCKS, "wet_packed_mud_brick",     DryingBrick::new, DRYING_PACKED_MUD_BRICK_PROPERTIES, SoundType.PACKED_MUD, 1);
     public static final DeferredBlock<DryingBrick> WET_DAUB_BRICK =                         registerDryingBrick(BLOCKS, "wet_daub_brick",           DryingBrick::new, DRYING_DAUB_BRICK_PROPERTIES, SoundType.PACKED_MUD, 2);
     public static final DeferredBlock<DryingBrick> DRYING_CLAY_BRICK =                      registerDryingBrick(BLOCKS, "drying_clay_brick",        DryingBrick::new, DRYING_CLAY_BRICK_PROPERTIES, SoundType.PACKED_MUD, 3);
-    public static final DeferredBlock<DryingBrick> DRYING_RED_CLAY_BRICK =                  registerDryingBrick(BLOCKS, "drying_red_clay_brick",    DryingBrick::new, DRYING_RED_CLAY_BRICK_PROPERTIES, SoundType.PACKED_MUD, 3);
 
     // ROCK PROPERTIES
     public static BlockBehaviour.Properties CLUMP_PROPERTIES =                              BlockBehaviour.Properties.of().offsetType(BlockBehaviour.OffsetType.XZ).dynamicShape().isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.GRAVEL).mapColor(MapColor.DIRT);

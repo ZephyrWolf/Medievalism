@@ -1,10 +1,10 @@
 package io.github.zephyrwolf.medievalism.common.blockitem;
 
 import io.github.zephyrwolf.medievalism.common.components.DummyDataComponent;
-import io.github.zephyrwolf.medievalism.common.recipe.InhandRecipe;
-import io.github.zephyrwolf.medievalism.common.recipe.InhandRecipeInput;
+import io.github.zephyrwolf.medievalism.common.recipe.inhand.InhandRecipe;
+import io.github.zephyrwolf.medievalism.common.recipe.inhand.InhandRecipeInput;
 import io.github.zephyrwolf.medievalism.registration.components.DataComponentTypeRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.ItemTagCatalog;
+import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.registration.particles.ParticleTypeRegistration;
 import io.github.zephyrwolf.medievalism.registration.recipe.RecipeRegistration;
 import io.github.zephyrwolf.medievalism.registration.sounds.SoundsRegistration;
@@ -278,9 +278,12 @@ public class RockBlockItem extends BlockItem
                 if (canKnap(mItemStack) && isKnappable(pLevel, mItemStack, oItemStack))
                 {
                     InhandRecipeInput input = getRecipeInput(mItemStack, oItemStack);
-                    getRecipe(pLevel, mItemStack, oItemStack).ifPresent(recipe
+                    getRecipeHolder(pLevel, mItemStack, oItemStack).ifPresent(recipe
                             -> {
-                        ItemStack result = recipe.assemble(input, pLevel.registryAccess());
+                        ItemStack result = recipe.value().assemble(input, pLevel.registryAccess());
+                         player.triggerRecipeCrafted(recipe, List.of(
+                                 result
+                         ));
                         if (!player.addItem(result))
                         {
                             player.drop(result, true);
@@ -336,6 +339,12 @@ public class RockBlockItem extends BlockItem
         var recipes = RecipeManager.createCheck(RecipeRegistration.INHAND_RECIPE_TYPE.get());
         return recipes.getRecipeFor(getRecipeInput(tool, ingredient), level)
                 .map(RecipeHolder::value);
+    }
+
+    private static Optional<RecipeHolder<InhandRecipe>> getRecipeHolder(Level level, ItemStack tool, ItemStack ingredient)
+    {
+        var recipes = RecipeManager.createCheck(RecipeRegistration.INHAND_RECIPE_TYPE.get());
+        return recipes.getRecipeFor(getRecipeInput(tool, ingredient), level);
     }
 
     private static boolean isKnappable(Level level, ItemStack tool, ItemStack ingredient)

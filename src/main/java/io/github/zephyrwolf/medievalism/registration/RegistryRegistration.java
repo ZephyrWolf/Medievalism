@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism.registration;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.common.malleablematerial.MalleableMaterialType;
+import io.github.zephyrwolf.medievalism.common.recipe.malleable.MalleableMaterialType;
 import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldCellRegion;
 import io.github.zephyrwolf.medievalism.common.world.level.cell.WorldCellRegionMap;
 import io.github.zephyrwolf.medievalism.common.world.level.layer.WorldLayer;

@@ -27,9 +27,11 @@ import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.placement.EnvironmentScanPlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
 
 import java.util.Arrays;
+import java.util.List;
 
 public final class FeatureTools
 {
@@ -72,6 +74,16 @@ public final class FeatureTools
                 Feature.SIMPLE_BLOCK,
                 new SimpleBlockConfiguration(state),
                 EnvironmentScanPlacement.scanningFor(direction, BlockPredicate.solid(), predicate, maxSteps), // TODO Have waterlogged rocks BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE
+                RandomOffsetPlacement.vertical(ConstantInt.of(offset)));
+    }
+
+    public static <FC extends FeatureConfiguration, F extends Feature<FC>> Holder<PlacedFeature> inlineSteppedPlacement(
+            F pFeature, FC pConfig, Direction direction, BlockPredicate predicate, int maxSteps, int offset)
+    {
+        return PlacementUtils.inlinePlaced(
+                pFeature,
+                pConfig,
+                EnvironmentScanPlacement.scanningFor(direction, BlockPredicate.solid(), predicate, maxSteps),
                 RandomOffsetPlacement.vertical(ConstantInt.of(offset)));
     }
 
@@ -123,6 +135,14 @@ public final class FeatureTools
         return PlacementUtils.inlinePlaced(
                 FeatureRegistration.CELL_SELECTOR_FEATURE.get(),
                 CellSelectorFeatureConfiguration.cells(cellRegionMap, features)
+        );
+    }
+    // Ore
+    public static Holder<PlacedFeature> inlineOre(List<OreConfiguration.TargetBlockState> pTargetStates, int pSize, float discardChanceOnAirExposure)
+    {
+        return PlacementUtils.inlinePlaced(
+                Feature.ORE,
+                new OreConfiguration(pTargetStates, pSize, discardChanceOnAirExposure)
         );
     }
     // Random Patch

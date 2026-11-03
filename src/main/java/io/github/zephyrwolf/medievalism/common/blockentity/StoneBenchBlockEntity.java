@@ -1,9 +1,9 @@
 package io.github.zephyrwolf.medievalism.common.blockentity;
 
-import io.github.zephyrwolf.medievalism.common.malleablematerial.MalleableMaterial;
+import io.github.zephyrwolf.medievalism.common.recipe.malleable.MalleableMaterial;
 import io.github.zephyrwolf.medievalism.common.menu.StoneBenchMenu;
-import io.github.zephyrwolf.medievalism.common.recipe.MalleableMaterialRecipe;
-import io.github.zephyrwolf.medievalism.common.recipe.MalleableMaterialRecipeInput;
+import io.github.zephyrwolf.medievalism.common.recipe.malleable.MalleableMaterialRecipe;
+import io.github.zephyrwolf.medievalism.common.recipe.malleable.MalleableMaterialRecipeInput;
 import io.github.zephyrwolf.medievalism.registration.blockentity.BlockEntityRegistration;
 import io.github.zephyrwolf.medievalism.registration.recipe.RecipeRegistration;
 import io.github.zephyrwolf.medievalism.common.item.ItemTools;

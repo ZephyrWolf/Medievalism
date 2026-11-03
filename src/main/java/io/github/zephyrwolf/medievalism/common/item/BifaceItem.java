@@ -10,6 +10,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.ItemAbility;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -35,29 +37,8 @@ public class BifaceItem extends Item
     }
 
     @Override
-    public boolean mineBlock(@NotNull ItemStack pStack, @NotNull Level pLevel, @NotNull BlockState pState, @NotNull BlockPos pPos, @NotNull LivingEntity pMiningEntity)
+    public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility)
     {
-        boolean val = super.mineBlock(pStack, pLevel, pState, pPos, pMiningEntity);
-        if (val && !pLevel.isClientSide)
-        {
-            if (pState.is(BlockTagCatalog.CAN_DROP_THATCH))
-            {
-//                if (pMiningEntity instanceof Player player)
-//                {
-//                    PlayerEntity player = (PlayerEntity) entity;
-//                //			player.addExhaustion( 0.005f);
-//                //			player.addStat( Stats.ITEM_USED.get( held.getItem() ) );
-//                //			if (success)
-//                //			{
-//                //				player.addStat( Stats.ITEM_CRAFTED.get( Registration.THATCH.get() ) );
-//                //			}
-//                }
-                if (pLevel.getRandom().nextFloat() < 0.5f)
-                {
-                    pLevel.addFreshEntity(new ItemEntity(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), ItemRegistration.getThatchedItem(pState)));
-                }
-            }
-        }
-        return val;
+        return itemAbility == ItemAbilityCatalog.KNIFE_DIG;
     }
 }

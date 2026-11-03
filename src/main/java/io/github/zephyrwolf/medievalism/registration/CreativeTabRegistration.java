@@ -2,13 +2,14 @@ package io.github.zephyrwolf.medievalism.registration;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
-import io.github.zephyrwolf.medievalism.registration.blockitem.BlockItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.BlockItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -22,7 +23,7 @@ public class CreativeTabRegistration
     @SuppressWarnings("unused")
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MEDIEVALISM_TAB = CREATIVE_MODE_TABS.register("medievalism_tab",
             () -> CreativeModeTab.builder()
-                    .icon(() -> new ItemStack(BlockRegistration.RED_CLAY.asItem()))
+                    .icon(() -> new ItemStack(Blocks.CAMPFIRE.asItem()))
                     .title(Component.translatable("creative_tab.medievalism.name"))
                     .displayItems(CreativeTabRegistration::itemsForMedievalismTab)
                     .build());

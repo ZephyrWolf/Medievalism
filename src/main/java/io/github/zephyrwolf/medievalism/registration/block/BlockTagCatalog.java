@@ -113,6 +113,8 @@ public class BlockTagCatalog
     public static final TagKey<Block> TWIGS = tag("twigs");
     public static final TagKey<Block> BRANCH = tag("branch");
 
+    public static final TagKey<Block> KNIFE_EFFICIENT = tag("knife_efficient");
+
     private static TagKey<Block> tag(String name)
     {
         return BlockTags.create(MedievalismConstants.resource(name));

@@ -188,6 +188,12 @@ generate loose ceiling rock, doesn't fall below unless player mines around it (i
 more biome enhancement
 
 Bad Classes
--OverhaulVanillaLevelStoneGeneration: hard coded mess
+-OverhaulVanillaLevelStoneGeneration: hard coded mess; SurfaceRules defined in noise_settings/overworld.json
+--Can I somehow data-gen my own based on vanilla and only change some of it?
 -WorldLayerAnchor: its metadata for me and nothing to do with code
 -WorldGenLayerConstants: Doing a lot of work to mimic OverhaulVanillaLevelStoneGeneration, should reference the same algorithm
+
+verify overhaul advancements dont run without overhaul running
+- I wonder if there is a way to have some readout on client only (cant be advancements cause they are data not client
+
+

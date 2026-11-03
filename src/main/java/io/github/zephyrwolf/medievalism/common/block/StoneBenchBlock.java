@@ -43,6 +43,8 @@ public class StoneBenchBlock extends BaseEntityBlock {
         return CODEC;
     }
 
+    public static final String LANG_DEFAULT_NAME = "medievalism.container.stone_bench";
+
     @Override
     protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         return STONE_BENCH_SHAPE;

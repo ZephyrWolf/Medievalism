@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import io.github.zephyrwolf.medievalism.MedievalismEnumProxies;
 import io.github.zephyrwolf.medievalism.common.blockitem.RockBlockItem;
-import io.github.zephyrwolf.medievalism.registration.item.ItemTagCatalog;
+import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.tools.MathTools;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
