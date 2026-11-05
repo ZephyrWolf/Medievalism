@@ -69,15 +69,61 @@ public final class AdvancementLangKeys
     public static final String CRAFT_DAUB_BRICK_DESC =              "advancement.stone_age.craft_daub_brick.desc";
     public static final String CRAFT_DAUB_BRICKS_TITLE =            "advancement.stone_age.craft_daub_bricks.title";
     public static final String CRAFT_DAUB_BRICKS_DESC =             "advancement.stone_age.craft_daub_bricks.desc";
+
+    // Survival
+    public static final String HINT_CLAY_WORKS_TITLE =              "advancement.survival.hint_clay_works.title";
+    public static final String HINT_CLAY_WORKS_DESC =               "advancement.survival.hint_clay_works.desc";
+
     // Clay Works
-    public static final String HINT_CLAY_WORKS_TITLE =              "advancement.stone_age.hint_clay_works.title";
-    public static final String HINT_CLAY_WORKS_DESC =               "advancement.stone_age.hint_clay_works.desc";
-    public static final String HINT_CLAY_DRYING_TITLE =             "advancement.stone_age.hint_clay_drying.title";
-    public static final String HINT_CLAY_DRYING_DESC =              "advancement.stone_age.hint_clay_drying.desc";
-    public static final String CRAFT_WET_BRICK_TITLE =              "advancement.main.craft_wet_brick.title";
-    public static final String CRAFT_WET_BRICK_DESC  =              "advancement.main.craft_wet_brick.desc";
-    public static final String BETTER_POTTERY_TITLE =               "advancement.main.better_pottery.title";
-    public static final String BETTER_POTTERY_DESC  =               "advancement.main.better_pottery.desc";
+    public static final String ROOT_CLAY_WORKING_TITLE =                    "advancement.clay_working.root_clay_working.title";
+    public static final String ROOT_CLAY_WORKING_DESC =                     "advancement.clay_working.root_clay_working.desc";
+
+    public static final String OBTAIN_WET_CLAY_BALL_TITLE =                 "advancement.clay_working.obtain_clay_ball.title";
+    public static final String OBTAIN_WET_CLAY_BALL_DESC  =                 "advancement.clay_working.obtain_clay_ball.desc";
+    public static final String CRAFT_WET_CLAY_BRICK_TITLE =                 "advancement.clay_working.craft_wet_clay_brick.title";
+    public static final String CRAFT_WET_CLAY_BRICK_DESC  =                 "advancement.clay_working.craft_wet_clay_brick.desc";
+    public static final String DRY_WET_CLAY_BRICK_TITLE =                   "advancement.clay_working.dry_wet_clay_brick.title";
+    public static final String DRY_WET_CLAY_BRICK_DESC  =                   "advancement.clay_working.dry_wet_clay_brick.desc";
+    public static final String CRAFT_WET_CLAY_DOUBLE_BRICK_TITLE =          "advancement.clay_working.craft_wet_clay_double_brick.title";
+    public static final String CRAFT_WET_CLAY_DOUBLE_BRICK_DESC  =          "advancement.clay_working.craft_wet_clay_double_brick.desc";
+    public static final String DRY_WET_CLAY_DOUBLE_BRICK_TITLE =            "advancement.clay_working.dry_wet_clay_double_brick.title";
+    public static final String DRY_WET_CLAY_DOUBLE_BRICK_DESC  =            "advancement.clay_working.dry_wet_clay_double_brick.desc";
+
+    public static final String CRAFT_POTTERS_CLAY_BALL_TITLE =              "advancement.craft_potters_clay_ball.title";
+    public static final String CRAFT_POTTERS_CLAY_BALL_DESC  =              "advancement.craft_potters_clay_ball.desc";
+    public static final String CRAFT_POTTERS_CLAY_BRICK_TITLE =             "advancement.craft_potters_clay_brick.title";
+    public static final String CRAFT_POTTERS_CLAY_BRICK_DESC  =             "advancement.craft_potters_clay_brick.desc";
+    public static final String DRY_WET_POTTERS_CLAY_BRICK_TITLE =           "advancement.dry_wet_potters_clay_brick.title";
+    public static final String DRY_WET_POTTERS_CLAY_BRICK_DESC  =           "advancement.dry_wet_potters_clay_brick.desc";
+    public static final String CRAFT_WET_POTTERS_CLAY_DOUBLE_BRICK_TITLE =  "advancement.clay_working.craft_wet_potters_clay_double_brick.title";
+    public static final String CRAFT_WET_POTTERS_CLAY_DOUBLE_BRICK_DESC  =  "advancement.clay_working.craft_wet_potters_clay_double_brick.desc";
+    public static final String DRY_WET_POTTERS_CLAY_DOUBLE_BRICK_TITLE =    "advancement.clay_working.dry_wet_potters_clay_double_brick.title";
+    public static final String DRY_WET_POTTERS_CLAY_DOUBLE_BRICK_DESC  =    "advancement.clay_working.dry_wet_potters_clay_double_brick.desc";
+
+    public static final String OBTAIN_KAOLIN_CLAY_BALL_TITLE =              "advancement.obtain_kaolin_clay_ball.title";
+    public static final String OBTAIN_KAOLIN_CLAY_BALL_DESC  =              "advancement.obtain_kaolin_clay_ball.desc";
+    public static final String CRAFT_KAOLIN_CLAY_BRICK_TITLE =             "advancement.craft_kaolin_clay_brick.title";
+    public static final String CRAFT_KAOLIN_CLAY_BRICK_DESC  =             "advancement.craft_kaolin_clay_brick.desc";
+    public static final String DRY_WET_KAOLIN_CLAY_BRICK_TITLE =           "advancement.dry_wet_kaolin_clay_brick.title";
+    public static final String DRY_WET_KAOLIN_CLAY_BRICK_DESC  =           "advancement.dry_wet_kaolin_clay_brick.desc";
+    public static final String CRAFT_WET_KAOLIN_CLAY_DOUBLE_BRICK_TITLE =  "advancement.clay_working.craft_wet_kaolin_clay_double_brick.title";
+    public static final String CRAFT_WET_KAOLIN_CLAY_DOUBLE_BRICK_DESC  =  "advancement.clay_working.craft_wet_kaolin_clay_double_brick.desc";
+    public static final String DRY_WET_KAOLIN_CLAY_DOUBLE_BRICK_TITLE =    "advancement.clay_working.dry_wet_kaolin_clay_double_brick.title";
+    public static final String DRY_WET_KAOLIN_CLAY_DOUBLE_BRICK_DESC  =    "advancement.clay_working.dry_wet_kaolin_clay_double_brick.desc";
+
+    public static final String CRAFT_REFRACTORY_CLAY_BALL_TITLE =              "advancement.craft_refractory_clay_ball.title";
+    public static final String CRAFT_REFRACTORY_CLAY_BALL_DESC  =              "advancement.craft_refractory_clay_ball.desc";
+    public static final String CRAFT_REFRACTORY_CLAY_BRICK_TITLE =             "advancement.craft_refractory_clay_brick.title";
+    public static final String CRAFT_REFRACTORY_CLAY_BRICK_DESC  =             "advancement.craft_refractory_clay_brick.desc";
+    public static final String DRY_WET_REFRACTORY_CLAY_BRICK_TITLE =           "advancement.dry_wet_refractory_clay_brick.title";
+    public static final String DRY_WET_REFRACTORY_CLAY_BRICK_DESC  =           "advancement.dry_wet_refractory_clay_brick.desc";
+    public static final String CRAFT_WET_REFRACTORY_CLAY_DOUBLE_BRICK_TITLE =  "advancement.clay_working.craft_wet_refractory_clay_double_brick.title";
+    public static final String CRAFT_WET_REFRACTORY_CLAY_DOUBLE_BRICK_DESC  =  "advancement.clay_working.craft_wet_refractory_clay_double_brick.desc";
+    public static final String DRY_WET_REFRACTORY_CLAY_DOUBLE_BRICK_TITLE =    "advancement.clay_working.dry_wet_refractory_clay_double_brick.title";
+    public static final String DRY_WET_REFRACTORY_CLAY_DOUBLE_BRICK_DESC  =    "advancement.clay_working.dry_wet_refractory_clay_double_brick.desc";
+
+    public static final String BETTER_POTTERY_TITLE =               "advancement.clay_working.better_pottery.title";
+    public static final String BETTER_POTTERY_DESC  =               "advancement.clay_working.better_pottery.desc";
     // TODO
     // Knapping
     public static final String HINT_INHAND_KNAPPING_TITLE =         "advancement.main.hint_inhand_knapping.title";

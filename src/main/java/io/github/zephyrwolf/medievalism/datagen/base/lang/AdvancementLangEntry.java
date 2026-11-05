@@ -13,7 +13,7 @@ public class AdvancementLangEntry implements ILanguageProviderEntry
         handle.addAdvancement(AdvancementLangKeys.ROOT_STONE_AGE_DESC, "Great things come from humble beginnings");
 
         // Stone Age
-        addAbout(handle);
+        addAbout(handle); // TODO Reimplement all of your advancements :(
         addSurvive(handle);
         addGather(handle);
         addMudWorks(handle);
@@ -106,13 +106,55 @@ public class AdvancementLangEntry implements ILanguageProviderEntry
     private void addClayWorks(LanguageEntryProviderHandle handle)
     {
         // Root
-        handle.addAdvancement(AdvancementLangKeys.HINT_CLAY_WORKS_TITLE, "Beginnings of Pottery");
-        handle.addAdvancement(AdvancementLangKeys.HINT_CLAY_WORKS_DESC, "Its time to play with mud and make useful items");
-        handle.addAdvancement(AdvancementLangKeys.HINT_CLAY_DRYING_TITLE, "Needs to dry");
-        handle.addAdvancement(AdvancementLangKeys.HINT_CLAY_DRYING_DESC, "Clay needs to be dried first. Heat helps, rain doesn't");
+        handle.addAdvancement(AdvancementLangKeys.HINT_CLAY_WORKS_TITLE, "A Primitive Building Material ");
+        handle.addAdvancement(AdvancementLangKeys.HINT_CLAY_WORKS_DESC, "From mud, walls and technology began");
+        handle.addAdvancement(AdvancementLangKeys.ROOT_CLAY_WORKING_TITLE, "Pottery");
+        handle.addAdvancement(AdvancementLangKeys.ROOT_CLAY_WORKING_DESC, "Its time to play with clay and make useful items");
         // Inhand
-        handle.addAdvancement(AdvancementLangKeys.CRAFT_WET_BRICK_TITLE, "Wet Bricks");
-        handle.addAdvancement(AdvancementLangKeys.CRAFT_WET_BRICK_DESC, "After I form a ball of clay into a brick, I can let it dry and then fire it");
+        handle.addAdvancement(AdvancementLangKeys.OBTAIN_WET_CLAY_BALL_TITLE, "Obtain Clay Balls");
+        handle.addAdvancement(AdvancementLangKeys.OBTAIN_WET_CLAY_BALL_DESC, "You can find clay in the topsoil or from clay blocks");
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_WET_CLAY_BRICK_TITLE, "Form Wet Bricks");
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_WET_CLAY_BRICK_DESC, "You can form a ball of clay into a brick shape");
+        handle.addAdvancement(AdvancementLangKeys.DRY_WET_CLAY_BRICK_TITLE, "Dry the Bricks");
+        handle.addAdvancement(AdvancementLangKeys.DRY_WET_CLAY_BRICK_DESC, "You can dry out the bricks next to a fire or under the sun");
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_WET_CLAY_DOUBLE_BRICK_TITLE, "Combine Two Clay Bricks");
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_WET_CLAY_DOUBLE_BRICK_DESC, "Combine two clay bricks into a large brick");
+        handle.addAdvancement(AdvancementLangKeys.DRY_WET_CLAY_DOUBLE_BRICK_TITLE, "Dry the Large Brick");
+        handle.addAdvancement(AdvancementLangKeys.DRY_WET_CLAY_DOUBLE_BRICK_DESC, "You can dry out the large brick next to a fire or under the sun");
+
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_POTTERS_CLAY_BALL_TITLE, "Craft Potters Clay Ball");
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_POTTERS_CLAY_BALL_DESC, "Mixing grog with two clay balls will yield more reliable firing");
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_POTTERS_CLAY_BRICK_TITLE, "Form Potters Clay Brick");
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_POTTERS_CLAY_BRICK_DESC, "You can form a ball of potters clay into a brick shape");
+        handle.addAdvancement(AdvancementLangKeys.DRY_WET_POTTERS_CLAY_BRICK_TITLE, "Dry the Potters Clay Brick");
+        handle.addAdvancement(AdvancementLangKeys.DRY_WET_POTTERS_CLAY_BRICK_DESC, "You can dry out the brick next to a fire or under the sun");
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_WET_POTTERS_CLAY_DOUBLE_BRICK_TITLE, "Combine Two Potters Clay Bricks");
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_WET_POTTERS_CLAY_DOUBLE_BRICK_DESC, "Combine two potters clay bricks into a large brick");
+        handle.addAdvancement(AdvancementLangKeys.DRY_WET_POTTERS_CLAY_DOUBLE_BRICK_TITLE, "Dry the Large Potters Brick");
+        handle.addAdvancement(AdvancementLangKeys.DRY_WET_POTTERS_CLAY_DOUBLE_BRICK_DESC, "You can dry out the large brick next to a fire or under the sun");
+
+        handle.addAdvancement(AdvancementLangKeys.OBTAIN_KAOLIN_CLAY_BALL_TITLE, "Craft Kaolin Clay Ball");
+        handle.addAdvancement(AdvancementLangKeys.OBTAIN_KAOLIN_CLAY_BALL_DESC, "Mixing grog with two clay balls will yield better resulting in the kiln");
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_KAOLIN_CLAY_BRICK_TITLE, "Form Kaolin Clay Brick");
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_KAOLIN_CLAY_BRICK_DESC, "You can form a ball of kaolin clay into a brick shape");
+        handle.addAdvancement(AdvancementLangKeys.DRY_WET_KAOLIN_CLAY_BRICK_TITLE, "Dry the Kaolin Clay Brick");
+        handle.addAdvancement(AdvancementLangKeys.DRY_WET_KAOLIN_CLAY_BRICK_DESC, "You can dry out the brick next to a fire or under the sun");
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_WET_KAOLIN_CLAY_DOUBLE_BRICK_TITLE, "Combine Two Kaolin Clay Bricks");
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_WET_KAOLIN_CLAY_DOUBLE_BRICK_DESC, "Combine two kaolin clay bricks into a large brick");
+        handle.addAdvancement(AdvancementLangKeys.DRY_WET_KAOLIN_CLAY_DOUBLE_BRICK_TITLE, "Dry the Large Kaolin Brick");
+        handle.addAdvancement(AdvancementLangKeys.DRY_WET_KAOLIN_CLAY_DOUBLE_BRICK_DESC, "You can dry out the large brick next to a fire or under the sun");
+
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_REFRACTORY_CLAY_BALL_TITLE, "Craft Refractory Clay Ball");
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_REFRACTORY_CLAY_BALL_DESC, "Mixing refractory grog with two kaolin clay balls and sand will yield better a very heat resistant clay");
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_REFRACTORY_CLAY_BRICK_TITLE, "Form Refractory Clay Brick");
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_REFRACTORY_CLAY_BRICK_DESC, "You can form a ball of refractory clay into a brick shape");
+        handle.addAdvancement(AdvancementLangKeys.DRY_WET_REFRACTORY_CLAY_BRICK_TITLE, "Dry the Refractory Clay Brick");
+        handle.addAdvancement(AdvancementLangKeys.DRY_WET_REFRACTORY_CLAY_BRICK_DESC, "You can dry out the brick next to a fire or under the sun");
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_WET_REFRACTORY_CLAY_DOUBLE_BRICK_TITLE, "Combine Two Refractory Clay Bricks");
+        handle.addAdvancement(AdvancementLangKeys.CRAFT_WET_REFRACTORY_CLAY_DOUBLE_BRICK_DESC, "Combine two refractory clay bricks into a large brick");
+        handle.addAdvancement(AdvancementLangKeys.DRY_WET_REFRACTORY_CLAY_DOUBLE_BRICK_TITLE, "Dry the Large Refractory Brick");
+        handle.addAdvancement(AdvancementLangKeys.DRY_WET_REFRACTORY_CLAY_DOUBLE_BRICK_DESC, "You can dry out the large brick next to a fire or under the sun");
+
         // Stone Bench
         handle.addAdvancement(AdvancementLangKeys.BETTER_POTTERY_TITLE, "Better Pottery");
         handle.addAdvancement(AdvancementLangKeys.BETTER_POTTERY_DESC, "You can use the Stone Bench to shape clay into larger and more delicate items");
