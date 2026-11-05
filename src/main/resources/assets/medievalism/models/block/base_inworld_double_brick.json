@@ -1,0 +1,32 @@
+{
+	"format_version": "26.3",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "medievalism:block/inworld_mud_brick",
+		"particle": "medievalism:block/inworld_mud_brick"
+	},
+	"elements": [
+		{
+			"from": [4, 0, 5],
+			"to": [12, 4, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [6, 0, 9]},
+			"faces": {
+				"north": {"uv": [5, 6, 13, 10], "texture": "#0"},
+				"east": {"uv": [0, 6, 5, 10], "texture": "#0"},
+				"south": {"uv": [5, 10, 13, 14], "texture": "#0"},
+				"west": {"uv": [0, 10, 5, 14], "texture": "#0"},
+				"up": {"uv": [8, 6, 0, 0], "texture": "#0"},
+				"down": {"uv": [16, 0, 8, 6], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "main",
+			"origin": [0, 0, 0],
+			"scope": 0,
+			"color": 0,
+			"children": [0]
+		}
+	]
+}
