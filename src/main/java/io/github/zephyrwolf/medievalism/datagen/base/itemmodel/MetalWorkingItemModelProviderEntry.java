@@ -1,21 +1,21 @@
-package io.github.zephyrwolf.medievalism.datagen.base.item;
+package io.github.zephyrwolf.medievalism.datagen.base.itemmodel;
 
 import io.github.zephyrwolf.medievalism.common.data.IItemModelProviderEntry;
-import io.github.zephyrwolf.medievalism.common.data.ItemModelProviderHandle;
+import io.github.zephyrwolf.medievalism.common.data.ItemModelEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 
-public class MetalItemModelProviderEntry implements IItemModelProviderEntry
+public class MetalWorkingItemModelProviderEntry implements IItemModelProviderEntry
 {
     @Override
-    public void registerModels(ItemModelProviderHandle handle)
+    public void registerModels(ItemModelEntryProviderHandle handle)
     {
         ore(handle);
         //tools(handle);
     }
 
-    private void ore(ItemModelProviderHandle handle)
+    private void ore(ItemModelEntryProviderHandle handle)
     {
-        handle.setFolder("metal");
+        handle.setFolder("metal_working");
         // From mining ore
         handle.itemGeneratedModel(ItemRegistration.RAW_TIN.get());
         // From crushing raw

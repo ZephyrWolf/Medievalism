@@ -86,19 +86,17 @@ public final class DataGenRegistration
                 new LootTableProvider.SubProviderEntry(BaseAdditionalDropsTablesSubProvider::new, LootContextParamSetRegistration.ADDITIONAL_DROPS)
         ), lookupProvider));
         BaseBlockStatesProvider blockStates = new BaseBlockStatesProvider(packOutput, existingFileHelper);
-        generator.addProvider(includeClient, blockStates);
-        generator.addProvider(includeClient, new ItemModelEntryProvider(packOutput, blockStates.models().existingFileHelper, Set.of(
-                new BoneItemModelProviderEntry(),
-                new ClayItemModelProviderEntry(),
-                new FiberItemModelProviderEntry(),
-                new FlintItemModelProviderEntry(),
-                new FoodItemModelProviderEntry(),
-                new LeatherItemModelProviderEntry(),
-                new MetalItemModelProviderEntry(),
-                new MudItemModelProviderEntry(),
-                new PlantItemModelProviderEntry(),
-                new RockItemModelProviderEntry(),
-                new WoodItemModelProviderEntry()
+        generator.addProvider(includeClient, new ItemModelEntryProvider(packOutput, existingFileHelper, Set.of(
+                new ClayWorkingItemModelProviderEntry(),
+                new CookingItemModelProviderEntry(),
+                new FarmingItemModelProviderEntry(),
+                new KnappingItemModelProviderEntry(),
+                new LeatherWorkingItemModelProviderEntry(),
+                new MetalWorkingItemModelProviderEntry(),
+                new MudWorkingItemModelProviderEntry(),
+                new WeavingItemModelProviderEntry(),
+                new WoodWorkingItemModelProviderEntry(),
+                new WorldItemModelProviderEntry()
         )));
 
         generator.addProvider(includeServer, new BaseWorldGenProvider(packOutput, lookupProvider));
