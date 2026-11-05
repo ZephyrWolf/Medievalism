@@ -6,7 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 
-public class ItemModelProviderHandle
+public class ItemModelEntryProviderHandle
 {
     public static final String GENERATED = "item/generated";
     public static final String HANDHELD = "item/handheld";
@@ -15,7 +15,7 @@ public class ItemModelProviderHandle
     private String modId;
     private String folder;
 
-    public ItemModelProviderHandle(ItemModelProvider provider, String modId)
+    public ItemModelEntryProviderHandle(ItemModelProvider provider, String modId)
     {
         this.provider = provider;
         this.modId = modId;
@@ -32,7 +32,12 @@ public class ItemModelProviderHandle
         return BuiltInRegistries.ITEM.getKey(item).getPath();
     }
 
-    private ResourceLocation resourceBlock(String modId, String path)
+    public ResourceLocation resourceBlock(String path)
+    {
+        return resourceBlock(modId, path);
+    }
+
+    public ResourceLocation resourceBlock(String modId, String path)
     {
         String fullPath = folder.isEmpty() ?
                 String.join("/", "block", path) :
@@ -40,7 +45,12 @@ public class ItemModelProviderHandle
         return ResourceLocation.fromNamespaceAndPath(modId, fullPath);
     }
 
-    private ResourceLocation resourceItem(String modId, String path)
+    public ResourceLocation resourceItem(String path)
+    {
+        return resourceItem(modId, path);
+    }
+
+    public ResourceLocation resourceItem(String modId, String path)
     {
         String fullPath = folder.isEmpty() ?
                 String.join("/", "item", path) :

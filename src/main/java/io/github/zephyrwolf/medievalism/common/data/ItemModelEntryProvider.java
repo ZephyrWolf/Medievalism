@@ -34,7 +34,7 @@ public class ItemModelEntryProvider extends ItemModelProvider
     {
         for (IItemModelProviderEntry entry : entries)
         {
-            ItemModelProviderHandle handle = new ItemModelProviderHandle(this, modId);
+            ItemModelEntryProviderHandle handle = new ItemModelEntryProviderHandle(this, modId);
             entry.registerModels(handle);
         }
     }

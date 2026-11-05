@@ -2,7 +2,6 @@ package io.github.zephyrwolf.medievalism.datagen.base.advancements;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.advancements.critereon.PlayerStatsTrigger;
-import io.github.zephyrwolf.medievalism.registration.item.BlockItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.*;
 import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.tools.TextTools;
@@ -79,7 +78,7 @@ public class AdvancementsProviderStoneAge implements AdvancementProvider.Advance
 
         AdvancementHolder hint_inhand_knapping = Advancement.Builder.advancement()
                 .parent(stone_age_root)
-                .display(BlockItemRegistration.GREYWACKE_ROCK,
+                .display(ItemRegistration.GREYWACKE_ROCK,
                         TextTools.getTranslation(AdvancementLangKeys.HINT_INHAND_KNAPPING_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.HINT_INHAND_KNAPPING_DESC),
                         null,

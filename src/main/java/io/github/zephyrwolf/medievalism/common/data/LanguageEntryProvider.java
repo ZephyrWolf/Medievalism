@@ -33,7 +33,7 @@ public class LanguageEntryProvider extends LanguageProvider
     {
         for (ILanguageProviderEntry entry : entries)
         {
-            LanguageProviderHandle handle = new LanguageProviderHandle(this, modId);
+            LanguageEntryProviderHandle handle = new LanguageEntryProviderHandle(this, modId);
             entry.addTranslations(handle);
         }
     }

@@ -2,14 +2,15 @@ package io.github.zephyrwolf.medievalism.datagen;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.MedievalismMod;
+import io.github.zephyrwolf.medievalism.common.data.BlockStateEntryProvider;
 import io.github.zephyrwolf.medievalism.common.data.ItemModelEntryProvider;
 import io.github.zephyrwolf.medievalism.common.data.LanguageEntryProvider;
+import io.github.zephyrwolf.medievalism.datagen.base.blockmodel.*;
 import io.github.zephyrwolf.medievalism.datagen.base.lang.*;
 import io.github.zephyrwolf.medievalism.datagen.base.tag.BaseBlockTagsProvider;
 import io.github.zephyrwolf.medievalism.datagen.overhauldata.block.OverhaulBlockTagsProvider;
 import io.github.zephyrwolf.medievalism.datagen.base.advancements.AdvancementsProviderStoneAge;
-import io.github.zephyrwolf.medievalism.datagen.base.block.BaseBlockStatesProvider;
-import io.github.zephyrwolf.medievalism.datagen.base.item.*;
+import io.github.zephyrwolf.medievalism.datagen.base.itemmodel.*;
 import io.github.zephyrwolf.medievalism.registration.loot.LootContextParamSetRegistration;
 import io.github.zephyrwolf.medievalism.datagen.overhauldata.advancements.OverhaulAdvancementsProvider;
 import io.github.zephyrwolf.medievalism.datagen.base.tag.BaseItemTagsProvider;
@@ -85,7 +86,19 @@ public final class DataGenRegistration
                 new LootTableProvider.SubProviderEntry(BaseBlockLootTablesSubProvider::new, LootContextParamSets.BLOCK),
                 new LootTableProvider.SubProviderEntry(BaseAdditionalDropsTablesSubProvider::new, LootContextParamSetRegistration.ADDITIONAL_DROPS)
         ), lookupProvider));
-        BaseBlockStatesProvider blockStates = new BaseBlockStatesProvider(packOutput, existingFileHelper);
+        generator.addProvider(includeClient, new BlockStateEntryProvider(packOutput, existingFileHelper, Set.of(
+                new ClayWorkingBlockStateProviderEntry(),
+                new CookingBlockStateProviderEntry(),
+                new FarmingBlockStateProviderEntry(),
+                new KnappingBlockStateProviderEntry(),
+                new LeatherWorkingBlockStateProviderEntry(),
+                new MetalWorkingBlockStateProviderEntry(),
+                new MiscBlockStateProviderEntry(),
+                new MudWorkingBlockStateProviderEntry(),
+                new WeavingBlockStateProviderEntry(),
+                new WoodWorkingBlockStateProviderEntry(),
+                new WorldBlockStateProviderEntry()
+        )));
         generator.addProvider(includeClient, new ItemModelEntryProvider(packOutput, existingFileHelper, Set.of(
                 new ClayWorkingItemModelProviderEntry(),
                 new CookingItemModelProviderEntry(),
