@@ -69,16 +69,16 @@ public final class DataGenRegistration
         )));
         generator.addProvider(includeClient, new LanguageEntryProvider(packOutput, Set.of(
                 new AdvancementLangEntry(), // TODO Reimplement all of your advancements :(
-                new BoneLangEntry(),
-                new ClayLangEntry(),
-                new FoodLangEntry(),
-                new LeatherLangEntry(),
-                new MetalLangEntry(),
+                new ClayWorkingLangEntry(),
+                new CookingLangEntry(),
+                new FarmingLangEntry(),
+                new KnappingLangEntry(),
+                new LeatherWorkingLangEntry(),
+                new MetalWorkingLangEntry(),
                 new MiscLangEntry(),
-                new MudLangEntry(),
-                new PlantLangEntry(),
-                new RockLangEntry(),
-                new WoodLangEntry(),
+                new MudWorkingLangEntry(),
+                new WeavingLangEntry(),
+                new WoodWorkingLangEntry(),
                 new WorldLangEntry()
         )));
         generator.addProvider(includeServer, new LootTableProvider(packOutput, Collections.emptySet(), List.of(

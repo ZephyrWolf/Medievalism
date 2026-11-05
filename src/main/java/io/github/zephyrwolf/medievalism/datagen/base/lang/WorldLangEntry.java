@@ -1,13 +1,13 @@
 package io.github.zephyrwolf.medievalism.datagen.base.lang;
 
 import io.github.zephyrwolf.medievalism.common.data.ILanguageProviderEntry;
-import io.github.zephyrwolf.medievalism.common.data.LanguageProviderHandle;
+import io.github.zephyrwolf.medievalism.common.data.LanguageEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.BlockItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 
 public class WorldLangEntry implements ILanguageProviderEntry
 {
-    public void addTranslations(LanguageProviderHandle handle)
+    public void addTranslations(LanguageEntryProviderHandle handle)
     {
         addBlockTranslations(handle);
         addBlockItemTranslations(handle);
@@ -18,37 +18,40 @@ public class WorldLangEntry implements ILanguageProviderEntry
         addTooltipTranslations(handle);
     }
 
-    private void addBlockTranslations(LanguageProviderHandle handle)
+    private void addBlockTranslations(LanguageEntryProviderHandle handle)
     {
+        handle.addBlock(BlockRegistration.FIRE_LAY.get(), "Thatch"); // TODO Seperate firelay and thatch names
     }
 
-    private void addBlockItemTranslations(LanguageProviderHandle handle)
+    private void addBlockItemTranslations(LanguageEntryProviderHandle handle)
     {
         // DIRT
-        handle.addBlockItem(BlockItemRegistration.SILT.get(), "Silt");
+        handle.addBlock(BlockRegistration.SILT.get(), "Silt");
+        handle.addBlock(BlockRegistration.CLAY_IN_GRASS.get(), "Clay Rich Grass");
+        handle.addBlock(BlockRegistration.CLAY_IN_DIRT.get(), "Clay Rich Dirt");
         // STONE
-        handle.addBlockItem(BlockItemRegistration.SOFT_TUFF.get(), "Soft Tuff");
-        handle.addBlockItem(BlockItemRegistration.IGNIMBRITE.get(), "Ignimbrite");
-        handle.addBlockItem(BlockItemRegistration.LAPILLISTONE.get(), "Lapillistone");
-        handle.addBlockItem(BlockItemRegistration.SAPROLITE.get(), "Saprolite");
-        handle.addBlockItem(BlockItemRegistration.LATERITE.get(), "Laterite");
-        handle.addBlockItem(BlockItemRegistration.SILTSTONE.get (), "Siltstone");
-        handle.addBlockItem(BlockItemRegistration.DOLOSTONE.get(), "Dolostone");
-        handle.addBlockItem(BlockItemRegistration.LIMESTONE.get(), "Limestone");
-        handle.addBlockItem(BlockItemRegistration.CHALK.get(), "Chalk");
-        handle.addBlockItem(BlockItemRegistration.IRONSTONE.get(), "Ironstone");
-        handle.addBlockItem(BlockItemRegistration.SHALE.get(), "Shale");
-        handle.addBlockItem(BlockItemRegistration.ARKOSE.get(), "Arkose");
-        handle.addBlockItem(BlockItemRegistration.MARBLE.get(), "Marble");
-        handle.addBlockItem(BlockItemRegistration.QUARTZITE.get(), "Quartzite");
-        handle.addBlockItem(BlockItemRegistration.HORNFELS.get(), "Hornfels");
-        handle.addBlockItem(BlockItemRegistration.SLATE.get(), "Slate");
-        handle.addBlockItem(BlockItemRegistration.SMOOTH_DIORITE.get(), "Smooth Diorite");
-        handle.addBlockItem(BlockItemRegistration.SMOOTH_GRANITE.get(), "Smooth Granite");
-        handle.addBlockItem(BlockItemRegistration.NORITE.get(), "Norite");
-        handle.addBlockItem(BlockItemRegistration.PERIDOTITE.get(), "Peridotite");
-        handle.addBlockItem(BlockItemRegistration.RHYOLITE.get(), "Rhyolite");
-        handle.addBlockItem(BlockItemRegistration.DACITE.get(), "Dacite");
+        handle.addBlock(BlockRegistration.SOFT_TUFF.get(), "Soft Tuff");
+        handle.addBlock(BlockRegistration.IGNIMBRITE.get(), "Ignimbrite");
+        handle.addBlock(BlockRegistration.LAPILLISTONE.get(), "Lapillistone");
+        handle.addBlock(BlockRegistration.SAPROLITE.get(), "Saprolite");
+        handle.addBlock(BlockRegistration.LATERITE.get(), "Laterite");
+        handle.addBlock(BlockRegistration.SILTSTONE.get (), "Siltstone");
+        handle.addBlock(BlockRegistration.DOLOSTONE.get(), "Dolostone");
+        handle.addBlock(BlockRegistration.LIMESTONE.get(), "Limestone");
+        handle.addBlock(BlockRegistration.CHALK.get(), "Chalk");
+        handle.addBlock(BlockRegistration.IRONSTONE.get(), "Ironstone");
+        handle.addBlock(BlockRegistration.SHALE.get(), "Shale");
+        handle.addBlock(BlockRegistration.ARKOSE.get(), "Arkose");
+        handle.addBlock(BlockRegistration.MARBLE.get(), "Marble");
+        handle.addBlock(BlockRegistration.QUARTZITE.get(), "Quartzite");
+        handle.addBlock(BlockRegistration.HORNFELS.get(), "Hornfels");
+        handle.addBlock(BlockRegistration.SLATE.get(), "Slate");
+        handle.addBlock(BlockRegistration.SMOOTH_DIORITE.get(), "Smooth Diorite");
+        handle.addBlock(BlockRegistration.SMOOTH_GRANITE.get(), "Smooth Granite");
+        handle.addBlock(BlockRegistration.NORITE.get(), "Norite");
+        handle.addBlock(BlockRegistration.PERIDOTITE.get(), "Peridotite");
+        handle.addBlock(BlockRegistration.RHYOLITE.get(), "Rhyolite");
+        handle.addBlock(BlockRegistration.DACITE.get(), "Dacite");
         // LOOSE STONE
         //handle.addBlockItem(BlockItemRegistration.LOOSE_GREYWACKE.get(), "Loose Greywacke");
         //handle.addBlockItem(BlockItemRegistration.LOOSE_DOLOSTONE.get(), "Loose Dolostone");
@@ -90,166 +93,174 @@ public class WorldLangEntry implements ILanguageProviderEntry
         //handle.addBlockItem(BlockItemRegistration.ANDESITE_GRAVEL.get(), "Andesite Gravel");
         //handle.addBlockItem(BlockItemRegistration.BASALT_GRAVEL.get(), "Basalt Gravel");
         // COPPER ORE
-        handle.addBlockItem(BlockItemRegistration.SAPROLITE_COPPER_ORE.get(), "Copper Traces in Saprolite");
-        handle.addBlockItem(BlockItemRegistration.SILTSTONE_COPPER_ORE.get(), "Copper Ore in Siltstone");
-        handle.addBlockItem(BlockItemRegistration.DOLOSTONE_COPPER_ORE.get(), "Copper Ore in Dolostone");
-        handle.addBlockItem(BlockItemRegistration.LIMESTONE_COPPER_ORE.get(), "Copper Ore in Limestone");
-        handle.addBlockItem(BlockItemRegistration.CHALK_COPPER_ORE.get(), "Copper Ore in Chalk");
-        handle.addBlockItem(BlockItemRegistration.IRONSTONE_COPPER_ORE.get(), "Copper Ore in Ironstone");
-        handle.addBlockItem(BlockItemRegistration.SHALE_COPPER_ORE.get(), "Copper Ore in Shale");
-        handle.addBlockItem(BlockItemRegistration.ARKOSE_COPPER_ORE.get(), "Copper Ore in Arkose");
-        handle.addBlockItem(BlockItemRegistration.MARBLE_COPPER_ORE.get(), "Copper Ore in Marble");
-        handle.addBlockItem(BlockItemRegistration.QUARTZITE_COPPER_ORE.get(), "Copper Ore in Quartzite");
-        handle.addBlockItem(BlockItemRegistration.HORNFELS_COPPER_ORE.get(), "Copper Ore in Hornfels");
-        handle.addBlockItem(BlockItemRegistration.SLATE_COPPER_ORE.get(), "Copper Ore in Slate");
+        handle.addBlock(BlockRegistration.SAPROLITE_COPPER_ORE.get(), "Copper Traces in Saprolite");
+        handle.addBlock(BlockRegistration.SILTSTONE_COPPER_ORE.get(), "Copper Ore in Siltstone");
+        handle.addBlock(BlockRegistration.DOLOSTONE_COPPER_ORE.get(), "Copper Ore in Dolostone");
+        handle.addBlock(BlockRegistration.LIMESTONE_COPPER_ORE.get(), "Copper Ore in Limestone");
+        handle.addBlock(BlockRegistration.CHALK_COPPER_ORE.get(), "Copper Ore in Chalk");
+        handle.addBlock(BlockRegistration.IRONSTONE_COPPER_ORE.get(), "Copper Ore in Ironstone");
+        handle.addBlock(BlockRegistration.SHALE_COPPER_ORE.get(), "Copper Ore in Shale");
+        handle.addBlock(BlockRegistration.ARKOSE_COPPER_ORE.get(), "Copper Ore in Arkose");
+        handle.addBlock(BlockRegistration.MARBLE_COPPER_ORE.get(), "Copper Ore in Marble");
+        handle.addBlock(BlockRegistration.QUARTZITE_COPPER_ORE.get(), "Copper Ore in Quartzite");
+        handle.addBlock(BlockRegistration.HORNFELS_COPPER_ORE.get(), "Copper Ore in Hornfels");
+        handle.addBlock(BlockRegistration.SLATE_COPPER_ORE.get(), "Copper Ore in Slate");
         // IRON ORE
-        handle.addBlockItem(BlockItemRegistration.GABBRO_IRON_ORE.get(), "Iron Ore in Gabbro");
-        handle.addBlockItem(BlockItemRegistration.SMOOTH_DIORITE_IRON_ORE.get(), "Iron Ore in Smooth Diorite");
-        handle.addBlockItem(BlockItemRegistration.SMOOTH_GRANITE_IRON_ORE.get(), "Iron Ore in Smooth Granite");
-        handle.addBlockItem(BlockItemRegistration.NORITE_IRON_ORE.get(), "Iron Ore in Norite");
-        handle.addBlockItem(BlockItemRegistration.PERIDOTITE_IRON_ORE.get(), "Iron Ore in Peridotite");
-        handle.addBlockItem(BlockItemRegistration.RHYOLITE_IRON_ORE.get(), "Iron Ore in Rhyolite");
-        handle.addBlockItem(BlockItemRegistration.DACITE_IRON_ORE.get(), "Iron Ore in Dacite");
-        handle.addBlockItem(BlockItemRegistration.ANDESITE_IRON_ORE.get(), "Iron Ore in Andesite");
-        handle.addBlockItem(BlockItemRegistration.BASALT_IRON_ORE.get(), "Iron Ore in Basalt");
+        handle.addBlock(BlockRegistration.GABBRO_IRON_ORE.get(), "Iron Ore in Gabbro");
+        handle.addBlock(BlockRegistration.SMOOTH_DIORITE_IRON_ORE.get(), "Iron Ore in Smooth Diorite");
+        handle.addBlock(BlockRegistration.SMOOTH_GRANITE_IRON_ORE.get(), "Iron Ore in Smooth Granite");
+        handle.addBlock(BlockRegistration.NORITE_IRON_ORE.get(), "Iron Ore in Norite");
+        handle.addBlock(BlockRegistration.PERIDOTITE_IRON_ORE.get(), "Iron Ore in Peridotite");
+        handle.addBlock(BlockRegistration.RHYOLITE_IRON_ORE.get(), "Iron Ore in Rhyolite");
+        handle.addBlock(BlockRegistration.DACITE_IRON_ORE.get(), "Iron Ore in Dacite");
+        handle.addBlock(BlockRegistration.ANDESITE_IRON_ORE.get(), "Iron Ore in Andesite");
+        handle.addBlock(BlockRegistration.BASALT_IRON_ORE.get(), "Iron Ore in Basalt");
         // GOLD ORE
-        handle.addBlockItem(BlockItemRegistration.GREYWACKE_GOLD_ORE.get(), "Gold Ore in Greywacke");
-        handle.addBlockItem(BlockItemRegistration.SILTSTONE_GOLD_ORE.get(), "Gold Ore in Siltstone");
-        handle.addBlockItem(BlockItemRegistration.DOLOSTONE_GOLD_ORE.get(), "Gold Ore in Dolostone");
-        handle.addBlockItem(BlockItemRegistration.LIMESTONE_GOLD_ORE.get(), "Gold Ore in Limestone");
-        handle.addBlockItem(BlockItemRegistration.CHALK_GOLD_ORE.get(), "Gold Ore in Chalk");
-        handle.addBlockItem(BlockItemRegistration.IRONSTONE_GOLD_ORE.get(), "Gold Ore in Ironstone");
-        handle.addBlockItem(BlockItemRegistration.SHALE_GOLD_ORE.get(), "Gold Ore in Shale");
-        handle.addBlockItem(BlockItemRegistration.ARKOSE_GOLD_ORE.get(), "Gold Ore in Arkose");
-        handle.addBlockItem(BlockItemRegistration.MARBLE_GOLD_ORE.get(), "Gold Ore in Marble");
-        handle.addBlockItem(BlockItemRegistration.QUARTZITE_GOLD_ORE.get(), "Gold Ore in Quartzite");
-        handle.addBlockItem(BlockItemRegistration.HORNFELS_GOLD_ORE.get(), "Gold Ore in Hornfels");
-        handle.addBlockItem(BlockItemRegistration.SLATE_GOLD_ORE.get(), "Gold Ore in Slate");
-        handle.addBlockItem(BlockItemRegistration.GABBRO_GOLD_ORE.get(), "Gold Ore in Gabbro");
-        handle.addBlockItem(BlockItemRegistration.SMOOTH_DIORITE_GOLD_ORE.get(), "Gold Ore in Smooth Diorite");
-        handle.addBlockItem(BlockItemRegistration.SMOOTH_GRANITE_GOLD_ORE.get(), "Gold Ore in Smooth Granite");
-        handle.addBlockItem(BlockItemRegistration.NORITE_GOLD_ORE.get(), "Gold Ore in Norite");
-        handle.addBlockItem(BlockItemRegistration.PERIDOTITE_GOLD_ORE.get(), "Gold Ore in Peridotite");
-        handle.addBlockItem(BlockItemRegistration.RHYOLITE_GOLD_ORE.get(), "Gold Ore in Rhyolite");
-        handle.addBlockItem(BlockItemRegistration.DACITE_GOLD_ORE.get(), "Gold Ore in Dacite");
-        handle.addBlockItem(BlockItemRegistration.ANDESITE_GOLD_ORE.get(), "Gold Ore in Andesite");
-        handle.addBlockItem(BlockItemRegistration.BASALT_GOLD_ORE.get(), "Gold Ore in Basalt");
+        handle.addBlock(BlockRegistration.GREYWACKE_GOLD_ORE.get(), "Gold Ore in Greywacke");
+        handle.addBlock(BlockRegistration.SILTSTONE_GOLD_ORE.get(), "Gold Ore in Siltstone");
+        handle.addBlock(BlockRegistration.DOLOSTONE_GOLD_ORE.get(), "Gold Ore in Dolostone");
+        handle.addBlock(BlockRegistration.LIMESTONE_GOLD_ORE.get(), "Gold Ore in Limestone");
+        handle.addBlock(BlockRegistration.CHALK_GOLD_ORE.get(), "Gold Ore in Chalk");
+        handle.addBlock(BlockRegistration.IRONSTONE_GOLD_ORE.get(), "Gold Ore in Ironstone");
+        handle.addBlock(BlockRegistration.SHALE_GOLD_ORE.get(), "Gold Ore in Shale");
+        handle.addBlock(BlockRegistration.ARKOSE_GOLD_ORE.get(), "Gold Ore in Arkose");
+        handle.addBlock(BlockRegistration.MARBLE_GOLD_ORE.get(), "Gold Ore in Marble");
+        handle.addBlock(BlockRegistration.QUARTZITE_GOLD_ORE.get(), "Gold Ore in Quartzite");
+        handle.addBlock(BlockRegistration.HORNFELS_GOLD_ORE.get(), "Gold Ore in Hornfels");
+        handle.addBlock(BlockRegistration.SLATE_GOLD_ORE.get(), "Gold Ore in Slate");
+        handle.addBlock(BlockRegistration.GABBRO_GOLD_ORE.get(), "Gold Ore in Gabbro");
+        handle.addBlock(BlockRegistration.SMOOTH_DIORITE_GOLD_ORE.get(), "Gold Ore in Smooth Diorite");
+        handle.addBlock(BlockRegistration.SMOOTH_GRANITE_GOLD_ORE.get(), "Gold Ore in Smooth Granite");
+        handle.addBlock(BlockRegistration.NORITE_GOLD_ORE.get(), "Gold Ore in Norite");
+        handle.addBlock(BlockRegistration.PERIDOTITE_GOLD_ORE.get(), "Gold Ore in Peridotite");
+        handle.addBlock(BlockRegistration.RHYOLITE_GOLD_ORE.get(), "Gold Ore in Rhyolite");
+        handle.addBlock(BlockRegistration.DACITE_GOLD_ORE.get(), "Gold Ore in Dacite");
+        handle.addBlock(BlockRegistration.ANDESITE_GOLD_ORE.get(), "Gold Ore in Andesite");
+        handle.addBlock(BlockRegistration.BASALT_GOLD_ORE.get(), "Gold Ore in Basalt");
         // COAL ORE
-        handle.addBlockItem(BlockItemRegistration.SAPROLITE_COAL_ORE.get(), "Coal Ore in Saprolite");
-        handle.addBlockItem(BlockItemRegistration.LATERITE_COAL_ORE.get(), "Coal Ore in Laterite");
-        handle.addBlockItem(BlockItemRegistration.GREYWACKE_COAL_ORE.get(), "Coal Ore in Greywacke");
-        handle.addBlockItem(BlockItemRegistration.SILTSTONE_COAL_ORE.get(), "Coal Ore in Siltstone");
-        handle.addBlockItem(BlockItemRegistration.DOLOSTONE_COAL_ORE.get(), "Coal Ore in Dolostone");
-        handle.addBlockItem(BlockItemRegistration.LIMESTONE_COAL_ORE.get(), "Coal Ore in Limestone");
-        handle.addBlockItem(BlockItemRegistration.CHALK_COAL_ORE.get(), "Coal Ore in Chalk");
-        handle.addBlockItem(BlockItemRegistration.IRONSTONE_COAL_ORE.get(), "Coal Ore in Ironstone");
-        handle.addBlockItem(BlockItemRegistration.SHALE_COAL_ORE.get(), "Coal Ore in Shale");
-        handle.addBlockItem(BlockItemRegistration.ARKOSE_COAL_ORE.get(), "Coal Ore in Arkose");
-        handle.addBlockItem(BlockItemRegistration.MARBLE_COAL_ORE.get(), "Coal Ore in Marble");
-        handle.addBlockItem(BlockItemRegistration.QUARTZITE_COAL_ORE.get(), "Coal Ore in Quartzite");
-        handle.addBlockItem(BlockItemRegistration.HORNFELS_COAL_ORE.get(), "Coal Ore in Hornfels");
-        handle.addBlockItem(BlockItemRegistration.SLATE_COAL_ORE.get(), "Coal Ore in Slate");
+        handle.addBlock(BlockRegistration.SAPROLITE_COAL_ORE.get(), "Coal Ore in Saprolite");
+        handle.addBlock(BlockRegistration.LATERITE_COAL_ORE.get(), "Coal Ore in Laterite");
+        handle.addBlock(BlockRegistration.GREYWACKE_COAL_ORE.get(), "Coal Ore in Greywacke");
+        handle.addBlock(BlockRegistration.SILTSTONE_COAL_ORE.get(), "Coal Ore in Siltstone");
+        handle.addBlock(BlockRegistration.DOLOSTONE_COAL_ORE.get(), "Coal Ore in Dolostone");
+        handle.addBlock(BlockRegistration.LIMESTONE_COAL_ORE.get(), "Coal Ore in Limestone");
+        handle.addBlock(BlockRegistration.CHALK_COAL_ORE.get(), "Coal Ore in Chalk");
+        handle.addBlock(BlockRegistration.IRONSTONE_COAL_ORE.get(), "Coal Ore in Ironstone");
+        handle.addBlock(BlockRegistration.SHALE_COAL_ORE.get(), "Coal Ore in Shale");
+        handle.addBlock(BlockRegistration.ARKOSE_COAL_ORE.get(), "Coal Ore in Arkose");
+        handle.addBlock(BlockRegistration.MARBLE_COAL_ORE.get(), "Coal Ore in Marble");
+        handle.addBlock(BlockRegistration.QUARTZITE_COAL_ORE.get(), "Coal Ore in Quartzite");
+        handle.addBlock(BlockRegistration.HORNFELS_COAL_ORE.get(), "Coal Ore in Hornfels");
+        handle.addBlock(BlockRegistration.SLATE_COAL_ORE.get(), "Coal Ore in Slate");
         // DIAMOND ORE
-        handle.addBlockItem(BlockItemRegistration.GABBRO_DIAMOND_ORE.get(), "Diamond Ore in Gabbro");
-        handle.addBlockItem(BlockItemRegistration.SMOOTH_DIORITE_DIAMOND_ORE.get(), "Diamond Ore in Smooth Diorite");
-        handle.addBlockItem(BlockItemRegistration.SMOOTH_GRANITE_DIAMOND_ORE.get(), "Diamond Ore in Smooth Granite");
-        handle.addBlockItem(BlockItemRegistration.NORITE_DIAMOND_ORE.get(), "Diamond Ore in Norite");
-        handle.addBlockItem(BlockItemRegistration.PERIDOTITE_DIAMOND_ORE.get(), "Diamond Ore in Peridotite");
-        handle.addBlockItem(BlockItemRegistration.ANDESITE_DIAMOND_ORE.get(), "Diamond Ore in Andesite");
-        handle.addBlockItem(BlockItemRegistration.BASALT_DIAMOND_ORE.get(), "Diamond Ore in Basalt");
+        handle.addBlock(BlockRegistration.GABBRO_DIAMOND_ORE.get(), "Diamond Ore in Gabbro");
+        handle.addBlock(BlockRegistration.SMOOTH_DIORITE_DIAMOND_ORE.get(), "Diamond Ore in Smooth Diorite");
+        handle.addBlock(BlockRegistration.SMOOTH_GRANITE_DIAMOND_ORE.get(), "Diamond Ore in Smooth Granite");
+        handle.addBlock(BlockRegistration.NORITE_DIAMOND_ORE.get(), "Diamond Ore in Norite");
+        handle.addBlock(BlockRegistration.PERIDOTITE_DIAMOND_ORE.get(), "Diamond Ore in Peridotite");
+        handle.addBlock(BlockRegistration.ANDESITE_DIAMOND_ORE.get(), "Diamond Ore in Andesite");
+        handle.addBlock(BlockRegistration.BASALT_DIAMOND_ORE.get(), "Diamond Ore in Basalt");
         // EMERALD ORE
-        handle.addBlockItem(BlockItemRegistration.GABBRO_EMERALD_ORE.get(), "Emerald Ore in Gabbro");
-        handle.addBlockItem(BlockItemRegistration.SMOOTH_DIORITE_EMERALD_ORE.get(), "Emerald Ore in Smooth Diorite");
-        handle.addBlockItem(BlockItemRegistration.SMOOTH_GRANITE_EMERALD_ORE.get(), "Emerald Ore in Smooth Granite");
-        handle.addBlockItem(BlockItemRegistration.NORITE_EMERALD_ORE.get(), "Emerald Ore in Norite");
-        handle.addBlockItem(BlockItemRegistration.PERIDOTITE_EMERALD_ORE.get(), "Emerald Ore in Peridotite");
-        handle.addBlockItem(BlockItemRegistration.RHYOLITE_EMERALD_ORE.get(), "Emerald Ore in Rhyolite");
-        handle.addBlockItem(BlockItemRegistration.DACITE_EMERALD_ORE.get(), "Emerald Ore in Dacite");
-        handle.addBlockItem(BlockItemRegistration.ANDESITE_EMERALD_ORE.get(), "Emerald Ore in Andesite");
-        handle.addBlockItem(BlockItemRegistration.BASALT_EMERALD_ORE.get(), "Emerald Ore in Basalt");
+        handle.addBlock(BlockRegistration.GABBRO_EMERALD_ORE.get(), "Emerald Ore in Gabbro");
+        handle.addBlock(BlockRegistration.SMOOTH_DIORITE_EMERALD_ORE.get(), "Emerald Ore in Smooth Diorite");
+        handle.addBlock(BlockRegistration.SMOOTH_GRANITE_EMERALD_ORE.get(), "Emerald Ore in Smooth Granite");
+        handle.addBlock(BlockRegistration.NORITE_EMERALD_ORE.get(), "Emerald Ore in Norite");
+        handle.addBlock(BlockRegistration.PERIDOTITE_EMERALD_ORE.get(), "Emerald Ore in Peridotite");
+        handle.addBlock(BlockRegistration.RHYOLITE_EMERALD_ORE.get(), "Emerald Ore in Rhyolite");
+        handle.addBlock(BlockRegistration.DACITE_EMERALD_ORE.get(), "Emerald Ore in Dacite");
+        handle.addBlock(BlockRegistration.ANDESITE_EMERALD_ORE.get(), "Emerald Ore in Andesite");
+        handle.addBlock(BlockRegistration.BASALT_EMERALD_ORE.get(), "Emerald Ore in Basalt");
         // LAPIS ORE
-        handle.addBlockItem(BlockItemRegistration.MARBLE_LAPIS_ORE.get(), "Lapis Lazuli Ore in Marble");
-        handle.addBlockItem(BlockItemRegistration.QUARTZITE_LAPIS_ORE.get(), "Lapis Lazuli Ore in Quartzite");
-        handle.addBlockItem(BlockItemRegistration.HORNFELS_LAPIS_ORE.get(), "Lapis Lazuli Ore in Hornfels");
-        handle.addBlockItem(BlockItemRegistration.SLATE_LAPIS_ORE.get(), "Lapis Lazuli Ore in Slate");
+        handle.addBlock(BlockRegistration.MARBLE_LAPIS_ORE.get(), "Lapis Lazuli Ore in Marble");
+        handle.addBlock(BlockRegistration.QUARTZITE_LAPIS_ORE.get(), "Lapis Lazuli Ore in Quartzite");
+        handle.addBlock(BlockRegistration.HORNFELS_LAPIS_ORE.get(), "Lapis Lazuli Ore in Hornfels");
+        handle.addBlock(BlockRegistration.SLATE_LAPIS_ORE.get(), "Lapis Lazuli Ore in Slate");
         // REDSTONE ORE
-        handle.addBlockItem(BlockItemRegistration.GABBRO_REDSTONE_ORE.get(), "Redstone Ore in Gabbro");
-        handle.addBlockItem(BlockItemRegistration.SMOOTH_DIORITE_REDSTONE_ORE.get(), "Redstone Ore in Smooth Diorite");
-        handle.addBlockItem(BlockItemRegistration.SMOOTH_GRANITE_REDSTONE_ORE.get(), "Redstone Ore in Smooth Granite");
-        handle.addBlockItem(BlockItemRegistration.NORITE_REDSTONE_ORE.get(), "Redstone Ore in Norite");
-        handle.addBlockItem(BlockItemRegistration.PERIDOTITE_REDSTONE_ORE.get(), "Redstone Ore in Peridotite");
-        // TIN ORE
-        handle.addBlock(BlockRegistration.TIN_ORE_IN_GREYWACKE.get(), "Tin Ore Block"); // TODO
-        handle.addBlock(BlockRegistration.TIN_ORE_IN_GABBRO.get(), "Deepslate Tin Ore Block");
+        handle.addBlock(BlockRegistration.GABBRO_REDSTONE_ORE.get(), "Redstone Ore in Gabbro");
+        handle.addBlock(BlockRegistration.SMOOTH_DIORITE_REDSTONE_ORE.get(), "Redstone Ore in Smooth Diorite");
+        handle.addBlock(BlockRegistration.SMOOTH_GRANITE_REDSTONE_ORE.get(), "Redstone Ore in Smooth Granite");
+        handle.addBlock(BlockRegistration.NORITE_REDSTONE_ORE.get(), "Redstone Ore in Norite");
+        handle.addBlock(BlockRegistration.PERIDOTITE_REDSTONE_ORE.get(), "Redstone Ore in Peridotite");
         // CHERT ORE
-        handle.addBlockItem(BlockItemRegistration.CHALK_CHERT_ORE.get(), "Chert in Chalk");
+        handle.addBlock(BlockRegistration.CHALK_CHERT_ORE.get(), "Chert in Chalk");
         // GEODE ORE
-        handle.addBlockItem(BlockItemRegistration.BASALT_GEODE_ORE.get(), "Geode in Basalt");
-        handle.addBlockItem(BlockItemRegistration.ANDESITE_GEODE_ORE.get(), "Geode in Andesite");
-        handle.addBlockItem(BlockItemRegistration.RHYOLITE_GEODE_ORE.get(), "Geode in Rhyolite");
-        handle.addBlockItem(BlockItemRegistration.DACITE_GEODE_ORE.get(), "Geode in Dacite");
-        // INFESTED STONE
-        handle.addBlockItem(BlockItemRegistration.INFESTED_SILTSTONE.get(), "Infested Siltstone");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_DOLOSTONE.get(), "Infested Dolostone");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_LIMESTONE.get(), "Infested Limestone");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_SHALE.get(), "Infested Shale");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_ARKOSE.get(), "Infested Arkose");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_MARBLE.get(), "Infested Marble");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_QUARTZITE.get(), "Infested Quartzite");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_HORNFELS.get(), "Infested Hornfels");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_SLATE.get(), "Infested Slate");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_SMOOTH_DIORITE.get(), "Infested Smooth Diorite");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_SMOOTH_GRANITE.get(), "Infested Smooth Granite");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_NORITE.get(), "Infested Norite");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_PERIDOTITE.get(), "Infested Peridotite");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_RHYOLITE.get(), "Infested Rhyolite");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_DACITE.get(), "Infested Dacite");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_ANDESITE.get(), "Infested Andesite");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_BASALT.get(), "Infested Basalt");
+        handle.addBlock(BlockRegistration.BASALT_GEODE_ORE.get(), "Geode in Basalt");
+        handle.addBlock(BlockRegistration.ANDESITE_GEODE_ORE.get(), "Geode in Andesite");
+        handle.addBlock(BlockRegistration.RHYOLITE_GEODE_ORE.get(), "Geode in Rhyolite");
+        handle.addBlock(BlockRegistration.DACITE_GEODE_ORE.get(), "Geode in Dacite");
+        // INFESTEDkEBlock     handle.addBlock(BlockRegistration.INFESTED_SILTSTONE.get(), "Infested Siltstone");
+        handle.addBlock(BlockRegistration.INFESTED_DOLOSTONE.get(), "Infested Dolostone");
+        handle.addBlock(BlockRegistration.INFESTED_LIMESTONE.get(), "Infested Limestone");
+        handle.addBlock(BlockRegistration.INFESTED_SHALE.get(), "Infested Shale");
+        handle.addBlock(BlockRegistration.INFESTED_ARKOSE.get(), "Infested Arkose");
+        handle.addBlock(BlockRegistration.INFESTED_MARBLE.get(), "Infested Marble");
+        handle.addBlock(BlockRegistration.INFESTED_QUARTZITE.get(), "Infested Quartzite");
+        handle.addBlock(BlockRegistration.INFESTED_HORNFELS.get(), "Infested Hornfels");
+        handle.addBlock(BlockRegistration.INFESTED_SLATE.get(), "Infested Slate");
+        handle.addBlock(BlockRegistration.INFESTED_SMOOTH_DIORITE.get(), "Infested Smooth Diorite");
+        handle.addBlock(BlockRegistration.INFESTED_SMOOTH_GRANITE.get(), "Infested Smooth Granite");
+        handle.addBlock(BlockRegistration.INFESTED_NORITE.get(), "Infested Norite");
+        handle.addBlock(BlockRegistration.INFESTED_PERIDOTITE.get(), "Infested Peridotite");
+        handle.addBlock(BlockRegistration.INFESTED_RHYOLITE.get(), "Infested Rhyolite");
+        handle.addBlock(BlockRegistration.INFESTED_DACITE.get(), "Infested Dacite");
+        handle.addBlock(BlockRegistration.INFESTED_ANDESITE.get(), "Infested Andesite");
+        handle.addBlock(BlockRegistration.INFESTED_BASALT.get(), "Infested Basalt");
         // COBBLE
-        handle.addBlockItem(BlockItemRegistration.COBBLED_SOFT_TUFF.get(), "Cobbled Soft Tuff");
-        handle.addBlockItem(BlockItemRegistration.COBBLED_IGNIMBRITE.get(), "Cobbled Ignimbrite");
-        handle.addBlockItem(BlockItemRegistration.COBBLED_LAPILLISTONE.get(), "Cobbled Lapillistone");
-        handle.addBlockItem(BlockItemRegistration.COBBLED_WELDED_TUFF.get(), "Cobbled Welded Tuff");
-        handle.addBlockItem(BlockItemRegistration.COBBLED_SANDSTONE.get(), "Cobbled Sandstone");
-        handle.addBlockItem(BlockItemRegistration.COBBLED_RED_SANDSTONE.get(), "Cobbled Red Sandstone");
-        handle.addBlockItem(BlockItemRegistration.COBBLED_SAPROLITE.get(), "Cobbled Saprolite");
-        handle.addBlockItem(BlockItemRegistration.COBBLED_LATERITE.get(), "Cobbled Laterite");
-        handle.addBlockItem(BlockItemRegistration.COBBLED_SILTSTONE.get(), "Cobbled Siltstone");
-        handle.addBlockItem(BlockItemRegistration.COBBLED_DOLOSTONE.get(), "Cobbled Dolostone");
-        handle.addBlockItem(BlockItemRegistration.COBBLED_LIMESTONE.get(), "Cobbled Limestone");
-        handle.addBlockItem(BlockItemRegistration.COBBLED_CHALK.get(), "Cobbled Chalk");
-        handle.addBlockItem(BlockItemRegistration.COBBLED_IRONSTONE.get(), "Cobbled Ironstone");
-        handle.addBlockItem(BlockItemRegistration.COBBLED_SHALE.get(), "Cobbled Shale");
-        handle.addBlockItem(BlockItemRegistration.COBBLED_ARKOSE.get(), "Cobbled Arkose");
-        // INFESTED COBBLE
-        handle.addBlockItem(BlockItemRegistration.INFESTED_COBBLED_SILTSTONE.get(), "Infested Cobbled Siltstone");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_COBBLED_DOLOSTONE.get(), "Infested Cobbled Dolostone");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_COBBLED_LIMESTONE.get(), "Infested Cobbled Limestone");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_COBBLED_CHALK.get(), "Infested Cobbled Chalk");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_COBBLED_IRONSTONE.get(), "Infested Cobbled Ironstone");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_COBBLED_SHALE.get(), "Infested Cobbled Shale");
-        handle.addBlockItem(BlockItemRegistration.INFESTED_COBBLED_ARKOSE.get(), "Infested Cobbled Arkose");
-        handle.addBlockItem(BlockItemRegistration.LIMESTONE_CHERT_ORE.get(), "Chert in Limestone");
+        handle.addBlock(BlockRegistration.COBBLED_SOFT_TUFF.get(), "Cobbled Soft Tuff");
+        handle.addBlock(BlockRegistration.COBBLED_IGNIMBRITE.get(), "Cobbled Ignimbrite");
+        handle.addBlock(BlockRegistration.COBBLED_LAPILLISTONE.get(), "Cobbled Lapillistone");
+        handle.addBlock(BlockRegistration.COBBLED_WELDED_TUFF.get(), "Cobbled Welded Tuff");
+        handle.addBlock(BlockRegistration.COBBLED_SANDSTONE.get(), "Cobbled Sandstone");
+        handle.addBlock(BlockRegistration.COBBLED_RED_SANDSTONE.get(), "Cobbled Red Sandstone");
+        handle.addBlock(BlockRegistration.COBBLED_SAPROLITE.get(), "Cobbled Saprolite");
+        handle.addBlock(BlockRegistration.COBBLED_LATERITE.get(), "Cobbled Laterite");
+        handle.addBlock(BlockRegistration.COBBLED_SILTSTONE.get(), "Cobbled Siltstone");
+        handle.addBlock(BlockRegistration.COBBLED_DOLOSTONE.get(), "Cobbled Dolostone");
+        handle.addBlock(BlockRegistration.COBBLED_LIMESTONE.get(), "Cobbled Limestone");
+        handle.addBlock(BlockRegistration.COBBLED_CHALK.get(), "Cobbled Chalk");
+        handle.addBlock(BlockRegistration.COBBLED_IRONSTONE.get(), "Cobbled Ironstone");
+        handle.addBlock(BlockRegistration.COBBLED_SHALE.get(), "Cobbled Shale");
+        handle.addBlock(BlockRegistration.COBBLED_ARKOSE.get(), "Cobbled Arkose");
+        // INFESTED kEBlock     handle.addBlock(BlockRegistration.INFESTED_COBBLED_SILTSTONE.get(), "Infested Cobbled Siltstone");
+        handle.addBlock(BlockRegistration.INFESTED_COBBLED_DOLOSTONE.get(), "Infested Cobbled Dolostone");
+        handle.addBlock(BlockRegistration.INFESTED_COBBLED_LIMESTONE.get(), "Infested Cobbled Limestone");
+        handle.addBlock(BlockRegistration.INFESTED_COBBLED_CHALK.get(), "Infested Cobbled Chalk");
+        handle.addBlock(BlockRegistration.INFESTED_COBBLED_IRONSTONE.get(), "Infested Cobbled Ironstone");
+        handle.addBlock(BlockRegistration.INFESTED_COBBLED_SHALE.get(), "Infested Cobbled Shale");
+        handle.addBlock(BlockRegistration.INFESTED_COBBLED_ARKOSE.get(), "Infested Cobbled Arkose");
+        handle.addBlock(BlockRegistration.LIMESTONE_CHERT_ORE.get(), "Chert in Limestone");
+        // PLANT
+        handle.addBlock(BlockRegistration.SHRUB.get(), "Shrub");
+        handle.addBlock(BlockRegistration.DOGBANE.get(), "Dogbane");
+        // BRANCH
+        handle.addBlock(BlockRegistration.OAK_BRANCH.get(), "Oak Branch");
+        handle.addBlock(BlockRegistration.BIRCH_BRANCH.get(), "Birch Branch");
+        handle.addBlock(BlockRegistration.SPRUCE_BRANCH.get(), "Spruce Branch");
+        handle.addBlock(BlockRegistration.JUNGLE_BRANCH.get(), "Jungle Branch");
+        handle.addBlock(BlockRegistration.DARK_OAK_BRANCH.get(), "Dark Oak Branch");
+        handle.addBlock(BlockRegistration.ACACIA_BRANCH.get(), "Acacia Branch");
+        handle.addBlock(BlockRegistration.MANGROVE_BRANCH.get(), "Mangrove Branch");
+        handle.addBlock(BlockRegistration.CHERRY_BRANCH.get(), "Cherry Branch");
     }
 
-    private void addSoundTranslations(LanguageProviderHandle handle)
+    private void addSoundTranslations(LanguageEntryProviderHandle handle)
     {
     }
 
-    private void addItemTranslations(LanguageProviderHandle handle)
+    private void addItemTranslations(LanguageEntryProviderHandle handle)
+    {
+        handle.addItem(ItemRegistration.BROKEN_GOAT_HORN.get(), "Broken Goat Horn");
+    }
+
+    private void addCreativeTabTranslations(LanguageEntryProviderHandle handle)
     {
     }
 
-    private void addCreativeTabTranslations(LanguageProviderHandle handle)
+    private void addGUITranslations(LanguageEntryProviderHandle handle)
     {
     }
 
-    private void addGUITranslations(LanguageProviderHandle handle)
-    {
-    }
-
-    private void addTooltipTranslations(LanguageProviderHandle handle)
+    private void addTooltipTranslations(LanguageEntryProviderHandle handle)
     {
     }
 }

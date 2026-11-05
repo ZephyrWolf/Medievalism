@@ -1,12 +1,12 @@
 package io.github.zephyrwolf.medievalism.datagen.base.lang;
 
 import io.github.zephyrwolf.medievalism.common.data.ILanguageProviderEntry;
-import io.github.zephyrwolf.medievalism.common.data.LanguageProviderHandle;
+import io.github.zephyrwolf.medievalism.common.data.LanguageEntryProviderHandle;
 
 public class AdvancementLangEntry implements ILanguageProviderEntry
 {
     @Override
-    public void addTranslations(LanguageProviderHandle handle)
+    public void addTranslations(LanguageEntryProviderHandle handle)
     {
         // Medievalism
         handle.addAdvancement(AdvancementLangKeys.ROOT_STONE_AGE_TITLE, "Stone Age");
@@ -27,13 +27,13 @@ public class AdvancementLangEntry implements ILanguageProviderEntry
         // Copper Age
     }
 
-    private void addAbout(LanguageProviderHandle handle)
+    private void addAbout(LanguageEntryProviderHandle handle)
     {
         handle.addAdvancement(AdvancementLangKeys.HINT_JOURNAL_TUTORIAL_TITLE, "Press 'L' for hints to guide you!");
         handle.addAdvancement(AdvancementLangKeys.HINT_JOURNAL_TUTORIAL_DESC, "All of your discoveries are recorded in this advancement menu");
     }
 
-    private void addGather(LanguageProviderHandle handle)
+    private void addGather(LanguageEntryProviderHandle handle)
     {
         handle.addAdvancement(AdvancementLangKeys.HINT_GATHER_TITLE, "Gather resources to get started!");
         handle.addAdvancement(AdvancementLangKeys.HINT_GATHER_DESC, "Pick up anything you find, you never know what could be useful");
@@ -61,7 +61,7 @@ public class AdvancementLangEntry implements ILanguageProviderEntry
         handle.addAdvancement(AdvancementLangKeys.CRAFT_MUD_BALL_DESC, "Dip the Dirt Chunk into water");
     }
 
-    private void addSurvive(LanguageProviderHandle handle)
+    private void addSurvive(LanguageEntryProviderHandle handle)
     {
         handle.addAdvancement(AdvancementLangKeys.HINT_SURVIVE_TITLE, "Gotta Survive");
         handle.addAdvancement(AdvancementLangKeys.HINT_SURVIVE_DESC, "Be sure to craft useful tools and items to help you survive");
@@ -77,7 +77,7 @@ public class AdvancementLangEntry implements ILanguageProviderEntry
         handle.addAdvancement(AdvancementLangKeys.COOK_LIME_ON_CAMPFIRE_DESC, "Cooking limestone rocks creates Quick Lime");
     }
 
-    private void addMudWorks(LanguageProviderHandle handle)
+    private void addMudWorks(LanguageEntryProviderHandle handle)
     {
         handle.addAdvancement(AdvancementLangKeys.HINT_MUD_WORKS_TITLE, "A Primitive Building Material ");
         handle.addAdvancement(AdvancementLangKeys.HINT_MUD_WORKS_DESC, "From mud, walls and technology began");
@@ -103,7 +103,7 @@ public class AdvancementLangEntry implements ILanguageProviderEntry
         handle.addAdvancement(AdvancementLangKeys.CRAFT_DAUB_BRICKS_DESC, "Combine into a sturdier building block than mud alone");
     }
 
-    private void addClayWorks(LanguageProviderHandle handle)
+    private void addClayWorks(LanguageEntryProviderHandle handle)
     {
         // Root
         handle.addAdvancement(AdvancementLangKeys.HINT_CLAY_WORKS_TITLE, "Beginnings of Pottery");
@@ -118,7 +118,7 @@ public class AdvancementLangEntry implements ILanguageProviderEntry
         handle.addAdvancement(AdvancementLangKeys.BETTER_POTTERY_DESC, "You can use the Stone Bench to shape clay into larger and more delicate items");
     }
 
-    private void addKnapping(LanguageProviderHandle handle)
+    private void addKnapping(LanguageEntryProviderHandle handle)
     {
         handle.addAdvancement(AdvancementLangKeys.HINT_INHAND_KNAPPING_TITLE, "In-hand Knapping");
         handle.addAdvancement(AdvancementLangKeys.HINT_INHAND_KNAPPING_DESC, "Holding right-click with a hard rock in each hand will let me start knapping");
@@ -138,7 +138,7 @@ public class AdvancementLangEntry implements ILanguageProviderEntry
         handle.addAdvancement(AdvancementLangKeys.KNAP_ROCK_AXE_HEAD_DESC, "Use the Stone Bench to knap a rock into an rudimentary axe head");
     }
 
-    private void addCarving(LanguageProviderHandle handle)
+    private void addCarving(LanguageEntryProviderHandle handle)
     {
         handle.addAdvancement(AdvancementLangKeys.HINT_CARVING_TITLE, "Carving");
         handle.addAdvancement(AdvancementLangKeys.HINT_CARVING_DESC, "Can use your blade to cut and shape materials"); // Stab not slash
@@ -146,7 +146,7 @@ public class AdvancementLangEntry implements ILanguageProviderEntry
         handle.addAdvancement(AdvancementLangKeys.CARVE_BONE_KNIFE_BLADE_DESC, "This could really hurt"); // Stab not slash
     }
 
-    private void addPlantCutting(LanguageProviderHandle handle)
+    private void addPlantCutting(LanguageEntryProviderHandle handle)
     {
         handle.addAdvancement(AdvancementLangKeys.HINT_PLANT_CUTTING_TITLE, "Carving");
         handle.addAdvancement(AdvancementLangKeys.HINT_PLANT_CUTTING_DESC, "Can use your blade to cut and shape materials"); // Stab not slash
@@ -154,13 +154,13 @@ public class AdvancementLangEntry implements ILanguageProviderEntry
         handle.addAdvancement(AdvancementLangKeys.HARVEST_THATCH_DESC, "Can use your blade to cut and prepare plants"); // cut and scrap
     }
 
-    private void addWeaving(LanguageProviderHandle handle)
+    private void addWeaving(LanguageEntryProviderHandle handle)
     {
         handle.addAdvancement(AdvancementLangKeys.HINT_WEAVING_TITLE, "Let's start Weaving");
         handle.addAdvancement(AdvancementLangKeys.HINT_WEAVING_DESC, "You can use the Stone Bench to weave canes together");
     }
 
-    private void addAxeStripping(LanguageProviderHandle handle)
+    private void addAxeStripping(LanguageEntryProviderHandle handle)
     {
         handle.addAdvancement(AdvancementLangKeys.HINT_AXE_STRIPPING_TITLE, "Stripping Blocks");
         handle.addAdvancement(AdvancementLangKeys.HINT_AXE_STRIPPING_DESC, "You can use axes to strip useful materials off of blocks");
