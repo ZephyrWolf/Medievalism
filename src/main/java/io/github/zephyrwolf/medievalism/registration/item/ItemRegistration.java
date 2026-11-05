@@ -285,7 +285,6 @@ public final class ItemRegistration
     public static final DeferredItem<BlockItem> MANGROVE_BRANCH =                   ITEMS.registerSimpleBlockItem("mangrove_branch",               BlockRegistration.MANGROVE_BRANCH);
     // PLANT
     public static final DeferredItem<BlockItem> SHRUB =                             ITEMS.registerSimpleBlockItem("shrub",                         BlockRegistration.SHRUB);
-    public static final DeferredItem<BlockItem> DOGBANE =                           ITEMS.registerSimpleBlockItem("dogbane",                       BlockRegistration.DOGBANE);
     //endregion == WORLD ==
 
     //region == MUD WORKING ==
@@ -394,28 +393,72 @@ public final class ItemRegistration
     //endregion
 
     //region == FARMING ==
-    public static final DeferredItem<Item> BLUEBERRIES = ITEMS.registerSimpleItem("blueberries", new Item.Properties().food(FoodCatalog.BLUEBERRIES));
-    public static final DeferredItem<Item> RASPBERRIES = ITEMS.registerSimpleItem("raspberries", new Item.Properties().food(FoodCatalog.RASPBERRIES));
-    public static final DeferredItem<Item> STRAWBERRIES = ITEMS.registerSimpleItem("strawberries", new Item.Properties().food(FoodCatalog.STRAWBERRIES));
-    public static final DeferredItem<Item> BARLEY = ITEMS.registerSimpleItem("barley", new Item.Properties());
-    public static final DeferredItem<Item> OATS = ITEMS.registerSimpleItem("oats", new Item.Properties());
-    public static final DeferredItem<Item> YAM = ITEMS.registerItem("yam", props -> new ItemNameBlockItem(BlockRegistration.YAMS.get(), new Item.Properties().food(FoodCatalog.YAM)));
-    public static final DeferredItem<Item> FLAX = ITEMS.registerSimpleItem("flax", new Item.Properties());
-    public static final DeferredItem<Item> FLAX_FIBER = ITEMS.registerSimpleItem("flax_fiber", new Item.Properties());
-    public static final DeferredItem<Item> FLAX_SEEDS = ITEMS.registerSimpleItem("flax_seeds", new Item.Properties());
-    public static final DeferredItem<Item> BARLEY_SEEDS = ITEMS.registerSimpleItem("barley_seeds", new Item.Properties());
-    public static final DeferredItem<Item> OAT_SEEDS = ITEMS.registerSimpleItem("oat_seeds", new Item.Properties());
+    public static final DeferredItem<Item> BARLEY =             ITEMS.registerSimpleItem("barley",          new Item.Properties());
+    public static final DeferredItem<Item> BARLEY_SEEDS =       ITEMS.registerSimpleItem("barley_seeds",    new Item.Properties());
+    public static final DeferredItem<Item> BEETROOT =           new VanillaDeferredItem<>(Items.BEETROOT);
+    public static final DeferredItem<Item> BLUEBERRIES =        ITEMS.registerSimpleItem("blueberries",     new Item.Properties().food(FoodCatalog.BLUEBERRIES));
+    public static final DeferredItem<Item> BROAD_BEAN =         ITEMS.registerSimpleItem("broad_bean",      new Item.Properties().food(FoodCatalog.BROAD_BEAN));
+    public static final DeferredItem<Item> CABBAGE =            ITEMS.registerSimpleItem("cabbage",         new Item.Properties().food(FoodCatalog.CABBAGE));
+    public static final DeferredItem<Item> CARROT =             new VanillaDeferredItem<>(Items.CARROT);
+    public static final DeferredItem<Item> CHARD =              ITEMS.registerSimpleItem("chard",           new Item.Properties().food(FoodCatalog.CHARD));
+    public static final DeferredItem<BlockItem> DOGBANE =       ITEMS.registerSimpleBlockItem("dogbane",    BlockRegistration.DOGBANE);
+    public static final DeferredItem<Item> FLAX =               ITEMS.registerSimpleItem("flax",            new Item.Properties());
+    public static final DeferredItem<Item> FLAX_SEEDS =         ITEMS.registerSimpleItem("flax_seeds",      new Item.Properties());
+    public static final DeferredItem<Item> GARLIC =             ITEMS.registerSimpleItem("garlic",          new Item.Properties().food(FoodCatalog.GARLIC));
+    public static final DeferredItem<Item> LEEK =               ITEMS.registerSimpleItem("leek",            new Item.Properties().food(FoodCatalog.LEEK));
+    public static final DeferredItem<Item> MELON =              new VanillaDeferredItem<>(Items.MELON);
+    public static final DeferredItem<Item> MELON_SLICE =        new VanillaDeferredItem<>(Items.MELON_SLICE);
+    public static final DeferredItem<Item> NAPA_CABBAGE =       ITEMS.registerSimpleItem("napa_cabbage",    new Item.Properties().food(FoodCatalog.NAPA_CABBAGE));
+    public static final DeferredItem<Item> NETTLE =             ITEMS.registerSimpleItem("nettle",          new Item.Properties().food(FoodCatalog.NETTLE));
+    public static final DeferredItem<Item> OAT_SEEDS =          ITEMS.registerSimpleItem("oat_seeds",       new Item.Properties());
+    public static final DeferredItem<Item> OATS =               ITEMS.registerSimpleItem("oats",            new Item.Properties());
+    public static final DeferredItem<Item> PARSNIP =            ITEMS.registerSimpleItem("parsnip",         new Item.Properties().food(FoodCatalog.PARSNIP));
+    public static final DeferredItem<Item> POTATO =             new VanillaDeferredItem<>(Items.POTATO);
+    public static final DeferredItem<Item> PUMPKIN =            new VanillaDeferredItem<>(Items.PUMPKIN);
+    //public static final DeferredItem<Item> PUMPKIN_SLICE =      ITEMS.registerSimpleItem("pumpkin_slice",   new Item.Properties().food(FoodCatalog.PUMPKIN_SLICE));
+    public static final DeferredItem<Item> PURPLE_CARROT =      ITEMS.registerSimpleItem("purple_carrot",   new Item.Properties().food(FoodCatalog.PURPLE_CARROT));
+    public static final DeferredItem<Item> PURPLE_ONION =       ITEMS.registerSimpleItem("purple_onion",    new Item.Properties().food(FoodCatalog.PURPLE_ONION));
+    public static final DeferredItem<Item> PURPLE_SKIRRET =     ITEMS.registerSimpleItem("purple_skirret",  new Item.Properties().food(FoodCatalog.PURPLE_SKIRRET));
+    public static final DeferredItem<Item> RADISH =             ITEMS.registerSimpleItem("radish",          new Item.Properties().food(FoodCatalog.RADISH));
+    public static final DeferredItem<Item> RASPBERRIES =        ITEMS.registerSimpleItem("raspberries",     new Item.Properties().food(FoodCatalog.RASPBERRIES));
+    public static final DeferredItem<Item> SKIRRET =            ITEMS.registerSimpleItem("skirret",         new Item.Properties().food(FoodCatalog.SKIRRET));
+    public static final DeferredItem<Item> SPINACH =            ITEMS.registerSimpleItem("spinach",         new Item.Properties().food(FoodCatalog.SPINACH));
+    public static final DeferredItem<Item> STRAWBERRIES =       ITEMS.registerSimpleItem("strawberries",    new Item.Properties().food(FoodCatalog.STRAWBERRIES));
+    public static final DeferredItem<Item> TURNIP =             ITEMS.registerSimpleItem("turnip",          new Item.Properties().food(FoodCatalog.TURNIP));
+    public static final DeferredItem<Item> WHITE_CARROT =       ITEMS.registerSimpleItem("white_carrot",    new Item.Properties().food(FoodCatalog.WHITE_CARROT));
+    public static final DeferredItem<Item> WHITE_ONION =        ITEMS.registerSimpleItem("white_onion",     new Item.Properties().food(FoodCatalog.WHITE_ONION));
+    public static final DeferredItem<BlockItem> YAM =           ITEMS.registerItem("yam",                   props -> new ItemNameBlockItem(BlockRegistration.YAMS.get(), new Item.Properties().food(FoodCatalog.YAM)));
     //endregion
 
+    // leaf litter
+    // thatch
+
     //region == COOKING ==
-    public static final DeferredItem<Item> CRACKED_BARLEY = ITEMS.registerSimpleItem("cracked_barley", new Item.Properties());
-    public static final DeferredItem<Item> CRACKED_WHEAT = ITEMS.registerSimpleItem("cracked_wheat", new Item.Properties());
-    public static final DeferredItem<Item> ROLLED_OATS = ITEMS.registerSimpleItem("rolled_oats", new Item.Properties());
-    public static final DeferredItem<Item> FLOUR = ITEMS.registerSimpleItem("flour", new Item.Properties());
-    public static final DeferredItem<Item> DOUGH = ITEMS.registerSimpleItem("dough", new Item.Properties());
-    public static final DeferredItem<Item> BAKED_YAM = ITEMS.registerSimpleItem("baked_yam", new Item.Properties().food(FoodCatalog.BAKED_YAM));
-    public static final DeferredItem<Item> BAKED_BEETROOT = ITEMS.registerSimpleItem("baked_beetroot", new Item.Properties().food(FoodCatalog.BAKED_BEETROOT));
-    public static final DeferredItem<Item> BAKED_CARROT = ITEMS.registerSimpleItem("baked_carrot", new Item.Properties().food(FoodCatalog.BAKED_CARROT));
+    public static final DeferredItem<Item> BAKED_BEETROOT =         ITEMS.registerSimpleItem("baked_beetroot", new Item.Properties().food(FoodCatalog.BAKED_BEETROOT));
+    public static final DeferredItem<Item> BAKED_CARROT =           ITEMS.registerSimpleItem("baked_carrot", new Item.Properties().food(FoodCatalog.BAKED_CARROT));
+    public static final DeferredItem<Item> BAKED_GARLIC =           ITEMS.registerSimpleItem("baked_garlic", new Item.Properties().food(FoodCatalog.BAKED_GARLIC));
+    public static final DeferredItem<Item> BAKED_LEEK =             ITEMS.registerSimpleItem("baked_leek", new Item.Properties().food(FoodCatalog.BAKED_LEEK));
+    public static final DeferredItem<Item> BAKED_PARSNIP =          ITEMS.registerSimpleItem("baked_parsnip", new Item.Properties().food(FoodCatalog.BAKED_PARSNIP));
+    public static final DeferredItem<Item> BAKED_PUMPKIN =          ITEMS.registerSimpleItem("baked_pumpkin", new Item.Properties());
+    //public static final DeferredItem<Item> BAKED_PUMPKIN_SLICE =  ITEMS.registerSimpleItem("baked_pumpkin_slice", new Item.Properties().food(FoodCatalog.BAKED_PUMPKIN_SLICE));
+    public static final DeferredItem<Item> BAKED_PURPLE_CARROT =    ITEMS.registerSimpleItem("baked_purple_carrot", new Item.Properties().food(FoodCatalog.BAKED_PURPLE_CARROT));
+    public static final DeferredItem<Item> BAKED_PURPLE_ONION =     ITEMS.registerSimpleItem("baked_purple_onion", new Item.Properties().food(FoodCatalog.BAKED_PURPLE_ONION));
+    public static final DeferredItem<Item> BAKED_PURPLE_SKIRRET =   ITEMS.registerSimpleItem("baked_purple_skirret", new Item.Properties().food(FoodCatalog.BAKED_PURPLE_SKIRRET));
+    public static final DeferredItem<Item> BAKED_RADISH =           ITEMS.registerSimpleItem("baked_radish", new Item.Properties().food(FoodCatalog.BAKED_RADISH));
+    public static final DeferredItem<Item> BAKED_SKIRRET =          ITEMS.registerSimpleItem("baked_skirret", new Item.Properties().food(FoodCatalog.BAKED_SKIRRET));
+    public static final DeferredItem<Item> BAKED_TURNIP =           ITEMS.registerSimpleItem("baked_turnip", new Item.Properties().food(FoodCatalog.BAKED_TURNIP));
+    public static final DeferredItem<Item> BAKED_WHITE_CARROT =     ITEMS.registerSimpleItem("baked_white_carrot", new Item.Properties().food(FoodCatalog.BAKED_WHITE_CARROT));
+    public static final DeferredItem<Item> BAKED_WHITE_ONION =      ITEMS.registerSimpleItem("baked_white_onion", new Item.Properties().food(FoodCatalog.BAKED_WHITE_ONION));
+    public static final DeferredItem<Item> BAKED_YAM =              ITEMS.registerSimpleItem("baked_yam", new Item.Properties().food(FoodCatalog.BAKED_YAM));
+    public static final DeferredItem<Item> CRACKED_BARLEY =         ITEMS.registerSimpleItem("cracked_barley", new Item.Properties());
+    public static final DeferredItem<Item> CRACKED_WHEAT =          ITEMS.registerSimpleItem("cracked_wheat", new Item.Properties());
+    public static final DeferredItem<Item> ROLLED_OATS =            ITEMS.registerSimpleItem("rolled_oats", new Item.Properties());
+    public static final DeferredItem<Item> FLOUR =                  ITEMS.registerSimpleItem("flour", new Item.Properties());
+    public static final DeferredItem<Item> DOUGH =                  ITEMS.registerSimpleItem("dough", new Item.Properties());
+    //endregion
+
+    //region == WEAVING ==
+    public static final DeferredItem<Item> FLAX_FIBER = ITEMS.registerSimpleItem("flax_fiber", new Item.Properties());
     //endregion
 
     //region == WOOD WORKING ==

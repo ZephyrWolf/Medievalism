@@ -5,11 +5,12 @@ import io.github.zephyrwolf.medievalism.MedievalismMod;
 import io.github.zephyrwolf.medievalism.common.data.BlockStateEntryProvider;
 import io.github.zephyrwolf.medievalism.common.data.ItemModelEntryProvider;
 import io.github.zephyrwolf.medievalism.common.data.LanguageEntryProvider;
+import io.github.zephyrwolf.medievalism.datagen.base.advancements.AdvancementsProviderClayWorking;
 import io.github.zephyrwolf.medievalism.datagen.base.blockmodel.*;
 import io.github.zephyrwolf.medievalism.datagen.base.lang.*;
 import io.github.zephyrwolf.medievalism.datagen.base.tag.BaseBlockTagsProvider;
 import io.github.zephyrwolf.medievalism.datagen.overhauldata.block.OverhaulBlockTagsProvider;
-import io.github.zephyrwolf.medievalism.datagen.base.advancements.AdvancementsProviderStoneAge;
+import io.github.zephyrwolf.medievalism.datagen.base.advancements.AdvancementsProviderSurvival;
 import io.github.zephyrwolf.medievalism.datagen.base.itemmodel.*;
 import io.github.zephyrwolf.medievalism.registration.loot.LootContextParamSetRegistration;
 import io.github.zephyrwolf.medievalism.datagen.overhauldata.advancements.OverhaulAdvancementsProvider;
@@ -66,7 +67,8 @@ public final class DataGenRegistration
         generator.addProvider(includeServer, new BaseBiomeTagsProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(includeServer, new BaseRecipeProvider(packOutput, lookupProvider));
         generator.addProvider(includeServer, new AdvancementProvider(packOutput, lookupProvider, existingFileHelper, List.of(
-                new AdvancementsProviderStoneAge()
+                new AdvancementsProviderSurvival(),
+                new AdvancementsProviderClayWorking()
         )));
         generator.addProvider(includeClient, new LanguageEntryProvider(packOutput, Set.of(
                 new AdvancementLangEntry(), // TODO Reimplement all of your advancements :(

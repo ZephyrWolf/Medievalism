@@ -21,13 +21,13 @@ import java.util.function.Consumer;
 import io.github.zephyrwolf.medievalism.datagen.base.lang.AdvancementLangKeys;
 
 @SuppressWarnings("unused")
-public class AdvancementsProviderStoneAge implements AdvancementProvider.AdvancementGenerator
+public class AdvancementsProviderSurvival implements AdvancementProvider.AdvancementGenerator
 { // https://github.com/vectorwing/FarmersDelight/blob/1.20/src/main/java/vectorwing/farmersdelight/data/advancement/FDAdvancementGenerator.java
 
     @SuppressWarnings("SameParameterValue")
-    private String getNameId(String age, String id)
+    private String getNameId(String tech, String id)
     {
-        return MedievalismConstants.MOD_ID + ":" + age + "/" + id;
+        return MedievalismConstants.MOD_ID + ":" + tech + "/" + id;
     }
 
     @SuppressWarnings("unused")
@@ -100,7 +100,7 @@ public class AdvancementsProviderStoneAge implements AdvancementProvider.Advance
                         ItemPredicate.Builder.item().of(ItemTagCatalog.CLAY_BALL).build()
                 ))
                 .requirements(AdvancementRequirements.Strategy.OR)
-                .save(saver, getNameId("stone_age", "hint_clay_works"));
+                .save(saver, getNameId("survival", "hint_clay_works"));
         //clayWorks(hint_clay_works, saver);
 
         AdvancementHolder hint_mud_works = Advancement.Builder.advancement()
