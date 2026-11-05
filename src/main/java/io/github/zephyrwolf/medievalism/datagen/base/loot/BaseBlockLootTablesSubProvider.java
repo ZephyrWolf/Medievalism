@@ -3,7 +3,6 @@ package io.github.zephyrwolf.medievalism.datagen.base.loot;
 import io.github.zephyrwolf.medievalism.common.block.FireLayBlock;
 import io.github.zephyrwolf.medievalism.common.block.TwigsBlock;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.BlockItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.common.warmth.WarmthTools;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
@@ -59,33 +58,31 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
                 UniformGenerator.between(1, 3)
         ));
 
-        add(BlockRegistration.TIN_ORE_IN_GREYWACKE.get(), (block) -> createOreDrop(
-                BlockRegistration.TIN_ORE_IN_GREYWACKE.get(),
-                ItemRegistration.RAW_TIN.get()
-        ));
-        add(BlockRegistration.TIN_ORE_IN_GABBRO.get(), (block) -> createOreDrop(
-                BlockRegistration.TIN_ORE_IN_GABBRO.get(),
-                ItemRegistration.RAW_TIN.get()
-        ));
-
-        dropSelf(BlockRegistration.WET_PACKED_MUD_BRICK.get());
-        dropSelf(BlockRegistration.WET_DAUB_BRICK.get());
+        dropSelf(BlockRegistration.DRYING_PACKED_MUD_BRICK.get());
+        dropSelf(BlockRegistration.DRYING_DAUB_BRICK.get());
         dropSelf(BlockRegistration.DRYING_CLAY_BRICK.get());
+        dropSelf(BlockRegistration.DRYING_POTTERS_CLAY_BRICK.get());
+        dropSelf(BlockRegistration.DRYING_KAOLIN_CLAY_BRICK.get());
+        dropSelf(BlockRegistration.DRYING_REFRACTORY_CLAY_BRICK.get());
+        dropSelf(BlockRegistration.DRYING_CLAY_DOUBLE_BRICK.get());
+        dropSelf(BlockRegistration.DRYING_POTTERS_CLAY_DOUBLE_BRICK.get());
+        dropSelf(BlockRegistration.DRYING_KAOLIN_CLAY_DOUBLE_BRICK.get());
+        dropSelf(BlockRegistration.DRYING_REFRACTORY_CLAY_DOUBLE_BRICK.get());
 
-        add(BlockRegistration.DRYING_GATHERERS_JAR.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, BlockItemRegistration.WET_GATHERERS_JAR, BlockItemRegistration.DRY_GATHERERS_JAR));
+        add(BlockRegistration.DRYING_GATHERERS_JAR.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ItemRegistration.WET_GATHERERS_JAR, ItemRegistration.DRY_GATHERERS_JAR));
         add(BlockRegistration.GATHERERS_JAR.get(), this::createCeramicContainer);
-        add(BlockRegistration.DRYING_KEEPERS_CROCK.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, BlockItemRegistration.WET_KEEPERS_CROCK, BlockItemRegistration.DRY_KEEPERS_CROCK));
+        add(BlockRegistration.DRYING_KEEPERS_CROCK.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ItemRegistration.WET_KEEPERS_CROCK, ItemRegistration.DRY_KEEPERS_CROCK));
         add(BlockRegistration.KEEPERS_CROCK.get(), this::createCeramicContainer);
-        add(BlockRegistration.DRYING_SETTLERS_POT.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, BlockItemRegistration.WET_SETTLERS_POT, BlockItemRegistration.DRY_SETTLERS_POT));
+        add(BlockRegistration.DRYING_SETTLERS_POT.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ItemRegistration.WET_SETTLERS_POT, ItemRegistration.DRY_SETTLERS_POT));
         add(BlockRegistration.SETTLERS_POT.get(), this::createNameable);
-        add(BlockRegistration.DRYING_CLAY_COOKING_POT.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, BlockItemRegistration.WET_CLAY_COOKING_POT, BlockItemRegistration.DRY_CLAY_COOKING_POT));
+        add(BlockRegistration.DRYING_CLAY_COOKING_POT.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ItemRegistration.WET_CLAY_COOKING_POT, ItemRegistration.DRY_CLAY_COOKING_POT));
         dropSelf(BlockRegistration.CLAY_COOKING_POT.get());
-        add(BlockRegistration.DRYING_CLAY_CAULDRON.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, BlockItemRegistration.WET_CLAY_CAULDRON, BlockItemRegistration.DRY_CLAY_CAULDRON));
+        add(BlockRegistration.DRYING_CLAY_CAULDRON.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ItemRegistration.WET_CLAY_CAULDRON, ItemRegistration.DRY_CLAY_CAULDRON));
         dropSelf(BlockRegistration.CLAY_CAULDRON.get());
-        add(BlockRegistration.DRYING_JUG.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, BlockItemRegistration.WET_JUG, BlockItemRegistration.DRY_JUG));
+        add(BlockRegistration.DRYING_JUG.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ItemRegistration.WET_JUG, ItemRegistration.DRY_JUG));
         dropSelf(BlockRegistration.JUG.get());
-        add(BlockRegistration.DRYING_FLOWER_POT.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, BlockItemRegistration.WET_FLOWER_POT, BlockItemRegistration.DRY_FLOWER_POT));
-        add(BlockRegistration.DRYING_DECORATED_POT.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, BlockItemRegistration.WET_DECORATED_POT, BlockItemRegistration.DRY_DECORATED_POT));
+        add(BlockRegistration.DRYING_FLOWER_POT.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ItemRegistration.WET_FLOWER_POT, ItemRegistration.DRY_FLOWER_POT));
+        add(BlockRegistration.DRYING_DECORATED_POT.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ItemRegistration.WET_DECORATED_POT, ItemRegistration.DRY_DECORATED_POT));
 
         //region twigs
         add(
@@ -248,8 +245,8 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
 
         // DIRT
         dropSelf(BlockRegistration.SILT.get());
-        dropSelf(BlockRegistration.WET_PACKED_MUD.get());
-        dropSelf(BlockRegistration.WET_DAUB_BLOCK.get());
+        dropSelf(BlockRegistration.DRYING_PACKED_MUD.get());
+        dropSelf(BlockRegistration.DRYING_DAUB_BLOCK.get());
         dropSelf(BlockRegistration.DAUB_BLOCK.get());
         dropSelf(BlockRegistration.DAUB_BRICKS.get());
         dropSelf(BlockRegistration.CRACKED_DAUB_BLOCK.get());
@@ -296,7 +293,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
         otherWhenSilkTouch(BlockRegistration.INFESTED_ANDESITE.get(), BlockRegistration.ANDESITE.get());
         otherWhenSilkTouch(BlockRegistration.INFESTED_BASALT.get(), BlockRegistration.BASALT.get());
         // COPPER ORE
-        add( BlockRegistration.SAPROLITE_COPPER_ORE.get(), createOreDrops(BlockRegistration.SAPROLITE_COPPER_ORE.get(), BlockItemRegistration.SAPROLITE_ROCK_COPPER_ORE, 1.0f, 3.0f ));
+        add( BlockRegistration.SAPROLITE_COPPER_ORE.get(), createOreDrops(BlockRegistration.SAPROLITE_COPPER_ORE.get(), ItemRegistration.SAPROLITE_ROCK_COPPER_ORE, 1.0f, 3.0f ));
         add( BlockRegistration.SILTSTONE_COPPER_ORE.get(), createCopperOreDrops(BlockRegistration.SILTSTONE_COPPER_ORE.get() ));
         add( BlockRegistration.DOLOSTONE_COPPER_ORE.get(), createCopperOreDrops(BlockRegistration.DOLOSTONE_COPPER_ORE.get() ));
         add( BlockRegistration.LIMESTONE_COPPER_ORE.get(), createCopperOreDrops(BlockRegistration.LIMESTONE_COPPER_ORE.get() ));
@@ -414,7 +411,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
 
 
         // PRIMITIVE TECHNOLOGY
-        dropSelf(BlockRegistration.THATCH.get());
+        dropSelf(BlockRegistration.THATCH_BLOCK.get());
         dropSelf(BlockRegistration.DOGBANE.get());
 
         //region Fire Lay
@@ -425,7 +422,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem
-                                        .lootTableItem(BlockItemRegistration.THATCH.get())
+                                        .lootTableItem(ItemRegistration.THATCH.get())
                                         .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.FIRE_LAY.get())
                                                 .setProperties(StatePropertiesPredicate.Builder.properties()
                                                         .hasProperty(FireLayBlock.STAGE_PROP, 1)
@@ -438,7 +435,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem
-                                        .lootTableItem(BlockItemRegistration.THATCH.get())
+                                        .lootTableItem(ItemRegistration.THATCH.get())
                                         .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.FIRE_LAY.get())
                                                 .setProperties(StatePropertiesPredicate.Builder.properties()
                                                         .hasProperty(FireLayBlock.STAGE_PROP, 2)
@@ -462,7 +459,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem
-                                        .lootTableItem(BlockItemRegistration.THATCH.get())
+                                        .lootTableItem(ItemRegistration.THATCH.get())
                                         .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.FIRE_LAY.get())
                                                 .setProperties(StatePropertiesPredicate.Builder.properties()
                                                         .hasProperty(FireLayBlock.STAGE_PROP, 3)
@@ -487,7 +484,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem
-                                        .lootTableItem(BlockItemRegistration.THATCH.get())
+                                        .lootTableItem(ItemRegistration.THATCH.get())
                                         .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.FIRE_LAY.get())
                                                 .setProperties(StatePropertiesPredicate.Builder.properties()
                                                         .hasProperty(FireLayBlock.STAGE_PROP, 4)
@@ -512,7 +509,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem
-                                        .lootTableItem(BlockItemRegistration.THATCH.get())
+                                        .lootTableItem(ItemRegistration.THATCH.get())
                                         .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.FIRE_LAY.get())
                                                 .setProperties(StatePropertiesPredicate.Builder.properties()
                                                         .hasProperty(FireLayBlock.STAGE_PROP, 5)

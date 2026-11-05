@@ -1,6 +1,5 @@
 package io.github.zephyrwolf.medievalism.registration.block;
 
-import com.mojang.datafixers.util.Function3;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.block.*;
 import net.minecraft.world.level.block.*;
@@ -18,9 +17,6 @@ public final class BlockRegistration
     public static void register(IEventBus modEventBus) {
         BLOCKS.register(modEventBus);
     }
-    private static <B extends Block> DeferredBlock<B> registerDryingBrick(DeferredRegister.Blocks blocks, String name,
-               Function3<BlockBehaviour.Properties, SoundType, Integer, ? extends B> func, BlockBehaviour.Properties props, SoundType drySound, int chance)
-    { return blocks.register(name, () -> func.apply(props, drySound, chance)); }
 
     // STONE PROPERTIES
     public static final BlockBehaviour.Properties ASHFALL_PROPERTIES =                          BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.STONE);
@@ -206,13 +202,6 @@ public final class BlockRegistration
     public static final DeferredBlock<Block> NORITE_REDSTONE_ORE =          BLOCKS.registerSimpleBlock("norite_redstone_ore",           NORITE_PROPERTIES);
     public static final DeferredBlock<Block> PERIDOTITE_REDSTONE_ORE =      BLOCKS.registerSimpleBlock("peridotite_redstone_ore",       PERIDOTITE_PROPERTIES);
     // TODO Modded Medieval Ores
-    // TIN ORE // TODO World Gen
-    public static final DeferredBlock<Block> TIN_ORE_IN_GREYWACKE = BLOCKS.registerSimpleBlock(
-            "tin_ore_block", BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
-                    .strength(1.3f).sound(SoundType.STONE).requiresCorrectToolForDrops());
-    public static final DeferredBlock<Block> TIN_ORE_IN_GABBRO = BLOCKS.registerSimpleBlock(
-            "deepslate_tin_ore_block", BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE)
-                    .strength(1.7f).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops());
     // CHERT ORE // TODO World Gen
     public static final DeferredBlock<Block> LIMESTONE_CHERT_ORE =                              BLOCKS.registerSimpleBlock("limestone_chert_ore",           LIMESTONE_PROPERTIES);
     public static final DeferredBlock<Block> CHALK_CHERT_ORE =                                  BLOCKS.registerSimpleBlock("chalk_chert_ore",               CHALK_PROPERTIES);
@@ -277,41 +266,55 @@ public final class BlockRegistration
     public static final DeferredBlock<Block> INFESTED_COBBLED_SHALE =                       BLOCKS.registerBlock("infested_cobbled_shale",      (props) -> new InfestedBlock(COBBLED_SHALE.get(), props),       COBBLED_SHALE_PROPERTIES);
     public static final DeferredBlock<Block> INFESTED_COBBLED_ARKOSE =                      BLOCKS.registerBlock("infested_cobbled_arkose",     (props) -> new InfestedBlock(COBBLED_ARKOSE.get(), props),      COBBLED_ARKOSE_PROPERTIES);
 
-    // SOIL PROPERTIES
+    // SOIL
     public static final BlockBehaviour.Properties GRASS_BLOCK_PROPERTIES =                  Blocks.GRASS_BLOCK.properties();
     public static final BlockBehaviour.Properties CLAY_IN_GRASS_PROPERTIES =                GRASS_BLOCK_PROPERTIES;
     public static final BlockBehaviour.Properties DIRT_BLOCK_PROPERTIES =                   Blocks.DIRT.properties();
     public static final BlockBehaviour.Properties CLAY_IN_DIRT_PROPERTIES =                 DIRT_BLOCK_PROPERTIES;
-    public static final BlockBehaviour.Properties CLAY_BLOCK_PROPERTIES =                   Blocks.CLAY.properties();
     public static final BlockBehaviour.Properties GRAVEL_PROPERTIES =                       Blocks.GRAVEL.properties();
     public static final BlockBehaviour.Properties SILT_PROPERTIES =                         GRAVEL_PROPERTIES; // mapColor
-    public static final BlockBehaviour.Properties DRYING_MUD_PROPERTIES =                   BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(1.0f).sound(SoundType.MUD);
-    public static final BlockBehaviour.Properties DRY_MUD_PROPERTIES =                      BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.PACKED_MUD).requiresCorrectToolForDrops();
-    public static final BlockBehaviour.Properties DRYING_PACKED_MUD_PROPERTIES =            DRYING_MUD_PROPERTIES;
-    public static final BlockBehaviour.Properties DRYING_DAUB_BLOCK_PROPERTIES =            DRYING_MUD_PROPERTIES;
-    public static final BlockBehaviour.Properties DAUB_BLOCK_PROPERTIES =                   DRY_MUD_PROPERTIES;
-    public static final BlockBehaviour.Properties DAUB_BRICKS_PROPERTIES =                  DRY_MUD_PROPERTIES;
-    public static final BlockBehaviour.Properties CRACKED_DAUB_BLOCK_PROPERTIES =           DRY_MUD_PROPERTIES;
-    public static final BlockBehaviour.Properties CRACKED_DAUB_BRICKS_PROPERTIES =          DRY_MUD_PROPERTIES;
-    public static final BlockBehaviour.Properties DRYING_PACKED_MUD_BRICK_PROPERTIES =      DRYING_MUD_PROPERTIES.randomTicks().mapColor(MapColor.DIRT).mapColor(MapColor.TERRACOTTA_BROWN);
-    public static final BlockBehaviour.Properties DRYING_DAUB_BRICK_PROPERTIES =            DRYING_MUD_PROPERTIES.randomTicks().mapColor(MapColor.DIRT).mapColor(MapColor.TERRACOTTA_BROWN);
-    public static final BlockBehaviour.Properties DRYING_CLAY_BRICK_PROPERTIES =            DRYING_MUD_PROPERTIES.randomTicks().mapColor(MapColor.CLAY).mapColor(MapColor.CLAY);
-    // SOIL
-    public static final DeferredBlock<GrassBlock> CLAY_IN_GRASS =                           BLOCKS.registerBlock("clay_in_grass",                   GrassBlock::new, CLAY_IN_GRASS_PROPERTIES);
-    public static final DeferredBlock<Block> CLAY_IN_DIRT =                                 BLOCKS.registerSimpleBlock("clay_in_dirt",              CLAY_IN_DIRT_PROPERTIES);
+    public static final DeferredBlock<GrassBlock> CLAY_IN_GRASS =                           BLOCKS.registerBlock("clay_in_grass",GrassBlock::new, CLAY_IN_GRASS_PROPERTIES);
+    public static final DeferredBlock<Block> CLAY_IN_DIRT =                                 BLOCKS.registerSimpleBlock("clay_in_dirt", CLAY_IN_DIRT_PROPERTIES);
     public static final DeferredBlock<Block> GRAVEL =                                       new VanillaDeferredBlock<>(Blocks.GRAVEL);
-    public static final DeferredBlock<Block> SILT =                                         BLOCKS.registerSimpleBlock("silt",                      SILTSTONE_PROPERTIES);
-    // WET MUD
-    public static final DeferredBlock<Block> WET_PACKED_MUD =                               BLOCKS.registerBlock("wet_packed_mud",                  Block::new, BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(1.0f).sound(SoundType.MUD));
-    public static final DeferredBlock<Block> WET_DAUB_BLOCK =                               BLOCKS.registerBlock("wet_daub_block",                  Block::new, BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(1.0f).sound(SoundType.MUD));
-    // DRY MUD
-    public static final DeferredBlock<Block> DAUB_BLOCK =                                   BLOCKS.registerBlock("daub_block",                      Block::new, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.PACKED_MUD).requiresCorrectToolForDrops());
-    public static final DeferredBlock<Block> DAUB_BRICKS =                                  BLOCKS.registerBlock("daub_bricks",                     Block::new, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.PACKED_MUD).requiresCorrectToolForDrops());
-    public static final DeferredBlock<Block> CRACKED_DAUB_BLOCK =                           BLOCKS.registerBlock("cracked_daub_block",              Block::new, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.PACKED_MUD).requiresCorrectToolForDrops());
-    public static final DeferredBlock<Block> CRACKED_DAUB_BRICKS =                          BLOCKS.registerBlock("cracked_daub_bricks",             Block::new, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.PACKED_MUD).requiresCorrectToolForDrops());
-    public static final DeferredBlock<DryingBrick> WET_PACKED_MUD_BRICK =                   registerDryingBrick(BLOCKS, "wet_packed_mud_brick",     DryingBrick::new, DRYING_PACKED_MUD_BRICK_PROPERTIES, SoundType.PACKED_MUD, 1);
-    public static final DeferredBlock<DryingBrick> WET_DAUB_BRICK =                         registerDryingBrick(BLOCKS, "wet_daub_brick",           DryingBrick::new, DRYING_DAUB_BRICK_PROPERTIES, SoundType.PACKED_MUD, 2);
-    public static final DeferredBlock<DryingBrick> DRYING_CLAY_BRICK =                      registerDryingBrick(BLOCKS, "drying_clay_brick",        DryingBrick::new, DRYING_CLAY_BRICK_PROPERTIES, SoundType.PACKED_MUD, 3);
+    public static final DeferredBlock<Block> SILT =                                         BLOCKS.registerSimpleBlock("silt", SILT_PROPERTIES);
+
+    // MUD WORKING
+    public static final BlockBehaviour.Properties DRYING_PACKED_MUD_BRICK_PROPERTIES =          BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(0.5f).sound(SoundType.MUD).randomTicks().mapColor(MapColor.DIRT).mapColor(MapColor.TERRACOTTA_BROWN);
+    public static final BlockBehaviour.Properties DRYING_PACKED_MUD_PROPERTIES =                BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(1.0f).sound(SoundType.MUD);
+
+    public static final DeferredBlock<DryingBrickRuinable> DRYING_PACKED_MUD_BRICK =            BLOCKS.registerBlock("drying_packed_mud_brick", props -> new DryingBrickRuinable(props, SoundType.PACKED_MUD, 1), DRYING_PACKED_MUD_BRICK_PROPERTIES);
+    public static final DeferredBlock<DryingBlock> DRYING_PACKED_MUD =                          BLOCKS.registerBlock("drying_packed_mud", props -> new DryingBlock.BasicDryingBlock(props, () -> Blocks.PACKED_MUD), DRYING_PACKED_MUD_PROPERTIES);
+    //public static final DeferredBlock<Block> PACKED_MUD =                                     new VanillaDeferredBlock<>(Blocks.PACKED_MUD);
+    //public static final DeferredBlock<Block> PACKED_MUD_BRICKS =                              new VanillaDeferredBlock<>(Blocks.MUD_BRICKS);
+    // + Rest of blocks; stairs, slab and wall
+
+    // DAUB WORKING
+    public static final BlockBehaviour.Properties DRYING_DAUB_BRICK_PROPERTIES =                BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(0.5f).sound(SoundType.MUD).randomTicks().mapColor(MapColor.DIRT).mapColor(MapColor.TERRACOTTA_BROWN);
+    public static final BlockBehaviour.Properties DRYING_DAUB_BLOCK_PROPERTIES =                BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(1.0f).sound(SoundType.MUD);
+    public static final BlockBehaviour.Properties DAUB_BLOCK_PROPERTIES =                       BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.PACKED_MUD).requiresCorrectToolForDrops();
+    public static final BlockBehaviour.Properties DAUB_BRICKS_PROPERTIES =                      BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.PACKED_MUD).requiresCorrectToolForDrops();
+    public static final BlockBehaviour.Properties CRACKED_DAUB_BLOCK_PROPERTIES =               BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.PACKED_MUD).requiresCorrectToolForDrops();
+    public static final BlockBehaviour.Properties CRACKED_DAUB_BRICKS_PROPERTIES =              BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(1.0f).sound(SoundType.PACKED_MUD).requiresCorrectToolForDrops();
+
+    public static final DeferredBlock<Block> DAUB_BLOCK =                                       BLOCKS.registerBlock("daub_block", Block::new, DAUB_BLOCK_PROPERTIES);
+    public static final DeferredBlock<Block> DAUB_BRICKS =                                      BLOCKS.registerBlock("daub_bricks", Block::new, DAUB_BRICKS_PROPERTIES);
+    public static final DeferredBlock<Block> CRACKED_DAUB_BLOCK =                               BLOCKS.registerBlock("cracked_daub_block", Block::new, CRACKED_DAUB_BLOCK_PROPERTIES);
+    public static final DeferredBlock<Block> CRACKED_DAUB_BRICKS =                              BLOCKS.registerBlock("cracked_daub_bricks", Block::new, CRACKED_DAUB_BRICKS_PROPERTIES);
+    public static final DeferredBlock<DryingBrickRuinable> DRYING_DAUB_BRICK =                  BLOCKS.registerBlock("drying_daub_brick", props -> new DryingBrickRuinable(props, SoundType.MUD, 2), DRYING_DAUB_BRICK_PROPERTIES);
+    public static final DeferredBlock<DryingBlock> DRYING_DAUB_BLOCK =                          BLOCKS.registerBlock("drying_daub_block", props -> new DryingBlock.BasicDryingBlock(props, DAUB_BLOCK), DRYING_DAUB_BLOCK_PROPERTIES);
+
+    // CLAY WORKING
+    public static final BlockBehaviour.Properties DRYING_CLAY_BRICK_PROPERTIES =                BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(0.5f).sound(SoundType.MUD).randomTicks().mapColor(MapColor.CLAY).mapColor(MapColor.CLAY);
+    public static final BlockBehaviour.Properties DRYING_CLAY_DOUBLE_BRICK_PROPERTIES =         BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(0.6f).sound(SoundType.MUD).randomTicks().mapColor(MapColor.CLAY).mapColor(MapColor.CLAY);
+
+    public static final DeferredBlock<DryingBrickRuinable> DRYING_CLAY_BRICK =                          BLOCKS.registerBlock("drying_clay_brick", props -> new DryingBrickRuinable(props, SoundType.PACKED_MUD, 3), DRYING_CLAY_BRICK_PROPERTIES);
+    public static final DeferredBlock<DryingBrickRuinable> DRYING_KAOLIN_CLAY_BRICK =                   BLOCKS.registerBlock("drying_kaolin_clay_brick", props -> new DryingBrickRuinable(props, SoundType.PACKED_MUD, 3), DRYING_CLAY_BRICK_PROPERTIES);
+    public static final DeferredBlock<DryingBrickRuinable> DRYING_POTTERS_CLAY_BRICK =                  BLOCKS.registerBlock("drying_potters_clay_brick", props -> new DryingBrickRuinable(props, SoundType.PACKED_MUD, 3), DRYING_CLAY_BRICK_PROPERTIES);
+    public static final DeferredBlock<DryingBrickRuinable> DRYING_REFRACTORY_CLAY_BRICK =               BLOCKS.registerBlock("drying_refractory_clay_brick", props -> new DryingBrickRuinable(props, SoundType.PACKED_MUD, 3), DRYING_CLAY_BRICK_PROPERTIES);
+    public static final DeferredBlock<DryingDoubleBrickRuinable> DRYING_CLAY_DOUBLE_BRICK =             BLOCKS.registerBlock("drying_clay_double_brick", props -> new DryingDoubleBrickRuinable(props, SoundType.PACKED_MUD, 3), DRYING_CLAY_DOUBLE_BRICK_PROPERTIES);
+    public static final DeferredBlock<DryingDoubleBrickRuinable> DRYING_KAOLIN_CLAY_DOUBLE_BRICK =      BLOCKS.registerBlock("drying_kaolin_clay_double_brick", props -> new DryingDoubleBrickRuinable(props, SoundType.PACKED_MUD, 3), DRYING_CLAY_DOUBLE_BRICK_PROPERTIES);
+    public static final DeferredBlock<DryingDoubleBrickRuinable> DRYING_POTTERS_CLAY_DOUBLE_BRICK =     BLOCKS.registerBlock("drying_potters_clay_double_brick", props -> new DryingDoubleBrickRuinable(props, SoundType.PACKED_MUD, 3), DRYING_CLAY_DOUBLE_BRICK_PROPERTIES);
+    public static final DeferredBlock<DryingDoubleBrickRuinable> DRYING_REFRACTORY_CLAY_DOUBLE_BRICK =  BLOCKS.registerBlock("drying_refractory_clay_double_brick", props -> new DryingDoubleBrickRuinable(props, SoundType.PACKED_MUD, 3), DRYING_CLAY_DOUBLE_BRICK_PROPERTIES);
 
     // ROCK PROPERTIES
     public static BlockBehaviour.Properties CLUMP_PROPERTIES =                              BlockBehaviour.Properties.of().offsetType(BlockBehaviour.OffsetType.XZ).dynamicShape().isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY).strength(0.05f).sound(SoundType.GRAVEL).mapColor(MapColor.DIRT);
@@ -412,7 +415,7 @@ public final class BlockRegistration
     public static final BlockBehaviour.Properties WOOD_WORKBENCH_PROPERTIES =               BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(1.0f).sound(SoundType.WOOD);
     public static final BlockBehaviour.Properties CHOPPING_BLOCK_PROPERTIES =               WOOD_WORKBENCH_PROPERTIES;
     // THATCH
-    public static final DeferredBlock<RotatedPillarBlock>                                   THATCH = BLOCKS.registerBlock("thatch_block", RotatedPillarBlock::new, THATCH_PROPERTIES);
+    public static final DeferredBlock<RotatedPillarBlock>                                   THATCH_BLOCK = BLOCKS.registerBlock("thatch_block", RotatedPillarBlock::new, THATCH_PROPERTIES);
     public static final DeferredBlock<FireLayBlock>                                         FIRE_LAY = BLOCKS.registerBlock("fire_lay", FireLayBlock::new, FIRE_LAY_PROPERTIES);
     // WORKBENCH
     public static final DeferredBlock<StoneBenchBlock>                                      STONE_BENCH = BLOCKS.registerBlock("stone_bench", StoneBenchBlock::new, STONE_BENCH_PROPERTIES);
@@ -422,14 +425,14 @@ public final class BlockRegistration
     public static final BlockBehaviour.Properties POTTERY_DRYING_PROPERTIES =               BlockBehaviour.Properties.of().isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY).mapColor(MapColor.CLAY).strength(0.4f).sound(SoundType.MUD).randomTicks();
     public static final BlockBehaviour.Properties POTTERY_PROPERTIES =                      POTTERY_DRYING_PROPERTIES.pushReaction(PushReaction.BLOCK).mapColor(MapColor.TERRACOTTA_BROWN).sound(SoundType.DECORATED_POT);
     // DRYING POTTERY
-    public static final DeferredBlock<DryingBlock> DRYING_GATHERERS_JAR =                   BLOCKS.registerBlock("drying_gatherers_jar",    GatherersJarBlock.DryingGatherersJarBlock::new,                 POTTERY_DRYING_PROPERTIES);
-    public static final DeferredBlock<DryingBlockHorizontalAxis> DRYING_KEEPERS_CROCK =     BLOCKS.registerBlock("drying_keepers_crock",    KeepersCrockBlock.DryingKeepersCrockBlockHorizontalAxis::new,   POTTERY_DRYING_PROPERTIES);
-    public static final DeferredBlock<DryingBlockHorizontalAxis> DRYING_SETTLERS_POT =      BLOCKS.registerBlock("drying_settlers_pot",     SettlersPotBlock.DryingSettlersPotBlockHorizontalAxis::new,     POTTERY_DRYING_PROPERTIES);
-    public static final DeferredBlock<DryingBlockHorizontalAxis> DRYING_CLAY_COOKING_POT =  BLOCKS.registerBlock("drying_clay_cooking_pot", ClayCookingPotBlock.DryingClayCookingPotBlock::new,             POTTERY_DRYING_PROPERTIES);
-    public static final DeferredBlock<DryingBlockHorizontalAxis> DRYING_CLAY_CAULDRON =     BLOCKS.registerBlock("drying_clay_cauldron",    ClayCauldronBlock.DryingClayCauldronBlock::new,                 POTTERY_DRYING_PROPERTIES);
-    public static final DeferredBlock<DryingBlockHorizontalFacing> DRYING_JUG =             BLOCKS.registerBlock("drying_jug",              JugBlock.DryingJugBlock::new,                                   POTTERY_DRYING_PROPERTIES);
-    public static final DeferredBlock<DryingBlock> DRYING_FLOWER_POT =                      BLOCKS.registerBlock("drying_flower_pot", DryingBlock.BasicDryingBlock::new, POTTERY_DRYING_PROPERTIES);
-    public static final DeferredBlock<DryingBlock> DRYING_DECORATED_POT =                   BLOCKS.registerBlock("drying_decorated_pot", DryingBlock.BasicDryingBlock::new, POTTERY_DRYING_PROPERTIES);
+    public static final DeferredBlock<DryingBlockRuinable> DRYING_GATHERERS_JAR =                   BLOCKS.registerBlock("drying_gatherers_jar",    GatherersJarBlock.DryingGatherersJarBlock::new,                 POTTERY_DRYING_PROPERTIES);
+    public static final DeferredBlock<DryingBlockRuinableHorizontalAxis> DRYING_KEEPERS_CROCK =     BLOCKS.registerBlock("drying_keepers_crock",    KeepersCrockBlock.DryingKeepersCrockBlockRuinableHorizontalAxis::new,   POTTERY_DRYING_PROPERTIES);
+    public static final DeferredBlock<DryingBlockRuinableHorizontalAxis> DRYING_SETTLERS_POT =      BLOCKS.registerBlock("drying_settlers_pot",     SettlersPotBlock.DryingSettlersPotBlockRuinableHorizontalAxis::new,     POTTERY_DRYING_PROPERTIES);
+    public static final DeferredBlock<DryingBlockRuinableHorizontalAxis> DRYING_CLAY_COOKING_POT =  BLOCKS.registerBlock("drying_clay_cooking_pot", ClayCookingPotBlock.DryingClayCookingPotBlockRuinable::new,             POTTERY_DRYING_PROPERTIES);
+    public static final DeferredBlock<DryingBlockRuinableHorizontalAxis> DRYING_CLAY_CAULDRON =     BLOCKS.registerBlock("drying_clay_cauldron",    ClayCauldronBlock.DryingClayCauldronBlockRuinable::new,                 POTTERY_DRYING_PROPERTIES);
+    public static final DeferredBlock<DryingBlockRuinableHorizontalFacing> DRYING_JUG =             BLOCKS.registerBlock("drying_jug",              JugBlock.DryingJugBlockRuinable::new,                                   POTTERY_DRYING_PROPERTIES);
+    public static final DeferredBlock<DryingBlockRuinable> DRYING_FLOWER_POT =              BLOCKS.registerBlock("drying_flower_pot",       DryingBlockRuinable.BasicDryingBlockRuinable::new, POTTERY_DRYING_PROPERTIES);
+    public static final DeferredBlock<DryingBlockRuinable> DRYING_DECORATED_POT =           BLOCKS.registerBlock("drying_decorated_pot",    DryingBlockRuinable.BasicDryingBlockRuinable::new, POTTERY_DRYING_PROPERTIES);
     // FIRED POTTERY
     public static final DeferredBlock<GatherersJarBlock> GATHERERS_JAR =                    BLOCKS.registerBlock("gatherers_jar",           GatherersJarBlock::new,                                         POTTERY_PROPERTIES);
     public static final DeferredBlock<KeepersCrockBlock> KEEPERS_CROCK =                    BLOCKS.registerBlock("keepers_crock",           KeepersCrockBlock::new,                                         POTTERY_PROPERTIES);

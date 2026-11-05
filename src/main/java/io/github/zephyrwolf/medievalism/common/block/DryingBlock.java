@@ -1,7 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.block;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.common.blockitem.DryingBlockItem;
 import io.github.zephyrwolf.medievalism.registration.loot.LootContextParamSetRegistration;
 import io.github.zephyrwolf.medievalism.common.warmth.WarmthTools;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -13,20 +12,15 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.SupportType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -34,57 +28,26 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public abstract class DryingBlock extends Block
 {
     float baseDryingChance;
+    Function<BlockState, BlockState> driedState;
 
-    public DryingBlock(Properties props, VoxelShape shape, SoundType drySound, float baseDryingChance)
+    public DryingBlock(Properties props, VoxelShape shape, float baseDryingChance, Function<BlockState, BlockState> dried)
     {
         super(props);
-        registerDefaultState(getStateDefinition().any()
-                .setValue(WarmthTools.IS_DRY, false)
-        );
+        registerDefaultState(getStateDefinition().any());
         this.shape = shape;
-        this.drySound = drySound;
         this.baseDryingChance = baseDryingChance;
+        this.driedState = dried;
     }
-
-    //region Sounds
-    SoundType drySound;
-
-    @Override
-    public SoundType getSoundType(BlockState state, LevelReader level, BlockPos pos, @Nullable Entity entity) {
-        if (WarmthTools.isDry(state)) {
-            return drySound;
-        }
-        return super.getSoundType(state, level, pos, entity);
-    }
-    //endregion
-
-    //region State
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder
-                .add(WarmthTools.IS_DRY);
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        ItemStack held = pContext.getItemInHand();
-        if (held.getItem() instanceof DryingBlockItem dryingItem) {
-            return defaultBlockState()
-                    .setValue(WarmthTools.IS_DRY, dryingItem.isDry());
-        }
-        return defaultBlockState();
-    }
-    //endregion
 
     //region Shape
     protected final VoxelShape shape;
@@ -105,21 +68,6 @@ public abstract class DryingBlock extends Block
     //endregion
 
     //region Block Behaviour
-    @Override
-    protected boolean isPathfindable(BlockState pState, PathComputationType pPathComputationType) {
-        return false;
-    }
-
-    @Override
-    protected float getShadeBrightness(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos) {
-        return 1.0f;
-    }
-
-    @Override
-    protected boolean propagatesSkylightDown(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos) {
-        return true;
-    }
-
     @Override
     protected boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
         BlockPos belowPos = pPos.below();
@@ -143,11 +91,7 @@ public abstract class DryingBlock extends Block
         boolean canSeeSky = pLevel.canSeeSky(pPos);
         if (canSeeSky && isRaining && pLevel.getBiome(pPos).value().getModifiedClimateSettings().hasPrecipitation())
         { // Raining
-            if (WarmthTools.isDry(pState))
-            {
-                pLevel.setBlockAndUpdate(pPos, pState.setValue(WarmthTools.IS_DRY, false));
-            }
-            else if (pRandom.nextInt(3) == 0)
+            if (pRandom.nextInt(3) == 0)
             {
                 pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
 
@@ -173,12 +117,9 @@ public abstract class DryingBlock extends Block
         }
         else
         { // Drying
-            if (!WarmthTools.isDry(pState))
+            if (WarmthTools.canWarm(pLevel, pPos, baseDryingChance))
             {
-                if (WarmthTools.canWarm(pLevel, pPos, baseDryingChance))
-                {
-                    pLevel.setBlockAndUpdate(pPos, pState.setValue(WarmthTools.IS_DRY, true));
-                }
+                pLevel.setBlockAndUpdate(pPos, driedState.apply(pState));
             }
         }
     }
@@ -200,6 +141,6 @@ public abstract class DryingBlock extends Block
 
     public static class BasicDryingBlock extends DryingBlock
     {
-        public BasicDryingBlock(Properties props) { super(props, Shapes.block(), SoundType.PACKED_MUD, WarmthTools.DEFAULT_WARMING_CHANCE); }
+        public BasicDryingBlock(Properties props, Supplier<Block> dried) { super(props, Shapes.block(), WarmthTools.DEFAULT_WARMING_CHANCE, state -> dried.get().defaultBlockState()); }
     }
 }

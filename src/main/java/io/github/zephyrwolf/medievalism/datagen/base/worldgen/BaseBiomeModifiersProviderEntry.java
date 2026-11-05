@@ -19,8 +19,6 @@ public final class BaseBiomeModifiersProviderEntry
     public static final ResourceKey<BiomeModifier> CLAY_WITH_DOGBANE =              BiomeModifierTools.registerKey(MedievalismConstants.resource("red_clay_with_dogbane"));
     //STONE
     // ORE
-    public static final ResourceKey<BiomeModifier> TIN_ORE =                        BiomeModifierTools.registerKey(MedievalismConstants.resource("tin_ore"));
-    public static final ResourceKey<BiomeModifier> TIN_ORE_UNIFORM =                BiomeModifierTools.registerKey(MedievalismConstants.resource("tin_ore_uniform"));
     public static final ResourceKey<BiomeModifier> CHALK_ORE =                      BiomeModifierTools.registerKey(MedievalismConstants.resource("chalk_ore"));
     public static final ResourceKey<BiomeModifier> CHERT_ORE =                      BiomeModifierTools.registerKey(MedievalismConstants.resource("chert_ore"));
     public static final ResourceKey<BiomeModifier> GEODE_ORE =                      BiomeModifierTools.registerKey(MedievalismConstants.resource("geode_ore"));
@@ -66,8 +64,6 @@ public final class BaseBiomeModifiersProviderEntry
         context.register(CLAY_WITH_DOGBANE, new BiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(BiomeTagCatalog.GENERATE_INLAND_CLAY), HolderSet.direct(placedFeatures.getOrThrow(BasePlacedFeaturesProviderEntry.CLAY_WITH_DOGBANE)), GenerationStep.Decoration.VEGETAL_DECORATION));
         // STONE
         // ORE
-        BiomeModifierTools.addSimpleModifier(context, TIN_ORE,                      BiomeTags.IS_OVERWORLD,                     BasePlacedFeaturesProviderEntry.TIN_ORE,                        GenerationStep.Decoration.UNDERGROUND_ORES);
-        BiomeModifierTools.addSimpleModifier(context, TIN_ORE_UNIFORM,              BiomeTags.IS_OVERWORLD,                     BasePlacedFeaturesProviderEntry.TIN_ORE_UNIFORM,                GenerationStep.Decoration.UNDERGROUND_ORES);
         BiomeModifierTools.addSimpleModifier(context, CHALK_ORE,                    BiomeTags.IS_OVERWORLD,                     BasePlacedFeaturesProviderEntry.CHALK_ORE,                      GenerationStep.Decoration.UNDERGROUND_ORES);
         BiomeModifierTools.addSimpleModifier(context, CHERT_ORE,                    BiomeTags.IS_OVERWORLD,                     BasePlacedFeaturesProviderEntry.CHERT_ORE,                      GenerationStep.Decoration.UNDERGROUND_ORES);
         BiomeModifierTools.addSimpleModifier(context, GEODE_ORE,                    BiomeTags.IS_OVERWORLD,                     BasePlacedFeaturesProviderEntry.GEODE_ORE,                      GenerationStep.Decoration.UNDERGROUND_ORES);

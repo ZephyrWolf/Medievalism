@@ -16,6 +16,7 @@ public final class ItemTagCatalog
     public static final TagKey<Item> CAN_CRAFT_FLOUR = tag("can_craft_flour");
 
     public static final TagKey<Item> CLAY_BALL = tag( "clay_ball");
+    public static final TagKey<Item> GROG = tag( "grog");
     public static final TagKey<Item> CLAY_BLOCK = tag("clay_block");
     public static final TagKey<Item> ROCK = tag("rock");
     public static final TagKey<Item> HARD_ROCK = tag("hard_rock");

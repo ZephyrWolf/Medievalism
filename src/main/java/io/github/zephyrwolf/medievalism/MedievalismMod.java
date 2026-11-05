@@ -9,7 +9,6 @@ import io.github.zephyrwolf.medievalism.registration.advancements.CriteriaTrigge
 import io.github.zephyrwolf.medievalism.registration.blockentity.BlockEntityRegistration;
 import io.github.zephyrwolf.medievalism.common.advancements.CriteriaTriggerEvents;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.BlockItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.CreativeTabRegistration;
 import io.github.zephyrwolf.medievalism.registration.capabilities.CapabilitiesRegistration;
 import io.github.zephyrwolf.medievalism.registration.components.DataComponentTypeRegistration;
@@ -55,7 +54,6 @@ public class MedievalismMod
         // Game Objects
         BlockRegistration.register(bus);
         ItemRegistration.register(bus);
-        BlockItemRegistration.register(bus);
         BlockEntityRegistration.register(bus);
         CreativeTabRegistration.register(bus);
         CapabilitiesRegistration.register(bus);

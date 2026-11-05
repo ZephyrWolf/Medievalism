@@ -53,11 +53,11 @@ import java.util.stream.IntStream;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class DryingBrick extends Block
+public class DryingBrickRuinable extends Block
 {
     float baseDryingChance;
 
-    public DryingBrick(Properties props, SoundType drySound, float chance)
+    public DryingBrickRuinable(Properties props, SoundType drySound, float chance)
     {
         super(props);
         this.drySound = drySound;
@@ -123,7 +123,7 @@ public class DryingBrick extends Block
     public ItemInteractionResult tryPlaceAdditionalBrick(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, @Nullable Player pPlayer)
     {
         ItemInteractionResult result = ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-        if (pState.getBlock() == this && pState.getBlock().asItem() == pStack.getItem() && pState.getBlock() instanceof DryingBrick) {
+        if (pState.getBlock() == this && pState.getBlock().asItem() == pStack.getItem() && pState.getBlock() instanceof DryingBrickRuinable) {
             EnumProperty<WarmthTools.DryingBrickState> prop = null;
             for (int i = 0; i < 4; i++) {
                 if (pState.getValue(BRICK_PROPERTIES[i]).isEmpty()) {
@@ -284,7 +284,7 @@ public class DryingBrick extends Block
             }
         }
         return IntStream.range(0, 16)
-                .mapToObj((bitfield) -> DryingBrick.makeShape(bitfield, bl, br, fl, fr))
+                .mapToObj((bitfield) -> DryingBrickRuinable.makeShape(bitfield, bl, br, fl, fr))
                 .toArray(VoxelShape[]::new);
     }
 
@@ -496,7 +496,7 @@ public class DryingBrick extends Block
     //endregion
 
     @SuppressWarnings("unused")
-    public static class BasicDryingBrick extends DryingBrick
+    public static class BasicDryingBrick extends DryingBrickRuinable
     {
         public BasicDryingBrick(Properties props) { super(props, SoundType.PACKED_MUD, WarmthTools.DEFAULT_WARMING_CHANCE); }
     }

@@ -38,13 +38,27 @@ public final class BaseAdditionalDropsTablesSubProvider implements LootTableSubP
 
     private void getLootTables(HolderLookup.Provider ignoredLookupProvider)
     {
-        ruinedDrop(BlockRegistration.WET_PACKED_MUD_BRICK.get(), ItemRegistration.MUD_BALL, 1, 1);
-        ruinedDrop(BlockRegistration.WET_DAUB_BRICK.get(), ItemRegistration.WET_DAUB, 1, 1);
+        ruinedDrop(BlockRegistration.DRYING_PACKED_MUD_BRICK.get(), ItemRegistration.MUD_BALL, 1, 1);
+        ruinedDrop(BlockRegistration.DRYING_DAUB_BRICK.get(), ItemRegistration.WET_DAUB, 1, 1);
         ruinedDrop(BlockRegistration.DRYING_CLAY_BRICK.get(), Items.CLAY_BALL, 1, 1);
+        ruinedDrop(BlockRegistration.DRYING_POTTERS_CLAY_BRICK.get(), Items.CLAY_BALL, 1, 1);
+        ruinedDrop(BlockRegistration.DRYING_KAOLIN_CLAY_BRICK.get(), ItemRegistration.KAOLIN_CLAY_BALL, 1, 1);
+        ruinedDrop(BlockRegistration.DRYING_REFRACTORY_CLAY_BRICK.get(), ItemRegistration.REFRACTORY_CLAY_BALL, 1, 1);
+        ruinedDrop(BlockRegistration.DRYING_CLAY_DOUBLE_BRICK.get(), Items.CLAY_BALL, 1, 2);
+        ruinedDrop(BlockRegistration.DRYING_POTTERS_CLAY_DOUBLE_BRICK.get(), Items.CLAY_BALL, 1, 2);
+        ruinedDrop(BlockRegistration.DRYING_KAOLIN_CLAY_DOUBLE_BRICK.get(), ItemRegistration.KAOLIN_CLAY_BALL, 1, 2);
+        ruinedDrop(BlockRegistration.DRYING_REFRACTORY_CLAY_DOUBLE_BRICK.get(), ItemRegistration.REFRACTORY_CLAY_BALL, 1, 2);
 
-        alternateDrop(BlockRegistration.WET_PACKED_MUD_BRICK.get(), ItemRegistration.PACKED_MUD_BRICK, 1, 1);
-        alternateDrop(BlockRegistration.WET_DAUB_BRICK.get(), ItemRegistration.DAUB_BRICK, 1, 1);
-        //alternateDrop(BlockRegistration.DRYING_CLAY_BRICK.get(), ItemRegistration.UNFIRED_CLAY_BRICK, 1, 1);
+        alternateDrop(BlockRegistration.DRYING_PACKED_MUD_BRICK.get(), ItemRegistration.PACKED_MUD_BRICK, 1, 1);
+        alternateDrop(BlockRegistration.DRYING_DAUB_BRICK.get(), ItemRegistration.DAUB_BRICK, 1, 1);
+        alternateDrop(BlockRegistration.DRYING_CLAY_BRICK.get(), ItemRegistration.UNFIRED_CLAY_BRICK, 1, 1);
+        alternateDrop(BlockRegistration.DRYING_POTTERS_CLAY_BRICK.get(), ItemRegistration.UNFIRED_POTTERS_CLAY_BRICK, 1, 1);
+        alternateDrop(BlockRegistration.DRYING_KAOLIN_CLAY_BRICK.get(), ItemRegistration.UNFIRED_KAOLIN_CLAY_BRICK, 1, 1);
+        alternateDrop(BlockRegistration.DRYING_REFRACTORY_CLAY_BRICK.get(), ItemRegistration.UNFIRED_REFRACTORY_CLAY_BRICK, 1, 1);
+        alternateDrop(BlockRegistration.DRYING_CLAY_DOUBLE_BRICK.get(), ItemRegistration.UNFIRED_CLAY_DOUBLE_BRICK, 1, 1);
+        alternateDrop(BlockRegistration.DRYING_POTTERS_CLAY_DOUBLE_BRICK.get(), ItemRegistration.UNFIRED_POTTERS_CLAY_DOUBLE_BRICK, 1, 1);
+        alternateDrop(BlockRegistration.DRYING_KAOLIN_CLAY_DOUBLE_BRICK.get(), ItemRegistration.UNFIRED_KAOLIN_CLAY_DOUBLE_BRICK, 1, 1);
+        alternateDrop(BlockRegistration.DRYING_REFRACTORY_CLAY_DOUBLE_BRICK.get(), ItemRegistration.UNFIRED_REFRACTORY_CLAY_DOUBLE_BRICK, 1, 1);
 
         ruinedDrop(BlockRegistration.DRYING_GATHERERS_JAR.get(),        Items.CLAY_BALL, 1, 1);
         ruinedDrop(BlockRegistration.DRYING_KEEPERS_CROCK.get(),        Items.CLAY_BALL, 2, 4);

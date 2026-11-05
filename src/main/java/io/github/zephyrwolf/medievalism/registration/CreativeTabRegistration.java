@@ -1,8 +1,6 @@
 package io.github.zephyrwolf.medievalism.registration;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.BlockItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -30,14 +28,7 @@ public class CreativeTabRegistration
 
     private static void itemsForMedievalismTab(CreativeModeTab.ItemDisplayParameters pParameters, CreativeModeTab.Output pOutput)
     {
-        for (DeferredHolder<Item, ? extends Item> item : ItemRegistration.ITEMS.getEntries())
-        { // Add all items added by Medievalism.
-            pOutput.accept(item.get());
-        }
-        for (DeferredHolder<Item, ? extends Item> item : BlockItemRegistration.BLOCKITEMS.getEntries())
-        {
-            pOutput.accept(item.get());
-        }
+        for (DeferredHolder<Item, ? extends Item> item : ItemRegistration.ITEMS.getEntries()) { pOutput.accept(item.get()); }
     }
     
     public static void register(IEventBus eventBus)

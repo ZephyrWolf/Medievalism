@@ -8,18 +8,18 @@ import java.util.function.Supplier;
 
 public class DryingBlockItem extends BlockItem
 {
-    public final boolean dry;
+    public final boolean isDry;
 
-    public DryingBlockItem(Supplier<? extends Block> pBlock, Properties pProperties, boolean dry) {
+    public DryingBlockItem(Supplier<? extends Block> pBlock, Properties pProperties, boolean isDry) {
         super(pBlock.get(), pProperties);
-        this.dry = dry;
+        this.isDry = isDry;
     }
 
-    public boolean isDry() { return dry; }
+    public boolean isDry() { return isDry; }
 
     @Override
     public @NotNull String getDescriptionId()
     {
-        return super.getDescriptionId() + (dry ? ".wet" : ".dry");
+        return super.getDescriptionId() + (!isDry ? ".wet" : ".dry");
     }
 }

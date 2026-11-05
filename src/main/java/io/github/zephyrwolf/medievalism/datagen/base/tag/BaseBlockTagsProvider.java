@@ -579,7 +579,7 @@ public class BaseBlockTagsProvider extends BlockTagsProvider
         );
 
         tag(BlockTags.MINEABLE_WITH_HOE).add(
-                BlockRegistration.THATCH.get()
+                BlockRegistration.THATCH_BLOCK.get()
         );
     }
 
@@ -884,9 +884,7 @@ public class BaseBlockTagsProvider extends BlockTagsProvider
                 BlockRegistration.BASALT_GEODE_ORE.get(),
                 BlockRegistration.ANDESITE_GEODE_ORE.get(),
                 BlockRegistration.RHYOLITE_GEODE_ORE.get(),
-                BlockRegistration.DACITE_GEODE_ORE.get(),
-                BlockRegistration.TIN_ORE_IN_GREYWACKE.get(),
-                BlockRegistration.TIN_ORE_IN_GABBRO.get()
+                BlockRegistration.DACITE_GEODE_ORE.get()
         );
         tag(Tags.Blocks.ORE_RATES_SPARSE);
 

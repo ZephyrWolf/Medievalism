@@ -286,7 +286,7 @@ public class GatherersJarBlock extends BaseEntityBlock implements SimpleWaterlog
     }
     //endregion
 
-    public static class DryingGatherersJarBlock extends DryingBlock
+    public static class DryingGatherersJarBlock extends DryingBlockRuinable
     {
         public DryingGatherersJarBlock(Properties props) {
             super(props, GATHERERS_POT_SHAPE, SoundType.PACKED_MUD, 1.0f);

@@ -1,6 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.blockitem;
 
-import io.github.zephyrwolf.medievalism.common.block.DryingBrick;
+import io.github.zephyrwolf.medievalism.common.block.DryingBrickRuinable;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.item.BlockItem;
@@ -9,11 +9,16 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.function.Supplier;
+
 public class DryingBrickBlockItem extends BlockItem
 {
-    public DryingBrickBlockItem(Block pBlock, Properties pProperties)
+    public final boolean isDry;
+
+    public DryingBrickBlockItem(Supplier<? extends Block> pBlock, Properties pProperties, boolean isDry)
     {
-        super(pBlock, pProperties);
+        super(pBlock.get(), pProperties);
+        this.isDry = isDry;
     }
 
     @Override
@@ -25,8 +30,8 @@ public class DryingBrickBlockItem extends BlockItem
         else
         {
             BlockState state = pContext.getLevel().getBlockState(pContext.getClickedPos());
-            if (state.getBlock() == this.getBlock() && state.getBlock().asItem() == pContext.getItemInHand().getItem() && state.getBlock() instanceof DryingBrick) {
-                ItemInteractionResult result = ((DryingBrick) state.getBlock())
+            if (state.getBlock() == this.getBlock() && state.getBlock().asItem() == pContext.getItemInHand().getItem() && state.getBlock() instanceof DryingBrickRuinable) {
+                ItemInteractionResult result = ((DryingBrickRuinable) state.getBlock())
                         .tryPlaceAdditionalBrick(pContext.getItemInHand(), state, pContext.getLevel(), pContext.getClickedPos(), pContext.getPlayer());
                 if (result == ItemInteractionResult.SUCCESS) {
                     return InteractionResult.sidedSuccess(pContext.getLevel().isClientSide);
@@ -34,5 +39,13 @@ public class DryingBrickBlockItem extends BlockItem
             }
         }
         return super.place(pContext);
+    }
+
+    public boolean isDry() { return isDry; }
+
+    @Override
+    public @NotNull String getDescriptionId()
+    {
+        return super.getDescriptionId() + (!isDry ? ".wet" : ".dry");
     }
 }

@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
@@ -20,24 +20,24 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public abstract class DryingBlockHorizontalAxis extends DryingBlock
+public abstract class DryingBlockRuinableHorizontalFacing extends DryingBlockRuinable
 {
-    public DryingBlockHorizontalAxis(Properties props, VoxelShape shape, SoundType drySound, float baseDryingChance) {
+    public static final DirectionProperty DIRECTION = BlockStateProperties.HORIZONTAL_FACING;
+
+    public DryingBlockRuinableHorizontalFacing(Properties props, VoxelShape shape, SoundType drySound, float baseDryingChance) {
         super(props, shape, drySound, baseDryingChance);
         registerDefaultState(getStateDefinition().any()
                 .setValue(WarmthTools.IS_DRY, false)
-                .setValue(AXIS, Direction.Axis.Z)
+                .setValue(DIRECTION, Direction.NORTH)
         );
     }
 
     //region State
-    public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
-
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder
                 .add(WarmthTools.IS_DRY)
-                .add(AXIS);
+                .add(DIRECTION);
     }
 
     @Override
@@ -47,20 +47,17 @@ public abstract class DryingBlockHorizontalAxis extends DryingBlock
             if (dryingItem.isDry()) {
                 return defaultBlockState()
                         .setValue(WarmthTools.IS_DRY, true)
-                        .setValue(AXIS, pContext.getHorizontalDirection().getAxis());
+                        .setValue(DIRECTION, pContext.getHorizontalDirection());
             }
         }
         return defaultBlockState()
-                .setValue(AXIS, pContext.getHorizontalDirection().getAxis());
+                .setValue(DIRECTION, pContext.getHorizontalDirection());
     }
     //endregion
 
     @SuppressWarnings("unused")
-    public static class BasicDryingBlockHorizontalAxis extends DryingBlockHorizontalAxis
+    public static class BasicDryingBlockRuinableHorizontalFacing extends DryingBlockRuinableHorizontalFacing
     {
-        public BasicDryingBlockHorizontalAxis(Properties props)
-        {
-            super(props, Shapes.block(), SoundType.PACKED_MUD, 1.0f);
-        }
+        public BasicDryingBlockRuinableHorizontalFacing(Properties props) { super(props, Shapes.block(), SoundType.PACKED_MUD, 1.0f); }
     }
 }

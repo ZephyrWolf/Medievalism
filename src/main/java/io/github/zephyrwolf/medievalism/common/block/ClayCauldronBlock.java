@@ -151,9 +151,9 @@ public class ClayCauldronBlock extends Block implements SimpleWaterloggedBlock {
 
     // --
 
-    public static class DryingClayCauldronBlock extends DryingBlockHorizontalAxis
+    public static class DryingClayCauldronBlockRuinable extends DryingBlockRuinableHorizontalAxis
     {
-        public DryingClayCauldronBlock(Properties props) {
+        public DryingClayCauldronBlockRuinable(Properties props) {
             super(props, CLAY_CAULDRON_SHAPE, SoundType.PACKED_MUD, 1.0f);
         }
     }

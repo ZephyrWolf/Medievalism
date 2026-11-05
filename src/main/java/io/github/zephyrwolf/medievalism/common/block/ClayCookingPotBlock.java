@@ -150,9 +150,9 @@ public class ClayCookingPotBlock extends Block implements SimpleWaterloggedBlock
 
     // --
 
-    public static class DryingClayCookingPotBlock extends DryingBlockHorizontalAxis
+    public static class DryingClayCookingPotBlockRuinable extends DryingBlockRuinableHorizontalAxis
     {
-        public DryingClayCookingPotBlock(Properties props) {
+        public DryingClayCookingPotBlockRuinable(Properties props) {
             super(props, CLAY_COOKING_POT_SHAPE, SoundType.PACKED_MUD, 1.0f);
         }
     }

@@ -130,8 +130,6 @@ public class OverhaulLanguageProvider extends LanguageProvider
         add(Items.DEEPSLATE_REDSTONE_ORE, "Redstone Ore in Gabbro");
         add(Items.EMERALD_ORE, "Emerald Ore in Greywacke");
         add(Items.DEEPSLATE_EMERALD_ORE, "Emerald Ore in Gabbro");
-        add(BlockRegistration.TIN_ORE_IN_GREYWACKE.get(), "Cassiterite Ore in Greywacke");
-        add(BlockRegistration.TIN_ORE_IN_GABBRO.get(), "Cassiterite Ore in Gabbro");
         //endregion
     }
 

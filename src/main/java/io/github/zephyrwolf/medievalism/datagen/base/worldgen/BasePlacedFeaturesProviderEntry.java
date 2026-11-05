@@ -20,8 +20,6 @@ public final class BasePlacedFeaturesProviderEntry
     public static final ResourceKey<PlacedFeature> CLAY_WITH_DOGBANE =              PlacementTools.registerKey(MedievalismConstants.resource("red_clay_with_dogbane"));
     // STONE
     // ORE
-    public static final ResourceKey<PlacedFeature> TIN_ORE =                        PlacementTools.registerKey(MedievalismConstants.resource("tin_ore"));
-    public static final ResourceKey<PlacedFeature> TIN_ORE_UNIFORM =                PlacementTools.registerKey(MedievalismConstants.resource("tin_ore_uniform"));
     public static final ResourceKey<PlacedFeature> CHALK_ORE =                      PlacementTools.registerKey(MedievalismConstants.resource("chalk_ore"));
     public static final ResourceKey<PlacedFeature> CHERT_ORE =                      PlacementTools.registerKey(MedievalismConstants.resource("chert_ore"));
     public static final ResourceKey<PlacedFeature> GEODE_ORE =                      PlacementTools.registerKey(MedievalismConstants.resource("geode_ore"));
@@ -66,10 +64,6 @@ public final class BasePlacedFeaturesProviderEntry
         PlacementTools.register(context, CLAY_WITH_DOGBANE,    BaseConfiguredFeaturesProviderEntry.CLAY_WITH_DOGBANE,  PlacementTools.chanceOceanSurfacePlacement(8, 0, 0));
         // STONE
         // ORE
-        PlacementTools.register(context, TIN_ORE, BaseConfiguredFeaturesProviderEntry.OVERWORLD_TIN_ORE,
-                PlacementTools.commonOrePlacement(5, HeightRangePlacement.triangle( VerticalAnchor.absolute(-32), VerticalAnchor.absolute(48))));
-        PlacementTools.register(context, TIN_ORE_UNIFORM, BaseConfiguredFeaturesProviderEntry.OVERWORLD_TIN_ORE,
-                PlacementTools.commonOrePlacement(10, HeightRangePlacement.uniform( VerticalAnchor.absolute(0), VerticalAnchor.absolute(80))));
         PlacementTools.register(context, CHALK_ORE, BaseConfiguredFeaturesProviderEntry.CHALK_ORE,
                 PlacementTools.commonOrePlacement( 7, HeightRangePlacement.uniform(WorldGenLayerConstants.MIN_SEDIMENTARY, WorldGenLayerConstants.MAX_SEDIMENTARY)));
         PlacementTools.register(context, CHERT_ORE, BaseConfiguredFeaturesProviderEntry.CHERT_ORE,

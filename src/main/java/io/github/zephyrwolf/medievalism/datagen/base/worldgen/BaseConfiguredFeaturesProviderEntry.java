@@ -44,7 +44,6 @@ public final class BaseConfiguredFeaturesProviderEntry
     public static final ResourceKey<ConfiguredFeature<?, ?>> CLAY_WITH_DOGBANE =            FeatureTools.registerKey(MedievalismConstants.resource("clay_with_dogbane"));
     // STONE
     // ORE
-    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_TIN_ORE =                FeatureTools.registerKey(MedievalismConstants.resource("tin_ore"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> CHALK_ORE =                        FeatureTools.registerKey(MedievalismConstants.resource("chalk_ore"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> CHERT_ORE =                        FeatureTools.registerKey(MedievalismConstants.resource("chert_ore"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> GEODE_ORE =                        FeatureTools.registerKey(MedievalismConstants.resource("geode_ore"));
@@ -100,10 +99,6 @@ public final class BaseConfiguredFeaturesProviderEntry
                 OreConfiguration.target(stoneAndDirtTest, BlockRegistration.CLAY_IN_DIRT.get().defaultBlockState()),
                 OreConfiguration.target(grassBlockTest, BlockRegistration.CLAY_IN_GRASS.get().defaultBlockState())
         );
-        List<OreConfiguration.TargetBlockState> tinOres = List.of(
-                OreConfiguration.target(stoneReplaceables, BlockRegistration.TIN_ORE_IN_GREYWACKE.get().defaultBlockState()),
-                OreConfiguration.target(deepslateReplaceables, BlockRegistration.TIN_ORE_IN_GABBRO.get().defaultBlockState())
-        );
         List<OreConfiguration.TargetBlockState> chalkOres = List.of(
                 OreConfiguration.target(limestoneReplaceables, BlockRegistration.CHALK.get().defaultBlockState())
         );
@@ -143,7 +138,6 @@ public final class BaseConfiguredFeaturesProviderEntry
         )));
         // STONE
         // ORES
-        FeatureTools.register(context, OVERWORLD_TIN_ORE, Feature.ORE, new OreConfiguration(tinOres, 9));
         FeatureTools.register(context, CHALK_ORE, FeatureRegistration.SPECKLED_ORE_FEATURE.get(), new SpeckledOreConfiguration(chalkOres, chertOres, 56, 0.15f));
         FeatureTools.register(context, CHERT_ORE, Feature.ORE, new OreConfiguration(chertOres, 2));
         FeatureTools.register(context, GEODE_ORE, Feature.ORE, new OreConfiguration(geodeOres, 1));

@@ -290,9 +290,9 @@ public class KeepersCrockBlock extends BaseEntityBlock implements SimpleWaterlog
     }
     //endregion
 
-    public static class DryingKeepersCrockBlockHorizontalAxis extends DryingBlockHorizontalAxis
+    public static class DryingKeepersCrockBlockRuinableHorizontalAxis extends DryingBlockRuinableHorizontalAxis
     {
-        public DryingKeepersCrockBlockHorizontalAxis(Properties props) {
+        public DryingKeepersCrockBlockRuinableHorizontalAxis(Properties props) {
             super(props, KEEPERS_CROCK_SHAPE, SoundType.PACKED_MUD, 1.0f);
         }
     }

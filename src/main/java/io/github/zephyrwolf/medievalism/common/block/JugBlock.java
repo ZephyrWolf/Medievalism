@@ -151,9 +151,9 @@ public class JugBlock extends Block implements SimpleWaterloggedBlock
     }
     //endregion
 
-    public static class DryingJugBlock extends DryingBlockHorizontalFacing
+    public static class DryingJugBlockRuinable extends DryingBlockRuinableHorizontalFacing
     {
-        public DryingJugBlock(Properties props) {
+        public DryingJugBlockRuinable(Properties props) {
             super(props, JUG_SHAPE, SoundType.PACKED_MUD, 1.0f);
         }
     }
