@@ -2,9 +2,10 @@
 	"format_version": "1.9.0",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "medievalism:block/firepit_sticks",
-		"1": "medievalism:block/firepit_tinder_thatch",
-		"particle": "medievalism:block/firepit_sticks"
+		"0": "medievalism:block/fire_lay_sticks",
+		"1": "medievalism:block/fire_lay_tinder_thatch",
+		"particle": "block/campfire_log",
+        "log": "block/campfire_log"
 	},
 	"elements": [
 		{
@@ -126,7 +127,31 @@
 				"up": {"uv": [3, 13, 2, 7], "texture": "#0"},
 				"down": {"uv": [4, 7, 3, 13], "texture": "#0"}
 			}
-		}
+		},
+		{
+            "from": [ 1, 0, 0 ],
+            "to": [ 5, 4, 16 ],
+            "faces": {
+                "north": { "uv": [  0, 4,  4, 8 ], "texture": "#log", "cullface": "north" },
+                "east":  { "uv": [  0, 0, 16, 4 ], "texture": "#log" },
+                "south": { "uv": [  0, 4,  4, 8 ], "texture": "#log", "cullface": "south" },
+                "west":  { "uv": [ 16, 0,  0, 4 ], "texture": "#log" },
+                "up":    { "uv": [  0, 0, 16, 4 ], "rotation": 90, "texture": "#log" },
+                "down":  { "uv": [  0, 0, 16, 4 ], "rotation": 90, "texture": "#log", "cullface": "down" }
+            }
+        },
+        {
+            "from": [ 11, 0, 0 ],
+            "to": [ 15, 4, 16 ],
+            "faces": {
+                "north": { "uv": [  0, 4,  4, 8 ], "texture": "#log", "cullface": "north" },
+                "east":  { "uv": [  0, 0, 16, 4 ], "texture": "#log" },
+                "south": { "uv": [  0, 4,  4, 8 ], "texture": "#log", "cullface": "south" },
+                "west":  { "uv": [ 16, 0,  0, 4 ], "texture": "#log" },
+                "up":    { "uv": [  0, 0, 16, 4 ], "rotation": 90, "texture": "#log" },
+                "down":  { "uv": [  0, 0, 16, 4 ], "rotation": 90, "texture": "#log", "cullface": "down" }
+            }
+        }
 	],
 	"groups": [
 		{

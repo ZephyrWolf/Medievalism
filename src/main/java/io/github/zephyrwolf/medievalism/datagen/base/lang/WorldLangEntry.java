@@ -3,7 +3,6 @@ package io.github.zephyrwolf.medievalism.datagen.base.lang;
 import io.github.zephyrwolf.medievalism.common.data.ILanguageProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.LanguageEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.KnappingItemRegistration;
 
 public class WorldLangEntry implements ILanguageProviderEntry
@@ -21,7 +20,8 @@ public class WorldLangEntry implements ILanguageProviderEntry
 
     private void addBlockTranslations(LanguageEntryProviderHandle handle)
     {
-        handle.addBlock(BlockRegistration.FIRE_LAY.get(), "Thatch"); // TODO Seperate firelay and thatch names
+        handle.addBlock(BlockRegistration.THATCH_FIRE_LAY.get(), "Thatch"); // TODO Separate fire lay and thatch names
+        handle.addBlock(BlockRegistration.THATCH_BUILD_CAMPFIRE.get(), "Building Campfire..."); // TODO Separate fire lay and thatch names
     }
 
     private void addBlockItemTranslations(LanguageEntryProviderHandle handle)

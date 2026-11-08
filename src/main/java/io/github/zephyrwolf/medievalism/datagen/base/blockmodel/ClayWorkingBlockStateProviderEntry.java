@@ -57,8 +57,8 @@ public final class ClayWorkingBlockStateProviderEntry implements IBlockStateProv
         );
         handle.horizontalAxisBlock(
                 BlockRegistration.KEEPERS_CROCK.get(),
-                handle.existingModel(BlockRegistration.KEEPERS_CROCK.get(), ""),
-                handle.existingModel(BlockRegistration.KEEPERS_CROCK.get(), "_rotated")
+                handle.existingModel(BlockRegistration.KEEPERS_CROCK.get()),
+                handle.existingModel(handle.blockModelName(BlockRegistration.KEEPERS_CROCK.get(), "_rotated"))
         );
 
         // Settler's Pot
@@ -74,8 +74,8 @@ public final class ClayWorkingBlockStateProviderEntry implements IBlockStateProv
         );
         handle.horizontalAxisBlock(
                 BlockRegistration.SETTLERS_POT.get(),
-                handle.existingModel(BlockRegistration.SETTLERS_POT.get(), ""),
-                handle.existingModel(BlockRegistration.SETTLERS_POT.get(), "_rotated")
+                handle.existingModel(BlockRegistration.SETTLERS_POT.get()),
+                handle.existingModel(handle.blockModelName(BlockRegistration.SETTLERS_POT.get(), "_rotated"))
         );
 
         // Clay Cooking Pot
@@ -91,8 +91,8 @@ public final class ClayWorkingBlockStateProviderEntry implements IBlockStateProv
         );
         handle.horizontalAxisBlock(
                 BlockRegistration.CLAY_COOKING_POT.get(),
-                handle.existingModel(BlockRegistration.CLAY_COOKING_POT.get(), ""),
-                handle.existingModel(BlockRegistration.CLAY_COOKING_POT.get(), "_rotated")
+                handle.existingModel(BlockRegistration.CLAY_COOKING_POT.get()),
+                handle.existingModel(handle.blockModelName(BlockRegistration.CLAY_COOKING_POT.get(), "_rotated"))
         );
 
         // Clay Cauldron
@@ -108,8 +108,8 @@ public final class ClayWorkingBlockStateProviderEntry implements IBlockStateProv
         );
         handle.horizontalAxisBlock(
                 BlockRegistration.CLAY_CAULDRON.get(),
-                handle.existingModel(BlockRegistration.CLAY_CAULDRON.get(), ""),
-                handle.existingModel(BlockRegistration.CLAY_CAULDRON.get(), "_rotated")
+                handle.existingModel(BlockRegistration.CLAY_CAULDRON.get()),
+                handle.existingModel(handle.blockModelName(BlockRegistration.CLAY_CAULDRON.get(), "_rotated"))
         );
 
         // Jug

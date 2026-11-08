@@ -1,12 +1,26 @@
 package io.github.zephyrwolf.medievalism.registration.block;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.catalogs.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.common.block.*;
+import io.github.zephyrwolf.medievalism.common.block.firepit.BuildCampfireBlock;
+import io.github.zephyrwolf.medievalism.common.block.firepit.FireLayBlock;
+import io.github.zephyrwolf.medievalism.common.block.firepit.IBlockInteractWithStack;
+import io.github.zephyrwolf.medievalism.registration.item.WoodWorkingItemRegistration;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -412,17 +426,48 @@ public final class BlockRegistration
 
     // PRIMITIVE TECHNOLOGY PROPERTIES
     public static final BlockBehaviour.Properties THATCH_PROPERTIES =                       BlockBehaviour.Properties.of().mapColor(MapColor.WARPED_STEM).strength(0.5f).sound(SoundType.AZALEA_LEAVES);
-    public static final BlockBehaviour.Properties FIRE_LAY_PROPERTIES =                     THATCH_PROPERTIES;
     public static final BlockBehaviour.Properties STONE_WORKBENCH_PROPERTIES =              BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.0f).sound(SoundType.STONE);
     public static final BlockBehaviour.Properties STONE_BENCH_PROPERTIES =                  STONE_WORKBENCH_PROPERTIES;
     public static final BlockBehaviour.Properties WOOD_WORKBENCH_PROPERTIES =               BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(1.0f).sound(SoundType.WOOD);
     public static final BlockBehaviour.Properties CHOPPING_BLOCK_PROPERTIES =               WOOD_WORKBENCH_PROPERTIES;
     // THATCH
-    public static final DeferredBlock<RotatedPillarBlock>                                   THATCH_BLOCK = BLOCKS.registerBlock("thatch_block", RotatedPillarBlock::new, THATCH_PROPERTIES);
-    public static final DeferredBlock<FireLayBlock>                                         FIRE_LAY = BLOCKS.registerBlock("fire_lay", FireLayBlock::new, FIRE_LAY_PROPERTIES);
+    public static final DeferredBlock<RotatedPillarBlock> THATCH_BLOCK = BLOCKS.registerBlock("thatch_block", RotatedPillarBlock::new, THATCH_PROPERTIES);
+
+    private static class THATCH_BUILD_CAMPFIRE_COMPLETE implements IBlockInteractWithStack
+    {
+        @Override
+        public ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult)
+        {
+            if (!pState.getValue(IncrementBlock.WATERLOGGED) && pStack.is(ItemTagCatalog.BUILD_CAMPFIRE_FIRE_STARTER))
+            {
+                BlockState newState = Blocks.CAMPFIRE.defaultBlockState();
+                pStack.hurtAndBreak(1, pPlayer, pPlayer.getEquipmentSlotForItem(pStack));
+                return IncrementBlock.placeBlockHelper(pStack, newState, pLevel, pPos, pPlayer, false);
+            }
+            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        }
+    }
+    public static final BlockBehaviour.Properties BUILD_CAMPFIRE_PROPERTIES = BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(0.5f).sound(SoundType.WOOD);
+    public static final DeferredBlock<BuildCampfireBlock> THATCH_BUILD_CAMPFIRE = BLOCKS.registerBlock("thatch_build_campfire", (props) -> new BuildCampfireBlock(props, new THATCH_BUILD_CAMPFIRE_COMPLETE()), BUILD_CAMPFIRE_PROPERTIES);
+
+    private static class THATCH_FIRE_LAY_COMPLETE implements IBlockInteractWithStack
+    {
+        @Override
+        public ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult)
+        {
+            if (BuildCampfireBlock.canUseItemStack(pStack))
+            {
+                BlockState newState = THATCH_BUILD_CAMPFIRE.get().defaultBlockState();
+                return IncrementBlock.placeBlockHelper(pStack, newState, pLevel, pPos, pPlayer, true);
+            }
+            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        }
+    }
+    public static final BlockBehaviour.Properties FIRE_LAY_PROPERTIES = BlockBehaviour.Properties.of().mapColor(MapColor.WARPED_STEM).strength(0.5f).sound(SoundType.AZALEA_LEAVES);
+    public static final DeferredBlock<FireLayBlock> THATCH_FIRE_LAY = BLOCKS.registerBlock("thatch_fire_lay", (props) -> new FireLayBlock(props, new THATCH_FIRE_LAY_COMPLETE()), FIRE_LAY_PROPERTIES);
     // WORKBENCH
-    public static final DeferredBlock<StoneBenchBlock>                                      STONE_BENCH = BLOCKS.registerBlock("stone_bench", StoneBenchBlock::new, STONE_BENCH_PROPERTIES);
-    public static final DeferredBlock<ChoppingBlockBlock>                                   CHOPPING_BLOCK = BLOCKS.registerBlock("chopping_block", ChoppingBlockBlock::new, CHOPPING_BLOCK_PROPERTIES);
+    public static final DeferredBlock<StoneBenchBlock>    STONE_BENCH = BLOCKS.registerBlock("stone_bench", StoneBenchBlock::new, STONE_BENCH_PROPERTIES);
+    public static final DeferredBlock<ChoppingBlockBlock> CHOPPING_BLOCK = BLOCKS.registerBlock("chopping_block", ChoppingBlockBlock::new, CHOPPING_BLOCK_PROPERTIES);
 
     // POTTERY PROPERTIES
     public static final BlockBehaviour.Properties CLAY_PROPERTIES = Blocks.CLAY.properties();

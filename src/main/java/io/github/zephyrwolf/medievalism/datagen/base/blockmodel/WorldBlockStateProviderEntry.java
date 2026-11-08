@@ -261,9 +261,9 @@ public final class WorldBlockStateProviderEntry implements IBlockStateProviderEn
         handle.randomRotationAndIntegerPropertyBlock(
                 BlockRegistration.TWIGS.get(),
                 TwigsBlock.NUM_STICKS,
-                handle.existingModel(BlockRegistration.TWIGS.get(), "1"),
-                handle.existingModel(BlockRegistration.TWIGS.get(), "2"),
-                handle.existingModel(BlockRegistration.TWIGS.get(), "3")
+                handle.existingModel(handle.blockModelName(BlockRegistration.TWIGS.get(), "1")),
+                handle.existingModel(handle.blockModelName(BlockRegistration.TWIGS.get(), "2")),
+                handle.existingModel(handle.blockModelName(BlockRegistration.TWIGS.get(), "3"))
         );
 
         ResourceLocation modelBranch = MedievalismConstants.resource("block/branch");

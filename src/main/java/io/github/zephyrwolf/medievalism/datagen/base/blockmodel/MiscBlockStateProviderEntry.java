@@ -1,19 +1,11 @@
 package io.github.zephyrwolf.medievalism.datagen.base.blockmodel;
 
-import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.common.block.*;
+import io.github.zephyrwolf.medievalism.common.block.firepit.BuildCampfireBlock;
+import io.github.zephyrwolf.medievalism.common.block.firepit.FireLayBlock;
 import io.github.zephyrwolf.medievalism.common.data.BlockStateEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.common.data.IBlockStateProviderEntry;
-import io.github.zephyrwolf.medievalism.common.warmth.WarmthTools;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.neoforged.neoforge.client.model.generators.*;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -32,13 +24,21 @@ public final class MiscBlockStateProviderEntry implements IBlockStateProviderEnt
     {
         //region Primitive
         handle.randomRotationAndIntegerPropertyBlock(
-                BlockRegistration.FIRE_LAY.get(),
+                BlockRegistration.THATCH_FIRE_LAY.get(),
                 FireLayBlock.STAGE_PROP,
-                handle.existingModel(BlockRegistration.FIRE_LAY.get(), "1"),
-                handle.existingModel(BlockRegistration.FIRE_LAY.get(), "2"),
-                handle.existingModel(BlockRegistration.FIRE_LAY.get(), "3"),
-                handle.existingModel(BlockRegistration.FIRE_LAY.get(), "4"),
-                handle.existingModel(BlockRegistration.FIRE_LAY.get(), "5")
+                handle.existingModel(handle.blockModelName(BlockRegistration.THATCH_FIRE_LAY.get(), "_tinder")),
+                handle.existingModel(handle.blockModelName(BlockRegistration.THATCH_FIRE_LAY.get(), "_stick1")),
+                handle.existingModel(handle.blockModelName(BlockRegistration.THATCH_FIRE_LAY.get(), "_stick2")),
+                handle.existingModel(handle.blockModelName(BlockRegistration.THATCH_FIRE_LAY.get(), "_stick3")),
+                handle.existingModel(handle.blockModelName(BlockRegistration.THATCH_FIRE_LAY.get(), "_stick4"))
+        );
+        handle.randomRotationAndIntegerPropertyBlock(
+                BlockRegistration.THATCH_BUILD_CAMPFIRE.get(),
+                BuildCampfireBlock.STAGE_PROP,
+                handle.existingModel(handle.blockModelName(BlockRegistration.THATCH_BUILD_CAMPFIRE.get(), "_chopped_wood1")),
+                handle.existingModel(handle.blockModelName(BlockRegistration.THATCH_BUILD_CAMPFIRE.get(), "_chopped_wood2")),
+                handle.existingModel(handle.blockModelName(BlockRegistration.THATCH_BUILD_CAMPFIRE.get(), "_chopped_wood3")),
+                handle.existingModel(handle.blockModelName(BlockRegistration.THATCH_BUILD_CAMPFIRE.get(), "_chopped_wood4"))
         );
         //endregion
 

@@ -1,8 +1,7 @@
-package io.github.zephyrwolf.medievalism.common.block;
+package io.github.zephyrwolf.medievalism.common.block.firepit;
 
-import io.github.zephyrwolf.medievalism.registration.item.FarmingItemRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.WoodWorkingItemRegistration;
+import io.github.zephyrwolf.medievalism.catalogs.tag.ItemTagCatalog;
+import io.github.zephyrwolf.medievalism.common.block.IncrementBlock;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -37,30 +36,32 @@ import static io.github.zephyrwolf.medievalism.common.block.TwigsBlock.MIN_STICK
 
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-public class FireLayBlock extends IncrementBlock implements SimpleWaterloggedBlock
+public class BuildCampfireBlock extends IncrementBlock implements SimpleWaterloggedBlock
 { // Waterlogged from SlabBlock
 
-    public enum FireLayStage
+    public enum BuildCampfireStage
     {
-        TINDER,
-        STICK1,
-        STICK2,
-        STICK3,
-        STICK4
+        CHOPPED_WOOD1,
+        CHOPPED_WOOD2,
+        CHOPPED_WOOD3,
+        CHOPPED_WOOD4
     }
-    public static final int MIN_STAGE = 1;
-    public static final int MAX_STAGE = FireLayStage.STICK4.ordinal() + 1;
+    public static final int MIN_STAGE = BuildCampfireStage.CHOPPED_WOOD1.ordinal();
+    public static final int MAX_STAGE = BuildCampfireStage.CHOPPED_WOOD4.ordinal();
     public static final IntegerProperty STAGE_PROP = IntegerProperty.create("stage", MIN_STAGE, MAX_STAGE);
 
-    public FireLayBlock(Properties properties)
+    protected final IBlockInteractWithStack completeWithStack;
+
+    //TODO because the BlockItem obtains its name from the block; they are both thatch, i don't like that... need to separate things
+
+    public BuildCampfireBlock(Properties properties, IBlockInteractWithStack completeWithStack)
     {
-        super(properties, true);
+        super(properties, false);
         registerDefaultState(getStateDefinition().any()
                 .setValue(WATERLOGGED, false)
                 .setValue(STAGE_PROP, MIN_STAGE));
+        this.completeWithStack = completeWithStack;
     }
-
-    //TODO because the blockitem obtains its name from the block; they are both thatch, i dont like that... need to seperate things
 
     //region State
     @Override
@@ -87,36 +88,36 @@ public class FireLayBlock extends IncrementBlock implements SimpleWaterloggedBlo
     //endregion
 
     //region Interaction
-    @Override
-    protected boolean canUseItemStack(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult)
+    public static boolean canUseItemStack(ItemStack stack)
     {
-        return stack.getItem() == Items.STICK;
+        return stack.is(ItemTagCatalog.BUILD_CAMPFIRE_CHOPPED_WOOD);
     }
 
     @Override
-    public ItemStack pickUpItem(BlockState state, Level level, BlockPos pos)
+    protected boolean canUseItemStack(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult)
     {
-        if (state.getValue(STAGE_PROP) == FireLayStage.TINDER.ordinal() + 1)
-        {
-            return new ItemStack(FarmingItemRegistration.THATCH.get());
-        }
-        return new ItemStack(Items.STICK);
+        return canUseItemStack(stack);
     }
+
+    @Override
+    public ItemStack pickUpItem(BlockState state, Level level, BlockPos pos) { return ItemStack.EMPTY; }
 
     @Override
     public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player)
     {
-        return new ItemStack(FarmingItemRegistration.THATCH.get()); // Let's return the starting item
+        return new ItemStack(Items.CAMPFIRE);
     }
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult)
     {
-        if (pState.getValue(STAGE_PROP) == FireLayStage.STICK4.ordinal() + 1 && pStack.getItem() == WoodWorkingItemRegistration.FIRE_STARTER.get())
+        if (pState.getValue(STAGE_PROP) == BuildCampfireStage.CHOPPED_WOOD4.ordinal())
         {
-            pLevel.setBlockAndUpdate(pPos, Blocks.CAMPFIRE.defaultBlockState());
-            pStack.setDamageValue(pStack.getDamageValue() + 1);
-            return ItemInteractionResult.SUCCESS;
+            ItemInteractionResult result = completeWithStack.useItemOn(pStack, pState, pLevel, pPos, pPlayer, pHand, pHitResult);
+            if (result != ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION)
+            {
+                return result;
+            }
         }
         return super.useItemOn(pStack, pState, pLevel, pPos, pPlayer, pHand, pHitResult);
     }
@@ -124,38 +125,42 @@ public class FireLayBlock extends IncrementBlock implements SimpleWaterloggedBlo
 
     //region Sound
     @Override
-    public SoundType getSoundType(BlockState state, LevelReader level, BlockPos pos, @Nullable Entity entity)
-    {
-        if (state.getValue(STAGE_PROP) == FireLayStage.TINDER.ordinal() + 1)
-        {
-            return super.getSoundType(state, level, pos, entity);
-        }
-        return SoundType.WOOD;
-    }
+    public SoundType getSoundType(BlockState state, LevelReader level, BlockPos pos, @Nullable Entity entity) { return SoundType.WOOD; }
     //endregion
 
     //region Shape
-    public static final VoxelShape TWIG_SHAPE = Block.box(3, 0, 3, 13, 4, 13);
+    public static final VoxelShape BUILD_CAMPFIRE_SHAPE1 = Block.box(3, 0, 3, 13, 4, 13);
+    public static final VoxelShape BUILD_CAMPFIRE_SHAPE2 = Block.box(3, 0, 3, 13, 4, 13);
+    public static final VoxelShape BUILD_CAMPFIRE_SHAPE3 = Block.box(3, 0, 3, 13, 4, 13);
+    public static final VoxelShape BUILD_CAMPFIRE_SHAPE4 = Block.box(3, 0, 3, 13, 4, 13);
+    public static final VoxelShape BUILD_CAMPFIRE_SHAPE5 = Block.box(3, 0, 3, 13, 4, 13);
+    public static final VoxelShape[] BUILD_CAMPFIRE_SHAPES = {
+            BUILD_CAMPFIRE_SHAPE1,
+            BUILD_CAMPFIRE_SHAPE2,
+            BUILD_CAMPFIRE_SHAPE3,
+            BUILD_CAMPFIRE_SHAPE4,
+            BUILD_CAMPFIRE_SHAPE5
+    };
 
     @Override
-    protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return TWIG_SHAPE;
+    protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext)
+    {
+        return BUILD_CAMPFIRE_SHAPES[pState.getValue(STAGE_PROP)];
     }
     //endregion
 
     //region Block Behaviour
     @Override
-    protected float getShadeBrightness(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos) {
-        return 1.0f;
-    }
+    protected float getShadeBrightness(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos)
+    { return 1.0f; }
 
     @Override
-    protected boolean propagatesSkylightDown(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos) {
-        return true;
-    }
+    protected boolean propagatesSkylightDown(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos)
+    { return true; }
 
     @Override
-    protected boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+    protected boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos)
+    {
         BlockPos belowPos = pPos.below();
         BlockState belowState = pLevel.getBlockState(belowPos);
         return belowState.isFaceSturdy(pLevel, belowPos, Direction.UP, SupportType.FULL);
@@ -164,10 +169,9 @@ public class FireLayBlock extends IncrementBlock implements SimpleWaterloggedBlo
 
     //region Tick
     @Override // Scheduled Tick from Block Update
-    protected void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-        if (!pState.canSurvive(pLevel, pPos)) {
-            pLevel.destroyBlock(pPos, true);
-        }
+    protected void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom)
+    {
+        if (!pState.canSurvive(pLevel, pPos)) { pLevel.destroyBlock(pPos, true); }
     }
     //endregion
 }

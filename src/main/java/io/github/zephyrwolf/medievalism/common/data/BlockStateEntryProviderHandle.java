@@ -249,14 +249,10 @@ public class BlockStateEntryProviderHandle
     //region Raw Model
 
     @SuppressWarnings("SameParameterValue")
-    public ModelFile existingModel(Block block)
-    { return existingModel(blockModelName(block)); }
-    public ModelFile existingModel(Block block, String suffix)
-    { return existingModel(blockModelName(block, suffix)); }
+    public ModelFile existingModel(Block block) { return existingModel(blockModelName(block)); }
     public ModelFile existingModel(String name)
     {
-        return provider.models()
-                .getExistingFile(ResourceLocation.fromNamespaceAndPath(getModId(), name));
+        return provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(getModId(), name));
     }
 
     // --

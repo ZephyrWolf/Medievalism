@@ -55,6 +55,22 @@ public abstract class IncrementBlock extends Block implements SimpleWaterloggedB
     //region interaction
     protected abstract boolean canUseItemStack(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult);
 
+    public static ItemInteractionResult placeBlockHelper(ItemStack pStack, BlockState newState, Level pLevel, BlockPos pPos, Player pPlayer, boolean decrementStack)
+    {
+        pLevel.setBlockAndUpdate(pPos, newState);
+        if (pPlayer instanceof ServerPlayer)
+        {
+            CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)pPlayer, pPos, pStack);
+        }
+        SoundType soundtype = newState.getSoundType(pLevel, pPos, pPlayer);
+        pLevel.playSound( pPlayer, pPos, newState.getSoundType(pLevel, pPos, pPlayer).getPlaceSound(),
+                SoundSource.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F
+        );
+        pLevel.gameEvent(GameEvent.BLOCK_PLACE, pPos, GameEvent.Context.of(pPlayer, newState));
+        if (decrementStack) { pStack.consume(1, pPlayer); }
+        return ItemInteractionResult.CONSUME_PARTIAL;
+    }
+
     @Override
     protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult)
     {
@@ -65,22 +81,7 @@ public abstract class IncrementBlock extends Block implements SimpleWaterloggedB
             if (numCount < getMaxCount())
             {
                 BlockState newState = pState.setValue(getCountProp(), numCount + 1);
-                pLevel.setBlockAndUpdate(pPos, newState);
-                if (pPlayer instanceof ServerPlayer) {
-                    CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)pPlayer, pPos, pStack);
-                }
-                SoundType soundtype = newState.getSoundType(pLevel, pPos, pPlayer);
-                pLevel.playSound(
-                        pPlayer,
-                        pPos,
-                        newState.getSoundType(pLevel, pPos, pPlayer).getPlaceSound(),
-                        SoundSource.BLOCKS,
-                        (soundtype.getVolume() + 1.0F) / 2.0F,
-                        soundtype.getPitch() * 0.8F
-                );
-                pLevel.gameEvent(GameEvent.BLOCK_PLACE, pPos, GameEvent.Context.of(pPlayer, newState));
-                pStack.consume(1, pPlayer);
-                return ItemInteractionResult.CONSUME_PARTIAL;
+                return placeBlockHelper(pStack, newState, pLevel, pPos, pPlayer, true);
             }
 
         }
@@ -88,21 +89,10 @@ public abstract class IncrementBlock extends Block implements SimpleWaterloggedB
         {
             ItemStack pickupItem = pickUpItem(pState, pLevel, pPos); // This needs to run before the block set
             BlockState newState;
-            if (numCount == 1)
-                newState = pState.getValue(WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
+            if (numCount == 1) newState = pState.getValue(WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
             else newState = pState.setValue(getCountProp(), numCount - 1);
-            pLevel.setBlockAndUpdate(pPos, newState);
-            pLevel.playSound(
-                    pPlayer,
-                    pPlayer.blockPosition(), // or wherever you want
-                    SoundEvents.ITEM_PICKUP,
-                    SoundSource.PLAYERS,     // this is the category used for player-centric sounds
-                    0.2F,                    // volume
-                    (pLevel.getRandom().nextFloat() - pLevel.getRandom().nextFloat()) * 0.7F + 1.0F // pitch variation like vanilla
-            );
-            pLevel.gameEvent(GameEvent.BLOCK_PLACE, pPos, GameEvent.Context.of(pPlayer, newState));
             pPlayer.addItem(pickupItem);
-            return ItemInteractionResult.CONSUME_PARTIAL;
+            return placeBlockHelper(pStack, newState, pLevel, pPos, pPlayer, true);
         }
         return ItemInteractionResult.SUCCESS;
     }

@@ -276,6 +276,19 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
         );
         tag(ItemTagCatalog.KNAP_TOOL)
                 .addTag(ItemTagCatalog.HARD_ROCK);
+
+
+        tag(ItemTagCatalog.FIRE_LAY_STICK)
+                .addTag(Tags.Items.RODS_WOODEN);
+
+        tag(ItemTagCatalog.BUILD_CAMPFIRE_CHOPPED_WOOD).add(
+                WoodWorkingItemRegistration.CHOPPED_WOOD.get()
+        );
+
+        tag(ItemTagCatalog.BUILD_CAMPFIRE_FIRE_STARTER).add(
+                Items.FLINT_AND_STEEL,
+                WoodWorkingItemRegistration.FIRE_STARTER.get()
+        );
     }
 
     public void registerBlockTags()
