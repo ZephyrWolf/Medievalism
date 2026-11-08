@@ -1,18 +1,9 @@
 package io.github.zephyrwolf.medievalism.common.item;
 
-import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
-import io.github.zephyrwolf.medievalism.registration.block.BlockTagCatalog;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.Tool;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 

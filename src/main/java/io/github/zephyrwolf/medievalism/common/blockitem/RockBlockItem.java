@@ -4,7 +4,7 @@ import io.github.zephyrwolf.medievalism.common.components.DummyDataComponent;
 import io.github.zephyrwolf.medievalism.common.recipe.inhand.InhandRecipe;
 import io.github.zephyrwolf.medievalism.common.recipe.inhand.InhandRecipeInput;
 import io.github.zephyrwolf.medievalism.registration.components.DataComponentTypeRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
+import io.github.zephyrwolf.medievalism.catalogs.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.registration.particles.ParticleTypeRegistration;
 import io.github.zephyrwolf.medievalism.registration.recipe.RecipeRegistration;
 import io.github.zephyrwolf.medievalism.registration.sounds.SoundsRegistration;

@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.registration.item.tag;
+package io.github.zephyrwolf.medievalism.catalogs.tag;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import net.minecraft.tags.ItemTags;
@@ -24,7 +24,7 @@ public final class ItemTagCatalog
     public static final TagKey<Item> LARGE_HARD_ROCK = tag("large_hard_rock");
     public static final TagKey<Item> COPPER_ROCK = tag("copper_rock");
 
-    public static final TagKey<Item> ORES_TIN = tag("ores_tin"); // TODO What is the newforge way
+    public static final TagKey<Item> ORES_TIN = tag("ores_tin"); // TODO What is the neoforge way
     public static final TagKey<Item> ORES_CHERT = tag("ores_chert");
     public static final TagKey<Item> ORES_GEODE = tag("ores_geode");
 
@@ -46,8 +46,9 @@ public final class ItemTagCatalog
     public static final TagKey<Item> LARGE_TOOL_HANDLE = tag("large_tool_handle");
     public static final TagKey<Item> TOOL_BINDING = tag("tool_binding");
 
-
-
+    public static final TagKey<Item> FIRE_LAY_STICK = tag("fire_lay_stick");
+    public static final TagKey<Item> BUILD_CAMPFIRE_CHOPPED_WOOD = tag("build_campfire_chopped_wood");
+    public static final TagKey<Item> BUILD_CAMPFIRE_FIRE_STARTER = tag("build_campfire_fire_starter");
 
     private static TagKey<Item> tag(String name)
     {

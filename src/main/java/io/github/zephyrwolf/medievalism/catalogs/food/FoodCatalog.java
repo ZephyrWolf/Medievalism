@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.registration.item.food;
+package io.github.zephyrwolf.medievalism.catalogs.food;
 
 import net.minecraft.world.food.FoodProperties;
 

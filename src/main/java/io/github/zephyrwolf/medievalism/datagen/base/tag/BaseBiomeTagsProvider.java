@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism.datagen.base.tag;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.registration.world.level.BiomeTagCatalog;
+import io.github.zephyrwolf.medievalism.catalogs.tag.BiomeTagCatalog;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;

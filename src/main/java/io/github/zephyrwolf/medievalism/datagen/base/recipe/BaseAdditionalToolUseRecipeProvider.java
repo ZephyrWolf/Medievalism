@@ -2,8 +2,7 @@ package io.github.zephyrwolf.medievalism.datagen.base.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.recipe.additionaldrops.AdditionalDropToolUseRecipeBuilder;
-import io.github.zephyrwolf.medievalism.registration.block.BlockTagCatalog;
-import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.catalogs.tag.BlockTagCatalog;
 import io.github.zephyrwolf.medievalism.registration.item.WoodWorkingItemRegistration;
 import net.minecraft.advancements.critereon.BlockPredicate;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;

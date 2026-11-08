@@ -1,6 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.recipe.malleable;
 
-import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
+import io.github.zephyrwolf.medievalism.catalogs.tag.ItemTagCatalog;
 import net.minecraft.world.item.ItemStack;
 
 public class RockMalleableMaterial extends MalleableMaterialType

@@ -4,7 +4,7 @@ import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.recipe.crafting.ShapelessToolRecipeBuilder;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.*;
-import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
+import io.github.zephyrwolf.medievalism.catalogs.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.common.recipe.RecipeTools;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.data.recipes.RecipeCategory;

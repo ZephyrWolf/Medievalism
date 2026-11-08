@@ -2,8 +2,8 @@ package io.github.zephyrwolf.medievalism.common.item;
 
 import io.github.zephyrwolf.medievalism.common.recipe.inhand.InhandRecipe;
 import io.github.zephyrwolf.medievalism.common.recipe.inhand.InhandRecipeInput;
-import io.github.zephyrwolf.medievalism.registration.block.BlockTagCatalog;
-import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
+import io.github.zephyrwolf.medievalism.catalogs.tag.BlockTagCatalog;
+import io.github.zephyrwolf.medievalism.catalogs.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.registration.recipe.RecipeRegistration;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.InteractionHand;

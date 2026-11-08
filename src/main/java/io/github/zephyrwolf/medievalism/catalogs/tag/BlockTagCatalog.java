@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.registration.block;
+package io.github.zephyrwolf.medievalism.catalogs.tag;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import net.minecraft.tags.BlockTags;

@@ -8,7 +8,7 @@ import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.conf
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.feature.configuration.LayeredPlacedFeature;
 import io.github.zephyrwolf.medievalism.datagen.base.worldgen.BaseConfiguredFeaturesProviderEntry;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
-import io.github.zephyrwolf.medievalism.registration.block.BlockTagCatalog;
+import io.github.zephyrwolf.medievalism.catalogs.tag.BlockTagCatalog;
 import io.github.zephyrwolf.medievalism.registration.world.level.FeatureRegistration;
 import io.github.zephyrwolf.medievalism.registration.world.level.WorldCellRegionRegistration;
 import io.github.zephyrwolf.medievalism.registration.world.level.WorldLayersRegistration;

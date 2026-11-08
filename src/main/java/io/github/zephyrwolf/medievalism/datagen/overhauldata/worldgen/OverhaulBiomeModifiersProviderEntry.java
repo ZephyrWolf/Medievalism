@@ -3,7 +3,7 @@ package io.github.zephyrwolf.medievalism.datagen.overhauldata.worldgen;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.world.level.levelgen.BiomeModifierTools;
 import io.github.zephyrwolf.medievalism.datagen.base.worldgen.BaseBiomeModifiersProviderEntry;
-import io.github.zephyrwolf.medievalism.registration.world.level.BiomeTagCatalog;
+import io.github.zephyrwolf.medievalism.catalogs.tag.BiomeTagCatalog;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;

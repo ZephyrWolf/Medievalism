@@ -1,6 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.recipe;
 
-import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
+import io.github.zephyrwolf.medievalism.catalogs.tag.ItemTagCatalog;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;

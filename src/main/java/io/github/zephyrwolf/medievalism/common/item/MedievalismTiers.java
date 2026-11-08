@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism.common.item;
 
 import com.google.common.base.Suppliers;
-import io.github.zephyrwolf.medievalism.registration.block.BlockTagCatalog;
+import io.github.zephyrwolf.medievalism.catalogs.tag.BlockTagCatalog;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;

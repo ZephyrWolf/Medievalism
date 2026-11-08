@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism.registration.item;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.registration.item.food.FoodCatalog;
+import io.github.zephyrwolf.medievalism.catalogs.food.FoodCatalog;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;

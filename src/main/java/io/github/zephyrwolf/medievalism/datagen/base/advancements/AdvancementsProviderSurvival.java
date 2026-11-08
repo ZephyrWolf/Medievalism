@@ -3,7 +3,7 @@ package io.github.zephyrwolf.medievalism.datagen.base.advancements;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.advancements.critereon.PlayerStatsTrigger;
 import io.github.zephyrwolf.medievalism.registration.item.*;
-import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
+import io.github.zephyrwolf.medievalism.catalogs.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.tools.TextTools;
 import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.*;

@@ -1,14 +1,12 @@
 package io.github.zephyrwolf.medievalism.datagen.base.advancements;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.common.advancements.critereon.PlayerStatsTrigger;
 import io.github.zephyrwolf.medievalism.datagen.base.lang.AdvancementLangKeys;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.KnappingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
+import io.github.zephyrwolf.medievalism.catalogs.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.tools.TextTools;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
@@ -17,7 +15,6 @@ import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
