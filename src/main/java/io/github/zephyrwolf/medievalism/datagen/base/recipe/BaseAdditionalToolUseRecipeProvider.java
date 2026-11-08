@@ -4,6 +4,7 @@ import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.recipe.additionaldrops.AdditionalDropToolUseRecipeBuilder;
 import io.github.zephyrwolf.medievalism.registration.block.BlockTagCatalog;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.WoodWorkingItemRegistration;
 import net.minecraft.advancements.critereon.BlockPredicate;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -20,7 +21,7 @@ public final class BaseAdditionalToolUseRecipeProvider {
         // White Bark
         AdditionalDropToolUseRecipeBuilder
                 .axeStrip(
-                        new ItemStack(ItemRegistration.WHITE_BARK.get()),
+                        new ItemStack(WoodWorkingItemRegistration.WHITE_BARK.get()),
                         BlockPredicate.Builder.block().of(BlockTagCatalog.WHITE_BARK).build()
                 )
                 .chance(3)
@@ -30,7 +31,7 @@ public final class BaseAdditionalToolUseRecipeProvider {
         // Brown Bark
         AdditionalDropToolUseRecipeBuilder
                 .axeStrip(
-                        new ItemStack(ItemRegistration.BROWN_BARK.get()),
+                        new ItemStack(WoodWorkingItemRegistration.BROWN_BARK.get()),
                         BlockPredicate.Builder.block().of(BlockTagCatalog.BROWN_BARK).build()
                 )
                 .chance(3)
@@ -40,7 +41,7 @@ public final class BaseAdditionalToolUseRecipeProvider {
         // Grey Bark
         AdditionalDropToolUseRecipeBuilder
                 .axeStrip(
-                        new ItemStack(ItemRegistration.GREY_BARK.get()),
+                        new ItemStack(WoodWorkingItemRegistration.GREY_BARK.get()),
                         BlockPredicate.Builder.block().of(BlockTagCatalog.GREY_BARK).build()
                 )
                 .chance(3)
@@ -50,7 +51,7 @@ public final class BaseAdditionalToolUseRecipeProvider {
         // Brown Bark
         AdditionalDropToolUseRecipeBuilder
                 .axeStrip(
-                        new ItemStack(ItemRegistration.DARK_BROWN_BARK.get()),
+                        new ItemStack(WoodWorkingItemRegistration.DARK_BROWN_BARK.get()),
                         BlockPredicate.Builder.block().of(BlockTagCatalog.DARK_BROWN_BARK).build()
                 )
                 .chance(3)
@@ -60,7 +61,7 @@ public final class BaseAdditionalToolUseRecipeProvider {
         // Black Bark
         AdditionalDropToolUseRecipeBuilder
                 .axeStrip(
-                        new ItemStack(ItemRegistration.BLACK_BARK.get()),
+                        new ItemStack(WoodWorkingItemRegistration.BLACK_BARK.get()),
                         BlockPredicate.Builder.block().of(BlockTagCatalog.BLACK_BARK).build()
                 )
                 .chance(3)

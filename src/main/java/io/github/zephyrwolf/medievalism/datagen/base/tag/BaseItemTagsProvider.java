@@ -237,16 +237,16 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
         // Candlenut leaves?
 
         tag(ItemTagCatalog.BARK).add(
-                ItemRegistration.WHITE_BARK.get(),
-                ItemRegistration.BROWN_BARK.get(),
-                ItemRegistration.GREY_BARK.get(),
-                ItemRegistration.DARK_BROWN_BARK.get(),
-                ItemRegistration.BLACK_BARK.get()
+                WoodWorkingItemRegistration.WHITE_BARK.get(),
+                WoodWorkingItemRegistration.BROWN_BARK.get(),
+                WoodWorkingItemRegistration.GREY_BARK.get(),
+                WoodWorkingItemRegistration.DARK_BROWN_BARK.get(),
+                WoodWorkingItemRegistration.BLACK_BARK.get()
         );
 
         tag(ItemTagCatalog.CLAY_FLUX).add(
                 ItemRegistration.WOOD_ASH.get(),
-                ItemRegistration.POTASH.get()
+                WoodWorkingItemRegistration.POTASH.get()
         );
 
         tag(ItemTagCatalog.WET_BRICK).add(
@@ -262,7 +262,7 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
                 Items.STICK
         );
         tag(ItemTagCatalog.LARGE_TOOL_HANDLE).add(
-                ItemRegistration.TOOL_HANDLE.get()
+                WoodWorkingItemRegistration.TOOL_HANDLE.get()
         );
         tag(ItemTagCatalog.TOOL_BINDING).add(
                 Items.STRING,
@@ -552,10 +552,10 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
         tag(Tags.Items.RAW_MATERIALS_IRON);
 
         tag(Tags.Items.TOOLS).add(
-                ItemRegistration.FIRE_STARTER.get()
+                WoodWorkingItemRegistration.FIRE_STARTER.get()
         );
         tag(Tags.Items.TOOLS_IGNITER).add(
-                ItemRegistration.FIRE_STARTER.get()
+                WoodWorkingItemRegistration.FIRE_STARTER.get()
         );
         tag(Tags.Items.MINING_TOOL_TOOLS);
     }

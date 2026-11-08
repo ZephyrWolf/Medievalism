@@ -46,14 +46,14 @@ public final class BaseShapelessRecipeProvider {
                 .unlockedBy("has_mud", RecipeTools.itemPredicateOf(Blocks.MUD))
                 .save(recipeOutput, MedievalismConstants.resource("mud_balls_from_mud"));
         // Fire Starter
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.FIRE_STARTER)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, WoodWorkingItemRegistration.FIRE_STARTER)
                 .requires(Items.STICK)
                 .requires(Items.STICK)
                 .requires(ItemTagCatalog.CARVING_TOOL)
                 .unlockedBy("has_knife", RecipeTools.itemPredicateOf(ItemTagCatalog.CARVING_TOOL))
                 .save(recipeOutput, MedievalismConstants.resource("fire_starter"));
         // Digging Stick TODO Temp recipe, make handle and then sharpen handle?
-        ShapelessToolRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.DIGGING_STICK)
+        ShapelessToolRecipeBuilder.shapeless(RecipeCategory.MISC, WoodWorkingItemRegistration.DIGGING_STICK)
                 .requiresIngredient(ItemTagCatalog.LARGE_TOOL_HANDLE)
                 .requiresTool(ItemTagCatalog.CARVING_TOOL)
                 .unlockedBy("has_knife", RecipeTools.itemPredicateOf(ItemTagCatalog.CARVING_TOOL))
@@ -327,7 +327,7 @@ public final class BaseShapelessRecipeProvider {
 
     private static void toolRecipes(RecipeOutput recipeOutput)
     {
-        ShapelessToolRecipeBuilder.shapeless(RecipeCategory.TOOLS, ItemRegistration.TOOL_HANDLE)
+        ShapelessToolRecipeBuilder.shapeless(RecipeCategory.TOOLS, WoodWorkingItemRegistration.TOOL_HANDLE)
                 .requiresIngredient(ItemTagCatalog.BRANCH)
                 .requiresTool(ItemTagCatalog.CARVING_TOOL)
                 .unlockedBy("has_branch", RecipeTools.itemPredicateOf(

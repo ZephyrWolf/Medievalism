@@ -1,6 +1,7 @@
 package io.github.zephyrwolf.medievalism.common.block;
 
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.WoodWorkingItemRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -110,7 +111,7 @@ public class FireLayBlock extends IncrementBlock implements SimpleWaterloggedBlo
     @Override
     protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult)
     {
-        if (pState.getValue(STAGE_PROP) == FireLayStage.STICK4.ordinal() + 1 && pStack.getItem() == ItemRegistration.FIRE_STARTER.get())
+        if (pState.getValue(STAGE_PROP) == FireLayStage.STICK4.ordinal() + 1 && pStack.getItem() == WoodWorkingItemRegistration.FIRE_STARTER.get())
         {
             pLevel.setBlockAndUpdate(pPos, Blocks.CAMPFIRE.defaultBlockState());
             pStack.setDamageValue(pStack.getDamageValue() + 1);
