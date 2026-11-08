@@ -2,6 +2,7 @@ package io.github.zephyrwolf.medievalism.registrationclient.render;
 
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.FoliageColor;
@@ -27,8 +28,8 @@ public final class ClientColoursRegistration
 
     private static void registerItemColours(RegisterColorHandlersEvent.Item event)
     {
-        registerDefaultGrassColour(event, ItemRegistration.SHRUB.get());
-        registerDefaultGrassColour(event, ItemRegistration.CLAY_IN_GRASS.get());
+        registerDefaultGrassColour(event, WorldItemRegistration.SHRUB.get());
+        registerDefaultGrassColour(event, WorldItemRegistration.CLAY_IN_GRASS.get());
     }
 
     // --

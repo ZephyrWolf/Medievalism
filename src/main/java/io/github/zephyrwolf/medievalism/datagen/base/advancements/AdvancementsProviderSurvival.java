@@ -78,7 +78,7 @@ public class AdvancementsProviderSurvival implements AdvancementProvider.Advance
 
         AdvancementHolder hint_inhand_knapping = Advancement.Builder.advancement()
                 .parent(stone_age_root)
-                .display(ItemRegistration.GREYWACKE_ROCK,
+                .display(WorldItemRegistration.GREYWACKE_ROCK,
                         TextTools.getTranslation(AdvancementLangKeys.HINT_INHAND_KNAPPING_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.HINT_INHAND_KNAPPING_DESC),
                         null,

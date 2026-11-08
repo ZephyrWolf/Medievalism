@@ -2,6 +2,7 @@ package io.github.zephyrwolf.medievalism.registrationclient.render;
 
 import io.github.zephyrwolf.medievalism.client.item.KnappingItemAnimationClientExtension;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.common.NeoForge;
@@ -19,21 +20,21 @@ public final class ClientExtensionsRegistration
     {
         // Wish I could read from a tag
         event.registerItem(new KnappingItemAnimationClientExtension(),
-                ItemRegistration.GREYWACKE_ROCK.get(),
-                ItemRegistration.SILTSTONE_ROCK.get(),
-                ItemRegistration.DOLOSTONE_ROCK.get(),
-                ItemRegistration.LIMESTONE_ROCK.get(),
-                ItemRegistration.IRONSTONE_ROCK.get(),
-                ItemRegistration.ARKOSE_ROCK.get(),
-                ItemRegistration.MARBLE_ROCK.get(),
-                ItemRegistration.QUARTZITE_ROCK.get(),
-                ItemRegistration.HORNFELS_ROCK.get(),
-                ItemRegistration.SLATE_ROCK.get(),
-                ItemRegistration.GABBRO_ROCK.get(),
-                ItemRegistration.SMOOTH_DIORITE_ROCK.get(),
-                ItemRegistration.SMOOTH_GRANITE_ROCK.get(),
-                ItemRegistration.NORITE_ROCK.get(),
-                ItemRegistration.PERIDOTITE_ROCK.get()
+                WorldItemRegistration.GREYWACKE_ROCK.get(),
+                WorldItemRegistration.SILTSTONE_ROCK.get(),
+                WorldItemRegistration.DOLOSTONE_ROCK.get(),
+                WorldItemRegistration.LIMESTONE_ROCK.get(),
+                WorldItemRegistration.IRONSTONE_ROCK.get(),
+                WorldItemRegistration.ARKOSE_ROCK.get(),
+                WorldItemRegistration.MARBLE_ROCK.get(),
+                WorldItemRegistration.QUARTZITE_ROCK.get(),
+                WorldItemRegistration.HORNFELS_ROCK.get(),
+                WorldItemRegistration.SLATE_ROCK.get(),
+                WorldItemRegistration.GABBRO_ROCK.get(),
+                WorldItemRegistration.SMOOTH_DIORITE_ROCK.get(),
+                WorldItemRegistration.SMOOTH_GRANITE_ROCK.get(),
+                WorldItemRegistration.NORITE_ROCK.get(),
+                WorldItemRegistration.PERIDOTITE_ROCK.get()
         );
     }
 }

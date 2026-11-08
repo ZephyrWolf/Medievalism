@@ -4,6 +4,7 @@ import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.MudWorkingItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -43,23 +44,23 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
     private void registerVanillaTags()
     {
         tag(ItemTags.DIRT).add(
-                ItemRegistration.CLAY_IN_DIRT.get()
+                WorldItemRegistration.CLAY_IN_DIRT.get()
         );
 
         tag(ItemTags.STONE_TOOL_MATERIALS).add(
-                ItemRegistration.COBBLED_GREYWACKE.get(),
-                ItemRegistration.COBBLED_SILTSTONE.get(),
-                ItemRegistration.COBBLED_DOLOSTONE.get(),
-                ItemRegistration.COBBLED_LIMESTONE.get(),
-                ItemRegistration.COBBLED_IRONSTONE.get()
+                WorldItemRegistration.COBBLED_GREYWACKE.get(),
+                WorldItemRegistration.COBBLED_SILTSTONE.get(),
+                WorldItemRegistration.COBBLED_DOLOSTONE.get(),
+                WorldItemRegistration.COBBLED_LIMESTONE.get(),
+                WorldItemRegistration.COBBLED_IRONSTONE.get()
         );
 
         tag(ItemTags.STONE_CRAFTING_MATERIALS).add(
-                ItemRegistration.COBBLED_GREYWACKE.get(),
-                ItemRegistration.COBBLED_SILTSTONE.get(),
-                ItemRegistration.COBBLED_DOLOSTONE.get(),
-                ItemRegistration.COBBLED_LIMESTONE.get(),
-                ItemRegistration.COBBLED_IRONSTONE.get()
+                WorldItemRegistration.COBBLED_GREYWACKE.get(),
+                WorldItemRegistration.COBBLED_SILTSTONE.get(),
+                WorldItemRegistration.COBBLED_DOLOSTONE.get(),
+                WorldItemRegistration.COBBLED_LIMESTONE.get(),
+                WorldItemRegistration.COBBLED_IRONSTONE.get()
         );
     }
 
@@ -143,95 +144,95 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
                 .add(Items.CLAY);
 
         tag(ItemTagCatalog.ROCK).add(
-                ItemRegistration.SANDSTONE_ROCK.get(),
-                ItemRegistration.RED_SANDSTONE_ROCK.get(),
-                ItemRegistration.SAPROLITE_ROCK.get(),
-                ItemRegistration.LATERITE_ROCK.get(),
-                ItemRegistration.SILT_CLUMP.get(),
-                ItemRegistration.GREYWACKE_ROCK.get(),
-                ItemRegistration.SILTSTONE_ROCK.get(),
-                ItemRegistration.DOLOSTONE_ROCK.get(),
-                ItemRegistration.LIMESTONE_ROCK.get(),
-                ItemRegistration.IRONSTONE_ROCK.get(),
-                ItemRegistration.SHALE_ROCK.get(),
-                ItemRegistration.ARKOSE_ROCK.get()
+                WorldItemRegistration.SANDSTONE_ROCK.get(),
+                WorldItemRegistration.RED_SANDSTONE_ROCK.get(),
+                WorldItemRegistration.SAPROLITE_ROCK.get(),
+                WorldItemRegistration.LATERITE_ROCK.get(),
+                WorldItemRegistration.SILT_CLUMP.get(),
+                WorldItemRegistration.GREYWACKE_ROCK.get(),
+                WorldItemRegistration.SILTSTONE_ROCK.get(),
+                WorldItemRegistration.DOLOSTONE_ROCK.get(),
+                WorldItemRegistration.LIMESTONE_ROCK.get(),
+                WorldItemRegistration.IRONSTONE_ROCK.get(),
+                WorldItemRegistration.SHALE_ROCK.get(),
+                WorldItemRegistration.ARKOSE_ROCK.get()
         );
         tag(ItemTagCatalog.HARD_ROCK).add(
-                ItemRegistration.GREYWACKE_ROCK.get(),
-                ItemRegistration.SILTSTONE_ROCK.get(),
-                ItemRegistration.DOLOSTONE_ROCK.get(),
-                ItemRegistration.LIMESTONE_ROCK.get(),
-                ItemRegistration.IRONSTONE_ROCK.get(),
-                ItemRegistration.ARKOSE_ROCK.get(),
-                ItemRegistration.MARBLE_ROCK.get(),
-                ItemRegistration.QUARTZITE_ROCK.get(),
-                ItemRegistration.HORNFELS_ROCK.get(),
-                ItemRegistration.SLATE_ROCK.get(),
-                ItemRegistration.GABBRO_ROCK.get(),
-                ItemRegistration.SMOOTH_DIORITE_ROCK.get(),
-                ItemRegistration.SMOOTH_GRANITE_ROCK.get(),
-                ItemRegistration.NORITE_ROCK.get(),
-                ItemRegistration.PERIDOTITE_ROCK.get()
+                WorldItemRegistration.GREYWACKE_ROCK.get(),
+                WorldItemRegistration.SILTSTONE_ROCK.get(),
+                WorldItemRegistration.DOLOSTONE_ROCK.get(),
+                WorldItemRegistration.LIMESTONE_ROCK.get(),
+                WorldItemRegistration.IRONSTONE_ROCK.get(),
+                WorldItemRegistration.ARKOSE_ROCK.get(),
+                WorldItemRegistration.MARBLE_ROCK.get(),
+                WorldItemRegistration.QUARTZITE_ROCK.get(),
+                WorldItemRegistration.HORNFELS_ROCK.get(),
+                WorldItemRegistration.SLATE_ROCK.get(),
+                WorldItemRegistration.GABBRO_ROCK.get(),
+                WorldItemRegistration.SMOOTH_DIORITE_ROCK.get(),
+                WorldItemRegistration.SMOOTH_GRANITE_ROCK.get(),
+                WorldItemRegistration.NORITE_ROCK.get(),
+                WorldItemRegistration.PERIDOTITE_ROCK.get()
         );
         tag(ItemTagCatalog.LARGE_ROCK).add(
-                ItemRegistration.LARGE_SANDSTONE_ROCK.get(),
-                ItemRegistration.LARGE_RED_SANDSTONE_ROCK.get(),
-                ItemRegistration.LARGE_SAPROLITE_ROCK.get(),
-                ItemRegistration.LARGE_LATERITE_ROCK.get(),
-                ItemRegistration.LARGE_SILT_CLUMP.get(),
-                ItemRegistration.LARGE_GREYWACKE_ROCK.get(),
-                ItemRegistration.LARGE_SILTSTONE_ROCK.get(),
-                ItemRegistration.LARGE_DOLOSTONE_ROCK.get(),
-                ItemRegistration.LARGE_LIMESTONE_ROCK.get(),
-                ItemRegistration.LARGE_IRONSTONE_ROCK.get(),
-                ItemRegistration.LARGE_ARKOSE_ROCK.get(),
-                ItemRegistration.MARBLE_ROCK.get(),
-                ItemRegistration.QUARTZITE_ROCK.get(),
-                ItemRegistration.HORNFELS_ROCK.get(),
-                ItemRegistration.SLATE_ROCK.get(),
-                ItemRegistration.GABBRO_ROCK.get(),
-                ItemRegistration.SMOOTH_DIORITE_ROCK.get(),
-                ItemRegistration.SMOOTH_GRANITE_ROCK.get(),
-                ItemRegistration.NORITE_ROCK.get(),
-                ItemRegistration.PERIDOTITE_ROCK.get()
+                WorldItemRegistration.LARGE_SANDSTONE_ROCK.get(),
+                WorldItemRegistration.LARGE_RED_SANDSTONE_ROCK.get(),
+                WorldItemRegistration.LARGE_SAPROLITE_ROCK.get(),
+                WorldItemRegistration.LARGE_LATERITE_ROCK.get(),
+                WorldItemRegistration.LARGE_SILT_CLUMP.get(),
+                WorldItemRegistration.LARGE_GREYWACKE_ROCK.get(),
+                WorldItemRegistration.LARGE_SILTSTONE_ROCK.get(),
+                WorldItemRegistration.LARGE_DOLOSTONE_ROCK.get(),
+                WorldItemRegistration.LARGE_LIMESTONE_ROCK.get(),
+                WorldItemRegistration.LARGE_IRONSTONE_ROCK.get(),
+                WorldItemRegistration.LARGE_ARKOSE_ROCK.get(),
+                WorldItemRegistration.MARBLE_ROCK.get(),
+                WorldItemRegistration.QUARTZITE_ROCK.get(),
+                WorldItemRegistration.HORNFELS_ROCK.get(),
+                WorldItemRegistration.SLATE_ROCK.get(),
+                WorldItemRegistration.GABBRO_ROCK.get(),
+                WorldItemRegistration.SMOOTH_DIORITE_ROCK.get(),
+                WorldItemRegistration.SMOOTH_GRANITE_ROCK.get(),
+                WorldItemRegistration.NORITE_ROCK.get(),
+                WorldItemRegistration.PERIDOTITE_ROCK.get()
         );
         tag(ItemTagCatalog.LARGE_HARD_ROCK).add(
-                ItemRegistration.LARGE_GREYWACKE_ROCK.get(),
-                ItemRegistration.LARGE_SILTSTONE_ROCK.get(),
-                ItemRegistration.LARGE_DOLOSTONE_ROCK.get(),
-                ItemRegistration.LARGE_LIMESTONE_ROCK.get(),
-                ItemRegistration.LARGE_IRONSTONE_ROCK.get(),
-                ItemRegistration.LARGE_ARKOSE_ROCK.get(),
-                ItemRegistration.MARBLE_ROCK.get(),
-                ItemRegistration.QUARTZITE_ROCK.get(),
-                ItemRegistration.HORNFELS_ROCK.get(),
-                ItemRegistration.SLATE_ROCK.get(),
-                ItemRegistration.GABBRO_ROCK.get(),
-                ItemRegistration.SMOOTH_DIORITE_ROCK.get(),
-                ItemRegistration.SMOOTH_GRANITE_ROCK.get(),
-                ItemRegistration.NORITE_ROCK.get(),
-                ItemRegistration.PERIDOTITE_ROCK.get()
+                WorldItemRegistration.LARGE_GREYWACKE_ROCK.get(),
+                WorldItemRegistration.LARGE_SILTSTONE_ROCK.get(),
+                WorldItemRegistration.LARGE_DOLOSTONE_ROCK.get(),
+                WorldItemRegistration.LARGE_LIMESTONE_ROCK.get(),
+                WorldItemRegistration.LARGE_IRONSTONE_ROCK.get(),
+                WorldItemRegistration.LARGE_ARKOSE_ROCK.get(),
+                WorldItemRegistration.MARBLE_ROCK.get(),
+                WorldItemRegistration.QUARTZITE_ROCK.get(),
+                WorldItemRegistration.HORNFELS_ROCK.get(),
+                WorldItemRegistration.SLATE_ROCK.get(),
+                WorldItemRegistration.GABBRO_ROCK.get(),
+                WorldItemRegistration.SMOOTH_DIORITE_ROCK.get(),
+                WorldItemRegistration.SMOOTH_GRANITE_ROCK.get(),
+                WorldItemRegistration.NORITE_ROCK.get(),
+                WorldItemRegistration.PERIDOTITE_ROCK.get()
         );
         tag(ItemTagCatalog.COPPER_ROCK).add(
-                ItemRegistration.SAPROLITE_ROCK_COPPER_ORE.get(),
-                ItemRegistration.GREYWACKE_ROCK_COPPER_ORE.get(),
-                ItemRegistration.SILTSTONE_ROCK_COPPER_ORE.get(),
-                ItemRegistration.DOLOSTONE_ROCK_COPPER_ORE.get(),
-                ItemRegistration.LIMESTONE_ROCK_COPPER_ORE.get(),
-                ItemRegistration.CHALK_ROCK_COPPER_ORE.get(),
-                ItemRegistration.IRONSTONE_ROCK_COPPER_ORE.get(),
-                ItemRegistration.SHALE_ROCK_COPPER_ORE.get(),
-                ItemRegistration.ARKOSE_ROCK_COPPER_ORE.get()
+                WorldItemRegistration.SAPROLITE_ROCK_COPPER_ORE.get(),
+                WorldItemRegistration.GREYWACKE_ROCK_COPPER_ORE.get(),
+                WorldItemRegistration.SILTSTONE_ROCK_COPPER_ORE.get(),
+                WorldItemRegistration.DOLOSTONE_ROCK_COPPER_ORE.get(),
+                WorldItemRegistration.LIMESTONE_ROCK_COPPER_ORE.get(),
+                WorldItemRegistration.CHALK_ROCK_COPPER_ORE.get(),
+                WorldItemRegistration.IRONSTONE_ROCK_COPPER_ORE.get(),
+                WorldItemRegistration.SHALE_ROCK_COPPER_ORE.get(),
+                WorldItemRegistration.ARKOSE_ROCK_COPPER_ORE.get()
         );
         tag(ItemTagCatalog.BRANCH).add(
-                ItemRegistration.OAK_BRANCH.get(),
-                ItemRegistration.BIRCH_BRANCH.get(),
-                ItemRegistration.SPRUCE_BRANCH.get(),
-                ItemRegistration.JUNGLE_BRANCH.get(),
-                ItemRegistration.ACACIA_BRANCH.get(),
-                ItemRegistration.DARK_OAK_BRANCH.get(),
-                ItemRegistration.CHERRY_BRANCH.get(),
-                ItemRegistration.MANGROVE_BRANCH.get()
+                WorldItemRegistration.OAK_BRANCH.get(),
+                WorldItemRegistration.BIRCH_BRANCH.get(),
+                WorldItemRegistration.SPRUCE_BRANCH.get(),
+                WorldItemRegistration.JUNGLE_BRANCH.get(),
+                WorldItemRegistration.ACACIA_BRANCH.get(),
+                WorldItemRegistration.DARK_OAK_BRANCH.get(),
+                WorldItemRegistration.CHERRY_BRANCH.get(),
+                WorldItemRegistration.MANGROVE_BRANCH.get()
         );
 
         tag(ItemTagCatalog.TINDER)
@@ -283,14 +284,14 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
     public void registerBlockTags()
     {
         tag(ItemTagCatalog.SEDIMENTARY_WG_STONES).add(
-                ItemRegistration.GREYWACKE.get(),
-                ItemRegistration.SILTSTONE.get(),
-                ItemRegistration.DOLOSTONE.get(),
-                ItemRegistration.LIMESTONE.get(),
-                ItemRegistration.CHALK.get(),
-                ItemRegistration.IRONSTONE.get(),
-                ItemRegistration.SHALE.get(),
-                ItemRegistration.ARKOSE.get()
+                WorldItemRegistration.GREYWACKE.get(),
+                WorldItemRegistration.SILTSTONE.get(),
+                WorldItemRegistration.DOLOSTONE.get(),
+                WorldItemRegistration.LIMESTONE.get(),
+                WorldItemRegistration.CHALK.get(),
+                WorldItemRegistration.IRONSTONE.get(),
+                WorldItemRegistration.SHALE.get(),
+                WorldItemRegistration.ARKOSE.get()
         );
     }
 
@@ -304,7 +305,7 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
         );
         // Gravel
         tag(Tags.Items.GRAVELS).add(
-                ItemRegistration.SILT.get()
+                WorldItemRegistration.SILT.get()
         );
 
         // Ashfall & Regolith // Do not add these to Tags.Blocks.COBBLESTONES, they are too soft
@@ -312,31 +313,31 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
 
         // Sedimentary
         tag(Tags.Items.STONES).add(
-                ItemRegistration.GREYWACKE.get(),
-                ItemRegistration.SILTSTONE.get(),
-                ItemRegistration.DOLOSTONE.get(),
-                ItemRegistration.LIMESTONE.get(), // not chalk
-                ItemRegistration.IRONSTONE.get(),
-                ItemRegistration.SHALE.get()
+                WorldItemRegistration.GREYWACKE.get(),
+                WorldItemRegistration.SILTSTONE.get(),
+                WorldItemRegistration.DOLOSTONE.get(),
+                WorldItemRegistration.LIMESTONE.get(), // not chalk
+                WorldItemRegistration.IRONSTONE.get(),
+                WorldItemRegistration.SHALE.get()
         );
         tag(Tags.Items.COBBLESTONES_NORMAL).add( // Only those of equal hardness as greywacke cobblestone
-                ItemRegistration.COBBLED_GREYWACKE.get(),
-                ItemRegistration.COBBLED_SILTSTONE.get(),
-                ItemRegistration.COBBLED_DOLOSTONE.get(),
-                ItemRegistration.COBBLED_LIMESTONE.get(), // not chalk
-                ItemRegistration.COBBLED_IRONSTONE.get(),
-                ItemRegistration.COBBLED_SHALE.get()
+                WorldItemRegistration.COBBLED_GREYWACKE.get(),
+                WorldItemRegistration.COBBLED_SILTSTONE.get(),
+                WorldItemRegistration.COBBLED_DOLOSTONE.get(),
+                WorldItemRegistration.COBBLED_LIMESTONE.get(), // not chalk
+                WorldItemRegistration.COBBLED_IRONSTONE.get(),
+                WorldItemRegistration.COBBLED_SHALE.get()
         );
         tag(Tags.Items.COBBLESTONES_MOSSY);
         tag(Tags.Items.COBBLESTONES_INFESTED);
         tag(Tags.Items.COBBLESTONES).add( // Everything from NORMAL, MOSSY and INFESTED
-                ItemRegistration.COBBLED_GREYWACKE.get(),
-                ItemRegistration.COBBLED_SILTSTONE.get(),
-                ItemRegistration.COBBLED_DOLOSTONE.get(),
-                ItemRegistration.COBBLED_LIMESTONE.get(),
-                ItemRegistration.COBBLED_IRONSTONE.get(),
-                ItemRegistration.COBBLED_SHALE.get(),
-                ItemRegistration.COBBLED_ARKOSE.get()
+                WorldItemRegistration.COBBLED_GREYWACKE.get(),
+                WorldItemRegistration.COBBLED_SILTSTONE.get(),
+                WorldItemRegistration.COBBLED_DOLOSTONE.get(),
+                WorldItemRegistration.COBBLED_LIMESTONE.get(),
+                WorldItemRegistration.COBBLED_IRONSTONE.get(),
+                WorldItemRegistration.COBBLED_SHALE.get(),
+                WorldItemRegistration.COBBLED_ARKOSE.get()
         );
         tag(Tags.Items.ORE_BEARING_GROUND_STONE)
                 .addTag(ItemTagCatalog.SEDIMENTARY_WG_STONES);
@@ -345,114 +346,114 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
 
         // Igneous Intrusive & Hard Igneous Extrusive
         tag(Tags.Items.COBBLESTONES_DEEPSLATE).add( // Only those of equal hardness as gabbro
-                ItemRegistration.COBBLED_GABBRO.get()
+                WorldItemRegistration.COBBLED_GABBRO.get()
         );
 
         // Deep Igneous Intrusive // Harder than vanilla deepslate
         tag(Tags.Items.ORE_BEARING_GROUND_DEEPSLATE).add( // TODO This may not be the best idea
-                ItemRegistration.GABBRO.get(),
-                ItemRegistration.SMOOTH_DIORITE.get(),
-                ItemRegistration.ROUGH_DIORITE.get()
+                WorldItemRegistration.GABBRO.get(),
+                WorldItemRegistration.SMOOTH_DIORITE.get(),
+                WorldItemRegistration.ROUGH_DIORITE.get()
                 //BlockRegistration.ANDESITE.get(),
                 //BlockRegistration.BASALT.get()
         );
 
         tag(Tags.Items.ORES_COPPER).add(
-                ItemRegistration.GREYWACKE_COPPER_ORE.get(),
-                ItemRegistration.SILTSTONE_COPPER_ORE.get(),
-                ItemRegistration.DOLOSTONE_COPPER_ORE.get(),
-                ItemRegistration.LIMESTONE_COPPER_ORE.get(),
-                ItemRegistration.CHALK_COPPER_ORE.get(),
-                ItemRegistration.IRONSTONE_COPPER_ORE.get(),
-                ItemRegistration.SHALE_COPPER_ORE.get(),
-                ItemRegistration.ARKOSE_COPPER_ORE.get(),
-                ItemRegistration.MARBLE_COPPER_ORE.get(),
-                ItemRegistration.QUARTZITE_COPPER_ORE.get(),
-                ItemRegistration.HORNFELS_COPPER_ORE.get(),
-                ItemRegistration.SLATE_COPPER_ORE.get()
+                WorldItemRegistration.GREYWACKE_COPPER_ORE.get(),
+                WorldItemRegistration.SILTSTONE_COPPER_ORE.get(),
+                WorldItemRegistration.DOLOSTONE_COPPER_ORE.get(),
+                WorldItemRegistration.LIMESTONE_COPPER_ORE.get(),
+                WorldItemRegistration.CHALK_COPPER_ORE.get(),
+                WorldItemRegistration.IRONSTONE_COPPER_ORE.get(),
+                WorldItemRegistration.SHALE_COPPER_ORE.get(),
+                WorldItemRegistration.ARKOSE_COPPER_ORE.get(),
+                WorldItemRegistration.MARBLE_COPPER_ORE.get(),
+                WorldItemRegistration.QUARTZITE_COPPER_ORE.get(),
+                WorldItemRegistration.HORNFELS_COPPER_ORE.get(),
+                WorldItemRegistration.SLATE_COPPER_ORE.get()
         );
         tag(Tags.Items.ORES_IRON).add(
-                ItemRegistration.GABBRO_IRON_ORE.get(),
-                ItemRegistration.SMOOTH_DIORITE_IRON_ORE.get(),
-                ItemRegistration.SMOOTH_GRANITE_IRON_ORE.get(),
-                ItemRegistration.NORITE_IRON_ORE.get(),
-                ItemRegistration.PERIDOTITE_IRON_ORE.get(),
-                ItemRegistration.RHYOLITE_IRON_ORE.get(),
-                ItemRegistration.DACITE_IRON_ORE.get(),
-                ItemRegistration.ANDESITE_IRON_ORE.get(),
-                ItemRegistration.BASALT_IRON_ORE.get()
+                WorldItemRegistration.GABBRO_IRON_ORE.get(),
+                WorldItemRegistration.SMOOTH_DIORITE_IRON_ORE.get(),
+                WorldItemRegistration.SMOOTH_GRANITE_IRON_ORE.get(),
+                WorldItemRegistration.NORITE_IRON_ORE.get(),
+                WorldItemRegistration.PERIDOTITE_IRON_ORE.get(),
+                WorldItemRegistration.RHYOLITE_IRON_ORE.get(),
+                WorldItemRegistration.DACITE_IRON_ORE.get(),
+                WorldItemRegistration.ANDESITE_IRON_ORE.get(),
+                WorldItemRegistration.BASALT_IRON_ORE.get()
         );
         tag(Tags.Items.ORES_GOLD).add(
-                ItemRegistration.GREYWACKE_GOLD_ORE.get(),
-                ItemRegistration.SILTSTONE_GOLD_ORE.get(),
-                ItemRegistration.DOLOSTONE_GOLD_ORE.get(),
-                ItemRegistration.LIMESTONE_GOLD_ORE.get(),
-                ItemRegistration.CHALK_GOLD_ORE.get(),
-                ItemRegistration.IRONSTONE_GOLD_ORE.get(),
-                ItemRegistration.SHALE_GOLD_ORE.get(),
-                ItemRegistration.ARKOSE_GOLD_ORE.get(),
-                ItemRegistration.MARBLE_GOLD_ORE.get(),
-                ItemRegistration.QUARTZITE_GOLD_ORE.get(),
-                ItemRegistration.HORNFELS_GOLD_ORE.get(),
-                ItemRegistration.SLATE_GOLD_ORE.get(),
-                ItemRegistration.GABBRO_GOLD_ORE.get(),
-                ItemRegistration.SMOOTH_DIORITE_GOLD_ORE.get(),
-                ItemRegistration.SMOOTH_GRANITE_GOLD_ORE.get(),
-                ItemRegistration.NORITE_GOLD_ORE.get(),
-                ItemRegistration.PERIDOTITE_GOLD_ORE.get(),
-                ItemRegistration.RHYOLITE_GOLD_ORE.get(),
-                ItemRegistration.DACITE_GOLD_ORE.get(),
-                ItemRegistration.ANDESITE_GOLD_ORE.get(),
-                ItemRegistration.BASALT_GOLD_ORE.get()
+                WorldItemRegistration.GREYWACKE_GOLD_ORE.get(),
+                WorldItemRegistration.SILTSTONE_GOLD_ORE.get(),
+                WorldItemRegistration.DOLOSTONE_GOLD_ORE.get(),
+                WorldItemRegistration.LIMESTONE_GOLD_ORE.get(),
+                WorldItemRegistration.CHALK_GOLD_ORE.get(),
+                WorldItemRegistration.IRONSTONE_GOLD_ORE.get(),
+                WorldItemRegistration.SHALE_GOLD_ORE.get(),
+                WorldItemRegistration.ARKOSE_GOLD_ORE.get(),
+                WorldItemRegistration.MARBLE_GOLD_ORE.get(),
+                WorldItemRegistration.QUARTZITE_GOLD_ORE.get(),
+                WorldItemRegistration.HORNFELS_GOLD_ORE.get(),
+                WorldItemRegistration.SLATE_GOLD_ORE.get(),
+                WorldItemRegistration.GABBRO_GOLD_ORE.get(),
+                WorldItemRegistration.SMOOTH_DIORITE_GOLD_ORE.get(),
+                WorldItemRegistration.SMOOTH_GRANITE_GOLD_ORE.get(),
+                WorldItemRegistration.NORITE_GOLD_ORE.get(),
+                WorldItemRegistration.PERIDOTITE_GOLD_ORE.get(),
+                WorldItemRegistration.RHYOLITE_GOLD_ORE.get(),
+                WorldItemRegistration.DACITE_GOLD_ORE.get(),
+                WorldItemRegistration.ANDESITE_GOLD_ORE.get(),
+                WorldItemRegistration.BASALT_GOLD_ORE.get()
         );
         tag(Tags.Items.ORES_COAL).add(
-                ItemRegistration.SAPROLITE_COAL_ORE.get(),
-                ItemRegistration.LATERITE_COAL_ORE.get(),
-                ItemRegistration.GREYWACKE_COAL_ORE.get(),
-                ItemRegistration.SILTSTONE_COAL_ORE.get(),
-                ItemRegistration.DOLOSTONE_COAL_ORE.get(),
-                ItemRegistration.LIMESTONE_COAL_ORE.get(),
-                ItemRegistration.CHALK_COAL_ORE.get(),
-                ItemRegistration.IRONSTONE_COAL_ORE.get(),
-                ItemRegistration.SHALE_COAL_ORE.get(),
-                ItemRegistration.ARKOSE_COAL_ORE.get(),
-                ItemRegistration.MARBLE_COAL_ORE.get(),
-                ItemRegistration.QUARTZITE_COAL_ORE.get(),
-                ItemRegistration.HORNFELS_COAL_ORE.get(),
-                ItemRegistration.SLATE_COAL_ORE.get()
+                WorldItemRegistration.SAPROLITE_COAL_ORE.get(),
+                WorldItemRegistration.LATERITE_COAL_ORE.get(),
+                WorldItemRegistration.GREYWACKE_COAL_ORE.get(),
+                WorldItemRegistration.SILTSTONE_COAL_ORE.get(),
+                WorldItemRegistration.DOLOSTONE_COAL_ORE.get(),
+                WorldItemRegistration.LIMESTONE_COAL_ORE.get(),
+                WorldItemRegistration.CHALK_COAL_ORE.get(),
+                WorldItemRegistration.IRONSTONE_COAL_ORE.get(),
+                WorldItemRegistration.SHALE_COAL_ORE.get(),
+                WorldItemRegistration.ARKOSE_COAL_ORE.get(),
+                WorldItemRegistration.MARBLE_COAL_ORE.get(),
+                WorldItemRegistration.QUARTZITE_COAL_ORE.get(),
+                WorldItemRegistration.HORNFELS_COAL_ORE.get(),
+                WorldItemRegistration.SLATE_COAL_ORE.get()
         );
         tag(Tags.Items.ORES_DIAMOND).add(
-                ItemRegistration.GABBRO_DIAMOND_ORE.get(),
-                ItemRegistration.SMOOTH_DIORITE_DIAMOND_ORE.get(),
-                ItemRegistration.SMOOTH_GRANITE_DIAMOND_ORE.get(),
-                ItemRegistration.NORITE_DIAMOND_ORE.get(),
-                ItemRegistration.PERIDOTITE_DIAMOND_ORE.get(),
-                ItemRegistration.ANDESITE_DIAMOND_ORE.get(),
-                ItemRegistration.BASALT_DIAMOND_ORE.get()
+                WorldItemRegistration.GABBRO_DIAMOND_ORE.get(),
+                WorldItemRegistration.SMOOTH_DIORITE_DIAMOND_ORE.get(),
+                WorldItemRegistration.SMOOTH_GRANITE_DIAMOND_ORE.get(),
+                WorldItemRegistration.NORITE_DIAMOND_ORE.get(),
+                WorldItemRegistration.PERIDOTITE_DIAMOND_ORE.get(),
+                WorldItemRegistration.ANDESITE_DIAMOND_ORE.get(),
+                WorldItemRegistration.BASALT_DIAMOND_ORE.get()
         );
         tag(Tags.Items.ORES_EMERALD).add(
-                ItemRegistration.GABBRO_EMERALD_ORE.get(),
-                ItemRegistration.SMOOTH_DIORITE_EMERALD_ORE.get(),
-                ItemRegistration.SMOOTH_GRANITE_EMERALD_ORE.get(),
-                ItemRegistration.NORITE_EMERALD_ORE.get(),
-                ItemRegistration.PERIDOTITE_EMERALD_ORE.get(),
-                ItemRegistration.RHYOLITE_EMERALD_ORE.get(),
-                ItemRegistration.DACITE_EMERALD_ORE.get(),
-                ItemRegistration.ANDESITE_EMERALD_ORE.get(),
-                ItemRegistration.BASALT_EMERALD_ORE.get()
+                WorldItemRegistration.GABBRO_EMERALD_ORE.get(),
+                WorldItemRegistration.SMOOTH_DIORITE_EMERALD_ORE.get(),
+                WorldItemRegistration.SMOOTH_GRANITE_EMERALD_ORE.get(),
+                WorldItemRegistration.NORITE_EMERALD_ORE.get(),
+                WorldItemRegistration.PERIDOTITE_EMERALD_ORE.get(),
+                WorldItemRegistration.RHYOLITE_EMERALD_ORE.get(),
+                WorldItemRegistration.DACITE_EMERALD_ORE.get(),
+                WorldItemRegistration.ANDESITE_EMERALD_ORE.get(),
+                WorldItemRegistration.BASALT_EMERALD_ORE.get()
         );
         tag(Tags.Items.ORES_LAPIS).add(
-                ItemRegistration.MARBLE_LAPIS_ORE.get(),
-                ItemRegistration.QUARTZITE_LAPIS_ORE.get(),
-                ItemRegistration.HORNFELS_LAPIS_ORE.get(),
-                ItemRegistration.SLATE_LAPIS_ORE.get()
+                WorldItemRegistration.MARBLE_LAPIS_ORE.get(),
+                WorldItemRegistration.QUARTZITE_LAPIS_ORE.get(),
+                WorldItemRegistration.HORNFELS_LAPIS_ORE.get(),
+                WorldItemRegistration.SLATE_LAPIS_ORE.get()
         );
         tag(Tags.Items.ORES_REDSTONE).add(
-                ItemRegistration.GABBRO_REDSTONE_ORE.get(),
-                ItemRegistration.SMOOTH_DIORITE_REDSTONE_ORE.get(),
-                ItemRegistration.SMOOTH_GRANITE_REDSTONE_ORE.get(),
-                ItemRegistration.NORITE_REDSTONE_ORE.get(),
-                ItemRegistration.PERIDOTITE_REDSTONE_ORE.get()
+                WorldItemRegistration.GABBRO_REDSTONE_ORE.get(),
+                WorldItemRegistration.SMOOTH_DIORITE_REDSTONE_ORE.get(),
+                WorldItemRegistration.SMOOTH_GRANITE_REDSTONE_ORE.get(),
+                WorldItemRegistration.NORITE_REDSTONE_ORE.get(),
+                WorldItemRegistration.PERIDOTITE_REDSTONE_ORE.get()
         );
 
         tag(Tags.Items.ORES_QUARTZ);
@@ -460,15 +461,15 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
         tag(ItemTagCatalog.ORES_TIN);
 
         tag(ItemTagCatalog.ORES_CHERT).add(
-                ItemRegistration.LIMESTONE_CHERT_ORE.get(),
-                ItemRegistration.CHALK_CHERT_ORE.get()
+                WorldItemRegistration.LIMESTONE_CHERT_ORE.get(),
+                WorldItemRegistration.CHALK_CHERT_ORE.get()
         );
 
         tag(ItemTagCatalog.ORES_GEODE).add(
-                ItemRegistration.BASALT_GEODE_ORE.get(),
-                ItemRegistration.ANDESITE_GEODE_ORE.get(),
-                ItemRegistration.RHYOLITE_GEODE_ORE.get(),
-                ItemRegistration.DACITE_GEODE_ORE.get()
+                WorldItemRegistration.BASALT_GEODE_ORE.get(),
+                WorldItemRegistration.ANDESITE_GEODE_ORE.get(),
+                WorldItemRegistration.RHYOLITE_GEODE_ORE.get(),
+                WorldItemRegistration.DACITE_GEODE_ORE.get()
         );
 
         // --
@@ -492,14 +493,14 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
         tag(Tags.Items.ORE_RATES_SPARSE);
 
         tag(Tags.Items.SANDSTONE_BLOCKS).add(
-                ItemRegistration.COBBLED_SANDSTONE.get(),
-                ItemRegistration.COBBLED_RED_SANDSTONE.get()
+                WorldItemRegistration.COBBLED_SANDSTONE.get(),
+                WorldItemRegistration.COBBLED_RED_SANDSTONE.get()
         );
         tag(Tags.Items.SANDSTONE_UNCOLORED_BLOCKS).add(
-                ItemRegistration.COBBLED_SANDSTONE.get()
+                WorldItemRegistration.COBBLED_SANDSTONE.get()
         );
         tag(Tags.Items.SANDSTONE_RED_BLOCKS).add(
-                ItemRegistration.COBBLED_RED_SANDSTONE.get()
+                WorldItemRegistration.COBBLED_RED_SANDSTONE.get()
         );
     }
 

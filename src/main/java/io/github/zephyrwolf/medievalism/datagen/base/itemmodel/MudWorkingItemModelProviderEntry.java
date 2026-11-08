@@ -4,6 +4,7 @@ import io.github.zephyrwolf.medievalism.common.data.IItemModelProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.ItemModelEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.MudWorkingItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
 
 public class MudWorkingItemModelProviderEntry implements IItemModelProviderEntry
 {
@@ -28,7 +29,7 @@ public class MudWorkingItemModelProviderEntry implements IItemModelProviderEntry
     {
         handle.setFolder("");
 
-        handle.blockBasedModel(ItemRegistration.SILT.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SILT.get(), "");
     }
 
     private void packedMud(ItemModelEntryProviderHandle handle)

@@ -14,6 +14,7 @@ import io.github.zephyrwolf.medievalism.registration.capabilities.CapabilitiesRe
 import io.github.zephyrwolf.medievalism.registration.components.DataComponentTypeRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.MudWorkingItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.particles.ClientParticleProviderRegistration;
 import io.github.zephyrwolf.medievalism.registration.particles.ParticleTypeRegistration;
 import io.github.zephyrwolf.medievalism.registrationclient.render.ClientColoursRegistration;
@@ -59,6 +60,7 @@ public class MedievalismMod
         ItemRegistration.register(bus);
         ClayWorkingItemRegistration.register(bus);
         MudWorkingItemRegistration.register(bus);
+        WorldItemRegistration.register(bus);
 
         BlockEntityRegistration.register(bus);
         CreativeTabRegistration.register(bus);

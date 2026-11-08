@@ -3,6 +3,8 @@ package io.github.zephyrwolf.medievalism.registration;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.MudWorkingItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -31,6 +33,8 @@ public class CreativeTabRegistration
     {
         for (DeferredHolder<Item, ? extends Item> item : ItemRegistration.ITEMS.getEntries()) { pOutput.accept(item.get()); }
         for (DeferredHolder<Item, ? extends Item> item : ClayWorkingItemRegistration.CLAY_WORKING_ITEMS.getEntries()) { pOutput.accept(item.get()); }
+        for (DeferredHolder<Item, ? extends Item> item : MudWorkingItemRegistration.MUD_WORKING_ITEMS.getEntries()) { pOutput.accept(item.get()); }
+        for (DeferredHolder<Item, ? extends Item> item : WorldItemRegistration.WORLD_ITEMS.getEntries()) { pOutput.accept(item.get()); }
     }
     
     public static void register(IEventBus eventBus)

@@ -6,6 +6,7 @@ import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.common.warmth.WarmthTools;
+import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
@@ -303,7 +304,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
         otherWhenSilkTouch(BlockRegistration.INFESTED_ANDESITE.get(), BlockRegistration.ANDESITE.get());
         otherWhenSilkTouch(BlockRegistration.INFESTED_BASALT.get(), BlockRegistration.BASALT.get());
         // COPPER ORE
-        add( BlockRegistration.SAPROLITE_COPPER_ORE.get(), createOreDrops(BlockRegistration.SAPROLITE_COPPER_ORE.get(), ItemRegistration.SAPROLITE_ROCK_COPPER_ORE, 1.0f, 3.0f ));
+        add( BlockRegistration.SAPROLITE_COPPER_ORE.get(), createOreDrops(BlockRegistration.SAPROLITE_COPPER_ORE.get(), WorldItemRegistration.SAPROLITE_ROCK_COPPER_ORE, 1.0f, 3.0f ));
         add( BlockRegistration.SILTSTONE_COPPER_ORE.get(), createCopperOreDrops(BlockRegistration.SILTSTONE_COPPER_ORE.get() ));
         add( BlockRegistration.DOLOSTONE_COPPER_ORE.get(), createCopperOreDrops(BlockRegistration.DOLOSTONE_COPPER_ORE.get() ));
         add( BlockRegistration.LIMESTONE_COPPER_ORE.get(), createCopperOreDrops(BlockRegistration.LIMESTONE_COPPER_ORE.get() ));

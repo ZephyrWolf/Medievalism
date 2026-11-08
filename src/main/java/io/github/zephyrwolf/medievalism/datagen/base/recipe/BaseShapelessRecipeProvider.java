@@ -6,6 +6,7 @@ import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.MudWorkingItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.common.recipe.RecipeTools;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -333,14 +334,14 @@ public final class BaseShapelessRecipeProvider {
                 .requiresIngredient(ItemTagCatalog.BRANCH)
                 .requiresTool(ItemTagCatalog.CARVING_TOOL)
                 .unlockedBy("has_branch", RecipeTools.itemPredicateOf(
-                        ItemRegistration.OAK_BRANCH.get(),
-                        ItemRegistration.SPRUCE_BRANCH.get(),
-                        ItemRegistration.BIRCH_BRANCH.get(),
-                        ItemRegistration.DARK_OAK_BRANCH.get(),
-                        ItemRegistration.JUNGLE_BRANCH.get(),
-                        ItemRegistration.ACACIA_BRANCH.get(),
-                        ItemRegistration.CHERRY_BRANCH.get(),
-                        ItemRegistration.MANGROVE_BRANCH.get()
+                        WorldItemRegistration.OAK_BRANCH.get(),
+                        WorldItemRegistration.SPRUCE_BRANCH.get(),
+                        WorldItemRegistration.BIRCH_BRANCH.get(),
+                        WorldItemRegistration.DARK_OAK_BRANCH.get(),
+                        WorldItemRegistration.JUNGLE_BRANCH.get(),
+                        WorldItemRegistration.ACACIA_BRANCH.get(),
+                        WorldItemRegistration.CHERRY_BRANCH.get(),
+                        WorldItemRegistration.MANGROVE_BRANCH.get()
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("large_tool_handle"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ItemRegistration.ROCK_KNIFE)

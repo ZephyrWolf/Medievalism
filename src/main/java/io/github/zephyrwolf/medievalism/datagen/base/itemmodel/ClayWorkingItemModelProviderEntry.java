@@ -5,6 +5,7 @@ import io.github.zephyrwolf.medievalism.common.data.ItemModelEntryProviderHandle
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
 
 public class ClayWorkingItemModelProviderEntry implements IItemModelProviderEntry
 {
@@ -39,8 +40,8 @@ public class ClayWorkingItemModelProviderEntry implements IItemModelProviderEntr
     private void worldGen(ItemModelEntryProviderHandle handle)
     {
         handle.setFolder("");
-        handle.blockBasedModel(ItemRegistration.CLAY_IN_GRASS.get(), "1");
-        handle.blockBasedModel(ItemRegistration.CLAY_IN_DIRT.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.CLAY_IN_GRASS.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.CLAY_IN_DIRT.get(), "1");
     }
 
     private void materials(ItemModelEntryProviderHandle handle)

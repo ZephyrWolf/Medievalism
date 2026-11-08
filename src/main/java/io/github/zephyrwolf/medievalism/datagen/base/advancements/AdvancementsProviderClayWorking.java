@@ -6,6 +6,7 @@ import io.github.zephyrwolf.medievalism.datagen.base.lang.AdvancementLangKeys;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.tools.TextTools;
 import net.minecraft.advancements.Advancement;
@@ -36,7 +37,7 @@ public class AdvancementsProviderClayWorking implements AdvancementProvider.Adva
     public void generate(HolderLookup.@NotNull Provider registries, @NotNull Consumer<AdvancementHolder> saver, @NotNull ExistingFileHelper existingFileHelper)
     {
         AdvancementHolder clay_root = Advancement.Builder.advancement()
-                .display(ItemRegistration.CLAY_IN_GRASS,
+                .display(WorldItemRegistration.CLAY_IN_GRASS,
                         TextTools.getTranslation(AdvancementLangKeys.ROOT_CLAY_WORKING_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.ROOT_CLAY_WORKING_DESC),
                         MedievalismConstants.resource("textures/gui/advancements/paper.png"),

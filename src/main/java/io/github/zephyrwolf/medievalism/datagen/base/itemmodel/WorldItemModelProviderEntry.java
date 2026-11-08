@@ -3,6 +3,7 @@ package io.github.zephyrwolf.medievalism.datagen.base.itemmodel;
 import io.github.zephyrwolf.medievalism.common.data.IItemModelProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.ItemModelEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
 
 public class WorldItemModelProviderEntry implements IItemModelProviderEntry
 {
@@ -33,91 +34,91 @@ public class WorldItemModelProviderEntry implements IItemModelProviderEntry
 
     private void rock(ItemModelEntryProviderHandle handle)
     {
-        handle.blockBasedModel(ItemRegistration.SANDSTONE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.RED_SANDSTONE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.SAPROLITE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LATERITE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.SILT_CLUMP.get(), "1");
-        handle.blockBasedModel(ItemRegistration.GREYWACKE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.SILTSTONE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.DOLOSTONE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LIMESTONE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.IRONSTONE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.SHALE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.ARKOSE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.MARBLE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.QUARTZITE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.HORNFELS_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.SLATE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.GABBRO_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.SMOOTH_DIORITE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.SMOOTH_GRANITE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.NORITE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.PERIDOTITE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.SANDSTONE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.RED_SANDSTONE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.SAPROLITE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LATERITE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.SILT_CLUMP.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.GREYWACKE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.SILTSTONE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.DOLOSTONE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LIMESTONE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.IRONSTONE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.SHALE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.ARKOSE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.MARBLE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.QUARTZITE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.HORNFELS_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.SLATE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.GABBRO_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.SMOOTH_DIORITE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.SMOOTH_GRANITE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.NORITE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.PERIDOTITE_ROCK.get(), "1");
     }
 
     private void largeRock(ItemModelEntryProviderHandle handle)
     {
-        handle.blockBasedModel(ItemRegistration.LARGE_SANDSTONE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_RED_SANDSTONE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_SAPROLITE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_LATERITE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_SILT_CLUMP.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_GREYWACKE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_SILTSTONE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_DOLOSTONE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_LIMESTONE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_IRONSTONE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_SHALE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_ARKOSE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_MARBLE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_QUARTZITE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_HORNFELS_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_SLATE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_GABBRO_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_SMOOTH_DIORITE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_SMOOTH_GRANITE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_NORITE_ROCK.get(), "1");
-        handle.blockBasedModel(ItemRegistration.LARGE_PERIDOTITE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_SANDSTONE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_RED_SANDSTONE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_SAPROLITE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_LATERITE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_SILT_CLUMP.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_GREYWACKE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_SILTSTONE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_DOLOSTONE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_LIMESTONE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_IRONSTONE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_SHALE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_ARKOSE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_MARBLE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_QUARTZITE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_HORNFELS_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_SLATE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_GABBRO_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_SMOOTH_DIORITE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_SMOOTH_GRANITE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_NORITE_ROCK.get(), "1");
+        handle.blockBasedModel(WorldItemRegistration.LARGE_PERIDOTITE_ROCK.get(), "1");
     }
 
     private void copperRock(ItemModelEntryProviderHandle handle)
     {
-        handle.blockBasedModel(ItemRegistration.SAPROLITE_ROCK_COPPER_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.GREYWACKE_ROCK_COPPER_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SILTSTONE_ROCK_COPPER_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.DOLOSTONE_ROCK_COPPER_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.LIMESTONE_ROCK_COPPER_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.CHALK_ROCK_COPPER_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.IRONSTONE_ROCK_COPPER_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SHALE_ROCK_COPPER_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.ARKOSE_ROCK_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SAPROLITE_ROCK_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.GREYWACKE_ROCK_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SILTSTONE_ROCK_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.DOLOSTONE_ROCK_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.LIMESTONE_ROCK_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.CHALK_ROCK_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.IRONSTONE_ROCK_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SHALE_ROCK_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.ARKOSE_ROCK_COPPER_ORE.get(), "");
     }
 
     private void stone(ItemModelEntryProviderHandle handle)
     {
-        handle.blockBasedModel(ItemRegistration.SOFT_TUFF.get(), "");                 // Ashfall
-        handle.blockBasedModel(ItemRegistration.IGNIMBRITE.get(), "");
-        handle.blockBasedModel(ItemRegistration.LAPILLISTONE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SAPROLITE.get(), "");
-        handle.blockBasedModel(ItemRegistration.LATERITE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SILTSTONE.get(), "");                 // Sedimentary
-        handle.blockBasedModel(ItemRegistration.DOLOSTONE.get(), "");
-        handle.blockBasedModel(ItemRegistration.LIMESTONE.get(), "");
-        handle.blockBasedModel(ItemRegistration.CHALK.get(), "");
-        handle.blockBasedModel(ItemRegistration.IRONSTONE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SHALE.get(), "");
-        handle.blockBasedModel(ItemRegistration.ARKOSE.get(), "" );
-        handle.blockBasedModel(ItemRegistration.MARBLE.get(), "");                    // Metamorphic
-        handle.blockBasedModel(ItemRegistration.QUARTZITE.get(), "");
-        handle.blockBasedModel(ItemRegistration.HORNFELS.get(), "");
-        handle.blockBasedModel(ItemRegistration.SLATE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SMOOTH_DIORITE.get(), "");            // Igneous Intrusive
-        handle.blockBasedModel(ItemRegistration.SMOOTH_GRANITE.get(), "");
-        handle.blockBasedModel(ItemRegistration.RHYOLITE.get(), "");                  // Soft Igneous Intrusive
-        handle.blockBasedModel(ItemRegistration.DACITE.get(), "");
-        handle.blockBasedModel(ItemRegistration.NORITE.get(), "");                    // Deep Igneous Intrusive
-        handle.blockBasedModel(ItemRegistration.PERIDOTITE.get(), "" );
+        handle.blockBasedModel(WorldItemRegistration.SOFT_TUFF.get(), "");                 // Ashfall
+        handle.blockBasedModel(WorldItemRegistration.IGNIMBRITE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.LAPILLISTONE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SAPROLITE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.LATERITE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SILTSTONE.get(), "");                 // Sedimentary
+        handle.blockBasedModel(WorldItemRegistration.DOLOSTONE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.LIMESTONE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.CHALK.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.IRONSTONE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SHALE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.ARKOSE.get(), "" );
+        handle.blockBasedModel(WorldItemRegistration.MARBLE.get(), "");                    // Metamorphic
+        handle.blockBasedModel(WorldItemRegistration.QUARTZITE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.HORNFELS.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SLATE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SMOOTH_DIORITE.get(), "");            // Igneous Intrusive
+        handle.blockBasedModel(WorldItemRegistration.SMOOTH_GRANITE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.RHYOLITE.get(), "");                  // Soft Igneous Intrusive
+        handle.blockBasedModel(WorldItemRegistration.DACITE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.NORITE.get(), "");                    // Deep Igneous Intrusive
+        handle.blockBasedModel(WorldItemRegistration.PERIDOTITE.get(), "" );
     }
 
     private void looseStone(ItemModelEntryProviderHandle handle)
@@ -168,187 +169,187 @@ public class WorldItemModelProviderEntry implements IItemModelProviderEntry
 
     private void infestedStone(ItemModelEntryProviderHandle handle)
     {
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_SILTSTONE.get(), ItemRegistration.SILTSTONE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_DOLOSTONE.get(), ItemRegistration.DOLOSTONE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_LIMESTONE.get(), ItemRegistration.LIMESTONE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_SHALE.get(), ItemRegistration.SHALE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_ARKOSE.get(), ItemRegistration.ARKOSE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_MARBLE.get(), ItemRegistration.MARBLE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_QUARTZITE.get(), ItemRegistration.QUARTZITE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_HORNFELS.get(), ItemRegistration.HORNFELS.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_SLATE.get(), ItemRegistration.SLATE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_SMOOTH_DIORITE.get(), ItemRegistration.SMOOTH_DIORITE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_SMOOTH_GRANITE.get(), ItemRegistration.SMOOTH_GRANITE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_NORITE.get(), ItemRegistration.NORITE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_PERIDOTITE.get(), ItemRegistration.PERIDOTITE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_RHYOLITE.get(), ItemRegistration.RHYOLITE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_DACITE.get(), ItemRegistration.DACITE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_ANDESITE.get(), ItemRegistration.ANDESITE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_BASALT.get(), "minecraft", ItemRegistration.BASALT.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_SILTSTONE.get(), WorldItemRegistration.SILTSTONE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_DOLOSTONE.get(), WorldItemRegistration.DOLOSTONE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_LIMESTONE.get(), WorldItemRegistration.LIMESTONE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_SHALE.get(), WorldItemRegistration.SHALE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_ARKOSE.get(), WorldItemRegistration.ARKOSE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_MARBLE.get(), WorldItemRegistration.MARBLE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_QUARTZITE.get(), WorldItemRegistration.QUARTZITE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_HORNFELS.get(), WorldItemRegistration.HORNFELS.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_SLATE.get(), WorldItemRegistration.SLATE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_SMOOTH_DIORITE.get(), WorldItemRegistration.SMOOTH_DIORITE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_SMOOTH_GRANITE.get(), WorldItemRegistration.SMOOTH_GRANITE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_NORITE.get(), WorldItemRegistration.NORITE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_PERIDOTITE.get(), WorldItemRegistration.PERIDOTITE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_RHYOLITE.get(), WorldItemRegistration.RHYOLITE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_DACITE.get(), WorldItemRegistration.DACITE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_ANDESITE.get(), WorldItemRegistration.ANDESITE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_BASALT.get(), "minecraft", WorldItemRegistration.BASALT.get(), "");
     }
 
     private void cobbled(ItemModelEntryProviderHandle handle)
     {
-        handle.blockBasedModel(ItemRegistration.COBBLED_SOFT_TUFF.get(), "");
-        handle.blockBasedModel(ItemRegistration.COBBLED_IGNIMBRITE.get(), "");
-        handle.blockBasedModel(ItemRegistration.COBBLED_LAPILLISTONE.get(), "");
-        handle.blockBasedModel(ItemRegistration.COBBLED_WELDED_TUFF.get(), "");
-        handle.blockBasedModel(ItemRegistration.COBBLED_SANDSTONE.get(), "");         // Regolith
-        handle.blockBasedModel(ItemRegistration.COBBLED_RED_SANDSTONE.get(), "");
-        handle.blockBasedModel(ItemRegistration.COBBLED_SAPROLITE.get(), "");
-        handle.blockBasedModel(ItemRegistration.COBBLED_LATERITE.get(), "");
-        handle.blockBasedModel(ItemRegistration.COBBLED_SILTSTONE.get(), "");
-        handle.blockBasedModel(ItemRegistration.COBBLED_DOLOSTONE.get(), "");
-        handle.blockBasedModel(ItemRegistration.COBBLED_LIMESTONE.get(), "");
-        handle.blockBasedModel(ItemRegistration.COBBLED_CHALK.get(), "");
-        handle.blockBasedModel(ItemRegistration.COBBLED_IRONSTONE.get(), "");
-        handle.blockBasedModel(ItemRegistration.COBBLED_SHALE.get(), "");
-        handle.blockBasedModel(ItemRegistration.COBBLED_ARKOSE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.COBBLED_SOFT_TUFF.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.COBBLED_IGNIMBRITE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.COBBLED_LAPILLISTONE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.COBBLED_WELDED_TUFF.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.COBBLED_SANDSTONE.get(), "");         // Regolith
+        handle.blockBasedModel(WorldItemRegistration.COBBLED_RED_SANDSTONE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.COBBLED_SAPROLITE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.COBBLED_LATERITE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.COBBLED_SILTSTONE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.COBBLED_DOLOSTONE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.COBBLED_LIMESTONE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.COBBLED_CHALK.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.COBBLED_IRONSTONE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.COBBLED_SHALE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.COBBLED_ARKOSE.get(), "");
     }
 
     private void infestedCobbled(ItemModelEntryProviderHandle handle)
     {
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_COBBLED_SILTSTONE.get(), ItemRegistration.COBBLED_SILTSTONE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_COBBLED_DOLOSTONE.get(), ItemRegistration.COBBLED_DOLOSTONE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_COBBLED_LIMESTONE.get(), ItemRegistration.COBBLED_LIMESTONE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_COBBLED_CHALK.get(), ItemRegistration.COBBLED_CHALK.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_COBBLED_IRONSTONE.get(), ItemRegistration.COBBLED_IRONSTONE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_COBBLED_SHALE.get(), ItemRegistration.COBBLED_SHALE.get(), "");
-        handle.mirrorBlockBasedModel(ItemRegistration.INFESTED_COBBLED_ARKOSE.get(), ItemRegistration.COBBLED_ARKOSE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_COBBLED_SILTSTONE.get(), WorldItemRegistration.COBBLED_SILTSTONE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_COBBLED_DOLOSTONE.get(), WorldItemRegistration.COBBLED_DOLOSTONE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_COBBLED_LIMESTONE.get(), WorldItemRegistration.COBBLED_LIMESTONE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_COBBLED_CHALK.get(), WorldItemRegistration.COBBLED_CHALK.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_COBBLED_IRONSTONE.get(), WorldItemRegistration.COBBLED_IRONSTONE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_COBBLED_SHALE.get(), WorldItemRegistration.COBBLED_SHALE.get(), "");
+        handle.mirrorBlockBasedModel(WorldItemRegistration.INFESTED_COBBLED_ARKOSE.get(), WorldItemRegistration.COBBLED_ARKOSE.get(), "");
     }
 
     private void copperOre(ItemModelEntryProviderHandle handle)
     {
-        handle.blockBasedModel(ItemRegistration.SAPROLITE_COPPER_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SILTSTONE_COPPER_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.DOLOSTONE_COPPER_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.LIMESTONE_COPPER_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.CHALK_COPPER_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.IRONSTONE_COPPER_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SHALE_COPPER_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.ARKOSE_COPPER_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.MARBLE_COPPER_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.QUARTZITE_COPPER_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.HORNFELS_COPPER_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SLATE_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SAPROLITE_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SILTSTONE_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.DOLOSTONE_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.LIMESTONE_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.CHALK_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.IRONSTONE_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SHALE_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.ARKOSE_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.MARBLE_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.QUARTZITE_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.HORNFELS_COPPER_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SLATE_COPPER_ORE.get(), "");
     }
 
     private void ironOre(ItemModelEntryProviderHandle handle)
     {
-        handle.blockBasedModel(ItemRegistration.SMOOTH_DIORITE_IRON_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SMOOTH_GRANITE_IRON_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.NORITE_IRON_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.PERIDOTITE_IRON_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.RHYOLITE_IRON_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.DACITE_IRON_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.ANDESITE_IRON_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.BASALT_IRON_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SMOOTH_DIORITE_IRON_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SMOOTH_GRANITE_IRON_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.NORITE_IRON_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.PERIDOTITE_IRON_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.RHYOLITE_IRON_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.DACITE_IRON_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.ANDESITE_IRON_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.BASALT_IRON_ORE.get(), "");
     }
 
     private void goldOre(ItemModelEntryProviderHandle handle)
     {
-        handle.blockBasedModel(ItemRegistration.SILTSTONE_GOLD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.DOLOSTONE_GOLD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.LIMESTONE_GOLD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.CHALK_GOLD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.IRONSTONE_GOLD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SHALE_GOLD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.ARKOSE_GOLD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.MARBLE_GOLD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.QUARTZITE_GOLD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.HORNFELS_GOLD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SLATE_GOLD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SMOOTH_DIORITE_GOLD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SMOOTH_GRANITE_GOLD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.NORITE_GOLD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.PERIDOTITE_GOLD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.RHYOLITE_GOLD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.DACITE_GOLD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.ANDESITE_GOLD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.BASALT_GOLD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SILTSTONE_GOLD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.DOLOSTONE_GOLD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.LIMESTONE_GOLD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.CHALK_GOLD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.IRONSTONE_GOLD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SHALE_GOLD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.ARKOSE_GOLD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.MARBLE_GOLD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.QUARTZITE_GOLD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.HORNFELS_GOLD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SLATE_GOLD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SMOOTH_DIORITE_GOLD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SMOOTH_GRANITE_GOLD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.NORITE_GOLD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.PERIDOTITE_GOLD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.RHYOLITE_GOLD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.DACITE_GOLD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.ANDESITE_GOLD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.BASALT_GOLD_ORE.get(), "");
     }
 
     private void coalOre(ItemModelEntryProviderHandle handle)
     {
-        handle.blockBasedModel(ItemRegistration.SAPROLITE_COAL_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.LATERITE_COAL_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SILTSTONE_COAL_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.DOLOSTONE_COAL_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.LIMESTONE_COAL_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.CHALK_COAL_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.IRONSTONE_COAL_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SHALE_COAL_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.ARKOSE_COAL_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.MARBLE_COAL_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.QUARTZITE_COAL_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.HORNFELS_COAL_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SLATE_COAL_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SAPROLITE_COAL_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.LATERITE_COAL_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SILTSTONE_COAL_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.DOLOSTONE_COAL_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.LIMESTONE_COAL_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.CHALK_COAL_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.IRONSTONE_COAL_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SHALE_COAL_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.ARKOSE_COAL_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.MARBLE_COAL_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.QUARTZITE_COAL_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.HORNFELS_COAL_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SLATE_COAL_ORE.get(), "");
     }
 
     private void diamondOre(ItemModelEntryProviderHandle handle)
     {
-        handle.blockBasedModel(ItemRegistration.SMOOTH_DIORITE_DIAMOND_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SMOOTH_GRANITE_DIAMOND_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.NORITE_DIAMOND_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.PERIDOTITE_DIAMOND_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.ANDESITE_DIAMOND_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.BASALT_DIAMOND_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SMOOTH_DIORITE_DIAMOND_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SMOOTH_GRANITE_DIAMOND_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.NORITE_DIAMOND_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.PERIDOTITE_DIAMOND_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.ANDESITE_DIAMOND_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.BASALT_DIAMOND_ORE.get(), "");
     }
 
     private void emeraldOre(ItemModelEntryProviderHandle handle)
     {
-        handle.blockBasedModel(ItemRegistration.SMOOTH_DIORITE_EMERALD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SMOOTH_GRANITE_EMERALD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.NORITE_EMERALD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.PERIDOTITE_EMERALD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.RHYOLITE_EMERALD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.DACITE_EMERALD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.ANDESITE_EMERALD_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.BASALT_EMERALD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SMOOTH_DIORITE_EMERALD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SMOOTH_GRANITE_EMERALD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.NORITE_EMERALD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.PERIDOTITE_EMERALD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.RHYOLITE_EMERALD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.DACITE_EMERALD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.ANDESITE_EMERALD_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.BASALT_EMERALD_ORE.get(), "");
     }
 
     private void lapisOre(ItemModelEntryProviderHandle handle)
     {
-        handle.blockBasedModel(ItemRegistration.MARBLE_LAPIS_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.QUARTZITE_LAPIS_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.HORNFELS_LAPIS_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SLATE_LAPIS_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.MARBLE_LAPIS_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.QUARTZITE_LAPIS_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.HORNFELS_LAPIS_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SLATE_LAPIS_ORE.get(), "");
     }
 
     private void redstoneOre(ItemModelEntryProviderHandle handle)
     {
-        handle.blockBasedModel(ItemRegistration.SMOOTH_DIORITE_REDSTONE_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.SMOOTH_GRANITE_REDSTONE_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.NORITE_REDSTONE_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.PERIDOTITE_REDSTONE_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SMOOTH_DIORITE_REDSTONE_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SMOOTH_GRANITE_REDSTONE_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.NORITE_REDSTONE_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.PERIDOTITE_REDSTONE_ORE.get(), "");
     }
 
     private void chertOre(ItemModelEntryProviderHandle handle)
     {
-        handle.blockBasedModel(ItemRegistration.LIMESTONE_CHERT_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.CHALK_CHERT_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.LIMESTONE_CHERT_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.CHALK_CHERT_ORE.get(), "");
     }
 
     private void geodeOre(ItemModelEntryProviderHandle handle)
     {
-        handle.blockBasedModel(ItemRegistration.BASALT_GEODE_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.ANDESITE_GEODE_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.RHYOLITE_GEODE_ORE.get(), "");
-        handle.blockBasedModel(ItemRegistration.DACITE_GEODE_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.BASALT_GEODE_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.ANDESITE_GEODE_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.RHYOLITE_GEODE_ORE.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.DACITE_GEODE_ORE.get(), "");
     }
 
     private void materials(ItemModelEntryProviderHandle handle)
     {
         handle.setFolder("");
 
-        handle.blockBasedModel(ItemRegistration.BIRCH_BRANCH.get(), "");
-        handle.blockBasedModel(ItemRegistration.OAK_BRANCH.get(), "");
-        handle.blockBasedModel(ItemRegistration.SPRUCE_BRANCH.get(), "");
-        handle.blockBasedModel(ItemRegistration.JUNGLE_BRANCH.get(), "");
-        handle.blockBasedModel(ItemRegistration.ACACIA_BRANCH.get(), "");
-        handle.blockBasedModel(ItemRegistration.DARK_OAK_BRANCH.get(), "");
-        handle.blockBasedModel(ItemRegistration.CHERRY_BRANCH.get(), "");
-        handle.blockBasedModel(ItemRegistration.MANGROVE_BRANCH.get(), "");
-        handle.blockIconGeneratedModel(ItemRegistration.SHRUB.get());
+        handle.blockBasedModel(WorldItemRegistration.BIRCH_BRANCH.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.OAK_BRANCH.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.SPRUCE_BRANCH.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.JUNGLE_BRANCH.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.ACACIA_BRANCH.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.DARK_OAK_BRANCH.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.CHERRY_BRANCH.get(), "");
+        handle.blockBasedModel(WorldItemRegistration.MANGROVE_BRANCH.get(), "");
+        handle.blockIconGeneratedModel(WorldItemRegistration.SHRUB.get());
     }
 }

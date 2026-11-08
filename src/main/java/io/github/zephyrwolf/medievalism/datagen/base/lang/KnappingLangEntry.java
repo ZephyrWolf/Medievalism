@@ -5,6 +5,7 @@ import io.github.zephyrwolf.medievalism.common.data.ILanguageProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.LanguageEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
 
 public class KnappingLangEntry implements ILanguageProviderEntry
 {
@@ -48,21 +49,21 @@ public class KnappingLangEntry implements ILanguageProviderEntry
         handle.addBlock(BlockRegistration.SMOOTH_GRANITE_ROCK.get(), "Smooth Granite Rock");
         handle.addBlock(BlockRegistration.NORITE_ROCK.get(), "Norite Rock");
         handle.addBlock(BlockRegistration.PERIDOTITE_ROCK.get(), "Peridotite Rock");
-        handle.add(ItemRegistration.GREYWACKE_ROCK.get().getDescriptionId() + ".hammerstone", "Greywacke Hammerstone");
-        handle.add(ItemRegistration.SILTSTONE_ROCK.get().getDescriptionId() + ".hammerstone", "Siltstone Hammerstone");
-        handle.add(ItemRegistration.DOLOSTONE_ROCK.get().getDescriptionId() + ".hammerstone", "Dolostone Hammerstone");
-        handle.add(ItemRegistration.LIMESTONE_ROCK.get().getDescriptionId() + ".hammerstone", "Limestone Hammerstone");
-        handle.add(ItemRegistration.IRONSTONE_ROCK.get().getDescriptionId() + ".hammerstone", "Ironstone Hammerstone");
-        handle.add(ItemRegistration.ARKOSE_ROCK.get().getDescriptionId() + ".hammerstone", "Arkose Hammerstone");
-        handle.add(ItemRegistration.MARBLE_ROCK.get().getDescriptionId() + ".hammerstone", "Marble Hammerstone");
-        handle.add(ItemRegistration.QUARTZITE_ROCK.get().getDescriptionId() + ".hammerstone", "Quartzite Hammerstone");
-        handle.add(ItemRegistration.HORNFELS_ROCK.get().getDescriptionId() + ".hammerstone", "Hornfels Hammerstone");
-        handle.add(ItemRegistration.SLATE_ROCK.get().getDescriptionId() + ".hammerstone", "Slate Hammerstone");
-        handle.add(ItemRegistration.GABBRO_ROCK.get().getDescriptionId() + ".hammerstone", "Gabbro Hammerstone");
-        handle.add(ItemRegistration.SMOOTH_DIORITE_ROCK.get().getDescriptionId() + ".hammerstone", "Smooth Diorite Hammerstone");
-        handle.add(ItemRegistration.SMOOTH_GRANITE_ROCK.get().getDescriptionId() + ".hammerstone", "Smooth Granite Hammerstone");
-        handle.add(ItemRegistration.NORITE_ROCK.get().getDescriptionId() + ".hammerstone", "Norite Hammerstone");
-        handle.add(ItemRegistration.PERIDOTITE_ROCK.get().getDescriptionId() + ".hammerstone", "Peridotite Hammerstone");
+        handle.add(WorldItemRegistration.GREYWACKE_ROCK.get().getDescriptionId() + ".hammerstone", "Greywacke Hammerstone");
+        handle.add(WorldItemRegistration.SILTSTONE_ROCK.get().getDescriptionId() + ".hammerstone", "Siltstone Hammerstone");
+        handle.add(WorldItemRegistration.DOLOSTONE_ROCK.get().getDescriptionId() + ".hammerstone", "Dolostone Hammerstone");
+        handle.add(WorldItemRegistration.LIMESTONE_ROCK.get().getDescriptionId() + ".hammerstone", "Limestone Hammerstone");
+        handle.add(WorldItemRegistration.IRONSTONE_ROCK.get().getDescriptionId() + ".hammerstone", "Ironstone Hammerstone");
+        handle.add(WorldItemRegistration.ARKOSE_ROCK.get().getDescriptionId() + ".hammerstone", "Arkose Hammerstone");
+        handle.add(WorldItemRegistration.MARBLE_ROCK.get().getDescriptionId() + ".hammerstone", "Marble Hammerstone");
+        handle.add(WorldItemRegistration.QUARTZITE_ROCK.get().getDescriptionId() + ".hammerstone", "Quartzite Hammerstone");
+        handle.add(WorldItemRegistration.HORNFELS_ROCK.get().getDescriptionId() + ".hammerstone", "Hornfels Hammerstone");
+        handle.add(WorldItemRegistration.SLATE_ROCK.get().getDescriptionId() + ".hammerstone", "Slate Hammerstone");
+        handle.add(WorldItemRegistration.GABBRO_ROCK.get().getDescriptionId() + ".hammerstone", "Gabbro Hammerstone");
+        handle.add(WorldItemRegistration.SMOOTH_DIORITE_ROCK.get().getDescriptionId() + ".hammerstone", "Smooth Diorite Hammerstone");
+        handle.add(WorldItemRegistration.SMOOTH_GRANITE_ROCK.get().getDescriptionId() + ".hammerstone", "Smooth Granite Hammerstone");
+        handle.add(WorldItemRegistration.NORITE_ROCK.get().getDescriptionId() + ".hammerstone", "Norite Hammerstone");
+        handle.add(WorldItemRegistration.PERIDOTITE_ROCK.get().getDescriptionId() + ".hammerstone", "Peridotite Hammerstone");
         // LARGE ROCK
         handle.addBlock(BlockRegistration.LARGE_SANDSTONE_ROCK.get(), "Large Sandstone Rock");
         handle.addBlock(BlockRegistration.LARGE_RED_SANDSTONE_ROCK.get(), "Red Large Sandstone Rock");
