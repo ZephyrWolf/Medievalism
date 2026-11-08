@@ -37,9 +37,15 @@ public final class ItemTagCatalog
 
     public static final TagKey<Item> CARVING_TOOL = tag("carving_tool");
     public static final TagKey<Item> KNAP_TOOL = tag("knap_tool");
-    public static final TagKey<Item> SCRAPE_TOOL = tag("scrape_tool");
 
     public static final TagKey<Item> WET_BRICK = tag("wet_brick");
+
+    public static final TagKey<Item> GOAT_HORN_MATERIAL = tag("goat_horn_material");
+
+    public static final TagKey<Item> SMALL_TOOL_HANDLE = tag("small_tool_handle");
+    public static final TagKey<Item> LARGE_TOOL_HANDLE = tag("large_tool_handle");
+    public static final TagKey<Item> TOOL_BINDING = tag("tool_binding");
+
 
 
 

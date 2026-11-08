@@ -1,6 +1,7 @@
 package io.github.zephyrwolf.medievalism.datagen.base.tag;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import net.minecraft.core.HolderLookup;
@@ -127,15 +128,15 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
         tag(ItemTagCatalog.CLAY_BALL)
                 .add(
                         Items.CLAY_BALL,
-                        ItemRegistration.POTTERS_CLAY_BALL.get(),
-                        ItemRegistration.KAOLIN_CLAY_BALL.get(),
-                        ItemRegistration.REFRACTORY_CLAY_BALL.get()
+                        ClayWorkingItemRegistration.POTTERS_CLAY_BALL.get(),
+                        ClayWorkingItemRegistration.KAOLIN_CLAY_BALL.get(),
+                        ClayWorkingItemRegistration.REFRACTORY_CLAY_BALL.get()
                 );
         tag(ItemTagCatalog.GROG)
                 .add(
-                        ItemRegistration.GROG.get(),
-                        ItemRegistration.KAOLIN_GROG.get(),
-                        ItemRegistration.REFRACTORY_GROG.get()
+                        ClayWorkingItemRegistration.GROG.get(),
+                        ClayWorkingItemRegistration.KAOLIN_GROG.get(),
+                        ClayWorkingItemRegistration.REFRACTORY_GROG.get()
                 );
         tag(ItemTagCatalog.CLAY_BLOCK)
                 .add(Items.CLAY);
@@ -294,6 +295,12 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
 
     public void registerBlockItemNeoForgeCompatibilityTags()
     {
+        tag(Tags.Items.INGOTS).add(
+                ClayWorkingItemRegistration.CHINA_CLAY_BRICK.get(),
+                ClayWorkingItemRegistration.REFRACTORY_CLAY_BRICK.get(),
+                ItemRegistration.PACKED_MUD_BRICK.get(),
+                ItemRegistration.DAUB_BRICKS.get()
+        );
         // Gravel
         tag(Tags.Items.GRAVELS).add(
                 ItemRegistration.SILT.get()

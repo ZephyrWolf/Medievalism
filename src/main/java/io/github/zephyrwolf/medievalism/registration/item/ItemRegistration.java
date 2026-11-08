@@ -3,16 +3,11 @@ package io.github.zephyrwolf.medievalism.registration.item;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.block.VanillaDeferredItem;
 import io.github.zephyrwolf.medievalism.common.blockitem.*;
-import io.github.zephyrwolf.medievalism.common.item.BifaceItem;
-import io.github.zephyrwolf.medievalism.common.item.DirtChunkItem;
-import io.github.zephyrwolf.medievalism.common.item.FireStarterItem;
+import io.github.zephyrwolf.medievalism.common.item.*;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.food.FoodCatalog;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemNameBlockItem;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -306,83 +301,125 @@ public final class ItemRegistration
     //endregion == MUD WORKING ==
 
     //region == CLAY WORKING ==
-    public static final DeferredItem<Item> CLAY_BALL = new VanillaDeferredItem<>(Items.CLAY_BALL);
-    public static final DeferredItem<Item> POTTERS_CLAY_BALL = ITEMS.registerSimpleItem("potters_clay_ball");
-    public static final DeferredItem<Item> GROG = ITEMS.registerSimpleItem("grog");
-    public static final DeferredItem<Item> KAOLIN_CLAY_BALL = ITEMS.registerSimpleItem("kaolin_clay_ball");
-    public static final DeferredItem<Item> KAOLIN_GROG = ITEMS.registerSimpleItem("kaolin_grog");
-    public static final DeferredItem<Item> REFRACTORY_CLAY_BALL = ITEMS.registerSimpleItem("refractory_clay_ball");
-    public static final DeferredItem<Item> REFRACTORY_GROG = ITEMS.registerSimpleItem("refractory_grog");
-    // - BIRCH_POT
-    // - JUG
-    public static final DeferredItem<BlockItem> WET_JUG =                           ITEMS.registerItem("wet_jug",                                  props -> new DryingBlockItem(BlockRegistration.DRYING_JUG, props, false));
-    public static final DeferredItem<BlockItem> DRY_JUG =                           ITEMS.registerItem("dry_jug",                                  props -> new DryingBlockItem(BlockRegistration.DRYING_JUG, props, true));
-    public static final DeferredItem<BlockItem> JUG =                               ITEMS.registerSimpleBlockItem("jug",                           BlockRegistration.JUG);
-    // - POT
-    // - DECORATED_POT
-    public static final DeferredItem<BlockItem> WET_DECORATED_POT =                 ITEMS.registerItem("wet_decorated_pot",                        props -> new DryingBlockItem(BlockRegistration.DRYING_DECORATED_POT, props, false));
-    public static final DeferredItem<BlockItem> DRY_DECORATED_POT =                 ITEMS.registerItem("dry_decorated_pot",                        props -> new DryingBlockItem(BlockRegistration.DRYING_DECORATED_POT, props, true));
-    // - FLOWER_POT
-    public static final DeferredItem<BlockItem> WET_FLOWER_POT =                    ITEMS.registerItem("wet_flower_pot",                           props -> new DryingBlockItem(BlockRegistration.DRYING_FLOWER_POT, props, false));
-    public static final DeferredItem<BlockItem> DRY_FLOWER_POT =                    ITEMS.registerItem("dry_flower_pot",                           props -> new DryingBlockItem(BlockRegistration.DRYING_FLOWER_POT, props, true));
-    // - SCYTH_MOULD
-    // - AXE_MOULD
+    //public static final DeferredItem<Item> CLAY_BALL = new VanillaDeferredItem<>(Items.CLAY_BALL);
+    //public static final DeferredItem<Item> CHINA_CLAY_BALL = ITEMS.registerSimpleItem("china_clay_ball");
+    //public static final DeferredItem<Item> GROG = ITEMS.registerSimpleItem("grog");
+    //public static final DeferredItem<Item> KAOLIN_CLAY_BALL = ITEMS.registerSimpleItem("kaolin_clay_ball");
+    //public static final DeferredItem<Item> KAOLIN_GROG = ITEMS.registerSimpleItem("kaolin_grog");
+    //public static final DeferredItem<Item> POTTERS_CLAY_BALL = ITEMS.registerSimpleItem("potters_clay_ball");
+    //public static final DeferredItem<Item> REFRACTORY_CLAY_BALL = ITEMS.registerSimpleItem("refractory_clay_ball");
+    //public static final DeferredItem<Item> REFRACTORY_GROG = ITEMS.registerSimpleItem("refractory_grog");
+
     // - BRICK
-    public static final DeferredItem<Item>                      CLAY_BRICK =                    new VanillaDeferredItem<>(Items.BRICK);
-    public static final DeferredItem<Item>                      KAOLIN_CLAY_BRICK =             ITEMS.registerSimpleItem("kaolin_clay_brick");
-    public static final DeferredItem<Item>                      REFRACTORY_CLAY_BRICK =         ITEMS.registerSimpleItem("refractory_clay_brick");
-    public static final DeferredItem<Item>                      UNFIRED_CLAY_BRICK =            ITEMS.registerSimpleItem("unfired_clay_brick");
-    public static final DeferredItem<Item>                      UNFIRED_KAOLIN_CLAY_BRICK =     ITEMS.registerSimpleItem("unfired_kaolin_clay_brick");
-    public static final DeferredItem<Item>                      UNFIRED_POTTERS_CLAY_BRICK =    ITEMS.registerSimpleItem("unfired_potters_clay_brick");
-    public static final DeferredItem<Item>                      UNFIRED_REFRACTORY_CLAY_BRICK = ITEMS.registerSimpleItem("unfired_refractory_clay_brick");
-    public static final DeferredItem<DryingBrickBlockItem>      DRYING_CLAY_BRICK =             ITEMS.registerItem("drying_clay_brick",                                      props -> new DryingBrickBlockItem(BlockRegistration.DRYING_CLAY_BRICK, props, false));
-    public static final DeferredItem<DryingBrickBlockItem>      DRYING_KAOLIN_CLAY_BRICK =      ITEMS.registerItem("drying_kaolin_clay_brick",                               props -> new DryingBrickBlockItem(BlockRegistration.DRYING_KAOLIN_CLAY_BRICK, props, false));
-    public static final DeferredItem<DryingBrickBlockItem>      DRYING_POTTERS_CLAY_BRICK =     ITEMS.registerItem("drying_potters_clay_brick",                              props -> new DryingBrickBlockItem(BlockRegistration.DRYING_POTTERS_CLAY_BRICK, props, false));
-    public static final DeferredItem<DryingBrickBlockItem>      DRYING_REFRACTORY_CLAY_BRICK =  ITEMS.registerItem("drying_refractory_clay_brick",                           props -> new DryingBrickBlockItem(BlockRegistration.DRYING_REFRACTORY_CLAY_BRICK, props, false));
+    //public static final DeferredItem<Item>                      CLAY_BRICK =                    new VanillaDeferredItem<>(Items.BRICK);
+    //public static final DeferredItem<Item>                      CHINA_CLAY_BRICK =              ITEMS.registerSimpleItem("china_clay_brick");
+    //public static final DeferredItem<Item>                      REFRACTORY_CLAY_BRICK =         ITEMS.registerSimpleItem("refractory_clay_brick");
+    //public static final DeferredItem<Item>                      UNFIRED_CLAY_BRICK =            ITEMS.registerSimpleItem("unfired_clay_brick");
+    //public static final DeferredItem<Item>                      UNFIRED_CHINA_CLAY_BRICK =      ITEMS.registerSimpleItem("unfired_china_clay_brick");
+    //public static final DeferredItem<Item>                      UNFIRED_KAOLIN_CLAY_BRICK =     ITEMS.registerSimpleItem("unfired_kaolin_clay_brick");
+    //public static final DeferredItem<Item>                      UNFIRED_POTTERS_CLAY_BRICK =    ITEMS.registerSimpleItem("unfired_potters_clay_brick");
+    //public static final DeferredItem<Item>                      UNFIRED_REFRACTORY_CLAY_BRICK = ITEMS.registerSimpleItem("unfired_refractory_clay_brick");
+    //public static final DeferredItem<DryingBrickBlockItem>      DRYING_CLAY_BRICK =             ITEMS.registerItem("drying_clay_brick",                             props -> new DryingBrickBlockItem(BlockRegistration.DRYING_CLAY_BRICK, props, false));
+    //public static final DeferredItem<DryingBrickBlockItem>      DRYING_CHINA_CLAY_BRICK =       ITEMS.registerItem("drying_china_clay_brick",                       props -> new DryingBrickBlockItem(BlockRegistration.DRYING_CHINA_CLAY_BRICK, props, false));
+    //public static final DeferredItem<DryingBrickBlockItem>      DRYING_KAOLIN_CLAY_BRICK =      ITEMS.registerItem("drying_kaolin_clay_brick",                      props -> new DryingBrickBlockItem(BlockRegistration.DRYING_KAOLIN_CLAY_BRICK, props, false));
+    //public static final DeferredItem<DryingBrickBlockItem>      DRYING_POTTERS_CLAY_BRICK =     ITEMS.registerItem("drying_potters_clay_brick",                     props -> new DryingBrickBlockItem(BlockRegistration.DRYING_POTTERS_CLAY_BRICK, props, false));
+    //public static final DeferredItem<DryingBrickBlockItem>      DRYING_REFRACTORY_CLAY_BRICK =  ITEMS.registerItem("drying_refractory_clay_brick",                  props -> new DryingBrickBlockItem(BlockRegistration.DRYING_REFRACTORY_CLAY_BRICK, props, false));
     // - DOUBLE BRICK
-    public static final DeferredItem<Item>                      CLAY_DOUBLE_BRICK =                    ITEMS.registerSimpleItem("clay_double_brick");
-    public static final DeferredItem<Item>                      KAOLIN_CLAY_DOUBLE_BRICK =             ITEMS.registerSimpleItem("kaolin_clay_double_brick");
-    public static final DeferredItem<Item>                      REFRACTORY_CLAY_DOUBLE_BRICK =         ITEMS.registerSimpleItem("refractory_clay_double_brick");
-    public static final DeferredItem<Item>                      UNFIRED_CLAY_DOUBLE_BRICK =            ITEMS.registerSimpleItem("unfired_clay_double_brick");
-    public static final DeferredItem<Item>                      UNFIRED_KAOLIN_CLAY_DOUBLE_BRICK =     ITEMS.registerSimpleItem("unfired_kaolin_clay_double_brick");
-    public static final DeferredItem<Item>                      UNFIRED_POTTERS_CLAY_DOUBLE_BRICK =    ITEMS.registerSimpleItem("unfired_potters_clay_double_brick");
-    public static final DeferredItem<Item>                      UNFIRED_REFRACTORY_CLAY_DOUBLE_BRICK = ITEMS.registerSimpleItem("unfired_refractory_clay_double_brick");
-    public static final DeferredItem<DryingBlockItem>           DRYING_CLAY_DOUBLE_BRICK =             ITEMS.registerItem("drying_clay_double_brick",                        props -> new DryingBlockItem(BlockRegistration.DRYING_CLAY_DOUBLE_BRICK, props, false));
-    public static final DeferredItem<DryingBlockItem>           DRYING_KAOLIN_CLAY_DOUBLE_BRICK =      ITEMS.registerItem("drying_kaolin_clay_double_brick",                 props -> new DryingBlockItem(BlockRegistration.DRYING_POTTERS_CLAY_DOUBLE_BRICK, props, false));
-    public static final DeferredItem<DryingBlockItem>           DRYING_POTTERS_CLAY_DOUBLE_BRICK =     ITEMS.registerItem("drying_potters_clay_double_brick",                props -> new DryingBlockItem(BlockRegistration.DRYING_KAOLIN_CLAY_DOUBLE_BRICK, props, false));
-    public static final DeferredItem<DryingBlockItem>           DRYING_REFRACTORY_CLAY_DOUBLE_BRICK =  ITEMS.registerItem("drying_refractory_clay_double_brick",             props -> new DryingBlockItem(BlockRegistration.DRYING_REFRACTORY_CLAY_DOUBLE_BRICK, props, false));
+    //public static final DeferredItem<Item>                      CLAY_DOUBLE_BRICK =                     ITEMS.registerSimpleItem("clay_double_brick");
+    //public static final DeferredItem<Item>                      CHINA_CLAY_DOUBLE_BRICK =               ITEMS.registerSimpleItem("china_clay_double_brick");
+    //public static final DeferredItem<Item>                      REFRACTORY_CLAY_DOUBLE_BRICK =          ITEMS.registerSimpleItem("refractory_clay_double_brick");
+    //public static final DeferredItem<Item>                      UNFIRED_CLAY_DOUBLE_BRICK =             ITEMS.registerSimpleItem("unfired_clay_double_brick");
+    //public static final DeferredItem<Item>                      UNFIRED_CHINA_CLAY_DOUBLE_BRICK =       ITEMS.registerSimpleItem("unfired_china_clay_double_brick");
+    //public static final DeferredItem<Item>                      UNFIRED_KAOLIN_CLAY_DOUBLE_BRICK =      ITEMS.registerSimpleItem("unfired_kaolin_clay_double_brick");
+    //public static final DeferredItem<Item>                      UNFIRED_POTTERS_CLAY_DOUBLE_BRICK =     ITEMS.registerSimpleItem("unfired_potters_clay_double_brick");
+    //public static final DeferredItem<Item>                      UNFIRED_REFRACTORY_CLAY_DOUBLE_BRICK =  ITEMS.registerSimpleItem("unfired_refractory_clay_double_brick");
+    //public static final DeferredItem<DryingBlockItem>           DRYING_CLAY_DOUBLE_BRICK =              ITEMS.registerItem("drying_clay_double_brick",              props -> new DryingBlockItem(BlockRegistration.DRYING_CLAY_DOUBLE_BRICK, props, false));
+    //public static final DeferredItem<DryingBlockItem>           DRYING_CHINA_CLAY_DOUBLE_BRICK =        ITEMS.registerItem("drying_china_clay_double_brick",        props -> new DryingBlockItem(BlockRegistration.DRYING_CHINA_CLAY_DOUBLE_BRICK, props, false));
+    //public static final DeferredItem<DryingBlockItem>           DRYING_KAOLIN_CLAY_DOUBLE_BRICK =       ITEMS.registerItem("drying_kaolin_clay_double_brick",       props -> new DryingBlockItem(BlockRegistration.DRYING_POTTERS_CLAY_DOUBLE_BRICK, props, false));
+    //public static final DeferredItem<DryingBlockItem>           DRYING_POTTERS_CLAY_DOUBLE_BRICK =      ITEMS.registerItem("drying_potters_clay_double_brick",      props -> new DryingBlockItem(BlockRegistration.DRYING_KAOLIN_CLAY_DOUBLE_BRICK, props, false));
+    //public static final DeferredItem<DryingBlockItem>           DRYING_REFRACTORY_CLAY_DOUBLE_BRICK =   ITEMS.registerItem("drying_refractory_clay_double_brick",   props -> new DryingBlockItem(BlockRegistration.DRYING_REFRACTORY_CLAY_DOUBLE_BRICK, props, false));
+
+    // - INGOT_MOULD
+    //public static final DeferredItem<Item>                      CLAY_INGOT_MOULD =                      ITEMS.registerSimpleItem("clay_ingot_mould");
+    //public static final DeferredItem<Item>                      REFRACTORY_CLAY_INGOT_MOULD =           ITEMS.registerSimpleItem("refractory_clay_ingot_mould");
+    //public static final DeferredItem<Item>                      UNFIRED_CLAY_INGOT_MOULD =              ITEMS.registerSimpleItem("unfired_clay_ingot_mould");
+    //public static final DeferredItem<Item>                      UNFIRED_POTTERS_CLAY_INGOT_MOULD =      ITEMS.registerSimpleItem("unfired_potters_clay_ingot_mould");
+    //public static final DeferredItem<Item>                      UNFIRED_REFRACTORY_CLAY_INGOT_MOULD =   ITEMS.registerSimpleItem("unfired_refractory_clay_ingot_mould");
+    //public static final DeferredItem<Item>                      WET_REFRACTORY_CLAY_INGOT_MOULD =       ITEMS.registerSimpleItem("wet_refractory_clay_ingot_mould");
+    //public static final DeferredItem<Item>                      WET_CLAY_INGOT_MOULD =                  ITEMS.registerSimpleItem("wet_clay_ingot_mould");
+    //public static final DeferredItem<Item>                      WET_POTTERS_CLAY_INGOT_MOULD =          ITEMS.registerSimpleItem("wet_potters_clay_ingot_mould");
+
     // - BUCKET
+    //public static final DeferredItem<Item>                      CLAY_BUCKET =                           ITEMS.registerSimpleItem("clay_bucket");
+    //public static final DeferredItem<Item>                      REFRACTORY_CLAY_BUCKET =                ITEMS.registerSimpleItem("refractory_clay_bucket");
+    //public static final DeferredItem<Item>                      UNFIRED_CLAY_BUCKET =                   ITEMS.registerSimpleItem("unfired_clay_bucket");
+    //public static final DeferredItem<Item>                      UNFIRED_POTTERS_CLAY_BUCKET =           ITEMS.registerSimpleItem("unfired_potters_clay_bucket");
+    //public static final DeferredItem<Item>                      UNFIRED_REFRACTORY_CLAY_BUCKET =        ITEMS.registerSimpleItem("unfired_refractory_clay_bucket");
+    //public static final DeferredItem<Item>                      WET_REFRACTORY_CLAY_BUCKET =            ITEMS.registerSimpleItem("wet_refractory_clay_bucket");
+    //public static final DeferredItem<Item>                      WET_CLAY_BUCKET =                       ITEMS.registerSimpleItem("wet_clay_bucket");
+    //public static final DeferredItem<Item>                      WET_POTTERS_CLAY_BUCKET =               ITEMS.registerSimpleItem("wet_potters_clay_bucket");
+
     // - CRUCIBLE
+    //public static final DeferredItem<Item>                      CLAY_CRUCIBLE =                         ITEMS.registerSimpleItem("clay_crucible");
+    //public static final DeferredItem<Item>                      REFRACTORY_CLAY_CRUCIBLE =              ITEMS.registerSimpleItem("refractory_clay_crucible");
+    //public static final DeferredItem<Item>                      UNFIRED_CLAY_CRUCIBLE =                 ITEMS.registerSimpleItem("unfired_clay_crucible");
+    //public static final DeferredItem<Item>                      UNFIRED_POTTERS_CLAY_CRUCIBLE =         ITEMS.registerSimpleItem("unfired_potters_clay_crucible");
+    //public static final DeferredItem<Item>                      UNFIRED_REFRACTORY_CLAY_CRUCIBLE =      ITEMS.registerSimpleItem("unfired_refractory_clay_crucible");
+    //public static final DeferredItem<Item>                      WET_REFRACTORY_CLAY_CRUCIBLE =          ITEMS.registerSimpleItem("wet_refractory_clay_crucible");
+    //public static final DeferredItem<Item>                      WET_CLAY_CRUCIBLE =                     ITEMS.registerSimpleItem("wet_clay_crucible");
+    //public static final DeferredItem<Item>                      WET_POTTERS_CLAY_CRUCIBLE =             ITEMS.registerSimpleItem("wet_potters_clay_crucible");
+
+    // - AXE_MOULD
     // - GREATAXE_MOULD
     // - HOE_MOULD
-    // - INGOT_MOULD
     // - KNIFE_MOULD
     // - LONGSWORD_MOULD
     // - PICKAXE_MOULD
     // - SHORTSWORD_MOULD
+    // - SCYTH_MOULD
     // - SHOVEL_MOULD
     // - SICKLE_MOULD
     // - SPEAR_MOULD
+
+
+
+
+
     // - GATHERERS_JAR
-    public static final DeferredItem<BlockItem> WET_GATHERERS_JAR =                 ITEMS.registerItem("wet_gatherers_jar",                        props -> new DryingBlockItem(BlockRegistration.DRYING_GATHERERS_JAR, props, false));
-    public static final DeferredItem<BlockItem> DRY_GATHERERS_JAR =                 ITEMS.registerItem("dry_gatherers_jar",                        props -> new DryingBlockItem(BlockRegistration.DRYING_GATHERERS_JAR, props, true));
-    public static final DeferredItem<GatherersJarBlockItem> GATHERERS_JAR =         ITEMS.registerItem("gatherers_jar", props -> new GatherersJarBlockItem(BlockRegistration.GATHERERS_JAR, props.stacksTo(1)));
+    //public static final DeferredItem<BlockItem> WET_GATHERERS_JAR =                 ITEMS.registerItem("wet_gatherers_jar",                        props -> new DryingBlockItem(BlockRegistration.DRYING_GATHERERS_JAR, props, false));
+    //public static final DeferredItem<BlockItem> DRY_GATHERERS_JAR =                 ITEMS.registerItem("dry_gatherers_jar",                        props -> new DryingBlockItem(BlockRegistration.DRYING_GATHERERS_JAR, props, true));
+    //public static final DeferredItem<GatherersJarBlockItem> GATHERERS_JAR =         ITEMS.registerItem("gatherers_jar", props -> new GatherersJarBlockItem(BlockRegistration.GATHERERS_JAR, props.stacksTo(1)));
     // - KEEPERS_CROCK
-    public static final DeferredItem<BlockItem> WET_KEEPERS_CROCK =                 ITEMS.registerItem("wet_keepers_crock",                        props -> new DryingBlockItem(BlockRegistration.DRYING_KEEPERS_CROCK, props, false));
-    public static final DeferredItem<BlockItem> DRY_KEEPERS_CROCK =                 ITEMS.registerItem("dry_keepers_crock",                        props -> new DryingBlockItem(BlockRegistration.DRYING_KEEPERS_CROCK, props, true));
-    public static final DeferredItem<ContainerItemBlockItem> KEEPERS_CROCK =        ITEMS.registerItem("keepers_crock", props -> new ContainerItemBlockItem(BlockRegistration.KEEPERS_CROCK, props.stacksTo(1)));
+    //public static final DeferredItem<BlockItem> WET_KEEPERS_CROCK =                 ITEMS.registerItem("wet_keepers_crock",                        props -> new DryingBlockItem(BlockRegistration.DRYING_KEEPERS_CROCK, props, false));
+    //public static final DeferredItem<BlockItem> DRY_KEEPERS_CROCK =                 ITEMS.registerItem("dry_keepers_crock",                        props -> new DryingBlockItem(BlockRegistration.DRYING_KEEPERS_CROCK, props, true));
+    //public static final DeferredItem<ContainerItemBlockItem> KEEPERS_CROCK =        ITEMS.registerItem("keepers_crock", props -> new ContainerItemBlockItem(BlockRegistration.KEEPERS_CROCK, props.stacksTo(1)));
     // - SETTLERS_POT
-    public static final DeferredItem<BlockItem> WET_SETTLERS_POT =                  ITEMS.registerItem("wet_settlers_pot",                         props -> new DryingBlockItem(BlockRegistration.DRYING_SETTLERS_POT, props, false));
-    public static final DeferredItem<BlockItem> DRY_SETTLERS_POT =                  ITEMS.registerItem("dry_settlers_pot",                         props -> new DryingBlockItem(BlockRegistration.DRYING_SETTLERS_POT, props, true));
-    public static final DeferredItem<BlockItem> SETTLERS_POT =                      ITEMS.registerSimpleBlockItem("settlers_pot",                  BlockRegistration.SETTLERS_POT);
+    //public static final DeferredItem<BlockItem> WET_SETTLERS_POT =                  ITEMS.registerItem("wet_settlers_pot",                         props -> new DryingBlockItem(BlockRegistration.DRYING_SETTLERS_POT, props, false));
+    //public static final DeferredItem<BlockItem> DRY_SETTLERS_POT =                  ITEMS.registerItem("dry_settlers_pot",                         props -> new DryingBlockItem(BlockRegistration.DRYING_SETTLERS_POT, props, true));
+    //public static final DeferredItem<BlockItem> SETTLERS_POT =                      ITEMS.registerSimpleBlockItem("settlers_pot",                  BlockRegistration.SETTLERS_POT);
     // - COOKING_POT
-    public static final DeferredItem<BlockItem> WET_CLAY_COOKING_POT =              ITEMS.registerItem("wet_clay_cooking_pot",                     props -> new DryingBlockItem(BlockRegistration.DRYING_CLAY_COOKING_POT, props, false));
-    public static final DeferredItem<BlockItem> DRY_CLAY_COOKING_POT =              ITEMS.registerItem("dry_clay_cooking_pot",                     props -> new DryingBlockItem(BlockRegistration.DRYING_CLAY_COOKING_POT, props, true));
-    public static final DeferredItem<BlockItem> CLAY_COOKING_POT =                  ITEMS.registerSimpleBlockItem("clay_cooking_pot",              BlockRegistration.CLAY_COOKING_POT);
+    //public static final DeferredItem<BlockItem> WET_CLAY_COOKING_POT =              ITEMS.registerItem("wet_clay_cooking_pot",                     props -> new DryingBlockItem(BlockRegistration.DRYING_CLAY_COOKING_POT, props, false));
+    //public static final DeferredItem<BlockItem> DRY_CLAY_COOKING_POT =              ITEMS.registerItem("dry_clay_cooking_pot",                     props -> new DryingBlockItem(BlockRegistration.DRYING_CLAY_COOKING_POT, props, true));
+    //public static final DeferredItem<BlockItem> CLAY_COOKING_POT =                  ITEMS.registerSimpleBlockItem("clay_cooking_pot",              BlockRegistration.CLAY_COOKING_POT);
     // - CLAY_CAULDRON
-    public static final DeferredItem<BlockItem> WET_CLAY_CAULDRON =                 ITEMS.registerItem("wet_clay_cauldron",                        props -> new DryingBlockItem(BlockRegistration.DRYING_CLAY_CAULDRON, props.stacksTo(1), false));
-    public static final DeferredItem<BlockItem> DRY_CLAY_CAULDRON =                 ITEMS.registerItem("dry_clay_cauldron",                        props -> new DryingBlockItem(BlockRegistration.DRYING_CLAY_CAULDRON, props.stacksTo(1), true));
-    public static final DeferredItem<BlockItem> CLAY_CAULDRON =                     ITEMS.registerSimpleBlockItem("clay_cauldron",                 BlockRegistration.CLAY_CAULDRON);
+    //public static final DeferredItem<BlockItem> WET_CLAY_CAULDRON =                 ITEMS.registerItem("wet_clay_cauldron",                        props -> new DryingBlockItem(BlockRegistration.DRYING_CLAY_CAULDRON, props.stacksTo(1), false));
+    //public static final DeferredItem<BlockItem> DRY_CLAY_CAULDRON =                 ITEMS.registerItem("dry_clay_cauldron",                        props -> new DryingBlockItem(BlockRegistration.DRYING_CLAY_CAULDRON, props.stacksTo(1), true));
+    //public static final DeferredItem<BlockItem> CLAY_CAULDRON =                     ITEMS.registerSimpleBlockItem("clay_cauldron",                 BlockRegistration.CLAY_CAULDRON);
+
+
+    // - BIRCH_POT
+    // TODO
+    // - JUG
+    //public static final DeferredItem<BlockItem> WET_JUG =                           ITEMS.registerItem("wet_jug",                                  props -> new DryingBlockItem(BlockRegistration.DRYING_JUG, props, false));
+    //public static final DeferredItem<BlockItem> DRY_JUG =                           ITEMS.registerItem("dry_jug",                                  props -> new DryingBlockItem(BlockRegistration.DRYING_JUG, props, true));
+    //public static final DeferredItem<BlockItem> JUG =                               ITEMS.registerSimpleBlockItem("jug",                           BlockRegistration.JUG);
+    // - POT
+    // - DECORATED_POT
+    //public static final DeferredItem<BlockItem> WET_DECORATED_POT =                 ITEMS.registerItem("wet_decorated_pot",                        props -> new DryingBlockItem(BlockRegistration.DRYING_DECORATED_POT, props, false));
+    //public static final DeferredItem<BlockItem> DRY_DECORATED_POT =                 ITEMS.registerItem("dry_decorated_pot",                        props -> new DryingBlockItem(BlockRegistration.DRYING_DECORATED_POT, props, true));
+    // - FLOWER_POT
+    //public static final DeferredItem<BlockItem> WET_FLOWER_POT =                    ITEMS.registerItem("wet_flower_pot",                           props -> new DryingBlockItem(BlockRegistration.DRYING_FLOWER_POT, props, false));
+    //public static final DeferredItem<BlockItem> DRY_FLOWER_POT =                    ITEMS.registerItem("dry_flower_pot",                           props -> new DryingBlockItem(BlockRegistration.DRYING_FLOWER_POT, props, true));
     //endregion
 
     //region == METAL WORKING ==
@@ -393,68 +430,72 @@ public final class ItemRegistration
     //endregion
 
     //region == FARMING ==
-    public static final DeferredItem<Item> BARLEY =             ITEMS.registerSimpleItem("barley",          new Item.Properties());
-    public static final DeferredItem<Item> BARLEY_SEEDS =       ITEMS.registerSimpleItem("barley_seeds",    new Item.Properties());
-    public static final DeferredItem<Item> BEETROOT =           new VanillaDeferredItem<>(Items.BEETROOT);
-    public static final DeferredItem<Item> BLUEBERRIES =        ITEMS.registerSimpleItem("blueberries",     new Item.Properties().food(FoodCatalog.BLUEBERRIES));
-    public static final DeferredItem<Item> BROAD_BEAN =         ITEMS.registerSimpleItem("broad_bean",      new Item.Properties().food(FoodCatalog.BROAD_BEAN));
-    public static final DeferredItem<Item> CABBAGE =            ITEMS.registerSimpleItem("cabbage",         new Item.Properties().food(FoodCatalog.CABBAGE));
-    public static final DeferredItem<Item> CARROT =             new VanillaDeferredItem<>(Items.CARROT);
-    public static final DeferredItem<Item> CHARD =              ITEMS.registerSimpleItem("chard",           new Item.Properties().food(FoodCatalog.CHARD));
-    public static final DeferredItem<BlockItem> DOGBANE =       ITEMS.registerSimpleBlockItem("dogbane",    BlockRegistration.DOGBANE);
-    public static final DeferredItem<Item> FLAX =               ITEMS.registerSimpleItem("flax",            new Item.Properties());
-    public static final DeferredItem<Item> FLAX_SEEDS =         ITEMS.registerSimpleItem("flax_seeds",      new Item.Properties());
-    public static final DeferredItem<Item> GARLIC =             ITEMS.registerSimpleItem("garlic",          new Item.Properties().food(FoodCatalog.GARLIC));
-    public static final DeferredItem<Item> LEEK =               ITEMS.registerSimpleItem("leek",            new Item.Properties().food(FoodCatalog.LEEK));
-    public static final DeferredItem<Item> MELON =              new VanillaDeferredItem<>(Items.MELON);
-    public static final DeferredItem<Item> MELON_SLICE =        new VanillaDeferredItem<>(Items.MELON_SLICE);
-    public static final DeferredItem<Item> NAPA_CABBAGE =       ITEMS.registerSimpleItem("napa_cabbage",    new Item.Properties().food(FoodCatalog.NAPA_CABBAGE));
-    public static final DeferredItem<Item> NETTLE =             ITEMS.registerSimpleItem("nettle",          new Item.Properties().food(FoodCatalog.NETTLE));
-    public static final DeferredItem<Item> OAT_SEEDS =          ITEMS.registerSimpleItem("oat_seeds",       new Item.Properties());
-    public static final DeferredItem<Item> OATS =               ITEMS.registerSimpleItem("oats",            new Item.Properties());
-    public static final DeferredItem<Item> PARSNIP =            ITEMS.registerSimpleItem("parsnip",         new Item.Properties().food(FoodCatalog.PARSNIP));
-    public static final DeferredItem<Item> POTATO =             new VanillaDeferredItem<>(Items.POTATO);
-    public static final DeferredItem<Item> PUMPKIN =            new VanillaDeferredItem<>(Items.PUMPKIN);
-    //public static final DeferredItem<Item> PUMPKIN_SLICE =      ITEMS.registerSimpleItem("pumpkin_slice",   new Item.Properties().food(FoodCatalog.PUMPKIN_SLICE));
-    public static final DeferredItem<Item> PURPLE_CARROT =      ITEMS.registerSimpleItem("purple_carrot",   new Item.Properties().food(FoodCatalog.PURPLE_CARROT));
-    public static final DeferredItem<Item> PURPLE_ONION =       ITEMS.registerSimpleItem("purple_onion",    new Item.Properties().food(FoodCatalog.PURPLE_ONION));
-    public static final DeferredItem<Item> PURPLE_SKIRRET =     ITEMS.registerSimpleItem("purple_skirret",  new Item.Properties().food(FoodCatalog.PURPLE_SKIRRET));
-    public static final DeferredItem<Item> RADISH =             ITEMS.registerSimpleItem("radish",          new Item.Properties().food(FoodCatalog.RADISH));
-    public static final DeferredItem<Item> RASPBERRIES =        ITEMS.registerSimpleItem("raspberries",     new Item.Properties().food(FoodCatalog.RASPBERRIES));
-    public static final DeferredItem<Item> SKIRRET =            ITEMS.registerSimpleItem("skirret",         new Item.Properties().food(FoodCatalog.SKIRRET));
-    public static final DeferredItem<Item> SPINACH =            ITEMS.registerSimpleItem("spinach",         new Item.Properties().food(FoodCatalog.SPINACH));
-    public static final DeferredItem<Item> STRAWBERRIES =       ITEMS.registerSimpleItem("strawberries",    new Item.Properties().food(FoodCatalog.STRAWBERRIES));
-    public static final DeferredItem<Item> TURNIP =             ITEMS.registerSimpleItem("turnip",          new Item.Properties().food(FoodCatalog.TURNIP));
-    public static final DeferredItem<Item> WHITE_CARROT =       ITEMS.registerSimpleItem("white_carrot",    new Item.Properties().food(FoodCatalog.WHITE_CARROT));
-    public static final DeferredItem<Item> WHITE_ONION =        ITEMS.registerSimpleItem("white_onion",     new Item.Properties().food(FoodCatalog.WHITE_ONION));
-    public static final DeferredItem<BlockItem> YAM =           ITEMS.registerItem("yam",                   props -> new ItemNameBlockItem(BlockRegistration.YAMS.get(), new Item.Properties().food(FoodCatalog.YAM)));
+    public static final DeferredItem<Item> BARLEY =                     ITEMS.registerSimpleItem("barley",          new Item.Properties());
+    public static final DeferredItem<Item> BARLEY_SEEDS =               ITEMS.registerSimpleItem("barley_seeds",    new Item.Properties());
+    public static final DeferredItem<Item> BEETROOT =                   new VanillaDeferredItem<>(Items.BEETROOT);
+    public static final DeferredItem<Item> BLUEBERRIES =                ITEMS.registerSimpleItem("blueberries",     new Item.Properties().food(FoodCatalog.BLUEBERRIES));
+    public static final DeferredItem<Item> BROAD_BEAN =                 ITEMS.registerSimpleItem("broad_bean",      new Item.Properties().food(FoodCatalog.BROAD_BEAN));
+    public static final DeferredItem<Item> CABBAGE =                    ITEMS.registerSimpleItem("cabbage",         new Item.Properties().food(FoodCatalog.CABBAGE));
+    public static final DeferredItem<Item> CARROT =                     new VanillaDeferredItem<>(Items.CARROT);
+    public static final DeferredItem<Item> CHARD =                      ITEMS.registerSimpleItem("chard",           new Item.Properties().food(FoodCatalog.CHARD));
+    public static final DeferredItem<BlockItem> DOGBANE =               ITEMS.registerSimpleBlockItem("dogbane",    BlockRegistration.DOGBANE);
+    public static final DeferredItem<Item> FLAX =                       ITEMS.registerSimpleItem("flax",            new Item.Properties());
+    public static final DeferredItem<Item> FLAX_SEEDS =                 ITEMS.registerSimpleItem("flax_seeds",      new Item.Properties());
+    public static final DeferredItem<Item> GARLIC =                     ITEMS.registerSimpleItem("garlic",          new Item.Properties().food(FoodCatalog.GARLIC));
+    public static final DeferredItem<Item> LEEK =                       ITEMS.registerSimpleItem("leek",            new Item.Properties().food(FoodCatalog.LEEK));
+    public static final DeferredItem<Item> MELON =                      new VanillaDeferredItem<>(Items.MELON);
+    public static final DeferredItem<Item> MELON_SLICE =                new VanillaDeferredItem<>(Items.MELON_SLICE);
+    public static final DeferredItem<Item> NAPA_CABBAGE =               ITEMS.registerSimpleItem("napa_cabbage",    new Item.Properties().food(FoodCatalog.NAPA_CABBAGE));
+    public static final DeferredItem<Item> NETTLE =                     ITEMS.registerSimpleItem("nettle",          new Item.Properties().food(FoodCatalog.NETTLE));
+    public static final DeferredItem<Item> OAT_SEEDS =                  ITEMS.registerSimpleItem("oat_seeds",       new Item.Properties());
+    public static final DeferredItem<Item> OATS =                       ITEMS.registerSimpleItem("oats",            new Item.Properties());
+    public static final DeferredItem<Item> PARSNIP =                    ITEMS.registerSimpleItem("parsnip",         new Item.Properties().food(FoodCatalog.PARSNIP));
+    public static final DeferredItem<Item> POTATO =                     new VanillaDeferredItem<>(Items.POTATO);
+    public static final DeferredItem<Item> PUMPKIN =                    new VanillaDeferredItem<>(Items.PUMPKIN);
+    public static final DeferredItem<BlockItem> GREEN_PUMPKIN =         ITEMS.registerSimpleBlockItem(BlockRegistration.GREEN_PUMPKIN,  new Item.Properties());
+    public static final DeferredItem<Item> PURPLE_CARROT =              ITEMS.registerSimpleItem("purple_carrot",   new Item.Properties().food(FoodCatalog.PURPLE_CARROT));
+    public static final DeferredItem<Item> PURPLE_ONION =               ITEMS.registerSimpleItem("purple_onion",    new Item.Properties().food(FoodCatalog.PURPLE_ONION));
+    public static final DeferredItem<Item> PURPLE_SKIRRET =             ITEMS.registerSimpleItem("purple_skirret",  new Item.Properties().food(FoodCatalog.PURPLE_SKIRRET));
+    public static final DeferredItem<Item> RADISH =                     ITEMS.registerSimpleItem("radish",          new Item.Properties().food(FoodCatalog.RADISH));
+    public static final DeferredItem<Item> RASPBERRIES =                ITEMS.registerSimpleItem("raspberries",     new Item.Properties().food(FoodCatalog.RASPBERRIES));
+    public static final DeferredItem<Item> SKIRRET =                    ITEMS.registerSimpleItem("skirret",         new Item.Properties().food(FoodCatalog.SKIRRET));
+    public static final DeferredItem<Item> SPINACH =                    ITEMS.registerSimpleItem("spinach",         new Item.Properties().food(FoodCatalog.SPINACH));
+    public static final DeferredItem<Item> STRAWBERRIES =               ITEMS.registerSimpleItem("strawberries",    new Item.Properties().food(FoodCatalog.STRAWBERRIES));
+    public static final DeferredItem<Item> TURNIP =                     ITEMS.registerSimpleItem("turnip",          new Item.Properties().food(FoodCatalog.TURNIP));
+    public static final DeferredItem<Item> WHITE_CARROT =               ITEMS.registerSimpleItem("white_carrot",    new Item.Properties().food(FoodCatalog.WHITE_CARROT));
+    public static final DeferredItem<Item> WHITE_ONION =                ITEMS.registerSimpleItem("white_onion",     new Item.Properties().food(FoodCatalog.WHITE_ONION));
+    public static final DeferredItem<BlockItem> YAM =                   ITEMS.registerItem("yam",                   props -> new ItemNameBlockItem(BlockRegistration.YAMS.get(), new Item.Properties().food(FoodCatalog.YAM)));
     //endregion
 
     // leaf litter
     // thatch
 
     //region == COOKING ==
-    public static final DeferredItem<Item> BAKED_BEETROOT =         ITEMS.registerSimpleItem("baked_beetroot", new Item.Properties().food(FoodCatalog.BAKED_BEETROOT));
-    public static final DeferredItem<Item> BAKED_CARROT =           ITEMS.registerSimpleItem("baked_carrot", new Item.Properties().food(FoodCatalog.BAKED_CARROT));
-    public static final DeferredItem<Item> BAKED_GARLIC =           ITEMS.registerSimpleItem("baked_garlic", new Item.Properties().food(FoodCatalog.BAKED_GARLIC));
-    public static final DeferredItem<Item> BAKED_LEEK =             ITEMS.registerSimpleItem("baked_leek", new Item.Properties().food(FoodCatalog.BAKED_LEEK));
-    public static final DeferredItem<Item> BAKED_PARSNIP =          ITEMS.registerSimpleItem("baked_parsnip", new Item.Properties().food(FoodCatalog.BAKED_PARSNIP));
-    public static final DeferredItem<Item> BAKED_PUMPKIN =          ITEMS.registerSimpleItem("baked_pumpkin", new Item.Properties());
-    //public static final DeferredItem<Item> BAKED_PUMPKIN_SLICE =  ITEMS.registerSimpleItem("baked_pumpkin_slice", new Item.Properties().food(FoodCatalog.BAKED_PUMPKIN_SLICE));
-    public static final DeferredItem<Item> BAKED_PURPLE_CARROT =    ITEMS.registerSimpleItem("baked_purple_carrot", new Item.Properties().food(FoodCatalog.BAKED_PURPLE_CARROT));
-    public static final DeferredItem<Item> BAKED_PURPLE_ONION =     ITEMS.registerSimpleItem("baked_purple_onion", new Item.Properties().food(FoodCatalog.BAKED_PURPLE_ONION));
-    public static final DeferredItem<Item> BAKED_PURPLE_SKIRRET =   ITEMS.registerSimpleItem("baked_purple_skirret", new Item.Properties().food(FoodCatalog.BAKED_PURPLE_SKIRRET));
-    public static final DeferredItem<Item> BAKED_RADISH =           ITEMS.registerSimpleItem("baked_radish", new Item.Properties().food(FoodCatalog.BAKED_RADISH));
-    public static final DeferredItem<Item> BAKED_SKIRRET =          ITEMS.registerSimpleItem("baked_skirret", new Item.Properties().food(FoodCatalog.BAKED_SKIRRET));
-    public static final DeferredItem<Item> BAKED_TURNIP =           ITEMS.registerSimpleItem("baked_turnip", new Item.Properties().food(FoodCatalog.BAKED_TURNIP));
-    public static final DeferredItem<Item> BAKED_WHITE_CARROT =     ITEMS.registerSimpleItem("baked_white_carrot", new Item.Properties().food(FoodCatalog.BAKED_WHITE_CARROT));
-    public static final DeferredItem<Item> BAKED_WHITE_ONION =      ITEMS.registerSimpleItem("baked_white_onion", new Item.Properties().food(FoodCatalog.BAKED_WHITE_ONION));
-    public static final DeferredItem<Item> BAKED_YAM =              ITEMS.registerSimpleItem("baked_yam", new Item.Properties().food(FoodCatalog.BAKED_YAM));
-    public static final DeferredItem<Item> CRACKED_BARLEY =         ITEMS.registerSimpleItem("cracked_barley", new Item.Properties());
-    public static final DeferredItem<Item> CRACKED_WHEAT =          ITEMS.registerSimpleItem("cracked_wheat", new Item.Properties());
-    public static final DeferredItem<Item> ROLLED_OATS =            ITEMS.registerSimpleItem("rolled_oats", new Item.Properties());
-    public static final DeferredItem<Item> FLOUR =                  ITEMS.registerSimpleItem("flour", new Item.Properties());
-    public static final DeferredItem<Item> DOUGH =                  ITEMS.registerSimpleItem("dough", new Item.Properties());
+    public static final DeferredItem<Item> BAKED_BEETROOT =             ITEMS.registerSimpleItem("baked_beetroot", new Item.Properties().food(FoodCatalog.BAKED_BEETROOT));
+    public static final DeferredItem<Item> BAKED_CARROT =               ITEMS.registerSimpleItem("baked_carrot", new Item.Properties().food(FoodCatalog.BAKED_CARROT));
+    public static final DeferredItem<Item> BAKED_GARLIC =               ITEMS.registerSimpleItem("baked_garlic", new Item.Properties().food(FoodCatalog.BAKED_GARLIC));
+    public static final DeferredItem<Item> BAKED_LEEK =                 ITEMS.registerSimpleItem("baked_leek", new Item.Properties().food(FoodCatalog.BAKED_LEEK));
+    public static final DeferredItem<Item> BAKED_PARSNIP =              ITEMS.registerSimpleItem("baked_parsnip", new Item.Properties().food(FoodCatalog.BAKED_PARSNIP));
+    public static final DeferredItem<Item> PUMPKIN_SLICE =              ITEMS.registerSimpleItem("pumpkin_slice",   new Item.Properties().food(FoodCatalog.PUMPKIN_SLICE));
+    public static final DeferredItem<Item> GREEN_PUMPKIN_SLICE =        ITEMS.registerSimpleItem("green_pumpkin_slice",   new Item.Properties().food(FoodCatalog.PUMPKIN_SLICE));
+    public static final DeferredItem<Item> BAKED_PUMPKIN =              ITEMS.registerSimpleItem("baked_pumpkin", new Item.Properties());
+    public static final DeferredItem<Item> BAKED_GREEN_PUMPKIN =        ITEMS.registerSimpleItem("baked_green_pumpkin", new Item.Properties());
+    public static final DeferredItem<Item> BAKED_PUMPKIN_SLICE =        ITEMS.registerSimpleItem("baked_pumpkin_slice", new Item.Properties().food(FoodCatalog.BAKED_PUMPKIN_SLICE));
+    public static final DeferredItem<Item> BAKED_GREEN_PUMPKIN_SLICE =  ITEMS.registerSimpleItem("baked_green_pumpkin_slice", new Item.Properties().food(FoodCatalog.BAKED_PUMPKIN_SLICE));
+    public static final DeferredItem<Item> BAKED_PURPLE_CARROT =        ITEMS.registerSimpleItem("baked_purple_carrot", new Item.Properties().food(FoodCatalog.BAKED_PURPLE_CARROT));
+    public static final DeferredItem<Item> BAKED_PURPLE_ONION =         ITEMS.registerSimpleItem("baked_purple_onion", new Item.Properties().food(FoodCatalog.BAKED_PURPLE_ONION));
+    public static final DeferredItem<Item> BAKED_PURPLE_SKIRRET =       ITEMS.registerSimpleItem("baked_purple_skirret", new Item.Properties().food(FoodCatalog.BAKED_PURPLE_SKIRRET));
+    public static final DeferredItem<Item> BAKED_RADISH =               ITEMS.registerSimpleItem("baked_radish", new Item.Properties().food(FoodCatalog.BAKED_RADISH));
+    public static final DeferredItem<Item> BAKED_SKIRRET =              ITEMS.registerSimpleItem("baked_skirret", new Item.Properties().food(FoodCatalog.BAKED_SKIRRET));
+    public static final DeferredItem<Item> BAKED_TURNIP =               ITEMS.registerSimpleItem("baked_turnip", new Item.Properties().food(FoodCatalog.BAKED_TURNIP));
+    public static final DeferredItem<Item> BAKED_WHITE_CARROT =         ITEMS.registerSimpleItem("baked_white_carrot", new Item.Properties().food(FoodCatalog.BAKED_WHITE_CARROT));
+    public static final DeferredItem<Item> BAKED_WHITE_ONION =          ITEMS.registerSimpleItem("baked_white_onion", new Item.Properties().food(FoodCatalog.BAKED_WHITE_ONION));
+    public static final DeferredItem<Item> BAKED_YAM =                  ITEMS.registerSimpleItem("baked_yam", new Item.Properties().food(FoodCatalog.BAKED_YAM));
+    public static final DeferredItem<Item> CRACKED_BARLEY =             ITEMS.registerSimpleItem("cracked_barley", new Item.Properties());
+    public static final DeferredItem<Item> CRACKED_WHEAT =              ITEMS.registerSimpleItem("cracked_wheat", new Item.Properties());
+    public static final DeferredItem<Item> ROLLED_OATS =                ITEMS.registerSimpleItem("rolled_oats", new Item.Properties());
+    public static final DeferredItem<Item> FLOUR =                      ITEMS.registerSimpleItem("flour", new Item.Properties());
+    public static final DeferredItem<Item> DOUGH =                      ITEMS.registerSimpleItem("dough", new Item.Properties());
     //endregion
 
     //region == WEAVING ==
@@ -471,14 +512,42 @@ public final class ItemRegistration
     public static final DeferredItem<Item> BLACK_BARK = ITEMS.registerSimpleItem("black_bark"); // Dark Oak
     public static final DeferredItem<Item> CHARCOAL_POWDER = ITEMS.registerSimpleItem("charcoal_powder");
     public static final DeferredItem<Item> POTASH = ITEMS.registerSimpleItem("potash"); // (Leaching) soluable part of wood ash, evaporated/boiled + NaCO3 (Soda Ash), CaCO3, MgCO3, Potassium Sulfate, CaSO4
+    public static final DeferredItem<Item> TOOL_HANDLE = ITEMS.registerSimpleItem("tool_handle", new Item.Properties());
     //endregion
 
     //region == KNAPPING ==
     public static final DeferredItem<Item> BROKEN_GOAT_HORN = ITEMS.registerSimpleItem("broken_goat_horn", new Item.Properties());
     @Deprecated
     public static final DeferredItem<Item> LUNATE = ITEMS.registerSimpleItem("lunate", new Item.Properties());
-    @Deprecated
-    public static final DeferredItem<Item> BIFACE = ITEMS.registerItem("biface", BifaceItem::new, new Item.Properties().component(DataComponents.TOOL, BifaceItem.createToolProperties()));
+
+    public static final DeferredItem<Item> ANTLER =                 ITEMS.registerSimpleItem("antler", new Item.Properties());
+
+    public static final DeferredItem<Item> ROCK_KNIFE_BLADE =       ITEMS.registerSimpleItem("rock_knife_blade", new Item.Properties());
+    public static final DeferredItem<Item> FLINT_KNIFE_BLADE =      ITEMS.registerSimpleItem("flint_knife_blade", new Item.Properties());
+    public static final DeferredItem<Item> BONE_KNIFE_BLADE =       ITEMS.registerSimpleItem("bone_knife_blade", new Item.Properties());
+    public static final DeferredItem<Item> ROCK_KNIFE =             ITEMS.registerItem("rock_knife", props -> new KnifeItem(MedievalismTiers.ROCK, props), new Item.Properties().component(DataComponents.TOOL, KnifeItem.createToolProperties()));
+    public static final DeferredItem<Item> FLINT_KNIFE =            ITEMS.registerItem("flint_knife", props -> new KnifeItem(MedievalismTiers.FLINT, props), new Item.Properties().component(DataComponents.TOOL, KnifeItem.createToolProperties()));
+    public static final DeferredItem<Item> BONE_KNIFE =             ITEMS.registerItem("bone_knife", props -> new KnifeItem(MedievalismTiers.BONE, props), new Item.Properties().component(DataComponents.TOOL, KnifeItem.createToolProperties()));
+
+    public static final DeferredItem<Item> ROCK_AXE_HEAD =          ITEMS.registerSimpleItem("rock_axe_head", new Item.Properties());
+    public static final DeferredItem<Item> ROCK_AXE =               ITEMS.registerItem("rock_axe", props -> new AxeItem(MedievalismTiers.ROCK, props), new Item.Properties());
+
+    public static final DeferredItem<Item> ROCK_PICKAXE_HEAD =      ITEMS.registerSimpleItem("rock_pickaxe_head", new Item.Properties());
+    public static final DeferredItem<Item> ANTLER_PICKAXE_HEAD =    ITEMS.registerSimpleItem("antler_pickaxe_head", new Item.Properties());
+    public static final DeferredItem<Item> ROCK_PICKAXE =           ITEMS.registerItem("rock_pickaxe", props -> new PickaxeItem(MedievalismTiers.ROCK, props), new Item.Properties());
+    public static final DeferredItem<Item> ANTLER_PICKAXE =         ITEMS.registerItem("antler_pickaxe", props -> new PickaxeItem(MedievalismTiers.BONE, props), new Item.Properties());
+
+    public static final DeferredItem<Item> ROCK_HOE_HEAD =          ITEMS.registerSimpleItem("rock_hoe_head", new Item.Properties());
+    public static final DeferredItem<Item> ANTLER_HOE_HEAD =        ITEMS.registerSimpleItem("antler_hoe_head", new Item.Properties());
+    public static final DeferredItem<Item> ROCK_HOE =               ITEMS.registerItem("rock_hoe", props -> new HoeItem(MedievalismTiers.ROCK, props), new Item.Properties());
+    public static final DeferredItem<Item> ANTLER_HOE =             ITEMS.registerItem("antler_hoe", props -> new HoeItem(MedievalismTiers.BONE, props), new Item.Properties());
+
+    public static final DeferredItem<Item> ROCK_SPEAR_HEAD =        ITEMS.registerSimpleItem("rock_spear_head", new Item.Properties());
+    public static final DeferredItem<Item> ROCK_SPEAR =             ITEMS.registerItem("rock_spear", props -> new SpearItem(MedievalismTiers.ROCK, props), new Item.Properties().attributes(SpearItem.createAttributes()).component(DataComponents.TOOL, SpearItem.createToolProperties()));
+    // Flint and Bone Spear
+
+    public static final DeferredItem<Item> ROCK_SICKLE =            ITEMS.registerItem("rock_sickle", props -> new SickleItem(MedievalismTiers.ROCK, props), new Item.Properties().component(DataComponents.TOOL, SickleItem.createToolProperties()));
+
     //endregion
 
     //region == LEATHER WORKING ==

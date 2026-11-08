@@ -6,7 +6,9 @@ import io.github.zephyrwolf.medievalism.common.data.BlockStateEntryProviderHandl
 import io.github.zephyrwolf.medievalism.common.data.IBlockStateProviderEntry;
 import io.github.zephyrwolf.medievalism.common.warmth.WarmthTools;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.client.renderer.block.model.ItemModelGenerator;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -111,6 +113,7 @@ public final class ClayWorkingBlockStateProviderEntry implements IBlockStateProv
         );
 
         // Jug
+        /*
         ResourceLocation modelJugNorth = handle.blockModelResource(BlockRegistration.JUG.get());
         ResourceLocation modelJugEast = handle.blockModelResource(BlockRegistration.JUG.get(), "_east");
         ResourceLocation modelJugSouth = handle.blockModelResource(BlockRegistration.JUG.get(), "_south");
@@ -133,6 +136,7 @@ public final class ClayWorkingBlockStateProviderEntry implements IBlockStateProv
                 handle.existingModel(BlockRegistration.JUG.get(), "_east"),
                 handle.existingModel(BlockRegistration.JUG.get(), "_south"),
                 handle.existingModel(BlockRegistration.JUG.get(), "_west"));
+         */
 
         // Flower Pot
         handle.pushVanillaModId();
@@ -157,13 +161,17 @@ public final class ClayWorkingBlockStateProviderEntry implements IBlockStateProv
         );
 
         dryingBrickBlock(handle, BlockRegistration.DRYING_CLAY_BRICK.get(), ResourceLocation.withDefaultNamespace("block/clay"), MedievalismConstants.resource("block/unfired_clay"));
+        dryingBrickBlock(handle, BlockRegistration.DRYING_CHINA_CLAY_BRICK.get(), MedievalismConstants.resource("block/wet_china_clay"), MedievalismConstants.resource("block/unfired_china_clay"));
         dryingBrickBlock(handle, BlockRegistration.DRYING_POTTERS_CLAY_BRICK.get(), MedievalismConstants.resource("block/wet_potters_clay"), MedievalismConstants.resource("block/unfired_potters_clay"));
         dryingBrickBlock(handle, BlockRegistration.DRYING_KAOLIN_CLAY_BRICK.get(), MedievalismConstants.resource("block/wet_kaolin_clay"), MedievalismConstants.resource("block/unfired_kaolin_clay"));
         dryingBrickBlock(handle, BlockRegistration.DRYING_REFRACTORY_CLAY_BRICK.get(), MedievalismConstants.resource("block/wet_refractory_clay"), MedievalismConstants.resource("block/unfired_refractory_clay"));
         dryingDoubleBrickBlock(handle, BlockRegistration.DRYING_CLAY_DOUBLE_BRICK.get(), ResourceLocation.withDefaultNamespace("block/clay"), MedievalismConstants.resource("block/unfired_clay"));
+        dryingDoubleBrickBlock(handle, BlockRegistration.DRYING_CHINA_CLAY_DOUBLE_BRICK.get(), MedievalismConstants.resource("block/wet_china_clay"), MedievalismConstants.resource("block/unfired_china_clay"));
         dryingDoubleBrickBlock(handle, BlockRegistration.DRYING_POTTERS_CLAY_DOUBLE_BRICK.get(), MedievalismConstants.resource("block/wet_potters_clay"), MedievalismConstants.resource("block/unfired_potters_clay"));
         dryingDoubleBrickBlock(handle, BlockRegistration.DRYING_KAOLIN_CLAY_DOUBLE_BRICK.get(), MedievalismConstants.resource("block/wet_kaolin_clay"), MedievalismConstants.resource("block/unfired_refractory_clay"));
         dryingDoubleBrickBlock(handle, BlockRegistration.DRYING_REFRACTORY_CLAY_DOUBLE_BRICK.get(), MedievalismConstants.resource("block/wet_refractory_clay"), MedievalismConstants.resource("block/unfired_refractory_clay"));
+
+        //handle.flatItemBlock(BlockRegistration.)
     }
 
     private void dryingBlockHorizontalAxis(BlockStateEntryProviderHandle handle, DryingBlockRuinableHorizontalAxis block, ModelFile wetZModel, ModelFile wetXModel, ModelFile dryZModel, ModelFile dryXModel)

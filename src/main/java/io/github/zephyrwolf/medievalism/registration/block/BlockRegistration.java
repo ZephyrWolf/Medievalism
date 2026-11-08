@@ -308,10 +308,12 @@ public final class BlockRegistration
     public static final BlockBehaviour.Properties DRYING_CLAY_DOUBLE_BRICK_PROPERTIES =         BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(0.6f).sound(SoundType.MUD).randomTicks().mapColor(MapColor.CLAY).mapColor(MapColor.CLAY);
 
     public static final DeferredBlock<DryingBrickRuinable> DRYING_CLAY_BRICK =                          BLOCKS.registerBlock("drying_clay_brick", props -> new DryingBrickRuinable(props, SoundType.PACKED_MUD, 3), DRYING_CLAY_BRICK_PROPERTIES);
+    public static final DeferredBlock<DryingBrickRuinable> DRYING_CHINA_CLAY_BRICK =                    BLOCKS.registerBlock("drying_china_clay_brick", props -> new DryingBrickRuinable(props, SoundType.PACKED_MUD, 3), DRYING_CLAY_BRICK_PROPERTIES);
     public static final DeferredBlock<DryingBrickRuinable> DRYING_KAOLIN_CLAY_BRICK =                   BLOCKS.registerBlock("drying_kaolin_clay_brick", props -> new DryingBrickRuinable(props, SoundType.PACKED_MUD, 3), DRYING_CLAY_BRICK_PROPERTIES);
     public static final DeferredBlock<DryingBrickRuinable> DRYING_POTTERS_CLAY_BRICK =                  BLOCKS.registerBlock("drying_potters_clay_brick", props -> new DryingBrickRuinable(props, SoundType.PACKED_MUD, 3), DRYING_CLAY_BRICK_PROPERTIES);
     public static final DeferredBlock<DryingBrickRuinable> DRYING_REFRACTORY_CLAY_BRICK =               BLOCKS.registerBlock("drying_refractory_clay_brick", props -> new DryingBrickRuinable(props, SoundType.PACKED_MUD, 3), DRYING_CLAY_BRICK_PROPERTIES);
     public static final DeferredBlock<DryingDoubleBrickRuinable> DRYING_CLAY_DOUBLE_BRICK =             BLOCKS.registerBlock("drying_clay_double_brick", props -> new DryingDoubleBrickRuinable(props, SoundType.PACKED_MUD, 3), DRYING_CLAY_DOUBLE_BRICK_PROPERTIES);
+    public static final DeferredBlock<DryingDoubleBrickRuinable> DRYING_CHINA_CLAY_DOUBLE_BRICK =       BLOCKS.registerBlock("drying_china_clay_double_brick", props -> new DryingDoubleBrickRuinable(props, SoundType.PACKED_MUD, 3), DRYING_CLAY_DOUBLE_BRICK_PROPERTIES);
     public static final DeferredBlock<DryingDoubleBrickRuinable> DRYING_KAOLIN_CLAY_DOUBLE_BRICK =      BLOCKS.registerBlock("drying_kaolin_clay_double_brick", props -> new DryingDoubleBrickRuinable(props, SoundType.PACKED_MUD, 3), DRYING_CLAY_DOUBLE_BRICK_PROPERTIES);
     public static final DeferredBlock<DryingDoubleBrickRuinable> DRYING_POTTERS_CLAY_DOUBLE_BRICK =     BLOCKS.registerBlock("drying_potters_clay_double_brick", props -> new DryingDoubleBrickRuinable(props, SoundType.PACKED_MUD, 3), DRYING_CLAY_DOUBLE_BRICK_PROPERTIES);
     public static final DeferredBlock<DryingDoubleBrickRuinable> DRYING_REFRACTORY_CLAY_DOUBLE_BRICK =  BLOCKS.registerBlock("drying_refractory_clay_double_brick", props -> new DryingDoubleBrickRuinable(props, SoundType.PACKED_MUD, 3), DRYING_CLAY_DOUBLE_BRICK_PROPERTIES);
@@ -405,6 +407,7 @@ public final class BlockRegistration
     // WILD CROPS
     public static final DeferredBlock<WorldPlantBlock.BasicWorldPlantBlock> WILD_YAMS =     BLOCKS.registerBlock("wild_yams", WorldPlantBlock.BasicWorldPlantBlock::new, WILD_YAM_PROPERTIES);
     // CROPS
+    public static final DeferredBlock<PumpkinBlock> GREEN_PUMPKIN =                         BLOCKS.registerBlock("green_pumpkin", PumpkinBlock::new, Blocks.PUMPKIN.properties());
     public static final DeferredBlock<YamBlock> YAMS =                                      BLOCKS.registerBlock("yams", YamBlock::new, YAMS_PROPERTIES);
 
     // PRIMITIVE TECHNOLOGY PROPERTIES
@@ -430,7 +433,7 @@ public final class BlockRegistration
     public static final DeferredBlock<DryingBlockRuinableHorizontalAxis> DRYING_SETTLERS_POT =      BLOCKS.registerBlock("drying_settlers_pot",     SettlersPotBlock.DryingSettlersPotBlockRuinableHorizontalAxis::new,     POTTERY_DRYING_PROPERTIES);
     public static final DeferredBlock<DryingBlockRuinableHorizontalAxis> DRYING_CLAY_COOKING_POT =  BLOCKS.registerBlock("drying_clay_cooking_pot", ClayCookingPotBlock.DryingClayCookingPotBlockRuinable::new,             POTTERY_DRYING_PROPERTIES);
     public static final DeferredBlock<DryingBlockRuinableHorizontalAxis> DRYING_CLAY_CAULDRON =     BLOCKS.registerBlock("drying_clay_cauldron",    ClayCauldronBlock.DryingClayCauldronBlockRuinable::new,                 POTTERY_DRYING_PROPERTIES);
-    public static final DeferredBlock<DryingBlockRuinableHorizontalFacing> DRYING_JUG =             BLOCKS.registerBlock("drying_jug",              JugBlock.DryingJugBlockRuinable::new,                                   POTTERY_DRYING_PROPERTIES);
+    //public static final DeferredBlock<DryingBlockRuinableHorizontalFacing> DRYING_JUG =             BLOCKS.registerBlock("drying_jug",              JugBlock.DryingJugBlockRuinable::new,                                   POTTERY_DRYING_PROPERTIES);
     public static final DeferredBlock<DryingBlockRuinable> DRYING_FLOWER_POT =              BLOCKS.registerBlock("drying_flower_pot",       DryingBlockRuinable.BasicDryingBlockRuinable::new, POTTERY_DRYING_PROPERTIES);
     public static final DeferredBlock<DryingBlockRuinable> DRYING_DECORATED_POT =           BLOCKS.registerBlock("drying_decorated_pot",    DryingBlockRuinable.BasicDryingBlockRuinable::new, POTTERY_DRYING_PROPERTIES);
     // FIRED POTTERY
@@ -439,7 +442,7 @@ public final class BlockRegistration
     public static final DeferredBlock<SettlersPotBlock> SETTLERS_POT =                      BLOCKS.registerBlock("settlers_pot",            SettlersPotBlock::new,                                          POTTERY_PROPERTIES);
     public static final DeferredBlock<ClayCookingPotBlock> CLAY_COOKING_POT =               BLOCKS.registerBlock("clay_cooking_pot",        ClayCookingPotBlock::new,                                       POTTERY_PROPERTIES);
     public static final DeferredBlock<ClayCauldronBlock> CLAY_CAULDRON =                    BLOCKS.registerBlock("clay_cauldron",           ClayCauldronBlock::new,                                         POTTERY_PROPERTIES);
-    public static final DeferredBlock<JugBlock> JUG =                                       BLOCKS.registerBlock("jug",                     JugBlock::new,                                                  POTTERY_PROPERTIES);
+    //public static final DeferredBlock<JugBlock> JUG =                                       BLOCKS.registerBlock("jug",                     JugBlock::new,                                                  POTTERY_PROPERTIES);
     // TODO Birch Pot
     public static final DeferredBlock<Block> FLOWER_POT =                                   new VanillaDeferredBlock<>(Blocks.FLOWER_POT);
     // TODO Support player right clicking face with SHERDS

@@ -4,6 +4,7 @@ import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.advancements.critereon.PlayerStatsTrigger;
 import io.github.zephyrwolf.medievalism.datagen.base.lang.AdvancementLangKeys;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.tools.TextTools;
@@ -59,7 +60,7 @@ public class AdvancementsProviderClayWorking implements AdvancementProvider.Adva
 
         AdvancementHolder craft_wet_bricks = Advancement.Builder.advancement()
                 .parent(found_clay_ball)
-                .display(ItemRegistration.DRYING_CLAY_BRICK,
+                .display(ClayWorkingItemRegistration.DRYING_CLAY_BRICK,
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_WET_CLAY_BRICK_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_WET_CLAY_BRICK_DESC),
                         null,
@@ -71,20 +72,20 @@ public class AdvancementsProviderClayWorking implements AdvancementProvider.Adva
 
         AdvancementHolder dry_wet_bricks = Advancement.Builder.advancement()
                 .parent(craft_wet_bricks)
-                .display(ItemRegistration.UNFIRED_CLAY_BRICK,
+                .display(ClayWorkingItemRegistration.UNFIRED_CLAY_BRICK,
                         TextTools.getTranslation(AdvancementLangKeys.DRY_WET_CLAY_BRICK_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.DRY_WET_CLAY_BRICK_DESC),
                         null,
                         AdvancementType.TASK, true, false, false)
                 .addCriterion("has_dry_clay_bricks", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemRegistration.UNFIRED_CLAY_BRICK).build()
+                        ItemPredicate.Builder.item().of(ClayWorkingItemRegistration.UNFIRED_CLAY_BRICK).build()
                 ))
                 .save(saver, getNameId("clay_working", "dry_wet_bricks"));
         // Roast em!
 
         AdvancementHolder craft_wet_double_bricks = Advancement.Builder.advancement()
                 .parent(craft_wet_bricks)
-                .display(ItemRegistration.DRYING_CLAY_DOUBLE_BRICK,
+                .display(ClayWorkingItemRegistration.DRYING_CLAY_DOUBLE_BRICK,
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_WET_CLAY_DOUBLE_BRICK_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_WET_CLAY_DOUBLE_BRICK_DESC),
                         null,
@@ -96,199 +97,199 @@ public class AdvancementsProviderClayWorking implements AdvancementProvider.Adva
 
         AdvancementHolder dry_wet_double_bricks = Advancement.Builder.advancement()
                 .parent(craft_wet_double_bricks)
-                .display(ItemRegistration.UNFIRED_CLAY_DOUBLE_BRICK,
+                .display(ClayWorkingItemRegistration.UNFIRED_CLAY_DOUBLE_BRICK,
                         TextTools.getTranslation(AdvancementLangKeys.DRY_WET_CLAY_DOUBLE_BRICK_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.DRY_WET_CLAY_DOUBLE_BRICK_DESC),
                         null,
                         AdvancementType.TASK, true, false, false)
                 .addCriterion("has_dry_clay_double_bricks", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemRegistration.UNFIRED_CLAY_DOUBLE_BRICK).build()
+                        ItemPredicate.Builder.item().of(ClayWorkingItemRegistration.UNFIRED_CLAY_DOUBLE_BRICK).build()
                 ))
                 .save(saver, getNameId("clay_working", "dry_wet_double_bricks"));
         // Roast em
 
         AdvancementHolder craft_wet_potters_clay = Advancement.Builder.advancement()
                 .parent(clay_root)
-                .display(ItemRegistration.POTTERS_CLAY_BALL,
+                .display(ClayWorkingItemRegistration.POTTERS_CLAY_BALL,
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_POTTERS_CLAY_BALL_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_POTTERS_CLAY_BALL_DESC),
                         null,
                         AdvancementType.TASK, true, false, false)
                 .addCriterion("has_potters_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemRegistration.POTTERS_CLAY_BALL).build()
+                        ItemPredicate.Builder.item().of(ClayWorkingItemRegistration.POTTERS_CLAY_BALL).build()
                 ))
                 .save(saver, getNameId("clay_working", "craft_wet_potters_clay"));
 
         AdvancementHolder craft_wet_potters_clay_brick = Advancement.Builder.advancement()
                 .parent(craft_wet_potters_clay)
-                .display(ItemRegistration.DRYING_POTTERS_CLAY_BRICK,
+                .display(ClayWorkingItemRegistration.DRYING_POTTERS_CLAY_BRICK,
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_POTTERS_CLAY_BRICK_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_POTTERS_CLAY_BRICK_DESC),
                         null,
                         AdvancementType.TASK, true, false, false)
                 .addCriterion("has_wet_potters_clay_brick", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemRegistration.DRYING_POTTERS_CLAY_BRICK).build()
+                        ItemPredicate.Builder.item().of(ClayWorkingItemRegistration.DRYING_POTTERS_CLAY_BRICK).build()
                 ))
                 .save(saver, getNameId("clay_working", "craft_wet_potters_clay_brick"));
 
         AdvancementHolder dry_wet_potters_clay_brick = Advancement.Builder.advancement()
                 .parent(craft_wet_potters_clay_brick)
-                .display(ItemRegistration.UNFIRED_POTTERS_CLAY_BRICK,
+                .display(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_BRICK,
                         TextTools.getTranslation(AdvancementLangKeys.DRY_WET_POTTERS_CLAY_BRICK_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.DRY_WET_POTTERS_CLAY_BRICK_DESC),
                         null,
                         AdvancementType.TASK, true, false, false)
                 .addCriterion("has_dry_potters_clay_brick", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemRegistration.UNFIRED_POTTERS_CLAY_BRICK).build()
+                        ItemPredicate.Builder.item().of(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_BRICK).build()
                 ))
                 .save(saver, getNameId("clay_working", "dry_wet_potters_clay_brick"));
         // Roast em
 
         AdvancementHolder craft_wet_potters_clay_double_brick = Advancement.Builder.advancement()
                 .parent(craft_wet_potters_clay_brick)
-                .display(ItemRegistration.DRYING_POTTERS_CLAY_DOUBLE_BRICK,
+                .display(ClayWorkingItemRegistration.DRYING_POTTERS_CLAY_DOUBLE_BRICK,
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_WET_POTTERS_CLAY_DOUBLE_BRICK_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_WET_POTTERS_CLAY_DOUBLE_BRICK_DESC),
                         null,
                         AdvancementType.TASK, true, false, false)
                 .addCriterion("has_wet_potters_clay_brick", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemRegistration.DRYING_POTTERS_CLAY_DOUBLE_BRICK).build()
+                        ItemPredicate.Builder.item().of(ClayWorkingItemRegistration.DRYING_POTTERS_CLAY_DOUBLE_BRICK).build()
                 ))
                 .save(saver, getNameId("clay_working", "craft_wet_potters_clay_double_brick"));
 
         AdvancementHolder dry_wet_potters_clay_double_brick = Advancement.Builder.advancement()
                 .parent(craft_wet_potters_clay_double_brick)
-                .display(ItemRegistration.UNFIRED_POTTERS_CLAY_DOUBLE_BRICK,
+                .display(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_DOUBLE_BRICK,
                         TextTools.getTranslation(AdvancementLangKeys.DRY_WET_POTTERS_CLAY_DOUBLE_BRICK_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.DRY_WET_POTTERS_CLAY_DOUBLE_BRICK_DESC),
                         null,
                         AdvancementType.TASK, true, false, false)
                 .addCriterion("has_wet_potters_clay_brick", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemRegistration.UNFIRED_POTTERS_CLAY_DOUBLE_BRICK).build()
+                        ItemPredicate.Builder.item().of(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_DOUBLE_BRICK).build()
                 ))
                 .save(saver, getNameId("clay_working", "dry_wet_potters_clay_double_brick"));
         // Roast em
 
         AdvancementHolder obtain_wet_kaolin_clay = Advancement.Builder.advancement()
                 .parent(clay_root)
-                .display(ItemRegistration.KAOLIN_CLAY_BALL,
+                .display(ClayWorkingItemRegistration.KAOLIN_CLAY_BALL,
                         TextTools.getTranslation(AdvancementLangKeys.OBTAIN_KAOLIN_CLAY_BALL_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.OBTAIN_KAOLIN_CLAY_BALL_DESC),
                         null,
                         AdvancementType.TASK, true, false, false)
                 .addCriterion("has_kaolin_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemRegistration.KAOLIN_CLAY_BALL).build()
+                        ItemPredicate.Builder.item().of(ClayWorkingItemRegistration.KAOLIN_CLAY_BALL).build()
                 ))
                 .save(saver, getNameId("clay_working", "obtain_wet_kaolin_clay"));
 
         AdvancementHolder craft_wet_kaolin_clay_brick = Advancement.Builder.advancement()
                 .parent(obtain_wet_kaolin_clay)
-                .display(ItemRegistration.DRYING_KAOLIN_CLAY_BRICK,
+                .display(ClayWorkingItemRegistration.DRYING_KAOLIN_CLAY_BRICK,
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_KAOLIN_CLAY_BRICK_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_KAOLIN_CLAY_BRICK_DESC),
                         null,
                         AdvancementType.TASK, true, false, false)
                 .addCriterion("has_wet_kaolin_clay_brick", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemRegistration.DRYING_KAOLIN_CLAY_BRICK).build()
+                        ItemPredicate.Builder.item().of(ClayWorkingItemRegistration.DRYING_KAOLIN_CLAY_BRICK).build()
                 ))
                 .save(saver, getNameId("clay_working", "craft_wet_kaolin_clay_brick"));
 
         AdvancementHolder dry_wet_kaolin_clay_brick = Advancement.Builder.advancement()
                 .parent(craft_wet_kaolin_clay_brick)
-                .display(ItemRegistration.UNFIRED_KAOLIN_CLAY_BRICK,
+                .display(ClayWorkingItemRegistration.UNFIRED_KAOLIN_CLAY_BRICK,
                         TextTools.getTranslation(AdvancementLangKeys.DRY_WET_KAOLIN_CLAY_BRICK_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.DRY_WET_KAOLIN_CLAY_BRICK_DESC),
                         null,
                         AdvancementType.TASK, true, false, false)
                 .addCriterion("has_dry_kaolin_clay_brick", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemRegistration.UNFIRED_KAOLIN_CLAY_BRICK).build()
+                        ItemPredicate.Builder.item().of(ClayWorkingItemRegistration.UNFIRED_KAOLIN_CLAY_BRICK).build()
                 ))
                 .save(saver, getNameId("clay_working", "dry_wet_kaolin_clay_brick"));
         // Roast em
 
         AdvancementHolder craft_wet_kaolin_clay_double_brick = Advancement.Builder.advancement()
                 .parent(craft_wet_kaolin_clay_brick)
-                .display(ItemRegistration.DRYING_KAOLIN_CLAY_DOUBLE_BRICK,
+                .display(ClayWorkingItemRegistration.DRYING_KAOLIN_CLAY_DOUBLE_BRICK,
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_WET_KAOLIN_CLAY_DOUBLE_BRICK_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_WET_KAOLIN_CLAY_DOUBLE_BRICK_DESC),
                         null,
                         AdvancementType.TASK, true, false, false)
                 .addCriterion("has_wet_kaolin_clay_brick", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemRegistration.DRYING_KAOLIN_CLAY_DOUBLE_BRICK).build()
+                        ItemPredicate.Builder.item().of(ClayWorkingItemRegistration.DRYING_KAOLIN_CLAY_DOUBLE_BRICK).build()
                 ))
                 .save(saver, getNameId("clay_working", "craft_wet_kaolin_clay_double_brick"));
 
         AdvancementHolder dry_wet_kaolin_clay_double_brick = Advancement.Builder.advancement()
                 .parent(craft_wet_kaolin_clay_double_brick)
-                .display(ItemRegistration.UNFIRED_KAOLIN_CLAY_DOUBLE_BRICK,
+                .display(ClayWorkingItemRegistration.UNFIRED_KAOLIN_CLAY_DOUBLE_BRICK,
                         TextTools.getTranslation(AdvancementLangKeys.DRY_WET_KAOLIN_CLAY_DOUBLE_BRICK_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.DRY_WET_KAOLIN_CLAY_DOUBLE_BRICK_DESC),
                         null,
                         AdvancementType.TASK, true, false, false)
                 .addCriterion("has_wet_kaolin_clay_brick", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemRegistration.UNFIRED_KAOLIN_CLAY_DOUBLE_BRICK).build()
+                        ItemPredicate.Builder.item().of(ClayWorkingItemRegistration.UNFIRED_KAOLIN_CLAY_DOUBLE_BRICK).build()
                 ))
                 .save(saver, getNameId("clay_working", "dry_wet_kaolin_clay_double_brick"));
         // Roast em
 
         AdvancementHolder craft_wet_refractory_clay = Advancement.Builder.advancement()
                 .parent(clay_root)
-                .display(ItemRegistration.REFRACTORY_CLAY_BALL,
+                .display(ClayWorkingItemRegistration.REFRACTORY_CLAY_BALL,
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_REFRACTORY_CLAY_BALL_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_REFRACTORY_CLAY_BALL_DESC),
                         null,
                         AdvancementType.TASK, true, false, false)
                 .addCriterion("has_refractory_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemRegistration.REFRACTORY_CLAY_BALL).build()
+                        ItemPredicate.Builder.item().of(ClayWorkingItemRegistration.REFRACTORY_CLAY_BALL).build()
                 ))
                 .save(saver, getNameId("clay_working", "craft_wet_refractory_clay"));
 
         AdvancementHolder craft_wet_refractory_clay_brick = Advancement.Builder.advancement()
                 .parent(craft_wet_refractory_clay)
-                .display(ItemRegistration.DRYING_REFRACTORY_CLAY_BRICK,
+                .display(ClayWorkingItemRegistration.DRYING_REFRACTORY_CLAY_BRICK,
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_REFRACTORY_CLAY_BRICK_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_REFRACTORY_CLAY_BRICK_DESC),
                         null,
                         AdvancementType.TASK, true, false, false)
                 .addCriterion("has_wet_refractory_clay_brick", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemRegistration.DRYING_REFRACTORY_CLAY_BRICK).build()
+                        ItemPredicate.Builder.item().of(ClayWorkingItemRegistration.DRYING_REFRACTORY_CLAY_BRICK).build()
                 ))
                 .save(saver, getNameId("clay_working", "craft_wet_refractory_clay_brick"));
 
         AdvancementHolder dry_wet_refractory_clay_brick = Advancement.Builder.advancement()
                 .parent(craft_wet_refractory_clay_brick)
-                .display(ItemRegistration.UNFIRED_REFRACTORY_CLAY_BRICK,
+                .display(ClayWorkingItemRegistration.UNFIRED_REFRACTORY_CLAY_BRICK,
                         TextTools.getTranslation(AdvancementLangKeys.DRY_WET_REFRACTORY_CLAY_BRICK_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.DRY_WET_REFRACTORY_CLAY_BRICK_DESC),
                         null,
                         AdvancementType.TASK, true, false, false)
                 .addCriterion("has_dry_refractory_clay_brick", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemRegistration.UNFIRED_REFRACTORY_CLAY_BRICK).build()
+                        ItemPredicate.Builder.item().of(ClayWorkingItemRegistration.UNFIRED_REFRACTORY_CLAY_BRICK).build()
                 ))
                 .save(saver, getNameId("clay_working", "dry_wet_refractory_clay_brick"));
         // Roast em
 
         AdvancementHolder craft_wet_refractory_clay_double_brick = Advancement.Builder.advancement()
                 .parent(craft_wet_refractory_clay_brick)
-                .display(ItemRegistration.DRYING_REFRACTORY_CLAY_DOUBLE_BRICK,
+                .display(ClayWorkingItemRegistration.DRYING_REFRACTORY_CLAY_DOUBLE_BRICK,
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_WET_REFRACTORY_CLAY_DOUBLE_BRICK_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.CRAFT_WET_REFRACTORY_CLAY_DOUBLE_BRICK_DESC),
                         null,
                         AdvancementType.TASK, true, false, false)
                 .addCriterion("has_wet_refractory_clay_brick", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemRegistration.DRYING_REFRACTORY_CLAY_DOUBLE_BRICK).build()
+                        ItemPredicate.Builder.item().of(ClayWorkingItemRegistration.DRYING_REFRACTORY_CLAY_DOUBLE_BRICK).build()
                 ))
                 .save(saver, getNameId("clay_working", "craft_wet_refractory_clay_double_brick"));
 
         AdvancementHolder dry_wet_refractory_clay_double_brick = Advancement.Builder.advancement()
                 .parent(craft_wet_refractory_clay_double_brick)
-                .display(ItemRegistration.UNFIRED_REFRACTORY_CLAY_DOUBLE_BRICK,
+                .display(ClayWorkingItemRegistration.UNFIRED_REFRACTORY_CLAY_DOUBLE_BRICK,
                         TextTools.getTranslation(AdvancementLangKeys.DRY_WET_REFRACTORY_CLAY_DOUBLE_BRICK_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.DRY_WET_REFRACTORY_CLAY_DOUBLE_BRICK_DESC),
                         null,
                         AdvancementType.TASK, true, false, false)
                 .addCriterion("has_wet_refractory_clay_brick", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemRegistration.UNFIRED_REFRACTORY_CLAY_DOUBLE_BRICK).build()
+                        ItemPredicate.Builder.item().of(ClayWorkingItemRegistration.UNFIRED_REFRACTORY_CLAY_DOUBLE_BRICK).build()
                 ))
                 .save(saver, getNameId("clay_working", "dry_wet_refractory_clay_double_brick"));
         // Roast em

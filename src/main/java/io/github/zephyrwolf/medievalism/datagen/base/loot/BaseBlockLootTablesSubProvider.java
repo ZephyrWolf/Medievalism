@@ -3,6 +3,7 @@ package io.github.zephyrwolf.medievalism.datagen.base.loot;
 import io.github.zephyrwolf.medievalism.common.block.FireLayBlock;
 import io.github.zephyrwolf.medievalism.common.block.TwigsBlock;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.common.warmth.WarmthTools;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
@@ -61,28 +62,30 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
         dropSelf(BlockRegistration.DRYING_PACKED_MUD_BRICK.get());
         dropSelf(BlockRegistration.DRYING_DAUB_BRICK.get());
         dropSelf(BlockRegistration.DRYING_CLAY_BRICK.get());
+        dropSelf(BlockRegistration.DRYING_CHINA_CLAY_BRICK.get());
         dropSelf(BlockRegistration.DRYING_POTTERS_CLAY_BRICK.get());
         dropSelf(BlockRegistration.DRYING_KAOLIN_CLAY_BRICK.get());
         dropSelf(BlockRegistration.DRYING_REFRACTORY_CLAY_BRICK.get());
         dropSelf(BlockRegistration.DRYING_CLAY_DOUBLE_BRICK.get());
+        dropSelf(BlockRegistration.DRYING_CHINA_CLAY_DOUBLE_BRICK.get());
         dropSelf(BlockRegistration.DRYING_POTTERS_CLAY_DOUBLE_BRICK.get());
         dropSelf(BlockRegistration.DRYING_KAOLIN_CLAY_DOUBLE_BRICK.get());
         dropSelf(BlockRegistration.DRYING_REFRACTORY_CLAY_DOUBLE_BRICK.get());
 
-        add(BlockRegistration.DRYING_GATHERERS_JAR.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ItemRegistration.WET_GATHERERS_JAR, ItemRegistration.DRY_GATHERERS_JAR));
+        add(BlockRegistration.DRYING_GATHERERS_JAR.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ClayWorkingItemRegistration.WET_GATHERERS_JAR, ClayWorkingItemRegistration.DRY_GATHERERS_JAR));
         add(BlockRegistration.GATHERERS_JAR.get(), this::createCeramicContainer);
-        add(BlockRegistration.DRYING_KEEPERS_CROCK.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ItemRegistration.WET_KEEPERS_CROCK, ItemRegistration.DRY_KEEPERS_CROCK));
+        add(BlockRegistration.DRYING_KEEPERS_CROCK.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ClayWorkingItemRegistration.WET_KEEPERS_CROCK, ClayWorkingItemRegistration.DRY_KEEPERS_CROCK));
         add(BlockRegistration.KEEPERS_CROCK.get(), this::createCeramicContainer);
-        add(BlockRegistration.DRYING_SETTLERS_POT.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ItemRegistration.WET_SETTLERS_POT, ItemRegistration.DRY_SETTLERS_POT));
+        add(BlockRegistration.DRYING_SETTLERS_POT.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ClayWorkingItemRegistration.WET_SETTLERS_POT, ClayWorkingItemRegistration.DRY_SETTLERS_POT));
         add(BlockRegistration.SETTLERS_POT.get(), this::createNameable);
-        add(BlockRegistration.DRYING_CLAY_COOKING_POT.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ItemRegistration.WET_CLAY_COOKING_POT, ItemRegistration.DRY_CLAY_COOKING_POT));
+        add(BlockRegistration.DRYING_CLAY_COOKING_POT.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ClayWorkingItemRegistration.WET_CLAY_COOKING_POT, ClayWorkingItemRegistration.DRY_CLAY_COOKING_POT));
         dropSelf(BlockRegistration.CLAY_COOKING_POT.get());
-        add(BlockRegistration.DRYING_CLAY_CAULDRON.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ItemRegistration.WET_CLAY_CAULDRON, ItemRegistration.DRY_CLAY_CAULDRON));
+        add(BlockRegistration.DRYING_CLAY_CAULDRON.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ClayWorkingItemRegistration.WET_CLAY_CAULDRON, ClayWorkingItemRegistration.DRY_CLAY_CAULDRON));
         dropSelf(BlockRegistration.CLAY_CAULDRON.get());
-        add(BlockRegistration.DRYING_JUG.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ItemRegistration.WET_JUG, ItemRegistration.DRY_JUG));
-        dropSelf(BlockRegistration.JUG.get());
-        add(BlockRegistration.DRYING_FLOWER_POT.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ItemRegistration.WET_FLOWER_POT, ItemRegistration.DRY_FLOWER_POT));
-        add(BlockRegistration.DRYING_DECORATED_POT.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ItemRegistration.WET_DECORATED_POT, ItemRegistration.DRY_DECORATED_POT));
+        //add(BlockRegistration.DRYING_JUG.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ClayWorkingItemRegistration.WET_JUG, ClayWorkingItemRegistration.DRY_JUG));
+        //dropSelf(BlockRegistration.JUG.get());
+        add(BlockRegistration.DRYING_FLOWER_POT.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ClayWorkingItemRegistration.WET_FLOWER_POT, ClayWorkingItemRegistration.DRY_FLOWER_POT));
+        add(BlockRegistration.DRYING_DECORATED_POT.get(), block -> createSpecialDropOnStateTable(block, WarmthTools.IS_DRY, true, ClayWorkingItemRegistration.WET_DECORATED_POT, ClayWorkingItemRegistration.DRY_DECORATED_POT));
 
         //region twigs
         add(

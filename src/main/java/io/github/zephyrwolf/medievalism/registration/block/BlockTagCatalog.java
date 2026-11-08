@@ -114,6 +114,7 @@ public class BlockTagCatalog
     public static final TagKey<Block> BRANCH = tag("branch");
 
     public static final TagKey<Block> KNIFE_EFFICIENT = tag("knife_efficient");
+    public static final TagKey<Block> SICKLE_EFFICIENT = tag("sickle_efficient");
 
     private static TagKey<Block> tag(String name)
     {
