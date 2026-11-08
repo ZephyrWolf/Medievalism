@@ -184,6 +184,29 @@ public final class BaseShapelessRecipeProvider {
                 .group("dough")
                 .unlockedBy("has_flour", RecipeTools.itemPredicateOf(ItemRegistration.FLOUR))
                 .save(recipeOutput, MedievalismConstants.resource("dough"));
+
+        // TODO These should have a knife as a tool
+        // TODO Replace melon recipe with this format
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistration.PUMPKIN_SLICE, 9)
+                .requires(Items.PUMPKIN)
+                .group("pumpkin_slice")
+                .unlockedBy("hasPumpkin", RecipeTools.itemPredicateOf(Items.PUMPKIN))
+                .save(recipeOutput, MedievalismConstants.resource("pumpkin_slice"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistration.GREEN_PUMPKIN_SLICE, 9)
+                .requires(ItemRegistration.GREEN_PUMPKIN)
+                .group("green_pumpkin_slice")
+                .unlockedBy("hasGreenPumpkin", RecipeTools.itemPredicateOf(ItemRegistration.GREEN_PUMPKIN))
+                .save(recipeOutput, MedievalismConstants.resource("green_pumpkin_slice"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistration.BAKED_PUMPKIN_SLICE, 9)
+                .requires(ItemRegistration.BAKED_PUMPKIN)
+                .group("baked_pumpkin_slice")
+                .unlockedBy("hasBakedPumpkin", RecipeTools.itemPredicateOf(ItemRegistration.BAKED_PUMPKIN))
+                .save(recipeOutput, MedievalismConstants.resource("baked_pumpkin_slice"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistration.BAKED_GREEN_PUMPKIN_SLICE, 9)
+                .requires(ItemRegistration.BAKED_GREEN_PUMPKIN)
+                .group("baked_green_pumpkin_slice")
+                .unlockedBy("hasBakedGreenPumpkin", RecipeTools.itemPredicateOf(ItemRegistration.BAKED_GREEN_PUMPKIN))
+                .save(recipeOutput, MedievalismConstants.resource("baked_green_pumpkin_slice"));
     }
 
     private static void cordageRecipes(RecipeOutput recipeOutput) {

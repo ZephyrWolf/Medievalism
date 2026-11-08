@@ -64,7 +64,7 @@ public final class BaseAdditionalDropsTablesSubProvider implements LootTableSubP
         ruinedDrop(BlockRegistration.DRYING_KEEPERS_CROCK.get(),        Items.CLAY_BALL, 2, 4);
         ruinedDrop(BlockRegistration.DRYING_SETTLERS_POT.get(),         Items.CLAY_BALL, 2, 4);
         ruinedDrop(BlockRegistration.DRYING_CLAY_COOKING_POT.get(),     Items.CLAY_BALL, 2, 4);
-        ruinedDrop(BlockRegistration.DRYING_JUG.get(),                  Items.CLAY_BALL, 2, 4);
+        //ruinedDrop(BlockRegistration.DRYING_JUG.get(),                  Items.CLAY_BALL, 2, 4);
         ruinedDrop(BlockRegistration.DRYING_FLOWER_POT.get(),           Items.CLAY_BALL, 2, 4);
         ruinedDrop(BlockRegistration.DRYING_DECORATED_POT.get(),        Items.CLAY_BALL, 2, 4);
     }

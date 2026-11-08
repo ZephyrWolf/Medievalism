@@ -22,7 +22,12 @@ public class CookingItemModelProviderEntry implements IItemModelProviderEntry
         handle.itemGeneratedModel(ItemRegistration.BAKED_GARLIC.get());
         handle.itemGeneratedModel(ItemRegistration.BAKED_LEEK.get());
         handle.itemGeneratedModel(ItemRegistration.BAKED_PARSNIP.get());
-        //handle.itemGeneratedModel(ItemRegistration.BAKED_PUMPKIN_SLICE.get());
+        handle.itemGeneratedModel(ItemRegistration.PUMPKIN_SLICE.get());
+        handle.itemGeneratedModel(ItemRegistration.GREEN_PUMPKIN_SLICE.get());
+        handle.itemGeneratedModel(ItemRegistration.BAKED_PUMPKIN.get());
+        handle.itemGeneratedModel(ItemRegistration.BAKED_GREEN_PUMPKIN.get());
+        handle.itemGeneratedModel(ItemRegistration.BAKED_PUMPKIN_SLICE.get());
+        handle.itemGeneratedModel(ItemRegistration.BAKED_GREEN_PUMPKIN_SLICE.get());
         handle.itemGeneratedModel(ItemRegistration.BAKED_PURPLE_CARROT.get());
         handle.itemGeneratedModel(ItemRegistration.BAKED_PURPLE_ONION.get());
         handle.itemGeneratedModel(ItemRegistration.BAKED_PURPLE_SKIRRET.get());

@@ -2,6 +2,7 @@ package io.github.zephyrwolf.medievalism.datagen.base.itemmodel;
 
 import io.github.zephyrwolf.medievalism.common.data.IItemModelProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.ItemModelEntryProviderHandle;
+import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 
 public class FarmingItemModelProviderEntry implements IItemModelProviderEntry
@@ -37,7 +38,9 @@ public class FarmingItemModelProviderEntry implements IItemModelProviderEntry
         handle.itemGeneratedModel(ItemRegistration.NETTLE.get());
         handle.itemGeneratedModel(ItemRegistration.OATS.get());
         handle.itemGeneratedModel(ItemRegistration.PARSNIP.get());
-        //handle.itemGeneratedModel(ItemRegistration.PUMPKIN_SLICE.get());
+        handle.setFolder("");
+        handle.blockBasedModel(ItemRegistration.GREEN_PUMPKIN.get(), "");
+        handle.setFolder("farming");
         handle.itemGeneratedModel(ItemRegistration.PURPLE_CARROT.get());
         handle.itemGeneratedModel(ItemRegistration.PURPLE_ONION.get());
         handle.itemGeneratedModel(ItemRegistration.PURPLE_SKIRRET.get());

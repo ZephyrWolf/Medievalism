@@ -390,13 +390,13 @@ public class BlockStateEntryProviderHandle
                 .renderType("cutout");
     }
 
-    public ModelFile simplePillarModel(Block block, Block top, Block side)
-    { return pillarModel(blockModelName(block), provider.blockTexture(top), provider.blockTexture(side)); }
-    public ModelFile pillarModel(String modelName, ResourceLocation topTexture, ResourceLocation sideTexture)
+    public ModelFile cubeColumnModel(Block block, Block end, Block side)
+    { return cubeColumnModel(blockModelName(block), provider.blockTexture(end), provider.blockTexture(side)); }
+    public ModelFile cubeColumnModel(String modelName, ResourceLocation endTexture, ResourceLocation sideTexture)
     {
         return provider.models()
                 .withExistingParent(modelName, ResourceLocation.withDefaultNamespace("block/cube_column"))
-                .texture("end", topTexture)
+                .texture("end", endTexture)
                 .texture("side", sideTexture);
     }
     //endregion

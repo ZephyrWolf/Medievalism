@@ -96,6 +96,16 @@ public final class PlacementTools
 
     // --
 
+    public static List<PlacementModifier> surfacePlacementAttempts(int minCount, int maxCount)
+    {
+        return surfacePlacement(minCount,maxCount, 1);
+    }
+
+    public static List<PlacementModifier> surfacePlacementChance(int chance)
+    {
+        return surfacePlacement(1,1, chance);
+    }
+
     public static List<PlacementModifier> surfacePlacement(int minCount, int maxCount, int chance)
     {
         return List.of(

@@ -212,6 +212,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
                         )
         ));
 
+        dropSelf(BlockRegistration.GREEN_PUMPKIN.get());
         add(
                 BlockRegistration.YAMS.get(),
                 createCropDrops(

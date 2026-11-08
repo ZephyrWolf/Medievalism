@@ -4,16 +4,10 @@ import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.block.*;
 import io.github.zephyrwolf.medievalism.common.data.BlockStateEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.common.data.IBlockStateProviderEntry;
-import io.github.zephyrwolf.medievalism.common.warmth.WarmthTools;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
-import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -47,10 +41,10 @@ public final class WorldBlockStateProviderEntry implements IBlockStateProviderEn
         ResourceLocation textureClayInDirt2 = handle.blockTexture(BlockRegistration.CLAY_IN_DIRT.get(), "3");
         ResourceLocation textureClayInDirt3 = handle.blockTexture(BlockRegistration.CLAY_IN_DIRT.get(), "4");
         handle.randomModelBlock(BlockRegistration.CLAY_IN_DIRT.get(),
-                handle.pillarModel(handle.blockModelName(BlockRegistration.CLAY_IN_DIRT.get(), "0"), textureDirt, textureClayInDirt0),
-                handle.pillarModel(handle.blockModelName(BlockRegistration.CLAY_IN_DIRT.get(), "1"), textureDirt, textureClayInDirt1),
-                handle.pillarModel(handle.blockModelName(BlockRegistration.CLAY_IN_DIRT.get(), "2"), textureDirt, textureClayInDirt2),
-                handle.pillarModel(handle.blockModelName(BlockRegistration.CLAY_IN_DIRT.get(), "3"), textureDirt, textureClayInDirt3)
+                handle.cubeColumnModel(handle.blockModelName(BlockRegistration.CLAY_IN_DIRT.get(), "0"), textureDirt, textureClayInDirt0),
+                handle.cubeColumnModel(handle.blockModelName(BlockRegistration.CLAY_IN_DIRT.get(), "1"), textureDirt, textureClayInDirt1),
+                handle.cubeColumnModel(handle.blockModelName(BlockRegistration.CLAY_IN_DIRT.get(), "2"), textureDirt, textureClayInDirt2),
+                handle.cubeColumnModel(handle.blockModelName(BlockRegistration.CLAY_IN_DIRT.get(), "3"), textureDirt, textureClayInDirt3)
         );
 
         handle.simpleBlock(BlockRegistration.SILT.get());

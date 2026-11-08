@@ -1,18 +1,10 @@
 package io.github.zephyrwolf.medievalism.datagen.base.blockmodel;
 
-import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.common.block.*;
 import io.github.zephyrwolf.medievalism.common.data.BlockStateEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.common.data.IBlockStateProviderEntry;
-import io.github.zephyrwolf.medievalism.common.warmth.WarmthTools;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
-import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -30,6 +22,12 @@ public final class FarmingBlockStateProviderEntry implements IBlockStateProvider
     @Override
     public void registerModels(BlockStateEntryProviderHandle handle)
     {
+        ResourceLocation textureGreenPumpkinTop = handle.blockTexture(BlockRegistration.GREEN_PUMPKIN.get(), "_top");
+        ResourceLocation textureGreenPumpkinSide = handle.blockTexture(BlockRegistration.GREEN_PUMPKIN.get(), "_side");
+        ModelFile modelGreenPumpkin = handle.cubeColumnModel(handle.blockModelName(BlockRegistration.GREEN_PUMPKIN.get()),
+                textureGreenPumpkinTop, textureGreenPumpkinSide);
+        handle.simpleBlock(BlockRegistration.GREEN_PUMPKIN.get(), modelGreenPumpkin);
+
         handle.cropBlock_4_8(BlockRegistration.YAMS.get());
         handle.simpleCrossBlock(BlockRegistration.WILD_YAMS.get());
     }

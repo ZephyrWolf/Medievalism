@@ -30,7 +30,7 @@ public class FarmingLangEntry implements ILanguageProviderEntry
         handle.addItem(ItemRegistration.NAPA_CABBAGE.get(), "Napa Cabbage");
         handle.addItem(ItemRegistration.NETTLE.get(), "Nettle");
         handle.addItem(ItemRegistration.OATS.get(), "Oats");
-        //handle.addItem(ItemRegistration.PUMPKIN_SLICE.get(), "Pumpkin Slice");
+        handle.addItem(ItemRegistration.GREEN_PUMPKIN.get(), "Green Pumpkin");
         handle.addItem(ItemRegistration.PARSNIP.get(), "Parsnip");
         handle.addItem(ItemRegistration.PURPLE_CARROT.get(), "Purple Carrot");
         handle.addItem(ItemRegistration.PURPLE_ONION.get(), "Purple Onion");

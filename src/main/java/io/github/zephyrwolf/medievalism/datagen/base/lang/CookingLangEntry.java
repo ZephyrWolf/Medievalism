@@ -21,7 +21,12 @@ public class CookingLangEntry implements ILanguageProviderEntry
         handle.addItem(ItemRegistration.BAKED_GARLIC.get(), "Baked Garlic");
         handle.addItem(ItemRegistration.BAKED_LEEK.get(), "Baked Leek");
         handle.addItem(ItemRegistration.BAKED_PARSNIP.get(), "Baked Parsnip");
-        //handle.addItem(ItemRegistration.BAKED_PUMPKIN_SLICE.get(), "Baked Pumpkin Slice");
+        handle.addItem(ItemRegistration.PUMPKIN_SLICE.get(), "Pumpkin Slice");
+        handle.addItem(ItemRegistration.GREEN_PUMPKIN_SLICE.get(), "Green Pumpkin Slice");
+        handle.addItem(ItemRegistration.BAKED_PUMPKIN.get(), "Baked Pumpkin");
+        handle.addItem(ItemRegistration.BAKED_GREEN_PUMPKIN.get(), "Baked Green Pumpkin");
+        handle.addItem(ItemRegistration.BAKED_PUMPKIN_SLICE.get(), "Baked Pumpkin Slice");
+        handle.addItem(ItemRegistration.BAKED_GREEN_PUMPKIN_SLICE.get(), "Baked Green Pumpkin Slice");
         handle.addItem(ItemRegistration.BAKED_PURPLE_CARROT.get(), "Baked Purple Carrot");
         handle.addItem(ItemRegistration.BAKED_PURPLE_ONION.get(), "Baked Purple Onion");
         handle.addItem(ItemRegistration.BAKED_PURPLE_SKIRRET.get(), "Baked Purple Skirret");

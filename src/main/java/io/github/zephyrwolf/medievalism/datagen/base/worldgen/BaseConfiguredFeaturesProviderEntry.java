@@ -41,7 +41,7 @@ public final class BaseConfiguredFeaturesProviderEntry
 {
     // DIRT
     public static final ResourceKey<ConfiguredFeature<?, ?>> CLAY_IN_DIRT =                     FeatureTools.registerKey(MedievalismConstants.resource("clay_in_dirt"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CLAY_WITH_DOGBANE =            FeatureTools.registerKey(MedievalismConstants.resource("clay_with_dogbane"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CLAY_WITH_DOGBANE =                FeatureTools.registerKey(MedievalismConstants.resource("clay_with_dogbane"));
     // STONE
     // ORE
     public static final ResourceKey<ConfiguredFeature<?, ?>> CHALK_ORE =                        FeatureTools.registerKey(MedievalismConstants.resource("chalk_ore"));
@@ -50,8 +50,8 @@ public final class BaseConfiguredFeaturesProviderEntry
     // ROCK
     public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SANDSTONE_ROCKS =          FeatureTools.registerKey(MedievalismConstants.resource("surface_sandstone_rocks"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_RED_SANDSTONE_ROCKS =      FeatureTools.registerKey(MedievalismConstants.resource("surface_red_sandstone_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_ROCKS =          FeatureTools.registerKey(MedievalismConstants.resource("surface_rocks"));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_ROCKS =             FeatureTools.registerKey(MedievalismConstants.resource("cave_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_ROCKS =                    FeatureTools.registerKey(MedievalismConstants.resource("surface_rocks"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_ROCKS =                       FeatureTools.registerKey(MedievalismConstants.resource("cave_rocks"));
     //TWIGS
     public static final ResourceKey<ConfiguredFeature<?, ?>> DENSE_TWIGS =                      FeatureTools.registerKey(MedievalismConstants.resource("dense_twigs"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> SPARSE_TWIGS =                     FeatureTools.registerKey(MedievalismConstants.resource("sparse_twigs"));
@@ -74,7 +74,38 @@ public final class BaseConfiguredFeaturesProviderEntry
     public static final ResourceKey<ConfiguredFeature<?, ?>> RARE_OAK_BRANCH =                  FeatureTools.registerKey(MedievalismConstants.resource("rare_oak_branch"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> RARE_BIRCH_BRANCH =                FeatureTools.registerKey(MedievalismConstants.resource("rare_birch_branch"));
     // WILD CROPS
-    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_YAMS =                        FeatureTools.registerKey(MedievalismConstants.resource("wild_yams"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_BARLEY =                      FeatureTools.registerKey(MedievalismConstants.resource("wild_barley"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_BEETROOT =                    FeatureTools.registerKey(MedievalismConstants.resource("wild_beetroot"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_BLUEBERRIES =                 FeatureTools.registerKey(MedievalismConstants.resource("wild_blueberries"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_BROAD_BEAN =                  FeatureTools.registerKey(MedievalismConstants.resource("wild_broad_bean"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_CABBAGE =                     FeatureTools.registerKey(MedievalismConstants.resource("wild_cabbage"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_CARROT =                      FeatureTools.registerKey(MedievalismConstants.resource("wild_carrot"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_CHARD =                       FeatureTools.registerKey(MedievalismConstants.resource("wild_chard"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_DOGBANE =                     FeatureTools.registerKey(MedievalismConstants.resource("wild_dogbane"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_FLAX =                        FeatureTools.registerKey(MedievalismConstants.resource("wild_flax"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_GARLIC =                      FeatureTools.registerKey(MedievalismConstants.resource("wild_garlic"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_GREEN_PUMPKIN =               FeatureTools.registerKey(MedievalismConstants.resource("wild_green_pumpkin"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_LEEK =                        FeatureTools.registerKey(MedievalismConstants.resource("wild_leek"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_MELON =                       FeatureTools.registerKey(MedievalismConstants.resource("wild_melon"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_NAPA_CABBAGE =                FeatureTools.registerKey(MedievalismConstants.resource("wild_napa_cabbage"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_NETTLE =                      FeatureTools.registerKey(MedievalismConstants.resource("wild_nettle"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_OATS =                        FeatureTools.registerKey(MedievalismConstants.resource("wild_oats"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_PARSNIP =                     FeatureTools.registerKey(MedievalismConstants.resource("wild_parsnip"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_POTATO =                      FeatureTools.registerKey(MedievalismConstants.resource("wild_potato"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_PUMPKIN =                     FeatureTools.registerKey(MedievalismConstants.resource("wild_pumpkin"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_PURPLE_CARROT =               FeatureTools.registerKey(MedievalismConstants.resource("wild_purple_carrot"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_PURPLE_ONION =                FeatureTools.registerKey(MedievalismConstants.resource("wild_purple_onion"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_PURPLE_SKIRRET =              FeatureTools.registerKey(MedievalismConstants.resource("wild_purple_skirret"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_RADISH =                      FeatureTools.registerKey(MedievalismConstants.resource("wild_radish"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_RASPBERRIES =                 FeatureTools.registerKey(MedievalismConstants.resource("wild_raspberries"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_SKIRRET =                     FeatureTools.registerKey(MedievalismConstants.resource("wild_skirret"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_SPINACH =                     FeatureTools.registerKey(MedievalismConstants.resource("wild_spinach"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_STRAWBERRIES =                FeatureTools.registerKey(MedievalismConstants.resource("wild_strawberries"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_TURNIP =                      FeatureTools.registerKey(MedievalismConstants.resource("wild_turnip"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_WHITE_CARROT =                FeatureTools.registerKey(MedievalismConstants.resource("wild_white_carrot"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_WHITE_ONION =                 FeatureTools.registerKey(MedievalismConstants.resource("wild_white_onion"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_YAM =                         FeatureTools.registerKey(MedievalismConstants.resource("wild_yam"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_WHEAT =                       FeatureTools.registerKey(MedievalismConstants.resource("wild_wheat"));
 
     // --
 
@@ -244,17 +275,37 @@ public final class BaseConfiguredFeaturesProviderEntry
         FeatureTools.registerRandomPatch(context, RARE_OAK_BRANCH,          1, 0, 0, FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.OAK_BRANCH.get()));
         FeatureTools.registerRandomPatch(context, RARE_BIRCH_BRANCH,        1, 0, 0, FeatureTools.inlineSimpleBlockOnlyInAir(BlockRegistration.BIRCH_BRANCH.get()));
         // WILD CROPS
-        FeatureTools.register(context, WILD_YAMS, Feature.RANDOM_PATCH,
-                new RandomPatchConfiguration(7, 3, 0,
-                        PlacementUtils.onlyWhenEmpty(
-                                Feature.SIMPLE_BLOCK,
-                                new SimpleBlockConfiguration(
-                                        SimpleStateProvider.simple(
-                                                BlockRegistration.WILD_YAMS.get()
-                                        )
-                                )
-                        )
-                )
-        );
+        FeatureTools.register(context, WILD_BARLEY,         Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.DIAMOND_BLOCK)))));
+        FeatureTools.register(context, WILD_BEETROOT,       Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.GOLD_BLOCK)))));
+        FeatureTools.register(context, WILD_BLUEBERRIES,    Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.COAL_BLOCK)))));
+        FeatureTools.register(context, WILD_BROAD_BEAN,     Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.EMERALD_BLOCK)))));
+        FeatureTools.register(context, WILD_CABBAGE,        Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.AMETHYST_BLOCK)))));
+        FeatureTools.register(context, WILD_CARROT,         Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.IRON_BLOCK)))));
+        FeatureTools.register(context, WILD_CHARD,          Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.REDSTONE_BLOCK)))));
+        FeatureTools.register(context, WILD_DOGBANE,        Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.RED_TERRACOTTA)))));
+        FeatureTools.register(context, WILD_FLAX,           Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.ORANGE_TERRACOTTA)))));
+        FeatureTools.register(context, WILD_GARLIC,         Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.YELLOW_TERRACOTTA)))));
+        FeatureTools.register(context, WILD_GREEN_PUMPKIN,  Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.LIME_TERRACOTTA)))));
+        FeatureTools.register(context, WILD_LEEK,           Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.GREEN_TERRACOTTA)))));
+        FeatureTools.register(context, WILD_MELON,          Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.LIGHT_BLUE_TERRACOTTA)))));
+        FeatureTools.register(context, WILD_NAPA_CABBAGE,   Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.BLUE_TERRACOTTA)))));
+        FeatureTools.register(context, WILD_NETTLE,         Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.MAGENTA_TERRACOTTA)))));
+        FeatureTools.register(context, WILD_OATS,           Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.PURPLE_TERRACOTTA)))));
+        FeatureTools.register(context, WILD_PARSNIP,        Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.BROWN_TERRACOTTA)))));
+        FeatureTools.register(context, WILD_POTATO,         Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.WHITE_TERRACOTTA)))));
+        FeatureTools.register(context, WILD_PUMPKIN,        Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.GRAY_TERRACOTTA)))));
+        FeatureTools.register(context, WILD_PURPLE_CARROT,  Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.LIGHT_GRAY_TERRACOTTA)))));
+        FeatureTools.register(context, WILD_PURPLE_ONION,   Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.BLACK_TERRACOTTA)))));
+        FeatureTools.register(context, WILD_PURPLE_SKIRRET, Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.RED_CONCRETE)))));
+        FeatureTools.register(context, WILD_RADISH,         Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.ORANGE_CONCRETE)))));
+        FeatureTools.register(context, WILD_RASPBERRIES,    Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.YELLOW_CONCRETE)))));
+        FeatureTools.register(context, WILD_SKIRRET,        Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.LIME_CONCRETE)))));
+        FeatureTools.register(context, WILD_SPINACH,        Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.GREEN_CONCRETE)))));
+        FeatureTools.register(context, WILD_STRAWBERRIES,   Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.LIGHT_BLUE_CONCRETE)))));
+        FeatureTools.register(context, WILD_TURNIP,         Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.BLUE_CONCRETE)))));
+        FeatureTools.register(context, WILD_WHITE_CARROT,   Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.MAGENTA_CONCRETE)))));
+        FeatureTools.register(context, WILD_WHITE_ONION,    Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.PURPLE_CONCRETE)))));
+        FeatureTools.register(context, WILD_YAM,            Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(BlockRegistration.WILD_YAMS.get())))));
+        FeatureTools.register(context, WILD_WHEAT,          Feature.RANDOM_PATCH, new RandomPatchConfiguration(7, 3, 0, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.PINK_CONCRETE)))));
     }
 }

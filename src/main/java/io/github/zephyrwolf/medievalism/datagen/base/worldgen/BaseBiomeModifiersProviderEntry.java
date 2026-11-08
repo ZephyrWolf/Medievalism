@@ -50,7 +50,38 @@ public final class BaseBiomeModifiersProviderEntry
     public static final ResourceKey<BiomeModifier> RARE_OAK_BRANCH =                BiomeModifierTools.registerKey(MedievalismConstants.resource("rare_oak_branch"));
     public static final ResourceKey<BiomeModifier> RARE_BIRCH_BRANCH =              BiomeModifierTools.registerKey(MedievalismConstants.resource("rare_birch_branch"));
     // WILD CROPS
-    public static final ResourceKey<BiomeModifier> WILD_YAMS =                      BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_yams"));
+    public static final ResourceKey<BiomeModifier> WILD_BARLEY =                    BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_barley"));
+    public static final ResourceKey<BiomeModifier> WILD_BEETROOT =                  BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_beetroot"));
+    public static final ResourceKey<BiomeModifier> WILD_BLUEBERRIES =               BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_blueberries"));
+    public static final ResourceKey<BiomeModifier> WILD_BROAD_BEAN =                BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_broad_bean"));
+    public static final ResourceKey<BiomeModifier> WILD_CABBAGE =                   BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_cabbage"));
+    public static final ResourceKey<BiomeModifier> WILD_CARROT =                    BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_carrot"));
+    public static final ResourceKey<BiomeModifier> WILD_CHARD =                     BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_chard"));
+    public static final ResourceKey<BiomeModifier> WILD_DOGBANE =                   BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_dogbane"));
+    public static final ResourceKey<BiomeModifier> WILD_FLAX =                      BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_flax"));
+    public static final ResourceKey<BiomeModifier> WILD_GARLIC =                    BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_garlic"));
+    public static final ResourceKey<BiomeModifier> WILD_GREEN_PUMPKIN =             BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_green_pumpkin"));
+    public static final ResourceKey<BiomeModifier> WILD_LEEK =                      BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_leek"));
+    public static final ResourceKey<BiomeModifier> WILD_MELON =                     BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_melon"));
+    public static final ResourceKey<BiomeModifier> WILD_NAPA_CABBAGE =              BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_nap_cabbage"));
+    public static final ResourceKey<BiomeModifier> WILD_NETTLE =                    BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_nettle"));
+    public static final ResourceKey<BiomeModifier> WILD_OATS =                      BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_oats"));
+    public static final ResourceKey<BiomeModifier> WILD_PARSNIP =                   BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_parsnip"));
+    public static final ResourceKey<BiomeModifier> WILD_POTATO =                    BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_potato"));
+    public static final ResourceKey<BiomeModifier> WILD_PUMPKIN =                   BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_pumpkin"));
+    public static final ResourceKey<BiomeModifier> WILD_PURPLE_CARROT =             BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_purple_carrot"));
+    public static final ResourceKey<BiomeModifier> WILD_PURPLE_ONION =              BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_purple_onion"));
+    public static final ResourceKey<BiomeModifier> WILD_PURPLE_SKIRRET =            BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_purple_skirret"));
+    public static final ResourceKey<BiomeModifier> WILD_RADISH =                    BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_radish"));
+    public static final ResourceKey<BiomeModifier> WILD_RASPBERRIES =               BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_raspberries"));
+    public static final ResourceKey<BiomeModifier> WILD_SKIRRET =                   BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_skirret"));
+    public static final ResourceKey<BiomeModifier> WILD_SPINACH =                   BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_spinach"));
+    public static final ResourceKey<BiomeModifier> WILD_STRAWBERRIES =              BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_strawberries"));
+    public static final ResourceKey<BiomeModifier> WILD_TURNIP =                    BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_turnip"));
+    public static final ResourceKey<BiomeModifier> WILD_WHITE_CARROT =              BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_white_carrot"));
+    public static final ResourceKey<BiomeModifier> WILD_WHITE_ONION =               BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_white_onion"));
+    public static final ResourceKey<BiomeModifier> WILD_YAM =                       BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_yam"));
+    public static final ResourceKey<BiomeModifier> WILD_WHEAT =                     BiomeModifierTools.registerKey(MedievalismConstants.resource("wild_wheat"));
 
     // --
 
@@ -93,8 +124,37 @@ public final class BaseBiomeModifiersProviderEntry
         BiomeModifierTools.addSimpleModifier(context, RARE_OAK_BRANCH, BiomeTagCatalog.HAS_RARE_OAK_TREES, BasePlacedFeaturesProviderEntry.RARE_OAK_BRANCH, GenerationStep.Decoration.VEGETAL_DECORATION);
         BiomeModifierTools.addSimpleModifier(context, RARE_BIRCH_BRANCH, BiomeTagCatalog.HAS_RARE_BIRCH_TREES, BasePlacedFeaturesProviderEntry.RARE_BIRCH_BRANCH, GenerationStep.Decoration.VEGETAL_DECORATION);
         // WILD CROPS
-        BiomeModifierTools.addSimpleModifier(context, WILD_YAMS, BiomeTagCatalog.GENERATE_WILD_YAMS, BasePlacedFeaturesProviderEntry.WILD_YAMS, GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_BARLEY,              BiomeTagCatalog.GENERATE_WILD_BARLEY,           BasePlacedFeaturesProviderEntry.WILD_BARLEY,            GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_BEETROOT,            BiomeTagCatalog.GENERATE_WILD_BEETROOT,         BasePlacedFeaturesProviderEntry.WILD_BEETROOT,          GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_BLUEBERRIES,         BiomeTagCatalog.GENERATE_WILD_BLUEBERRIES,      BasePlacedFeaturesProviderEntry.WILD_BLUEBERRIES,       GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_BROAD_BEAN,          BiomeTagCatalog.GENERATE_WILD_BROAD_BEAN,       BasePlacedFeaturesProviderEntry.WILD_BROAD_BEAN,        GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_CABBAGE,             BiomeTagCatalog.GENERATE_WILD_CABBAGE,          BasePlacedFeaturesProviderEntry.WILD_CABBAGE,           GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_CARROT,              BiomeTagCatalog.GENERATE_WILD_CARROT,           BasePlacedFeaturesProviderEntry.WILD_CARROT,            GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_CHARD,               BiomeTagCatalog.GENERATE_WILD_CHARD,            BasePlacedFeaturesProviderEntry.WILD_CHARD,             GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_DOGBANE,             BiomeTagCatalog.GENERATE_WILD_DOGBANE,          BasePlacedFeaturesProviderEntry.WILD_DOGBANE,           GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_FLAX,                BiomeTagCatalog.GENERATE_WILD_FLAX,             BasePlacedFeaturesProviderEntry.WILD_FLAX,              GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_GARLIC,              BiomeTagCatalog.GENERATE_WILD_GARLIC,           BasePlacedFeaturesProviderEntry.WILD_GARLIC,            GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_GREEN_PUMPKIN,       BiomeTagCatalog.GENERATE_WILD_GREEN_PUMPKIN,    BasePlacedFeaturesProviderEntry.WILD_GREEN_PUMPKIN,     GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_LEEK,                BiomeTagCatalog.GENERATE_WILD_LEEK,             BasePlacedFeaturesProviderEntry.WILD_LEEK,              GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_MELON,               BiomeTagCatalog.GENERATE_WILD_MELON,            BasePlacedFeaturesProviderEntry.WILD_MELON,             GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_NAPA_CABBAGE,        BiomeTagCatalog.GENERATE_WILD_NAPA_CABBAGE,     BasePlacedFeaturesProviderEntry.WILD_NAPA_CABBAGE,      GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_NETTLE,              BiomeTagCatalog.GENERATE_WILD_NETTLE,           BasePlacedFeaturesProviderEntry.WILD_NETTLE,            GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_OATS,                BiomeTagCatalog.GENERATE_WILD_OATS,             BasePlacedFeaturesProviderEntry.WILD_OATS,              GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_PARSNIP,             BiomeTagCatalog.GENERATE_WILD_PARSNIP,          BasePlacedFeaturesProviderEntry.WILD_PARSNIP,           GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_POTATO,              BiomeTagCatalog.GENERATE_WILD_POTATO,           BasePlacedFeaturesProviderEntry.WILD_POTATO,            GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_PUMPKIN,             BiomeTagCatalog.GENERATE_WILD_PUMPKIN,          BasePlacedFeaturesProviderEntry.WILD_PUMPKIN,           GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_PURPLE_CARROT,       BiomeTagCatalog.GENERATE_WILD_PURPLE_CARROT,    BasePlacedFeaturesProviderEntry.WILD_PURPLE_CARROT,     GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_PURPLE_ONION,        BiomeTagCatalog.GENERATE_WILD_PURPLE_ONION,     BasePlacedFeaturesProviderEntry.WILD_PURPLE_ONION,      GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_PURPLE_SKIRRET,      BiomeTagCatalog.GENERATE_WILD_PURPLE_SKIRRET,   BasePlacedFeaturesProviderEntry.WILD_PURPLE_SKIRRET,    GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_RADISH,              BiomeTagCatalog.GENERATE_WILD_RADISH,           BasePlacedFeaturesProviderEntry.WILD_RADISH,            GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_RASPBERRIES,         BiomeTagCatalog.GENERATE_WILD_RASPBERRIES,      BasePlacedFeaturesProviderEntry.WILD_RASPBERRIES,       GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_SKIRRET,             BiomeTagCatalog.GENERATE_WILD_SKIRRET,          BasePlacedFeaturesProviderEntry.WILD_SKIRRET,           GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_SPINACH,             BiomeTagCatalog.GENERATE_WILD_SPINACH,          BasePlacedFeaturesProviderEntry.WILD_SPINACH,           GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_STRAWBERRIES,        BiomeTagCatalog.GENERATE_WILD_STRAWBERRIES,     BasePlacedFeaturesProviderEntry.WILD_STRAWBERRIES,      GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_TURNIP,              BiomeTagCatalog.GENERATE_WILD_TURNIP,           BasePlacedFeaturesProviderEntry.WILD_TURNIP,            GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_WHITE_CARROT,        BiomeTagCatalog.GENERATE_WILD_WHITE_CARROT,     BasePlacedFeaturesProviderEntry.WILD_WHITE_CARROT,      GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_WHITE_ONION,         BiomeTagCatalog.GENERATE_WILD_WHITE_ONION,      BasePlacedFeaturesProviderEntry.WILD_WHITE_ONION,       GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_YAM,                 BiomeTagCatalog.GENERATE_WILD_YAM,              BasePlacedFeaturesProviderEntry.WILD_YAM,               GenerationStep.Decoration.VEGETAL_DECORATION);
+        BiomeModifierTools.addSimpleModifier(context, WILD_WHEAT,               BiomeTagCatalog.GENERATE_WILD_WHEAT,            BasePlacedFeaturesProviderEntry.WILD_WHEAT,             GenerationStep.Decoration.VEGETAL_DECORATION);
     }
-
-
 }
