@@ -270,58 +270,58 @@ public final class BaseShapelessRecipeProvider {
         // Cured Hide
         // TODO
         // Limed Hide
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.LARGE_LIMED_HIDE)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, LeatherWorkingItemRegistration.LARGE_LIMED_HIDE)
                 .requires(ItemTagCatalog.LARGE_HIDE)
                 .unlockedBy("has_large_hide", RecipeTools.itemPredicateOf(ItemTagCatalog.LARGE_HIDE))
                 .save(recipeOutput, MedievalismConstants.resource("large_limed_hide"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.MEDIUM_LIMED_HIDE)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, LeatherWorkingItemRegistration.MEDIUM_LIMED_HIDE)
                 .requires(ItemTagCatalog.MEDIUM_HIDE)
                 .unlockedBy("has_medium_hide", RecipeTools.itemPredicateOf(ItemTagCatalog.MEDIUM_HIDE))
                 .save(recipeOutput, MedievalismConstants.resource("medium_limed_hide"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.SMALL_LIMED_HIDE)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, LeatherWorkingItemRegistration.SMALL_LIMED_HIDE)
                 .requires(ItemTagCatalog.SMALL_HIDE)
                 .unlockedBy("has_small_hide", RecipeTools.itemPredicateOf(ItemTagCatalog.SMALL_HIDE))
                 .save(recipeOutput, MedievalismConstants.resource("small_limed_hide"));
         // Raw Hide / Scraped Hide
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.LARGE_RAW_HIDE)
-                .requires(ItemRegistration.LARGE_LIMED_HIDE)
-                .unlockedBy("has_large_limed_hide", RecipeTools.itemPredicateOf(ItemRegistration.LARGE_LIMED_HIDE))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, LeatherWorkingItemRegistration.LARGE_RAW_HIDE)
+                .requires(LeatherWorkingItemRegistration.LARGE_LIMED_HIDE)
+                .unlockedBy("has_large_limed_hide", RecipeTools.itemPredicateOf(LeatherWorkingItemRegistration.LARGE_LIMED_HIDE))
                 .save(recipeOutput, MedievalismConstants.resource("large_raw_hide"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.MEDIUM_RAW_HIDE)
-                .requires(ItemRegistration.MEDIUM_LIMED_HIDE)
-                .unlockedBy("has_medium_limed_hide", RecipeTools.itemPredicateOf(ItemRegistration.MEDIUM_LIMED_HIDE))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, LeatherWorkingItemRegistration.MEDIUM_RAW_HIDE)
+                .requires(LeatherWorkingItemRegistration.MEDIUM_LIMED_HIDE)
+                .unlockedBy("has_medium_limed_hide", RecipeTools.itemPredicateOf(LeatherWorkingItemRegistration.MEDIUM_LIMED_HIDE))
                 .save(recipeOutput, MedievalismConstants.resource("medium_raw_hide"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.SMALL_RAW_HIDE)
-                .requires(ItemRegistration.SMALL_LIMED_HIDE)
-                .unlockedBy("has_small_limed_hide", RecipeTools.itemPredicateOf(ItemRegistration.SMALL_LIMED_HIDE))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, LeatherWorkingItemRegistration.SMALL_RAW_HIDE)
+                .requires(LeatherWorkingItemRegistration.SMALL_LIMED_HIDE)
+                .unlockedBy("has_small_limed_hide", RecipeTools.itemPredicateOf(LeatherWorkingItemRegistration.SMALL_LIMED_HIDE))
                 .save(recipeOutput, MedievalismConstants.resource("small_raw_hide"));
         // Soaked Hide
         // TODO
         // Wet Leather
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.LARGE_WET_LEATHER)
-                .requires(ItemRegistration.LARGE_RAW_HIDE)
-                .unlockedBy("has_large_raw_hide", RecipeTools.itemPredicateOf(ItemRegistration.LARGE_RAW_HIDE))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, LeatherWorkingItemRegistration.LARGE_WET_LEATHER)
+                .requires(LeatherWorkingItemRegistration.LARGE_RAW_HIDE)
+                .unlockedBy("has_large_raw_hide", RecipeTools.itemPredicateOf(LeatherWorkingItemRegistration.LARGE_RAW_HIDE))
                 .save(recipeOutput, MedievalismConstants.resource("large_wet_leather"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.MEDIUM_WET_LEATHER)
-                .requires(ItemRegistration.MEDIUM_RAW_HIDE)
-                .unlockedBy("has_medium_raw_hide", RecipeTools.itemPredicateOf(ItemRegistration.MEDIUM_RAW_HIDE))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, LeatherWorkingItemRegistration.MEDIUM_WET_LEATHER)
+                .requires(LeatherWorkingItemRegistration.MEDIUM_RAW_HIDE)
+                .unlockedBy("has_medium_raw_hide", RecipeTools.itemPredicateOf(LeatherWorkingItemRegistration.MEDIUM_RAW_HIDE))
                 .save(recipeOutput, MedievalismConstants.resource("medium_wet_leather"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.SMALL_WET_LEATHER)
-                .requires(ItemRegistration.SMALL_RAW_HIDE)
-                .unlockedBy("has_small_raw_hide", RecipeTools.itemPredicateOf(ItemRegistration.SMALL_RAW_HIDE))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, LeatherWorkingItemRegistration.SMALL_WET_LEATHER)
+                .requires(LeatherWorkingItemRegistration.SMALL_RAW_HIDE)
+                .unlockedBy("has_small_raw_hide", RecipeTools.itemPredicateOf(LeatherWorkingItemRegistration.SMALL_RAW_HIDE))
                 .save(recipeOutput, MedievalismConstants.resource("small_wet_leather"));
         // Leather
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.LEATHER)
-                .requires(ItemRegistration.LARGE_WET_LEATHER)
-                .unlockedBy("has_large_wet_leather", RecipeTools.itemPredicateOf(ItemRegistration.LARGE_WET_LEATHER))
+                .requires(LeatherWorkingItemRegistration.LARGE_WET_LEATHER)
+                .unlockedBy("has_large_wet_leather", RecipeTools.itemPredicateOf(LeatherWorkingItemRegistration.LARGE_WET_LEATHER))
                 .save(recipeOutput, MedievalismConstants.resource("large_leather"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.MEDIUM_LEATHER)
-                .requires(ItemRegistration.MEDIUM_WET_LEATHER)
-                .unlockedBy("has_medium_wet_leather", RecipeTools.itemPredicateOf(ItemRegistration.MEDIUM_WET_LEATHER))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, LeatherWorkingItemRegistration.MEDIUM_LEATHER)
+                .requires(LeatherWorkingItemRegistration.MEDIUM_WET_LEATHER)
+                .unlockedBy("has_medium_wet_leather", RecipeTools.itemPredicateOf(LeatherWorkingItemRegistration.MEDIUM_WET_LEATHER))
                 .save(recipeOutput, MedievalismConstants.resource("medium_leather"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.SMALL_LEATHER)
-                .requires(ItemRegistration.SMALL_WET_LEATHER)
-                .unlockedBy("has_small_wet_leather", RecipeTools.itemPredicateOf(ItemRegistration.SMALL_WET_LEATHER))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, LeatherWorkingItemRegistration.SMALL_LEATHER)
+                .requires(LeatherWorkingItemRegistration.SMALL_WET_LEATHER)
+                .unlockedBy("has_small_wet_leather", RecipeTools.itemPredicateOf(LeatherWorkingItemRegistration.SMALL_WET_LEATHER))
                 .save(recipeOutput, MedievalismConstants.resource("small_leather"));
     }
 

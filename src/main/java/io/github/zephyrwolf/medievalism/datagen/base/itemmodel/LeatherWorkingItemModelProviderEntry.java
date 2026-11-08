@@ -3,6 +3,7 @@ package io.github.zephyrwolf.medievalism.datagen.base.itemmodel;
 import io.github.zephyrwolf.medievalism.common.data.IItemModelProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.ItemModelEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.LeatherWorkingItemRegistration;
 
 public class LeatherWorkingItemModelProviderEntry implements IItemModelProviderEntry
 {
@@ -26,44 +27,44 @@ public class LeatherWorkingItemModelProviderEntry implements IItemModelProviderE
     private void hide(ItemModelEntryProviderHandle handle)
     {
         handle.setFolder("leather_working");
-        handle.itemGeneratedModel(ItemRegistration.BAT_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.CAMEL_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.CAT_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.COW_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.DONKEY_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.FOX_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.GOAT_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.HOGLIN_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.HORSE_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.LLAMA_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.MOOSHROOM_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.MULE_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.OCELOT_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.PANDA_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.PIG_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.POLAR_BEAR_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.RAVAGER_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.SHEEP_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.SNIFFER_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.SNOW_FOX_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.WOLF_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.BAT_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.CAMEL_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.CAT_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.COW_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.DONKEY_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.FOX_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.GOAT_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.HOGLIN_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.HORSE_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.LLAMA_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.MOOSHROOM_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.MULE_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.OCELOT_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.PANDA_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.PIG_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.POLAR_BEAR_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.RAVAGER_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.SHEEP_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.SNIFFER_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.SNOW_FOX_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.WOLF_HIDE.get());
         // rabbit hide is vanilla
     }
 
     private void leather(ItemModelEntryProviderHandle handle)
     {
         handle.setFolder("leather_working");
-        handle.itemGeneratedModel(ItemRegistration.LARGE_LIMED_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.MEDIUM_LIMED_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.SMALL_LIMED_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.LARGE_RAW_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.MEDIUM_RAW_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.SMALL_RAW_HIDE.get());
-        handle.itemGeneratedModel(ItemRegistration.LARGE_WET_LEATHER.get());
-        handle.itemGeneratedModel(ItemRegistration.MEDIUM_WET_LEATHER.get());
-        handle.itemGeneratedModel(ItemRegistration.SMALL_WET_LEATHER.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.LARGE_LIMED_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.MEDIUM_LIMED_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.SMALL_LIMED_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.LARGE_RAW_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.MEDIUM_RAW_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.SMALL_RAW_HIDE.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.LARGE_WET_LEATHER.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.MEDIUM_WET_LEATHER.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.SMALL_WET_LEATHER.get());
         // Large being vanilla
-        handle.itemGeneratedModel(ItemRegistration.MEDIUM_LEATHER.get());
-        handle.itemGeneratedModel(ItemRegistration.SMALL_LEATHER.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.MEDIUM_LEATHER.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.SMALL_LEATHER.get());
     }
 }

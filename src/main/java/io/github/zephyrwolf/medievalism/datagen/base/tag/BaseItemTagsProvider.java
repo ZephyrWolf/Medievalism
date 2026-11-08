@@ -95,30 +95,30 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
 
     private void registerModTags() {
         tag(ItemTagCatalog.LARGE_HIDE)
-                .add(ItemRegistration.COW_HIDE.get())
-                .add(ItemRegistration.HORSE_HIDE.get())
-                .add(ItemRegistration.MOOSHROOM_HIDE.get())
-                .add(ItemRegistration.RAVAGER_HIDE.get())
-                .add(ItemRegistration.PANDA_HIDE.get())
-                .add(ItemRegistration.SNIFFER_HIDE.get())
-                .add(ItemRegistration.POLAR_BEAR_HIDE.get())
-                .add(ItemRegistration.HOGLIN_HIDE.get());
+                .add(LeatherWorkingItemRegistration.COW_HIDE.get())
+                .add(LeatherWorkingItemRegistration.HORSE_HIDE.get())
+                .add(LeatherWorkingItemRegistration.MOOSHROOM_HIDE.get())
+                .add(LeatherWorkingItemRegistration.RAVAGER_HIDE.get())
+                .add(LeatherWorkingItemRegistration.PANDA_HIDE.get())
+                .add(LeatherWorkingItemRegistration.SNIFFER_HIDE.get())
+                .add(LeatherWorkingItemRegistration.POLAR_BEAR_HIDE.get())
+                .add(LeatherWorkingItemRegistration.HOGLIN_HIDE.get());
         tag(ItemTagCatalog.MEDIUM_HIDE)
-                .add(ItemRegistration.DONKEY_HIDE.get())
-                .add(ItemRegistration.MULE_HIDE.get())
-                .add(ItemRegistration.WOLF_HIDE.get())
-                .add(ItemRegistration.PIG_HIDE.get())
-                .add(ItemRegistration.GOAT_HIDE.get())
-                .add(ItemRegistration.LLAMA_HIDE.get())
-                .add(ItemRegistration.SHEEP_HIDE.get());
+                .add(LeatherWorkingItemRegistration.DONKEY_HIDE.get())
+                .add(LeatherWorkingItemRegistration.MULE_HIDE.get())
+                .add(LeatherWorkingItemRegistration.WOLF_HIDE.get())
+                .add(LeatherWorkingItemRegistration.PIG_HIDE.get())
+                .add(LeatherWorkingItemRegistration.GOAT_HIDE.get())
+                .add(LeatherWorkingItemRegistration.LLAMA_HIDE.get())
+                .add(LeatherWorkingItemRegistration.SHEEP_HIDE.get());
         tag(ItemTagCatalog.SMALL_HIDE)
                 .add(Items.RABBIT_HIDE)
-                .add(ItemRegistration.FOX_HIDE.get())
-                .add(ItemRegistration.SNOW_FOX_HIDE.get())
-                .add(ItemRegistration.OCELOT_HIDE.get())
-                .add(ItemRegistration.CAT_HIDE.get())
-                .add(ItemRegistration.OCELOT_HIDE.get())
-                .add(ItemRegistration.BAT_HIDE.get());
+                .add(LeatherWorkingItemRegistration.FOX_HIDE.get())
+                .add(LeatherWorkingItemRegistration.SNOW_FOX_HIDE.get())
+                .add(LeatherWorkingItemRegistration.OCELOT_HIDE.get())
+                .add(LeatherWorkingItemRegistration.CAT_HIDE.get())
+                .add(LeatherWorkingItemRegistration.OCELOT_HIDE.get())
+                .add(LeatherWorkingItemRegistration.BAT_HIDE.get());
 
         tag(ItemTagCatalog.CAN_CRAFT_FLOUR)
                 .add(CookingItemRegistration.CRACKED_WHEAT.get())
