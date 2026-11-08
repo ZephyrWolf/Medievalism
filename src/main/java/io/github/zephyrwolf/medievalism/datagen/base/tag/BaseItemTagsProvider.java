@@ -266,7 +266,7 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
         );
         tag(ItemTagCatalog.TOOL_BINDING).add(
                 Items.STRING,
-                ItemRegistration.FLAX_FIBER.get()
+                WeavingItemRegistration.FLAX_FIBER.get()
         );
 
         tag(ItemTagCatalog.CARVING_TOOL).add(

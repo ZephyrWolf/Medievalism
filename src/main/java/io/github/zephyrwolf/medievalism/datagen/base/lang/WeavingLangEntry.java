@@ -3,6 +3,7 @@ package io.github.zephyrwolf.medievalism.datagen.base.lang;
 import io.github.zephyrwolf.medievalism.common.data.ILanguageProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.LanguageEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.WeavingItemRegistration;
 
 public class WeavingLangEntry implements ILanguageProviderEntry
 {
@@ -31,7 +32,7 @@ public class WeavingLangEntry implements ILanguageProviderEntry
 
     private void addItemTranslations(LanguageEntryProviderHandle handle)
     {
-        handle.addItem(ItemRegistration.FLAX_FIBER.get(), "Flax Fiber");
+        handle.addItem(WeavingItemRegistration.FLAX_FIBER.get(), "Flax Fiber");
     }
 
     private void addCreativeTabTranslations(LanguageEntryProviderHandle handle)

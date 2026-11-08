@@ -256,7 +256,7 @@ public final class BaseShapelessRecipeProvider {
 
     private static void cordageRecipes(RecipeOutput recipeOutput) {
         // TODO This is a temp. Will need to soak flax to obtain their fibers
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.FLAX_FIBER)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, WeavingItemRegistration.FLAX_FIBER)
                 .requires(FarmingItemRegistration.FLAX)
                 .unlockedBy("has_flax", RecipeTools.itemPredicateOf(FarmingItemRegistration.FLAX))
                 .save(recipeOutput, MedievalismConstants.resource("flax_fiber"));
