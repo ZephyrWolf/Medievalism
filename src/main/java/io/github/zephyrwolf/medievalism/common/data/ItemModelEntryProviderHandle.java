@@ -58,6 +58,10 @@ public class ItemModelEntryProviderHandle
         return ResourceLocation.fromNamespaceAndPath(modId, fullPath);
     }
 
+    public void blockBasedModel(Item item) {
+        provider.withExistingParent(itemName(item), resourceBlock(MedievalismConstants.MOD_ID, itemName(item)));
+    }
+
     public void blockBasedModel(Item item, String suffix) {
         provider.withExistingParent(itemName(item), resourceBlock(MedievalismConstants.MOD_ID, itemName(item) + suffix));
     }

@@ -425,6 +425,13 @@ public final class BlockRegistration
     public static final DeferredBlock<ChoppingBlockBlock>                                   CHOPPING_BLOCK = BLOCKS.registerBlock("chopping_block", ChoppingBlockBlock::new, CHOPPING_BLOCK_PROPERTIES);
 
     // POTTERY PROPERTIES
+    public static final BlockBehaviour.Properties CLAY_PROPERTIES = Blocks.CLAY.properties();
+    public static final DeferredBlock<Block> CLAY = new VanillaDeferredBlock<>(Blocks.CLAY);
+    public static final DeferredBlock<Block> POTTERS_CLAY = BLOCKS.registerSimpleBlock("potters_clay", CLAY_PROPERTIES);
+    public static final DeferredBlock<Block> KAOLIN_CLAY = BLOCKS.registerSimpleBlock("kaolin_clay", CLAY_PROPERTIES);
+    public static final DeferredBlock<Block> CHINA_CLAY = BLOCKS.registerSimpleBlock("china_clay", CLAY_PROPERTIES);
+    public static final DeferredBlock<Block> REFRACTORY_CLAY = BLOCKS.registerSimpleBlock("refractory_clay", CLAY_PROPERTIES);
+
     public static final BlockBehaviour.Properties POTTERY_DRYING_PROPERTIES =               BlockBehaviour.Properties.of().isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY).mapColor(MapColor.CLAY).strength(0.4f).sound(SoundType.MUD).randomTicks();
     public static final BlockBehaviour.Properties POTTERY_PROPERTIES =                      POTTERY_DRYING_PROPERTIES.pushReaction(PushReaction.BLOCK).mapColor(MapColor.TERRACOTTA_BROWN).sound(SoundType.DECORATED_POT);
     // DRYING POTTERY

@@ -59,6 +59,11 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
                 UniformGenerator.between(1, 3)
         ));
 
+        add(BlockRegistration.POTTERS_CLAY.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.CLAY_BALL, ConstantValue.exactly(4.0F)));
+        add(BlockRegistration.KAOLIN_CLAY.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.CLAY_BALL, ConstantValue.exactly(4.0F)));
+        add(BlockRegistration.CHINA_CLAY.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.CLAY_BALL, ConstantValue.exactly(4.0F)));
+        add(BlockRegistration.REFRACTORY_CLAY.get(), (block) -> createSingleItemTableWithSilkTouch(block, Items.CLAY_BALL, ConstantValue.exactly(4.0F)));
+
         dropSelf(BlockRegistration.DRYING_PACKED_MUD_BRICK.get());
         dropSelf(BlockRegistration.DRYING_DAUB_BRICK.get());
         dropSelf(BlockRegistration.DRYING_CLAY_BRICK.get());

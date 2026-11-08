@@ -22,6 +22,11 @@ public class ClayWorkingLangEntry implements ILanguageProviderEntry
 
     private void addBlockTranslations(LanguageEntryProviderHandle handle)
     {
+        handle.addBlock(BlockRegistration.POTTERS_CLAY.get(), "Potters Clay");
+        handle.addBlock(BlockRegistration.KAOLIN_CLAY.get(), "Kaolin Clay");
+        handle.addBlock(BlockRegistration.CHINA_CLAY.get(), "China Clay");
+        handle.addBlock(BlockRegistration.REFRACTORY_CLAY.get(), "Refractory Clay");
+
         handle.addBlock(BlockRegistration.DRYING_GATHERERS_JAR.get(), "Drying Gatherer's Jar");
         handle.addBlock(BlockRegistration.DRYING_KEEPERS_CROCK.get(), "Drying Keeper's Crock");
         handle.addBlock(BlockRegistration.DRYING_SETTLERS_POT.get(), "Drying Settler's Pot");

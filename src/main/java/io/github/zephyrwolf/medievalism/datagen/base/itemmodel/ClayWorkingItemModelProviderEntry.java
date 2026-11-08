@@ -2,6 +2,7 @@ package io.github.zephyrwolf.medievalism.datagen.base.itemmodel;
 
 import io.github.zephyrwolf.medievalism.common.data.IItemModelProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.ItemModelEntryProviderHandle;
+import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 
@@ -46,12 +47,19 @@ public class ClayWorkingItemModelProviderEntry implements IItemModelProviderEntr
     {
         handle.setFolder("clay_working");
         handle.itemGeneratedModel(ClayWorkingItemRegistration.POTTERS_CLAY_BALL.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.CHINA_CLAY_BALL.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.KAOLIN_CLAY_BALL.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.GROG.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.KAOLIN_GROG.get());
         //handle.itemGeneratedModel(ItemRegistration.KAOLINITE.get()); // Not sure if I want to add this
         handle.itemGeneratedModel(ClayWorkingItemRegistration.REFRACTORY_CLAY_BALL.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.REFRACTORY_GROG.get());
+
+        handle.setFolder("");
+        handle.blockBasedModel(ClayWorkingItemRegistration.POTTERS_CLAY.get());
+        handle.blockBasedModel(ClayWorkingItemRegistration.KAOLIN_CLAY.get());
+        handle.blockBasedModel(ClayWorkingItemRegistration.CHINA_CLAY.get());
+        handle.blockBasedModel(ClayWorkingItemRegistration.REFRACTORY_CLAY.get());
     }
 
     private void brick(ItemModelEntryProviderHandle handle)

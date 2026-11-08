@@ -138,6 +138,11 @@ public final class ClayWorkingBlockStateProviderEntry implements IBlockStateProv
                 handle.existingModel(BlockRegistration.JUG.get(), "_west"));
          */
 
+        handle.simpleBlock(BlockRegistration.POTTERS_CLAY.get());
+        handle.simpleBlock(BlockRegistration.KAOLIN_CLAY.get());
+        handle.simpleBlock(BlockRegistration.CHINA_CLAY.get());
+        handle.simpleBlock(BlockRegistration.REFRACTORY_CLAY.get());
+
         // Flower Pot
         handle.pushVanillaModId();
         ResourceLocation modelFlowerPot = handle.blockModelResource(BlockRegistration.FLOWER_POT.get());

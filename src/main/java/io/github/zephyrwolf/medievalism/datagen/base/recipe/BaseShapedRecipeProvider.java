@@ -32,6 +32,31 @@ public final class BaseShapedRecipeProvider {
                 .group("wet_packed_mud")
                 .unlockedBy("has_mud", RecipeTools.itemPredicateOf(Blocks.MUD.asItem()))
                 .save(recipeOutput, MedievalismConstants.resource("wet_packed_mud"));
+        // Clay
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistration.POTTERS_CLAY)
+                .pattern("cc")
+                .pattern("cc")
+                .define('c', ClayWorkingItemRegistration.POTTERS_CLAY_BALL)
+                .unlockedBy("has_potters_clay_ball", RecipeTools.itemPredicateOf(ClayWorkingItemRegistration.POTTERS_CLAY_BALL))
+                .save(recipeOutput, MedievalismConstants.resource("potters_clay_from_balls"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistration.KAOLIN_CLAY)
+                .pattern("cc")
+                .pattern("cc")
+                .define('c', ClayWorkingItemRegistration.KAOLIN_CLAY_BALL)
+                .unlockedBy("has_kaolin_clay_ball", RecipeTools.itemPredicateOf(ClayWorkingItemRegistration.KAOLIN_CLAY_BALL))
+                .save(recipeOutput, MedievalismConstants.resource("kaolin_clay_from_balls"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistration.CHINA_CLAY)
+                .pattern("cc")
+                .pattern("cc")
+                .define('c', ClayWorkingItemRegistration.CHINA_CLAY_BALL)
+                .unlockedBy("has_china_clay_ball", RecipeTools.itemPredicateOf(ClayWorkingItemRegistration.CHINA_CLAY_BALL))
+                .save(recipeOutput, MedievalismConstants.resource("china_clay_from_balls"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistration.REFRACTORY_CLAY)
+                .pattern("cc")
+                .pattern("cc")
+                .define('c', ClayWorkingItemRegistration.REFRACTORY_CLAY_BALL)
+                .unlockedBy("has_refractory_clay_ball", RecipeTools.itemPredicateOf(ClayWorkingItemRegistration.REFRACTORY_CLAY_BALL))
+                .save(recipeOutput, MedievalismConstants.resource("refractory_clay_from_balls"));
         // Thatch Block
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistration.THATCH_BLOCK)
                 .pattern("tt")
