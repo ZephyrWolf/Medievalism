@@ -42,6 +42,12 @@ public final class ClayWorkingItemRegistration
     public static final DeferredItem<Item> REFRACTORY_CLAY_BALL =   CLAY_WORKING_ITEMS.registerSimpleItem("refractory_clay_ball");
     public static final DeferredItem<Item> REFRACTORY_GROG =        CLAY_WORKING_ITEMS.registerSimpleItem("refractory_grog");
 
+    public static final DeferredItem<Item> CLAY = new VanillaDeferredItem<>(Items.CLAY);
+    public static final DeferredItem<BlockItem> POTTERS_CLAY = CLAY_WORKING_ITEMS.registerSimpleBlockItem(BlockRegistration.POTTERS_CLAY);
+    public static final DeferredItem<BlockItem> KAOLIN_CLAY = CLAY_WORKING_ITEMS.registerSimpleBlockItem(BlockRegistration.KAOLIN_CLAY);
+    public static final DeferredItem<BlockItem> CHINA_CLAY = CLAY_WORKING_ITEMS.registerSimpleBlockItem(BlockRegistration.CHINA_CLAY);
+    public static final DeferredItem<BlockItem> REFRACTORY_CLAY = CLAY_WORKING_ITEMS.registerSimpleBlockItem(BlockRegistration.REFRACTORY_CLAY);
+
     // - BRICK
     public static final DeferredItem<Item>                      CLAY_BRICK =                    new VanillaDeferredItem<>(Items.BRICK);
     public static final DeferredItem<Item>                      CHINA_CLAY_BRICK =              CLAY_WORKING_ITEMS.registerSimpleItem("china_clay_brick");
@@ -103,6 +109,11 @@ public final class ClayWorkingItemRegistration
     public static final DeferredItem<Item>                      WET_POTTERS_CLAY_CRUCIBLE =             CLAY_WORKING_ITEMS.registerSimpleItem("wet_potters_clay_crucible");
 
     // - AXE_MOULD
+    public static final DeferredItem<Item>  CLAY_AXE_BLANK =                     CLAY_WORKING_ITEMS.registerSimpleItem("clay_axe_blank");
+    public static final DeferredItem<Item>  UNFIRED_CLAY_AXE_BLANK =             CLAY_WORKING_ITEMS.registerSimpleItem("unfired_clay_axe_blank");
+    public static final DeferredItem<Item>  UNFIRED_POTTERS_CLAY_AXE_BLANK =     CLAY_WORKING_ITEMS.registerSimpleItem("unfired_potters_clay_axe_blank");
+    public static final DeferredItem<Item>  WET_CLAY_AXE_BLANK =                 CLAY_WORKING_ITEMS.registerSimpleItem("wet_clay_axe_blank");
+    public static final DeferredItem<Item>  WET_POTTERS_CLAY_AXE_BLANK =         CLAY_WORKING_ITEMS.registerSimpleItem("wet_potters_clay_axe_blank");
     public static final DeferredItem<Item>  CLAY_AXE_MOULD =                     CLAY_WORKING_ITEMS.registerSimpleItem("clay_axe_mould");
     public static final DeferredItem<Item>  REFRACTORY_CLAY_AXE_MOULD =          CLAY_WORKING_ITEMS.registerSimpleItem("refractory_clay_axe_mould");
     public static final DeferredItem<Item>  UNFIRED_CLAY_AXE_MOULD =             CLAY_WORKING_ITEMS.registerSimpleItem("unfired_clay_axe_mould");
@@ -123,6 +134,11 @@ public final class ClayWorkingItemRegistration
     //public static final DeferredItem<Item>  WET_POTTERS_CLAY_GREATAXE_MOULD =         CLAY_WORKING_ITEMS.registerSimpleItem("wet_potters_clay_greataxe_mould");
 
     // - HOE_MOULD
+    public static final DeferredItem<Item>  CLAY_HOE_BLANK =                     CLAY_WORKING_ITEMS.registerSimpleItem("clay_hoe_blank");
+    public static final DeferredItem<Item>  UNFIRED_CLAY_HOE_BLANK =             CLAY_WORKING_ITEMS.registerSimpleItem("unfired_clay_hoe_blank");
+    public static final DeferredItem<Item>  UNFIRED_POTTERS_CLAY_HOE_BLANK =     CLAY_WORKING_ITEMS.registerSimpleItem("unfired_potters_clay_hoe_blank");
+    public static final DeferredItem<Item>  WET_CLAY_HOE_BLANK =                 CLAY_WORKING_ITEMS.registerSimpleItem("wet_clay_hoe_blank");
+    public static final DeferredItem<Item>  WET_POTTERS_CLAY_HOE_BLANK =         CLAY_WORKING_ITEMS.registerSimpleItem("wet_potters_clay_hoe_blank");
     public static final DeferredItem<Item>  CLAY_HOE_MOULD =                     CLAY_WORKING_ITEMS.registerSimpleItem("clay_hoe_mould");
     public static final DeferredItem<Item>  REFRACTORY_CLAY_HOE_MOULD =          CLAY_WORKING_ITEMS.registerSimpleItem("refractory_clay_hoe_mould");
     public static final DeferredItem<Item>  UNFIRED_CLAY_HOE_MOULD =             CLAY_WORKING_ITEMS.registerSimpleItem("unfired_clay_hoe_mould");
@@ -133,6 +149,11 @@ public final class ClayWorkingItemRegistration
     public static final DeferredItem<Item>  WET_POTTERS_CLAY_HOE_MOULD =         CLAY_WORKING_ITEMS.registerSimpleItem("wet_potters_clay_hoe_mould");
 
     // - KNIFE_MOULD
+    public static final DeferredItem<Item>  CLAY_KNIFE_BLANK =                     CLAY_WORKING_ITEMS.registerSimpleItem("clay_knife_blank");
+    public static final DeferredItem<Item>  UNFIRED_CLAY_KNIFE_BLANK =             CLAY_WORKING_ITEMS.registerSimpleItem("unfired_clay_knife_blank");
+    public static final DeferredItem<Item>  UNFIRED_POTTERS_CLAY_KNIFE_BLANK =     CLAY_WORKING_ITEMS.registerSimpleItem("unfired_potters_clay_knife_blank");
+    public static final DeferredItem<Item>  WET_CLAY_KNIFE_BLANK =                 CLAY_WORKING_ITEMS.registerSimpleItem("wet_clay_knife_blank");
+    public static final DeferredItem<Item>  WET_POTTERS_CLAY_KNIFE_BLANK =         CLAY_WORKING_ITEMS.registerSimpleItem("wet_potters_clay_knife_blank");
     public static final DeferredItem<Item>  CLAY_KNIFE_MOULD =                     CLAY_WORKING_ITEMS.registerSimpleItem("clay_knife_mould");
     public static final DeferredItem<Item>  REFRACTORY_CLAY_KNIFE_MOULD =          CLAY_WORKING_ITEMS.registerSimpleItem("refractory_clay_knife_mould");
     public static final DeferredItem<Item>  UNFIRED_CLAY_KNIFE_MOULD =             CLAY_WORKING_ITEMS.registerSimpleItem("unfired_clay_knife_mould");
@@ -153,6 +174,11 @@ public final class ClayWorkingItemRegistration
     //public static final DeferredItem<Item>  WET_POTTERS_CLAY_LONGSWORD_MOULD =         CLAY_WORKING_ITEMS.registerSimpleItem("wet_potters_clay_longsword_mould");
 
     // - PICKAXE_MOULD
+    public static final DeferredItem<Item>  CLAY_PICKAXE_BLANK =                     CLAY_WORKING_ITEMS.registerSimpleItem("clay_pickaxe_blank");
+    public static final DeferredItem<Item>  UNFIRED_CLAY_PICKAXE_BLANK =             CLAY_WORKING_ITEMS.registerSimpleItem("unfired_clay_pickaxe_blank");
+    public static final DeferredItem<Item>  UNFIRED_POTTERS_CLAY_PICKAXE_BLANK =     CLAY_WORKING_ITEMS.registerSimpleItem("unfired_potters_clay_pickaxe_blank");
+    public static final DeferredItem<Item>  WET_CLAY_PICKAXE_BLANK =                 CLAY_WORKING_ITEMS.registerSimpleItem("wet_clay_pickaxe_blank");
+    public static final DeferredItem<Item>  WET_POTTERS_CLAY_PICKAXE_BLANK =         CLAY_WORKING_ITEMS.registerSimpleItem("wet_potters_clay_pickaxe_blank");
     public static final DeferredItem<Item>  CLAY_PICKAXE_MOULD =                     CLAY_WORKING_ITEMS.registerSimpleItem("clay_pickaxe_mould");
     public static final DeferredItem<Item>  REFRACTORY_CLAY_PICKAXE_MOULD =          CLAY_WORKING_ITEMS.registerSimpleItem("refractory_clay_pickaxe_mould");
     public static final DeferredItem<Item>  UNFIRED_CLAY_PICKAXE_MOULD =             CLAY_WORKING_ITEMS.registerSimpleItem("unfired_clay_pickaxe_mould");
@@ -163,6 +189,11 @@ public final class ClayWorkingItemRegistration
     public static final DeferredItem<Item>  WET_POTTERS_CLAY_PICKAXE_MOULD =         CLAY_WORKING_ITEMS.registerSimpleItem("wet_potters_clay_pickaxe_mould");
 
     // - SHORTSWORD_MOULD
+    public static final DeferredItem<Item>  CLAY_SHORTSWORD_BLANK =                     CLAY_WORKING_ITEMS.registerSimpleItem("clay_shortsword_blank");
+    public static final DeferredItem<Item>  UNFIRED_CLAY_SHORTSWORD_BLANK =             CLAY_WORKING_ITEMS.registerSimpleItem("unfired_clay_shortsword_blank");
+    public static final DeferredItem<Item>  UNFIRED_POTTERS_CLAY_SHORTSWORD_BLANK =     CLAY_WORKING_ITEMS.registerSimpleItem("unfired_potters_clay_shortsword_blank");
+    public static final DeferredItem<Item>  WET_CLAY_SHORTSWORD_BLANK =                 CLAY_WORKING_ITEMS.registerSimpleItem("wet_clay_shortsword_blank");
+    public static final DeferredItem<Item>  WET_POTTERS_CLAY_SHORTSWORD_BLANK =         CLAY_WORKING_ITEMS.registerSimpleItem("wet_potters_clay_shortsword_blank");
     public static final DeferredItem<Item>  CLAY_SHORTSWORD_MOULD =                     CLAY_WORKING_ITEMS.registerSimpleItem("clay_shortsword_mould");
     public static final DeferredItem<Item>  REFRACTORY_CLAY_SHORTSWORD_MOULD =          CLAY_WORKING_ITEMS.registerSimpleItem("refractory_clay_shortsword_mould");
     public static final DeferredItem<Item>  UNFIRED_CLAY_SHORTSWORD_MOULD =             CLAY_WORKING_ITEMS.registerSimpleItem("unfired_clay_shortsword_mould");
@@ -183,6 +214,11 @@ public final class ClayWorkingItemRegistration
     //public static final DeferredItem<Item>  WET_POTTERS_CLAY_SCYTH_MOULD =         CLAY_WORKING_ITEMS.registerSimpleItem("wet_potters_clay_scyth_mould");
 
     // - SHOVEL_MOULD
+    public static final DeferredItem<Item>  CLAY_SHOVEL_BLANK =                     CLAY_WORKING_ITEMS.registerSimpleItem("clay_shovel_blank");
+    public static final DeferredItem<Item>  UNFIRED_CLAY_SHOVEL_BLANK =             CLAY_WORKING_ITEMS.registerSimpleItem("unfired_clay_shovel_blank");
+    public static final DeferredItem<Item>  UNFIRED_POTTERS_CLAY_SHOVEL_BLANK =     CLAY_WORKING_ITEMS.registerSimpleItem("unfired_potters_clay_shovel_blank");
+    public static final DeferredItem<Item>  WET_CLAY_SHOVEL_BLANK =                 CLAY_WORKING_ITEMS.registerSimpleItem("wet_clay_shovel_blank");
+    public static final DeferredItem<Item>  WET_POTTERS_CLAY_SHOVEL_BLANK =         CLAY_WORKING_ITEMS.registerSimpleItem("wet_potters_clay_shovel_blank");
     public static final DeferredItem<Item>  CLAY_SHOVEL_MOULD =                     CLAY_WORKING_ITEMS.registerSimpleItem("clay_shovel_mould");
     public static final DeferredItem<Item>  REFRACTORY_CLAY_SHOVEL_MOULD =          CLAY_WORKING_ITEMS.registerSimpleItem("refractory_clay_shovel_mould");
     public static final DeferredItem<Item>  UNFIRED_CLAY_SHOVEL_MOULD =             CLAY_WORKING_ITEMS.registerSimpleItem("unfired_clay_shovel_mould");
@@ -193,6 +229,11 @@ public final class ClayWorkingItemRegistration
     public static final DeferredItem<Item>  WET_POTTERS_CLAY_SHOVEL_MOULD =         CLAY_WORKING_ITEMS.registerSimpleItem("wet_potters_clay_shovel_mould");
 
     // - SICKLE_MOULD
+    public static final DeferredItem<Item>  CLAY_SICKLE_BLANK =                     CLAY_WORKING_ITEMS.registerSimpleItem("clay_sickle_blank");
+    public static final DeferredItem<Item>  UNFIRED_CLAY_SICKLE_BLANK =             CLAY_WORKING_ITEMS.registerSimpleItem("unfired_clay_sickle_blank");
+    public static final DeferredItem<Item>  UNFIRED_POTTERS_CLAY_SICKLE_BLANK =     CLAY_WORKING_ITEMS.registerSimpleItem("unfired_potters_clay_sickle_blank");
+    public static final DeferredItem<Item>  WET_CLAY_SICKLE_BLANK =                 CLAY_WORKING_ITEMS.registerSimpleItem("wet_clay_sickle_blank");
+    public static final DeferredItem<Item>  WET_POTTERS_CLAY_SICKLE_BLANK =         CLAY_WORKING_ITEMS.registerSimpleItem("wet_potters_clay_sickle_blank");
     public static final DeferredItem<Item>  CLAY_SICKLE_MOULD =                     CLAY_WORKING_ITEMS.registerSimpleItem("clay_sickle_mould");
     public static final DeferredItem<Item>  REFRACTORY_CLAY_SICKLE_MOULD =          CLAY_WORKING_ITEMS.registerSimpleItem("refractory_clay_sickle_mould");
     public static final DeferredItem<Item>  UNFIRED_CLAY_SICKLE_MOULD =             CLAY_WORKING_ITEMS.registerSimpleItem("unfired_clay_sickle_mould");
@@ -203,6 +244,11 @@ public final class ClayWorkingItemRegistration
     public static final DeferredItem<Item>  WET_POTTERS_CLAY_SICKLE_MOULD =         CLAY_WORKING_ITEMS.registerSimpleItem("wet_potters_clay_sickle_mould");
 
     // - SPEAR_MOULD
+    public static final DeferredItem<Item>  CLAY_SPEAR_BLANK =                     CLAY_WORKING_ITEMS.registerSimpleItem("clay_spear_blank");
+    public static final DeferredItem<Item>  UNFIRED_CLAY_SPEAR_BLANK =             CLAY_WORKING_ITEMS.registerSimpleItem("unfired_clay_spear_blank");
+    public static final DeferredItem<Item>  UNFIRED_POTTERS_CLAY_SPEAR_BLANK =     CLAY_WORKING_ITEMS.registerSimpleItem("unfired_potters_clay_spear_blank");
+    public static final DeferredItem<Item>  WET_CLAY_SPEAR_BLANK =                 CLAY_WORKING_ITEMS.registerSimpleItem("wet_clay_spear_blank");
+    public static final DeferredItem<Item>  WET_POTTERS_CLAY_SPEAR_BLANK =         CLAY_WORKING_ITEMS.registerSimpleItem("wet_potters_clay_spear_blank");
     public static final DeferredItem<Item>  CLAY_SPEAR_MOULD =                     CLAY_WORKING_ITEMS.registerSimpleItem("clay_spear_mould");
     public static final DeferredItem<Item>  REFRACTORY_CLAY_SPEAR_MOULD =          CLAY_WORKING_ITEMS.registerSimpleItem("refractory_clay_spear_mould");
     public static final DeferredItem<Item>  UNFIRED_CLAY_SPEAR_MOULD =             CLAY_WORKING_ITEMS.registerSimpleItem("unfired_clay_spear_mould");

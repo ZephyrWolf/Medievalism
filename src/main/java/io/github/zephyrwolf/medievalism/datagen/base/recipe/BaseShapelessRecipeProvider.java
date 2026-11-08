@@ -2,6 +2,7 @@ package io.github.zephyrwolf.medievalism.datagen.base.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.recipe.crafting.ShapelessToolRecipeBuilder;
+import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
@@ -67,6 +68,28 @@ public final class BaseShapelessRecipeProvider {
                 .requires(ItemRegistration.THATCH)
                 .unlockedBy("has_clay_ball", RecipeTools.itemPredicateOf(ItemTagCatalog.CLAY_BALL))
                 .save(recipeOutput, MedievalismConstants.resource("wet_daub"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ClayWorkingItemRegistration.CLAY_BALL, 4)
+                .requires(BlockRegistration.CLAY)
+                .unlockedBy("has_clay", RecipeTools.itemPredicateOf(BlockRegistration.CLAY))
+                .save(recipeOutput, MedievalismConstants.resource("clay_balls_from_block"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ClayWorkingItemRegistration.POTTERS_CLAY_BALL, 4)
+                .requires(BlockRegistration.POTTERS_CLAY)
+                .unlockedBy("has_potters_clay", RecipeTools.itemPredicateOf(BlockRegistration.POTTERS_CLAY))
+                .save(recipeOutput, MedievalismConstants.resource("potters_clay_balls_from_block"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ClayWorkingItemRegistration.KAOLIN_CLAY_BALL, 4)
+                .requires(BlockRegistration.KAOLIN_CLAY)
+                .unlockedBy("has_kaolin_clay", RecipeTools.itemPredicateOf(BlockRegistration.KAOLIN_CLAY))
+                .save(recipeOutput, MedievalismConstants.resource("kaolin_clay_balls_from_block"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ClayWorkingItemRegistration.CHINA_CLAY_BALL, 4)
+                .requires(BlockRegistration.CHINA_CLAY)
+                .unlockedBy("has_china_clay", RecipeTools.itemPredicateOf(BlockRegistration.CHINA_CLAY))
+                .save(recipeOutput, MedievalismConstants.resource("china_clay_balls_from_block"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ClayWorkingItemRegistration.REFRACTORY_CLAY_BALL, 4)
+                .requires(BlockRegistration.REFRACTORY_CLAY)
+                .unlockedBy("has_refractory_clay", RecipeTools.itemPredicateOf(BlockRegistration.REFRACTORY_CLAY))
+                .save(recipeOutput, MedievalismConstants.resource("refractory_clay_balls_from_block"));
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.DRYING_PACKED_MUD_BRICK)
                 .requires(ItemRegistration.MUD_BALL)
                 .requires(ItemRegistration.THATCH)
@@ -78,18 +101,37 @@ public final class BaseShapelessRecipeProvider {
                 .save(recipeOutput, MedievalismConstants.resource("drying_daub_brick"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ClayWorkingItemRegistration.POTTERS_CLAY_BALL, 2)
-                .requires(ItemTagCatalog.GROG)
+                .requires(ClayWorkingItemRegistration.GROG)
                 .requires(Items.CLAY_BALL)
                 .requires(Items.CLAY_BALL)
-                .unlockedBy("has_grog", RecipeTools.itemPredicateOf(ItemTagCatalog.GROG))
+                .unlockedBy("has_grog", RecipeTools.itemPredicateOf(ClayWorkingItemRegistration.GROG))
                 .save(recipeOutput, MedievalismConstants.resource("potters_clay_ball"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ClayWorkingItemRegistration.REFRACTORY_CLAY_BALL, 2)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ClayWorkingItemRegistration.CHINA_CLAY_BALL, 2)
                 .requires(ClayWorkingItemRegistration.KAOLIN_GROG)
                 .requires(ClayWorkingItemRegistration.KAOLIN_CLAY_BALL)
                 .requires(ClayWorkingItemRegistration.KAOLIN_CLAY_BALL)
+                .unlockedBy("has_kaolin_grog", RecipeTools.itemPredicateOf(ClayWorkingItemRegistration.KAOLIN_GROG))
+                .save(recipeOutput, MedievalismConstants.resource("china_clay_ball"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ClayWorkingItemRegistration.REFRACTORY_CLAY_BALL, 2)
                 .requires(ItemTags.SAND)
-                .unlockedBy("has_grog", RecipeTools.itemPredicateOf(ItemTagCatalog.GROG))
+                .requires(ClayWorkingItemRegistration.KAOLIN_GROG)
+                .requires(ClayWorkingItemRegistration.KAOLIN_CLAY_BALL)
+                .requires(ClayWorkingItemRegistration.KAOLIN_CLAY_BALL)
+                .unlockedBy("has_kaolin_grog", RecipeTools.itemPredicateOf(ClayWorkingItemRegistration.KAOLIN_GROG))
                 .save(recipeOutput, MedievalismConstants.resource("refractory_clay_ball"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ClayWorkingItemRegistration.REFRACTORY_CLAY_BALL, 2)
+                .requires(ClayWorkingItemRegistration.REFRACTORY_GROG)
+                .requires(ClayWorkingItemRegistration.KAOLIN_CLAY_BALL)
+                .requires(ClayWorkingItemRegistration.KAOLIN_CLAY_BALL)
+                .requires(ItemTags.SAND)
+                .unlockedBy("has_kaolin_grog", RecipeTools.itemPredicateOf(ClayWorkingItemRegistration.KAOLIN_GROG))
+                .save(recipeOutput, MedievalismConstants.resource("refractory_clay_ball2"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ClayWorkingItemRegistration.REFRACTORY_CLAY_BALL, 2)
+                .requires(ClayWorkingItemRegistration.CHINA_CLAY_BALL)
+                .requires(ClayWorkingItemRegistration.CHINA_CLAY_BALL)
+                .requires(ItemTags.SAND)
+                .unlockedBy("has_china_call_ball", RecipeTools.itemPredicateOf(ClayWorkingItemRegistration.CHINA_CLAY_BALL))
+                .save(recipeOutput, MedievalismConstants.resource("refractory_clay_ball3"));
 
         // Unfired Brick
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ClayWorkingItemRegistration.DRYING_CLAY_BRICK)
@@ -104,6 +146,10 @@ public final class BaseShapelessRecipeProvider {
                 .requires(ClayWorkingItemRegistration.KAOLIN_CLAY_BALL)
                 .unlockedBy("has_kaolin_clay_ball", RecipeTools.itemPredicateOf(ClayWorkingItemRegistration.KAOLIN_CLAY_BALL))
                 .save(recipeOutput, MedievalismConstants.resource("drying_kaolin_clay_brick"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ClayWorkingItemRegistration.DRYING_CHINA_CLAY_BRICK)
+                .requires(ClayWorkingItemRegistration.CHINA_CLAY_BALL)
+                .unlockedBy("has_china_clay_ball", RecipeTools.itemPredicateOf(ClayWorkingItemRegistration.CHINA_CLAY_BALL))
+                .save(recipeOutput, MedievalismConstants.resource("drying_china_clay_brick"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ClayWorkingItemRegistration.DRYING_REFRACTORY_CLAY_BRICK)
                 .requires(ClayWorkingItemRegistration.REFRACTORY_CLAY_BALL)
                 .unlockedBy("has_refractory_clay_ball", RecipeTools.itemPredicateOf(ClayWorkingItemRegistration.REFRACTORY_CLAY_BALL))

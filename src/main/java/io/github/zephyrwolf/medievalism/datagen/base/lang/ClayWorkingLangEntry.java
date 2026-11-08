@@ -7,7 +7,6 @@ import io.github.zephyrwolf.medievalism.common.data.ILanguageProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.LanguageEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 
 public class ClayWorkingLangEntry implements ILanguageProviderEntry
 {
@@ -154,6 +153,11 @@ public class ClayWorkingLangEntry implements ILanguageProviderEntry
         handle.addItem(ClayWorkingItemRegistration.REFRACTORY_CLAY_INGOT_MOULD.get(), "Refractory Clay Ingot Mould");
 
         // Axe Mould
+        handle.addItem(ClayWorkingItemRegistration.WET_CLAY_AXE_BLANK.get(), "Wet Clay Axe Blank");
+        handle.addItem(ClayWorkingItemRegistration.WET_POTTERS_CLAY_AXE_BLANK.get(), "Wet Potters Clay Axe Blank");
+        handle.addItem(ClayWorkingItemRegistration.UNFIRED_CLAY_AXE_BLANK.get(), "Unfired Clay Axe Blank");
+        handle.addItem(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_AXE_BLANK.get(), "Unfired Potters Clay Axe Blank");
+        handle.addItem(ClayWorkingItemRegistration.CLAY_AXE_BLANK.get(), "Clay Axe Blank");
         handle.addItem(ClayWorkingItemRegistration.WET_CLAY_AXE_MOULD.get(), "Wet Clay Axe Mould");
         handle.addItem(ClayWorkingItemRegistration.WET_POTTERS_CLAY_AXE_MOULD.get(), "Wet Potters Clay Axe Mould");
         handle.addItem(ClayWorkingItemRegistration.WET_REFRACTORY_CLAY_AXE_MOULD.get(), "Wet Refractory Clay Axe Mould");
@@ -174,6 +178,11 @@ public class ClayWorkingLangEntry implements ILanguageProviderEntry
         //handle.addItem(ClayWorkingItemRegistration.REFRACTORY_CLAY_GREATAXE_MOULD.get(), "Refractory Clay Greataxe Mould");
 
         // Hoe Mould
+        handle.addItem(ClayWorkingItemRegistration.WET_CLAY_HOE_BLANK.get(), "Wet Clay Hoe Blank");
+        handle.addItem(ClayWorkingItemRegistration.WET_POTTERS_CLAY_HOE_BLANK.get(), "Wet Potters Clay Hoe Blank");
+        handle.addItem(ClayWorkingItemRegistration.UNFIRED_CLAY_HOE_BLANK.get(), "Unfired Clay Hoe Blank");
+        handle.addItem(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_HOE_BLANK.get(), "Unfired Potters Clay Hoe Blank");
+        handle.addItem(ClayWorkingItemRegistration.CLAY_HOE_BLANK.get(), "Clay Hoe Blank");
         handle.addItem(ClayWorkingItemRegistration.WET_CLAY_HOE_MOULD.get(), "Wet Clay Hoe Mould");
         handle.addItem(ClayWorkingItemRegistration.WET_POTTERS_CLAY_HOE_MOULD.get(), "Wet Potters Clay Hoe Mould");
         handle.addItem(ClayWorkingItemRegistration.WET_REFRACTORY_CLAY_HOE_MOULD.get(), "Wet Refractory Clay Hoe Mould");
@@ -184,6 +193,11 @@ public class ClayWorkingLangEntry implements ILanguageProviderEntry
         handle.addItem(ClayWorkingItemRegistration.REFRACTORY_CLAY_HOE_MOULD.get(), "Refractory Clay Hoe Mould");
 
         // Knife Mould
+        handle.addItem(ClayWorkingItemRegistration.WET_CLAY_KNIFE_BLANK.get(), "Wet Clay Knife Blank");
+        handle.addItem(ClayWorkingItemRegistration.WET_POTTERS_CLAY_KNIFE_BLANK.get(), "Wet Potters Clay knife Blank");
+        handle.addItem(ClayWorkingItemRegistration.UNFIRED_CLAY_KNIFE_BLANK.get(), "Unfired Clay Knife Blank");
+        handle.addItem(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_KNIFE_BLANK.get(), "Unfired Potters Clay Knife Blank");
+        handle.addItem(ClayWorkingItemRegistration.CLAY_KNIFE_BLANK.get(), "Clay Knife Blank");
         handle.addItem(ClayWorkingItemRegistration.WET_CLAY_KNIFE_MOULD.get(), "Wet Clay Knife Mould");
         handle.addItem(ClayWorkingItemRegistration.WET_POTTERS_CLAY_KNIFE_MOULD.get(), "Wet Potters Clay knife Mould");
         handle.addItem(ClayWorkingItemRegistration.WET_REFRACTORY_CLAY_KNIFE_MOULD.get(), "Wet Refractory Clay Knife Mould");
@@ -204,6 +218,11 @@ public class ClayWorkingLangEntry implements ILanguageProviderEntry
         //handle.addItem(ClayWorkingItemRegistration.REFRACTORY_CLAY_LONGSWORD_MOULD.get(), "Refractory Clay Longsword Mould");
 
         // Pickaxe Mould
+        handle.addItem(ClayWorkingItemRegistration.WET_CLAY_PICKAXE_BLANK.get(), "Wet Clay Pickaxe Blank");
+        handle.addItem(ClayWorkingItemRegistration.WET_POTTERS_CLAY_PICKAXE_BLANK.get(), "Wet Potters Clay Pickaxe Blank");
+        handle.addItem(ClayWorkingItemRegistration.UNFIRED_CLAY_PICKAXE_BLANK.get(), "Unfired Clay Pickaxe Blank");
+        handle.addItem(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_PICKAXE_BLANK.get(), "Unfired Potters Clay Pickaxe Blank");
+        handle.addItem(ClayWorkingItemRegistration.CLAY_PICKAXE_BLANK.get(), "Clay Pickaxe Blank");
         handle.addItem(ClayWorkingItemRegistration.WET_CLAY_PICKAXE_MOULD.get(), "Wet Clay Pickaxe Mould");
         handle.addItem(ClayWorkingItemRegistration.WET_POTTERS_CLAY_PICKAXE_MOULD.get(), "Wet Potters Clay Pickaxe Mould");
         handle.addItem(ClayWorkingItemRegistration.WET_REFRACTORY_CLAY_PICKAXE_MOULD.get(), "Wet Refractory Clay Pickaxe Mould");
@@ -214,6 +233,11 @@ public class ClayWorkingLangEntry implements ILanguageProviderEntry
         handle.addItem(ClayWorkingItemRegistration.REFRACTORY_CLAY_PICKAXE_MOULD.get(), "Refractory Clay Pickaxe Mould");
 
         // Shortsword Mould
+        handle.addItem(ClayWorkingItemRegistration.WET_CLAY_SHORTSWORD_BLANK.get(), "Wet Clay Shortsword Blank");
+        handle.addItem(ClayWorkingItemRegistration.WET_POTTERS_CLAY_SHORTSWORD_BLANK.get(), "Wet Potters Clay Shortsword Blank");
+        handle.addItem(ClayWorkingItemRegistration.UNFIRED_CLAY_SHORTSWORD_BLANK.get(), "Unfired Clay Shortsword Blank");
+        handle.addItem(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_SHORTSWORD_BLANK.get(), "Unfired Potters Clay Shortsword Blank");
+        handle.addItem(ClayWorkingItemRegistration.CLAY_SHORTSWORD_BLANK.get(), "Clay Shortsword Blank");
         handle.addItem(ClayWorkingItemRegistration.WET_CLAY_SHORTSWORD_MOULD.get(), "Wet Clay Shortsword Mould");
         handle.addItem(ClayWorkingItemRegistration.WET_POTTERS_CLAY_SHORTSWORD_MOULD.get(), "Wet Potters Clay Shortsword Mould");
         handle.addItem(ClayWorkingItemRegistration.WET_REFRACTORY_CLAY_SHORTSWORD_MOULD.get(), "Wet Refractory Clay Shortsword Mould");
@@ -224,6 +248,11 @@ public class ClayWorkingLangEntry implements ILanguageProviderEntry
         handle.addItem(ClayWorkingItemRegistration.REFRACTORY_CLAY_SHORTSWORD_MOULD.get(), "Refractory Clay Shortsword Mould");
 
         // Shovel Mould
+        handle.addItem(ClayWorkingItemRegistration.WET_CLAY_SHOVEL_BLANK.get(), "Wet Clay Shovel Blank");
+        handle.addItem(ClayWorkingItemRegistration.WET_POTTERS_CLAY_SHOVEL_BLANK.get(), "Wet Potters Clay Shovel Blank");
+        handle.addItem(ClayWorkingItemRegistration.UNFIRED_CLAY_SHOVEL_BLANK.get(), "Unfired Clay Shovel Blank");
+        handle.addItem(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_SHOVEL_BLANK.get(), "Unfired Potters Clay Shovel Blank");
+        handle.addItem(ClayWorkingItemRegistration.CLAY_SHOVEL_BLANK.get(), "Clay Shovel Blank");
         handle.addItem(ClayWorkingItemRegistration.WET_CLAY_SHOVEL_MOULD.get(), "Wet Clay Shovel Mould");
         handle.addItem(ClayWorkingItemRegistration.WET_POTTERS_CLAY_SHOVEL_MOULD.get(), "Wet Potters Clay Shovel Mould");
         handle.addItem(ClayWorkingItemRegistration.WET_REFRACTORY_CLAY_SHOVEL_MOULD.get(), "Wet Refractory Clay Shovel Mould");
@@ -234,6 +263,11 @@ public class ClayWorkingLangEntry implements ILanguageProviderEntry
         handle.addItem(ClayWorkingItemRegistration.REFRACTORY_CLAY_SHOVEL_MOULD.get(), "Refractory Clay Shovel Mould");
 
         // Sickle Mould
+        handle.addItem(ClayWorkingItemRegistration.WET_CLAY_SICKLE_BLANK.get(), "Wet Clay Sickle Blank");
+        handle.addItem(ClayWorkingItemRegistration.WET_POTTERS_CLAY_SICKLE_BLANK.get(), "Wet Potters Clay Sickle Blank");
+        handle.addItem(ClayWorkingItemRegistration.UNFIRED_CLAY_SICKLE_BLANK.get(), "Unfired Clay Sickle Blank");
+        handle.addItem(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_SICKLE_BLANK.get(), "Unfired Potters Clay Sickle Blank");
+        handle.addItem(ClayWorkingItemRegistration.CLAY_SICKLE_BLANK.get(), "Clay Sickle Blank");
         handle.addItem(ClayWorkingItemRegistration.WET_CLAY_SICKLE_MOULD.get(), "Wet Clay Sickle Mould");
         handle.addItem(ClayWorkingItemRegistration.WET_POTTERS_CLAY_SICKLE_MOULD.get(), "Wet Potters Clay Sickle Mould");
         handle.addItem(ClayWorkingItemRegistration.WET_REFRACTORY_CLAY_SICKLE_MOULD.get(), "Wet Refractory Clay Sickle Mould");
@@ -244,6 +278,11 @@ public class ClayWorkingLangEntry implements ILanguageProviderEntry
         handle.addItem(ClayWorkingItemRegistration.REFRACTORY_CLAY_SICKLE_MOULD.get(), "Refractory Clay Sickle Mould");
 
         // Spear Mould
+        handle.addItem(ClayWorkingItemRegistration.WET_CLAY_SPEAR_BLANK.get(), "Wet Clay Spear Blank");
+        handle.addItem(ClayWorkingItemRegistration.WET_POTTERS_CLAY_SPEAR_BLANK.get(), "Wet Potters Clay Spear Blank");
+        handle.addItem(ClayWorkingItemRegistration.UNFIRED_CLAY_SPEAR_BLANK.get(), "Unfired Clay Spear Blank");
+        handle.addItem(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_SPEAR_BLANK.get(), "Unfired Potters Clay Spear Blank");
+        handle.addItem(ClayWorkingItemRegistration.CLAY_SPEAR_BLANK.get(), "Clay Spear Blank");
         handle.addItem(ClayWorkingItemRegistration.WET_CLAY_SPEAR_MOULD.get(), "Wet Clay Spear Mould");
         handle.addItem(ClayWorkingItemRegistration.WET_POTTERS_CLAY_SPEAR_MOULD.get(), "Wet Potters Clay Spear");
         handle.addItem(ClayWorkingItemRegistration.WET_REFRACTORY_CLAY_SPEAR_MOULD.get(), "Wet Refractory Clay Spear Mould");

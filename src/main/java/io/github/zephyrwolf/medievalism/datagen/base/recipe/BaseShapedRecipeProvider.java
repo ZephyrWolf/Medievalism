@@ -1,6 +1,8 @@
 package io.github.zephyrwolf.medievalism.datagen.base.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.common.recipe.RecipeTools;

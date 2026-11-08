@@ -140,6 +140,11 @@ public class ClayWorkingItemModelProviderEntry implements IItemModelProviderEntr
     private void axeMould(ItemModelEntryProviderHandle handle)
     {
         handle.setFolder("clay_working/axe_mould");
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.CLAY_AXE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_CLAY_AXE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_AXE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.WET_CLAY_AXE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.WET_POTTERS_CLAY_AXE_BLANK.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.CLAY_AXE_MOULD.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.REFRACTORY_CLAY_AXE_MOULD.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_CLAY_AXE_MOULD.get());
@@ -153,6 +158,11 @@ public class ClayWorkingItemModelProviderEntry implements IItemModelProviderEntr
     private void hoeMould(ItemModelEntryProviderHandle handle)
     {
         handle.setFolder("clay_working/hoe_mould");
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.CLAY_HOE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_CLAY_HOE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_HOE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.WET_CLAY_HOE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.WET_POTTERS_CLAY_HOE_BLANK.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.CLAY_HOE_MOULD.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.REFRACTORY_CLAY_HOE_MOULD.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_CLAY_HOE_MOULD.get());
@@ -166,6 +176,11 @@ public class ClayWorkingItemModelProviderEntry implements IItemModelProviderEntr
     private void knifeMould(ItemModelEntryProviderHandle handle)
     {
         handle.setFolder("clay_working/knife_mould");
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.CLAY_KNIFE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_CLAY_KNIFE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_KNIFE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.WET_CLAY_KNIFE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.WET_POTTERS_CLAY_KNIFE_BLANK.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.CLAY_KNIFE_MOULD.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.REFRACTORY_CLAY_KNIFE_MOULD.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_CLAY_KNIFE_MOULD.get());
@@ -179,6 +194,11 @@ public class ClayWorkingItemModelProviderEntry implements IItemModelProviderEntr
     private void pickaxeMould(ItemModelEntryProviderHandle handle)
     {
         handle.setFolder("clay_working/pickaxe_mould");
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.CLAY_PICKAXE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_CLAY_PICKAXE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_PICKAXE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.WET_CLAY_PICKAXE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.WET_POTTERS_CLAY_PICKAXE_BLANK.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.CLAY_PICKAXE_MOULD.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.REFRACTORY_CLAY_PICKAXE_MOULD.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_CLAY_PICKAXE_MOULD.get());
@@ -192,6 +212,11 @@ public class ClayWorkingItemModelProviderEntry implements IItemModelProviderEntr
     private void shortswordMould(ItemModelEntryProviderHandle handle)
     {
         handle.setFolder("clay_working/shortsword_mould");
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.CLAY_SHORTSWORD_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_CLAY_SHORTSWORD_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_SHORTSWORD_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.WET_CLAY_SHORTSWORD_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.WET_POTTERS_CLAY_SHORTSWORD_BLANK.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.CLAY_SHORTSWORD_MOULD.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.REFRACTORY_CLAY_SHORTSWORD_MOULD.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_CLAY_SHORTSWORD_MOULD.get());
@@ -205,6 +230,11 @@ public class ClayWorkingItemModelProviderEntry implements IItemModelProviderEntr
     private void shovelMould(ItemModelEntryProviderHandle handle)
     {
         handle.setFolder("clay_working/shovel_mould");
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.CLAY_SHOVEL_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_CLAY_SHOVEL_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_SHOVEL_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.WET_CLAY_SHOVEL_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.WET_POTTERS_CLAY_SHOVEL_BLANK.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.CLAY_SHOVEL_MOULD.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.REFRACTORY_CLAY_SHOVEL_MOULD.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_CLAY_SHOVEL_MOULD.get());
@@ -218,6 +248,11 @@ public class ClayWorkingItemModelProviderEntry implements IItemModelProviderEntr
     private void sickleMould(ItemModelEntryProviderHandle handle)
     {
         handle.setFolder("clay_working/sickle_mould");
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.CLAY_SICKLE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_CLAY_SICKLE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_SICKLE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.WET_CLAY_SICKLE_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.WET_POTTERS_CLAY_SICKLE_BLANK.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.CLAY_SICKLE_MOULD.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.REFRACTORY_CLAY_SICKLE_MOULD.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_CLAY_SICKLE_MOULD.get());
@@ -231,6 +266,11 @@ public class ClayWorkingItemModelProviderEntry implements IItemModelProviderEntr
     private void spearMould(ItemModelEntryProviderHandle handle)
     {
         handle.setFolder("clay_working/spear_mould");
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.CLAY_SPEAR_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_CLAY_SPEAR_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_SPEAR_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.WET_CLAY_SPEAR_BLANK.get());
+        handle.itemGeneratedModel(ClayWorkingItemRegistration.WET_POTTERS_CLAY_SPEAR_BLANK.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.CLAY_SPEAR_MOULD.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.REFRACTORY_CLAY_SPEAR_MOULD.get());
         handle.itemGeneratedModel(ClayWorkingItemRegistration.UNFIRED_CLAY_SPEAR_MOULD.get());

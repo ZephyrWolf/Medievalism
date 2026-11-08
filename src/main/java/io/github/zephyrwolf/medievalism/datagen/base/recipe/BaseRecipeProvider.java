@@ -26,5 +26,7 @@ public class BaseRecipeProvider extends RecipeProvider
         BaseShapelessRecipeProvider.buildRecipes(recipeOutput);
         BaseAdditionalToolUseRecipeProvider.buildRecipes(recipeOutput);
         BaseKnapInhandRecipeProvider.buildRecipes(recipeOutput);
+
+        ClayWorkingRecipeProvider.buildRecipes(recipeOutput);
     }
 }
