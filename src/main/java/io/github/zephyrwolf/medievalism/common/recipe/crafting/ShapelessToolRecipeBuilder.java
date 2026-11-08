@@ -30,6 +30,7 @@ public class ShapelessToolRecipeBuilder implements RecipeBuilder
     private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
     @Nullable
     private String group;
+    private AdvancementRequirements.Strategy strategy = AdvancementRequirements.Strategy.OR;
 
     public ShapelessToolRecipeBuilder(RecipeCategory pCategory, ItemLike pResult, int pCount)
     {
@@ -99,6 +100,12 @@ public class ShapelessToolRecipeBuilder implements RecipeBuilder
         return this;
     }
 
+    public ShapelessToolRecipeBuilder strategy(AdvancementRequirements.Strategy strategy)
+    {
+        this.strategy = strategy;
+        return this;
+    }
+
     @Override
     public @NotNull Item getResult() { return this.resultStack.getItem(); }
 
@@ -111,7 +118,7 @@ public class ShapelessToolRecipeBuilder implements RecipeBuilder
         Advancement.Builder advancement$builder = pRecipeOutput.advancement()
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pId))
                 .rewards(AdvancementRewards.Builder.recipe(pId))
-                .requirements(AdvancementRequirements.Strategy.OR);
+                .requirements(strategy);
         this.criteria.forEach(advancement$builder::addCriterion);
         ShapelessToolRecipe shapelesstoolRecipe = new ShapelessToolRecipe(
                 Objects.requireNonNullElse(this.group, ""),

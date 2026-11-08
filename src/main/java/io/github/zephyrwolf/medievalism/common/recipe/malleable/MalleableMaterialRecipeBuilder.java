@@ -29,6 +29,7 @@ public final class MalleableMaterialRecipeBuilder implements RecipeBuilder
     private final Ingredient ingredient;
     private final MalleableMaterialType materialType;
     private final List<String> rows = new ArrayList<>();
+    private AdvancementRequirements.Strategy strategy = AdvancementRequirements.Strategy.OR;
 
     public static MalleableMaterialRecipeBuilder builder(Ingredient ingredient, MalleableMaterialType material)
     {
@@ -57,6 +58,12 @@ public final class MalleableMaterialRecipeBuilder implements RecipeBuilder
     @Override
     public MalleableMaterialRecipeBuilder group(@Nullable String pGroupName) { return this; }
 
+    public MalleableMaterialRecipeBuilder strategy(AdvancementRequirements.Strategy strategy)
+    {
+        this.strategy = strategy;
+        return this;
+    }
+
     @Deprecated
     @Override
     public Item getResult() { return Items.AIR; }
@@ -69,7 +76,7 @@ public final class MalleableMaterialRecipeBuilder implements RecipeBuilder
         Advancement.Builder advancement$builder = pRecipeOutput.advancement()
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pId))
                 .rewards(AdvancementRewards.Builder.recipe(pId))
-                .requirements(AdvancementRequirements.Strategy.OR);
+                .requirements(strategy);
         this.criteria.forEach(advancement$builder::addCriterion);
         MalleableMaterialRecipe recipe = buildRecipe();
         pRecipeOutput.accept(pId, recipe, advancement$builder.build(pId.withPrefix("recipes/" + "malleable_material" + "/")));

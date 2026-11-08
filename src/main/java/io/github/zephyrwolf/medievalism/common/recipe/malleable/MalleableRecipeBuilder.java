@@ -29,6 +29,7 @@ public class MalleableRecipeBuilder implements RecipeBuilder
     private final MalleableMaterialType materialType;
     private final List<String> rows = new ArrayList<>();
     private boolean mirror = false;
+    private AdvancementRequirements.Strategy strategy = AdvancementRequirements.Strategy.OR;
 
     public static MalleableRecipeBuilder builder(MalleableMaterialType materialType, ItemStack result)
     {
@@ -39,6 +40,12 @@ public class MalleableRecipeBuilder implements RecipeBuilder
     {
         this.materialType = materialType;
         this.result = result;
+    }
+
+    public MalleableRecipeBuilder strategy(AdvancementRequirements.Strategy strategy)
+    {
+        this.strategy = strategy;
+        return this;
     }
 
     public MalleableRecipeBuilder pattern(String row)
@@ -54,13 +61,13 @@ public class MalleableRecipeBuilder implements RecipeBuilder
     }
 
     @Override
-    public RecipeBuilder unlockedBy(String pName, Criterion<?> pCriterion) {
+    public MalleableRecipeBuilder unlockedBy(String pName, Criterion<?> pCriterion) {
         this.criteria.put(pName, pCriterion);
         return this;
     }
 
     @Override
-    public RecipeBuilder group(@Nullable String pGroupName) {
+    public MalleableRecipeBuilder group(@Nullable String pGroupName) {
         return this;
     }
 
@@ -75,7 +82,7 @@ public class MalleableRecipeBuilder implements RecipeBuilder
         Advancement.Builder advancement$builder = pRecipeOutput.advancement()
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pId))
                 .rewards(AdvancementRewards.Builder.recipe(pId))
-                .requirements(AdvancementRequirements.Strategy.OR);
+                .requirements(strategy);
         this.criteria.forEach(advancement$builder::addCriterion);
         MalleableRecipe recipe = buildRecipe();
         pRecipeOutput.accept(pId, recipe, advancement$builder.build(pId.withPrefix("recipes/" + "malleable" + "/")));
