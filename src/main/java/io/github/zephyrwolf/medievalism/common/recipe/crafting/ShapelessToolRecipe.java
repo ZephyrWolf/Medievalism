@@ -95,7 +95,8 @@ public class ShapelessToolRecipe implements CraftingRecipe
     {
         NonNullList<ItemStack> nonnulllist = NonNullList.withSize(pInput.size(), ItemStack.EMPTY);
 
-        for (int i = 0; i < nonnulllist.size(); i++) {
+        for (int i = 0; i < nonnulllist.size(); i++)
+        {
             ItemStack item = pInput.getItem(i);
             if (item.hasCraftingRemainingItem())
             {
@@ -103,19 +104,21 @@ public class ShapelessToolRecipe implements CraftingRecipe
             }
             else if (isTool(item))
             {
-                if (!item.isDamageableItem()) { nonnulllist.set(i, item); }
-                ItemStack ret = item.copy();
-                int damage = ret.getDamageValue() + 1;
-                if (damage >= ret.getMaxDamage())
+                if (!item.isDamageableItem() || item.getMaxDamage() == 0)
                 {
-                    ret.setDamageValue(0);
-                    ret.shrink(1);
+                    nonnulllist.set(i, item.copyWithCount(1));
                 }
-                else
-                {
-                    ret.setDamageValue(damage);
+                else {
+                    ItemStack ret = item.copy();
+                    int damage = ret.getDamageValue() + 1;
+                    if (damage >= ret.getMaxDamage()) {
+                        ret.setDamageValue(0);
+                        ret.shrink(1);
+                    } else {
+                        ret.setDamageValue(damage);
+                    }
+                    nonnulllist.set(i, ret);
                 }
-                nonnulllist.set(i, ret);
             }
         }
         return nonnulllist;
