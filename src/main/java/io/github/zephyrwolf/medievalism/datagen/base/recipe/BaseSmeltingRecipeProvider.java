@@ -2,6 +2,7 @@ package io.github.zephyrwolf.medievalism.datagen.base.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.MudWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.common.recipe.RecipeTools;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -140,10 +141,10 @@ public final class BaseSmeltingRecipeProvider
     }
 
     private static void tempRecipes(RecipeOutput recipeOutput) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemRegistration.DRYING_PACKED_MUD),
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(MudWorkingItemRegistration.DRYING_PACKED_MUD),
                         RecipeCategory.FOOD, Blocks.PACKED_MUD.asItem(),
                         0.0f, 100)
-                .unlockedBy("has_wet_packed_mud", RecipeTools.itemPredicateOf(ItemRegistration.DRYING_PACKED_MUD))
+                .unlockedBy("has_wet_packed_mud", RecipeTools.itemPredicateOf(MudWorkingItemRegistration.DRYING_PACKED_MUD))
                 .save(recipeOutput, MedievalismConstants.resource("packed_mud_smelting"));
 
         // Jug

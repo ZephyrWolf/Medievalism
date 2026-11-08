@@ -5,6 +5,7 @@ import io.github.zephyrwolf.medievalism.common.recipe.crafting.ShapelessToolReci
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.MudWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.common.recipe.RecipeTools;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -36,12 +37,12 @@ public final class BaseShapelessRecipeProvider {
                 .unlockedBy("has_thatch_block", RecipeTools.itemPredicateOf(ItemRegistration.THATCH_BLOCK))
                 .save(recipeOutput, MedievalismConstants.resource("thatch_from_block"));
         // Mud Ball
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.DIRT_CHUNK, 2)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MudWorkingItemRegistration.DIRT_CHUNK, 2)
                 .requires(Blocks.DIRT)
                 .group("dirt_chunk")
                 .unlockedBy("has_dirt", RecipeTools.itemPredicateOf(Blocks.DIRT))
                 .save(recipeOutput, MedievalismConstants.resource("dirt_chunk_from_dirt"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.MUD_BALL, 4)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MudWorkingItemRegistration.MUD_BALL, 4)
                 .requires(Blocks.MUD)
                 .group("mud_ball")
                 .unlockedBy("has_mud", RecipeTools.itemPredicateOf(Blocks.MUD))
@@ -62,9 +63,9 @@ public final class BaseShapelessRecipeProvider {
     }
 
     private static void potteryRecipes(RecipeOutput recipeOutput) {
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.WET_DAUB, 2)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MudWorkingItemRegistration.WET_DAUB, 2)
                 .requires(ItemTagCatalog.CLAY_BALL)
-                .requires(ItemRegistration.MUD_BALL)
+                .requires(MudWorkingItemRegistration.MUD_BALL)
                 .requires(ItemRegistration.THATCH)
                 .unlockedBy("has_clay_ball", RecipeTools.itemPredicateOf(ItemTagCatalog.CLAY_BALL))
                 .save(recipeOutput, MedievalismConstants.resource("wet_daub"));
@@ -90,14 +91,14 @@ public final class BaseShapelessRecipeProvider {
                 .unlockedBy("has_refractory_clay", RecipeTools.itemPredicateOf(BlockRegistration.REFRACTORY_CLAY))
                 .save(recipeOutput, MedievalismConstants.resource("refractory_clay_balls_from_block"));
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.DRYING_PACKED_MUD_BRICK)
-                .requires(ItemRegistration.MUD_BALL)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MudWorkingItemRegistration.DRYING_PACKED_MUD_BRICK)
+                .requires(MudWorkingItemRegistration.MUD_BALL)
                 .requires(ItemRegistration.THATCH)
                 .unlockedBy("has_thatch", RecipeTools.itemPredicateOf(ItemRegistration.THATCH))
                 .save(recipeOutput, MedievalismConstants.resource("drying_mud_brick"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.DRYING_DAUB_BRICK)
-                .requires(ItemRegistration.WET_DAUB)
-                .unlockedBy("has_wet_daub", RecipeTools.itemPredicateOf(ItemRegistration.WET_DAUB))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MudWorkingItemRegistration.DRYING_DAUB_BRICK)
+                .requires(MudWorkingItemRegistration.WET_DAUB)
+                .unlockedBy("has_wet_daub", RecipeTools.itemPredicateOf(MudWorkingItemRegistration.WET_DAUB))
                 .save(recipeOutput, MedievalismConstants.resource("drying_daub_brick"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ClayWorkingItemRegistration.POTTERS_CLAY_BALL, 2)

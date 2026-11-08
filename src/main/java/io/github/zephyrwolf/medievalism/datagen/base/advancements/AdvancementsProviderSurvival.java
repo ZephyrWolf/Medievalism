@@ -105,7 +105,7 @@ public class AdvancementsProviderSurvival implements AdvancementProvider.Advance
 
         AdvancementHolder hint_mud_works = Advancement.Builder.advancement()
                 .parent(stone_age_root)
-                .display(ItemRegistration.MUD_BALL,
+                .display(MudWorkingItemRegistration.MUD_BALL,
                         TextTools.getTranslation(AdvancementLangKeys.HINT_MUD_WORKS_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.HINT_MUD_WORKS_DESC),
                         null,
@@ -114,7 +114,7 @@ public class AdvancementsProviderSurvival implements AdvancementProvider.Advance
                         ItemPredicate.Builder.item().of(Items.MUD).build()
                 ))
                 .addCriterion("has_mud_ball", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemRegistration.MUD_BALL).build()
+                        ItemPredicate.Builder.item().of(MudWorkingItemRegistration.MUD_BALL).build()
                 ))
                 .requirements(AdvancementRequirements.Strategy.OR)
                 .save(saver, getNameId("stone_age", "hint_mud_works"));

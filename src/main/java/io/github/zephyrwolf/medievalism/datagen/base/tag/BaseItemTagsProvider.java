@@ -3,6 +3,7 @@ package io.github.zephyrwolf.medievalism.datagen.base.tag;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.MudWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -298,8 +299,8 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
         tag(Tags.Items.INGOTS).add(
                 ClayWorkingItemRegistration.CHINA_CLAY_BRICK.get(),
                 ClayWorkingItemRegistration.REFRACTORY_CLAY_BRICK.get(),
-                ItemRegistration.PACKED_MUD_BRICK.get(),
-                ItemRegistration.DAUB_BRICKS.get()
+                MudWorkingItemRegistration.PACKED_MUD_BRICK.get(),
+                MudWorkingItemRegistration.DAUB_BRICKS.get()
         );
         // Gravel
         tag(Tags.Items.GRAVELS).add(

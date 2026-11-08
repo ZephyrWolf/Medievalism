@@ -2,6 +2,7 @@ package io.github.zephyrwolf.medievalism.common.item;
 
 
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.MudWorkingItemRegistration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -46,7 +47,7 @@ public class DirtChunkItem extends Item
                     );
                     //pLevel.gameEvent(pPlayer, GameEvent.FLUID_PICKUP, blockpos);
                     return InteractionResultHolder.sidedSuccess(
-                            turnDirtChunkIntoMudBall(itemstack, pPlayer, new ItemStack(ItemRegistration.MUD_BALL.get())),
+                            turnDirtChunkIntoMudBall(itemstack, pPlayer, new ItemStack(MudWorkingItemRegistration.MUD_BALL.get())),
                             pLevel.isClientSide()
                     );
                 }

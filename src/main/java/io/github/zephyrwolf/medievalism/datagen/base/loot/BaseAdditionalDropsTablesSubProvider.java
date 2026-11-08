@@ -4,6 +4,7 @@ import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.MudWorkingItemRegistration;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -39,8 +40,8 @@ public final class BaseAdditionalDropsTablesSubProvider implements LootTableSubP
 
     private void getLootTables(HolderLookup.Provider ignoredLookupProvider)
     {
-        ruinedDrop(BlockRegistration.DRYING_PACKED_MUD_BRICK.get(), ItemRegistration.MUD_BALL, 1, 1);
-        ruinedDrop(BlockRegistration.DRYING_DAUB_BRICK.get(), ItemRegistration.WET_DAUB, 1, 1);
+        ruinedDrop(BlockRegistration.DRYING_PACKED_MUD_BRICK.get(), MudWorkingItemRegistration.MUD_BALL, 1, 1);
+        ruinedDrop(BlockRegistration.DRYING_DAUB_BRICK.get(), MudWorkingItemRegistration.WET_DAUB, 1, 1);
         ruinedDrop(BlockRegistration.DRYING_CLAY_BRICK.get(), Items.CLAY_BALL, 1, 1);
         ruinedDrop(BlockRegistration.DRYING_CHINA_CLAY_BRICK.get(), ClayWorkingItemRegistration.CHINA_CLAY_BALL, 1, 1);
         ruinedDrop(BlockRegistration.DRYING_POTTERS_CLAY_BRICK.get(), ClayWorkingItemRegistration.POTTERS_CLAY_BALL, 1, 1);
@@ -52,8 +53,8 @@ public final class BaseAdditionalDropsTablesSubProvider implements LootTableSubP
         ruinedDrop(BlockRegistration.DRYING_KAOLIN_CLAY_DOUBLE_BRICK.get(), ClayWorkingItemRegistration.KAOLIN_CLAY_BALL, 1, 2);
         ruinedDrop(BlockRegistration.DRYING_REFRACTORY_CLAY_DOUBLE_BRICK.get(), ClayWorkingItemRegistration.REFRACTORY_CLAY_BALL, 1, 2);
 
-        alternateDrop(BlockRegistration.DRYING_PACKED_MUD_BRICK.get(), ItemRegistration.PACKED_MUD_BRICK, 1, 1);
-        alternateDrop(BlockRegistration.DRYING_DAUB_BRICK.get(), ItemRegistration.DAUB_BRICK, 1, 1);
+        alternateDrop(BlockRegistration.DRYING_PACKED_MUD_BRICK.get(), MudWorkingItemRegistration.PACKED_MUD_BRICK, 1, 1);
+        alternateDrop(BlockRegistration.DRYING_DAUB_BRICK.get(), MudWorkingItemRegistration.DAUB_BRICK, 1, 1);
         alternateDrop(BlockRegistration.DRYING_CLAY_BRICK.get(), ClayWorkingItemRegistration.UNFIRED_CLAY_BRICK, 1, 1);
         alternateDrop(BlockRegistration.DRYING_CHINA_CLAY_BRICK.get(), ClayWorkingItemRegistration.UNFIRED_CHINA_CLAY_BRICK, 1, 1);
         alternateDrop(BlockRegistration.DRYING_POTTERS_CLAY_BRICK.get(), ClayWorkingItemRegistration.UNFIRED_POTTERS_CLAY_BRICK, 1, 1);

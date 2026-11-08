@@ -4,6 +4,7 @@ import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.MudWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.common.recipe.RecipeTools;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -23,10 +24,10 @@ public final class BaseShapedRecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Blocks.MUD)
                 .pattern("cc")
                 .pattern("cc")
-                .define('c', ItemRegistration.MUD_BALL)
-                .unlockedBy("has_mud_balls", RecipeTools.itemPredicateOf(ItemRegistration.MUD_BALL))
+                .define('c', MudWorkingItemRegistration.MUD_BALL)
+                .unlockedBy("has_mud_balls", RecipeTools.itemPredicateOf(MudWorkingItemRegistration.MUD_BALL))
                 .save(recipeOutput, MedievalismConstants.resource("mud_from_balls"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistration.DRYING_PACKED_MUD, 2)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MudWorkingItemRegistration.DRYING_PACKED_MUD, 2)
                 .pattern("mt")
                 .pattern("tm")
                 .define('m', Blocks.MUD.asItem())
@@ -70,14 +71,14 @@ public final class BaseShapedRecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Blocks.MUD_BRICKS, 1)
                 .pattern("mm")
                 .pattern("mm")
-                .define('m', ItemRegistration.PACKED_MUD_BRICK)
-                .unlockedBy("has_mud_stone_brick", RecipeTools.itemPredicateOf(ItemRegistration.PACKED_MUD_BRICK))
+                .define('m', MudWorkingItemRegistration.PACKED_MUD_BRICK)
+                .unlockedBy("has_mud_stone_brick", RecipeTools.itemPredicateOf(MudWorkingItemRegistration.PACKED_MUD_BRICK))
                 .save(recipeOutput, MedievalismConstants.resource("mud_brick_from_bricks"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistration.DAUB_BRICKS, 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MudWorkingItemRegistration.DAUB_BRICKS, 1)
                 .pattern("mm")
                 .pattern("mm")
-                .define('m', ItemRegistration.DAUB_BRICK)
-                .unlockedBy("has_daub_brick", RecipeTools.itemPredicateOf(ItemRegistration.DAUB_BRICK))
+                .define('m', MudWorkingItemRegistration.DAUB_BRICK)
+                .unlockedBy("has_daub_brick", RecipeTools.itemPredicateOf(MudWorkingItemRegistration.DAUB_BRICK))
                 .save(recipeOutput, MedievalismConstants.resource("daub_brick_from_bricks"));
         // Stone Bench
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, new ItemStack(ItemRegistration.STONE_BENCH.get()))

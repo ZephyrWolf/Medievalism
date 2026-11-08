@@ -4,6 +4,7 @@ import io.github.zephyrwolf.medievalism.common.data.ILanguageProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.LanguageEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.MudWorkingItemRegistration;
 
 public class MudWorkingLangEntry implements ILanguageProviderEntry
 {
@@ -50,11 +51,11 @@ public class MudWorkingLangEntry implements ILanguageProviderEntry
 
     private void addItemTranslations(LanguageEntryProviderHandle handle)
     {
-        handle.addItem(ItemRegistration.DIRT_CHUNK.get(), "Dirt Chunk");
-        handle.addItem(ItemRegistration.MUD_BALL.get(), "Mud Ball");
-        handle.addItem(ItemRegistration.WET_DAUB.get(), "Wet Daub Ball");
-        handle.addItem(ItemRegistration.PACKED_MUD_BRICK.get(), "Packed Mud Brick");
-        handle.addItem(ItemRegistration.DAUB_BRICK.get(), "Daub Brick");
+        handle.addItem(MudWorkingItemRegistration.DIRT_CHUNK.get(), "Dirt Chunk");
+        handle.addItem(MudWorkingItemRegistration.MUD_BALL.get(), "Mud Ball");
+        handle.addItem(MudWorkingItemRegistration.WET_DAUB.get(), "Wet Daub Ball");
+        handle.addItem(MudWorkingItemRegistration.PACKED_MUD_BRICK.get(), "Packed Mud Brick");
+        handle.addItem(MudWorkingItemRegistration.DAUB_BRICK.get(), "Daub Brick");
     }
 
     private void addCreativeTabTranslations(LanguageEntryProviderHandle handle)
