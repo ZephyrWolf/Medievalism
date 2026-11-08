@@ -3,6 +3,7 @@ package io.github.zephyrwolf.medievalism.datagen.base.lang;
 import io.github.zephyrwolf.medievalism.common.data.ILanguageProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.LanguageEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.FarmingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 
 public class FarmingLangEntry implements ILanguageProviderEntry
@@ -19,38 +20,38 @@ public class FarmingLangEntry implements ILanguageProviderEntry
 
     private void crops(LanguageEntryProviderHandle handle)
     {
-        handle.addItem(ItemRegistration.BARLEY.get(), "Barley");
-        handle.addItem(ItemRegistration.BLUEBERRIES.get(), "Blueberries");
-        handle.addItem(ItemRegistration.BROAD_BEAN.get(), "Broad Bean");
-        handle.addItem(ItemRegistration.CABBAGE.get(), "Cabbage");
-        handle.addItem(ItemRegistration.CHARD.get(), "Chard");
-        handle.addItem(ItemRegistration.FLAX.get(), "Flax");
-        handle.addItem(ItemRegistration.GARLIC.get(), "Garlic");
-        handle.addItem(ItemRegistration.LEEK.get(), "Leek");
-        handle.addItem(ItemRegistration.NAPA_CABBAGE.get(), "Napa Cabbage");
-        handle.addItem(ItemRegistration.NETTLE.get(), "Nettle");
-        handle.addItem(ItemRegistration.OATS.get(), "Oats");
-        handle.addItem(ItemRegistration.GREEN_PUMPKIN.get(), "Green Pumpkin");
-        handle.addItem(ItemRegistration.PARSNIP.get(), "Parsnip");
-        handle.addItem(ItemRegistration.PURPLE_CARROT.get(), "Purple Carrot");
-        handle.addItem(ItemRegistration.PURPLE_ONION.get(), "Purple Onion");
-        handle.addItem(ItemRegistration.PURPLE_SKIRRET.get(), "Purple Skirret");
-        handle.addItem(ItemRegistration.RADISH.get(), "Radish");
-        handle.addItem(ItemRegistration.RASPBERRIES.get(), "Raspberries");
-        handle.addItem(ItemRegistration.SKIRRET.get(), "Skirret");
-        handle.addItem(ItemRegistration.SPINACH.get(), "Spinach");
-        handle.addItem(ItemRegistration.STRAWBERRIES.get(), "Strawberries");
-        handle.addItem(ItemRegistration.TURNIP.get(), "Turnip");
-        handle.addItem(ItemRegistration.WHITE_CARROT.get(), "White Carrot");
-        handle.addItem(ItemRegistration.WHITE_ONION.get(), "White Onion");
-        handle.addItem(ItemRegistration.YAM.get(), "Yam");
+        handle.addItem(FarmingItemRegistration.BARLEY.get(), "Barley");
+        handle.addItem(FarmingItemRegistration.BLUEBERRIES.get(), "Blueberries");
+        handle.addItem(FarmingItemRegistration.BROAD_BEAN.get(), "Broad Bean");
+        handle.addItem(FarmingItemRegistration.CABBAGE.get(), "Cabbage");
+        handle.addItem(FarmingItemRegistration.CHARD.get(), "Chard");
+        handle.addItem(FarmingItemRegistration.FLAX.get(), "Flax");
+        handle.addItem(FarmingItemRegistration.GARLIC.get(), "Garlic");
+        handle.addItem(FarmingItemRegistration.LEEK.get(), "Leek");
+        handle.addItem(FarmingItemRegistration.NAPA_CABBAGE.get(), "Napa Cabbage");
+        handle.addItem(FarmingItemRegistration.NETTLE.get(), "Nettle");
+        handle.addItem(FarmingItemRegistration.OATS.get(), "Oats");
+        handle.addItem(FarmingItemRegistration.GREEN_PUMPKIN.get(), "Green Pumpkin");
+        handle.addItem(FarmingItemRegistration.PARSNIP.get(), "Parsnip");
+        handle.addItem(FarmingItemRegistration.PURPLE_CARROT.get(), "Purple Carrot");
+        handle.addItem(FarmingItemRegistration.PURPLE_ONION.get(), "Purple Onion");
+        handle.addItem(FarmingItemRegistration.PURPLE_SKIRRET.get(), "Purple Skirret");
+        handle.addItem(FarmingItemRegistration.RADISH.get(), "Radish");
+        handle.addItem(FarmingItemRegistration.RASPBERRIES.get(), "Raspberries");
+        handle.addItem(FarmingItemRegistration.SKIRRET.get(), "Skirret");
+        handle.addItem(FarmingItemRegistration.SPINACH.get(), "Spinach");
+        handle.addItem(FarmingItemRegistration.STRAWBERRIES.get(), "Strawberries");
+        handle.addItem(FarmingItemRegistration.TURNIP.get(), "Turnip");
+        handle.addItem(FarmingItemRegistration.WHITE_CARROT.get(), "White Carrot");
+        handle.addItem(FarmingItemRegistration.WHITE_ONION.get(), "White Onion");
+        handle.addItem(FarmingItemRegistration.YAM.get(), "Yam");
     }
 
     private void seeds(LanguageEntryProviderHandle handle)
     {
-        handle.addItem(ItemRegistration.FLAX_SEEDS.get(), "Flax Seeds");
-        handle.addItem(ItemRegistration.BARLEY_SEEDS.get(), "Barley Seeds");
-        handle.addItem(ItemRegistration.OAT_SEEDS.get(), "Oat Seeds");
+        handle.addItem(FarmingItemRegistration.FLAX_SEEDS.get(), "Flax Seeds");
+        handle.addItem(FarmingItemRegistration.BARLEY_SEEDS.get(), "Barley Seeds");
+        handle.addItem(FarmingItemRegistration.OAT_SEEDS.get(), "Oat Seeds");
     }
 
     private void addBlockTranslations(LanguageEntryProviderHandle handle)

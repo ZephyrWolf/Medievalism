@@ -1,10 +1,7 @@
 package io.github.zephyrwolf.medievalism.datagen.base.tag;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.MudWorkingItemRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.*;
 import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -124,9 +121,9 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
                 .add(ItemRegistration.BAT_HIDE.get());
 
         tag(ItemTagCatalog.CAN_CRAFT_FLOUR)
-                .add(ItemRegistration.CRACKED_WHEAT.get())
-                .add(ItemRegistration.CRACKED_BARLEY.get())
-                .add(ItemRegistration.ROLLED_OATS.get());
+                .add(CookingItemRegistration.CRACKED_WHEAT.get())
+                .add(CookingItemRegistration.CRACKED_BARLEY.get())
+                .add(CookingItemRegistration.ROLLED_OATS.get());
         tag(ItemTagCatalog.CLAY_BALL)
                 .add(
                         Items.CLAY_BALL,
@@ -507,44 +504,44 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
     public void registerItemNeoForgeCompatibilityTags()
     {
         tag(Tags.Items.CROPS).add(
-                ItemRegistration.BLUEBERRIES.get(),
-                ItemRegistration.RASPBERRIES.get(),
-                ItemRegistration.STRAWBERRIES.get(),
-                ItemRegistration.BARLEY.get(),
-                ItemRegistration.OATS.get(),
-                ItemRegistration.YAM.get(),
-                ItemRegistration.FLAX.get()
+                FarmingItemRegistration.BLUEBERRIES.get(),
+                FarmingItemRegistration.RASPBERRIES.get(),
+                FarmingItemRegistration.STRAWBERRIES.get(),
+                FarmingItemRegistration.BARLEY.get(),
+                FarmingItemRegistration.OATS.get(),
+                FarmingItemRegistration.YAM.get(),
+                FarmingItemRegistration.FLAX.get()
         );
 
         tag(Tags.Items.SEEDS).add(
-                ItemRegistration.BARLEY_SEEDS.get(),
-                ItemRegistration.OAT_SEEDS.get(),
-                ItemRegistration.FLAX_SEEDS.get()
+                FarmingItemRegistration.BARLEY_SEEDS.get(),
+                FarmingItemRegistration.OAT_SEEDS.get(),
+                FarmingItemRegistration.FLAX_SEEDS.get()
         );
 
         tag(Tags.Items.MUSHROOMS);
 
         tag(Tags.Items.FOODS).add(
-                ItemRegistration.BLUEBERRIES.get(),
-                ItemRegistration.RASPBERRIES.get(),
-                ItemRegistration.STRAWBERRIES.get(),
-                ItemRegistration.YAM.get(),
-                ItemRegistration.BAKED_YAM.get(),
-                ItemRegistration.BAKED_BEETROOT.get(),
-                ItemRegistration.BAKED_CARROT.get()
+                FarmingItemRegistration.BLUEBERRIES.get(),
+                FarmingItemRegistration.RASPBERRIES.get(),
+                FarmingItemRegistration.STRAWBERRIES.get(),
+                FarmingItemRegistration.YAM.get(),
+                CookingItemRegistration.BAKED_YAM.get(),
+                CookingItemRegistration.BAKED_BEETROOT.get(),
+                CookingItemRegistration.BAKED_CARROT.get()
         );
 
         tag(Tags.Items.FOODS_BERRY).add(
-                ItemRegistration.BLUEBERRIES.get(),
-                ItemRegistration.RASPBERRIES.get(),
-                ItemRegistration.STRAWBERRIES.get()
+                FarmingItemRegistration.BLUEBERRIES.get(),
+                FarmingItemRegistration.RASPBERRIES.get(),
+                FarmingItemRegistration.STRAWBERRIES.get()
         );
 
         tag(Tags.Items.DUSTS).add(
-                ItemRegistration.CRACKED_BARLEY.get(),
-                ItemRegistration.CRACKED_WHEAT.get(),
-                ItemRegistration.ROLLED_OATS.get(),
-                ItemRegistration.FLOUR.get()
+                CookingItemRegistration.CRACKED_BARLEY.get(),
+                CookingItemRegistration.CRACKED_WHEAT.get(),
+                CookingItemRegistration.ROLLED_OATS.get(),
+                CookingItemRegistration.FLOUR.get()
         );
 
         tag(Tags.Items.GEMS);

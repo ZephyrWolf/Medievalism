@@ -23,10 +23,10 @@ public final class MudWorkingItemRegistration
         MUD_WORKING_ITEMS.register(modEventBus);
     }
 
-    public static <I extends Item> DeferredItem<I> registerBlockItem(
+    protected static <I extends Item> DeferredItem<I> registerBlockItem(
             String name, BiFunction<Block, Item.Properties, ? extends I> func, Supplier<? extends Block> block)
     { return registerBlockItem(name, func, block, new Item.Properties()); }
-    public static <I extends Item> DeferredItem<I> registerBlockItem(
+    protected static <I extends Item> DeferredItem<I> registerBlockItem(
             String name, BiFunction<Block, Item.Properties, ? extends I> func, Supplier<? extends Block> block, Item.Properties props)
     { return MUD_WORKING_ITEMS.register(name, key -> func.apply(block.get(), props)); }
 

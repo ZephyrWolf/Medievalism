@@ -1,6 +1,8 @@
 package io.github.zephyrwolf.medievalism.datagen.base.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.registration.item.CookingItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.FarmingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.common.recipe.RecipeTools;
 import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
@@ -33,28 +35,28 @@ public final class BaseCampfireRecipeProvider
     private static void foodRecipes(RecipeOutput recipeOutput)
     {
         // Baked Yam
-        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ItemRegistration.YAM),
-                        RecipeCategory.FOOD, ItemRegistration.BAKED_YAM,
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(FarmingItemRegistration.YAM),
+                        RecipeCategory.FOOD, CookingItemRegistration.BAKED_YAM,
                         0.0f, 100)
-                .unlockedBy("has_yam", RecipeTools.itemPredicateOf(ItemRegistration.YAM))
+                .unlockedBy("has_yam", RecipeTools.itemPredicateOf(FarmingItemRegistration.YAM))
                 .save(recipeOutput, MedievalismConstants.resource("baked_yam_campfire"));
         // Baked Beetroot
         SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(Items.BEETROOT),
-                        RecipeCategory.FOOD, ItemRegistration.BAKED_BEETROOT,
+                        RecipeCategory.FOOD, CookingItemRegistration.BAKED_BEETROOT,
                         0.0f, 100)
                 .unlockedBy("has_beetroot", RecipeTools.itemPredicateOf(Items.BEETROOT))
                 .save(recipeOutput, MedievalismConstants.resource("baked_beetroot_campfire"));
         // Baked Carrot
         SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(Items.CARROT),
-                        RecipeCategory.FOOD, ItemRegistration.BAKED_CARROT,
+                        RecipeCategory.FOOD, CookingItemRegistration.BAKED_CARROT,
                         0.0f, 100)
                 .unlockedBy("has_carrot", RecipeTools.itemPredicateOf(Items.CARROT))
                 .save(recipeOutput, MedievalismConstants.resource("baked_carrot_campfire"));
         // Bread
-        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ItemRegistration.DOUGH),
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(CookingItemRegistration.DOUGH),
                         RecipeCategory.FOOD, Items.BREAD,
                         0.0f, 100)
-                .unlockedBy("has_dough", RecipeTools.itemPredicateOf(ItemRegistration.DOUGH))
+                .unlockedBy("has_dough", RecipeTools.itemPredicateOf(CookingItemRegistration.DOUGH))
                 .save(recipeOutput, MedievalismConstants.resource("bread_campfire"));
     }
 

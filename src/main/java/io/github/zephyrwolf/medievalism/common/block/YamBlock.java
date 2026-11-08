@@ -1,6 +1,7 @@
 package io.github.zephyrwolf.medievalism.common.block;
 
 import com.mojang.serialization.MapCodec;
+import io.github.zephyrwolf.medievalism.registration.item.FarmingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
@@ -42,7 +43,7 @@ public class YamBlock extends CropBlock {
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return ItemRegistration.YAM;
+        return FarmingItemRegistration.YAM;
     }
 
     @Override

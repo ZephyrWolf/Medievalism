@@ -12,15 +12,12 @@ import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.CreativeTabRegistration;
 import io.github.zephyrwolf.medievalism.registration.capabilities.CapabilitiesRegistration;
 import io.github.zephyrwolf.medievalism.registration.components.DataComponentTypeRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.MudWorkingItemRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.*;
 import io.github.zephyrwolf.medievalism.registration.particles.ClientParticleProviderRegistration;
 import io.github.zephyrwolf.medievalism.registration.particles.ParticleTypeRegistration;
 import io.github.zephyrwolf.medievalism.registrationclient.render.ClientColoursRegistration;
 import io.github.zephyrwolf.medievalism.registrationclient.render.ClientExtensionsRegistration;
 import io.github.zephyrwolf.medievalism.registration.menu.ClientMenuScreenRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.menu.MenuRegistration;
 import io.github.zephyrwolf.medievalism.registration.recipe.MalleableMaterialRegistration;
 import io.github.zephyrwolf.medievalism.registration.recipe.RecipeRegistration;
@@ -61,6 +58,9 @@ public class MedievalismMod
         ClayWorkingItemRegistration.register(bus);
         MudWorkingItemRegistration.register(bus);
         WorldItemRegistration.register(bus);
+        MetalWorkingItemRegistration.register(bus);
+        FarmingItemRegistration.register(bus);
+        CookingItemRegistration.register(bus);
 
         BlockEntityRegistration.register(bus);
         CreativeTabRegistration.register(bus);

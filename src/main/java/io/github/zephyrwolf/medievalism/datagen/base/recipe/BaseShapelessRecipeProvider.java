@@ -3,10 +3,7 @@ package io.github.zephyrwolf.medievalism.datagen.base.recipe;
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.recipe.crafting.ShapelessToolRecipeBuilder;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.MudWorkingItemRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.*;
 import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.common.recipe.RecipeTools;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -197,71 +194,71 @@ public final class BaseShapelessRecipeProvider {
 
     private static void foodRecipes(RecipeOutput recipeOutput) {
         // Cracked Grain
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistration.CRACKED_WHEAT)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CookingItemRegistration.CRACKED_WHEAT)
                 .requires(Items.WHEAT)
                 .requires(Items.WHEAT)
                 .requires(Items.WHEAT)
                 //.requires(ItemTagCatalog.HAMMER)
                 .unlockedBy("has_wheat", RecipeTools.itemPredicateOf(Items.WHEAT))
                 .save(recipeOutput, MedievalismConstants.resource("cracked_wheat_shapeless"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistration.CRACKED_BARLEY)
-                .requires(ItemRegistration.BARLEY)
-                .requires(ItemRegistration.BARLEY)
-                .requires(ItemRegistration.BARLEY)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CookingItemRegistration.CRACKED_BARLEY)
+                .requires(FarmingItemRegistration.BARLEY)
+                .requires(FarmingItemRegistration.BARLEY)
+                .requires(FarmingItemRegistration.BARLEY)
                 //.requires(ItemTagCatalog.HAMMER)
-                .unlockedBy("has_barley", RecipeTools.itemPredicateOf(ItemRegistration.BARLEY))
+                .unlockedBy("has_barley", RecipeTools.itemPredicateOf(FarmingItemRegistration.BARLEY))
                 .save(recipeOutput, MedievalismConstants.resource("cracked_barley_shapeless"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistration.ROLLED_OATS)
-                .requires(ItemRegistration.OATS)
-                .requires(ItemRegistration.OATS)
-                .requires(ItemRegistration.OATS)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CookingItemRegistration.ROLLED_OATS)
+                .requires(FarmingItemRegistration.OATS)
+                .requires(FarmingItemRegistration.OATS)
+                .requires(FarmingItemRegistration.OATS)
                 //.requires(ItemTagCatalog.HAMMER)
-                .unlockedBy("has_oat", RecipeTools.itemPredicateOf(ItemRegistration.OATS))
+                .unlockedBy("has_oat", RecipeTools.itemPredicateOf(FarmingItemRegistration.OATS))
                 .save(recipeOutput, MedievalismConstants.resource("rolled_oats_shapeless"));
         // TODO Should I have different types of flour and bread?
         // Flour
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistration.FLOUR)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CookingItemRegistration.FLOUR)
                 .requires(ItemTagCatalog.CAN_CRAFT_FLOUR)
                 //.requires(ItemTagCatalog.HAMMER)
                 .group("flour")
                 .unlockedBy("can_make_flour", RecipeTools.itemPredicateOf(ItemTagCatalog.CAN_CRAFT_FLOUR))
                 .save(recipeOutput, MedievalismConstants.resource("flour"));
         // Dough
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistration.DOUGH)
-                .requires(ItemRegistration.FLOUR)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CookingItemRegistration.DOUGH)
+                .requires(CookingItemRegistration.FLOUR)
                 .group("dough")
-                .unlockedBy("has_flour", RecipeTools.itemPredicateOf(ItemRegistration.FLOUR))
+                .unlockedBy("has_flour", RecipeTools.itemPredicateOf(CookingItemRegistration.FLOUR))
                 .save(recipeOutput, MedievalismConstants.resource("dough"));
 
         // TODO These should have a knife as a tool
         // TODO Replace melon recipe with this format
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistration.PUMPKIN_SLICE, 9)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CookingItemRegistration.PUMPKIN_SLICE, 9)
                 .requires(Items.PUMPKIN)
                 .group("pumpkin_slice")
                 .unlockedBy("hasPumpkin", RecipeTools.itemPredicateOf(Items.PUMPKIN))
                 .save(recipeOutput, MedievalismConstants.resource("pumpkin_slice"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistration.GREEN_PUMPKIN_SLICE, 9)
-                .requires(ItemRegistration.GREEN_PUMPKIN)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CookingItemRegistration.GREEN_PUMPKIN_SLICE, 9)
+                .requires(FarmingItemRegistration.GREEN_PUMPKIN)
                 .group("green_pumpkin_slice")
-                .unlockedBy("hasGreenPumpkin", RecipeTools.itemPredicateOf(ItemRegistration.GREEN_PUMPKIN))
+                .unlockedBy("hasGreenPumpkin", RecipeTools.itemPredicateOf(FarmingItemRegistration.GREEN_PUMPKIN))
                 .save(recipeOutput, MedievalismConstants.resource("green_pumpkin_slice"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistration.BAKED_PUMPKIN_SLICE, 9)
-                .requires(ItemRegistration.BAKED_PUMPKIN)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CookingItemRegistration.BAKED_PUMPKIN_SLICE, 9)
+                .requires(CookingItemRegistration.BAKED_PUMPKIN)
                 .group("baked_pumpkin_slice")
-                .unlockedBy("hasBakedPumpkin", RecipeTools.itemPredicateOf(ItemRegistration.BAKED_PUMPKIN))
+                .unlockedBy("hasBakedPumpkin", RecipeTools.itemPredicateOf(CookingItemRegistration.BAKED_PUMPKIN))
                 .save(recipeOutput, MedievalismConstants.resource("baked_pumpkin_slice"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistration.BAKED_GREEN_PUMPKIN_SLICE, 9)
-                .requires(ItemRegistration.BAKED_GREEN_PUMPKIN)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CookingItemRegistration.BAKED_GREEN_PUMPKIN_SLICE, 9)
+                .requires(CookingItemRegistration.BAKED_GREEN_PUMPKIN)
                 .group("baked_green_pumpkin_slice")
-                .unlockedBy("hasBakedGreenPumpkin", RecipeTools.itemPredicateOf(ItemRegistration.BAKED_GREEN_PUMPKIN))
+                .unlockedBy("hasBakedGreenPumpkin", RecipeTools.itemPredicateOf(CookingItemRegistration.BAKED_GREEN_PUMPKIN))
                 .save(recipeOutput, MedievalismConstants.resource("baked_green_pumpkin_slice"));
     }
 
     private static void cordageRecipes(RecipeOutput recipeOutput) {
         // TODO This is a temp. Will need to soak flax to obtain their fibers
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.FLAX_FIBER)
-                .requires(ItemRegistration.FLAX)
-                .unlockedBy("has_flax", RecipeTools.itemPredicateOf(ItemRegistration.FLAX))
+                .requires(FarmingItemRegistration.FLAX)
+                .unlockedBy("has_flax", RecipeTools.itemPredicateOf(FarmingItemRegistration.FLAX))
                 .save(recipeOutput, MedievalismConstants.resource("flax_fiber"));
     }
 

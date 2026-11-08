@@ -4,6 +4,7 @@ import io.github.zephyrwolf.medievalism.common.block.FireLayBlock;
 import io.github.zephyrwolf.medievalism.common.block.TwigsBlock;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.FarmingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.common.warmth.WarmthTools;
 import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
@@ -227,8 +228,8 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
                 BlockRegistration.YAMS.get(),
                 createCropDrops(
                         BlockRegistration.YAMS.get(),
-                        ItemRegistration.YAM.get(),
-                        ItemRegistration.YAM.get(),
+                        FarmingItemRegistration.YAM.get(),
+                        FarmingItemRegistration.YAM.get(),
                         LootItemBlockStatePropertyCondition.hasBlockStateProperties(BlockRegistration.YAMS.get())
                                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 7))
                 )
@@ -241,13 +242,13 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
                                 .withPool(
                                         LootPool.lootPool()
                                                 .add(
-                                                        LootItem.lootTableItem(ItemRegistration.YAM.get())
+                                                        LootItem.lootTableItem(FarmingItemRegistration.YAM.get())
                                                 )
                                 )
                                 .withPool(
                                         LootPool.lootPool()
                                                 .add(
-                                                        LootItem.lootTableItem(ItemRegistration.YAM.get())
+                                                        LootItem.lootTableItem(FarmingItemRegistration.YAM.get())
                                                                 .apply(ApplyBonusCount.addBonusBinomialDistributionCount(enchantmentLookup.getOrThrow(Enchantments.FORTUNE), 0.5714286f, 1))
                                                 )
                                 )

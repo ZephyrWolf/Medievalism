@@ -1,9 +1,7 @@
 package io.github.zephyrwolf.medievalism.datagen.base.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.MudWorkingItemRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.*;
 import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.common.recipe.RecipeTools;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -29,10 +27,10 @@ public final class BaseSmeltingRecipeProvider
 
     private static void foodRecipes(RecipeOutput recipeOutput)
     {
-        smelting(recipeOutput, RecipeCategory.FOOD, ItemRegistration.YAM, ItemRegistration.BAKED_YAM, "yam", 0.0f, 100);
-        smelting(recipeOutput, RecipeCategory.FOOD, Items.BEETROOT, ItemRegistration.BAKED_BEETROOT, "beetroot", 0.0f, 100);
-        smelting(recipeOutput, RecipeCategory.FOOD, Items.CARROT, ItemRegistration.BAKED_CARROT, "carrot", 0.0f, 100);
-        smelting(recipeOutput, RecipeCategory.FOOD, ItemRegistration.DOUGH, Items.BREAD, "dough", 0.0f, 100);
+        smelting(recipeOutput, RecipeCategory.FOOD, FarmingItemRegistration.YAM, CookingItemRegistration.BAKED_YAM, "yam", 0.0f, 100);
+        smelting(recipeOutput, RecipeCategory.FOOD, Items.BEETROOT, CookingItemRegistration.BAKED_BEETROOT, "beetroot", 0.0f, 100);
+        smelting(recipeOutput, RecipeCategory.FOOD, Items.CARROT, CookingItemRegistration.BAKED_CARROT, "carrot", 0.0f, 100);
+        smelting(recipeOutput, RecipeCategory.FOOD, CookingItemRegistration.DOUGH, Items.BREAD, "dough", 0.0f, 100);
     }
 
     private static void limeRecipes(RecipeOutput recipeOutput)
