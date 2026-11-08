@@ -3,6 +3,7 @@ package io.github.zephyrwolf.medievalism.datagen.base.lang;
 import io.github.zephyrwolf.medievalism.common.data.ILanguageProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.LanguageEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.MetalWorkingItemRegistration;
 
 public class MetalWorkingLangEntry implements ILanguageProviderEntry
 {
@@ -31,10 +32,10 @@ public class MetalWorkingLangEntry implements ILanguageProviderEntry
 
     private void addItemTranslations(LanguageEntryProviderHandle handle)
     {
-        handle.addItem(ItemRegistration.RAW_TIN.get(), "Raw Tin");
-        handle.addItem(ItemRegistration.COPPER_ORE_DUST.get(), "Copper Ore Dust");
-        handle.addItem(ItemRegistration.TIN_ORE_DUST.get(), "Tin Ore Dust");
-        handle.addItem(ItemRegistration.IRON_ORE_DUST.get(), "Iron Ore Dust");
+        handle.addItem(MetalWorkingItemRegistration.RAW_TIN.get(), "Raw Tin");
+        handle.addItem(MetalWorkingItemRegistration.COPPER_ORE_DUST.get(), "Copper Ore Dust");
+        handle.addItem(MetalWorkingItemRegistration.TIN_ORE_DUST.get(), "Tin Ore Dust");
+        handle.addItem(MetalWorkingItemRegistration.IRON_ORE_DUST.get(), "Iron Ore Dust");
     }
 
     private void addCreativeTabTranslations(LanguageEntryProviderHandle handle)
