@@ -36,6 +36,8 @@ public class WoodWorkingItemModelProviderEntry implements IItemModelProviderEntr
 
         handle.itemGeneratedModel(ItemRegistration.DIGGING_STICK.get());
         handle.itemGeneratedModel(ItemRegistration.FIRE_STARTER.get());
+
+        handle.itemGeneratedModel(ItemRegistration.TOOL_HANDLE.get());
     }
 
     private void workstations(ItemModelEntryProviderHandle handle)

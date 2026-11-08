@@ -72,7 +72,7 @@ public class KnifeItem extends SwordItem
 
     // -- == --
 
-    private static boolean couldScrapeOrCarve(@NotNull ItemStack stack) { return stack.is(ItemTagCatalog.SCRAPE_TOOL) || stack.is(ItemTagCatalog.CARVING_TOOL); }
+    private static boolean couldScrapeOrCarve(@NotNull ItemStack stack) { return stack.is(ItemTagCatalog.CARVING_TOOL); }
 
     private static boolean canScrapeOrCarve(@NotNull ItemStack stack) { return couldScrapeOrCarve(stack) && stack.getCount() == 1; }
 

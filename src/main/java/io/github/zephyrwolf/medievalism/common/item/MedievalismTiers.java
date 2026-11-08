@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.function.Supplier;
 
-public enum OverhaulTiers implements Tier
+public enum MedievalismTiers implements Tier
 {
     // Wood
     // Stone
@@ -34,8 +34,8 @@ public enum OverhaulTiers implements Tier
     final int enchantmentValue;
     final Supplier<Ingredient> repairIngredient;
 
-    OverhaulTiers(Supplier<TagKey<Block>> needsTierDrops, Supplier<TagKey<Block>> pIncorrectBlockForDrops, int pUses, float pSpeed, float pDamage,
-                  int pEnchantmentValue, Supplier<Ingredient> pRepairIngredient)
+    MedievalismTiers(Supplier<TagKey<Block>> needsTierDrops, Supplier<TagKey<Block>> pIncorrectBlockForDrops, int pUses, float pSpeed, float pDamage,
+                     int pEnchantmentValue, Supplier<Ingredient> pRepairIngredient)
     {
         this.needsTierDrops = needsTierDrops;
         this.incorrectBlocksForDrops = pIncorrectBlockForDrops;

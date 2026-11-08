@@ -26,19 +26,27 @@ public class KnappingItemModelProviderEntry implements IItemModelProviderEntry
         handle.setFolder("knapping");
 
         handle.itemGeneratedModel(ItemRegistration.LUNATE.get());
-        handle.itemGeneratedModel(ItemRegistration.BIFACE.get());
 
-        //handle.itemGeneratedModel(ItemRegistration.ROCK_KNIFE_BLADE.get());
-        //handle.itemGeneratedModel(ItemRegistration.ROCK_AXE_HEAD.get());
-
-        //handle.itemGeneratedModel(ItemRegistration.ROCK_KNIFE.get());
-        //handle.itemGeneratedModel(ItemRegistration.ROCK_AXE.get());
-
-        //handle.itemGeneratedModel(ItemRegistration.FLINT_KNIFE_BLADE.get());
-        //handle.itemGeneratedModel(ItemRegistration.FLINT_KNIFE.get());
-
-        //handle.itemGeneratedModel(BoneItemRegistration.BONE_KNIFE_BLADE.get());
-        //handle.itemGeneratedModel(BoneItemRegistration.BONE_KNIFE.get());
+        handle.itemGeneratedModel(ItemRegistration.ANTLER.get());
+        handle.itemGeneratedModel(ItemRegistration.ROCK_KNIFE_BLADE.get());
+        handle.itemGeneratedModel(ItemRegistration.FLINT_KNIFE_BLADE.get());
+        handle.itemGeneratedModel(ItemRegistration.BONE_KNIFE_BLADE.get());
+        handle.itemGeneratedModel(ItemRegistration.ROCK_KNIFE.get());
+        handle.itemGeneratedModel(ItemRegistration.FLINT_KNIFE.get());
+        handle.itemGeneratedModel(ItemRegistration.BONE_KNIFE.get());
+        handle.itemGeneratedModel(ItemRegistration.ROCK_AXE_HEAD.get());
+        handle.itemGeneratedModel(ItemRegistration.ROCK_AXE.get());
+        handle.itemGeneratedModel(ItemRegistration.ROCK_PICKAXE_HEAD.get());
+        handle.itemGeneratedModel(ItemRegistration.ANTLER_PICKAXE_HEAD.get());
+        handle.itemGeneratedModel(ItemRegistration.ROCK_PICKAXE.get());
+        handle.itemGeneratedModel(ItemRegistration.ANTLER_PICKAXE.get());
+        handle.itemGeneratedModel(ItemRegistration.ROCK_HOE_HEAD.get());
+        handle.itemGeneratedModel(ItemRegistration.ANTLER_HOE_HEAD.get());
+        handle.itemGeneratedModel(ItemRegistration.ROCK_HOE.get());
+        handle.itemGeneratedModel(ItemRegistration.ANTLER_HOE.get());
+        handle.itemGeneratedModel(ItemRegistration.ROCK_SPEAR_HEAD.get());
+        handle.itemGeneratedModel(ItemRegistration.ROCK_SPEAR.get());
+        handle.itemGeneratedModel(ItemRegistration.ROCK_SICKLE.get());
     }
 
     private void workstations(ItemModelEntryProviderHandle handle)

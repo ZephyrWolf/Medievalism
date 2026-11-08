@@ -249,15 +249,33 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
                 ItemRegistration.POTASH.get()
         );
 
-        tag(ItemTagCatalog.CARVING_TOOL).add(
-                ItemRegistration.LUNATE.get()
-        );
-
-        tag(ItemTagCatalog.KNAP_TOOL).addTag(ItemTagCatalog.HARD_ROCK);
-
         tag(ItemTagCatalog.WET_BRICK).add(
-                ItemRegistration.DRYING_CLAY_BRICK.get()
+                ClayWorkingItemRegistration.DRYING_CLAY_BRICK.get()
         );
+
+        tag(ItemTagCatalog.GOAT_HORN_MATERIAL).add(
+                Items.GOAT_HORN,
+                ItemRegistration.BROKEN_GOAT_HORN.get()
+        );
+
+        tag(ItemTagCatalog.SMALL_TOOL_HANDLE).add(
+                Items.STICK
+        );
+        tag(ItemTagCatalog.LARGE_TOOL_HANDLE).add(
+                ItemRegistration.TOOL_HANDLE.get()
+        );
+        tag(ItemTagCatalog.TOOL_BINDING).add(
+                Items.STRING,
+                ItemRegistration.FLAX_FIBER.get()
+        );
+
+        tag(ItemTagCatalog.CARVING_TOOL).add(
+                ItemRegistration.ROCK_KNIFE.get(),
+                ItemRegistration.BONE_KNIFE.get(),
+                ItemRegistration.FLINT_KNIFE.get()
+        );
+        tag(ItemTagCatalog.KNAP_TOOL)
+                .addTag(ItemTagCatalog.HARD_ROCK);
     }
 
     public void registerBlockTags()

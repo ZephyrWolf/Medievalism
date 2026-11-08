@@ -1,6 +1,8 @@
 package io.github.zephyrwolf.medievalism.datagen.base.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.common.recipe.crafting.ShapelessToolRecipeBuilder;
+import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.common.recipe.RecipeTools;
@@ -23,6 +25,7 @@ public final class BaseShapelessRecipeProvider {
         foodRecipes(recipeOutput);
         cordageRecipes(recipeOutput);
         leatherRecipes(recipeOutput);
+        toolRecipes(recipeOutput);
     }
 
     private static void survivalRecipes(RecipeOutput recipeOutput) {
@@ -42,12 +45,6 @@ public final class BaseShapelessRecipeProvider {
                 .group("mud_ball")
                 .unlockedBy("has_mud", RecipeTools.itemPredicateOf(Blocks.MUD))
                 .save(recipeOutput, MedievalismConstants.resource("mud_balls_from_mud"));
-        // Lunate
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.LUNATE)
-                .requires(ItemTagCatalog.KNAP_TOOL)
-                .requires(ItemTagCatalog.HARD_ROCK)
-                .unlockedBy("has_hammer", RecipeTools.itemPredicateOf(ItemTagCatalog.KNAP_TOOL))
-                .save(recipeOutput, MedievalismConstants.resource("lunate"));
         // Fire Starter
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.FIRE_STARTER)
                 .requires(Items.STICK)
@@ -56,9 +53,9 @@ public final class BaseShapelessRecipeProvider {
                 .unlockedBy("has_knife", RecipeTools.itemPredicateOf(ItemTagCatalog.CARVING_TOOL))
                 .save(recipeOutput, MedievalismConstants.resource("fire_starter"));
         // Digging Stick TODO Temp recipe, make handle and then sharpen handle?
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.DIGGING_STICK)
-                .requires(ItemTagCatalog.BRANCH)
-                .requires(ItemTagCatalog.CARVING_TOOL)
+        ShapelessToolRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.DIGGING_STICK)
+                .requiresIngredient(ItemTagCatalog.LARGE_TOOL_HANDLE)
+                .requiresTool(ItemTagCatalog.CARVING_TOOL)
                 .unlockedBy("has_knife", RecipeTools.itemPredicateOf(ItemTagCatalog.CARVING_TOOL))
                 .save(recipeOutput, MedievalismConstants.resource("digging_stick"));
     }
@@ -258,5 +255,84 @@ public final class BaseShapelessRecipeProvider {
                 .requires(ItemRegistration.SMALL_WET_LEATHER)
                 .unlockedBy("has_small_wet_leather", RecipeTools.itemPredicateOf(ItemRegistration.SMALL_WET_LEATHER))
                 .save(recipeOutput, MedievalismConstants.resource("small_leather"));
+    }
+
+    private static void toolRecipes(RecipeOutput recipeOutput)
+    {
+        ShapelessToolRecipeBuilder.shapeless(RecipeCategory.TOOLS, ItemRegistration.TOOL_HANDLE)
+                .requiresIngredient(ItemTagCatalog.BRANCH)
+                .requiresTool(ItemTagCatalog.CARVING_TOOL)
+                .unlockedBy("has_branch", RecipeTools.itemPredicateOf(
+                        ItemRegistration.OAK_BRANCH.get(),
+                        ItemRegistration.SPRUCE_BRANCH.get(),
+                        ItemRegistration.BIRCH_BRANCH.get(),
+                        ItemRegistration.DARK_OAK_BRANCH.get(),
+                        ItemRegistration.JUNGLE_BRANCH.get(),
+                        ItemRegistration.ACACIA_BRANCH.get(),
+                        ItemRegistration.CHERRY_BRANCH.get(),
+                        ItemRegistration.MANGROVE_BRANCH.get()
+                ))
+                .save(recipeOutput, MedievalismConstants.resource("large_tool_handle"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ItemRegistration.ROCK_KNIFE)
+                .requires(ItemRegistration.ROCK_KNIFE_BLADE)
+                .requires(ItemTagCatalog.SMALL_TOOL_HANDLE)
+                .requires(ItemTagCatalog.TOOL_BINDING)
+                .unlockedBy("has_rock_knife_blade", RecipeTools.itemPredicateOf(ItemRegistration.ROCK_KNIFE_BLADE))
+                .save(recipeOutput, MedievalismConstants.resource("rock_knife"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ItemRegistration.FLINT_KNIFE)
+                .requires(ItemRegistration.FLINT_KNIFE_BLADE)
+                .requires(ItemTagCatalog.SMALL_TOOL_HANDLE)
+                .requires(ItemTagCatalog.TOOL_BINDING)
+                .unlockedBy("has_flint_knife_blade", RecipeTools.itemPredicateOf(ItemRegistration.FLINT_KNIFE_BLADE))
+                .save(recipeOutput, MedievalismConstants.resource("flint_knife"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ItemRegistration.BONE_KNIFE)
+                .requires(ItemRegistration.BONE_KNIFE_BLADE)
+                .requires(ItemTagCatalog.SMALL_TOOL_HANDLE)
+                .requires(ItemTagCatalog.TOOL_BINDING)
+                .unlockedBy("has_bone_knife_blade", RecipeTools.itemPredicateOf(ItemRegistration.BONE_KNIFE_BLADE))
+                .save(recipeOutput, MedievalismConstants.resource("bone_knife"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ItemRegistration.ROCK_AXE)
+                .requires(ItemRegistration.ROCK_AXE_HEAD)
+                .requires(ItemTagCatalog.LARGE_TOOL_HANDLE)
+                .requires(ItemTagCatalog.TOOL_BINDING)
+                .unlockedBy("has_rock_axe_head", RecipeTools.itemPredicateOf(ItemRegistration.ROCK_AXE_HEAD))
+                .save(recipeOutput, MedievalismConstants.resource("rock_axe"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ItemRegistration.ROCK_PICKAXE)
+                .requires(ItemRegistration.ROCK_PICKAXE_HEAD)
+                .requires(ItemTagCatalog.LARGE_TOOL_HANDLE)
+                .requires(ItemTagCatalog.TOOL_BINDING)
+                .unlockedBy("has_rock_pickaxe_head", RecipeTools.itemPredicateOf(ItemRegistration.ROCK_PICKAXE_HEAD))
+                .save(recipeOutput, MedievalismConstants.resource("rock_pickaxe"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ItemRegistration.ANTLER_PICKAXE)
+                .requires(ItemRegistration.ANTLER_PICKAXE_HEAD)
+                .requires(ItemTagCatalog.LARGE_TOOL_HANDLE)
+                .requires(ItemTagCatalog.TOOL_BINDING)
+                .unlockedBy("has_antler_pickaxe_head", RecipeTools.itemPredicateOf(ItemRegistration.ANTLER_PICKAXE_HEAD))
+                .save(recipeOutput, MedievalismConstants.resource("antler_pickaxe"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ItemRegistration.ROCK_HOE)
+                .requires(ItemRegistration.ROCK_HOE_HEAD)
+                .requires(ItemTagCatalog.LARGE_TOOL_HANDLE)
+                .requires(ItemTagCatalog.TOOL_BINDING)
+                .unlockedBy("has_rock_hoe_head", RecipeTools.itemPredicateOf(ItemRegistration.ROCK_HOE_HEAD))
+                .save(recipeOutput, MedievalismConstants.resource("rock_hoe"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ItemRegistration.ANTLER_HOE)
+                .requires(ItemRegistration.ANTLER_HOE_HEAD)
+                .requires(ItemTagCatalog.LARGE_TOOL_HANDLE)
+                .requires(ItemTagCatalog.TOOL_BINDING)
+                .unlockedBy("has_antler_hoe_head", RecipeTools.itemPredicateOf(ItemRegistration.ANTLER_HOE_HEAD))
+                .save(recipeOutput, MedievalismConstants.resource("antler_hoe"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ItemRegistration.ROCK_SPEAR)
+                .requires(ItemRegistration.ROCK_SPEAR_HEAD)
+                .requires(ItemTagCatalog.LARGE_TOOL_HANDLE)
+                .requires(ItemTagCatalog.TOOL_BINDING)
+                .unlockedBy("has_rock_spear_head", RecipeTools.itemPredicateOf(ItemRegistration.ROCK_SPEAR_HEAD))
+                .save(recipeOutput, MedievalismConstants.resource("rock_spear"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ItemRegistration.ROCK_SICKLE)
+                .requires(ItemRegistration.LUNATE)
+                .requires(ItemRegistration.LUNATE)
+                .requires(ItemTagCatalog.LARGE_TOOL_HANDLE)
+                .requires(ItemTagCatalog.TOOL_BINDING)
+                .unlockedBy("has_large_tool_handle", RecipeTools.itemPredicateOf(ItemTagCatalog.LARGE_TOOL_HANDLE))
+                .save(recipeOutput, MedievalismConstants.resource("rock_sickle"));
     }
 }

@@ -44,6 +44,8 @@ public class WoodWorkingLangEntry implements ILanguageProviderEntry
         handle.addItem(ItemRegistration.POTASH.get(), "Potash");
         handle.addItem(ItemRegistration.CHOPPED_WOOD.get(), "Chopped Wood");
         handle.addItem(ItemRegistration.WOOD_ASH.get(), "Wood Ash");
+
+        handle.addItem(ItemRegistration.TOOL_HANDLE.get(), "Tool Handle");
     }
 
     private void addCreativeTabTranslations(LanguageEntryProviderHandle handle)

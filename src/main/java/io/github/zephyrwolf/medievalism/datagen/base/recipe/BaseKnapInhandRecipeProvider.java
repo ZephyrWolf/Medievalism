@@ -17,14 +17,9 @@ public final class BaseKnapInhandRecipeProvider
 
     private static void inhandKnapRecipes(RecipeOutput recipeOutput)
     {
-        KnapInhandRecipeBuilder.knapInhand(ItemRegistration.BIFACE)
+        KnapInhandRecipeBuilder.knapInhand(ItemRegistration.LUNATE)
                 .ingredient(Ingredient.of(ItemTagCatalog.HARD_ROCK))
                 .unlockedBy("has_hard_rock", RecipeTools.itemPredicateOf(ItemTagCatalog.HARD_ROCK))
-                .save(recipeOutput, MedievalismConstants.resource("biface_inhand_knap"));
-
-        KnapInhandRecipeBuilder.knapInhand(ItemRegistration.LUNATE, 2)
-                .ingredient(Ingredient.of(ItemRegistration.BIFACE))
-                .unlockedBy("has_biface", RecipeTools.itemPredicateOf(ItemRegistration.BIFACE))
                 .save(recipeOutput, MedievalismConstants.resource("lunate_inhand_knap"));
 
         KnapInhandRecipeBuilder.knapInhand(BlockRegistration.STONE_BENCH)

@@ -45,6 +45,8 @@ public class BaseBlockTagsProvider extends BlockTagsProvider
 
         this.registerNeoForgeCompatibilityTags();
         //this.registerSpecificModCompatibilityTags();
+
+        this.registerToolTags();
     }
 
     // Blocks
@@ -918,4 +920,21 @@ public class BaseBlockTagsProvider extends BlockTagsProvider
                 BlockRegistration.COBBLED_RED_SANDSTONE.get()
         );
     }
+
+    protected void registerToolTags()
+    {
+        tag(BlockTagCatalog.KNIFE_EFFICIENT).add(
+                Blocks.VINE,
+                Blocks.GLOW_LICHEN
+        );
+        tag(BlockTagCatalog.KNIFE_EFFICIENT)
+                .addTag(BlockTags.LEAVES)
+                .addTag(BlockTags.CROPS)
+                .add(
+                        Blocks.TALL_GRASS,
+                        Blocks.SHORT_GRASS,
+                        Blocks.DEAD_BUSH
+                );
+    }
+
 }
