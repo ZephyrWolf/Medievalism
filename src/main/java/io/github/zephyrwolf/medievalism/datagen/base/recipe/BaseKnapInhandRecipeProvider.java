@@ -4,6 +4,7 @@ import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.recipe.inhand.KnapInhandRecipeBuilder;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.KnappingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.common.recipe.RecipeTools;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -17,7 +18,7 @@ public final class BaseKnapInhandRecipeProvider
 
     private static void inhandKnapRecipes(RecipeOutput recipeOutput)
     {
-        KnapInhandRecipeBuilder.knapInhand(ItemRegistration.LUNATE)
+        KnapInhandRecipeBuilder.knapInhand(KnappingItemRegistration.LUNATE)
                 .ingredient(Ingredient.of(ItemTagCatalog.HARD_ROCK))
                 .unlockedBy("has_hard_rock", RecipeTools.itemPredicateOf(ItemTagCatalog.HARD_ROCK))
                 .save(recipeOutput, MedievalismConstants.resource("lunate_inhand_knap"));

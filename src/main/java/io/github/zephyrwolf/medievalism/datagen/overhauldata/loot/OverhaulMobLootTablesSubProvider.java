@@ -1,6 +1,7 @@
 package io.github.zephyrwolf.medievalism.datagen.overhauldata.loot;
 
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.KnappingItemRegistration;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -184,7 +185,7 @@ public final class OverhaulMobLootTablesSubProvider implements LootTableSubProvi
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1f))
                                         .add(
-                                                LootItem.lootTableItem(ItemRegistration.BROKEN_GOAT_HORN)
+                                                LootItem.lootTableItem(KnappingItemRegistration.BROKEN_GOAT_HORN)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookupProvider, UniformGenerator.between(0.0f, 1.0f)))
                                         )

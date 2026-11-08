@@ -255,7 +255,7 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
 
         tag(ItemTagCatalog.GOAT_HORN_MATERIAL).add(
                 Items.GOAT_HORN,
-                ItemRegistration.BROKEN_GOAT_HORN.get()
+                KnappingItemRegistration.BROKEN_GOAT_HORN.get()
         );
 
         tag(ItemTagCatalog.SMALL_TOOL_HANDLE).add(
@@ -270,9 +270,9 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
         );
 
         tag(ItemTagCatalog.CARVING_TOOL).add(
-                ItemRegistration.ROCK_KNIFE.get(),
-                ItemRegistration.BONE_KNIFE.get(),
-                ItemRegistration.FLINT_KNIFE.get()
+                KnappingItemRegistration.ROCK_KNIFE.get(),
+                KnappingItemRegistration.BONE_KNIFE.get(),
+                KnappingItemRegistration.FLINT_KNIFE.get()
         );
         tag(ItemTagCatalog.KNAP_TOOL)
                 .addTag(ItemTagCatalog.HARD_ROCK);

@@ -37,6 +37,7 @@ public class CreativeTabRegistration
         for (DeferredHolder<Item, ? extends Item> item : CookingItemRegistration.COOKING_ITEMS.getEntries()) { pOutput.accept(item.get()); }
         for (DeferredHolder<Item, ? extends Item> item : WeavingItemRegistration.WEAVING_ITEMS.getEntries()) { pOutput.accept(item.get()); }
         for (DeferredHolder<Item, ? extends Item> item : WoodWorkingItemRegistration.WOOD_WORKING_ITEMS.getEntries()) { pOutput.accept(item.get()); }
+        for (DeferredHolder<Item, ? extends Item> item : KnappingItemRegistration.KNAPPING_ITEMS.getEntries()) { pOutput.accept(item.get()); }
     }
     
     public static void register(IEventBus eventBus)

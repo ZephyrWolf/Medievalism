@@ -4,6 +4,7 @@ import io.github.zephyrwolf.medievalism.common.data.ILanguageProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.LanguageEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.KnappingItemRegistration;
 
 public class WorldLangEntry implements ILanguageProviderEntry
 {
@@ -249,7 +250,7 @@ public class WorldLangEntry implements ILanguageProviderEntry
 
     private void addItemTranslations(LanguageEntryProviderHandle handle)
     {
-        handle.addItem(ItemRegistration.BROKEN_GOAT_HORN.get(), "Broken Goat Horn");
+        handle.addItem(KnappingItemRegistration.BROKEN_GOAT_HORN.get(), "Broken Goat Horn");
     }
 
     private void addCreativeTabTranslations(LanguageEntryProviderHandle handle)

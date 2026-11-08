@@ -5,6 +5,7 @@ import io.github.zephyrwolf.medievalism.common.data.ILanguageProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.LanguageEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.KnappingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
 
 public class KnappingLangEntry implements ILanguageProviderEntry
@@ -109,28 +110,28 @@ public class KnappingLangEntry implements ILanguageProviderEntry
 
     private void addItemTranslations(LanguageEntryProviderHandle handle)
     {
-        handle.addItem(ItemRegistration.LUNATE.get(), "Lunate");
+        handle.addItem(KnappingItemRegistration.LUNATE.get(), "Lunate");
 
-        handle.addItem(ItemRegistration.ANTLER.get(), "Antler");
-        handle.addItem(ItemRegistration.ROCK_KNIFE_BLADE.get(), "Rock Knife Blade");
-        handle.addItem(ItemRegistration.FLINT_KNIFE_BLADE.get(), "Flint Knife Blade");
-        handle.addItem(ItemRegistration.BONE_KNIFE_BLADE.get(), "Bone Knife Blade");
-        handle.addItem(ItemRegistration.ROCK_KNIFE.get(), "Rock Knife");
-        handle.addItem(ItemRegistration.FLINT_KNIFE.get(), "Flint Knife");
-        handle.addItem(ItemRegistration.BONE_KNIFE.get(), "Bone Knife");
-        handle.addItem(ItemRegistration.ROCK_AXE_HEAD.get(), "Rock Axe Head");
-        handle.addItem(ItemRegistration.ROCK_AXE.get(), "Rock Axe");
-        handle.addItem(ItemRegistration.ROCK_PICKAXE_HEAD.get(), "Rock Pickaxe Head");
-        handle.addItem(ItemRegistration.ANTLER_PICKAXE_HEAD.get(), "Antler Pickaxe Head");
-        handle.addItem(ItemRegistration.ROCK_PICKAXE.get(), "Rock Pickaxe");
-        handle.addItem(ItemRegistration.ANTLER_PICKAXE.get(), "Antler Pickaxe");
-        handle.addItem(ItemRegistration.ROCK_HOE_HEAD.get(), "Rock Hoe Head");
-        handle.addItem(ItemRegistration.ANTLER_HOE_HEAD.get(), "Antler Hoe Head");
-        handle.addItem(ItemRegistration.ROCK_HOE.get(), "Rock Hoe");
-        handle.addItem(ItemRegistration.ANTLER_HOE.get(), "Antler Hoe");
-        handle.addItem(ItemRegistration.ROCK_SPEAR_HEAD.get(), "Rock Spear Head");
-        handle.addItem(ItemRegistration.ROCK_SPEAR.get(), "Rock Spear");
-        handle.addItem(ItemRegistration.ROCK_SICKLE.get(), "Rock Sickle");
+        handle.addItem(KnappingItemRegistration.ANTLER.get(), "Antler");
+        handle.addItem(KnappingItemRegistration.ROCK_KNIFE_BLADE.get(), "Rock Knife Blade");
+        handle.addItem(KnappingItemRegistration.FLINT_KNIFE_BLADE.get(), "Flint Knife Blade");
+        handle.addItem(KnappingItemRegistration.BONE_KNIFE_BLADE.get(), "Bone Knife Blade");
+        handle.addItem(KnappingItemRegistration.ROCK_KNIFE.get(), "Rock Knife");
+        handle.addItem(KnappingItemRegistration.FLINT_KNIFE.get(), "Flint Knife");
+        handle.addItem(KnappingItemRegistration.BONE_KNIFE.get(), "Bone Knife");
+        handle.addItem(KnappingItemRegistration.ROCK_AXE_HEAD.get(), "Rock Axe Head");
+        handle.addItem(KnappingItemRegistration.ROCK_AXE.get(), "Rock Axe");
+        handle.addItem(KnappingItemRegistration.ROCK_PICKAXE_HEAD.get(), "Rock Pickaxe Head");
+        handle.addItem(KnappingItemRegistration.ANTLER_PICKAXE_HEAD.get(), "Antler Pickaxe Head");
+        handle.addItem(KnappingItemRegistration.ROCK_PICKAXE.get(), "Rock Pickaxe");
+        handle.addItem(KnappingItemRegistration.ANTLER_PICKAXE.get(), "Antler Pickaxe");
+        handle.addItem(KnappingItemRegistration.ROCK_HOE_HEAD.get(), "Rock Hoe Head");
+        handle.addItem(KnappingItemRegistration.ANTLER_HOE_HEAD.get(), "Antler Hoe Head");
+        handle.addItem(KnappingItemRegistration.ROCK_HOE.get(), "Rock Hoe");
+        handle.addItem(KnappingItemRegistration.ANTLER_HOE.get(), "Antler Hoe");
+        handle.addItem(KnappingItemRegistration.ROCK_SPEAR_HEAD.get(), "Rock Spear Head");
+        handle.addItem(KnappingItemRegistration.ROCK_SPEAR.get(), "Rock Spear");
+        handle.addItem(KnappingItemRegistration.ROCK_SICKLE.get(), "Rock Sickle");
     }
 
     private void addCreativeTabTranslations(LanguageEntryProviderHandle handle)

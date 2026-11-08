@@ -5,6 +5,7 @@ import io.github.zephyrwolf.medievalism.common.recipe.malleable.MalleableMateria
 import io.github.zephyrwolf.medievalism.common.recipe.malleable.MalleableRecipeBuilder;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.KnappingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.registration.recipe.MalleableMaterialRegistration;
 import io.github.zephyrwolf.medievalism.common.recipe.RecipeTools;
@@ -150,17 +151,17 @@ public final class BaseMalleableRecipeProvider
                 .pattern(" xxx")
                 .unlockedBy("has_goat_horn", InventoryChangeTrigger.TriggerInstance.hasItems(
                         Items.GOAT_HORN,
-                        ItemRegistration.BROKEN_GOAT_HORN.get()
+                        KnappingItemRegistration.BROKEN_GOAT_HORN.get()
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("goat_horn_material"));
-        MalleableMaterialRecipeBuilder.builder(Ingredient.of(ItemRegistration.ANTLER), MalleableMaterialRegistration.BONE.get())
+        MalleableMaterialRecipeBuilder.builder(Ingredient.of(KnappingItemRegistration.ANTLER), MalleableMaterialRegistration.BONE.get())
                 .pattern("xxx  ")
                 .pattern("xxxx ")
                 .pattern("  xxx")
                 .pattern(" x xx")
                 .pattern("   xx")
                 .unlockedBy("has_antler", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemRegistration.ANTLER
+                        KnappingItemRegistration.ANTLER
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("antler_material"));
     }
@@ -169,88 +170,88 @@ public final class BaseMalleableRecipeProvider
     private static void knappingRecipes(RecipeOutput recipeOutput)
     {
         // Rock Knife Blade
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(ItemRegistration.ROCK_KNIFE_BLADE.get()))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(KnappingItemRegistration.ROCK_KNIFE_BLADE.get()))
                 .allowMirror()
                 .pattern("x ")
                 .pattern("xx")
                 .pattern("xx")
                 .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(ItemRegistration.STONE_BENCH))
                 .save(recipeOutput, MedievalismConstants.resource("rock_knife_blade_knapping1"));
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(ItemRegistration.ROCK_KNIFE_BLADE.get(), 2))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(KnappingItemRegistration.ROCK_KNIFE_BLADE.get(), 2))
                 .allowMirror()
                 .pattern("x  x ")
                 .pattern("xx xx")
                 .pattern("xx xx")
                 .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(ItemRegistration.STONE_BENCH))
                 .save(recipeOutput, MedievalismConstants.resource("rock_knife_blade_knapping2"));
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(ItemRegistration.ROCK_KNIFE_BLADE.get(), 2))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(KnappingItemRegistration.ROCK_KNIFE_BLADE.get(), 2))
                 .pattern(" x x ")
                 .pattern("xx xx")
                 .pattern("xx xx")
                 .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(ItemRegistration.STONE_BENCH))
                 .save(recipeOutput, MedievalismConstants.resource("rock_knife_blade_knapping3"));
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(ItemRegistration.ROCK_KNIFE_BLADE.get(), 2))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(KnappingItemRegistration.ROCK_KNIFE_BLADE.get(), 2))
                 .pattern("x   x")
                 .pattern("xx xx")
                 .pattern("xx xx")
                 .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(ItemRegistration.STONE_BENCH))
                 .save(recipeOutput, MedievalismConstants.resource("rock_knife_blade_knapping4"));
         // Bone Knife Blade
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.BONE.get(), new ItemStack(ItemRegistration.BONE_KNIFE_BLADE.get()))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.BONE.get(), new ItemStack(KnappingItemRegistration.BONE_KNIFE_BLADE.get()))
                 .allowMirror()
                 .pattern("x ")
                 .pattern("xx")
                 .pattern("xx")
                 .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(ItemRegistration.STONE_BENCH))
                 .save(recipeOutput, MedievalismConstants.resource("bone_knife_blade_knapping1"));
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.BONE.get(), new ItemStack(ItemRegistration.BONE_KNIFE_BLADE.get(), 2))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.BONE.get(), new ItemStack(KnappingItemRegistration.BONE_KNIFE_BLADE.get(), 2))
                 .allowMirror()
                 .pattern("x  x ")
                 .pattern("xx xx")
                 .pattern("xx xx")
                 .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(ItemRegistration.STONE_BENCH))
                 .save(recipeOutput, MedievalismConstants.resource("bone_knife_blade_knapping2"));
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.BONE.get(), new ItemStack(ItemRegistration.BONE_KNIFE_BLADE.get(), 2))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.BONE.get(), new ItemStack(KnappingItemRegistration.BONE_KNIFE_BLADE.get(), 2))
                 .pattern(" x x ")
                 .pattern("xx xx")
                 .pattern("xx xx")
                 .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(ItemRegistration.STONE_BENCH))
                 .save(recipeOutput, MedievalismConstants.resource("bone_knife_blade_knapping3"));
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.BONE.get(), new ItemStack(ItemRegistration.BONE_KNIFE_BLADE.get(), 2))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.BONE.get(), new ItemStack(KnappingItemRegistration.BONE_KNIFE_BLADE.get(), 2))
                 .pattern("x   x")
                 .pattern("xx xx")
                 .pattern("xx xx")
                 .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(ItemRegistration.STONE_BENCH))
                 .save(recipeOutput, MedievalismConstants.resource("flint_knife_blade_knapping4"));
         // Flint Knife Blade
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.FLINT.get(), new ItemStack(ItemRegistration.FLINT_KNIFE_BLADE.get()))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.FLINT.get(), new ItemStack(KnappingItemRegistration.FLINT_KNIFE_BLADE.get()))
                 .allowMirror()
                 .pattern("x ")
                 .pattern("xx")
                 .pattern("xx")
                 .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(ItemRegistration.STONE_BENCH))
                 .save(recipeOutput, MedievalismConstants.resource("flint_knife_blade_knapping1"));
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.FLINT.get(), new ItemStack(ItemRegistration.FLINT_KNIFE_BLADE.get(), 2))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.FLINT.get(), new ItemStack(KnappingItemRegistration.FLINT_KNIFE_BLADE.get(), 2))
                 .allowMirror()
                 .pattern("x  x ")
                 .pattern("xx xx")
                 .pattern("xx xx")
                 .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(ItemRegistration.STONE_BENCH))
                 .save(recipeOutput, MedievalismConstants.resource("flint_knife_blade_knapping2"));
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.FLINT.get(), new ItemStack(ItemRegistration.FLINT_KNIFE_BLADE.get(), 2))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.FLINT.get(), new ItemStack(KnappingItemRegistration.FLINT_KNIFE_BLADE.get(), 2))
                 .pattern(" x x ")
                 .pattern("xx xx")
                 .pattern("xx xx")
                 .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(ItemRegistration.STONE_BENCH))
                 .save(recipeOutput, MedievalismConstants.resource("flint_knife_blade_knapping3"));
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.FLINT.get(), new ItemStack(ItemRegistration.FLINT_KNIFE_BLADE.get(), 2))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.FLINT.get(), new ItemStack(KnappingItemRegistration.FLINT_KNIFE_BLADE.get(), 2))
                 .pattern("x   x")
                 .pattern("xx xx")
                 .pattern("xx xx")
                 .unlockedBy("stone_bench", RecipeTools.itemPredicateOf(ItemRegistration.STONE_BENCH))
                 .save(recipeOutput, MedievalismConstants.resource("bone_knife_blade_knapping4"));
         // Rock Axe Head
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(ItemRegistration.ROCK_AXE_HEAD.get()))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(KnappingItemRegistration.ROCK_AXE_HEAD.get()))
                 .allowMirror()
                 .pattern("xx ")
                 .pattern("xxx")
@@ -260,7 +261,7 @@ public final class BaseMalleableRecipeProvider
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("rock_axe_head"));
         // Rock Pickaxe Head
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(ItemRegistration.ROCK_PICKAXE_HEAD.get()))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(KnappingItemRegistration.ROCK_PICKAXE_HEAD.get()))
                 .allowMirror()
                 .pattern("xxx  ")
                 .pattern("  xx ")
@@ -272,7 +273,7 @@ public final class BaseMalleableRecipeProvider
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("rock_pickaxe_head"));
         // Antler Pickaxe Head
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.BONE.get(), new ItemStack(ItemRegistration.ANTLER_PICKAXE_HEAD.get()))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.BONE.get(), new ItemStack(KnappingItemRegistration.ANTLER_PICKAXE_HEAD.get()))
                 .allowMirror()
                 .pattern("xxx  ")
                 .pattern("  xx ")
@@ -280,11 +281,11 @@ public final class BaseMalleableRecipeProvider
                 .pattern("    x")
                 .pattern("    x")
                 .unlockedBy("has_antler", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemRegistration.ANTLER
+                        KnappingItemRegistration.ANTLER
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("antler_pickaxe_head"));
         // Rock Hoe Head
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(ItemRegistration.ROCK_HOE_HEAD.get()))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(KnappingItemRegistration.ROCK_HOE_HEAD.get()))
                 .allowMirror()
                 .pattern("xxx ")
                 .pattern("xxxx")
@@ -292,7 +293,7 @@ public final class BaseMalleableRecipeProvider
                         ItemRegistration.STONE_BENCH
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("rock_hoe_head"));
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(ItemRegistration.ROCK_HOE_HEAD.get(), 2))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(KnappingItemRegistration.ROCK_HOE_HEAD.get(), 2))
                 .allowMirror()
                 .pattern("xxx ")
                 .pattern("xxxx")
@@ -303,7 +304,7 @@ public final class BaseMalleableRecipeProvider
                         ItemRegistration.STONE_BENCH
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("rock_hoe_head_2"));
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(ItemRegistration.ROCK_HOE_HEAD.get(), 2))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(KnappingItemRegistration.ROCK_HOE_HEAD.get(), 2))
                 .allowMirror()
                 .pattern("xxx ")
                 .pattern("xxxx")
@@ -315,15 +316,15 @@ public final class BaseMalleableRecipeProvider
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("rock_hoe_head_3"));
         // Antler Hoe Head
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.BONE.get(), new ItemStack(ItemRegistration.ANTLER_HOE_HEAD.get()))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.BONE.get(), new ItemStack(KnappingItemRegistration.ANTLER_HOE_HEAD.get()))
                 .allowMirror()
                 .pattern("xxx ")
                 .pattern("xxxx")
                 .unlockedBy("has_antler", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemRegistration.ANTLER
+                        KnappingItemRegistration.ANTLER
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("antler_hoe_head"));
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.BONE.get(), new ItemStack(ItemRegistration.ANTLER_HOE_HEAD.get(), 2))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.BONE.get(), new ItemStack(KnappingItemRegistration.ANTLER_HOE_HEAD.get(), 2))
                 .allowMirror()
                 .pattern("xxx ")
                 .pattern("xxxx")
@@ -331,10 +332,10 @@ public final class BaseMalleableRecipeProvider
                 .pattern("xxx ")
                 .pattern("xxxx")
                 .unlockedBy("has_antler", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemRegistration.ANTLER
+                        KnappingItemRegistration.ANTLER
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("antler_hoe_head_2"));
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.BONE.get(), new ItemStack(ItemRegistration.ANTLER_HOE_HEAD.get(), 2))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.BONE.get(), new ItemStack(KnappingItemRegistration.ANTLER_HOE_HEAD.get(), 2))
                 .allowMirror()
                 .pattern("xxx ")
                 .pattern("xxxx")
@@ -342,11 +343,11 @@ public final class BaseMalleableRecipeProvider
                 .pattern(" xxx")
                 .pattern("xxxx")
                 .unlockedBy("has_antler", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemRegistration.ANTLER
+                        KnappingItemRegistration.ANTLER
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("antler_hoe_head_3"));
         // Rock Spear Head
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(ItemRegistration.ROCK_SPEAR_HEAD.get()))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(KnappingItemRegistration.ROCK_SPEAR_HEAD.get()))
                 .allowMirror()
                 .pattern(" xxx")
                 .pattern("xxxx")
@@ -357,7 +358,7 @@ public final class BaseMalleableRecipeProvider
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("spear_head"));
         // Lunate
-        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(ItemRegistration.LUNATE.get()))
+        MalleableRecipeBuilder.builder(MalleableMaterialRegistration.ROCK.get(), new ItemStack(KnappingItemRegistration.LUNATE.get()))
                 .allowMirror()
                 .pattern(" xx")
                 .pattern("xxx")
