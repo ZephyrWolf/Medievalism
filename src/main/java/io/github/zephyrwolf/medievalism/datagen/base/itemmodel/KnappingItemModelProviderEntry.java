@@ -54,6 +54,6 @@ public class KnappingItemModelProviderEntry implements IItemModelProviderEntry
     {
         handle.setFolder("");
 
-        handle.blockBasedModel(ItemRegistration.STONE_BENCH.get(), "");
+        handle.blockBasedModel(KnappingItemRegistration.STONE_BENCH.get(), "");
     }
 }

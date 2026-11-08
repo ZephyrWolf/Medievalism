@@ -5,6 +5,7 @@ import io.github.zephyrwolf.medievalism.common.item.KnifeItem;
 import io.github.zephyrwolf.medievalism.common.item.MedievalismTiers;
 import io.github.zephyrwolf.medievalism.common.item.SickleItem;
 import io.github.zephyrwolf.medievalism.common.item.SpearItem;
+import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
@@ -32,6 +33,9 @@ public final class KnappingItemRegistration
     { return KNAPPING_ITEMS.register(name, key -> func.apply(block.get(), props)); }
 
     //region == KNAPPING ==
+    public static final DeferredItem<BlockItem> STONE_BENCH = KNAPPING_ITEMS.registerSimpleBlockItem("stone_bench",                   BlockRegistration.STONE_BENCH);
+
+
     public static final DeferredItem<Item> BROKEN_GOAT_HORN = KNAPPING_ITEMS.registerSimpleItem("broken_goat_horn", new Item.Properties());
     @Deprecated
     public static final DeferredItem<Item> LUNATE = KNAPPING_ITEMS.registerSimpleItem("lunate", new Item.Properties());

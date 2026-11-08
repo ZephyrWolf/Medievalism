@@ -30,9 +30,9 @@ public final class BaseShapelessRecipeProvider {
 
     private static void survivalRecipes(RecipeOutput recipeOutput) {
         // Thatch
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistration.THATCH, 4)
-                .requires(ItemRegistration.THATCH_BLOCK)
-                .unlockedBy("has_thatch_block", RecipeTools.itemPredicateOf(ItemRegistration.THATCH_BLOCK))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingItemRegistration.THATCH, 4)
+                .requires(FarmingItemRegistration.THATCH_BLOCK)
+                .unlockedBy("has_thatch_block", RecipeTools.itemPredicateOf(FarmingItemRegistration.THATCH_BLOCK))
                 .save(recipeOutput, MedievalismConstants.resource("thatch_from_block"));
         // Mud Ball
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MudWorkingItemRegistration.DIRT_CHUNK, 2)
@@ -64,7 +64,7 @@ public final class BaseShapelessRecipeProvider {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MudWorkingItemRegistration.WET_DAUB, 2)
                 .requires(ItemTagCatalog.CLAY_BALL)
                 .requires(MudWorkingItemRegistration.MUD_BALL)
-                .requires(ItemRegistration.THATCH)
+                .requires(FarmingItemRegistration.THATCH)
                 .unlockedBy("has_clay_ball", RecipeTools.itemPredicateOf(ItemTagCatalog.CLAY_BALL))
                 .save(recipeOutput, MedievalismConstants.resource("wet_daub"));
 
@@ -91,8 +91,8 @@ public final class BaseShapelessRecipeProvider {
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MudWorkingItemRegistration.DRYING_PACKED_MUD_BRICK)
                 .requires(MudWorkingItemRegistration.MUD_BALL)
-                .requires(ItemRegistration.THATCH)
-                .unlockedBy("has_thatch", RecipeTools.itemPredicateOf(ItemRegistration.THATCH))
+                .requires(FarmingItemRegistration.THATCH)
+                .unlockedBy("has_thatch", RecipeTools.itemPredicateOf(FarmingItemRegistration.THATCH))
                 .save(recipeOutput, MedievalismConstants.resource("drying_mud_brick"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MudWorkingItemRegistration.DRYING_DAUB_BRICK)
                 .requires(MudWorkingItemRegistration.WET_DAUB)

@@ -233,7 +233,7 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
         );
 
         tag(ItemTagCatalog.TINDER)
-                .add(ItemRegistration.THATCH.get());
+                .add(FarmingItemRegistration.THATCH.get());
         // Candlenut leaves?
 
         tag(ItemTagCatalog.BARK).add(
@@ -245,7 +245,7 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
         );
 
         tag(ItemTagCatalog.CLAY_FLUX).add(
-                ItemRegistration.WOOD_ASH.get(),
+                WoodWorkingItemRegistration.WOOD_ASH.get(),
                 WoodWorkingItemRegistration.POTASH.get()
         );
 

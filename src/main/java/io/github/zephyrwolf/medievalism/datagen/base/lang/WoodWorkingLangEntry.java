@@ -43,8 +43,8 @@ public class WoodWorkingLangEntry implements ILanguageProviderEntry
         handle.addItem(WoodWorkingItemRegistration.BLACK_BARK.get(), "Black Bark");
         handle.addItem(WoodWorkingItemRegistration.CHARCOAL_POWDER.get(), "Charcoal Powder");
         handle.addItem(WoodWorkingItemRegistration.POTASH.get(), "Potash");
-        handle.addItem(ItemRegistration.CHOPPED_WOOD.get(), "Chopped Wood");
-        handle.addItem(ItemRegistration.WOOD_ASH.get(), "Wood Ash");
+        handle.addItem(WoodWorkingItemRegistration.CHOPPED_WOOD.get(), "Chopped Wood");
+        handle.addItem(WoodWorkingItemRegistration.WOOD_ASH.get(), "Wood Ash");
 
         handle.addItem(WoodWorkingItemRegistration.TOOL_HANDLE.get(), "Tool Handle");
     }

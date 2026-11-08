@@ -3,6 +3,7 @@ package io.github.zephyrwolf.medievalism.datagen.base.itemmodel;
 import io.github.zephyrwolf.medievalism.common.data.IItemModelProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.ItemModelEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.KnappingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.WoodWorkingItemRegistration;
 
 public class WoodWorkingItemModelProviderEntry implements IItemModelProviderEntry
@@ -21,8 +22,8 @@ public class WoodWorkingItemModelProviderEntry implements IItemModelProviderEntr
 
         handle.itemGeneratedModel(WoodWorkingItemRegistration.CHARCOAL_POWDER.get());
         handle.itemGeneratedModel(WoodWorkingItemRegistration.POTASH.get());
-        handle.itemGeneratedModel(ItemRegistration.WOOD_ASH.get());
-        handle.itemGeneratedModel(ItemRegistration.CHOPPED_WOOD.get());
+        handle.itemGeneratedModel(WoodWorkingItemRegistration.WOOD_ASH.get());
+        handle.itemGeneratedModel(WoodWorkingItemRegistration.CHOPPED_WOOD.get());
 
         handle.itemGeneratedModel(WoodWorkingItemRegistration.WHITE_BARK.get());
         handle.itemGeneratedModel(WoodWorkingItemRegistration.BROWN_BARK.get());
@@ -45,6 +46,6 @@ public class WoodWorkingItemModelProviderEntry implements IItemModelProviderEntr
     {
         handle.setFolder("");
 
-        handle.blockBasedModel(ItemRegistration.CHOPPING_BLOCK.get(), "");
+        handle.blockBasedModel(WoodWorkingItemRegistration.CHOPPING_BLOCK.get(), "");
     }
 }

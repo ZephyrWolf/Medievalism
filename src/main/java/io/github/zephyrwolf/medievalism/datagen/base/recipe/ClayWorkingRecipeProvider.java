@@ -6,6 +6,7 @@ import io.github.zephyrwolf.medievalism.common.recipe.crafting.ShapelessToolReci
 import io.github.zephyrwolf.medievalism.common.recipe.malleable.MalleableRecipeBuilder;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.KnappingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.recipe.MalleableMaterialRegistration;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
@@ -46,7 +47,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("x x")
                 .pattern("x x")
                 .pattern(" x ")
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_bucket"));
@@ -56,7 +57,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("x x")
                 .pattern("x x")
                 .pattern(" x ")
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_potters_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.POTTERS_CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_potters_clay_bucket"));
@@ -66,7 +67,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("x x")
                 .pattern("x x")
                 .pattern(" x ")
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_refractory_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.REFRACTORY_CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_refractory_clay_bucket"));
@@ -92,7 +93,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("x x")
                 .pattern(" x ")
                 .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemRegistration.STONE_BENCH
+                        KnappingItemRegistration.STONE_BENCH
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("wet_gatherers_jar"));
     }
@@ -105,7 +106,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("x  x")
                 .pattern(" xx ")
                 .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemRegistration.STONE_BENCH
+                        KnappingItemRegistration.STONE_BENCH
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("wet_keepers_crock"));
     }
@@ -119,7 +120,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("x   x")
                 .pattern(" xxx ")
                 .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemRegistration.STONE_BENCH
+                        KnappingItemRegistration.STONE_BENCH
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("wet_settlers_pot"));
     }
@@ -131,7 +132,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("x   x")
                 .pattern(" xxx ")
                 .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemRegistration.STONE_BENCH
+                        KnappingItemRegistration.STONE_BENCH
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_cooking_pot"));
     }
@@ -145,7 +146,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("x   x")
                 .pattern("xxxxx")
                 .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemRegistration.STONE_BENCH
+                        KnappingItemRegistration.STONE_BENCH
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_cauldron"));
     }
@@ -172,7 +173,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("x x")
                 .pattern(" x ")
                 .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemRegistration.STONE_BENCH
+                        KnappingItemRegistration.STONE_BENCH
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("wet_flower_pot"));
     }
@@ -185,7 +186,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("x  x")
                 .pattern(" xx ")
                 .unlockedBy("stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemRegistration.STONE_BENCH
+                        KnappingItemRegistration.STONE_BENCH
                 ))
                 .save(recipeOutput, MedievalismConstants.resource("wet_decorated_pot"));
     }
@@ -198,7 +199,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("xxx")
                 .pattern(" xx")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_axe_blank"));
@@ -208,7 +209,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("xxx")
                 .pattern(" xx")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_potters_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.POTTERS_CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_potters_clay_axe_blank"));
@@ -243,7 +244,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern(" xxx")
                 .pattern("xxxx")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_hoe_blank"));
@@ -254,7 +255,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern(" xxx")
                 .pattern("xxxx")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_hoe_blank2"));
@@ -265,7 +266,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("xxx ")
                 .pattern("xxxx")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_hoe_blank3"));
@@ -274,7 +275,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern(" xxx")
                 .pattern("xxxx")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_potters_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.POTTERS_CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_potters_clay_hoe_blank"));
@@ -285,7 +286,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern(" xxx")
                 .pattern("xxxx")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_potters_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.POTTERS_CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_potters_clay_hoe_blank2"));
@@ -296,7 +297,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("xxx ")
                 .pattern("xxxx")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_potters_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.POTTERS_CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_potters_clay_hoe_blank3"));
@@ -326,7 +327,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("xx")
                 .pattern("xx")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_knife_blank"));
@@ -335,7 +336,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("xx xx")
                 .pattern("xx xx")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_knife_blank2"));
@@ -343,7 +344,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("x   x")
                 .pattern("xx xx")
                 .pattern("xx xx")
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_knife_blank3"));
@@ -351,7 +352,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern(" x x ")
                 .pattern("xx xx")
                 .pattern("xx xx")
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_knife_blank4"));
@@ -361,7 +362,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("xx")
                 .pattern("xx")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_potters_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.POTTERS_CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_potters_clay_knife_blank"));
@@ -370,7 +371,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("xx xx")
                 .pattern("xx xx")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_potters_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.POTTERS_CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_potters_clay_knife_blank2"));
@@ -378,7 +379,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("x   x")
                 .pattern("xx xx")
                 .pattern("xx xx")
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_potters_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.POTTERS_CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_potters_clay_knife_blank3"));
@@ -386,7 +387,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern(" x x ")
                 .pattern("xx xx")
                 .pattern("xx xx")
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_potters_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.POTTERS_CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_potters_clay_knife_blank4"));
@@ -423,7 +424,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("    x")
                 .pattern("    x")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_pickaxe_blank"));
@@ -435,7 +436,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("    x")
                 .pattern("    x")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_potters_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.POTTERS_CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_potters_clay_pickaxe_blank"));
@@ -466,7 +467,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("xx")
                 .pattern("xx")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_shortsword_blank"));
@@ -476,7 +477,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("xx xx")
                 .pattern("xx xx")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_shortsword_blank2"));
@@ -485,7 +486,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("xx xx")
                 .pattern("xx xx")
                 .pattern("xx xx")
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_shortsword_blank3"));
@@ -494,7 +495,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("xx xx")
                 .pattern("xx xx")
                 .pattern("xx xx")
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_shortsword_blank4"));
@@ -505,7 +506,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("xx")
                 .pattern("xx")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_potters_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.POTTERS_CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_potters_clay_shortsword_blank"));
@@ -515,7 +516,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("xx xx")
                 .pattern("xx xx")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_potters_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.POTTERS_CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_potters_clay_shortsword_blank2"));
@@ -524,7 +525,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("xx xx")
                 .pattern("xx xx")
                 .pattern("xx xx")
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_potters_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.POTTERS_CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_potters_clay_shortsword_blank3"));
@@ -533,7 +534,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("xx xx")
                 .pattern("xx xx")
                 .pattern("xx xx")
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_potters_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.POTTERS_CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_potters_clay_shortsword_blank4"));
@@ -562,7 +563,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern(" x ")
                 .pattern("xxx")
                 .pattern("xxx")
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_shovel_blank"));
@@ -571,7 +572,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern(" x ")
                 .pattern("xxx")
                 .pattern("xxx")
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_potters_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.POTTERS_CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_potters_clay_shovel_blank"));
@@ -602,7 +603,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("x    ")
                 .pattern(" x   ")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_sickle_blank"));
@@ -613,7 +614,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("x    ")
                 .pattern(" x   ")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_potters_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.POTTERS_CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_potters_clay_sickle_blank"));
@@ -645,7 +646,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("xxxx")
                 .pattern(" xx ")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_clay_spear_blank"));
@@ -657,7 +658,7 @@ public final class ClayWorkingRecipeProvider
                 .pattern("xxxx")
                 .pattern(" xx ")
                 .allowMirror()
-                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( ItemRegistration.STONE_BENCH ))
+                .unlockedBy("has_stone_bench", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.STONE_BENCH ))
                 .unlockedBy("has_potters_clay_ball", InventoryChangeTrigger.TriggerInstance.hasItems( ClayWorkingItemRegistration.POTTERS_CLAY_BALL ))
                 .strategy(AdvancementRequirements.Strategy.AND)
                 .save(recipeOutput, MedievalismConstants.resource("wet_potters_clay_spear_blank"));

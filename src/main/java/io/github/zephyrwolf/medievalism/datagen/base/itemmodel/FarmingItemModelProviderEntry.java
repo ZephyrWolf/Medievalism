@@ -18,10 +18,10 @@ public class FarmingItemModelProviderEntry implements IItemModelProviderEntry
 
         handle.itemGeneratedModel(FarmingItemRegistration.DOGBANE.get());
         //handle.itemGeneratedModel(ItemRegistration.LEAF_LITTER.get());
-        handle.itemGeneratedModel(ItemRegistration.THATCH.get());
+        handle.itemGeneratedModel(FarmingItemRegistration.THATCH.get());
 
         handle.setFolder("");
-        handle.blockBasedModel(ItemRegistration.THATCH_BLOCK.get(), "");
+        handle.blockBasedModel(FarmingItemRegistration.THATCH_BLOCK.get(), "");
     }
 
     private void crops(ItemModelEntryProviderHandle handle)

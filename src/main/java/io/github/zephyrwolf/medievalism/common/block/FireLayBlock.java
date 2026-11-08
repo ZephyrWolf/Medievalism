@@ -1,5 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.block;
 
+import io.github.zephyrwolf.medievalism.registration.item.FarmingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.WoodWorkingItemRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -97,7 +98,7 @@ public class FireLayBlock extends IncrementBlock implements SimpleWaterloggedBlo
     {
         if (state.getValue(STAGE_PROP) == FireLayStage.TINDER.ordinal() + 1)
         {
-            return new ItemStack(ItemRegistration.THATCH.get());
+            return new ItemStack(FarmingItemRegistration.THATCH.get());
         }
         return new ItemStack(Items.STICK);
     }
@@ -105,7 +106,7 @@ public class FireLayBlock extends IncrementBlock implements SimpleWaterloggedBlo
     @Override
     public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player)
     {
-        return new ItemStack(ItemRegistration.THATCH.get()); // Let's return the starting item
+        return new ItemStack(FarmingItemRegistration.THATCH.get()); // Let's return the starting item
     }
 
     @Override

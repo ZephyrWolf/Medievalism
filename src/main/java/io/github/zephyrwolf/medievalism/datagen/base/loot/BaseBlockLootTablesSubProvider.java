@@ -434,7 +434,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem
-                                        .lootTableItem(ItemRegistration.THATCH.get())
+                                        .lootTableItem(FarmingItemRegistration.THATCH.get())
                                         .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.FIRE_LAY.get())
                                                 .setProperties(StatePropertiesPredicate.Builder.properties()
                                                         .hasProperty(FireLayBlock.STAGE_PROP, 1)
@@ -447,7 +447,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem
-                                        .lootTableItem(ItemRegistration.THATCH.get())
+                                        .lootTableItem(FarmingItemRegistration.THATCH.get())
                                         .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.FIRE_LAY.get())
                                                 .setProperties(StatePropertiesPredicate.Builder.properties()
                                                         .hasProperty(FireLayBlock.STAGE_PROP, 2)
@@ -471,7 +471,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem
-                                        .lootTableItem(ItemRegistration.THATCH.get())
+                                        .lootTableItem(FarmingItemRegistration.THATCH.get())
                                         .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.FIRE_LAY.get())
                                                 .setProperties(StatePropertiesPredicate.Builder.properties()
                                                         .hasProperty(FireLayBlock.STAGE_PROP, 3)
@@ -496,7 +496,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem
-                                        .lootTableItem(ItemRegistration.THATCH.get())
+                                        .lootTableItem(FarmingItemRegistration.THATCH.get())
                                         .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.FIRE_LAY.get())
                                                 .setProperties(StatePropertiesPredicate.Builder.properties()
                                                         .hasProperty(FireLayBlock.STAGE_PROP, 4)
@@ -521,7 +521,7 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem
-                                        .lootTableItem(ItemRegistration.THATCH.get())
+                                        .lootTableItem(FarmingItemRegistration.THATCH.get())
                                         .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.FIRE_LAY.get())
                                                 .setProperties(StatePropertiesPredicate.Builder.properties()
                                                         .hasProperty(FireLayBlock.STAGE_PROP, 5)

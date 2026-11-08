@@ -6,6 +6,7 @@ import io.github.zephyrwolf.medievalism.datagen.base.lang.AdvancementLangKeys;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.KnappingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.tools.TextTools;
@@ -299,13 +300,13 @@ public class AdvancementsProviderClayWorking implements AdvancementProvider.Adva
 
         AdvancementHolder hint_better_pottery = Advancement.Builder.advancement()
                 .parent(clay_root)
-                .display(ItemRegistration.STONE_BENCH,
+                .display(KnappingItemRegistration.STONE_BENCH,
                         TextTools.getTranslation(AdvancementLangKeys.BETTER_POTTERY_TITLE),
                         TextTools.getTranslation(AdvancementLangKeys.BETTER_POTTERY_DESC),
                         null,
                         AdvancementType.TASK, false, false, true)
                 .addCriterion("has_dry_potters_clay_brick", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(ItemRegistration.STONE_BENCH).build()
+                        ItemPredicate.Builder.item().of(KnappingItemRegistration.STONE_BENCH).build()
                 ))
                 .save(saver, getNameId("clay_working", "hint_better_pottery"));
     }

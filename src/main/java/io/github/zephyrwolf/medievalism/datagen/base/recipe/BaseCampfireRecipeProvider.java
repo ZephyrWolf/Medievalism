@@ -1,11 +1,8 @@
 package io.github.zephyrwolf.medievalism.datagen.base.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.registration.item.CookingItemRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.FarmingItemRegistration;
-import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.*;
 import io.github.zephyrwolf.medievalism.common.recipe.RecipeTools;
-import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
@@ -63,7 +60,7 @@ public final class BaseCampfireRecipeProvider
     private static void limeRecipes(RecipeOutput recipeOutput) {
         // Quicklime
         SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(WorldItemRegistration.LIMESTONE_ROCK),
-                        RecipeCategory.MISC, ItemRegistration.QUICK_LIME,
+                        RecipeCategory.MISC, LeatherWorkingItemRegistration.QUICK_LIME,
                         0.0f, 1000)
                 .unlockedBy("has_limestone_rock", RecipeTools.itemPredicateOf(WorldItemRegistration.LIMESTONE_ROCK))
                 .save(recipeOutput, MedievalismConstants.resource("quicklime_campfire"));

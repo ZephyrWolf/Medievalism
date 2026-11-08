@@ -2,6 +2,7 @@ package io.github.zephyrwolf.medievalism.registration.item;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.item.*;
+import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
@@ -28,6 +29,11 @@ public final class WoodWorkingItemRegistration
     { return WOOD_WORKING_ITEMS.register(name, key -> func.apply(block.get(), props)); }
 
     //region == WOOD WORKING ==
+    public static final DeferredItem<Item> CHOPPED_WOOD = WOOD_WORKING_ITEMS.registerSimpleItem("chopped_wood", new Item.Properties());
+    public static final DeferredItem<Item> TANNIN_BUCKET = WOOD_WORKING_ITEMS.registerSimpleItem("tannin_bucket", new Item.Properties());
+    public static final DeferredItem<Item> WOOD_ASH = WOOD_WORKING_ITEMS.registerSimpleItem("wood_ash"); // Order of concentraiton Potash(Potassiam Carbonate), CaCO3, CaO, MgCO3, Posphates and Silicates
+    public static final DeferredItem<BlockItem> CHOPPING_BLOCK = WOOD_WORKING_ITEMS.registerSimpleBlockItem("chopping_block",                BlockRegistration.CHOPPING_BLOCK);
+
     public static final DeferredItem<Item> DIGGING_STICK = WOOD_WORKING_ITEMS.registerSimpleItem("digging_stick", new Item.Properties().durability(64).setNoRepair());
     public static final DeferredItem<Item> FIRE_STARTER = WOOD_WORKING_ITEMS.registerItem("fire_starter", FireStarterItem::new, new Item.Properties().durability(64).setNoRepair());
     public static final DeferredItem<Item> WHITE_BARK = WOOD_WORKING_ITEMS.registerSimpleItem("white_bark"); // Birch, mangrove

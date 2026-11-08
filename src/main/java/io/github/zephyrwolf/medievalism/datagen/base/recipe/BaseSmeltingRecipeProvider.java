@@ -35,8 +35,8 @@ public final class BaseSmeltingRecipeProvider
 
     private static void limeRecipes(RecipeOutput recipeOutput)
     {
-        smelting(recipeOutput, RecipeCategory.FOOD, WorldItemRegistration.LIMESTONE_ROCK, ItemRegistration.QUICK_LIME, "limestone_rock", 0.0f, 500);
-        smelting(recipeOutput, RecipeCategory.FOOD, WorldItemRegistration.LIMESTONE_ROCK, ItemRegistration.QUICK_LIME, "large_limestone_rock", 0.0f, 500);
+        smelting(recipeOutput, RecipeCategory.FOOD, WorldItemRegistration.LIMESTONE_ROCK, LeatherWorkingItemRegistration.QUICK_LIME, "limestone_rock", 0.0f, 500);
+        smelting(recipeOutput, RecipeCategory.FOOD, WorldItemRegistration.LIMESTONE_ROCK, LeatherWorkingItemRegistration.QUICK_LIME, "large_limestone_rock", 0.0f, 500);
     }
 
     private static void stoneRecipes(RecipeOutput recipeOutput)

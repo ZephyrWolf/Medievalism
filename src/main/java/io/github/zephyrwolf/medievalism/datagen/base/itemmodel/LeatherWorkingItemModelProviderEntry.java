@@ -4,6 +4,7 @@ import io.github.zephyrwolf.medievalism.common.data.IItemModelProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.ItemModelEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.LeatherWorkingItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.WoodWorkingItemRegistration;
 
 public class LeatherWorkingItemModelProviderEntry implements IItemModelProviderEntry
 {
@@ -19,9 +20,9 @@ public class LeatherWorkingItemModelProviderEntry implements IItemModelProviderE
     private void materials(ItemModelEntryProviderHandle handle)
     {
         handle.setFolder("leather_working");
-        handle.itemGeneratedModel(ItemRegistration.QUICK_LIME.get());
-        handle.itemGeneratedModel(ItemRegistration.SLACKED_LIME_BUCKET.get());
-        handle.itemGeneratedModel(ItemRegistration.TANNIN_BUCKET.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.QUICK_LIME.get());
+        handle.itemGeneratedModel(LeatherWorkingItemRegistration.SLACKED_LIME_BUCKET.get());
+        handle.itemGeneratedModel(WoodWorkingItemRegistration.TANNIN_BUCKET.get());
     }
 
     private void hide(ItemModelEntryProviderHandle handle)

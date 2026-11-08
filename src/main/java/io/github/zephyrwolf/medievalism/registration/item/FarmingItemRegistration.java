@@ -30,6 +30,10 @@ public final class FarmingItemRegistration
     { return FARMING_ITEMS.register(name, key -> func.apply(block.get(), props)); }
 
     //region == FARMING ==
+    public static final DeferredItem<BlockItem> THATCH_BLOCK = FARMING_ITEMS.registerSimpleBlockItem("thatch_block",                  BlockRegistration.THATCH_BLOCK);
+    public static final DeferredItem<BlockItem> THATCH = FARMING_ITEMS.registerSimpleBlockItem("thatch",                        BlockRegistration.FIRE_LAY);
+    // Leaf Litter
+
     public static final DeferredItem<Item> BARLEY =                     FARMING_ITEMS.registerSimpleItem("barley",          new Item.Properties());
     public static final DeferredItem<Item> BARLEY_SEEDS =               FARMING_ITEMS.registerSimpleItem("barley_seeds",    new Item.Properties());
     public static final DeferredItem<Item> BEETROOT =                   new VanillaDeferredItem<>(Items.BEETROOT);

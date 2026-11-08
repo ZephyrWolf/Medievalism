@@ -4,6 +4,7 @@ import io.github.zephyrwolf.medievalism.common.data.ILanguageProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.LanguageEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.LeatherWorkingItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.WoodWorkingItemRegistration;
 
 public class LeatherWorkingLangEntry implements ILanguageProviderEntry
 {
@@ -65,9 +66,9 @@ public class LeatherWorkingLangEntry implements ILanguageProviderEntry
         handle.addItem(LeatherWorkingItemRegistration.LARGE_LEATHER.get(), "Large Leather");
         handle.addItem(LeatherWorkingItemRegistration.MEDIUM_LEATHER.get(), "Medium Leather");
         handle.addItem(LeatherWorkingItemRegistration.SMALL_LEATHER.get(), "Small Leather");
-        handle.addItem(ItemRegistration.QUICK_LIME.get(), "Quick Lime");
-        handle.addItem(ItemRegistration.SLACKED_LIME_BUCKET.get(), "Slacked Lime Bucket");
-        handle.addItem(ItemRegistration.TANNIN_BUCKET.get(), "Tannin Bucket");
+        handle.addItem(LeatherWorkingItemRegistration.QUICK_LIME.get(), "Quick Lime");
+        handle.addItem(LeatherWorkingItemRegistration.SLACKED_LIME_BUCKET.get(), "Slacked Lime Bucket");
+        handle.addItem(WoodWorkingItemRegistration.TANNIN_BUCKET.get(), "Tannin Bucket");
     }
 
     private void addCreativeTabTranslations(LanguageEntryProviderHandle handle)

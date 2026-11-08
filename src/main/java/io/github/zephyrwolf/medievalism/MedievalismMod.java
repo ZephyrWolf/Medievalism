@@ -55,17 +55,6 @@ public class MedievalismMod
         BlockRegistration.register(bus);
 
         ItemRegistration.register(bus);
-        ClayWorkingItemRegistration.register(bus);
-        MudWorkingItemRegistration.register(bus);
-        WorldItemRegistration.register(bus);
-        MetalWorkingItemRegistration.register(bus);
-        FarmingItemRegistration.register(bus);
-        CookingItemRegistration.register(bus);
-        WeavingItemRegistration.register(bus);
-        WoodWorkingItemRegistration.register(bus);
-        KnappingItemRegistration.register(bus);
-        LeatherWorkingItemRegistration.register(bus);
-
         BlockEntityRegistration.register(bus);
         CreativeTabRegistration.register(bus);
         CapabilitiesRegistration.register(bus);
