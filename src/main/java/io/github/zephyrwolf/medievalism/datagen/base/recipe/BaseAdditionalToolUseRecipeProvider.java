@@ -1,8 +1,12 @@
 package io.github.zephyrwolf.medievalism.datagen.base.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
+import io.github.zephyrwolf.medievalism.catalogs.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.common.recipe.additionaldrops.AdditionalDropToolUseRecipeBuilder;
 import io.github.zephyrwolf.medievalism.catalogs.tag.BlockTagCatalog;
+import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.FarmingItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.WoodWorkingItemRegistration;
 import net.minecraft.advancements.critereon.BlockPredicate;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
@@ -10,13 +14,16 @@ import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 public final class BaseAdditionalToolUseRecipeProvider {
     public static void buildRecipes(RecipeOutput recipeOutput) {
         axeStrip(recipeOutput);
+        knifeDig(recipeOutput);
     }
 
-    private static void axeStrip(RecipeOutput recipeOutput) {
+    private static void axeStrip(RecipeOutput recipeOutput)
+    {
         // White Bark
         AdditionalDropToolUseRecipeBuilder
                 .axeStrip(
@@ -67,5 +74,19 @@ public final class BaseAdditionalToolUseRecipeProvider {
                 .unlockedBy("has_axe" , InventoryChangeTrigger.TriggerInstance.hasItems(
                         ItemPredicate.Builder.item().of(ItemTags.AXES).build()))
                 .save(recipeOutput, MedievalismConstants.resource("strip_black_bark"));
+    }
+
+    private static void knifeDig(RecipeOutput recipeOutput)
+    {
+        // Thatch
+        AdditionalDropToolUseRecipeBuilder
+                .knifeDig(
+                        new ItemStack(FarmingItemRegistration.THATCH.get()),
+                        BlockPredicate.Builder.block().of(BlockTagCatalog.CAN_DROP_THATCH).build()
+                )
+                .chance(2)
+                .unlockedBy("has_knife" , InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ItemTagCatalog.KNIVES).build()))
+                .save(recipeOutput, MedievalismConstants.resource("knife_dig_thatch"));
     }
 }

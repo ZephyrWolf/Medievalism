@@ -45,8 +45,8 @@ public class KnappingItemAnimationClientExtension implements IClientItemExtensio
         float nTime = (float) duration / (float) totalTime;
 
         int i = arm == HumanoidArm.RIGHT ? 1 : -1;
-        RockBlockItem.KnapAction action = RockBlockItem.getKnapAction(player, player.getUsedItemHand());
-        if (action == RockBlockItem.KnapAction.CAN_KNAP)
+        RockBlockItem.HammerstoneAction action = RockBlockItem.getHammerstoneAction(player, player.getUsedItemHand());
+        if (action == RockBlockItem.HammerstoneAction.CAN_INHAND_CRAFT)
         { // Knap Animation
             poseStack.translate(i * 0.56F, -0.52F, -0.72F);
             float f = -(float) MathTools.asymmetricCos(Math.PI * 2.0f * nTime * RockBlockItem.HITS + Math.PI * 0.5f, SKEW);
@@ -56,7 +56,7 @@ public class KnappingItemAnimationClientExtension implements IClientItemExtensio
                     -1.1f, -1.0f, -0.3f);
             return true;
         }
-        else if (action == RockBlockItem.KnapAction.NO_ACTION)
+        else if (action == RockBlockItem.HammerstoneAction.NO_ACTION)
         { // Fail Animation
             poseStack.translate(i * 0.56F, -0.52F, -0.72F);
             float f = -0.1F * Math.abs(Mth.sin(nTime * (float) Math.PI * 2f));
@@ -85,7 +85,7 @@ public class KnappingItemAnimationClientExtension implements IClientItemExtensio
         Player player = Minecraft.getInstance().player;
         if (player == null
                 || !player.isUsingItem()
-                || !player.getUseItem().is(ItemTagCatalog.KNAP_TOOL))
+                || !player.getUseItem().is(ItemTagCatalog.ROCK_KNAP_TOOL))
         { return; }
 
         HumanoidArm arm = (player.getMainArm() == HumanoidArm.RIGHT) == (event.getHand() == InteractionHand.MAIN_HAND)
@@ -96,9 +96,9 @@ public class KnappingItemAnimationClientExtension implements IClientItemExtensio
         int totalTime = player.getUseItem().getUseDuration(player);
         float nTime = (float) duration / (float) totalTime;
 
-        RockBlockItem.KnapAction action = RockBlockItem.getKnapAction(player, player.getUsedItemHand());
+        RockBlockItem.HammerstoneAction action = RockBlockItem.getHammerstoneAction(player, player.getUsedItemHand());
 
-        if (action == RockBlockItem.KnapAction.CAN_KNAP)
+        if (action == RockBlockItem.HammerstoneAction.CAN_INHAND_CRAFT)
         { // Knap Animation
             PoseStack poseStack = event.getPoseStack();
             int i = arm == HumanoidArm.RIGHT ? 1 : -1;
@@ -120,8 +120,8 @@ public class KnappingItemAnimationClientExtension implements IClientItemExtensio
     {
         if (entityLiving.getUseItemRemainingTicks() > 0)
         {
-            RockBlockItem.KnapAction action = RockBlockItem.getKnapAction(entityLiving, hand);
-            if (action == RockBlockItem.KnapAction.CAN_KNAP)
+            RockBlockItem.HammerstoneAction action = RockBlockItem.getHammerstoneAction(entityLiving, hand);
+            if (action == RockBlockItem.HammerstoneAction.CAN_INHAND_CRAFT)
             {
                 return MedievalismEnumProxies.KNAPPING_ARM_POSE.getValue();
             }

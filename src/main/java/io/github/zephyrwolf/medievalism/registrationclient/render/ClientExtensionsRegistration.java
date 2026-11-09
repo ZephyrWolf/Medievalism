@@ -1,7 +1,9 @@
 package io.github.zephyrwolf.medievalism.registrationclient.render;
 
 import io.github.zephyrwolf.medievalism.client.item.KnappingItemAnimationClientExtension;
+import io.github.zephyrwolf.medievalism.client.item.ScrapingItemAnimationClientExtension;
 import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.KnappingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.WorldItemRegistration;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
@@ -35,6 +37,12 @@ public final class ClientExtensionsRegistration
                 WorldItemRegistration.SMOOTH_GRANITE_ROCK.get(),
                 WorldItemRegistration.NORITE_ROCK.get(),
                 WorldItemRegistration.PERIDOTITE_ROCK.get()
+        );
+
+        event.registerItem(new ScrapingItemAnimationClientExtension(),
+                KnappingItemRegistration.ROCK_KNIFE.get(),
+                KnappingItemRegistration.BONE_KNIFE.get(),
+                KnappingItemRegistration.FLINT_KNIFE.get()
         );
     }
 }

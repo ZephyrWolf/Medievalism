@@ -925,7 +925,9 @@ public class BaseBlockTagsProvider extends BlockTagsProvider
     {
         tag(BlockTagCatalog.KNIFE_EFFICIENT).add(
                 Blocks.VINE,
-                Blocks.GLOW_LICHEN
+                Blocks.GLOW_LICHEN,
+                Blocks.TALL_GRASS,
+                BlockRegistration.SOFT_RUSH.get()
         );
         tag(BlockTagCatalog.KNIFE_EFFICIENT)
                 .addTag(BlockTags.LEAVES)
