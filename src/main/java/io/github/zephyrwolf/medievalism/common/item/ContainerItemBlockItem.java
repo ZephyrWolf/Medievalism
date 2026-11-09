@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.common.blockitem;
+package io.github.zephyrwolf.medievalism.common.item;
 
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.BlockItem;

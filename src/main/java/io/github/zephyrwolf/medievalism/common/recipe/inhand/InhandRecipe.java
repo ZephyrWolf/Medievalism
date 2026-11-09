@@ -1,5 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.recipe.inhand;
 
+import io.github.zephyrwolf.medievalism.catalogs.tag.ItemTagCatalog;
 import io.github.zephyrwolf.medievalism.registration.recipe.RecipeRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.HolderLookup;

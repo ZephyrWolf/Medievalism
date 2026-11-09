@@ -1,6 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.recipe.additionaldrops;
 
-import io.github.zephyrwolf.medievalism.common.item.ItemAbilityCatalog;
+import io.github.zephyrwolf.medievalism.catalogs.item.itemability.ItemAbilityCatalog;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;

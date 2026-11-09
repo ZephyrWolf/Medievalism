@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.common.item;
+package io.github.zephyrwolf.medievalism.catalogs.item.tier;
 
 import com.google.common.base.Suppliers;
 import io.github.zephyrwolf.medievalism.catalogs.tag.BlockTagCatalog;
@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.function.Supplier;
 
-public enum MedievalismTiers implements Tier
+public enum MedievalismTierCatalog implements Tier
 {
     // Wood
     // Stone
@@ -34,8 +34,8 @@ public enum MedievalismTiers implements Tier
     final int enchantmentValue;
     final Supplier<Ingredient> repairIngredient;
 
-    MedievalismTiers(Supplier<TagKey<Block>> needsTierDrops, Supplier<TagKey<Block>> pIncorrectBlockForDrops, int pUses, float pSpeed, float pDamage,
-                     int pEnchantmentValue, Supplier<Ingredient> pRepairIngredient)
+    MedievalismTierCatalog(Supplier<TagKey<Block>> needsTierDrops, Supplier<TagKey<Block>> pIncorrectBlockForDrops, int pUses, float pSpeed, float pDamage,
+                           int pEnchantmentValue, Supplier<Ingredient> pRepairIngredient)
     {
         this.needsTierDrops = needsTierDrops;
         this.incorrectBlocksForDrops = pIncorrectBlockForDrops;

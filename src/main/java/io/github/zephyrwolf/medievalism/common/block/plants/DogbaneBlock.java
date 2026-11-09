@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.common.block;
+package io.github.zephyrwolf.medievalism.common.block.plants;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -24,7 +24,8 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-public class DogbaneBlock extends Block {
+public class DogbaneBlock extends Block
+{
     public static final MapCodec<DogbaneBlock> CODEC = simpleCodec(DogbaneBlock::new);
 
     //public static final MapCodec<DogbaneBlock> CODEC = simpleCodec(DogbaneBlock::new);

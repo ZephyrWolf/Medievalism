@@ -3,7 +3,7 @@ package io.github.zephyrwolf.medievalism.common.recipe.additionaldrops;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.github.zephyrwolf.medievalism.common.item.ItemAbilityCODEC;
+import io.github.zephyrwolf.medievalism.common.item.itemability.ItemAbilityCODEC;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.critereon.BlockPredicate;
 import net.minecraft.network.RegistryFriendlyByteBuf;

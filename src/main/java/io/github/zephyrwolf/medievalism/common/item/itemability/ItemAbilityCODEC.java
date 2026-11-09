@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.common.item;
+package io.github.zephyrwolf.medievalism.common.item.itemability;
 
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;

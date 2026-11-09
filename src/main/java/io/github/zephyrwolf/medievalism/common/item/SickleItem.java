@@ -1,5 +1,6 @@
 package io.github.zephyrwolf.medievalism.common.item;
 
+import io.github.zephyrwolf.medievalism.catalogs.item.itemability.ItemAbilityCatalog;
 import io.github.zephyrwolf.medievalism.catalogs.tag.BlockTagCatalog;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.ItemStack;

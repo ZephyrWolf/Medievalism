@@ -2,10 +2,10 @@ package io.github.zephyrwolf.medievalism.registration.item;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.block.VanillaDeferredItem;
-import io.github.zephyrwolf.medievalism.common.blockitem.ContainerItemBlockItem;
-import io.github.zephyrwolf.medievalism.common.blockitem.DryingBlockItem;
-import io.github.zephyrwolf.medievalism.common.blockitem.DryingBrickBlockItem;
-import io.github.zephyrwolf.medievalism.common.blockitem.GatherersJarBlockItem;
+import io.github.zephyrwolf.medievalism.common.item.ContainerItemBlockItem;
+import io.github.zephyrwolf.medievalism.common.item.DryingBlockItem;
+import io.github.zephyrwolf.medievalism.common.item.DryingBrickBlockItem;
+import io.github.zephyrwolf.medievalism.common.item.GatherersJarBlockItem;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;

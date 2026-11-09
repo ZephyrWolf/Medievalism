@@ -1,8 +1,8 @@
 package io.github.zephyrwolf.medievalism.registration.item;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
-import io.github.zephyrwolf.medievalism.common.blockitem.DryingBlockItem;
-import io.github.zephyrwolf.medievalism.common.blockitem.DryingBrickBlockItem;
+import io.github.zephyrwolf.medievalism.common.item.DryingBlockItem;
+import io.github.zephyrwolf.medievalism.common.item.DryingBrickBlockItem;
 import io.github.zephyrwolf.medievalism.common.item.*;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import net.minecraft.world.item.*;

@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.common.blockitem;
+package io.github.zephyrwolf.medievalism.common.item;
 
 import io.github.zephyrwolf.medievalism.common.block.GatherersJarBlock;
 import io.github.zephyrwolf.medievalism.common.menu.GatherersJarMenu;

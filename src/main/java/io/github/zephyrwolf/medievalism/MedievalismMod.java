@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism;
 
 import com.mojang.logging.LogUtils;
-import io.github.zephyrwolf.medievalism.common.recipe.additionaldrops.AdditionalDropsSystem;
+import io.github.zephyrwolf.medievalism.common.additionaldrops.AdditionalDropsSystem;
 import io.github.zephyrwolf.medievalism.common.block.OverhaulBlockBreakSystem;
 import io.github.zephyrwolf.medievalism.datagen.DataGenRegistration;
 import io.github.zephyrwolf.medievalism.registration.*;

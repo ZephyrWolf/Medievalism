@@ -2,7 +2,7 @@ package io.github.zephyrwolf.medievalism.registration.item;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.item.KnifeItem;
-import io.github.zephyrwolf.medievalism.common.item.MedievalismTiers;
+import io.github.zephyrwolf.medievalism.catalogs.item.tier.MedievalismTierCatalog;
 import io.github.zephyrwolf.medievalism.common.item.SickleItem;
 import io.github.zephyrwolf.medievalism.common.item.SpearItem;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;

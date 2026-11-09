@@ -1,5 +1,9 @@
-package io.github.zephyrwolf.medievalism.common.recipe.additionaldrops;
+package io.github.zephyrwolf.medievalism.common.additionaldrops;
 
+import io.github.zephyrwolf.medievalism.common.recipe.additionaldrops.AdditionalDropSetRecipeInput;
+import io.github.zephyrwolf.medievalism.common.recipe.additionaldrops.AdditionalDropStackRecipeInput;
+import io.github.zephyrwolf.medievalism.common.recipe.additionaldrops.AdditionalDropToolUseRecipe;
+import io.github.zephyrwolf.medievalism.common.recipe.additionaldrops.IAdditionalDropRecipeInput;
 import io.github.zephyrwolf.medievalism.registration.recipe.RecipeRegistration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.item.ItemEntity;

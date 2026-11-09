@@ -1,4 +1,4 @@
-package io.github.zephyrwolf.medievalism.common.blockitem;
+package io.github.zephyrwolf.medievalism.common.item;
 
 import io.github.zephyrwolf.medievalism.common.components.DummyDataComponent;
 import io.github.zephyrwolf.medievalism.common.recipe.inhand.InhandRecipe;

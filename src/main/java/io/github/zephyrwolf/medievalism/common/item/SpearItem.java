@@ -1,6 +1,8 @@
 package io.github.zephyrwolf.medievalism.common.item;
 
 import java.util.List;
+
+import io.github.zephyrwolf.medievalism.catalogs.item.itemability.ItemAbilityCatalog;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
