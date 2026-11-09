@@ -7,9 +7,9 @@ import io.github.zephyrwolf.medievalism.common.recipe.blank.BlankRecipe;
 import io.github.zephyrwolf.medievalism.common.recipe.blank.BlankRecipeSerializer;
 import io.github.zephyrwolf.medievalism.common.recipe.crafting.ShapelessToolRecipe;
 import io.github.zephyrwolf.medievalism.common.recipe.crafting.ShapelessToolRecipeSerializer;
+import io.github.zephyrwolf.medievalism.common.recipe.inhand.IInhandRecipe;
 import io.github.zephyrwolf.medievalism.common.recipe.inhand.InhandRecipe;
-import io.github.zephyrwolf.medievalism.common.recipe.inhand.KnapInhandRecipe;
-import io.github.zephyrwolf.medievalism.common.recipe.inhand.KnapInhandRecipeSerializer;
+import io.github.zephyrwolf.medievalism.common.recipe.inhand.InhandRecipeSerializer;
 import io.github.zephyrwolf.medievalism.common.recipe.malleable.MalleableMaterialRecipe;
 import io.github.zephyrwolf.medievalism.common.recipe.malleable.MalleableMaterialRecipeSerializer;
 import io.github.zephyrwolf.medievalism.common.recipe.malleable.MalleableRecipe;
@@ -33,7 +33,7 @@ public class RecipeRegistration
     public static final Supplier<RecipeSerializer<MalleableMaterialRecipe>> MALLEABLE_MATERIAL_RECIPE_SERIALIZER = RECIPE_SERIALIZERS.register("malleable_material", MalleableMaterialRecipeSerializer::new);
     public static final Supplier<RecipeSerializer<MalleableRecipe>> MALLEABLE_RECIPE_SERIALIZER = RECIPE_SERIALIZERS.register("malleable", MalleableRecipeSerializer::new);
     public static final Supplier<RecipeSerializer<BlankRecipe>> BLANK_RECIPE_SERIALIZER = RECIPE_SERIALIZERS.register("blank", BlankRecipeSerializer::new);
-    public static final Supplier<RecipeSerializer<KnapInhandRecipe>> KNAP_INHAND_RECIPE_SERIALIZER = RECIPE_SERIALIZERS.register("knap_inhand", KnapInhandRecipeSerializer::new);
+    public static final Supplier<RecipeSerializer<InhandRecipe>> INHAND_RECIPE_SERIALIZER = RECIPE_SERIALIZERS.register("inhand", InhandRecipeSerializer::new);
     public static final Supplier<RecipeSerializer<ShapelessToolRecipe>> SHAPELESS_TOOL_RECIPE = RECIPE_SERIALIZERS.register("crafting_shapeless_tool", ShapelessToolRecipeSerializer::new);
 
     // Types
@@ -41,7 +41,7 @@ public class RecipeRegistration
     public static final Supplier<RecipeType<MalleableMaterialRecipe>> MALLEABLE_MATERIAL_RECIPE_TYPE = RECIPE_TYPES.register("malleable_material", () -> RecipeType.simple(MedievalismConstants.resource("malleable_material")));
     public static final Supplier<RecipeType<MalleableRecipe>> MALLEABLE_RECIPE_TYPE = RECIPE_TYPES.register("malleable", () -> RecipeType.simple(MedievalismConstants.resource("malleable")));
     public static final Supplier<RecipeType<BlankRecipe>> BLANK_RECIPE_TYPE = RECIPE_TYPES.register("blank", () -> RecipeType.simple(MedievalismConstants.resource("blank")));
-    public static final Supplier<RecipeType<InhandRecipe>> INHAND_RECIPE_TYPE = RECIPE_TYPES.register("inhand", () -> RecipeType.simple(MedievalismConstants.resource("inhand")));
+    public static final Supplier<RecipeType<IInhandRecipe>> INHAND_RECIPE_TYPE = RECIPE_TYPES.register("inhand", () -> RecipeType.simple(MedievalismConstants.resource("inhand")));
 
     public static void register(IEventBus modEventBus)
     {

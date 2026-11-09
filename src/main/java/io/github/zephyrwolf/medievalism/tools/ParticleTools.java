@@ -1,9 +1,7 @@
 package io.github.zephyrwolf.medievalism.tools;
 
-import io.github.zephyrwolf.medievalism.client.particles.KnapDebrisParticle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.particle.Particle;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket;
 import net.minecraft.server.level.ServerLevel;

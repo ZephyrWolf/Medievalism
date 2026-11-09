@@ -22,28 +22,52 @@ import java.util.*;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public abstract class InhandRecipeBuilder<T extends InhandRecipe> implements RecipeBuilder
+public class InhandRecipeBuilder implements RecipeBuilder
 {
     private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
     protected final ItemStack result;
-    protected Optional<Ingredient> tool = Optional.empty();
+    protected Ingredient tool = Ingredient.EMPTY;
     protected Ingredient ingredient = Ingredient.EMPTY;
     protected String group = "";
+    protected String category = "inhand";
+    protected InhandRecipeIngredientMaterialType materialType = InhandRecipeIngredientMaterialType.HIT_ROCK;
+
+    public static InhandRecipeBuilder inhand(ItemStack result)
+    {
+        return new InhandRecipeBuilder(result);
+    }
+
+    public static InhandRecipeBuilder inhand(ItemLike result)
+    {
+        return new InhandRecipeBuilder(new ItemStack(result, 1));
+    }
 
     protected InhandRecipeBuilder(@Nonnull ItemStack result)
     {
         this.result = result;
     }
 
-    public InhandRecipeBuilder<T> tool(@Nonnull Ingredient tool)
+    public InhandRecipeBuilder tool(@Nonnull Ingredient tool)
     {
-        this.tool = Optional.of(tool);
+        this.tool = tool;
         return this;
     }
 
-    public InhandRecipeBuilder<T> ingredient(@Nonnull Ingredient ingredient)
+    public InhandRecipeBuilder materialType(@Nonnull InhandRecipeIngredientMaterialType soundType)
+    {
+        this.materialType = soundType;
+        return this;
+    }
+
+    public InhandRecipeBuilder ingredient(@Nonnull Ingredient ingredient)
     {
         this.ingredient = ingredient;
+        return this;
+    }
+
+    public InhandRecipeBuilder category(@Nonnull String category)
+    {
+        this.category = category;
         return this;
     }
 
@@ -64,8 +88,6 @@ public abstract class InhandRecipeBuilder<T extends InhandRecipe> implements Rec
         return result.getItem();
     }
 
-    protected abstract String category();
-
     @Override
     public void save(@Nonnull RecipeOutput pRecipeOutput, @Nonnull ResourceLocation pId) {
         this.ensureValid(pId);
@@ -74,11 +96,21 @@ public abstract class InhandRecipeBuilder<T extends InhandRecipe> implements Rec
                 .rewards(AdvancementRewards.Builder.recipe(pId))
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement$builder::addCriterion);
-        T recipe = buildRecipe();
-        pRecipeOutput.accept(pId, recipe, advancement$builder.build(pId.withPrefix("recipes/" + category() + "/")));
+        InhandRecipe recipe = buildRecipe();
+        pRecipeOutput.accept(pId, recipe, advancement$builder.build(pId.withPrefix("recipes/" + category + "/")));
     }
 
-    protected abstract @NotNull T buildRecipe();
+    @NotNull
+    protected InhandRecipe buildRecipe()
+    {
+        return new InhandRecipe(
+                Objects.requireNonNullElse(group, ""),
+                tool,
+                ingredient,
+                result,
+                materialType
+        );
+    }
 
     protected void ensureValid(@Nonnull ResourceLocation pId)
     {
@@ -86,9 +118,9 @@ public abstract class InhandRecipeBuilder<T extends InhandRecipe> implements Rec
         {
             throw new IllegalStateException("No way of obtaining recipe " + pId);
         }
-        if (tool.isPresent() && tool.get().isEmpty())
+        if (tool.isEmpty())
         {
-            throw new IllegalStateException("Cannot have an In-hand recipe with an empty tool. Leave blank for ANY or define filter.");
+            throw new IllegalStateException("Cannot have an In-hand recipe with an empty tool");
         }
         if (ingredient.isEmpty())
         {

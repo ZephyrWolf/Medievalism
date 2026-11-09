@@ -21,9 +21,29 @@
 			{ "name": "medievalism:inhand_hit_rock_final_2" },
 			{ "name": "medievalism:inhand_hit_rock_final_3" }
 		]
+	},
+	"entity.inhand_hit_plant.hit": {
+		"subtitle": "medievalism.sound.entity.inhand_hit_plant.hit",
+		"sounds": [
+			{ "name": "medievalism:inhand_hit_plant_1" }
 		]
 	},
+	"entity.inhand_hit_plant.final_hit": {
+		"subtitle": "medievalism.sound.entity.inhand_hit_plant.final_hit",
 		"sounds": [
+			{ "name": "medievalism:inhand_hit_plant_final_1" }
+		]
+	},
+	"entity.inhand_scrape_plant.hit": {
+		"subtitle": "medievalism.sound.entity.inhand_scrape_plant.hit",
+		"sounds": [
+			{ "name": "medievalism:inhand_scrape_plant_1" }
+		]
+	},
+	"entity.inhand_scrape_plant.final_hit": {
+		"subtitle": "medievalism.sound.entity.inhand_scrape_plant.final_hit",
+		"sounds": [
+			{ "name": "medievalism:inhand_scrape_plant_final_1" }
 		]
 	}
 }

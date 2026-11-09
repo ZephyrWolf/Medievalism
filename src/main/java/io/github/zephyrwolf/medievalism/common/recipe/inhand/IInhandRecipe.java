@@ -18,14 +18,12 @@ import javax.annotation.ParametersAreNonnullByDefault;
 public interface IInhandRecipe extends Recipe<InhandRecipeInput>
 {
     Ingredient getTool();
-    TagKey<Item> getToolTag();
     Ingredient getIngredient();
     InhandRecipeIngredientMaterialType getMaterialType();
 
     @Override
     default boolean matches(InhandRecipeInput pInput, Level pLevel)
     {
-        if (!pInput.tool().is(getToolTag())) return false;
         if (!getTool().test(pInput.tool())) return false;
         return getIngredient().test(pInput.ingredient());
     }

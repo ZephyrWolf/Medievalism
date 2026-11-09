@@ -8,37 +8,36 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 
+import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.Optional;
 
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-public interface InhandRecipe extends Recipe<InhandRecipeInput>
+public record InhandRecipe(@Nonnull String group, @Nonnull Ingredient tool, @Nonnull Ingredient ingredient, @Nonnull ItemStack result, @Nonnull InhandRecipeIngredientMaterialType materialType) implements IInhandRecipe
 {
-    Optional<Ingredient> getTool();
-    TagKey<Item> getToolTag();
-    Ingredient getIngredient();
+    @Override
+    public Ingredient getTool() { return tool; }
 
     @Override
-    default boolean matches(InhandRecipeInput pInput, Level pLevel)
-    {
-        if (!pInput.tool().is(getToolTag())) return false;
-        if (getTool().isPresent() && !getTool().get().test(pInput.tool())) return false;
-        return getIngredient().test(pInput.ingredient());
+    public Ingredient getIngredient() { return ingredient; }
+
+    @Override
+    public InhandRecipeIngredientMaterialType getMaterialType() { return materialType; }
+
+    @Override
+    public String getGroup() {
+        return this.group;
     }
 
     @Override
-    default ItemStack assemble(InhandRecipeInput pInput, HolderLookup.Provider pRegistries) { return getResultItem(pRegistries); }
+    public ItemStack getResultItem(HolderLookup.Provider pRegistries) {
+        return result.copy();
+    }
 
     @Override
-    default boolean canCraftInDimensions(int pWidth, int pHeight) { return false; }
-
-    @Override
-    default RecipeType<?> getType() {
-        return RecipeRegistration.INHAND_RECIPE_TYPE.get();
+    public RecipeSerializer<?> getSerializer() {
+        return RecipeRegistration.INHAND_RECIPE_SERIALIZER.get();
     }
 }

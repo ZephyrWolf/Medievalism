@@ -35,8 +35,14 @@ public final class ItemTagCatalog
     public static final TagKey<Item> BARK = tag("bark");
     public static final TagKey<Item> CLAY_FLUX = tag("clay_flux"); // wood_ash & potash // TODO Is this the right name for forge?
 
-    public static final TagKey<Item> CARVING_TOOL = tag("carving_tool");
+    public static final TagKey<Item> KNIVES = tag("knives");
+    public static final TagKey<Item> ROCK_KNAP_TOOL = tag("rock_knap_tool");
+    public static final TagKey<Item> FLINT_KNAP_TOOL = tag("flint_knap_tool");
     public static final TagKey<Item> KNAP_TOOL = tag("knap_tool");
+    public static final TagKey<Item> BONE_CARVING_TOOL = tag("bone_carving_tool");
+    public static final TagKey<Item> WOOD_CARVING_TOOL = tag("bone_carving_tool");
+    public static final TagKey<Item> PLANT_CARVING_TOOL = tag("plant_carving_tool");
+    public static final TagKey<Item> CARVING_TOOL = tag("carving_tool");
 
     public static final TagKey<Item> WET_BRICK = tag("wet_brick");
 

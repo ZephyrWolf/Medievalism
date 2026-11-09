@@ -6,11 +6,11 @@ import net.minecraft.core.particles.SimpleParticleType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class KnapDebrisParticle extends TextureSheetParticle
+public class InhandCraftParticle extends TextureSheetParticle
 {
     private final SpriteSet spriteSet;
 
-    public KnapDebrisParticle(ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed, SpriteSet spriteSet)
+    public InhandCraftParticle(ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed, SpriteSet spriteSet)
     {
         super(pLevel, pX, pY, pZ, pXSpeed, pYSpeed, pZSpeed);
         this.spriteSet = spriteSet;
@@ -31,11 +31,11 @@ public class KnapDebrisParticle extends TextureSheetParticle
         super.tick();
     }
 
-    public static class KnapDebrisParticleProvider implements ParticleProvider<SimpleParticleType>
+    public static class InhandCraftParticleProvider implements ParticleProvider<SimpleParticleType>
     {
         private final SpriteSet spriteSet;
 
-        public KnapDebrisParticleProvider(SpriteSet spriteSet)
+        public InhandCraftParticleProvider(SpriteSet spriteSet)
         {
             this.spriteSet = spriteSet;
         }
@@ -48,7 +48,7 @@ public class KnapDebrisParticle extends TextureSheetParticle
                 double pXSpeed, double pYSpeed, double pZSpeed)
         {
             // return new KnapDebrisParticle(pLevel, pX, pY, pZ, spriteSet);
-            return new KnapDebrisParticle(pLevel, pX, pY, pZ, pXSpeed, pYSpeed, pZSpeed, spriteSet);
+            return new InhandCraftParticle(pLevel, pX, pY, pZ, pXSpeed, pYSpeed, pZSpeed, spriteSet);
         }
     }
 }
