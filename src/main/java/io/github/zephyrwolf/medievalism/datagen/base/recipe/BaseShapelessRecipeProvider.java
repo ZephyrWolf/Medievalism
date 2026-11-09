@@ -26,6 +26,7 @@ public final class BaseShapelessRecipeProvider {
         cordageRecipes(recipeOutput);
         leatherRecipes(recipeOutput);
         toolRecipes(recipeOutput);
+        weavingRecipes(recipeOutput);
     }
 
     private static void survivalRecipes(RecipeOutput recipeOutput) {
@@ -49,14 +50,14 @@ public final class BaseShapelessRecipeProvider {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, WoodWorkingItemRegistration.FIRE_STARTER)
                 .requires(Items.STICK)
                 .requires(Items.STICK)
-                .requires(ItemTagCatalog.CARVING_TOOL)
-                .unlockedBy("has_knife", RecipeTools.itemPredicateOf(ItemTagCatalog.CARVING_TOOL))
+                .requires(ItemTagCatalog.BONE_CARVING_TOOL)
+                .unlockedBy("has_knife", RecipeTools.itemPredicateOf(ItemTagCatalog.BONE_CARVING_TOOL))
                 .save(recipeOutput, MedievalismConstants.resource("fire_starter"));
         // Digging Stick TODO Temp recipe, make handle and then sharpen handle?
         ShapelessToolRecipeBuilder.shapeless(RecipeCategory.MISC, WoodWorkingItemRegistration.DIGGING_STICK)
                 .requiresIngredient(ItemTagCatalog.LARGE_TOOL_HANDLE)
-                .requiresTool(ItemTagCatalog.CARVING_TOOL)
-                .unlockedBy("has_knife", RecipeTools.itemPredicateOf(ItemTagCatalog.CARVING_TOOL))
+                .requiresTool(ItemTagCatalog.BONE_CARVING_TOOL)
+                .unlockedBy("has_knife", RecipeTools.itemPredicateOf(ItemTagCatalog.BONE_CARVING_TOOL))
                 .save(recipeOutput, MedievalismConstants.resource("digging_stick"));
     }
 
@@ -329,7 +330,7 @@ public final class BaseShapelessRecipeProvider {
     {
         ShapelessToolRecipeBuilder.shapeless(RecipeCategory.TOOLS, WoodWorkingItemRegistration.TOOL_HANDLE)
                 .requiresIngredient(ItemTagCatalog.BRANCH)
-                .requiresTool(ItemTagCatalog.CARVING_TOOL)
+                .requiresTool(ItemTagCatalog.BONE_CARVING_TOOL)
                 .unlockedBy("has_branch", RecipeTools.itemPredicateOf(
                         WorldItemRegistration.OAK_BRANCH.get(),
                         WorldItemRegistration.SPRUCE_BRANCH.get(),
@@ -402,5 +403,23 @@ public final class BaseShapelessRecipeProvider {
                 .requires(ItemTagCatalog.TOOL_BINDING)
                 .unlockedBy("has_large_tool_handle", RecipeTools.itemPredicateOf(ItemTagCatalog.LARGE_TOOL_HANDLE))
                 .save(recipeOutput, MedievalismConstants.resource("rock_sickle"));
+    }
+
+    private static void weavingRecipes(RecipeOutput recipeOutput)
+    {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, WeavingItemRegistration.PRIMITIVE_CORDAGE)
+                .requires(WeavingItemRegistration.SPLIT_SOFT_RUSH)
+                .requires(WeavingItemRegistration.SPLIT_SOFT_RUSH)
+                .unlockedBy("has_split_soft_rush", RecipeTools.itemPredicateOf(WeavingItemRegistration.SPLIT_SOFT_RUSH))
+                .save(recipeOutput, MedievalismConstants.resource("primitive_cordage_from_split_soft_rush"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, WeavingItemRegistration.DRY_BAST_FIBERS)
+                .requires(WeavingItemRegistration.GREEN_BAST_FIBERS)
+                .unlockedBy("has_green_bast_fibers", RecipeTools.itemPredicateOf(WeavingItemRegistration.GREEN_BAST_FIBERS))
+                .save(recipeOutput, MedievalismConstants.resource("dry_bast_fibers"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, WeavingItemRegistration.BAST_CORDAGE)
+                .requires(WeavingItemRegistration.DRY_BAST_FIBERS)
+                .requires(WeavingItemRegistration.DRY_BAST_FIBERS)
+                .unlockedBy("has_dry_bast_fibers", RecipeTools.itemPredicateOf(WeavingItemRegistration.DRY_BAST_FIBERS))
+                .save(recipeOutput, MedievalismConstants.resource("bast_cordage"));
     }
 }

@@ -3,6 +3,8 @@ package io.github.zephyrwolf.medievalism.datagen.base.lang;
 import io.github.zephyrwolf.medievalism.common.data.ILanguageProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.LanguageEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.FarmingItemRegistration;
+import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.KnappingItemRegistration;
 
 public class WorldLangEntry implements ILanguageProviderEntry
@@ -20,7 +22,8 @@ public class WorldLangEntry implements ILanguageProviderEntry
 
     private void addBlockTranslations(LanguageEntryProviderHandle handle)
     {
-        handle.addBlock(BlockRegistration.THATCH_FIRE_LAY.get(), "Thatch"); // TODO Separate fire lay and thatch names
+        handle.addItem(FarmingItemRegistration.THATCH.get(), "Thatch"); // TODO Separate fire lay and thatch names
+        handle.addBlock(BlockRegistration.THATCH_FIRE_LAY.get(), "Building Fire Lay..."); // TODO Separate fire lay and thatch names
         handle.addBlock(BlockRegistration.THATCH_BUILD_CAMPFIRE.get(), "Building Campfire..."); // TODO Separate fire lay and thatch names
     }
 
@@ -233,6 +236,7 @@ public class WorldLangEntry implements ILanguageProviderEntry
         // PLANT
         handle.addBlock(BlockRegistration.SHRUB.get(), "Shrub");
         handle.addBlock(BlockRegistration.DOGBANE.get(), "Dogbane");
+        handle.addBlock(BlockRegistration.SOFT_RUSH.get(), "Soft Rush");
         // BRANCH
         handle.addBlock(BlockRegistration.OAK_BRANCH.get(), "Oak Branch");
         handle.addBlock(BlockRegistration.BIRCH_BRANCH.get(), "Birch Branch");

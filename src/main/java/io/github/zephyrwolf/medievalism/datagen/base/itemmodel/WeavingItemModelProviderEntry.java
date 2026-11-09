@@ -2,7 +2,6 @@ package io.github.zephyrwolf.medievalism.datagen.base.itemmodel;
 
 import io.github.zephyrwolf.medievalism.common.data.IItemModelProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.ItemModelEntryProviderHandle;
-import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.WeavingItemRegistration;
 
 public class WeavingItemModelProviderEntry implements IItemModelProviderEntry
@@ -17,7 +16,11 @@ public class WeavingItemModelProviderEntry implements IItemModelProviderEntry
     {
         handle.setFolder("weaving");
 
-        //handle.itemGeneratedModel(ItemRegistration.BAST_FIBERS.get());
         handle.itemGeneratedModel(WeavingItemRegistration.FLAX_FIBER.get());
+        handle.itemGeneratedModel(WeavingItemRegistration.SPLIT_SOFT_RUSH.get());
+        handle.itemGeneratedModel(WeavingItemRegistration.PRIMITIVE_CORDAGE.get());//
+        handle.itemGeneratedModel(WeavingItemRegistration.GREEN_BAST_FIBERS.get());
+        handle.itemGeneratedModel(WeavingItemRegistration.DRY_BAST_FIBERS.get());//
+        handle.itemGeneratedModel(WeavingItemRegistration.BAST_CORDAGE.get());//
     }
 }

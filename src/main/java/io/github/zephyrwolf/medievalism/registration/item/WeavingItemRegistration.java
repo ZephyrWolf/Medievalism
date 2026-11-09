@@ -28,5 +28,10 @@ public final class WeavingItemRegistration
 
     //region == WEAVING ==
     public static final DeferredItem<Item> FLAX_FIBER = WEAVING_ITEMS.registerSimpleItem("flax_fiber", new Item.Properties());
+    public static final DeferredItem<Item> SPLIT_SOFT_RUSH = WEAVING_ITEMS.registerSimpleItem("split_soft_rush", new Item.Properties());
+    public static final DeferredItem<Item> PRIMITIVE_CORDAGE = WEAVING_ITEMS.registerSimpleItem("primitive_cordage", new Item.Properties());
+    public static final DeferredItem<Item> GREEN_BAST_FIBERS = WEAVING_ITEMS.registerSimpleItem("green_bast_fibers", new Item.Properties());
+    public static final DeferredItem<Item> DRY_BAST_FIBERS = WEAVING_ITEMS.registerSimpleItem("dry_bast_fibers", new Item.Properties());
+    public static final DeferredItem<Item> BAST_CORDAGE = WEAVING_ITEMS.registerSimpleItem("bast_cordage", new Item.Properties());
     //endregion
 }

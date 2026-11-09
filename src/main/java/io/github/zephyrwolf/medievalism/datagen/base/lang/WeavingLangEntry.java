@@ -2,7 +2,6 @@ package io.github.zephyrwolf.medievalism.datagen.base.lang;
 
 import io.github.zephyrwolf.medievalism.common.data.ILanguageProviderEntry;
 import io.github.zephyrwolf.medievalism.common.data.LanguageEntryProviderHandle;
-import io.github.zephyrwolf.medievalism.registration.item.ItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.WeavingItemRegistration;
 
 public class WeavingLangEntry implements ILanguageProviderEntry
@@ -33,6 +32,11 @@ public class WeavingLangEntry implements ILanguageProviderEntry
     private void addItemTranslations(LanguageEntryProviderHandle handle)
     {
         handle.addItem(WeavingItemRegistration.FLAX_FIBER.get(), "Flax Fiber");
+        handle.addItem(WeavingItemRegistration.SPLIT_SOFT_RUSH.get(), "Split Soft Rush");
+        handle.addItem(WeavingItemRegistration.PRIMITIVE_CORDAGE.get(), "Primitive Cordage");
+        handle.addItem(WeavingItemRegistration.GREEN_BAST_FIBERS.get(), "Green Bast Fibers");
+        handle.addItem(WeavingItemRegistration.DRY_BAST_FIBERS.get(), "Dry Bast Fibers");
+        handle.addItem(WeavingItemRegistration.BAST_CORDAGE.get(), "Bast Cordage");
     }
 
     private void addCreativeTabTranslations(LanguageEntryProviderHandle handle)

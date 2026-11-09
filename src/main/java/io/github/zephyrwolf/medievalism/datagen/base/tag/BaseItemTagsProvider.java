@@ -265,18 +265,47 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
                 WoodWorkingItemRegistration.TOOL_HANDLE.get()
         );
         tag(ItemTagCatalog.TOOL_BINDING).add(
-                Items.STRING,
-                WeavingItemRegistration.FLAX_FIBER.get()
-        );
+                WeavingItemRegistration.PRIMITIVE_CORDAGE.get(),
+                WeavingItemRegistration.BAST_CORDAGE.get()
+        ).addTag(Tags.Items.STRINGS);
 
-        tag(ItemTagCatalog.CARVING_TOOL).add(
+        tag(ItemTagCatalog.KNIVES).add(
                 KnappingItemRegistration.ROCK_KNIFE.get(),
                 KnappingItemRegistration.BONE_KNIFE.get(),
                 KnappingItemRegistration.FLINT_KNIFE.get()
         );
-        tag(ItemTagCatalog.KNAP_TOOL)
+
+        tag(ItemTagCatalog.ROCK_KNAP_TOOL)
                 .addTag(ItemTagCatalog.HARD_ROCK);
 
+        tag(ItemTagCatalog.FLINT_KNAP_TOOL).add(
+                KnappingItemRegistration.ANTLER.get() // TODO Any other bone types?
+        ).addTag(ItemTagCatalog.ROCK_KNAP_TOOL);
+
+        tag(ItemTagCatalog.KNAP_TOOL)
+                .addTag(ItemTagCatalog.ROCK_KNAP_TOOL)
+                .addTag(ItemTagCatalog.FLINT_KNAP_TOOL);
+
+        tag(ItemTagCatalog.BONE_CARVING_TOOL).add(
+                KnappingItemRegistration.ROCK_KNIFE.get(),
+                KnappingItemRegistration.FLINT_KNIFE.get()
+        );
+
+        tag(ItemTagCatalog.WOOD_CARVING_TOOL).add(
+                KnappingItemRegistration.ROCK_KNIFE.get(),
+                KnappingItemRegistration.FLINT_KNIFE.get()
+        );
+
+        tag(ItemTagCatalog.PLANT_CARVING_TOOL).add(
+                KnappingItemRegistration.ROCK_KNIFE.get(),
+                KnappingItemRegistration.BONE_KNIFE.get(),
+                KnappingItemRegistration.FLINT_KNIFE.get()
+        );
+
+        tag(ItemTagCatalog.CARVING_TOOL)
+                .addTag(ItemTagCatalog.BONE_CARVING_TOOL)
+                .addTag(ItemTagCatalog.WOOD_CARVING_TOOL)
+                .addTag(ItemTagCatalog.PLANT_CARVING_TOOL);
 
         tag(ItemTagCatalog.FIRE_LAY_STICK)
                 .addTag(Tags.Items.RODS_WOODEN);
@@ -289,6 +318,12 @@ public class BaseItemTagsProvider extends ItemTagsProvider { // https://github.c
                 Items.FLINT_AND_STEEL,
                 WoodWorkingItemRegistration.FIRE_STARTER.get()
         );
+
+        tag(Tags.Items.STRINGS).add(
+                WeavingItemRegistration.BAST_CORDAGE.get()
+        );
+
+
     }
 
     public void registerBlockTags()

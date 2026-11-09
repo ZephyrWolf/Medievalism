@@ -6,9 +6,9 @@ import io.github.zephyrwolf.medievalism.common.block.*;
 import io.github.zephyrwolf.medievalism.common.block.firepit.BuildCampfireBlock;
 import io.github.zephyrwolf.medievalism.common.block.firepit.FireLayBlock;
 import io.github.zephyrwolf.medievalism.common.block.firepit.IBlockInteractWithStack;
-import io.github.zephyrwolf.medievalism.registration.item.WoodWorkingItemRegistration;
+import io.github.zephyrwolf.medievalism.common.block.plants.DogbaneBlock;
+import io.github.zephyrwolf.medievalism.common.block.plants.SoftRushBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -410,14 +410,19 @@ public final class BlockRegistration
 
     // PLANT Properties
     static BlockBehaviour.Properties PLANT_PROPERTIES =                                     BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY).noCollission().replaceable().strength(0.05f).sound(SoundType.GRASS);
-    static BlockBehaviour.Properties DOGBANE_PROPERTIES =                                   BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).strength(0.3f).sound(SoundType.GRASS).randomTicks();
     static BlockBehaviour.Properties WILD_CROP_PROPERTIES =                                 BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).ignitedByLava().isViewBlocking((pState, pLevel, pPos) -> false).pushReaction(PushReaction.DESTROY).noCollission().strength(0.05f).sound(SoundType.CROP);
     static BlockBehaviour.Properties WILD_YAM_PROPERTIES =                                  WILD_CROP_PROPERTIES;
     static BlockBehaviour.Properties CROP_PROPERTIES =                                      BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY);
     static BlockBehaviour.Properties YAMS_PROPERTIES =                                      CROP_PROPERTIES;
     // PLANT LITTER
+    @Deprecated
     public static final DeferredBlock<WorldPlantBlock.BasicWorldPlantBlock> SHRUB =         BLOCKS.registerBlock("shrub", WorldPlantBlock.BasicWorldPlantBlock::new, PLANT_PROPERTIES);
+
+    static BlockBehaviour.Properties DOGBANE_PROPERTIES =                                   BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).strength(0.3f).sound(SoundType.GRASS).randomTicks();
     public static final DeferredBlock<Block> DOGBANE =                                      BLOCKS.registerBlock("dogbane", DogbaneBlock::new, DOGBANE_PROPERTIES);
+
+    static BlockBehaviour.Properties SOFT_RUSH_PROPERTIES =                                 BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).strength(0.3f).sound(SoundType.GRASS).randomTicks();
+    public static final DeferredBlock<Block> SOFT_RUSH =                                    BLOCKS.registerBlock("soft_rush", SoftRushBlock::new, SOFT_RUSH_PROPERTIES);
     // WILD CROPS
     public static final DeferredBlock<WorldPlantBlock.BasicWorldPlantBlock> WILD_YAMS =     BLOCKS.registerBlock("wild_yams", WorldPlantBlock.BasicWorldPlantBlock::new, WILD_YAM_PROPERTIES);
     // CROPS

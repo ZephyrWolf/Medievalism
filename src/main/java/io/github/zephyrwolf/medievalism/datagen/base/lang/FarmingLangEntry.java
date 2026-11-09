@@ -39,6 +39,7 @@ public class FarmingLangEntry implements ILanguageProviderEntry
         handle.addItem(FarmingItemRegistration.RADISH.get(), "Radish");
         handle.addItem(FarmingItemRegistration.RASPBERRIES.get(), "Raspberries");
         handle.addItem(FarmingItemRegistration.SKIRRET.get(), "Skirret");
+        handle.addItem(FarmingItemRegistration.SOFT_RUSH_SEEDS.get(), "Soft Rush Seeds");
         handle.addItem(FarmingItemRegistration.SPINACH.get(), "Spinach");
         handle.addItem(FarmingItemRegistration.STRAWBERRIES.get(), "Strawberries");
         handle.addItem(FarmingItemRegistration.TURNIP.get(), "Turnip");

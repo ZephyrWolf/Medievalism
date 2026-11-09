@@ -2,6 +2,7 @@ package io.github.zephyrwolf.medievalism.registration.item;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.block.VanillaDeferredItem;
+import io.github.zephyrwolf.medievalism.common.item.SeparateNameBlockItem;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.catalogs.item.food.FoodCatalog;
 import net.minecraft.world.item.*;
@@ -31,8 +32,11 @@ public final class FarmingItemRegistration
 
     //region == FARMING ==
     public static final DeferredItem<BlockItem> THATCH_BLOCK = FARMING_ITEMS.registerSimpleBlockItem("thatch_block",                  BlockRegistration.THATCH_BLOCK);
-    public static final DeferredItem<BlockItem> THATCH = FARMING_ITEMS.registerSimpleBlockItem("thatch",                        BlockRegistration.THATCH_FIRE_LAY);
+    public static final DeferredItem<BlockItem> THATCH = FARMING_ITEMS.registerItem("thatch", props -> new SeparateNameBlockItem(BlockRegistration.THATCH_FIRE_LAY.get(), props));
     // Leaf Litter
+
+    public static final DeferredItem<Item> SOFT_RUSH_SEEDS =            FARMING_ITEMS.registerSimpleItem("soft_rush_seeds",          new Item.Properties());
+
 
     public static final DeferredItem<Item> BARLEY =                     FARMING_ITEMS.registerSimpleItem("barley",          new Item.Properties());
     public static final DeferredItem<Item> BARLEY_SEEDS =               FARMING_ITEMS.registerSimpleItem("barley_seeds",    new Item.Properties());

@@ -351,5 +351,8 @@ public class WorldItemModelProviderEntry implements IItemModelProviderEntry
         handle.blockBasedModel(WorldItemRegistration.CHERRY_BRANCH.get(), "");
         handle.blockBasedModel(WorldItemRegistration.MANGROVE_BRANCH.get(), "");
         handle.blockIconGeneratedModel(WorldItemRegistration.SHRUB.get());
+
+        handle.setFolder("world");
+        handle.itemGeneratedModel(WorldItemRegistration.SOFT_RUSH.get());
     }
 }

@@ -9,8 +9,10 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -25,6 +27,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.CommonHooks;
+import net.neoforged.neoforge.common.ItemAbility;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -41,7 +44,6 @@ public class SoftRushBlock extends BushBlock
     public static final IntegerProperty AGE = BlockStateProperties.AGE_4;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty DONE_GROWING = BooleanProperty.create("done_growing");
-
 
     protected static final VoxelShape SHAPE_LOWER0 = Block.box(4.0, 0.0, 4.0, 12.0, 6.0, 12.0);
     protected static final VoxelShape SHAPE_LOWER1 = Block.box(3.0, 0.0, 3.0, 13.0, 12.0, 13.0);

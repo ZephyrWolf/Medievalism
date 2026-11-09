@@ -2,6 +2,7 @@ package io.github.zephyrwolf.medievalism.registration.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.recipe.malleable.BoneMalleableMaterial;
+import io.github.zephyrwolf.medievalism.common.recipe.malleable.FlintMalleableMaterial;
 import io.github.zephyrwolf.medievalism.common.recipe.malleable.MalleableMaterialType;
 import io.github.zephyrwolf.medievalism.common.recipe.malleable.RockMalleableMaterial;
 import io.github.zephyrwolf.medievalism.registration.RegistryRegistration;
@@ -25,9 +26,10 @@ public final class MalleableMaterialRegistration
     public static final DeferredHolder<MalleableMaterialType, MalleableMaterialType> REFRACTORY_CLAY = MATERIALS.register("refractory_clay", () -> new MalleableMaterialType(0xFFEFD288, 0xFF54492F));
     // Knapping
     public static final DeferredHolder<MalleableMaterialType, MalleableMaterialType> ROCK = MATERIALS.register("rock", RockMalleableMaterial::new);
-    public static final DeferredHolder<MalleableMaterialType, MalleableMaterialType> FLINT = MATERIALS.register("flint", () -> new RockMalleableMaterial(0xFF3D3C3C, 0xFF0E0E0E));
+    public static final DeferredHolder<MalleableMaterialType, MalleableMaterialType> FLINT = MATERIALS.register("flint", FlintMalleableMaterial::new);
     // Carving
     public static final DeferredHolder<MalleableMaterialType, MalleableMaterialType> BONE = MATERIALS.register("bone", BoneMalleableMaterial::new);
     // Weaving
 
+    // TODO Create MATERIAL_INSTANCE so we can have several colours of rock and assign unique textures
 }

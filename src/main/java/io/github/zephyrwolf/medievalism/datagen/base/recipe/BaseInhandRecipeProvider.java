@@ -35,14 +35,14 @@ public final class BaseInhandRecipeProvider
 
         InhandRecipeBuilder.inhand(WeavingItemRegistration.SPLIT_SOFT_RUSH)
                 .tool(Ingredient.of(ItemTagCatalog.KNAP_TOOL))
-                .materialType(InhandRecipeIngredientMaterialType.HIT_ROCK)
+                .materialType(InhandRecipeIngredientMaterialType.HIT_PLANT)
                 .ingredient(Ingredient.of(BlockRegistration.SOFT_RUSH))
                 .unlockedBy("has_soft_rush", RecipeTools.itemPredicateOf(BlockRegistration.SOFT_RUSH))
                 .save(recipeOutput, MedievalismConstants.resource("split_soft_rush_inhand_hit_plant"));
 
         InhandRecipeBuilder.inhand(WeavingItemRegistration.GREEN_BAST_FIBERS)
                 .tool(Ingredient.of(ItemTagCatalog.PLANT_CARVING_TOOL))
-                .materialType(InhandRecipeIngredientMaterialType.HIT_PLANT)
+                .materialType(InhandRecipeIngredientMaterialType.SCRAPE_PLANT)
                 .ingredient(Ingredient.of(WeavingItemRegistration.SPLIT_SOFT_RUSH))
                 .unlockedBy("has_soft_rush", RecipeTools.itemPredicateOf(BlockRegistration.SOFT_RUSH))
                 .save(recipeOutput, MedievalismConstants.resource("green_bast_fibers_inhand_scrape_plant"));

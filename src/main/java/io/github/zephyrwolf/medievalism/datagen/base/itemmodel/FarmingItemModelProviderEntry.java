@@ -48,6 +48,7 @@ public class FarmingItemModelProviderEntry implements IItemModelProviderEntry
         handle.itemGeneratedModel(FarmingItemRegistration.RADISH.get());
         handle.itemGeneratedModel(FarmingItemRegistration.RASPBERRIES.get());
         handle.itemGeneratedModel(FarmingItemRegistration.SKIRRET.get());
+        handle.itemGeneratedModel(FarmingItemRegistration.SOFT_RUSH_SEEDS.get());
         handle.itemGeneratedModel(FarmingItemRegistration.SPINACH.get());
         handle.itemGeneratedModel(FarmingItemRegistration.STRAWBERRIES.get());
         handle.itemGeneratedModel(FarmingItemRegistration.TURNIP.get());

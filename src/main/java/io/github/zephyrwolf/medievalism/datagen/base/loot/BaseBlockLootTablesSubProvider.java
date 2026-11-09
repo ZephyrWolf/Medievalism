@@ -3,6 +3,7 @@ package io.github.zephyrwolf.medievalism.datagen.base.loot;
 import io.github.zephyrwolf.medievalism.common.block.firepit.BuildCampfireBlock;
 import io.github.zephyrwolf.medievalism.common.block.firepit.FireLayBlock;
 import io.github.zephyrwolf.medievalism.common.block.TwigsBlock;
+import io.github.zephyrwolf.medievalism.common.block.plants.SoftRushBlock;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.FarmingItemRegistration;
@@ -21,6 +22,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -616,6 +618,54 @@ public class BaseBlockLootTablesSubProvider extends BlockLootSubProvider {
         //endregion
         dropSelf(BlockRegistration.STONE_BENCH.get());
         dropSelf(BlockRegistration.CHOPPING_BLOCK.get());
+
+        add( // TODO This is wrong
+                BlockRegistration.SOFT_RUSH.get(),
+                LootTable.lootTable()
+                        //region Pool Stage 3
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem
+                                        .lootTableItem(WorldItemRegistration.SOFT_RUSH.get())
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                                        .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.SOFT_RUSH.get())
+                                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                        .hasProperty(SoftRushBlock.AGE, 3)
+                                                        .hasProperty(SoftRushBlock.HALF, DoubleBlockHalf.LOWER)
+                                                )
+                                        )
+                                )
+                        )
+                        //endregion
+                        //region Pool Stage 4
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem
+                                        .lootTableItem(WorldItemRegistration.SOFT_RUSH.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+                                        .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.SOFT_RUSH.get())
+                                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                        .hasProperty(SoftRushBlock.AGE, 4)
+                                                        .hasProperty(SoftRushBlock.HALF, DoubleBlockHalf.LOWER)
+                                                )
+                                        )
+                                )
+                        )
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem
+                                        .lootTableItem(FarmingItemRegistration.SOFT_RUSH_SEEDS.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))
+                                        .when(new LootItemBlockStatePropertyCondition.Builder(BlockRegistration.SOFT_RUSH.get())
+                                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                        .hasProperty(SoftRushBlock.AGE, 4)
+                                                        .hasProperty(SoftRushBlock.HALF, DoubleBlockHalf.LOWER)
+                                                )
+                                        )
+                                )
+                        )
+                //endregion
+        );
     }
 
     @SuppressWarnings("unused")

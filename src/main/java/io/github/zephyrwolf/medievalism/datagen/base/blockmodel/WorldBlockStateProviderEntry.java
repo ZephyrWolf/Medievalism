@@ -2,12 +2,19 @@ package io.github.zephyrwolf.medievalism.datagen.base.blockmodel;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.block.*;
+import io.github.zephyrwolf.medievalism.common.block.firepit.BuildCampfireBlock;
+import io.github.zephyrwolf.medievalism.common.block.plants.SoftRushBlock;
 import io.github.zephyrwolf.medievalism.common.data.BlockStateEntryProviderHandle;
 import io.github.zephyrwolf.medievalism.common.data.IBlockStateProviderEntry;
 import io.github.zephyrwolf.medievalism.registration.block.BlockRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -582,5 +589,45 @@ public final class WorldBlockStateProviderEntry implements IBlockStateProviderEn
         );
 
         handle.simpleTintedCrossBlock(BlockRegistration.SHRUB.get());
+        softRushBlock(handle, BlockRegistration.SOFT_RUSH.get());
+    }
+
+    public void softRushBlock(BlockStateEntryProviderHandle handle, Block block)
+    {
+        ResourceLocation textureLower0 = handle.blockTexture(BlockRegistration.SOFT_RUSH.get(), "_lower0");
+        ResourceLocation textureLower1 = handle.blockTexture(BlockRegistration.SOFT_RUSH.get(), "_lower1");
+        ResourceLocation textureLower2 = handle.blockTexture(BlockRegistration.SOFT_RUSH.get(), "_lower2");
+        ResourceLocation textureLower3 = handle.blockTexture(BlockRegistration.SOFT_RUSH.get(), "_lower3");
+        ResourceLocation textureLower4 = handle.blockTexture(BlockRegistration.SOFT_RUSH.get(), "_lower4");
+        ResourceLocation textureUpper3 = handle.blockTexture(BlockRegistration.SOFT_RUSH.get(), "_upper3");
+        ResourceLocation textureUpper4 = handle.blockTexture(BlockRegistration.SOFT_RUSH.get(), "_upper4");
+
+        ModelFile modelLower0 = handle.tintedCrossModel(handle.blockModelName(BlockRegistration.SOFT_RUSH.get(), "_lower0"), textureLower0);
+        ModelFile modelLower1 = handle.tintedCrossModel(handle.blockModelName(BlockRegistration.SOFT_RUSH.get(), "_lower1"), textureLower1);
+        ModelFile modelLower2 = handle.tintedCrossModel(handle.blockModelName(BlockRegistration.SOFT_RUSH.get(), "_lower2"), textureLower2);
+        ModelFile modelLower3 = handle.tintedCrossModel(handle.blockModelName(BlockRegistration.SOFT_RUSH.get(), "_lower3"), textureLower3);
+        ModelFile modelLower4 = handle.tintedCrossModel(handle.blockModelName(BlockRegistration.SOFT_RUSH.get(), "_lower4"), textureLower4);
+        ModelFile modelUpper3 = handle.tintedCrossModel(handle.blockModelName(BlockRegistration.SOFT_RUSH.get(), "_upper3"), textureUpper3);
+        ModelFile modelUpper4 = handle.tintedCrossModel(handle.blockModelName(BlockRegistration.SOFT_RUSH.get(), "_upper4"), textureUpper4);
+
+        ConfiguredModel confModelLower0 = new ConfiguredModel(modelLower0, 0, 0, false);
+        ConfiguredModel confModelLower1 = new ConfiguredModel(modelLower1, 0, 0, false);
+        ConfiguredModel confModelLower2 = new ConfiguredModel(modelLower2, 0, 0, false);
+        ConfiguredModel confModelLower3 = new ConfiguredModel(modelLower3, 0, 0, false);
+        ConfiguredModel confModelLower4 = new ConfiguredModel(modelLower4, 0, 0, false);
+        ConfiguredModel confModelUpper3 = new ConfiguredModel(modelUpper3, 0, 0, false);
+        ConfiguredModel confModelUpper4 = new ConfiguredModel(modelUpper4, 0, 0, false);
+
+        VariantBlockStateBuilder builder = handle.getVariantBuilder(block);
+        builder.partialState().with(SoftRushBlock.HALF, DoubleBlockHalf.LOWER).with(SoftRushBlock.AGE, 0).setModels(confModelLower0);
+        builder.partialState().with(SoftRushBlock.HALF, DoubleBlockHalf.LOWER).with(SoftRushBlock.AGE, 1).setModels(confModelLower1);
+        builder.partialState().with(SoftRushBlock.HALF, DoubleBlockHalf.LOWER).with(SoftRushBlock.AGE, 2).setModels(confModelLower2);
+        builder.partialState().with(SoftRushBlock.HALF, DoubleBlockHalf.LOWER).with(SoftRushBlock.AGE, 3).setModels(confModelLower3);
+        builder.partialState().with(SoftRushBlock.HALF, DoubleBlockHalf.LOWER).with(SoftRushBlock.AGE, 4).setModels(confModelLower4);
+        builder.partialState().with(SoftRushBlock.HALF, DoubleBlockHalf.UPPER).with(SoftRushBlock.AGE, 0).setModels(confModelUpper3);
+        builder.partialState().with(SoftRushBlock.HALF, DoubleBlockHalf.UPPER).with(SoftRushBlock.AGE, 1).setModels(confModelUpper3);
+        builder.partialState().with(SoftRushBlock.HALF, DoubleBlockHalf.UPPER).with(SoftRushBlock.AGE, 2).setModels(confModelUpper3);
+        builder.partialState().with(SoftRushBlock.HALF, DoubleBlockHalf.UPPER).with(SoftRushBlock.AGE, 3).setModels(confModelUpper3);
+        builder.partialState().with(SoftRushBlock.HALF, DoubleBlockHalf.UPPER).with(SoftRushBlock.AGE, 4).setModels(confModelUpper4);
     }
 }

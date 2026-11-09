@@ -24,12 +24,14 @@ public final class ClientColoursRegistration
     {
         registerAverageGrassColour(event, BlockRegistration.SHRUB.get());
         registerAverageGrassColour(event, BlockRegistration.CLAY_IN_GRASS.get());
+        registerAverageGrassColour(event, BlockRegistration.SOFT_RUSH.get());
     }
 
     private static void registerItemColours(RegisterColorHandlersEvent.Item event)
     {
         registerDefaultGrassColour(event, WorldItemRegistration.SHRUB.get());
         registerDefaultGrassColour(event, WorldItemRegistration.CLAY_IN_GRASS.get());
+        registerDefaultGrassColour(event, WorldItemRegistration.SOFT_RUSH.get());
     }
 
     // --

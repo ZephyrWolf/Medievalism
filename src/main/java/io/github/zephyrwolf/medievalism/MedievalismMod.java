@@ -13,7 +13,7 @@ import io.github.zephyrwolf.medievalism.registration.CreativeTabRegistration;
 import io.github.zephyrwolf.medievalism.registration.capabilities.CapabilitiesRegistration;
 import io.github.zephyrwolf.medievalism.registration.components.DataComponentTypeRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.*;
-import io.github.zephyrwolf.medievalism.registration.particles.ClientParticleProviderRegistration;
+import io.github.zephyrwolf.medievalism.registrationclient.particle.ClientParticleProviderRegistration;
 import io.github.zephyrwolf.medievalism.registration.particles.ParticleTypeRegistration;
 import io.github.zephyrwolf.medievalism.registrationclient.render.ClientColoursRegistration;
 import io.github.zephyrwolf.medievalism.registrationclient.render.ClientExtensionsRegistration;

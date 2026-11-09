@@ -277,5 +277,6 @@ public final class WorldItemRegistration
     public static final DeferredItem<BlockItem> MANGROVE_BRANCH =                   WORLD_ITEMS.registerSimpleBlockItem("mangrove_branch",               BlockRegistration.MANGROVE_BRANCH);
     // PLANT
     public static final DeferredItem<BlockItem> SHRUB =                             WORLD_ITEMS.registerSimpleBlockItem("shrub",                         BlockRegistration.SHRUB);
+    public static final DeferredItem<BlockItem> SOFT_RUSH =                         WORLD_ITEMS.registerSimpleBlockItem("soft_rush",                     BlockRegistration.SOFT_RUSH);
     //endregion == WORLD ==
 }
