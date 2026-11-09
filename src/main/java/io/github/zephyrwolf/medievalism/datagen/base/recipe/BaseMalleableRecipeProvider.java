@@ -2,6 +2,7 @@ package io.github.zephyrwolf.medievalism.datagen.base.recipe;
 
 import io.github.zephyrwolf.medievalism.MedievalismConstants;
 import io.github.zephyrwolf.medievalism.common.recipe.malleable.MalleableMaterialRecipeBuilder;
+import io.github.zephyrwolf.medievalism.common.recipe.malleable.MalleableMaterialType;
 import io.github.zephyrwolf.medievalism.common.recipe.malleable.MalleableRecipeBuilder;
 import io.github.zephyrwolf.medievalism.registration.item.ClayWorkingItemRegistration;
 import io.github.zephyrwolf.medievalism.registration.item.KnappingItemRegistration;
@@ -14,6 +15,7 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 
 public final class BaseMalleableRecipeProvider
 {
@@ -155,10 +157,23 @@ public final class BaseMalleableRecipeProvider
                 .pattern("  xxx")
                 .pattern(" x xx")
                 .pattern("   xx")
-                .unlockedBy("has_antler", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        KnappingItemRegistration.ANTLER
-                ))
+                .unlockedBy("has_antler", InventoryChangeTrigger.TriggerInstance.hasItems( KnappingItemRegistration.ANTLER ))
                 .save(recipeOutput, MedievalismConstants.resource("antler_material"));
+        MalleableMaterialRecipeBuilder.builder(Ingredient.of(Items.BONE), MalleableMaterialRegistration.BONE.get())
+                .pattern("  xx")
+                .pattern(" xxx")
+                .pattern("xxx ")
+                .pattern("xx  ")
+                .unlockedBy("has_bone", InventoryChangeTrigger.TriggerInstance.hasItems( Items.BONE ))
+                .save(recipeOutput, MedievalismConstants.resource("bone_material"));
+        MalleableMaterialRecipeBuilder.builder(Ingredient.of(Blocks.BONE_BLOCK), MalleableMaterialRegistration.BONE.get())
+                .pattern("xxxxx")
+                .pattern("xxxxx")
+                .pattern("xxxxx")
+                .pattern("xxxxx")
+                .pattern("xxxxx")
+                .unlockedBy("has_bone", InventoryChangeTrigger.TriggerInstance.hasItems( Items.BONE ))
+                .save(recipeOutput, MedievalismConstants.resource("bone_block_material"));
     }
 
     @Deprecated

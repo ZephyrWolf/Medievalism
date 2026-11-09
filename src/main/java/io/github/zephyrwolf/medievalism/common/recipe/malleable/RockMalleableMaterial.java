@@ -22,7 +22,7 @@ public class RockMalleableMaterial extends MalleableMaterialType
     @Override
     public boolean validTool(ItemStack stack)
     {
-        return !stack.isEmpty() && stack.is(ItemTagCatalog.KNAP_TOOL);
+        return !stack.isEmpty() && stack.is(ItemTagCatalog.ROCK_KNAP_TOOL);
     }
 
     @Override

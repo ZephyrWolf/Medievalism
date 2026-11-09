@@ -22,7 +22,7 @@ public class BoneMalleableMaterial extends MalleableMaterialType
     @Override
     public boolean validTool(ItemStack stack)
     {
-        return !stack.isEmpty() && stack.is(ItemTagCatalog.CARVING_TOOL);
+        return !stack.isEmpty() && stack.is(ItemTagCatalog.BONE_CARVING_TOOL);
     }
 
     @Override
