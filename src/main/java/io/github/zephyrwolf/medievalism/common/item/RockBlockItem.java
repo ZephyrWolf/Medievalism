@@ -1,7 +1,7 @@
 package io.github.zephyrwolf.medievalism.common.item;
 
 import io.github.zephyrwolf.medievalism.common.components.DummyDataComponent;
-import io.github.zephyrwolf.medievalism.common.recipe.inhand.InhandRecipe;
+import io.github.zephyrwolf.medievalism.common.recipe.inhand.IInhandRecipe;
 import io.github.zephyrwolf.medievalism.common.recipe.inhand.InhandRecipeInput;
 import io.github.zephyrwolf.medievalism.registration.components.DataComponentTypeRegistration;
 import io.github.zephyrwolf.medievalism.catalogs.tag.ItemTagCatalog;
@@ -14,6 +14,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -38,6 +39,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 public class RockBlockItem extends BlockItem
 {
@@ -111,7 +113,7 @@ public class RockBlockItem extends BlockItem
             @NotNull LivingEntity pEntity)
     { // pEntity.getUsedItemHand() and pEntity.swingingArm are not set yet
         InteractionHand hand = handFromStack(pEntity, pStack);
-        return hand != null ? getKnapAction(pEntity, hand).duration : -1;
+        return hand != null ? getHammerstoneAction(pEntity, hand).duration : -1;
     }
 
     @Override
@@ -132,13 +134,13 @@ public class RockBlockItem extends BlockItem
         ItemStack itemStack = pPlayer.getItemInHand(pHand);
         // if (pHand == InteractionHand.OFF_HAND) return InteractionResultHolder.pass(itemStack);
 
-        KnapAction action = getKnapAction(pPlayer, pHand);
-        if (action == KnapAction.NO_ACTION && pLevel.isClientSide())
+        HammerstoneAction action = getHammerstoneAction(pPlayer, pHand);
+        if (action == HammerstoneAction.NO_ACTION && pLevel.isClientSide())
         {
             pLevel.playSound( // Play error sound; client only
                     pPlayer,
                     pPlayer.getOnPos(),
-                    SoundsRegistration.INHAND_KNAP_FAIL.value(),
+                    SoundsRegistration.INHAND_FAIL.value(),
                     SoundSource.PLAYERS,
                     1.5f,
                     1.0f);
@@ -155,15 +157,14 @@ public class RockBlockItem extends BlockItem
             int pRemainingUseDuration)
     {
         super.onUseTick(pLevel, pLivingEntity, pStack, pRemainingUseDuration);
-        KnapAction action = getKnapAction(pLivingEntity, pLivingEntity.getUsedItemHand());
-        if (action != KnapAction.CAN_KNAP) return;
+        HammerstoneAction action = getHammerstoneAction(pLivingEntity, pLivingEntity.getUsedItemHand());
+        if (action != HammerstoneAction.CAN_INHAND_CRAFT) return;
         if (pRemainingUseDuration % (KNAP_DURATION_TICKS / HITS) == TIMING_TUNE)
         {
             RandomSource rand = pLevel.getRandom();
             boolean finalHit = pRemainingUseDuration == TIMING_TUNE;
-            SoundEvent sndEvent = finalHit
-                    ? SoundsRegistration.INHAND_KNAP_FINAL_HIT.value()
-                    : SoundsRegistration.INAHND_KNAP_HIT.value();
+            Optional<IInhandRecipe> recipe = getRecipe(pLevel, pLivingEntity.getMainHandItem(), pLivingEntity.getOffhandItem());
+            SoundEvent sndEvent = recipe.map(iInhandRecipe -> SoundsRegistration.getInhandSoundEvent(iInhandRecipe.getMaterialType(), finalHit)).orElseGet(SoundsRegistration.INHAND_FAIL::value);
             int numParticles = finalHit ? (3 + rand.nextInt(4)) : (1 + rand.nextInt(2));
             pLevel.playSound( // Play hit sound
                     pLivingEntity,
@@ -182,10 +183,11 @@ public class RockBlockItem extends BlockItem
                             ? pLivingEntity.yHeadRot
                             : pLivingEntity.yBodyRot;
                     float yaw = rot * ((float) Math.PI / 180f);
+                    Supplier<SimpleParticleType> particle = recipe.isPresent() ? ParticleTypeRegistration.getInhandParticle(recipe.get().getMaterialType()) : ParticleTypeRegistration.HIT_ROCK;
                     ParticleTools.addParticleClient(
                             clientLevel,
                             player,
-                            ParticleTypeRegistration.KNAP_DEBRIS.get(),
+                            particle.get(),
                             pLivingEntity.getX() - Mth.sin(yaw) * 0.6f,
                             pLivingEntity.getY() + 1.3,
                             pLivingEntity.getZ() + Mth.cos(yaw) * 0.6F,
@@ -198,10 +200,11 @@ public class RockBlockItem extends BlockItem
                         && pLivingEntity instanceof Player player) {
                     ServerLevel serverLevel = (ServerLevel) pLevel;
                     float yaw = pLivingEntity.yBodyRot * ((float) Math.PI / 180F);
+                    Supplier<SimpleParticleType> particle = recipe.isPresent() ? ParticleTypeRegistration.getInhandParticle(recipe.get().getMaterialType()) : ParticleTypeRegistration.HIT_ROCK;
                     ParticleTools.sendParticlesServer(
                             serverLevel,
                             player,
-                            ParticleTypeRegistration.KNAP_DEBRIS.get(),
+                            particle.get(),
                             pLivingEntity.getX() - Mth.sin(yaw) * 0.6f,
                             pLivingEntity.getY() + 1.3,
                             pLivingEntity.getZ() + Mth.cos(yaw) * 0.6F,
@@ -227,8 +230,8 @@ public class RockBlockItem extends BlockItem
         ItemStack mItemStack = pLivingEntity.getItemInHand(hand);
         ItemStack oItemStack = pLivingEntity.getItemInHand(oHand);
 
-        KnapAction action = getKnapAction(pLivingEntity, hand);
-        if (action == KnapAction.UNSTACK_INTO_EMPTY_OFF_HAND)
+        HammerstoneAction action = getHammerstoneAction(pLivingEntity, hand);
+        if (action == HammerstoneAction.UNSTACK_INTO_EMPTY_OFF_HAND)
         {
             oItemStack = mItemStack.copy();
             oItemStack.shrink(1);
@@ -237,7 +240,7 @@ public class RockBlockItem extends BlockItem
             mItemStack.setCount(1);
             return mItemStack;
         }
-        else if (action == KnapAction.UNSTACK_INTO_EMPTY_MAIN_HAND)
+        else if (action == HammerstoneAction.UNSTACK_INTO_EMPTY_MAIN_HAND)
         {
             oItemStack = mItemStack.copy();
             oItemStack.setCount(1);
@@ -247,7 +250,7 @@ public class RockBlockItem extends BlockItem
             mItemStack.shrink(1);
             return mItemStack;
         }
-        else if (action == KnapAction.UNSTACK_MAIN_HAND_INTO_INV && pLivingEntity instanceof Player player)
+        else if (action == HammerstoneAction.UNSTACK_MAIN_HAND_INTO_INV && pLivingEntity instanceof Player player)
         {
             ItemStack invStack = mItemStack.copy();
             invStack.shrink(1);
@@ -261,21 +264,21 @@ public class RockBlockItem extends BlockItem
                 mItemStack.setCount(1);
             }
         }
-        else if (action == KnapAction.SWAP_HANDS)
+        else if (action == HammerstoneAction.SWAP_HANDS)
         {
             ItemStack swap = mItemStack.copy();
             pLivingEntity.setItemInHand(hand, oItemStack);
             pLivingEntity.setItemInHand(oHand, swap);
             return oItemStack;
         }
-        else if (action == KnapAction.CAN_KNAP)
+        else if (action == HammerstoneAction.CAN_INHAND_CRAFT)
         {
             // Serverside
             if (!pLevel.isClientSide() && pLivingEntity instanceof Player player)
             {
                 // We check so that if we are using an item, and we shouldn't, we aren't acting on items that we shouldn't
                 // e.g. What if another mod modifies the players inventory?
-                if (canKnap(mItemStack) && isKnappable(pLevel, mItemStack, oItemStack))
+                if (canKnap(mItemStack) && isKnappableRecipe(pLevel, mItemStack, oItemStack))
                 {
                     InhandRecipeInput input = getRecipeInput(mItemStack, oItemStack);
                     getRecipeHolder(pLevel, mItemStack, oItemStack).ifPresent(recipe
@@ -318,7 +321,7 @@ public class RockBlockItem extends BlockItem
     private static boolean couldKnap(@NotNull ItemStack stack)
     {
         //return stack.getItem() instanceof RockBlockItem;
-        return stack.is(ItemTagCatalog.KNAP_TOOL);
+        return stack.is(ItemTagCatalog.ROCK_KNAP_TOOL);
     }
 
     /*
@@ -334,20 +337,20 @@ public class RockBlockItem extends BlockItem
         return new InhandRecipeInput(tool, ingredient);
     }
 
-    private static Optional<InhandRecipe> getRecipe(Level level, ItemStack tool, ItemStack ingredient)
+    private static Optional<IInhandRecipe> getRecipe(Level level, ItemStack tool, ItemStack ingredient)
     {
         var recipes = RecipeManager.createCheck(RecipeRegistration.INHAND_RECIPE_TYPE.get());
         return recipes.getRecipeFor(getRecipeInput(tool, ingredient), level)
                 .map(RecipeHolder::value);
     }
 
-    private static Optional<RecipeHolder<InhandRecipe>> getRecipeHolder(Level level, ItemStack tool, ItemStack ingredient)
+    private static Optional<RecipeHolder<IInhandRecipe>> getRecipeHolder(Level level, ItemStack tool, ItemStack ingredient)
     {
         var recipes = RecipeManager.createCheck(RecipeRegistration.INHAND_RECIPE_TYPE.get());
         return recipes.getRecipeFor(getRecipeInput(tool, ingredient), level);
     }
 
-    private static boolean isKnappable(Level level, ItemStack tool, ItemStack ingredient)
+    private static boolean isKnappableRecipe(Level level, ItemStack tool, ItemStack ingredient)
     {
         if (ingredient.isEmpty() || ingredient.isDamaged()) { return false; } // TODO is this line required?
         return getRecipe(level, tool, ingredient).isPresent();
@@ -367,25 +370,25 @@ public class RockBlockItem extends BlockItem
             return null;
     }
 
-    public enum KnapAction
+    public enum HammerstoneAction
     {
         NO_ACTION(KNAP_FAIL_DURATION_TICKS),
         UNSTACK_INTO_EMPTY_OFF_HAND(KNAP_PREPARE_DURATION_TICKS),
         UNSTACK_INTO_EMPTY_MAIN_HAND(KNAP_PREPARE_DURATION_TICKS),
         UNSTACK_MAIN_HAND_INTO_INV(KNAP_PREPARE_DURATION_TICKS),
         SWAP_HANDS(KNAP_PREPARE_DURATION_TICKS),
-        CAN_KNAP(KNAP_DURATION_TICKS);
+        CAN_INHAND_CRAFT(KNAP_DURATION_TICKS);
 
         public final int duration;
 
-        KnapAction(int useDuration) { duration = useDuration; }
+        HammerstoneAction(int useDuration) { duration = useDuration; }
     }
 
-    public static KnapAction getKnapAction(@NotNull LivingEntity pEntity, @NotNull InteractionHand hand)
+    public static HammerstoneAction getHammerstoneAction(@NotNull LivingEntity pEntity, @NotNull InteractionHand hand)
     {
         ItemStack mItemStack = pEntity.getItemInHand(InteractionHand.MAIN_HAND);
         ItemStack oItemStack = pEntity.getItemInHand(InteractionHand.OFF_HAND);
-        if (couldKnap(mItemStack) && isKnappable(pEntity.level(), mItemStack, oItemStack) && mItemStack.getCount() > 1 && pEntity instanceof Player player)
+        if (couldKnap(mItemStack) && isKnappableRecipe(pEntity.level(), mItemStack, oItemStack) && mItemStack.getCount() > 1 && pEntity instanceof Player player)
         {
             ItemStack insertStack = mItemStack.copy();
             mItemStack.set(DataComponentTypeRegistration.DUMMY, DummyDataComponent.INSTANCE);
@@ -393,27 +396,27 @@ public class RockBlockItem extends BlockItem
             mItemStack.remove(DataComponentTypeRegistration.DUMMY);
             if (rem == 0)
             {
-                return KnapAction.UNSTACK_MAIN_HAND_INTO_INV;
+                return HammerstoneAction.UNSTACK_MAIN_HAND_INTO_INV;
             }
         }
-        else if (oItemStack.isEmpty() && couldKnap(mItemStack) && isKnappable(pEntity.level(), mItemStack, mItemStack) && mItemStack.getCount() > 1)
+        else if (oItemStack.isEmpty() && couldKnap(mItemStack) && isKnappableRecipe(pEntity.level(), mItemStack, mItemStack) && mItemStack.getCount() > 1)
         {
-            return KnapAction.UNSTACK_INTO_EMPTY_OFF_HAND;
+            return HammerstoneAction.UNSTACK_INTO_EMPTY_OFF_HAND;
         }
-        else if (mItemStack.isEmpty() && couldKnap(oItemStack) && isKnappable(pEntity.level(), oItemStack, oItemStack) && oItemStack.getCount() > 1)
+        else if (mItemStack.isEmpty() && couldKnap(oItemStack) && isKnappableRecipe(pEntity.level(), oItemStack, oItemStack) && oItemStack.getCount() > 1)
         {
-            return KnapAction.UNSTACK_INTO_EMPTY_MAIN_HAND;
+            return HammerstoneAction.UNSTACK_INTO_EMPTY_MAIN_HAND;
         }
         //else if (isHammerstone(oItemStack) && isKnappableStone(mItemStack) && !isHammerstone(mItemStack))
-        else if (canKnap(oItemStack) && isKnappable(pEntity.level(), oItemStack, mItemStack) && !canKnap(mItemStack))
+        else if (canKnap(oItemStack) && isKnappableRecipe(pEntity.level(), oItemStack, mItemStack) && !canKnap(mItemStack))
         {
-            return KnapAction.SWAP_HANDS;
+            return HammerstoneAction.SWAP_HANDS;
         }
-        else if (hand == InteractionHand.MAIN_HAND && canKnap(mItemStack) && isKnappable(pEntity.level(), mItemStack, oItemStack))
+        else if (hand == InteractionHand.MAIN_HAND && canKnap(mItemStack) && isKnappableRecipe(pEntity.level(), mItemStack, oItemStack))
         {
-            return KnapAction.CAN_KNAP;
+            return HammerstoneAction.CAN_INHAND_CRAFT;
         }
-        return KnapAction.NO_ACTION;
+        return HammerstoneAction.NO_ACTION;
     }
     //endregion
 }
